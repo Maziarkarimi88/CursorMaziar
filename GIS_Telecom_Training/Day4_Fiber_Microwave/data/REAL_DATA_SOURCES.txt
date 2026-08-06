@@ -1,0 +1,24 @@
+REAL / OPEN DATA FOR DAY 4 (FIBER & MICROWAVE)
+==============================================
+1) DEM / Terrain (real) — REQUIRED for proper LOS/Viewshed:
+   - SRTM 30m / NASADEM via USGS EarthExplorer or OpenTopography
+   - ALOS World 3D (AW3D30)
+   - Copernicus GLO-30 DEM
+   In ArcGIS Pro: Living Atlas elevation layers (if licensed)
+
+2) Buildings / obstacles (real):
+   - OpenStreetMap building footprints (Geofabrik)
+   - Extrude using building:levels * 3m if HEIGHT missing
+
+3) Roads for fiber trench routing context:
+   - OSM highways from Geofabrik
+
+4) Administrative / planning zones:
+   - HDX COD-AB; or continue Day 3 MarketingZones
+
+5) Optional:
+   - Existing operator as-built CAD/GIS (internal, anonymized)
+   - Microwave frequency coordination tables (regulatory)
+
+NOTE: SyntheticDEM_Points.csv lets the class build a DEM offline.
+For production-like training, replace with real SRTM/NASADEM.
