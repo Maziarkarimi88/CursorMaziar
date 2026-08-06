@@ -1,0 +1,215 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "LINK_ID": "MWL-01",
+        "LINK_NAME": "Central_North",
+        "STATUS": "Existing",
+        "BAND_GHZ": "18GHz",
+        "CAPACITY_MBPS": 500,
+        "FROM_NODE": "MW-01",
+        "TO_NODE": "MW-02",
+        "LENGTH_KM": 3.799,
+        "TX_HEIGHT_M": 35,
+        "RX_HEIGHT_M": 30,
+        "MEDIUM": "Microwave",
+        "CLEARANCE_REQ_M": 0.6
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            69.166,
+            34.532
+          ],
+          [
+            69.155,
+            34.565
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "LINK_ID": "MWL-02",
+        "LINK_NAME": "Central_East",
+        "STATUS": "Existing",
+        "BAND_GHZ": "15GHz",
+        "CAPACITY_MBPS": 300,
+        "FROM_NODE": "MW-01",
+        "TO_NODE": "MW-03",
+        "LENGTH_KM": 5.405,
+        "TX_HEIGHT_M": 35,
+        "RX_HEIGHT_M": 25,
+        "MEDIUM": "Microwave",
+        "CLEARANCE_REQ_M": 0.6
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            69.166,
+            34.532
+          ],
+          [
+            69.225,
+            34.535
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "LINK_ID": "MWL-03",
+        "LINK_NAME": "Central_South",
+        "STATUS": "Existing",
+        "BAND_GHZ": "18GHz",
+        "CAPACITY_MBPS": 400,
+        "FROM_NODE": "MW-01",
+        "TO_NODE": "MW-04",
+        "LENGTH_KM": 6.129,
+        "TX_HEIGHT_M": 35,
+        "RX_HEIGHT_M": 28,
+        "MEDIUM": "Microwave",
+        "CLEARANCE_REQ_M": 0.6
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            69.166,
+            34.532
+          ],
+          [
+            69.18,
+            34.478
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "LINK_ID": "MWL-04",
+        "LINK_NAME": "North_Airport",
+        "STATUS": "Existing",
+        "BAND_GHZ": "23GHz",
+        "CAPACITY_MBPS": 200,
+        "FROM_NODE": "MW-02",
+        "TO_NODE": "MW-06",
+        "LENGTH_KM": 5.494,
+        "TX_HEIGHT_M": 30,
+        "RX_HEIGHT_M": 32,
+        "MEDIUM": "Microwave",
+        "CLEARANCE_REQ_M": 0.6
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            69.155,
+            34.565
+          ],
+          [
+            69.215,
+            34.568
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "LINK_ID": "MWL-05",
+        "LINK_NAME": "Central_West_Plan",
+        "STATUS": "Planned",
+        "BAND_GHZ": "18GHz",
+        "CAPACITY_MBPS": 300,
+        "FROM_NODE": "MW-01",
+        "TO_NODE": "MW-05",
+        "LENGTH_KM": 6.676,
+        "TX_HEIGHT_M": 35,
+        "RX_HEIGHT_M": 30,
+        "MEDIUM": "Microwave",
+        "CLEARANCE_REQ_M": 0.6
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            69.166,
+            34.532
+          ],
+          [
+            69.095,
+            34.518
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "LINK_ID": "MWL-06",
+        "LINK_NAME": "West_NewTown_Plan",
+        "STATUS": "Planned",
+        "BAND_GHZ": "15GHz",
+        "CAPACITY_MBPS": 200,
+        "FROM_NODE": "MW-05",
+        "TO_NODE": "MW-07",
+        "LENGTH_KM": 4.208,
+        "TX_HEIGHT_M": 30,
+        "RX_HEIGHT_M": 28,
+        "MEDIUM": "Microwave",
+        "CLEARANCE_REQ_M": 0.6
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            69.095,
+            34.518
+          ],
+          [
+            69.085,
+            34.555
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "LINK_ID": "MWL-07",
+        "LINK_NAME": "South_East_Alt",
+        "STATUS": "Candidate",
+        "BAND_GHZ": "13GHz",
+        "CAPACITY_MBPS": 150,
+        "FROM_NODE": "MW-04",
+        "TO_NODE": "MW-03",
+        "LENGTH_KM": 7.549,
+        "TX_HEIGHT_M": 28,
+        "RX_HEIGHT_M": 25,
+        "MEDIUM": "Microwave",
+        "CLEARANCE_REQ_M": 0.6
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            69.18,
+            34.478
+          ],
+          [
+            69.225,
+            34.535
+          ]
+        ]
+      }
+    }
+  ]
+}
