@@ -1,0 +1,7 @@
+STEP,TASK,TOOL
+1,Confirm TX/RX coordinates and antenna heights,Attribute table / GPS
+2,Generate LOS line between sites,3D Analyst Line of Sight
+3,Extract terrain profile,Interpolate Shape / Profile Graph / Stack Profile
+4,Check Fresnel clearance vs terrain/buildings,Profile review + obstruction polygons
+5,Run viewshed for broader visibility,Viewshed / Geodesic Viewshed
+6,"Accept, redesign path, or raise antenna/relocate",Engineering decision
