@@ -1,0 +1,11 @@
+PARENT_ENTITY,CHILD_ENTITY,CARDINALITY,BUSINESS_RULE,GIS_IMPL
+ISP_Core_POP,Regional_Hub,1:M,One national core feeds many regional hubs,Relationship Class or PARENT_ID FK
+Regional_Hub,OLT_Exchange,1:M,One hub serves many OLTs/exchanges,Relationship Class / PARENT_ID
+OLT_Exchange,FDH_Cabinet,1:M,One OLT feeds many cabinets,Relationship Class / PARENT_ID
+FDH_Cabinet,Splitter,1:M,One cabinet hosts many splitters,Relationship Class / PARENT_ID
+Splitter,Home_ONT,1:M,One splitter serves many homes,SPLITTER_ID FK on Homes
+Tower,Sector,1:M,One tower hosts many sectors/techs,TOWER_ID FK on Sectors
+Backhaul_Node,Tower,1:M,One backhaul node can serve many towers,BACKHAUL_NODE on Towers
+District,Tower,1:M,One district contains many towers,Spatial Containment / Spatial Join
+Customer,ServiceAccount,1:1,One active primary account per customer in this simplified model,1-1 Relationship Class
+Tower,LandlordLease,M:N (via table),Towers and landlords can relate many-to-many over time,Intermediate table LeaseBridge
