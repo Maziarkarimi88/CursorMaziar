@@ -1,0 +1,8 @@
+NODE_ID,NODE_TYPE,STATUS,LON,LAT,LAYER_GROUP
+OLT-01,OLT,Existing,69.168,34.53,Fiber
+OLT-02,OLT,Existing,69.152,34.558,Fiber
+FDH-04,FDH,Planned,69.105,34.522,Fiber
+FDH-06,FDH,Planned,69.128,34.502,Fiber
+MW-01,MW_Hub,Existing,69.166,34.532,Microwave
+MW-05,MW_Remote,Planned,69.095,34.518,Microwave
+MW-07,MW_Remote,Planned,69.085,34.555,Microwave

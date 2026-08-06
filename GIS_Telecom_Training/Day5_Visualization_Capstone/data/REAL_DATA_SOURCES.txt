@@ -1,0 +1,14 @@
+REAL / OPEN DATA & PLATFORM NOTES — DAY 5
+========================================
+1) ArcGIS Online / ArcGIS Enterprise organizational account (required for publishing)
+2) Replace synthetic KPIs with anonymized live extracts when available:
+   - Coverage rasters / site layers from Day 2
+   - Customer aggregates (never raw PII) from Day 3
+   - Fiber/MW layers from Day 4
+3) Basemaps: Esri Dark Gray / Topographic / Imagery Hybrid
+4) Optional open context layers:
+   - HDX admin boundaries
+   - OSM roads/buildings via Living Atlas or Geofabrik
+5) Living Atlas demographic layers (if licensed) for enrichment
+
+Privacy: publish only aggregated zone KPIs or anonymized points for training.
