@@ -1,0 +1,13 @@
+DIST_ID,DIST_NAME,CENTROID_LON,CENTROID_LAT,POPULATION,ZONE_TYPE,AFFLUENCE_INDEX
+DZ-01,Central Business District,69.165,34.528,185000,Urban Core,0.92
+DZ-02,North Residential,69.15,34.56,142000,Residential,0.78
+DZ-03,East Industrial,69.22,34.53,98000,Industrial,0.55
+DZ-04,West Expansion,69.1,34.52,121000,Mixed Growth,0.7
+DZ-05,South Corridor,69.175,34.48,156000,Transport Hub,0.68
+DZ-06,Airport Zone,69.21,34.565,64000,Special Use,0.6
+DZ-07,University Belt,69.14,34.545,110000,Education,0.8
+DZ-08,Old City,69.185,34.515,99000,Heritage Urban,0.75
+DZ-09,New Town,69.09,34.555,87000,Suburban Growth,0.72
+DZ-10,River Park,69.195,34.5,73000,Recreation/Mixed,0.65
+DZ-11,Tech Park,69.125,34.5,52000,Commercial,0.85
+DZ-12,Peri-Urban North,69.16,34.59,45000,Peri-Urban,0.48
