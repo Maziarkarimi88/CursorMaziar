@@ -1,0 +1,10 @@
+FromType,EdgeType,ToType,Cardinality,Description
+Internet_Source,Backbone_Fiber,Core_POP,1:M,Source feeds core
+Core_POP,Core_Ring,Core_POP,1:1,Core ring
+Core_POP,Backbone_Fiber,Regional_Hub,1:M,Core to hubs
+Regional_Hub,Hub_Ring,Regional_Hub,M:M,Hub ring
+Regional_Hub,Feeder_Fiber,OLT,1:M,Hub to OLT
+OLT,Feeder_Fiber,Joint_Closure,1:M,OLT feeder
+Joint_Closure,Feeder_Fiber,FDH,1:1,Joint to FDH
+FDH,Distribution_Fiber,Optical_Splitter,1:M,FDH distribution
+Optical_Splitter,Drop_Fiber,Home_ONT,1:M,Last mile drops

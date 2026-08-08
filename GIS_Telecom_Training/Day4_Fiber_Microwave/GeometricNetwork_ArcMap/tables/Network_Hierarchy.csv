@@ -1,0 +1,8 @@
+Level,Device,Role,ExampleIDs
+0,Internet_Source,Multi-source upstream,SRC-*
+1,Core_POP,National core,CORE-*
+2,Regional_Hub,Regional aggregation,HUB-*
+3,OLT,PON headend,OLT-*
+4,Joint_Closure / FDH,Feeder & distribution hub,"JC-*, FDH-*"
+5,Optical_Splitter,1:16 split,SP-*
+6,Home_ONT,End-user ONT,"ONT-* (>20,000)"
