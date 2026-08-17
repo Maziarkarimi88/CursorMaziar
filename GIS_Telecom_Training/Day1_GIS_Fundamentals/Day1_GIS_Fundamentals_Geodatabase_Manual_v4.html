@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Day 1 Lab Manual v4 — GIS Application in Telecom</title>
+<style>
+  body { font-family: Calibri, Arial, sans-serif; max-width: 980px; margin: 24px auto; padding: 0 18px 40px; line-height: 1.45; color: #222; }
+  h1 { color: #002060; font-size: 22px; margin-top: 28px; border-bottom: 2px solid #002060; padding-bottom: 4px; }
+  h2 { color: #002060; font-size: 16px; margin-top: 18px; }
+  h3 { color: #1F4E79; font-size: 14px; margin-top: 14px; }
+  table { border-collapse: collapse; width: 100%; font-size: 13px; margin: 10px 0 16px; }
+  th, td { border: 1px solid #888; padding: 6px 8px; vertical-align: top; }
+  th { background: #002060; color: #fff; text-align: left; }
+  .cover { color: #002060; }
+  .cover .kicker { font-size: 13px; letter-spacing: .04em; margin: 0; }
+  .cover h1 { border: none; font-size: 28px; margin: 8px 0 4px; }
+  .tip { color: #0B5E2A; }
+  .note { color: #8A4B08; }
+  .check { color: #1F4E79; font-weight: 600; }
+  .slide { background: #EEF3F8; padding: 2px 8px; font-size: 12px; color: #1F4E79; }
+  ol.steps li { margin: 4px 0; }
+  code, .path { font-family: Consolas, monospace; font-size: 12.5px; }
+  @media print { body { max-width: none; } h1 { page-break-before: auto; } }
+</style>
+</head>
+<body>
+
+<p class="cover kicker">GIS APPLICATION IN TELECOM</p>
+<p class="cover kicker">5-Day Intensive Training Program</p>
+<h1 class="cover" style="border:none;">DAY 1 LAB MANUAL</h1>
+<p><strong>GIS concepts, coordinate systems, ArcGIS Pro, geodatabase, domains, subtypes, relationship classes, raster / DEM</strong></p>
+<p>Version 4.0 &nbsp;|&nbsp; Follows presentation <em>Day 1_ready.pptx</em> (also saved as <em>Day1_GIS_Application_in_Telecom_Ready.pptx</em>)</p>
+<p>Platform: ArcGIS Pro &nbsp;|&nbsp; Duration: 1 day (09:00 – 16:00)</p>
+
+<table>
+  <tr><th>Document</th><th>Detail</th></tr>
+  <tr><td>Course</td><td>GIS Application in Telecom</td></tr>
+  <tr><td>Day</td><td>Day 1 — same topics as the presentation, in the same order</td></tr>
+  <tr><td>Version</td><td>4.0</td></tr>
+  <tr><td>Presentation</td><td>Day 1_ready.pptx</td></tr>
+  <tr><td>How to use</td><td>Instructor shows a slide block. Class then does the matching lab steps in ArcGIS Pro. No sample CSV or GeoJSON files are required.</td></tr>
+</table>
+
+<p class="note">NOTE: Do not load synthetic MetroTel tables for this day. You create empty shapefiles and geodatabase objects, type the key fields, digitize a few features by clicking, then build relationship classes. That is enough to match the presentation.</p>
+
+<h1>How this manual maps to the presentation</h1>
+<table>
+  <tr><th>Presentation</th><th>Slides (approx.)</th><th>Do this in the manual</th></tr>
+  <tr><td>Title, 5-day agenda, Day 1 overview, Day 1 agenda, outcomes</td><td>1–6</td><td>Read only — no software</td></tr>
+  <tr><td>Part 1 — GIS concepts and data types</td><td>7–16</td><td>Lab 1 — open Pro and see map + table</td></tr>
+  <tr><td>Part 2 — Coordinate systems</td><td>17–24</td><td>Lab 2 — set the map CRS</td></tr>
+  <tr><td>Part 3 — ArcGIS Pro and the geodatabase</td><td>25–31</td><td>Lab 3 — shapefile, GDB, feature dataset, feature classes</td></tr>
+  <tr><td>Domains and subtypes</td><td>32–34</td><td>Lab 4 — coded domain, range domain, Towers subtypes</td></tr>
+  <tr><td>Relationship classes, ERD, cardinality, irrigation example</td><td>35–41</td><td>Lab 5 — keys then relationship classes (irrigation + telecom)</td></tr>
+  <tr><td>Part 4 — Raster analysis and DEM</td><td>42–50</td><td>Lab 6 — add a DEM and run Slope / Hillshade / Aspect</td></tr>
+  <tr><td>Instructor corrections (yellow text)</td><td>51</td><td>Instructor only — delete before class</td></tr>
+</table>
+
+<h1>1. Learning outcomes</h1>
+<p class="slide">Match presentation: Day 1 Learning Outcomes</p>
+<p>By the end of Day 1 you will be able to:</p>
+<ul>
+  <li>Explain GIS as a system (data, software, hardware, people, methods).</li>
+  <li>Choose vector or raster for a given question (assets vs coverage / terrain).</li>
+  <li>Distinguish GCS vs projected CRS, and explain datum and WGS84.</li>
+  <li>Create a shapefile, a file geodatabase, a feature dataset, and feature classes in ArcGIS Pro.</li>
+  <li>Create a domain and subtypes, and assign them to fields.</li>
+  <li>Put a primary key on the parent and a foreign key on the child, then create a 1:M relationship class.</li>
+  <li>Add a DEM and derive slope, aspect, and hillshade.</li>
+</ul>
+
+<h1>2. Day agenda</h1>
+<table>
+  <tr><th>Time</th><th>Presentation block</th><th>Lab</th></tr>
+  <tr><td>09:00–09:30</td><td>Slides 1–6 — program, 5-day agenda, Day 1 agenda &amp; outcomes</td><td>—</td></tr>
+  <tr><td>09:30–10:30</td><td>Part 1 — What GIS is, keywords, functions, components, vector/raster</td><td>Lab 1</td></tr>
+  <tr><td>10:30–10:45</td><td>Break</td><td>—</td></tr>
+  <tr><td>10:45–12:00</td><td>Part 2 — Earth, datum, WGS84, GCS vs PCS</td><td>Lab 2</td></tr>
+  <tr><td>12:00–13:00</td><td>Lunch</td><td>—</td></tr>
+  <tr><td>13:00–14:15</td><td>Part 3 — Pro, geodatabase, shapefile, feature class, feature dataset</td><td>Lab 3</td></tr>
+  <tr><td>14:15–14:50</td><td>Domains and subtypes</td><td>Lab 4</td></tr>
+  <tr><td>14:50–15:00</td><td>Break</td><td>—</td></tr>
+  <tr><td>15:00–15:40</td><td>ERD, cardinality, irrigation + telecom 1:M</td><td>Lab 5</td></tr>
+  <tr><td>15:40–16:00</td><td>Raster / DEM / “Let’s explore it in ArcGIS Pro”</td><td>Lab 6</td></tr>
+</table>
+
+<h1>3. One-time project setup</h1>
+<p>Do this once before Lab 1. All later labs use the same project.</p>
+<ol class="steps">
+  <li>Open <strong>ArcGIS Pro</strong>.</li>
+  <li>Click <strong>New</strong> → <strong>Map</strong>.</li>
+  <li>Name the project <code>Day1_GIS_Telecom</code>. Save it in a local folder you can find again (for example <code>C:\GIS_Training\Day1</code>).</li>
+  <li>When the map opens, look at four places you will use all day:
+    <ul>
+      <li><strong>Catalog</strong> pane — data and the geodatabase</li>
+      <li><strong>Contents</strong> pane — layers on the map</li>
+      <li><strong>Map</strong> view — geography</li>
+      <li><strong>Ribbon</strong> (Map, Edit, Analysis, View)</li>
+    </ul>
+  </li>
+  <li>Catalog pane → right-click <strong>Folders</strong> → <strong>Add Folder Connection</strong> → select your Day 1 folder.</li>
+  <li>Catalog → right-click <strong>Databases</strong> → <strong>New File Geodatabase</strong> → name it <code>Day1.gdb</code>.</li>
+  <li>Map tab → <strong>Basemap</strong> → <strong>Imagery</strong> or <strong>Topographic</strong> (context only).</li>
+</ol>
+<p class="check">CHECKPOINT: You have a named project, a folder connection, and an empty <code>Day1.gdb</code>.</p>
+
+<!-- ========== PART 1 ========== -->
+<h1>4. Part 1 — GIS concepts and data types</h1>
+<p class="slide">Presentation: Part 1 · slides “What is GIS” through “Advantages and Disadvantages of Raster”</p>
+
+<h2>4.1 What to take from the slides (short)</h2>
+<table>
+  <tr><th>Slide idea</th><th>Remember this</th></tr>
+  <tr><td>What is GIS</td><td>A Geographic Information System captures, stores, analyzes, and presents geographically referenced data. Software alone is not a GIS — people, hardware, data, and methods belong too.</td></tr>
+  <tr><td>Keywords</td><td><strong>Geographic</strong> = location on Earth. <strong>Information</strong> = attributes / tables. <strong>Systems</strong> = hardware, software, data, procedures working together.</td></tr>
+  <tr><td>Functions</td><td>Acquire, store, manage, analyze, visualize.</td></tr>
+  <tr><td>Components</td><td>Hardware, software (ArcGIS Pro), data (spatial + attribute), people, methods.</td></tr>
+  <tr><td>Vector</td><td>Points, lines, polygons with exact coordinates. Use for towers, fiber, parcels, homes.</td></tr>
+  <tr><td>Raster</td><td>A grid of cells. Use for elevation, imagery, rainfall, coverage surfaces.</td></tr>
+  <tr><td>Attributes / metadata</td><td>Attributes = the “what” attached to geometry. Metadata = source, date, CRS, accuracy.</td></tr>
+</table>
+
+<h2>4.2 Lab 1 — See map and table together</h2>
+<p>Objective: prove the GIS idea from the slides — one feature is a shape on the map and a row in a table.</p>
+<ol class="steps">
+  <li>On the ribbon, open the <strong>Map</strong> tab. Use <strong>Explore</strong> to pan and zoom.</li>
+  <li>Click <strong>Insert</strong> → <strong>New Map</strong> if you want a second map; otherwise stay on Map.</li>
+  <li>In Catalog, expand <code>Day1.gdb</code> (still empty). This is where Part 3 objects will live.</li>
+  <li>Contents pane: turn the basemap on/off. That is a raster-style backdrop; your assets will be vector layers on top.</li>
+  <li>Open <strong>View</strong> → <strong>Catalog View</strong>, then return to the map. Catalog is how you manage data; the map is how you see it.</li>
+</ol>
+<p class="tip">TIP: After Lab 3, come back here: right-click any feature class → <strong>Attribute Table</strong>. Click one row → it highlights on the map. That is vector data + attributes from the slides.</p>
+<p class="check">CHECKPOINT: Student can name Catalog, Contents, Map, and Attribute Table.</p>
+
+<!-- ========== PART 2 ========== -->
+<h1>5. Part 2 — Coordinate systems</h1>
+<p class="slide">Presentation: Part 2 · Earth, datum, WGS84, GCS, Projected Coordinate System</p>
+
+<h2>5.1 What to take from the slides (short)</h2>
+<ul>
+  <li>Earth is not a perfect sphere. A smooth model is an <strong>ellipsoid</strong>; the gravity surface is the <strong>geoid</strong>.</li>
+  <li>A <strong>datum</strong> is the model of Earth that coordinates are measured from. Different datums → same place, different numbers.</li>
+  <li><strong>WGS84</strong> is the usual global datum (GPS, EPSG:4326, degrees).</li>
+  <li><strong>GCS</strong> = latitude / longitude (angles). <strong>PCS</strong> = easting / northing in meters after a projection (example on the slide: <strong>WGS 84 / UTM zone 42N</strong>).</li>
+  <li><strong>Define Projection</strong> only writes the label when coordinates are already correct. <strong>Project</strong> converts coordinates to another CRS.</li>
+</ul>
+
+<h2>5.2 Lab 2 — Set the map to the presentation CRS</h2>
+<ol class="steps">
+  <li>In Contents, right-click the map name (usually <strong>Map</strong>) → <strong>Properties</strong>.</li>
+  <li>Click <strong>Coordinate Systems</strong>.</li>
+  <li>Search <code>WGS 1984 UTM Zone 42N</code> (or 41N / 43N if your city is in that zone).</li>
+  <li>Select <strong>WGS 1984 UTM Zone 42N</strong> → <strong>OK</strong>.</li>
+  <li>Bottom of the map view: confirm the CRS name. Move the pointer; values should look like meters (six-digit easting), not 34.5 / 69.2 degrees.</li>
+  <li>Map tab → <strong>Measure</strong> → measure a short street. Units should be meters. That is why the presentation uses a projected system for work, not only GCS.</li>
+</ol>
+<p class="note">NOTE: If your training site is not in zone 42N, pick the UTM zone that contains the city. The clicks are the same.</p>
+<p class="check">CHECKPOINT: Student can say: GCS = degrees on the ellipsoid; PCS = meters on a flat grid; our map uses UTM.</p>
+
+<!-- ========== PART 3 ========== -->
+<h1>6. Part 3 — Shapefile, geodatabase, feature dataset, feature classes</h1>
+<p class="slide">Presentation: Introduction to ArcGIS Pro → Managing Vector Data → Geodatabase → Types of Geodatabases → Other GIS Data Types → Feature Dataset</p>
+
+<h2>6.1 What to take from the slides (short)</h2>
+<ul>
+  <li><strong>Shapefile</strong>: old folder of files (.shp, .dbf, .shx, …). One geometry type. <strong>Cannot</strong> store domains, subtypes, or relationship classes.</li>
+  <li><strong>File geodatabase</strong> (<code>.gdb</code>): the container we use in this course.</li>
+  <li><strong>Feature class</strong>: points <em>or</em> lines <em>or</em> polygons, same fields, same spatial reference.</li>
+  <li><strong>Feature dataset</strong>: a container inside the GDB. All feature classes inside share one coordinate system. Required later for topology / many relationship setups. We put related network layers here.</li>
+</ul>
+
+<h2>6.2 Data you will create (no files to import)</h2>
+<p>Two small models, matching the presentation:</p>
+<table>
+  <tr><th>Model</th><th>Feature class</th><th>Geometry</th><th>Primary key</th><th>Foreign key (child stores parent’s ID)</th></tr>
+  <tr><td rowspan="4">Irrigation<br>(presentation example)</td><td>Scheme</td><td>Point</td><td>scheme_id</td><td>—</td></tr>
+  <tr><td>Canal</td><td>Polyline</td><td>canal_id</td><td>scheme_id</td></tr>
+  <tr><td>Command_Area</td><td>Polygon</td><td>area_id</td><td>canal_id</td></tr>
+  <tr><td>Structure</td><td>Point</td><td>structure_id</td><td>area_id</td></tr>
+  <tr><td rowspan="4">Telecom<br>(1:M parallel on the irrigation slide)</td><td>OLT</td><td>Point</td><td>olt_id</td><td>—</td></tr>
+  <tr><td>FDH</td><td>Point</td><td>fdh_id</td><td>olt_id</td></tr>
+  <tr><td>Splitter</td><td>Point</td><td>splitter_id</td><td>fdh_id</td></tr>
+  <tr><td>Home</td><td>Point</td><td>home_id</td><td>splitter_id</td></tr>
+  <tr><td>Wireless (subtypes slide)</td><td>Tower</td><td>Point</td><td>tower_id</td><td>—</td></tr>
+</table>
+<p>Hierarchy (both 1:M, same idea):</p>
+<ul>
+  <li>Irrigation: Scheme → Canal → Command Area → Structure (intake, super passage, weir).</li>
+  <li>Telecom: OLT → FDH → Splitter → Home.</li>
+</ul>
+
+<h2>6.3 Lab 3A — Create a shapefile (so you see the old format)</h2>
+<ol class="steps">
+  <li>In Catalog, under your <strong>folder connection</strong> (not inside the .gdb), right-click the folder → <strong>New</strong> → <strong>Shapefile</strong>.</li>
+  <li>Name: <code>Towers_shp</code>.</li>
+  <li>Geometry type: <strong>Point</strong>.</li>
+  <li>Coordinate system: same as the map — <strong>WGS 1984 UTM Zone 42N</strong> → Run / Finish.</li>
+  <li>Right-click <code>Towers_shp</code> → <strong>Design</strong> → <strong>Fields</strong> (or open Fields view from the ribbon).</li>
+  <li>Add field <code>tower_id</code>, type Text, length 20. Save.</li>
+  <li>On disk, look at the folder: you should see several files (<code>.shp</code>, <code>.shx</code>, <code>.dbf</code>, <code>.prj</code>). That is a shapefile.</li>
+</ol>
+<p class="note">NOTE: We will <strong>not</strong> put domains, subtypes, or relationship classes on this shapefile. Those belong in the geodatabase. Keep the shapefile only as a comparison from the “Other GIS Data Types” slide.</p>
+<p class="check">CHECKPOINT: Shapefile exists in the folder; student can name .shp / .dbf / .prj.</p>
+
+<h2>6.4 Lab 3B — Create two feature datasets</h2>
+<ol class="steps">
+  <li>Catalog → expand <code>Day1.gdb</code> → right-click the geodatabase → <strong>New</strong> → <strong>Feature Dataset</strong>.</li>
+  <li>Name: <code>FD_Irrigation</code>.</li>
+  <li>Coordinate system: <strong>WGS 1984 UTM Zone 42N</strong> (must match the map).</li>
+  <li>Finish.</li>
+  <li>Repeat: New Feature Dataset named <code>FD_Telecom</code>, same coordinate system.</li>
+</ol>
+<p class="check">CHECKPOINT: <code>Day1.gdb</code> shows <code>FD_Irrigation</code> and <code>FD_Telecom</code>.</p>
+
+<h2>6.5 Lab 3C — Create each irrigation feature class</h2>
+<p>Do these clicks <strong>once per row</strong> in the irrigation table. Example below is for <strong>Scheme</strong>. Then repeat for Canal, Command_Area, Structure.</p>
+<ol class="steps">
+  <li>Right-click <code>FD_Irrigation</code> → <strong>New</strong> → <strong>Feature Class</strong>.</li>
+  <li>Name: <code>Scheme</code>. Alias: Scheme. Geometry: <strong>Point</strong>. Next.</li>
+  <li>Keep the default (do not add z/m unless asked). Next.</li>
+  <li>Fields page — add:
+    <ul>
+      <li><code>scheme_id</code> — Text, 20 — this is the <strong>primary key</strong></li>
+      <li><code>scheme_name</code> — Text, 50</li>
+      <li><code>status</code> — Text, 20 — domain will go here in Lab 4</li>
+    </ul>
+  </li>
+  <li>Finish. The feature class appears inside <code>FD_Irrigation</code>.</li>
+</ol>
+<p>Repeat the wizard for the other irrigation classes. Use this field list:</p>
+<table>
+  <tr><th>Feature class</th><th>Geometry</th><th>Fields to add</th></tr>
+  <tr><td>Canal</td><td>Polyline</td><td><code>canal_id</code> (Text 20, PK) · <code>scheme_id</code> (Text 20, <strong>FK</strong>) · <code>canal_name</code> (Text 50) · <code>status</code> (Text 20)</td></tr>
+  <tr><td>Command_Area</td><td>Polygon</td><td><code>area_id</code> (Text 20, PK) · <code>canal_id</code> (Text 20, <strong>FK</strong>) · <code>area_name</code> (Text 50) · <code>status</code> (Text 20)</td></tr>
+  <tr><td>Structure</td><td>Point</td><td><code>structure_id</code> (Text 20, PK) · <code>area_id</code> (Text 20, <strong>FK</strong>) · <code>struct_type</code> (Text 30) · <code>status</code> (Text 20)</td></tr>
+</table>
+
+<h2>6.6 Lab 3D — Create each telecom feature class</h2>
+<p>Same wizard, inside <code>FD_Telecom</code>:</p>
+<table>
+  <tr><th>Feature class</th><th>Geometry</th><th>Fields to add</th></tr>
+  <tr><td>OLT</td><td>Point</td><td><code>olt_id</code> (PK) · <code>olt_name</code> · <code>status</code></td></tr>
+  <tr><td>FDH</td><td>Point</td><td><code>fdh_id</code> (PK) · <code>olt_id</code> (<strong>FK</strong>) · <code>fdh_name</code> · <code>status</code></td></tr>
+  <tr><td>Splitter</td><td>Point</td><td><code>splitter_id</code> (PK) · <code>fdh_id</code> (<strong>FK</strong>) · <code>split_ratio</code> (Text 10) · <code>status</code></td></tr>
+  <tr><td>Home</td><td>Point</td><td><code>home_id</code> (PK) · <code>splitter_id</code> (<strong>FK</strong>) · <code>address</code> · <code>status</code></td></tr>
+  <tr><td>Tower</td><td>Point</td><td><code>tower_id</code> (PK) · <code>TowerType</code> (<strong>Short integer</strong> — subtype field) · <code>height_m</code> (Double) · <code>status</code></td></tr>
+</table>
+<p>All ID fields: Text, length 20, unless noted. <code>TowerType</code> must be a <strong>short integer</strong> because subtypes use an integer field (presentation: 1 = Macro, 2 = Small cell, 3 = Rooftop).</p>
+<p class="check">CHECKPOINT: Nine feature classes exist (4 irrigation + 5 telecom including Tower). Each child class has a foreign-key field named like the parent’s ID.</p>
+
+<h2>6.7 Lab 3E — Digitize a few features (so keys have values)</h2>
+<p>You need a handful of points/lines/polygons. Do not import a spreadsheet.</p>
+<ol class="steps">
+  <li>Drag <code>Scheme</code>, <code>Canal</code>, <code>Command_Area</code>, <code>Structure</code> onto the map.</li>
+  <li><strong>Edit</strong> tab → <strong>Create</strong>.</li>
+  <li>Select <strong>Scheme</strong> → click <strong>one</strong> point on the map (a project HQ is enough).</li>
+  <li>In the Create Features / Attributes pane, set <code>scheme_id</code> = <code>SCH-01</code>, name = <code>North Scheme</code>, status = <code>Active</code>.</li>
+  <li>Select <strong>Canal</strong> → draw <strong>two</strong> lines. For both, set <code>scheme_id</code> = <code>SCH-01</code>. Use <code>canal_id</code> = <code>CAN-01</code> and <code>CAN-02</code>.</li>
+  <li>Select <strong>Command_Area</strong> → draw <strong>two</strong> polygons. Set <code>canal_id</code> to <code>CAN-01</code> or <code>CAN-02</code>. Use <code>area_id</code> = <code>CA-01</code>, <code>CA-02</code>.</li>
+  <li>Select <strong>Structure</strong> → click <strong>three</strong> points inside the polygons. Set <code>area_id</code> to the polygon they sit in. Use types: <code>intake</code>, <code>super passage</code>, <code>weir</code> (presentation list).</li>
+  <li><strong>Save</strong> edits.</li>
+  <li>Repeat the same idea in <code>FD_Telecom</code>: 1 OLT (<code>OLT-01</code>), 2 FDHs with <code>olt_id=OLT-01</code>, 2 splitters with the matching <code>fdh_id</code>, 3 homes with the matching <code>splitter_id</code>.</li>
+  <li>Add 3 towers: <code>tower_id</code> T-01, T-02, T-03. Leave <code>TowerType</code> empty until Lab 4, or type 1, 2, 3.</li>
+</ol>
+<p class="tip">TIP: The foreign key is just a field you type. <code>Home.splitter_id</code> must equal an existing <code>Splitter.splitter_id</code>. If the IDs do not match, the relationship class will not find children.</p>
+<p class="check">CHECKPOINT: Attribute tables show parent IDs on child rows (1:M in the table, before the relationship class exists).</p>
+
+<!-- ========== DOMAINS / SUBTYPES ========== -->
+<h1>7. Lab 4 — Domains and subtypes</h1>
+<p class="slide">Presentation: Domains and Subtypes in Geodatabase · Subtypes · example screenshot</p>
+
+<h2>7.1 What to take from the slides</h2>
+<ul>
+  <li>A <strong>domain</strong> lives in the geodatabase. It limits what a field may store (list or min/max).</li>
+  <li>A <strong>subtype</strong> splits one feature class into categories using an integer field. Still one table, one geometry type.</li>
+  <li>Presentation tower example: <code>TowerType</code> 1 = Macro tower, 2 = Small cell, 3 = Rooftop antenna.</li>
+</ul>
+
+<h2>7.2 Create a coded-value domain (status list)</h2>
+<ol class="steps">
+  <li>Catalog → right-click <code>Day1.gdb</code> → <strong>Domains</strong>. (Or ribbon: Data → Domains, with the GDB selected.)</li>
+  <li>Click <strong>New</strong>.</li>
+  <li>Domain Name: <code>Dom_Status</code>.</li>
+  <li>Description: <code>Asset status</code>.</li>
+  <li>Field Type: <strong>Text</strong>.</li>
+  <li>Domain Type: <strong>Coded Value</strong>.</li>
+  <li>In the codes table add:
+    <ul>
+      <li>Code <code>Active</code> — Description <code>Active</code></li>
+      <li>Code <code>Planned</code> — Description <code>Planned</code></li>
+      <li>Code <code>OnAir</code> — Description <code>On Air</code></li>
+    </ul>
+  </li>
+  <li>On the ribbon, <strong>Save</strong>.</li>
+</ol>
+
+<h2>7.3 Create a range domain (tower height)</h2>
+<ol class="steps">
+  <li>Still in the Domains view, click <strong>New</strong>.</li>
+  <li>Domain Name: <code>Dom_Height_m</code>.</li>
+  <li>Field Type: <strong>Double</strong> (or Float).</li>
+  <li>Domain Type: <strong>Range</strong>.</li>
+  <li>Minimum: <code>3</code> &nbsp; Maximum: <code>80</code>.</li>
+  <li><strong>Save</strong>. Close the Domains view.</li>
+</ol>
+
+<h2>7.4 Assign domains to fields</h2>
+<ol class="steps">
+  <li>Right-click feature class <code>Tower</code> → <strong>Design</strong> → <strong>Fields</strong>.</li>
+  <li>For field <code>status</code>, in the <strong>Domain</strong> column choose <code>Dom_Status</code>.</li>
+  <li>For field <code>height_m</code>, choose <code>Dom_Height_m</code>.</li>
+  <li><strong>Save</strong>.</li>
+  <li>Repeat for every other feature class that has <code>status</code>: Scheme, Canal, Command_Area, Structure, OLT, FDH, Splitter, Home. Same domain, assigned once per field.</li>
+</ol>
+<p class="tip">TIP: After this, editing a <code>status</code> cell shows a drop-down instead of free text. That is “rejecting invalid values” from the slide.</p>
+
+<h2>7.5 Create subtypes on Tower</h2>
+<ol class="steps">
+  <li>Right-click <code>Tower</code> → <strong>Design</strong> → <strong>Subtypes</strong>.</li>
+  <li>Subtype Field: <code>TowerType</code> (the short integer you created).</li>
+  <li>Add codes (presentation values):
+    <ul>
+      <li>Code <code>1</code> — Description <code>Macro tower</code></li>
+      <li>Code <code>2</code> — Description <code>Small cell</code></li>
+      <li>Code <code>3</code> — Description <code>Rooftop antenna</code></li>
+    </ul>
+  </li>
+  <li>Optional: set a different default <code>height_m</code> per subtype (for example Macro 30, Small cell 8, Rooftop 12).</li>
+  <li><strong>Save</strong>.</li>
+  <li>Start editing Towers. The <code>TowerType</code> field should offer Macro / Small cell / Rooftop, not a random integer.</li>
+</ol>
+<p class="check">CHECKPOINT: Status is a list; height rejects values outside 3–80; Tower has three subtypes.</p>
+
+<!-- ========== RELATIONSHIPS ========== -->
+<h1>8. Lab 5 — Keys and relationship classes</h1>
+<p class="slide">Presentation: Relationship Classes · Example of ERD · Cardinality · Irrigation Example · screenshots</p>
+
+<h2>8.1 What to take from the slides</h2>
+<ul>
+  <li>A relationship class is the geodatabase’s foreign-key link.</li>
+  <li><strong>Origin</strong> holds the primary key. <strong>Destination</strong> holds the matching key.</li>
+  <li><strong>1:M</strong> is the usual pattern (one cabinet, many ports; one canal, many command areas; one OLT, many FDHs).</li>
+  <li><strong>Composite</strong>: children belong to the parent and are deleted with it. Use Simple unless you want that behavior.</li>
+</ul>
+
+<h2>8.2 Confirm keys before the wizard</h2>
+<p>Open each child table and check the FK column is populated with real parent IDs from Lab 3E.</p>
+<table>
+  <tr><th>Relationship class name</th><th>Origin (parent)</th><th>Origin PK</th><th>Destination (child)</th><th>Destination FK</th><th>Cardinality</th></tr>
+  <tr><td>RC_Scheme_Canal</td><td>Scheme</td><td>scheme_id</td><td>Canal</td><td>scheme_id</td><td>1:M</td></tr>
+  <tr><td>RC_Canal_CommandArea</td><td>Canal</td><td>canal_id</td><td>Command_Area</td><td>canal_id</td><td>1:M</td></tr>
+  <tr><td>RC_CommandArea_Structure</td><td>Command_Area</td><td>area_id</td><td>Structure</td><td>area_id</td><td>1:M</td></tr>
+  <tr><td>RC_OLT_FDH</td><td>OLT</td><td>olt_id</td><td>FDH</td><td>olt_id</td><td>1:M</td></tr>
+  <tr><td>RC_FDH_Splitter</td><td>FDH</td><td>fdh_id</td><td>Splitter</td><td>fdh_id</td><td>1:M</td></tr>
+  <tr><td>RC_Splitter_Home</td><td>Splitter</td><td>splitter_id</td><td>Home</td><td>splitter_id</td><td>1:M</td></tr>
+</table>
+
+<h2>8.3 Create one relationship class (full clicks)</h2>
+<p>Example: <strong>Scheme → Canal</strong>. You will repeat this for every row in the table.</p>
+<ol class="steps">
+  <li>Catalog → right-click <code>FD_Irrigation</code> (or the geodatabase) → <strong>New</strong> → <strong>Relationship</strong> / <strong>Relationship Class</strong>.</li>
+  <li><strong>Origin table / feature class:</strong> <code>Scheme</code>.</li>
+  <li><strong>Destination table / feature class:</strong> <code>Canal</code>.</li>
+  <li>Relationship Class Name: <code>RC_Scheme_Canal</code>.</li>
+  <li>Type: <strong>Simple</strong> (not Composite, unless you want canals deleted with the scheme).</li>
+  <li>Cardinality: <strong>One to many (1:M)</strong>.</li>
+  <li>Do not add attributes to the relationship class (Next / No).</li>
+  <li>Origin primary key: <code>scheme_id</code>.</li>
+  <li>Origin foreign key (on destination): <code>scheme_id</code> on Canal.</li>
+  <li>Forward path label: <code>feeds canals</code>. Backward path label: <code>belongs to scheme</code>.</li>
+  <li>Finish.</li>
+</ol>
+
+<h2>8.4 Repeat for every pair</h2>
+<p>Run the same wizard for the other five rows. Only the names and key fields change. Always 1:M, Simple, no relationship attributes.</p>
+<ol class="steps">
+  <li>Canal → Command_Area &nbsp; keys: <code>canal_id</code> / <code>canal_id</code></li>
+  <li>Command_Area → Structure &nbsp; keys: <code>area_id</code> / <code>area_id</code></li>
+  <li>OLT → FDH &nbsp; keys: <code>olt_id</code> / <code>olt_id</code></li>
+  <li>FDH → Splitter &nbsp; keys: <code>fdh_id</code> / <code>fdh_id</code></li>
+  <li>Splitter → Home &nbsp; keys: <code>splitter_id</code> / <code>splitter_id</code></li>
+</ol>
+
+<h2>8.5 Prove it (matches “prove cardinality” without extra data)</h2>
+<ol class="steps">
+  <li>Add Scheme and Canal to the map if they are not already there.</li>
+  <li>On the map, click the scheme point with <strong>Explore</strong> (or select it).</li>
+  <li>In the pop-up, open the related records / <strong>Canal</strong> link — you should see both canals with <code>scheme_id = SCH-01</code>.</li>
+  <li>Alternatively: select the scheme → <strong>Map</strong> tab → <strong>Select by Relationship</strong> (or right-click layer → Selection → Select Related Records, depending on Pro version).</li>
+  <li>Do the same for one splitter: related homes should be the three houses you typed with that <code>splitter_id</code>.</li>
+</ol>
+<p class="check">CHECKPOINT: Six relationship classes in the GDB. Selecting one parent highlights or lists its children. Student can say where the FK is stored (on the child).</p>
+<p class="note">NOTE: Tower has no child class in this manual. Subtypes already split towers inside one feature class. If you need Tower → Sector later, add a <code>Sector</code> table with <code>tower_id</code> and create <code>RC_Tower_Sector</code> the same way.</p>
+
+<!-- ========== RASTER ========== -->
+<h1>9. Lab 6 — Raster analysis and DEM</h1>
+<p class="slide">Presentation: Part 4 · Raster Analysis · Weighted Overlay · Resolution · DEM · DEM sources · What can be extracted · Let’s Explore It in ArcGIS Pro</p>
+
+<h2>9.1 What to take from the slides (short)</h2>
+<ul>
+  <li>Rasters store continuous surfaces (elevation, rain, imagery).</li>
+  <li>Common tools: Reclassify, Euclidean Distance, Raster Calculator, Viewshed, <strong>Weighted Overlay</strong> (combine scored layers with weights).</li>
+  <li>Resolution = cell size. A 30 m DEM is one elevation for each 30 × 30 m square.</li>
+  <li>From a DEM you can derive slope, aspect, hillshade, contours, viewshed, watershed, elevation profile.</li>
+</ul>
+
+<h2>9.2 Add a DEM (use any real DEM you already have)</h2>
+<p>Do not build a fake elevation table. Use one of these, in this order of ease:</p>
+<ol class="steps">
+  <li><strong>Living Atlas / ArcGIS Online:</strong> Catalog → Portal → Living Atlas → search <code>Terrain</code> or <code>DEM</code> → add a world elevation or local DEM to the map.</li>
+  <li><strong>Local file:</strong> if the class has an SRTM/ALOS GeoTIFF, Catalog → right-click the folder → Add to map.</li>
+  <li>Right-click the DEM in Contents → <strong>Properties</strong> → Source. Write down cell size (resolution) and CRS. Project it to UTM if it is still in WGS84 degrees and you will run Slope.</li>
+</ol>
+
+<h2>9.3 Extract what the presentation lists</h2>
+<p>Analysis tab → <strong>Tools</strong>. Search and run each tool. Input raster = your DEM. Output goes into <code>Day1.gdb</code>.</p>
+<table>
+  <tr><th>Tool</th><th>Geoprocessing tool name</th><th>Why (from the slide)</th></tr>
+  <tr><td>Slope</td><td>Slope (Spatial Analyst)</td><td>Steepness for access, erosion, routing</td></tr>
+  <tr><td>Aspect</td><td>Aspect</td><td>Direction the slope faces</td></tr>
+  <tr><td>Hillshade</td><td>Hillshade</td><td>Shaded relief for map reading</td></tr>
+  <tr><td>Contours</td><td>Contour</td><td>Lines of equal elevation (try 20 m interval)</td></tr>
+  <tr><td>Viewshed</td><td>Viewshed or Geodesic Viewshed</td><td>What is visible from a Tower point</td></tr>
+</table>
+<ol class="steps">
+  <li>Run <strong>Hillshade</strong> first so the class sees terrain immediately.</li>
+  <li>Run <strong>Slope</strong>. Symbolize with a simple yellow–red ramp.</li>
+  <li>Optional if Spatial Analyst is licensed: <strong>Weighted Overlay</strong> — reclassify slope to 1–5, give it 100% weight as a one-layer demo, or add a second raster if you have one. Do not invent extra criteria tables.</li>
+  <li>Optional: <strong>Viewshed</strong> with one Tower as the observer, offset 30 m, to match the slide.</li>
+</ol>
+<p class="note">NOTE: These tools need the Spatial Analyst extension (and 3D Analyst for some visibility tools). If the extension is off: Project → Licensing, or skip to Hillshade if it is available as a raster function: Contents → raster layer → Raster Functions → Hillshade.</p>
+<p class="check">CHECKPOINT: DEM on the map; at least Hillshade and Slope created. Student can state cell size in meters.</p>
+
+<h1>10. Expected outputs</h1>
+<table>
+  <tr><th>#</th><th>Deliverable</th><th>Done?</th></tr>
+  <tr><td>1</td><td>Project <code>Day1_GIS_Telecom.aprx</code> and <code>Day1.gdb</code></td><td></td></tr>
+  <tr><td>2</td><td>Map CRS = WGS 1984 UTM (zone for your city)</td><td></td></tr>
+  <tr><td>3</td><td>Shapefile <code>Towers_shp</code> in the folder (comparison only)</td><td></td></tr>
+  <tr><td>4</td><td>Feature datasets <code>FD_Irrigation</code> and <code>FD_Telecom</code></td><td></td></tr>
+  <tr><td>5</td><td>All feature classes from the schema tables, with PK and FK fields</td><td></td></tr>
+  <tr><td>6</td><td>Domains <code>Dom_Status</code> and <code>Dom_Height_m</code> assigned</td><td></td></tr>
+  <tr><td>7</td><td>Subtypes on Tower (Macro / Small cell / Rooftop)</td><td></td></tr>
+  <tr><td>8</td><td>Six 1:M relationship classes; related records work</td><td></td></tr>
+  <tr><td>9</td><td>DEM + Hillshade + Slope</td><td></td></tr>
+</table>
+
+<h1>11. Quick quiz (same ideas as the slides)</h1>
+<ol>
+  <li>Name the five GIS components from the slide.</li>
+  <li>Vector or raster for a fiber cable? For a DEM?</li>
+  <li>What is the difference between a datum and a projected coordinate system?</li>
+  <li>Why can a shapefile not hold a relationship class?</li>
+  <li>Where is the foreign key stored in a 1:M (Splitter → Home)?</li>
+  <li>What integer codes did we use for Tower subtypes?</li>
+  <li>Name three rasters you can derive from a DEM.</li>
+</ol>
+<p>Answers:</p>
+<ol>
+  <li>Hardware, software, data, people, methods/procedures.</li>
+  <li>Fiber = vector line. DEM = raster.</li>
+  <li>Datum = Earth model for coordinates. PCS = flat meter grid created by projecting a GCS.</li>
+  <li>Shapefiles have no geodatabase behavior (no domains, subtypes, relationship classes).</li>
+  <li>On the child: <code>Home.splitter_id</code>.</li>
+  <li>1 Macro, 2 Small cell, 3 Rooftop.</li>
+  <li>Any three of: slope, aspect, hillshade, contour, viewshed, watershed, profile.</li>
+</ol>
+
+<h1>12. Instructor notes</h1>
+<ul>
+  <li>Teach from <strong>Day 1_ready.pptx</strong>. After each part-divider slide, switch to the matching lab.</li>
+  <li>Delete presentation slide 51 (yellow correction log) before class.</li>
+  <li>If Pro’s New Relationship Class wizard labels differ slightly by version, the meaning is the same: origin, destination, 1:M, origin PK, destination FK.</li>
+  <li>Do not distribute the old Day 1 CSV/GeoJSON pack for this version. It is not needed.</li>
+</ul>
+
+<h1>13. Version history</h1>
+<table>
+  <tr><th>Version</th><th>Changes</th></tr>
+  <tr><td>v3</td><td>MetroTel synthetic datasets and concept-heavy labs (previous)</td></tr>
+  <tr><td>v4</td><td>Aligned to Day 1_ready.pptx. No synthetic tables. Click-by-click: shapefile, feature dataset, feature classes, domains, subtypes, keys, relationship classes, DEM derivatives.</td></tr>
+</table>
+<p>— End of Day 1 Manual (Version 4.0) —</p>
+</body>
+</html>
