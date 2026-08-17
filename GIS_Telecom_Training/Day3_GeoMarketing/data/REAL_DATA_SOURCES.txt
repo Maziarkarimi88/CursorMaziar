@@ -1,0 +1,27 @@
+REAL / OPEN DATA SOURCES TO USE ALONGSIDE SYNTHETIC LAB DATA
+==============================================================
+1) Administrative boundaries (real):
+   - Humanitarian Data Exchange (HDX) Afghanistan COD-AB or your country COD
+   - https://data.humdata.org/
+
+2) Population (real):
+   - WorldPop population grids (100 m / 1 km)
+   - https://www.worldpop.org/
+   - Meta/Data for Good High Resolution Population Density Maps
+
+3) Points of interest / buildings (real):
+   - OpenStreetMap extracts via Geofabrik
+   - https://download.geofabrik.de/
+
+4) Optional telecom open references (conceptual / regulatory):
+   - National telecom regulatory open datasets (site registers where published)
+   - OpenCelliD (community cell tower DB) — https://opencellid.org/
+     NOTE: Use only for training illustration; validate license/attribution.
+
+5) Basemaps:
+   - Esri World Topographic / Imagery (ArcGIS Pro)
+   - OpenStreetMap basemap
+
+In this Day 3 package, MarketingZones + Subscribers are SYNTHETIC (MetroTel Capital Region)
+so the class can run without sensitive customer data. Replace with anonymized real
+subscriber extracts when available (never use live PII in training).
