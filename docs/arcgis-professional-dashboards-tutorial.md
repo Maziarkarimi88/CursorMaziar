@@ -47,13 +47,351 @@ You need an ArcGIS Online account with privileges to create content, hosted feat
 
 ## The professional formula (read this first)
 
-Both dashboards follow the same five-layer stack. Do not start in the dashboard editor until layers 1–3 are done.
+Both dashboards follow the same five-stage stack. Each stage has a **gate**: do not start the next stage until the gate passes.
 
-1. **Question.** One sentence. ASNV: “How much certified habitat exists, where is it, and how has it grown?” Cal OES: “Who is without power right now, where, and is it planned?”
-2. **Authoritative data.** Hosted feature layers (or hosted views) with coded fields, aliases, and a public-safe field set.
-3. **Web map.** Basemap, symbology, definition queries, pop-ups, bookmarks, refresh interval. The map is the dashboard’s data engine.
-4. **Layout.** Header + 3-column body. Big numbers at a glance. Detail on demand via tabs and lists.
-5. **Actions.** Selectors, lists, and the map all filter or zoom each other. A dashboard that does not react feels like a poster.
+```text
+1. Question        → you can name every KPI and every filter in one sentence
+2. Hosted data/view → a read-only public view exists (not the editable source)
+3. Web map         → pop-ups, symbols, filters, and a bookmark are saved
+4. Layout          → the screen looks right, but clicks do nothing yet
+5. Actions         → selectors, lists, and the map filter or zoom each other
+```
+
+Do not open the dashboard editor until stages 1–3 are done. A dashboard is a **window** onto a map and its layers. If the layers are messy, the dashboard will be messy.
+
+The exact click path for all five stages is in the next section. Parts 1–10 after that are the ASNV and Cal OES recipes (which widgets, which colors, which filters).
+
+---
+
+## The five stages, with exact ArcGIS Online clicks
+
+This is the pipeline in full. Work it once with a small test table (even 20 rows) before you build the real dashboard.
+
+```mermaid
+flowchart LR
+  Q["1. Question"] --> D["2. Hosted layer + view"]
+  D --> M["3. Web map"]
+  M --> L["4. Layout"]
+  L --> A["5. Actions"]
+  A --> S["Share views → map → dashboard"]
+```
+
+Worked examples used below:
+
+- **Program (ASNV):** “How much certified habitat exists, where is it, and how has it grown?”
+- **Operations (Cal OES):** “Who is without power right now, where, and is it planned?”
+
+---
+
+### Stage 1 — Question
+
+**What this stage is.** A one-sentence job for the screen, plus a short list of numbers and filters. It is not a widget sketch yet.
+
+**Why it is first.** Every later click (which field to group by, which selector to add, which action to enable) is answering this sentence. If you skip it, you add charts because they look nice, and the dashboard becomes a poster.
+
+#### Exact steps (paper or a notes doc — nothing in ArcGIS yet)
+
+1. Write **one sentence** in this shape:  
+   `[who]` needs to know `[what]` `[where]`, `[how often]`, so they can `[do what]`.
+   - ASNV: *The public and chapter staff need to know how much certified habitat exists in Northern Virginia, by year and place, so they can see program growth.*
+   - Cal OES: *The public and emergency staff need to know who is without power right now, by county and utility, and whether it is planned.*
+2. Circle the **audience**: public wall display, staff operations, or both. That chooses light vs dark theme and how much disclaimer text you need.
+3. Circle **freshness**: historical (ASNV, no refresh) or live (Cal OES, refresh every 10–15 minutes).
+4. List **at most four KPIs** — numbers a person should read in two seconds.
+   - ASNV: total acres, total properties, PADUS count, IBA count.
+   - Cal OES: customers without power, planned customers, unplanned customers.
+5. For each KPI write the **math**: count of features, sum of a field, or count + sum (Cal OES uses sum of customers and count of outages as a reference).
+6. List **filters the user will change** (these become header selectors):
+   - ASNV: Year, date range.
+   - Cal OES: County, utility company, outage type.
+7. List **filters the user should never see** (these become view definitions or map filters):  
+   `MapVisibility = 'Visible'`, `OutageStatus = 'Active'`, `State = 'Virginia'`.
+8. List **drill-downs**: click a county → map zooms; pan the map → charts update; click a list row → flash the point.
+9. Draw a **three-zone wireframe** on paper: header, center map (~50% width), KPIs and charts on the sides. Do not invent extra zones.
+
+**Gate before Stage 2.** You can fill this table without guessing:
+
+| Decision | Your answer |
+| --- | --- |
+| One-sentence question | |
+| Live or historical | |
+| KPI 1 / 2 / 3 (and the field + statistic) | |
+| Selectors (user-facing filters) | |
+| Hidden filters (staff-only rows, inactive rows) | |
+| What happens when someone clicks a list/chart/map | |
+
+If a KPI has no field, stop. Add that column to the spreadsheet before you publish.
+
+---
+
+### Stage 2 — Hosted data, then a hosted view
+
+**What this stage is.** Put the table into ArcGIS Online as a **hosted feature layer** (the system of record), then create a **hosted feature layer view** (what the dashboard is allowed to see).
+
+**Why a view.** Both example dashboards use layers named *Public View*. Staff can keep editing the source. The public dashboard reads a filtered, field-trimmed, non-editable copy. Edits in the source still show up in the view.
+
+```text
+Staff editing  →  Hosted feature layer (source)
+                      ↓ (no extra storage; it is a window)
+Public dashboard → Hosted feature layer view  →  Web map  →  Dashboard
+```
+
+#### 2a. Clean the table on your computer
+
+1. One row = one feature (one property, one outage, one county).
+2. Field names: letters, numbers, underscores only. No spaces (`ImpactedCustomers`, not `Impacted Customers`).
+3. Categories in **one spelling** (`Planned` / `Not Planned`, not `planned` and `PLANED`).
+4. Dates in a real date column, not text.
+5. Add the hidden-filter fields you listed in Stage 1 (`MapVisibility`, `OutageStatus`).
+6. Save as CSV (with lat/lon), zipped file geodatabase, zipped shapefile, or GeoJSON.
+
+#### 2b. Publish the hosted feature layer
+
+1. Sign in to [ArcGIS Online](https://www.arcgis.com) with a publisher account.
+2. **Content** > **My content**.
+3. **New item** > **Your device**.
+4. Choose the file > **Open**.
+5. Choose **Add and create a hosted layer or table** > **Next**.
+6. Confirm field types (text, integer, double, date). Fix any date column that came in as string.
+7. Choose how to locate features:
+   - Coordinates → **Latitude and longitude** (or MGRS / USNG).
+   - Addresses → **Addresses or place names**.
+   - Table only → **None**.
+8. **Next** > title such as `Wildlife Sanctuary Properties` or `Power Outage Incidents` > folder > tags > **Save**.
+9. Wait until the item page opens. Type should be **Feature Layer (hosted)**.
+
+From ArcGIS Pro instead: share the map as a **web layer** > **Feature** > **Copy all data** (hosted).
+
+#### 2c. Make the source usable (aliases, indexes, no public editing)
+
+On the **source** item page:
+
+1. **Data** > **Fields**.
+2. Click each field the dashboard will show. Set a human **Display name** / alias (`Jurisdicti` → `County`, `ImpactedCustomers` → `Customers without power`).
+3. **Settings** tab:
+   - **Editing:** leave editing on only if staff need it. Do **not** share this source with Everyone.
+   - If the organization uses **feature layer editing**, restrict it to a staff group later.
+4. **Settings** > **Indexes** (or **Data** > field > add index): index every field you will filter or group (`Year`, `County`, `UtilityCompany`, `OutageStatus`, `OutageType`).
+5. Optional: **Settings** > **Cache control** — for live layers, set this to how often the table actually updates (for example 5 minutes), not 30 seconds.
+
+#### 2d. Create the hosted view the dashboard will use
+
+1. Stay on the **source** item Overview tab.
+2. **Create view layer** > **View layer** (use **Show more** if you do not see it). You must be the owner or an administrator.
+3. Uncheck any sublayers the public dashboard does not need > **Next**.
+4. Click the layer name to open **Layer definitions**. For each layer:
+   - **Add filter** > **Add expression**. Examples:
+     - `MapVisibility` `is` `Visible`
+     - `OutageStatus` `is` `Active`
+     - `State` `is` `Virginia`
+   - Use **Match all expressions** unless you truly want OR logic.
+   - **Area of interest** (optional): draw a rectangle/polygon so out-of-area points never appear.
+   - **Fields** > **Select fields**: turn **off** names, emails, street numbers, internal IDs. You cannot hide required system fields such as the object ID.
+5. Arrow back to the layer list. Repeat for every sublayer. **Next**.
+6. Title: add `Public View` (`ASNV Certified Properties (Public View)`). Folder, summary, tags > **Create**.
+7. On the **view** item **Settings**:
+   - **Disable editing** (the whole point of the view).
+   - Set cache control to match the source for live data.
+
+Create a **second view** if one layer must serve two jobs (Cal OES: all incidents for the map vs county polygons already summarized). Do not make the dashboard calculate a statewide county sum from thousands of points on every load.
+
+#### 2e. Confirm the view before you map it
+
+1. On the view item, **Open in Map Viewer**.
+2. Open the **table**. You should see only public-safe columns and only rows that match the filter.
+3. Count the rows. If ASNV still shows hidden properties, the view filter is wrong — fix the view, not the dashboard.
+
+**Gate before Stage 3.** You have two items in My content: a source layer (staff) and a `Public View` (dashboard). The view has no editing, the right filters, and aliases. You have not shared either with Everyone yet.
+
+---
+
+### Stage 3 — Web map
+
+**What this stage is.** A saved web map whose operational layers **are the view**. The dashboard map widget loads this map. Charts, lists, and indicators should also use **these same map layers** as their data source so filters stay in sync and public traffic stays fast.
+
+**Why it is before layout.** Symbology, pop-ups, definition queries, bookmarks, and refresh live on the map. If you style inside the dashboard only, the map and the charts will disagree.
+
+#### Exact steps in Map Viewer
+
+1. From the **view** item, click **Open in Map Viewer** (or app launcher > **Map Viewer** > **Add** > **Browse layers** > add the **view**, not the source).
+2. **Contents** toolbar (dark, left) > **Basemap**:
+   - Program: **Human Geography Map** or **Light Gray Canvas**. Optional: add **World Hillshade** as a layer and move it under labels.
+   - Operations: **Dark Gray Canvas** or **Imagery Hybrid**.
+3. **Layers**: click the operational layer to select it.
+4. **Settings** toolbar (light, right) > **Filter** > **Add expression** for anything the view did not already hide (example: `Number_Impacted_Customers` `is greater than` `0` on the county layer).
+5. **Settings** > **Styles**:
+   - Unique values on `Type` or `OutageType` (pick the exact hex colors you will reuse on charts: navy `#004C73`, amber `#E69800`, yellow `#FFFF00`).
+   - Or counts and amounts (size/color) on `Acres` or `ImpactedCustomers`.
+   - Transparency about 20% so the basemap still reads.
+6. **Settings** > **Pop-ups**:
+   - Title: `{Name}` or `{UtilityCompany}: ID - {IncidentId}`.
+   - **Fields list**: remove `OBJECTID`, shape area, internal color fields.
+   - Turn pop-ups **off** on mask and boundary layers.
+7. **Settings** > **Properties** > **Refresh interval** (live layers only): turn on **Automatically refresh layer**, set minutes to match the ETL (for example `10`). Minimum is 0.5 minutes.
+8. **Settings** > **Properties** > **Visible range** if you have a “zoomed out” layer and a “zoomed in” layer (Cal OES pattern).
+9. **Contents** > **Bookmarks** > **Add bookmark**. Name it `Statewide` or `App Placement`. This is the dashboard’s home extent.
+10. **Contents** > **Map tools** / search: configure search on `Name` or `County` so the dashboard Search tool works.
+11. Zoom to the bookmark. **Contents** > **Save and open** > **Save as**. Title: `Wildlife Sanctuary Program (Public)` or `Statewide Outages (Public View)`.
+
+**Gate before Stage 4.** Click a point: the pop-up is short and public-safe. The default extent is the bookmark. Colors match the KPI colors you wrote in Stage 1. The Layers list contains only what the dashboard needs.
+
+---
+
+### Stage 4 — Layout
+
+**What this stage is.** Place visual elements on one screen. After this stage the dashboard **looks** finished and **does nothing** when you click. That is expected.
+
+**Why actions come last.** Actions target elements by name. If you wire actions while you are still duplicating charts, you will retarget everything twice.
+
+#### 4a. Create the dashboard from the map
+
+1. Open the **web map** item page.
+2. **Create app** > **Dashboards** (or **Content** > **Create app** > **Dashboards**, then add the map as the first element).
+3. Title, tags, summary, folder > **Create dashboard**.
+4. You are in the **desktop view**. The map is already there if you started from the map item.
+
+#### 4b. Theme and header (before more widgets)
+
+1. Left **action bar** > **Theme**.
+   - Program: **Light**, then customize primary `#004C73`.
+   - Operations: **Dark**, background `#242424`, outline `#1A1A1A`, accent `#E69800`.
+2. Action bar > **View**.
+3. **Header** tab > **Add header**.
+   - Program: type the title (this is the page H1). Optional background image.
+   - Operations: **Logo** (upload or URL), logo link to the agency site, **Subtitle** listing data sources. Skip a second title if the logo already names the agency.
+4. Do **not** add selectors yet. Selectors without actions only confuse testers.
+
+#### 4c. Add elements, map first
+
+1. If the map is missing: **Add element** (plus on the layout, or **Add element** in the View pane) > **Map** > choose the web map from Stage 3 > **Done**.
+2. Hover the map > **Configure**:
+   - Tools: Bookmarks, Legend, Layers, Search (program) or Search only (operations).
+   - Turn off Compass / Locate unless field staff need them.
+   - **Point zoom scale** around `1:200,000`.
+   - Leave the **Actions** tabs alone for now.
+3. **Add element** > **Indicator** for each KPI from Stage 1.
+   - **Data** tab: layer = the **map’s** operational layer (not “add layer” from the web again).
+   - Statistic: count or sum of the field you wrote down.
+   - Optional **Reference** statistic (Cal OES: count of outages under a sum of customers).
+   - **Indicator** tab: `{value}` large, caption top, units bottom, color from Stage 1.
+   - **Done**.
+4. **Add element** > **Serial chart** or **Pie chart**.
+   - Data: same map layer.
+   - Categories from **Grouped values**, category field `Year` / `County` / `Type` / `UtilityCompany`.
+   - Statistic: sum or count.
+   - Filter on the Data tab for noise rules (`Number_Impacted_Customers` `is greater than` `499`).
+   - **Done**.
+5. **Add element** > **List** (operations).
+   - Line item template with field chips (`{County}`, `{ImpactedCustomers}`).
+   - Sort descending on the impact field.
+   - Write the instruction in the title: `(Select County to Filter Map & Outage List)`.
+   - **Done**. Selection still does nothing. That is Stage 5.
+
+#### 4d. Arrange: dock, stack, group
+
+Hover the **Drag item** handle on an element:
+
+1. Drag to an **edge** of the view or of another element until the hint says **Dock as a row** or **Dock as a column**. Release. This builds the three-column body.
+2. Drag onto the **center** of another element until **Stack the items**. Release. This creates **tabs**. Click a tab > rename it (`Acres by Year`, `Count by Type`).
+3. Same center drop, but hold **Shift** until the hint turns green and says **Group as a row/column**. Release Shift after the mouse button. This glues KPIs together with no inner gap (Cal OES planned | unplanned).
+4. Drag element **borders** until the map is about 45–55% of the width. Percent labels appear while you drag.
+5. **Save** (dashboard toolbar) often.
+
+**Gate before Stage 5.** At a glance the screen matches your Stage 1 wireframe. Tabs switch. Numbers look right for the **full** dataset. Clicking a chart, list, or selector does **not** change the map yet.
+
+---
+
+### Stage 5 — Actions
+
+**What this stage is.** You pick a **source** (the thing the user clicks) and one or more **targets** (the things that respond). Actions live on the source, on the **Actions** tab.
+
+**Mental model**
+
+```text
+User event on SOURCE          Action type            TARGET
+-------------------------     -------------------    ---------------------------
+Header selector changes   →   Filter (attribute)  →  map layer, charts, KPIs, lists
+Map extent changes        →   Filter (geometry)   →  charts and KPIs
+List / chart selection    →   Zoom + Flash        →  map
+List / chart selection    →   Filter              →  other lists, charts, KPIs
+```
+
+ASNV mainly uses **selector → filter** and **map extent → filter**.  
+Cal OES mainly uses **selector → filter + zoom** and **list → zoom + flash + filter**.
+
+#### 5a. Header selectors (global filters)
+
+1. Action bar > **View** > **Header**.
+2. **Add selector** > **Category selector** (Year, County, Utility) or **Date selector**.
+3. **Data / Selector** tab:
+   - **Categories from grouped values** when you only need unique values (`Year`, `UtilityCompany`). Actions: Filter (and Zoom/Flash only if the source is a hosted feature layer).
+   - **Categories from features** when you also need geometry (Cal OES county). This is what allows **Zoom** on the map. Display text `{NAME}`.
+   - **Categories from defined values** for a fixed button bar (`All Outages` / `Planned` / `Not Planned`). Actions: Filter only.
+   - Selection: single vs multiple. Multiple uses operator **is in**. Include a **None** option labeled `All Counties` / all years.
+   - Presentation: **Dropdown** on a header (compact). **Button bar** + **Inline** for two or three choices.
+4. **Actions** tab (still on the selector):
+   - Expand **Filter**. Toggle **on** every chart, indicator, list, and **map operational layer** that should follow this selector.
+   - If field names differ (`NAME` on counties vs `County` on incidents), set the **field mapping** (source field → target field).
+   - For a features-based county selector, also expand **Zoom** (and optionally **Flash**) and toggle the **map** on.
+5. **Done**. Repeat for each selector (Year, Date, Utility, Type).
+6. Test: choose one year or one county. Every toggled widget must change. Choose None / All. Everything must return.
+
+#### 5b. Map extent filters the side charts (ASNV)
+
+1. Hover the **map** > **Configure**.
+2. **Map actions** tab (not Layer actions).
+3. When **map extent changes** > expand **Filter**.
+4. Toggle on the charts and KPIs that should show **only what is on screen** (acres, property count, pie).
+5. Leave statewide context KPIs off (PADUS, IBAs).
+6. For a public dashboard: those targets must use the **map’s visible operational layer**, not a stand-alone layer added only inside the widget.
+7. **Done**. Pan/zoom the map. Side numbers must change.
+
+#### 5c. List or chart selection zooms the map (Cal OES)
+
+1. Hover the **list** (or serial/pie chart) > **Configure**.
+2. If the list allows more than one row, set **Selection mode** to **Single** or **Multiple** first. Actions appear based on this.
+3. **Actions** tab:
+   - **Zoom** → map on.
+   - **Flash** → map on.
+   - **Filter** → incident layer, outage list, KPIs, charts. Field map `NAME` → `County` when needed.
+4. **Done**. Click a county row: the map should zoom, the polygon should flash, the outage list should shrink.
+
+Layer actions (click a feature **on the map** to filter charts) are configured on the map’s **Layer actions** tab. They do not work if the layer has clustering or binning on.
+
+#### 5d. Action test matrix (do not skip)
+
+| Click this | Must happen | Must not happen |
+| --- | --- | --- |
+| Header Year / County / Utility | KPIs, charts, lists, map layer all agree | A leftover widget still shows “all” |
+| Header None / All | Full dataset returns | Blank charts |
+| Pan the map (if extent filter is on) | Side KPIs follow the extent | Statewide context KPI changes |
+| List row | Map zooms and flashes | Dashboard crashes or stays put |
+| Private / incognito window after sharing | Same behavior while signed out | Empty widgets (a layer was not public) |
+
+**Gate before sharing.** Every row in that table passes.
+
+#### 5e. Share in this order only
+
+Actions do not help if a layer is invisible to the public.
+
+1. View item > **Share** > **Everyone (public)** (and any staff groups).
+2. Web map item > **Share** > same.
+3. Dashboard item > **Share** > same.
+4. Open the dashboard URL in a private window. If any widget is empty, that widget’s layer or map is still org-only.
+
+---
+
+### Why this order fails if you skip a stage
+
+| If you skip… | What breaks |
+| --- | --- |
+| **Question** | Extra charts, no one knows what the big number means, filters conflict |
+| **View** | Public can see staff fields; or you share an editable layer by accident |
+| **Web map** | Each widget points at a different copy of the layer; extent filters are slow or unavailable; pop-ups dump `OBJECTID` |
+| **Layout before a map** | Charts have no map layer to bind to; you add the same service 12 times |
+| **Actions last (good)** | If you wire actions too early, every layout change means retargeting |
+
+End of pipeline. The ASNV and Cal OES recipes below assume you already finished these five stages once with your own data.
 
 ---
 
@@ -663,7 +1001,7 @@ Follow Esri’s [scalable dashboard](https://doc.arcgis.com/en/dashboards/latest
 
 ## Part 9 — Click-path cheat sheet (from a blank organization)
 
-Use this when you are actually at the keyboard.
+Use this when you are actually at the keyboard. For the reason behind each step, use [The five stages, with exact ArcGIS Online clicks](#the-five-stages-with-exact-arcgis-online-clicks).
 
 1. **Content** > New item > publish hosted feature layer from your cleaned table.
 2. **Create View Layer** > definition query > disable editing > set aliases and indexes.

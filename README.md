@@ -8,3 +8,5 @@ Step-by-step tutorial for building professional ArcGIS Dashboards, reverse-engin
 - [California Statewide Power Outages](https://www.arcgis.com/apps/dashboards/7edefc1970d44b839ebbfd7b45e51e2d) (real-time operations)
 
 **Read the tutorial:** [docs/arcgis-professional-dashboards-tutorial.md](docs/arcgis-professional-dashboards-tutorial.md)
+
+The core pipeline (question → hosted view → web map → layout → actions) is spelled out with exact ArcGIS Online clicks in the section **The five stages, with exact ArcGIS Online clicks**.
