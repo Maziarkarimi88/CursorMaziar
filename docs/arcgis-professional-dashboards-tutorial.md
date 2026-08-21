@@ -65,7 +65,7 @@ The exact click path for all five stages is in the next section. Parts 1–10 af
 
 ## The five stages, with exact ArcGIS Online clicks
 
-This is the pipeline in full. Work it once with a small test table (even 20 rows) before you build the real dashboard.
+This is the pipeline in full. Work it once with the starter workbook in [`docs/starter-kit/Dashboard_Starter_Data.xlsx`](starter-kit/Dashboard_Starter_Data.xlsx) (48 property points and 30 outage points, WGS 1984). The Word file [`starter-kit/01_From_Scratch_ArcGIS_Dashboard_Steps.docx`](starter-kit/01_From_Scratch_ArcGIS_Dashboard_Steps.docx) is the same pipeline written as a downloadable click-path. Field rules are in [`starter-kit/02_Excel_Data_Standards_and_Field_Descriptions.docx`](starter-kit/02_Excel_Data_Standards_and_Field_Descriptions.docx).
 
 ```mermaid
 flowchart LR

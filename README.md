@@ -10,3 +10,13 @@ Step-by-step tutorial for building professional ArcGIS Dashboards, reverse-engin
 **Read the tutorial:** [docs/arcgis-professional-dashboards-tutorial.md](docs/arcgis-professional-dashboards-tutorial.md)
 
 The core pipeline (question → hosted view → web map → layout → actions) is spelled out with exact ArcGIS Online clicks in the section **The five stages, with exact ArcGIS Online clicks**.
+
+## From-scratch starter kit (Excel + Word)
+
+Use these files to go from a blank ArcGIS Online organization to a working dashboard:
+
+- [Dashboard_Starter_Data.xlsx](docs/starter-kit/Dashboard_Starter_Data.xlsx) — WGS 1984 point tables (`CertifiedProperties`, `PowerOutages`)
+- [01_From_Scratch_ArcGIS_Dashboard_Steps.docx](docs/starter-kit/01_From_Scratch_ArcGIS_Dashboard_Steps.docx) — publish and dashboard click-path
+- [02_Excel_Data_Standards_and_Field_Descriptions.docx](docs/starter-kit/02_Excel_Data_Standards_and_Field_Descriptions.docx) — field names, formats, domains, coordinates
+
+Folder overview: [docs/starter-kit/README.md](docs/starter-kit/README.md)
