@@ -10,6 +10,7 @@ This is a simple, low-cost protocol copied from farmer-run check-dam studies in 
 |------|-----|
 | [`docs/FIELD_PROTOCOL_Kandahar_Zabul.md`](docs/FIELD_PROTOCOL_Kandahar_Zabul.md) | Print this first (about six pages). How to site gauges, sample wells and karez, calculate I1–I5. |
 | [`docs/COUNTRY_STORIES_AND_METHODS.md`](docs/COUNTRY_STORIES_AND_METHODS.md) | Methods and field stories from Pakistan, Tunisia, Ethiopia, Arizona, Oman, Spain, Cyprus, Morocco, Yemen, India, China, Kenya — similar dry climates. |
+| [`docs/WAPOR_SUITABILITY.md`](docs/WAPOR_SUITABILITY.md) | Why FAO WaPOR is basin ET/biomass context only — not a substitute for I4/I5 on these dams. |
 | [`docs/forms/`](docs/forms/) |  Form A setup, Form B daily pond, Form C wells/karez, Form D scorecard, observer card. |
 | [`figures/sampling_layout.png`](figures/sampling_layout.png) |  Where to put W-N, W-M, W-F, control wells, *sarchah* and *owkura*. |
 | [`templates/CheckDam_Recharge_Calculator.xlsx`](templates/CheckDam_Recharge_Calculator.xlsx) |  Yellow = type field data. Blue = formulas. An example spring filling is already entered. |

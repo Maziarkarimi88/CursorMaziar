@@ -21,6 +21,7 @@ def copy_pack():
         (ROOT / "docs" / "FIELD_PROTOCOL_Kandahar_Zabul.md", "01_FIELD_PROTOCOL_Kandahar_Zabul.md"),
         (ROOT / "docs" / "ANNEX_A_Flood_Detention_Check_Dams.md", "02_ANNEX_A_Flood_Detention_Check_Dams.md"),
         (ROOT / "docs" / "COUNTRY_STORIES_AND_METHODS.md", "03_COUNTRY_STORIES_AND_METHODS.md"),
+        (ROOT / "docs" / "WAPOR_SUITABILITY.md", "04_WAPOR_SUITABILITY.md"),
         (ROOT / "docs" / "forms" / "print_forms.html", "forms/print_forms.html"),
         (ROOT / "docs" / "forms" / "Form_A_Site_Setup.md", "forms/Form_A_Site_Setup.md"),
         (ROOT / "docs" / "forms" / "Form_B_Daily_Pond.md", "forms/Form_B_Daily_Pond.md"),
@@ -61,11 +62,14 @@ START HERE
    leaky weirs, Oman dry dams, Spain ramblas, Cyprus, Morocco,
    Yemen, Rajasthan, Loess Plateau, Kenya sand dams.
 
-4. forms/Form_E_Flood_Event.md  and  forms/print_forms.html
+4. 04_WAPOR_SUITABILITY.md
+   FAO WaPOR is basin ET/biomass context only — not I4/I5.
+
+5. forms/Form_E_Flood_Event.md  and  forms/print_forms.html
    One Form E sheet per flood. Open HTML in a browser and print A4.
 
-5. figures/sampling_layout.png
-6. calculator/CheckDam_Recharge_Calculator.xlsx
+6. figures/sampling_layout.png
+7. calculator/CheckDam_Recharge_Calculator.xlsx
    Still useful for well/karez I4–I5. Do not use daily empty-pond
    MDWIR as the main number for flood-control dams.
 

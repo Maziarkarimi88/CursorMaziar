@@ -161,3 +161,5 @@ Use them as **stories and methods**, not as promised numbers for Kandahar–Zabu
 
 **One sentence for a donor slide:**  
 *In climates like ours, leaky or short-detention check dams have repeatedly cut flash-flood peaks and wet the wadi gravel enough to lift nearby wells and karez; they have not, by themselves, restored regional aquifers — and they stop soaking when silt seals the bed.*
+
+FAO **WaPOR** is sometimes cited as a groundwater tool. It is ET and biomass at 300 m over Afghanistan. Published WaPOR “recharge” maps (IGwA, WA+) are monthly soil-column or basin residuals, not check-dam mounds. Use WaPOR only as basin P/ET context; keep I4/I5 as the proof. Details: `docs/WAPOR_SUITABILITY.md`.

@@ -6,7 +6,7 @@
 **Duration:** one full wet–dry cycle is useful; two years are needed before claiming a result  
 **Method source:** daily pond water balance (Dashora / MARVI, Rajasthan) + water-table fluctuation and karez discharge (Sharda; Afghan karez practice)
 
-Print this protocol (about six pages) with **Annex A** if the dam only holds water for hours (flood/erosion purpose, no standing pond), the forms in `docs/forms/` (including **Form E** per flood), and the sampling map in `figures/`. Enter numbers in `templates/CheckDam_Recharge_Calculator.xlsx`. For flood-control dams, I4/I5 and detention hours replace daily pond MDWIR as the core groundwater test.
+Print this protocol (about six pages) with **Annex A** if the dam only holds water for hours (flood/erosion purpose, no standing pond), the forms in `docs/forms/` (including **Form E** per flood), and the sampling map in `figures/`. Enter numbers in `templates/CheckDam_Recharge_Calculator.xlsx`. For flood-control dams, I4/I5 and detention hours replace daily pond MDWIR as the core groundwater test. FAO **WaPOR** (300 m ET and biomass) is **not** a substitute for I4/I5; see `docs/WAPOR_SUITABILITY.md`.
 
 ---
 
