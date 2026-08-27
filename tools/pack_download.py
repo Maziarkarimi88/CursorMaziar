@@ -20,6 +20,7 @@ def copy_pack():
         (ROOT / "README.md", "00_README.md"),
         (ROOT / "docs" / "FIELD_PROTOCOL_Kandahar_Zabul.md", "01_FIELD_PROTOCOL_Kandahar_Zabul.md"),
         (ROOT / "docs" / "ANNEX_A_Flood_Detention_Check_Dams.md", "02_ANNEX_A_Flood_Detention_Check_Dams.md"),
+        (ROOT / "docs" / "COUNTRY_STORIES_AND_METHODS.md", "03_COUNTRY_STORIES_AND_METHODS.md"),
         (ROOT / "docs" / "forms" / "print_forms.html", "forms/print_forms.html"),
         (ROOT / "docs" / "forms" / "Form_A_Site_Setup.md", "forms/Form_A_Site_Setup.md"),
         (ROOT / "docs" / "forms" / "Form_B_Daily_Pond.md", "forms/Form_B_Daily_Pond.md"),
@@ -53,13 +54,18 @@ START HERE
 2. 02_ANNEX_A_Flood_Detention_Check_Dams.md (or .pdf if present)
    TWO-PAGE ANNEX for dams that only hold water for HOURS
    (flood and erosion control, not a standing pond).
-   Parameter checklist, extra measures, country reference table.
 
-3. forms/Form_E_Flood_Event.md  and  forms/print_forms.html
+3. 03_COUNTRY_STORIES_AND_METHODS.md
+   How similar projects were done and what happened: Balochistan
+   karez and leaky dams, Tunisia jessour, Tigray gullies, Arizona
+   leaky weirs, Oman dry dams, Spain ramblas, Cyprus, Morocco,
+   Yemen, Rajasthan, Loess Plateau, Kenya sand dams.
+
+4. forms/Form_E_Flood_Event.md  and  forms/print_forms.html
    One Form E sheet per flood. Open HTML in a browser and print A4.
 
-4. figures/sampling_layout.png
-5. calculator/CheckDam_Recharge_Calculator.xlsx
+5. figures/sampling_layout.png
+6. calculator/CheckDam_Recharge_Calculator.xlsx
    Still useful for well/karez I4–I5. Do not use daily empty-pond
    MDWIR as the main number for flood-control dams.
 
