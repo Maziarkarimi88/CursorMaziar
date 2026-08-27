@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Check-dam field forms</title>
+<style>
+  @page { size: A4; margin: 12mm; }
+  body { font-family: "DejaVu Sans", Arial, sans-serif; font-size: 11px; color: #222; }
+  h1 { font-size: 16px; margin: 0 0 6px; color: #1d5673; }
+  h2 { font-size: 13px; margin: 12px 0 6px; color: #1d5673; }
+  p, li { line-height: 1.35; }
+  .meta { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 16px; margin-bottom: 8px; }
+  table { border-collapse: collapse; width: 100%; margin: 6px 0 10px; }
+  th, td { border: 1px solid #888; padding: 3px 4px; }
+  th { background: #1d5673; color: #fff; font-weight: 600; }
+  td.fill { height: 16px; }
+  .blank { border-bottom: 1px solid #444; display: inline-block; min-width: 120px; }
+  .box { border: 1px solid #1d5673; padding: 8px; min-height: 70px; margin: 6px 0; }
+  .small { font-size: 10px; color: #444; }
+  .page { page-break-after: always; }
+  .page:last-child { page-break-after: auto; }
+</style>
+</head>
+<body>
+
+<section class="page" id="form-a">
+  <h1>Form A — Site setup and gauge survey / تنظیم ساحه</h1>
+  <div class="meta">
+    <div>Check dam ID / بند چک: <span class="blank"></span></div>
+    <div>Date: <span class="blank"></span></div>
+    <div>Wadi / fan: <span class="blank"></span></div>
+    <div>Province / district: <span class="blank"></span></div>
+    <div>☐ Treated &nbsp; ☐ Control</div>
+    <div>Observers: <span class="blank"></span></div>
+  </div>
+  <h2>A1. Structure</h2>
+  <table>
+    <tr><td>Type (masonry / gabion / earth)</td><td class="fill"></td></tr>
+    <tr><td>Crest length (m) / height above bed (m)</td><td class="fill"></td></tr>
+    <tr><td>Year built / agency</td><td class="fill"></td></tr>
+    <tr><td>Cascade position (1 = upstream)</td><td class="fill"></td></tr>
+    <tr><td>Pond pumped for irrigation?</td><td>☐ No ☐ Yes — exclude those days from MDWIR</td></tr>
+    <tr><td>Bed material (gravel / sand / silt / rock)</td><td class="fill"></td></tr>
+  </table>
+  <p>Sketch (north, spillway, SG, BM, village, karez):</p>
+  <div class="box"></div>
+  <h2>A2–A3. Staff gauge, BM, rain gauge</h2>
+  <table>
+    <tr><th>Item</th><th>Value</th></tr>
+    <tr><td>Gauge zero (pond bed / other)</td><td class="fill"></td></tr>
+    <tr><td>Crest reading on gauge (m)</td><td class="fill"></td></tr>
+    <tr><td>BM description / BM minus gauge zero (m)</td><td class="fill"></td></tr>
+    <tr><td>GPS gauge (lat, lon, m asl)</td><td class="fill"></td></tr>
+    <tr><td>Rain-gauge diameter (mm) / height (m)</td><td class="fill"></td></tr>
+    <tr><td>Distance to nearest obstacle / obstacle height (m)</td><td class="fill"></td></tr>
+  </table>
+  <h2>A4. Stage–area–volume (empty pond)</h2>
+  <table>
+    <tr><th>Stage h (m)</th><th>Area A (m²)</th><th>ΔV (m³)</th><th>Cumulative V (m³)</th></tr>
+    <tr><td>0.00 (bed)</td><td>0</td><td>0</td><td>0</td></tr>
+    <tr><td class="fill"></td><td></td><td></td><td></td></tr>
+    <tr><td class="fill"></td><td></td><td></td><td></td></tr>
+    <tr><td class="fill"></td><td></td><td></td><td></td></tr>
+    <tr><td class="fill"></td><td></td><td></td><td></td></tr>
+    <tr><td>(crest)</td><td></td><td></td><td></td></tr>
+  </table>
+  <p>Vcrest = <span class="blank"></span> m³ &nbsp; Full-supply area = <span class="blank"></span> m²</p>
+  <h2>A5. Observation points</h2>
+  <table>
+    <tr><th>ID</th><th>Type</th><th>Owner / village</th><th>Lat</th><th>Lon</th><th>Rim (m)</th><th>Depth (m)</th></tr>
+    <tr><td class="fill"></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="fill"></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="fill"></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="fill"></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="fill"></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="fill"></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="fill"></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="fill"></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  </table>
+  <p class="small">Types: W-N, W-M, W-F, C, KS (sarchah), KO (owkura). Technician sign-off: _______________</p>
+</section>
+
+<section class="page" id="form-b">
+  <h1>Form B — Daily pond and rainfall / سطح آب بند و باران</h1>
+  <div class="meta">
+    <div>Check dam ID: <span class="blank"></span></div>
+    <div>Month / year: <span class="blank"></span></div>
+    <div>Observer: <span class="blank"></span></div>
+    <div>Read at 07:00 &nbsp; Crest on gauge: <span class="blank"></span> m</div>
+  </div>
+  <p class="small">If the pond is empty write stage = 0 or “dry”. Still record rain. Photo of the gauge every ponded day.</p>
+  <table>
+    <tr><th style="width:8%">D</th><th>Rain</th><th>h</th><th>Ovf</th><th>Photo</th><th>Pump</th><th>Notes</th></tr>
+    <tr><td>1</td><td class="fill"></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>2</td><td class="fill"></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>3</td><td class="fill"></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>4</td><td class="fill"></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>5</td><td class="fill"></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>6</td><td class="fill"></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>7</td><td class="fill"></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>8</td><td class="fill"></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>9</td><td class="fill"></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>10</td><td class="fill"></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>11</td><td class="fill"></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>12</td><td class="fill"></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>13</td><td class="fill"></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>14</td><td class="fill"></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>15</td><td class="fill"></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>16</td><td class="fill"></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>17</td><td class="fill"></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>18</td><td class="fill"></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>19</td><td class="fill"></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>20</td><td class="fill"></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>21</td><td class="fill"></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>22</td><td class="fill"></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>23</td><td class="fill"></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>24</td><td class="fill"></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>25</td><td class="fill"></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>26</td><td class="fill"></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>27</td><td class="fill"></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>28</td><td class="fill"></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>29</td><td class="fill"></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>30</td><td class="fill"></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>31</td><td class="fill"></td><td></td><td></td><td></td><td></td><td></td></tr>
+  </table>
+  <p>Month rain total: <span class="blank"></span> mm &nbsp; Days with water: <span class="blank"></span>
+     &nbsp; Technician photo check: <span class="blank"></span></p>
+</section>
+
+<section class="page" id="form-c">
+  <h1>Form C — Wells, karez and EC / چاه‌ها و کاریز</h1>
+  <div class="meta">
+    <div>Fan / dam ID: <span class="blank"></span></div>
+    <div>Week starting: <span class="blank"></span></div>
+    <div>Observer: <span class="blank"></span></div>
+    <div>☐ Daily (W-N + KS) &nbsp; ☐ Weekly (all IDs)</div>
+  </div>
+  <p class="small">DTW from painted rim mark, to 1 cm. KO discharge: litres ÷ seconds. Never enter the tunnel.</p>
+  <table>
+    <tr><th>Date</th><th>Time</th><th>Point ID</th><th>DTW m</th><th>KO L/s</th><th>Pump Y/N</th><th>Notes</th></tr>
+    <tr><td class="fill"></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="fill"></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="fill"></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="fill"></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="fill"></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="fill"></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="fill"></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="fill"></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="fill"></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="fill"></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="fill"></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="fill"></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="fill"></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="fill"></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  </table>
+  <h2>C2. Monthly EC (technician) — calibrate 1,413 µS/cm</h2>
+  <table>
+    <tr><th>Date</th><th>Pond</th><th>W-N</th><th>W-M</th><th>KS</th><th>KO</th><th>Control</th></tr>
+    <tr><td class="fill"></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="fill"></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  </table>
+  <h2>C3. Pumping / land use this month</h2>
+  <p>New wells: <span class="blank"></span> &nbsp; Pumps running at visit: <span class="blank"></span></p>
+  <p>Irrigated area (jerib or ha): <span class="blank"></span> &nbsp; Karez maintenance: <span class="blank"></span></p>
+</section>
+
+<section class="page" id="form-d">
+  <h1>Form D — Annual sediment grid and scorecard</h1>
+  <div class="meta">
+    <div>Check dam ID: <span class="blank"></span></div>
+    <div>Date (pond dry): <span class="blank"></span></div>
+    <div>Year: <span class="blank"></span></div>
+    <div>Technician: <span class="blank"></span></div>
+  </div>
+  <h2>D1. Sediment probes (same marks every year)</h2>
+  <table>
+    <tr><th>Probe</th><th>Silt thickness (cm)</th><th>Texture</th><th>Probe</th><th>Silt (cm)</th><th>Texture</th></tr>
+    <tr><td>S1</td><td class="fill"></td><td></td><td>S6</td><td></td><td></td></tr>
+    <tr><td>S2</td><td class="fill"></td><td></td><td>S7</td><td></td><td></td></tr>
+    <tr><td>S3</td><td class="fill"></td><td></td><td>S8</td><td></td><td></td></tr>
+    <tr><td>S4</td><td class="fill"></td><td></td><td>S9</td><td></td><td></td></tr>
+    <tr><td>S5</td><td class="fill"></td><td></td><td>Mean</td><td></td><td>prev. year:</td></tr>
+  </table>
+  <h2>D2. Indicators from workbook Summary</h2>
+  <table>
+    <tr><th>ID</th><th>Indicator</th><th>This year</th><th>Last year</th></tr>
+    <tr><td>I1</td><td>Infiltration volume (m³)</td><td class="fill"></td><td></td></tr>
+    <tr><td>I2</td><td>Fillings per year</td><td class="fill"></td><td></td></tr>
+    <tr><td>I3</td><td>Mean MDWIR (mm/day) and MDWIR/E</td><td class="fill"></td><td></td></tr>
+    <tr><td>I4</td><td>Extra WT rise vs control (m)</td><td class="fill"></td><td></td></tr>
+    <tr><td>I5</td><td>Extra karez-flow days / mean Q (L/s)</td><td class="fill"></td><td></td></tr>
+  </table>
+  <h2>D3. Committee decision</h2>
+  <p>☐ Maintain only &nbsp; ☐ Manual desilt &nbsp; ☐ Do not machine-compact bed</p>
+  <p>☐ Investigate pumping / karez clogging &nbsp; ☐ Do not add upstream dam yet</p>
+  <p>Other: <span class="blank" style="min-width:300px"></span></p>
+  <p>Signatures: <span class="blank"></span> &nbsp; Date: <span class="blank"></span></p>
+</section>
+
+<section class="page" id="card">
+  <h1>Observer field card — laminate this page</h1>
+  <h2>Daily, 07:00</h2>
+  <ol>
+    <li>Read rain gauge. Write mm. Empty the bottle.</li>
+    <li>If pond has water: read staff gauge to 1 cm. Photograph the numbers.</li>
+    <li>If water is over the crest mark, Overflow = Y.</li>
+    <li>If the pond is being pumped, Pumped = Y (those days are not used for MDWIR).</li>
+    <li>While the pond has water: measure W-N wells and sarchah with tape + float.</li>
+  </ol>
+  <h2>Weekly</h2>
+  <ol start="6">
+    <li>Measure all wells on the list, including control wells on the other fan.</li>
+    <li>At karez outlet: time a 10 or 20 L jerrycan. Q (L/s) = litres ÷ seconds.</li>
+    <li>If outlet is dry, write 0. Do not enter the tunnel.</li>
+  </ol>
+  <h2>Rules</h2>
+  <ul>
+    <li>Same paint mark on the well rim every time.</li>
+    <li>Never go to the gauge during a flood peak.</li>
+    <li>If you miss a day, leave the row blank. Do not guess.</li>
+    <li>Give the notebook to the technician each month.</li>
+  </ul>
+  <p>Dam ID: <span class="blank"></span> &nbsp; Observer phone: <span class="blank"></span></p>
+</section>
+
+</body>
+</html>
