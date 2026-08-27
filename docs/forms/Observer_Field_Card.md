@@ -14,6 +14,8 @@
 7. At karez outlet: time a 10 or 20 L jerrycan. Q (L/s) = litres ÷ seconds.
 8. If outlet is dry, write 0. Do not enter the tunnel.
 
+**If the dam only holds water for hours (flood-control):** fill Form E for each flood. When safe, photo the gauge, mark the high-water stain, write when overflow stopped and when the wadi went dry. Measure wells and karez the next day, then day 3 and day 7, including the control wadi.
+
 **Rules**
 
 - Same mark on the well rim every time.
