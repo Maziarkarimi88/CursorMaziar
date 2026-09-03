@@ -144,11 +144,11 @@ body.dragging .drop-hint { display: grid; }
 }
 .card header span { color: var(--muted); font-size: 11px; }
 
-.hero { padding: 18px 18px 16px; justify-content: flex-end; }
+.hero { padding: 22px 20px; justify-content: center; }
 .hero .kicker { color: var(--terracotta); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; }
 .hero .value {
-  font-family: var(--serif); font-size: 64px; line-height: 0.95;
-  font-weight: 500; letter-spacing: -0.03em; margin: 10px 0 8px;
+  font-family: var(--serif); font-size: 72px; line-height: 0.95;
+  font-weight: 500; letter-spacing: -0.03em; margin: 8px 0 12px;
 }
 .hero .hint { color: var(--muted); font-size: 13px; max-width: 18em; }
 .hero .chip {
