@@ -9,7 +9,7 @@
 | README | — | nothing | colour key and dry-day rule |
 | Site | Form A | dam ID, crest stage, catchment ha, Sy | used by other sheets |
 | StageAreaVolume | Form A4 | stage (m), area (m²) | ΔV and cumulative V by trapezoid; crest V |
-| FillAndHold | Form A6 | CN, C, E, infiltration | rainfall (mm) to fill 100%; days to empty from full |
+| FillAndHold | Form A6 | CN, C, E, infiltration | rainfall (mm) to fill **pond to crest**; days to empty |
 | Evaporation | — | monthly E (mm/day) if you have a pan | lookup for DailyCalc |
 | DailyPond | Form B | date, rain, stage, overflow Y/N, pumped Y/N | raw log |
 | DailyCalc | — | nothing | A(h), V(h), dry-day flag, MDWIR, daily infiltration |

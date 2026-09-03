@@ -23,6 +23,7 @@ def copy_pack():
         (ROOT / "docs" / "COUNTRY_STORIES_AND_METHODS.md", "03_COUNTRY_STORIES_AND_METHODS.md"),
         (ROOT / "docs" / "WAPOR_SUITABILITY.md", "04_WAPOR_SUITABILITY.md"),
         (ROOT / "docs" / "STORAGE_DURATION_AND_FILLING.md", "05_STORAGE_DURATION_AND_FILLING.md"),
+        (ROOT / "docs" / "ARCGIS_STORAGE_FROM_DEM.md", "06_ARCGIS_STORAGE_FROM_DEM.md"),
         (ROOT / "docs" / "forms" / "print_forms.html", "forms/print_forms.html"),
         (ROOT / "docs" / "forms" / "Form_A_Site_Setup.md", "forms/Form_A_Site_Setup.md"),
         (ROOT / "docs" / "forms" / "Form_B_Daily_Pond.md", "forms/Form_B_Daily_Pond.md"),
@@ -55,27 +56,31 @@ START HERE
    Core SOP for wells, karez, control fan.
 
 2. 05_STORAGE_DURATION_AND_FILLING.md
-   DEFAULT: hold about 1–3 months when full; rainfall to fill 100%.
+   Hold about 1–3 months when full. Rainfall fills the POND to crest,
+   not the catchment.
 
-3. 02_ANNEX_A_Flood_Detention_Check_Dams.md
+3. 06_ARCGIS_STORAGE_FROM_DEM.md
+   Surface Volume / Storage Capacity: A(h), V(h) from DEM. Dam height 2–6 m.
+
+4. 02_ANNEX_A_Flood_Detention_Check_Dams.md
    Only if a dam actually empties in HOURS (gabion / leaky outlier).
 
-4. 03_COUNTRY_STORIES_AND_METHODS.md
+5. 03_COUNTRY_STORIES_AND_METHODS.md
    How similar projects were done and what happened: Balochistan
    karez and leaky dams, Tunisia jessour, Tigray gullies, Arizona
    leaky weirs, Oman dry dams, Spain ramblas, Cyprus, Morocco,
    Yemen, Rajasthan, Loess Plateau, Kenya sand dams.
 
-5. 04_WAPOR_SUITABILITY.md
+6. 04_WAPOR_SUITABILITY.md
    FAO WaPOR is basin ET/biomass context only — not I4/I5.
 
-6. forms/Form_B_Daily_Pond.md  and  forms/print_forms.html
+7. forms/Form_B_Daily_Pond.md  and  forms/print_forms.html
    Daily 07:00 pond log (default). Form E only for hour-scale outliers.
 
-7. figures/sampling_layout.png
-8. calculator/CheckDam_Recharge_Calculator.xlsx
-   Yellow input / blue formulas. Sheet FillAndHold = rainfall to 100% full
-   and days of storage. Daily MDWIR (I3) is the pond-health number.
+8. figures/sampling_layout.png
+9. calculator/CheckDam_Recharge_Calculator.xlsx
+   Yellow input / blue formulas. Sheet FillAndHold uses V at crest from GIS.
+   Daily MDWIR (I3) is the pond-health number.
 
 KPIs: days stored vs 30–90, I1–I3, I/E, I4 vs control, I5 karez.
 """,

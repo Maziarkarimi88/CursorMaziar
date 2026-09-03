@@ -56,7 +56,7 @@ Group them the way a water-balance audit does. Record once on Form A; confirm wh
 | Mean depth \(V/A\) at full supply | Primary geometric KPI | Target 1–3 months needs roughly \(d \gtrsim (E+i)\times 30\)–\(90\) days |
 | Dead storage / silted bed raising the floor | Less \(V\), often more area per volume | Silt both **cuts \(i\)** (longer hold) and **steals storage** |
 
-Survey an empty-pond stage–area–volume table (Form A4). Without \(A(h)\) you cannot convert a falling gauge into m³ or days.
+Survey a stage–area–volume table for the **pond** (Form A4), from DEM Surface Volume or tape. Without \(A(h)\) you cannot convert a falling gauge into m³ or days. You are **not** filling the catchment; see `docs/ARCGIS_STORAGE_FROM_DEM.md`.
 
 ### 2.2 Bed infiltration \(i\) (usually the largest term)
 
@@ -119,7 +119,9 @@ Pumping from the pond, livestock, and irrigation of the water spread **shorten**
 
 Filling is a **catchment yield** problem, not a pond problem. Direct rain on the water surface is usually tiny next to runoff from the hills.
 
-### 3.1 Volume you must catch
+### 3.1 Volume you must catch (the pond, not the catchment)
+
+“100% full” is **water at the crest of that check dam** (height typically **2–6 m**). It is **not** flooding 100% of the catchment. Measure \(V_{\mathrm{crest}}=V(H_{\mathrm{crest}})\) in ArcGIS from the DEM (Surface Volume / Storage Capacity) or by tape; SOP: `docs/ARCGIS_STORAGE_FROM_DEM.md`.
 
 \[
 V_{\mathrm{need}}=V_{\mathrm{crest}}-V_{\mathrm{now}}+V_{\mathrm{loss,during fill}}

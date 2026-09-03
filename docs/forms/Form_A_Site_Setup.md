@@ -45,9 +45,16 @@ Sketch north arrow, spillway, staff gauge, BM, village, karez:
 | Distance to nearest obstacle (m) / obstacle height (m) | |
 | GPS | |
 
-## A4. Stage–area–volume (empty pond)
+## A4. Stage–area–volume (pond only, not the catchment)
 
-Contour interval: ________ m. Method: ☐ tape+level ☐ dumpy ☐ GPS.
+**Method:** ☐ tape + level on empty pond  ☐ ArcGIS DEM Surface Volume / Storage Capacity  
+DEM name / cell size (m): ______________  
+\(Z_{\mathrm{bed}}\) (m a.s.l.): ______________  \(Z_{\mathrm{crest}}=Z_{\mathrm{bed}}+H\) (m a.s.l.): ______________  
+Crest height \(H\) (2–6 m): ______________  Dam axis / zone polygon IDs: ______________
+
+Contour interval: ________ m. GIS increment should be 0.5 m (0.25 m if the valley is wide).
+
+Height \(h\) is **above the pond bed**, up to **this dam’s crest only**. Do not compute volume for the whole catchment.
 
 | Stage h (m) | Area A (m²) | ΔV (m³) | Cumulative V (m³) |
 |-------------|-------------|---------|-------------------|
@@ -57,10 +64,11 @@ Contour interval: ________ m. Method: ☐ tape+level ☐ dumpy ☐ GPS.
 | | | | |
 | | | | |
 | | | | |
-| (crest) | | | |
+| (crest = 100% full) | | | |
 
 Copy this table into workbook sheet `StageAreaVolume`.  
-Storage capacity \(V_{\text{crest}}\) = ________ m³. Full-supply area = ________ m².
+Storage at crest \(V_{\text{crest}}\) = ________ m³. Full-supply area = ________ m².  
+See `docs/ARCGIS_STORAGE_FROM_DEM.md`.
 
 ## A5. Observation points (GPS, owner, rim height, type)
 

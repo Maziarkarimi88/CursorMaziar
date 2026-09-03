@@ -7,7 +7,7 @@
 **Duration:** one full wet–dry cycle is useful; two years are needed before claiming a result  
 **Method source:** daily pond water balance (Dashora / MARVI, Rajasthan) + water-table fluctuation and karez discharge (Sharda; Afghan karez practice)
 
-Print this protocol (about six pages) with `docs/STORAGE_DURATION_AND_FILLING.md` (what controls 1–3 month hold; rainfall to fill 100%). Use **Annex A** and Form E only if a structure actually empties in **hours** (gabion / leaky outlier). Daily **Form B** is the default pond log. Enter numbers in `templates/CheckDam_Recharge_Calculator.xlsx` (sheet `FillAndHold` for rainfall-to-fill and hold time). FAO **WaPOR** is **not** a substitute for I4/I5; see `docs/WAPOR_SUITABILITY.md`.
+Print this protocol (about six pages) with `docs/STORAGE_DURATION_AND_FILLING.md` (what controls 1–3 month hold; rainfall to fill the **pond** to crest). Get \(A(h), V(h)\) from DEM in ArcGIS (`docs/ARCGIS_STORAGE_FROM_DEM.md`) or tape. Use **Annex A** and Form E only if a structure actually empties in **hours** (gabion / leaky outlier). Daily **Form B** is the default pond log. Enter numbers in `templates/CheckDam_Recharge_Calculator.xlsx` (sheet `FillAndHold` for rainfall-to-fill and hold time). FAO **WaPOR** is **not** a substitute for I4/I5; see `docs/WAPOR_SUITABILITY.md`.
 
 ---
 
@@ -90,15 +90,21 @@ Buy locally. Nothing here requires a logger, though one pressure transducer in t
 - Resolution **0.5 mm**. Read and empty at 07:00. If a storm is still falling, read, empty, and add a second reading the same day.
 - If CHIRPS or a district station exists, still keep the village gauge; flash-flood catchments here are small and storms are local.
 
-### 3.3 Area–volume survey (once, then after heavy siltation)
+### 3.3 Area–volume of the **pond** (DEM or tape)
 
-Walk the empty pond with a tape and hand level (or phone GPS + dumpy if available). Survey waterline positions at 0.25–0.50 m stage intervals from bed to crest. Compute surface area of each contour (grid on graph paper or GIS). Volume between contours by trapezoid:
+You need storage **behind the wall** at each water height up to **that dam’s crest (2–6 m)**. This is **not** the volume of the catchment.
+
+**Preferred office method:** ArcGIS **Surface Volume** (3D Analyst, plane **Below**) or **Storage Capacity** (Spatial Analyst) on a DEM, with the dam wall burned in and a **pond zone** polygon. Step height 0.5 m from bed to crest. Full SOP: `docs/ARCGIS_STORAGE_FROM_DEM.md`.
+
+**Field check:** empty-pond tape and hand level at 0.25–0.50 m intervals, or at least one cross-section at the wall to test GIS width.
+
+Volume between contours (if you only have areas):
 
 \[
 V_{i,i+1} = \frac{h_{i+1}-h_i}{2}\,(A_i + A_{i+1})
 \]
 
-Enter the table on sheet `StageAreaVolume` of the workbook. This survey is the only specialist task; it takes a half day per dam.
+Enter the table on sheet `StageAreaVolume`. **100% full** = the row at crest height. Rainfall-to-fill uses this \(V_{\mathrm{crest}}\) and catchment **runoff**, not catchment volume.
 
 ### 3.4 Wells and karez
 
