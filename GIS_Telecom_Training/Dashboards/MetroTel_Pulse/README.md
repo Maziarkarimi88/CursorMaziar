@@ -2,6 +2,9 @@
 
 A designed **Geo-Marketing & Customer Analytics** command center for the GIS-in-telecom course (Day 3 labs → Day 5 capstone).
 
+**Download pack:** `GIS_Telecom_Training/Dashboards/MetroTel_Pulse_Dashboard_Template.zip`  
+Unzip and open `START_HERE.md` (or `START_HERE.txt`). Rebuild the pack with `python scripts/pack_download.py` (writes `/tmp/metrotel-pulse-site` plus the zip).
+
 You can use it in three ways:
 
 1. **Open the HTML prototype now** (this folder). Sample MetroTel data is already embedded.
