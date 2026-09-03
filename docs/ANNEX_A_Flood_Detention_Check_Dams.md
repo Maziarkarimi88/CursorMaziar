@@ -1,8 +1,8 @@
-# Annex A — Flood-control check dams with hours of storage
+# Annex A — Outliers: check dams that only hold water for hours
 
-**Use this annex when the dam is built to cut flood peaks and trap sediment, and water stands for hours (not days or a permanent pond).**  
-Groundwater is a **co-benefit**. Score flood/erosion and groundwater separately.  
-Print with **Form E** (one sheet per flood). Keep the main protocol’s control wadi, wells, and karez (I4, I5).
+**Default for this research is a rainfall-fed pond designed to stay full about 1–3 months** — see `docs/STORAGE_DURATION_AND_FILLING.md` and daily Form B.
+
+**Use this annex only when the structure actually empties in hours** (open gabion, leaky weir, drain left open, or a crest that barely ponds). Groundwater is then a co-benefit of flood/erosion control. Print **Form E** (one sheet per flood). Keep I4/I5.
 
 `time wet after overflow stops ≈ residual volume ÷ (bed infiltration + leakage through the dam + any drain)`
 

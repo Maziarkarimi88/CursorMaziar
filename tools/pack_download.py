@@ -22,6 +22,7 @@ def copy_pack():
         (ROOT / "docs" / "ANNEX_A_Flood_Detention_Check_Dams.md", "02_ANNEX_A_Flood_Detention_Check_Dams.md"),
         (ROOT / "docs" / "COUNTRY_STORIES_AND_METHODS.md", "03_COUNTRY_STORIES_AND_METHODS.md"),
         (ROOT / "docs" / "WAPOR_SUITABILITY.md", "04_WAPOR_SUITABILITY.md"),
+        (ROOT / "docs" / "STORAGE_DURATION_AND_FILLING.md", "05_STORAGE_DURATION_AND_FILLING.md"),
         (ROOT / "docs" / "forms" / "print_forms.html", "forms/print_forms.html"),
         (ROOT / "docs" / "forms" / "Form_A_Site_Setup.md", "forms/Form_A_Site_Setup.md"),
         (ROOT / "docs" / "forms" / "Form_B_Daily_Pond.md", "forms/Form_B_Daily_Pond.md"),
@@ -38,6 +39,7 @@ def copy_pack():
         (ROOT / "figures" / "example_results.png", "figures/example_results.png"),
         (ROOT / "requirements.txt", "rebuild/requirements.txt"),
         (ROOT / "tools" / "build_protocol_assets.py", "rebuild/build_protocol_assets.py"),
+        (ROOT / "tools" / "catchment_fill.py", "rebuild/catchment_fill.py"),
     ]
     for src, rel in pairs:
         dest = STAGING / rel
@@ -52,28 +54,30 @@ START HERE
 1. 01_FIELD_PROTOCOL_Kandahar_Zabul.md (or .pdf if present)
    Core SOP for wells, karez, control fan.
 
-2. 02_ANNEX_A_Flood_Detention_Check_Dams.md (or .pdf if present)
-   TWO-PAGE ANNEX for dams that only hold water for HOURS
-   (flood and erosion control, not a standing pond).
+2. 05_STORAGE_DURATION_AND_FILLING.md
+   DEFAULT: hold about 1–3 months when full; rainfall to fill 100%.
 
-3. 03_COUNTRY_STORIES_AND_METHODS.md
+3. 02_ANNEX_A_Flood_Detention_Check_Dams.md
+   Only if a dam actually empties in HOURS (gabion / leaky outlier).
+
+4. 03_COUNTRY_STORIES_AND_METHODS.md
    How similar projects were done and what happened: Balochistan
    karez and leaky dams, Tunisia jessour, Tigray gullies, Arizona
    leaky weirs, Oman dry dams, Spain ramblas, Cyprus, Morocco,
    Yemen, Rajasthan, Loess Plateau, Kenya sand dams.
 
-4. 04_WAPOR_SUITABILITY.md
+5. 04_WAPOR_SUITABILITY.md
    FAO WaPOR is basin ET/biomass context only — not I4/I5.
 
-5. forms/Form_E_Flood_Event.md  and  forms/print_forms.html
-   One Form E sheet per flood. Open HTML in a browser and print A4.
+6. forms/Form_B_Daily_Pond.md  and  forms/print_forms.html
+   Daily 07:00 pond log (default). Form E only for hour-scale outliers.
 
-6. figures/sampling_layout.png
-7. calculator/CheckDam_Recharge_Calculator.xlsx
-   Still useful for well/karez I4–I5. Do not use daily empty-pond
-   MDWIR as the main number for flood-control dams.
+7. figures/sampling_layout.png
+8. calculator/CheckDam_Recharge_Calculator.xlsx
+   Yellow input / blue formulas. Sheet FillAndHold = rainfall to 100% full
+   and days of storage. Daily MDWIR (I3) is the pond-health number.
 
-Flood-control KPIs: hours wet per flood, peak cut, silt, I4 vs control, I5 karez.
+KPIs: days stored vs 30–90, I1–I3, I/E, I4 vs control, I5 karez.
 """,
         encoding="utf-8",
     )

@@ -462,25 +462,26 @@ def build_workbook():
     ws["A1"].font = TITLE_FONT
     ws.merge_cells("A1:G1")
     ws["A2"] = (
-        "Field workbook for small check dams on Kandahar / Zabul alluvial fans. "
+        "Field workbook for rainfall-fed check dams designed to hold about 1–3 months when full. "
         "Yellow cells are inputs. Blue cells are formulas — do not type over them. "
         "An example spring filling is pre-loaded so you can see a complete result; "
-        "replace it with your Form B and Form C data."
+        "replace it with your Form B and Form C data. Sheet FillAndHold estimates rainfall to fill 100%."
     )
     ws["A2"].alignment = Alignment(wrap_text=True)
     ws.merge_cells("A2:G4")
     ws["A6"] = "Sheet order"
     ws["A6"].font = SECTION_FONT
     steps = [
-        ("1. Site", "Names, crest, Sy, default evaporation. Matches Form A."),
+        ("1. Site", "Names, crest, catchment ha, Sy. Matches Form A."),
         ("2. StageAreaVolume", "h–A–V table from the empty-pond survey. Do not skip."),
-        ("3. Evaporation", "Monthly open-water E (mm/day). Override if you have a pan (use 0.7 × pan)."),
-        ("4. DailyPond", "Paste Form B: date, rain, stage, overflow, pumped."),
-        ("5. DailyCalc", "Interpolates A and V, flags dry days, computes MDWIR and daily infiltration."),
-        ("6. Wells", "Form C water levels. Converts DTW to elevation and seasonal Δh."),
-        ("7. Karez", "Weekly KO discharge and flow-day count."),
-        ("8. Summary", "I1–I5 for the year."),
-        ("9. Scorecard", "Interpretation and desilting decision."),
+        ("3. FillAndHold", "Rainfall (mm) to fill 100%; days to empty from full (1–3 month check)."),
+        ("4. Evaporation", "Monthly open-water E (mm/day). Override if you have a pan (use 0.7 × pan)."),
+        ("5. DailyPond", "Paste Form B: date, rain, stage, overflow, pumped."),
+        ("6. DailyCalc", "Interpolates A and V, flags dry days, computes MDWIR and daily infiltration."),
+        ("7. Wells", "Form C water levels. Converts DTW to elevation and seasonal Δh."),
+        ("8. Karez", "Weekly KO discharge and flow-day count."),
+        ("9. Summary", "I1–I5 for the year."),
+        ("10. Scorecard", "Interpretation and desilting decision."),
     ]
     _header_row(ws, 7, ["Sheet", "Purpose"])
     for i, (a, b) in enumerate(steps, 8):
@@ -991,6 +992,72 @@ def build_workbook():
     ws.merge_cells("I8:L8")
     for col, w in zip("ABCDEFGHI", [12, 18, 12, 14, 16, 24, 12, 32, 14]):
         ws.column_dimensions[col].width = w
+
+    # ----- FillAndHold (rainfall to 100% full; days of storage) -----
+    ws = wb.create_sheet("FillAndHold")
+    ws.sheet_properties.tabColor = "2A9D8F"
+    ws["A1"] = "Rainfall to fill 100% and days water will stay"
+    ws["A1"].font = TITLE_FONT
+    ws.merge_cells("A1:E1")
+    ws["A2"] = (
+        "Design hold is about 1–3 months when full. Yellow = assumptions. "
+        "Blue uses Site catchment (ha) and crest V, A from StageAreaVolume. "
+        "See docs/STORAGE_DURATION_AND_FILLING.md. SCS-CN: USDA-NRCS NEH-630."
+    )
+    ws["A2"].alignment = Alignment(wrap_text=True)
+    ws.merge_cells("A2:E3")
+
+    ws["A5"] = "Inputs (yellow)"
+    ws["A5"].font = SECTION_FONT
+    fill_inputs = [
+        (6, "Curve number CN", 70, "0.0", "70–85 rocky rangeland; 60–75 fair pasture"),
+        (7, "Runoff coefficient C", 0.15, "0.00", "First look only; 0.08–0.30 typical dryland"),
+        (8, "Initial abstraction ratio λ", 0.20, "0.00", "0.20 standard SCS; try 0.05 in arid lands"),
+        (9, "Extra loss while filling (fraction)", 0.15, "0.00", "Infiltration + E during the fill storm"),
+        (10, "Volume already in pond (m³)", 0, "0.0", "0 if starting empty"),
+        (11, "Open-water E (mm/day)", 6.0, "0.0", "Pan × 0.7; winter lower, summer higher"),
+        (12, "Bed infiltration i (mm/day)", 25.0, "0.0", "Use MDWIR once you have Form B"),
+        (13, "Wall/outlet leak (m³/day)", 0, "0.0", "0 if masonry and drain closed"),
+    ]
+    for r, lab, val, fmt, note in fill_inputs:
+        _label(ws.cell(r, 1), lab)
+        _input(ws.cell(r, 2), val, fmt)
+        ws.cell(r, 3, note).alignment = Alignment(wrap_text=True)
+
+    ws["A15"] = "Results (blue)"
+    ws["A15"].font = SECTION_FONT
+    results = [
+        (16, "Crest storage V (m³)", "=StageAreaVolume!B20", "0.0"),
+        (17, "Crest water area A (m²)", "=StageAreaVolume!B21", "0"),
+        (18, "Catchment area (m²)", "=Site!B14*10000", "0"),
+        (19, "Volume still needed (m³)", "=(B16-B10)*(1+B9)", "0.0"),
+        (20, "Required runoff depth Q (mm)", "=IF(B18=0,\"\",B19/B18*1000)", "0.00"),
+        (21, "P to fill, constant C (mm)", "=IF(OR(B7=0,B20=\"\"),\"\",B20/B7)", "0.0"),
+        (22, "SCS S (mm)", "=IF(OR(B6<=0,B6>=100),\"\",25400/B6-254)", "0.0"),
+        (23, "SCS Ia (mm)", "=IF(B22=\"\",\"\",B8*B22)", "0.0"),
+        (24, "P to fill, SCS-CN (mm)", "=IF(OR(B20=\"\",B22=\"\"),\"\",IF(B20<=0,B23,B23+(B20+SQRT(B20^2+4*B20*B22))/2))", "0.0"),
+        (25, "Capacity as mm on catchment", "=IF(B18=0,\"\",B16/B18*1000)", "0.00"),
+        (26, "Days to empty, full area (shortest)", "=IF((B11+B12)/1000*B17+B13<=0,\"\",B16/((B11+B12)/1000*B17+B13))", "0.0"),
+        (27, "Days to empty, mean area (mid)", "=IF((B11+B12)/1000*(B17/2)+B13<=0,\"\",B16/((B11+B12)/1000*(B17/2)+B13))", "0.0"),
+    ]
+    for r, lab, formula, fmt in results:
+        _label(ws.cell(r, 1), lab)
+        _calc(ws.cell(r, 2), formula, fmt)
+
+    ws["A29"] = (
+        "P to fill is ONE storm from a dry catchment. Many 5–10 mm showers may never fill "
+        "the dam if each is below Ia. Days to empty assume no further inflow and no pumping. "
+        "Full-area days is a low estimate; mean-area is closer to a shrinking pond. "
+        "Compare B26–B27 with the 30–90 day design. If B26 is << 30, the bed is too leaky "
+        "or the pond is too shallow. If I/E is near 1, you have an evaporation pan."
+    )
+    ws["A29"].alignment = Alignment(wrap_text=True, vertical="top")
+    ws.merge_cells("A29:E32")
+    ws.column_dimensions["A"].width = 42
+    ws.column_dimensions["B"].width = 16
+    ws.column_dimensions["C"].width = 52
+    ws.row_dimensions[2].height = 36
+    ws.row_dimensions[29].height = 48
 
     # ----- Summary -----
     ws = wb.create_sheet("Summary")

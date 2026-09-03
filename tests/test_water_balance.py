@@ -8,6 +8,12 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "tools"))
 
+from catchment_fill import (  # noqa: E402
+    hold_days_constant_area,
+    scs_p_for_q_mm,
+    scs_runoff_mm,
+    simple_p_to_fill_mm,
+)
 from build_protocol_assets import (  # noqa: E402
     AREA,
     STAGE,
@@ -49,6 +55,19 @@ def test_example_mdwir_in_literature_band():
     assert e_share < 0.25
 
 
+def test_scs_invert_roundtrip():
+    cn = 70
+    p = 63.0
+    q = scs_runoff_mm(p, cn)
+    p_back = scs_p_for_q_mm(q, cn)
+    assert abs(p_back - p) < 0.05
+    assert scs_runoff_mm(10.0, cn) == 0.0  # below Ia
+    p_simple = simple_p_to_fill_mm(23000, 2.0e6, 0.12)
+    assert abs(p_simple - 95.833) < 0.1
+    t = hold_days_constant_area(20000, 8000, 6.0, 25.0)
+    assert 70 < t < 90
+
+
 def test_i4_treated_exceeds_control():
     i4, treated, control = compute_i4()
     assert control < 0.6
@@ -68,6 +87,7 @@ if __name__ == "__main__":
         test_trapezoid_volume_table,
         test_lerp_endpoints_and_mid,
         test_example_mdwir_in_literature_band,
+        test_scs_invert_roundtrip,
         test_i4_treated_exceeds_control,
         test_dry_day_definition_skips_rain_and_spill,
     ]

@@ -22,6 +22,7 @@ def test_workbook_has_expected_sheets_and_formulas():
         "README",
         "Site",
         "StageAreaVolume",
+        "FillAndHold",
         "Evaporation",
         "DailyPond",
         "DailyCalc",
@@ -32,6 +33,9 @@ def test_workbook_has_expected_sheets_and_formulas():
     ):
         assert name in wb.sheetnames, name
 
+    assert "FillAndHold" in wb.sheetnames
+    assert wb["FillAndHold"]["B6"].value == 70
+    assert "SQRT" in str(wb["FillAndHold"]["B24"].value)
     assert wb["Site"]["B10"].value == 2.5
     assert wb["Site"]["B15"].value == 0.10
     assert wb["Summary"]["C5"].value == "=DailyCalc!S2"

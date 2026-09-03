@@ -14,7 +14,9 @@
 7. At karez outlet: time a 10 or 20 L jerrycan. Q (L/s) = litres ÷ seconds.
 8. If outlet is dry, write 0. Do not enter the tunnel.
 
-**If the dam only holds water for hours (flood-control):** fill Form E for each flood. When safe, photo the gauge, mark the high-water stain, write when overflow stopped and when the wadi went dry. Measure wells and karez the next day, then day 3 and day 7, including the control wadi.
+**If the dam empties in hours (gabion / leaky outlier):** fill Form E for each flood as well. When safe, photo the gauge, mark the high-water stain, write when overflow stopped and when the wadi went dry. Measure wells and karez the next day, then day 3 and day 7, including the control wadi.
+
+**Default (1–3 month pond):** keep the daily 07:00 log the whole time water is in the basin. First day at crest (Overflow = Y) is “100% full”. Count days until dry after inflow stops — that is hold time.
 
 **Rules**
 

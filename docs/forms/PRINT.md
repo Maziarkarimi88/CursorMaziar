@@ -4,5 +4,5 @@ Open [`print_forms.html`](print_forms.html) in a browser and print (A4). It cont
 
 Markdown copies of the same forms are in this folder for editing.
 
-For flood-control dams that only hold water for hours, print **Form E** and Annex A (`docs/ANNEX_A_Flood_Detention_Check_Dams.md`) instead of relying on daily Form B.
+For dams designed to hold **1–3 months**, print **Form B** (daily pond) with Form A and C. Use **Form E** and Annex A only if the structure actually empties in hours.
 

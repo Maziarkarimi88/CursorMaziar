@@ -1,12 +1,13 @@
 # Field protocol: groundwater impact of small check dams
 
-**Setting:** ephemeral wadis on alluvial fans, Kandahar and Zabul Provinces, Afghanistan  
+**Setting:** rainfall-fed check dams on wadis and fans, Afghanistan (worked example: Kandahar–Zabul)  
 **Purpose:** quantify whether a constructed check dam recharges the aquifer that supplies nearby wells and karez  
+**Design hold:** when the pond is full, water is intended to remain about **1–3 months** (not a few hours)  
 **Effort:** one trained village observer + one technician visit per month; about 1–2% of typical check-dam construction cost  
 **Duration:** one full wet–dry cycle is useful; two years are needed before claiming a result  
 **Method source:** daily pond water balance (Dashora / MARVI, Rajasthan) + water-table fluctuation and karez discharge (Sharda; Afghan karez practice)
 
-Print this protocol (about six pages) with **Annex A** if the dam only holds water for hours (flood/erosion purpose, no standing pond), the forms in `docs/forms/` (including **Form E** per flood), and the sampling map in `figures/`. Enter numbers in `templates/CheckDam_Recharge_Calculator.xlsx`. For flood-control dams, I4/I5 and detention hours replace daily pond MDWIR as the core groundwater test. FAO **WaPOR** (300 m ET and biomass) is **not** a substitute for I4/I5; see `docs/WAPOR_SUITABILITY.md`.
+Print this protocol (about six pages) with `docs/STORAGE_DURATION_AND_FILLING.md` (what controls 1–3 month hold; rainfall to fill 100%). Use **Annex A** and Form E only if a structure actually empties in **hours** (gabion / leaky outlier). Daily **Form B** is the default pond log. Enter numbers in `templates/CheckDam_Recharge_Calculator.xlsx` (sheet `FillAndHold` for rainfall-to-fill and hold time). FAO **WaPOR** is **not** a substitute for I4/I5; see `docs/WAPOR_SUITABILITY.md`.
 
 ---
 

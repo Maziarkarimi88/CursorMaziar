@@ -80,7 +80,22 @@ Storage capacity \(V_{\text{crest}}\) = ________ m³. Full-supply area = _______
 Karez name: ______________ Length estimate (km): ______________  
 *Sarchah* depth (m): ______________ *Owkura* description: ______________
 
-## A6. Technician sign-off
+## A6. Catchment and design hold (rainfall to fill; 1–3 month target)
+
+See `docs/STORAGE_DURATION_AND_FILLING.md` and workbook sheet `FillAndHold`.
+
+| Item | Value |
+|------|--------|
+| Catchment area (ha) | |
+| How mapped (topo / DEM / walk) | |
+| Land cover (rock / rangeland / farm / mixed) | |
+| Curve number CN (first guess) | |
+| Runoff coefficient C (first guess) | |
+| Design hold when full (months) | ☐ 1 ☐ 2 ☐ 3 ☐ other: ____ |
+| Wall type vs hold (masonry/earth vs gabion) | |
+| Low-level drain normally | ☐ Closed ☐ Open |
+
+## A7. Technician sign-off
 
 Survey complete ☐  Observer trained ☐  Forms B–C issued ☐  
 Signature / date: ______________

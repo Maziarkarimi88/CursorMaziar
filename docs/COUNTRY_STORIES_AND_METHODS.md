@@ -1,6 +1,8 @@
 # Methods and stories from similar climates
 
-These are not week-long irrigation ponds. They are **ephemeral-wadi / dryland** structures whose first job is to slow floods and trap sediment. Water stands for **hours to a few days**, then the bed is dry. Climate is in the same family as southern Afghanistan: 150–400 mm rain, flash floods, alluvial fans, karez/qanat in some places.
+**Correction:** the Afghan programme is designed so that, when full, water stays about **1–3 months**, fed mostly by **rainfall runoff**. That is the Indian check-dam / CGWB percolation-tank family (Dashora daily water balance), not an hours-only leaky weir.
+
+Stories below still matter: some gabions **fail** to hold that long; silt can turn a 3-month pond into an **evaporation** pan (Balochistan). Climate family: 150–400 mm in the south, higher in other provinces; flash floods and fans; karez/qanat in some places. Parameters and rainfall-to-fill: `docs/STORAGE_DURATION_AND_FILLING.md`.
 
 Use them as **stories and methods**, not as promised numbers for Kandahar–Zabul. Copy the *way they measured*, and the *honest lesson* (silt, local mound, control catchment).
 
