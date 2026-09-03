@@ -235,7 +235,8 @@
       color: selected ? "#ffffff" : color,
       weight: selected ? 2.4 : 1.1,
       fillColor: color,
-      fillOpacity: active ? 0.42 : 0.08,
+      fillOpacity: active ? 0.55 : 0.12,
+      opacity: active ? 1 : 0.35,
     };
   }
 
@@ -248,11 +249,14 @@
   }
 
   function initMap() {
-    state.map = L.map("map", { zoomControl: true, attributionControl: true }).setView([34.53, 69.16], 12);
-    L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png", {
-      attribution: "&copy; OpenStreetMap &copy; CARTO",
-      subdomains: "abcd",
-      maxZoom: 18,
+    state.map = L.map("map", { zoomControl: true, attributionControl: true });
+    L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}", {
+      attribution: "Tiles © Esri",
+      maxZoom: 16,
+    }).addTo(state.map);
+    L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Reference/MapServer/tile/{z}/{y}/{x}", {
+      attribution: "",
+      maxZoom: 16,
     }).addTo(state.map);
 
     const geo = JSON.parse(JSON.stringify(window.PULSE_DATA.zones));
@@ -268,7 +272,15 @@
     state.competitorLayer = L.layerGroup().addTo(state.map);
     state.subscriberLayer = L.layerGroup().addTo(state.map);
     refreshMapLayers();
-    state.map.fitBounds(state.zoneLayer.getBounds(), { padding: [16, 16] });
+    const fit = () => {
+      state.map.invalidateSize();
+      if (state.zoneLayer) {
+        state.map.fitBounds(state.zoneLayer.getBounds(), { padding: [18, 18], maxZoom: 13 });
+      }
+    };
+    fit();
+    setTimeout(fit, 250);
+    window.addEventListener("resize", () => state.map.invalidateSize());
   }
 
   function refreshMapLayers() {
