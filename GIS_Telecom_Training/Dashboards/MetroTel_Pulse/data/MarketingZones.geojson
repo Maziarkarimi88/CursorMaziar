@@ -1,0 +1,467 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "DIST_ID": "DZ-01",
+        "DIST_NAME": "Central Business District",
+        "POPULATION": 185000,
+        "ZONE_TYPE": "Urban Core",
+        "AFFLUENCE": 0.92,
+        "AREA_KM2": 15.97
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              69.147,
+              34.51
+            ],
+            [
+              69.183,
+              34.51
+            ],
+            [
+              69.183,
+              34.546
+            ],
+            [
+              69.147,
+              34.546
+            ],
+            [
+              69.147,
+              34.51
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "DIST_ID": "DZ-02",
+        "DIST_NAME": "North Residential",
+        "POPULATION": 142000,
+        "ZONE_TYPE": "Residential",
+        "AFFLUENCE": 0.78,
+        "AREA_KM2": 15.97
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              69.132,
+              34.542
+            ],
+            [
+              69.168,
+              34.542
+            ],
+            [
+              69.168,
+              34.578
+            ],
+            [
+              69.132,
+              34.578
+            ],
+            [
+              69.132,
+              34.542
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "DIST_ID": "DZ-03",
+        "DIST_NAME": "East Industrial",
+        "POPULATION": 98000,
+        "ZONE_TYPE": "Industrial",
+        "AFFLUENCE": 0.55,
+        "AREA_KM2": 15.97
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              69.202,
+              34.512
+            ],
+            [
+              69.238,
+              34.512
+            ],
+            [
+              69.238,
+              34.548
+            ],
+            [
+              69.202,
+              34.548
+            ],
+            [
+              69.202,
+              34.512
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "DIST_ID": "DZ-04",
+        "DIST_NAME": "West Expansion",
+        "POPULATION": 121000,
+        "ZONE_TYPE": "Mixed Growth",
+        "AFFLUENCE": 0.7,
+        "AREA_KM2": 15.97
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              69.082,
+              34.502
+            ],
+            [
+              69.118,
+              34.502
+            ],
+            [
+              69.118,
+              34.538000000000004
+            ],
+            [
+              69.082,
+              34.538000000000004
+            ],
+            [
+              69.082,
+              34.502
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "DIST_ID": "DZ-05",
+        "DIST_NAME": "South Corridor",
+        "POPULATION": 156000,
+        "ZONE_TYPE": "Transport Hub",
+        "AFFLUENCE": 0.68,
+        "AREA_KM2": 15.97
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              69.157,
+              34.461999999999996
+            ],
+            [
+              69.193,
+              34.461999999999996
+            ],
+            [
+              69.193,
+              34.498
+            ],
+            [
+              69.157,
+              34.498
+            ],
+            [
+              69.157,
+              34.461999999999996
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "DIST_ID": "DZ-06",
+        "DIST_NAME": "Airport Zone",
+        "POPULATION": 64000,
+        "ZONE_TYPE": "Special Use",
+        "AFFLUENCE": 0.6,
+        "AREA_KM2": 15.97
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              69.192,
+              34.547
+            ],
+            [
+              69.228,
+              34.547
+            ],
+            [
+              69.228,
+              34.583
+            ],
+            [
+              69.192,
+              34.583
+            ],
+            [
+              69.192,
+              34.547
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "DIST_ID": "DZ-07",
+        "DIST_NAME": "University Belt",
+        "POPULATION": 110000,
+        "ZONE_TYPE": "Education",
+        "AFFLUENCE": 0.8,
+        "AREA_KM2": 15.97
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              69.122,
+              34.527
+            ],
+            [
+              69.158,
+              34.527
+            ],
+            [
+              69.158,
+              34.563
+            ],
+            [
+              69.122,
+              34.563
+            ],
+            [
+              69.122,
+              34.527
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "DIST_ID": "DZ-08",
+        "DIST_NAME": "Old City",
+        "POPULATION": 99000,
+        "ZONE_TYPE": "Heritage Urban",
+        "AFFLUENCE": 0.75,
+        "AREA_KM2": 15.97
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              69.167,
+              34.497
+            ],
+            [
+              69.203,
+              34.497
+            ],
+            [
+              69.203,
+              34.533
+            ],
+            [
+              69.167,
+              34.533
+            ],
+            [
+              69.167,
+              34.497
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "DIST_ID": "DZ-09",
+        "DIST_NAME": "New Town",
+        "POPULATION": 87000,
+        "ZONE_TYPE": "Suburban Growth",
+        "AFFLUENCE": 0.72,
+        "AREA_KM2": 15.97
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              69.072,
+              34.537
+            ],
+            [
+              69.108,
+              34.537
+            ],
+            [
+              69.108,
+              34.573
+            ],
+            [
+              69.072,
+              34.573
+            ],
+            [
+              69.072,
+              34.537
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "DIST_ID": "DZ-10",
+        "DIST_NAME": "River Park",
+        "POPULATION": 73000,
+        "ZONE_TYPE": "Recreation/Mixed",
+        "AFFLUENCE": 0.65,
+        "AREA_KM2": 15.97
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              69.17699999999999,
+              34.482
+            ],
+            [
+              69.213,
+              34.482
+            ],
+            [
+              69.213,
+              34.518
+            ],
+            [
+              69.17699999999999,
+              34.518
+            ],
+            [
+              69.17699999999999,
+              34.482
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "DIST_ID": "DZ-11",
+        "DIST_NAME": "Tech Park",
+        "POPULATION": 52000,
+        "ZONE_TYPE": "Commercial",
+        "AFFLUENCE": 0.85,
+        "AREA_KM2": 15.97
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              69.107,
+              34.482
+            ],
+            [
+              69.143,
+              34.482
+            ],
+            [
+              69.143,
+              34.518
+            ],
+            [
+              69.107,
+              34.518
+            ],
+            [
+              69.107,
+              34.482
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "DIST_ID": "DZ-12",
+        "DIST_NAME": "Peri-Urban North",
+        "POPULATION": 45000,
+        "ZONE_TYPE": "Peri-Urban",
+        "AFFLUENCE": 0.48,
+        "AREA_KM2": 15.97
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              69.142,
+              34.572
+            ],
+            [
+              69.178,
+              34.572
+            ],
+            [
+              69.178,
+              34.608000000000004
+            ],
+            [
+              69.142,
+              34.608000000000004
+            ],
+            [
+              69.142,
+              34.572
+            ]
+          ]
+        ]
+      }
+    }
+  ],
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "EPSG:4326"
+    }
+  }
+}
