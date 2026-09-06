@@ -219,6 +219,18 @@ def main() -> None:
             }
         )
 
+    code_counts = {}
+    for row in out_rows:
+        code = row["SCHEME_CODE"]
+        if code:
+            code_counts[code] = code_counts.get(code, 0) + 1
+    for row in out_rows:
+        if row["SCHEME_CODE"] and code_counts[row["SCHEME_CODE"]] > 1:
+            extra = "DUPLICATE_SCHEME_CODE"
+            row["DATA_FLAGS"] = (
+                f"{row['DATA_FLAGS']};{extra}" if row["DATA_FLAGS"] else extra
+            )
+
     fieldnames = list(out_rows[0].keys())
     with OUT.open("w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, fieldnames=fieldnames)
