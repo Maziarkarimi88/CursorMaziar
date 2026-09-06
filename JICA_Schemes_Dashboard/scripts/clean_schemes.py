@@ -9,8 +9,36 @@ from datetime import date, datetime
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-RAW = ROOT / "data" / "raw_Both_Jica_Irrigation_and_WSM_Schemes_4930.csv"
 OUT = ROOT / "data" / "schemes_dashboard.csv"
+
+ALIASES = {
+    "package": ("Package_Name", "Contract package ", "Contract package"),
+    "scheme_name": ("Scheme_Name", "Name of Scheme"),
+    "start": ("Contract_Signed_date", "Contract Signed date"),
+    "end": ("Contract_End_Date", "Contract End Date"),
+    "status": ("Awarding_Status",),
+    "cost": ("Contract_Cost_USD", "Contract Cost (USD)"),
+    "contractor": ("Cosntrution_Company", "Cosntrution Company"),
+    "area": ("Intervention_Area (Ha)", "Area after intervention (Ha)"),
+    "hh": ("Households", "NumberOfHousehold"),
+    "fhh": ("Female_Headed_HH", "Female_Headed_Household"),
+    "canal": ("Canal_Length_Km", "CanalLength(Km)"),
+    "source_id": ("Unique_ID", "#"),
+}
+
+
+def latest_raw() -> Path:
+    files = list((ROOT / "data").glob("raw_Both_Jica*.csv"))
+    if not files:
+        raise SystemExit("No raw_Both_Jica*.csv in data/")
+    return max(files, key=lambda p: p.stat().st_mtime)
+
+
+def pick(row: dict, *names: str) -> str:
+    for name in names:
+        if name in row and row[name] not in (None, ""):
+            return row[name]
+    return ""
 
 # District-level centroids (approximate). Not village GPS.
 CENTROIDS = {
@@ -85,12 +113,14 @@ def split_region(region: str) -> tuple[str, str]:
 
 
 def main() -> None:
-    with RAW.open(newline="", encoding="utf-8-sig") as handle:
+    raw_path = latest_raw()
+    print("Source", raw_path.name)
+    with raw_path.open(newline="", encoding="utf-8-sig") as handle:
         rows = list(csv.DictReader(handle))
 
     out_rows = []
     for raw in rows:
-        package = clean_text(raw.get("Contract package "))
+        package = clean_text(pick(raw, *ALIASES["package"]))
         if not package:
             continue
 
@@ -100,12 +130,15 @@ def main() -> None:
         pair_id = f"SITE-{pkg:02d}"
         scheme_uid = f"JICA-{'IS' if program == 'Irrigation' else 'WSM'}-{pkg:02d}"
 
-        cost_raw = clean_text(raw.get("Contract Cost (USD)"))
-        start = parse_date(raw.get("Contract Signed date"))
-        end = parse_date(raw.get("Contract End Date"))
+        cost_raw = clean_text(pick(raw, *ALIASES["cost"]))
+        start = parse_date(pick(raw, *ALIASES["start"]))
+        end = parse_date(pick(raw, *ALIASES["end"]))
         flags = []
 
-        if cost_raw.lower() == "not awarded" or not start:
+        status_raw = clean_text(pick(raw, *ALIASES["status"]))
+        if status_raw:
+            status = status_raw
+        elif cost_raw.lower() == "not awarded" or not start:
             status = "Not Awarded"
         else:
             status = "Awarded"
@@ -117,10 +150,11 @@ def main() -> None:
         if status == "Not Awarded":
             cost = None
 
-        area = parse_number(raw.get("Area after intervention (Ha)"))
-        hh = parse_number(raw.get("NumberOfHousehold"))
-        fhh = parse_number(raw.get("Female_Headed_Household"))
-        canal = parse_number(raw.get("CanalLength(Km)"))
+        area = parse_number(pick(raw, *ALIASES["area"]))
+        hh = parse_number(pick(raw, *ALIASES["hh"]))
+        fhh = parse_number(pick(raw, *ALIASES["fhh"]))
+        canal = parse_number(pick(raw, *ALIASES["canal"]))
+        source_id = clean_text(pick(raw, *ALIASES["source_id"]))
 
         if program == "Watershed" and canal is None:
             flags.append("NO_CANAL_EXPECTED")
@@ -154,7 +188,8 @@ def main() -> None:
                 "PROGRAM": program,
                 "INTERVENTION_TYPE": intervention,
                 "SCHEME_CODE": clean_text(raw.get("SchemeCode")),
-                "SCHEME_NAME": clean_text(raw.get("Name of Scheme")),
+                "SOURCE_ID": source_id,
+                "SCHEME_NAME": clean_text(pick(raw, *ALIASES["scheme_name"])),
                 "CONTRACT_PACKAGE": package,
                 "REGION": region,
                 "REGION_HUB": hub,
@@ -166,7 +201,7 @@ def main() -> None:
                 "CONTRACT_END": end.isoformat() if end else "",
                 "DURATION_DAYS": duration if duration is not None else "",
                 "COST_USD": cost if cost is not None else "",
-                "CONTRACTOR": clean_text(raw.get("Cosntrution Company")),
+                "CONTRACTOR": clean_text(pick(raw, *ALIASES["contractor"])),
                 "AREA_HA": area if area is not None else "",
                 "HOUSEHOLDS": hh if hh is not None else "",
                 "FEMALE_HEADED_HH": fhh if fhh is not None else "",

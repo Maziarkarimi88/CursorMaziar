@@ -1,7 +1,15 @@
 # JICA IS + WSM schemes — data review
 
-Source file: `Both_Jica_Irrigation_and_WSM_Schemes_4930.csv`  
-Rows that can go on a map: **14** (7 irrigation + 7 watershed). One blank separator row was dropped.
+Latest source: `data/raw_Both_Jica_Irrigation_and_WSM_Schemes_19a6.csv`  
+Rows that can go on a map: **14** (7 irrigation + 7 watershed). Trailing blank row dropped.
+
+## Version 19a6 vs first upload
+
+Fixed: WSM 01–03 now have real USD (`51,075` / `61,696` / `128,468`) instead of Excel dates. Yakawlang IS end date is `24-Jun-27` (395 days). Shah Joy codes split to `KBL-WRK-JCA-A1-01` / `A1-02`. `Awarding_Status` is its own column.
+
+Still wrong in the raw 19a6 file: the `UNID` column is **shifted down one row**. Row 1001 (Sorkh Joy IS) has `UNID=SCHEME_UID`. Package 2 IS is labeled `JICA-IS-01`. Sorkh Joy WSM is labeled `JICA-IS-07`. Ignore `UNID` — we rebuild `SCHEME_UID` from package number + program.
+
+`Contract_Cost_USD` still uses thousands commas. No `LON`/`LAT`. Shawaroz WSM still has no scheme code. `Cosntrution_Company` typo remains.
 
 This is a **program tracker**, not the MetroTel telecom sample. The Pulse/Atlas dashboards can still be reused, but the fields must change to cost, households, area, status, and program type.
 
