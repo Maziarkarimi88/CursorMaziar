@@ -151,10 +151,10 @@
     const color = PROGRAM_COLOR[feature.properties.PROGRAM] || "#2a9d8f";
     return {
       color: selected ? "#ffffff" : color,
-      weight: selected ? 2.8 : 1.2,
+      weight: selected ? 3.2 : 1.2,
       fillColor: color,
-      fillOpacity: !active ? 0.06 : selected ? 0.55 : 0.28,
-      opacity: active ? 1 : 0.25,
+      fillOpacity: !active ? 0.05 : selected ? 0.72 : 0.32,
+      opacity: active ? 1 : 0.22,
     };
   }
 
@@ -165,8 +165,8 @@
     const color = LINE_COLOR[feature.properties.PROGRAM] || "#4cc3d9";
     return {
       color: selected ? "#ffffff" : color,
-      weight: selected ? 5 : 2.4,
-      opacity: active ? 1 : 0.2,
+      weight: selected ? 6 : 2.6,
+      opacity: active ? 1 : 0.18,
     };
   }
 
@@ -203,7 +203,15 @@
     const bounds = id ? schemeExtent(id) : visibleExtent();
     if (!bounds || !bounds.isValid()) return;
     state.map.invalidateSize();
-    state.map.fitBounds(bounds, { padding: [36, 36], maxZoom: 13, animate: true });
+    if (id) {
+      state.areaLayer.eachLayer((layer) => {
+        if (layer.feature.properties.SCHEME_UID === id) layer.bringToFront();
+      });
+      state.lineLayer.eachLayer((layer) => {
+        if (layer.feature.properties.SCHEME_UID === id) layer.bringToFront();
+      });
+    }
+    state.map.flyToBounds(bounds, { padding: [24, 24], maxZoom: 14, duration: 0.55 });
     $("map-hint").textContent = id
       ? `Zoomed to ${id} polygon + line`
       : "Polygon = area · line = canal or check-dam alignment";
