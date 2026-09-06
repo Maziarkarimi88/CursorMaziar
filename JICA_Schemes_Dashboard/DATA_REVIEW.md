@@ -1,37 +1,32 @@
 # JICA IS + WSM schemes — data review
 
-Latest source: `data/raw_Both_Jica_Irrigation_and_WSM_Schemes_092e.csv`  
-Rows that can go on a map: **14** (7 irrigation + 7 watershed). Site GPS will come later; points stay on **district centroids**.
+Latest source: `data/raw_Both_Jica_Irrigation_and_WSM_Schemes_72ae.csv`  
+Rows on the map: **14** (7 irrigation + 7 watershed). **All scheme codes are unique.**
 
-Upload file: `data/schemes_dashboard.csv`. Rebuild: `python3 scripts/clean_schemes.py`.
+Upload attributes: `data/schemes_dashboard.csv`  
+Upload geometry: `data/schemes_areas.geojson` + `data/schemes_lines.geojson` (one polygon and one line per `SCHEME_UID`).  
+Site GPS will replace district centroids later. Until then the shapes are stand-ins so the dashboard can zoom to each scheme extent.
 
-## Version 092e vs 3313
+## Version 72ae vs 092e
 
 | UID | Change |
 |---|---|
-| IS-06 Yakawlang | `KDZ-BGN-A1-01` → `KDZ-BGN-A2-01` (now clashes with WSM-06) |
-| WSM-01 Sorkh Joy | `BMN-BMN-A1-02` → `BMN-BMN-A2-01` (matches A2 pattern) |
-| WSM-03 Yar Mohammad | “Rehabilitation fo” → “Rehabilitation for” |
-| WSM-05 Shawaroz | `KDR-ZBL-A1-01` → `KDR-ZBL-A2-01` (no longer clashes with IS-05) |
+| IS-06 Yakawlang | `KDZ-BGN-A2-01` → `KDZ-BGN-A1-01` (no longer clashes with WSM-06) |
+| IS-06 name | `Chsrbagh-2` → `Charbagh-2` in the scheme name |
+| WSM-07 package | “Ety Orugh Check dams” → “Ety Aregh Check dams” |
 
-Costs, dates, status, households, and contractors are unchanged.
-
-## Non-GPS checklist (092e)
+## Non-GPS checklist (72ae)
 
 | Item | Status |
 |---|---|
-| Unique IDs | Pass |
+| Unique IDs and unique `SCHEME_CODE` | **Pass — 14 of 14** |
+| Shawaroz IS / WSM | Pass — `KDR-ZBL-A1-01` / `A2-01` |
+| Yakawlang IS / WSM | Pass — `KDZ-BGN-A1-01` / `A2-01` |
 | WSM costs are real USD | Pass |
 | Yakawlang IS end date | Pass — `2027-06-24` |
-| Shawaroz IS + WSM codes | **Fixed** — `KDR-ZBL-A1-01` / `KDR-ZBL-A2-01` |
-| Sorkh Joy WSM pattern | **Fixed** — `BMN-BMN-A2-01` |
-| “Rehabilitation fo” typo | **Fixed** |
-| Yakawlang IS + WSM code | **New clash** — both `KDZ-BGN-A2-01` |
 | Female-headed HH | Still blank on WSM-03 and WSM-05 |
-| Site GPS | Deferred — district centroids |
-| Name spelling | Cosmetic — Shir Abd / Shir Abad; Ety Aregh / Ety Orugh; Chsrbagh |
-
-Put Yakawlang irrigation back to `KDZ-BGN-A1-01` (as in 3313). Leave WSM as `KDZ-BGN-A2-01`.
+| Site GPS / surveyed polygon + line | Deferred — placeholders in use |
+| Village spelling | Cosmetic — villages still say Chsrbagh; WSM name still Ety Orugh |
 
 ## Totals (awarded costs)
 
@@ -40,6 +35,5 @@ Put Yakawlang irrigation back to `KDZ-BGN-A1-01` (as in 3313). Leave WSM as `KDZ
 
 ## Clean flags
 
-- `DUPLICATE_SCHEME_CODE` on IS-06 and WSM-06
 - `MISSING_FHH` on WSM-03 and WSM-05
 - `NO_CANAL_EXPECTED` on all seven WSM rows (correct)
