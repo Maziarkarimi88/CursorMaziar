@@ -3,9 +3,7 @@
 Latest source: `data/raw_Both_Jica_Irrigation_and_WSM_Schemes_72ae.csv`  
 Rows on the map: **14** (7 irrigation + 7 watershed). **All scheme codes are unique.**
 
-Upload attributes: `data/schemes_dashboard.csv`  
-Upload geometry: `data/schemes_areas.geojson` + `data/schemes_lines.geojson` (one polygon and one line per `SCHEME_UID`).  
-Site GPS will replace district centroids later. Until then the shapes are stand-ins so the dashboard can zoom to each scheme extent.
+Upload attributes: `data/schemes_dashboard.csv`. Join to your existing polygon and line layers on `SCHEME_UID`. Do not use the district-centroid XY as the scheme extent — zoom to the union of that scheme’s polygon and line.
 
 ## Version 72ae vs 092e
 
