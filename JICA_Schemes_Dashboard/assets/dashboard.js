@@ -199,7 +199,7 @@
     return bounds;
   }
 
-  function zoomToScheme(id) {
+  function zoomToScheme(id, options = {}) {
     const bounds = id ? schemeExtent(id) : visibleExtent();
     if (!bounds || !bounds.isValid()) return;
     state.map.invalidateSize();
@@ -211,7 +211,12 @@
         if (layer.feature.properties.SCHEME_UID === id) layer.bringToFront();
       });
     }
-    state.map.flyToBounds(bounds, { padding: [24, 24], maxZoom: 14, duration: 0.55 });
+    state.map.stop();
+    state.map.fitBounds(bounds, {
+      padding: [24, 24],
+      maxZoom: 14,
+      animate: options.animate !== false,
+    });
     $("map-hint").textContent = id
       ? `Zoomed to ${id} polygon + line`
       : "Polygon = area · line = canal or check-dam alignment";
@@ -276,10 +281,13 @@
       attribution: "Tiles © Esri",
       maxZoom: 16,
     }).addTo(state.map);
+    state.map.setView([34, 66], 6);
     rebuildLayers();
-    const fit = () => zoomToScheme(state.selected);
-    fit();
-    setTimeout(fit, 250);
+    zoomToScheme(state.selected, { animate: false });
+    setTimeout(() => {
+      state.map.invalidateSize();
+      if (!state.selected) zoomToScheme(null, { animate: false });
+    }, 250);
     window.addEventListener("resize", () => state.map.invalidateSize());
   }
 
