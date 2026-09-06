@@ -163,8 +163,12 @@ def main() -> None:
         if not clean_text(raw.get("SchemeCode")):
             flags.append("MISSING_SCHEME_CODE")
         code = clean_text(raw.get("SchemeCode"))
+        if re.search(r"\s", code):
+            flags.append("SCHEME_CODE_HAS_SPACE")
         if program == "Watershed" and pkg == 5 and "Shir-Abad" in code:
             flags.append("SCHEME_CODE_LOOKS_COPIED_FROM_GHAZNI")
+        if hh and fhh is None:
+            flags.append("MISSING_FHH")
         if hh and fhh and fhh > hh:
             flags.append("FHH_GT_HOUSEHOLDS")
 

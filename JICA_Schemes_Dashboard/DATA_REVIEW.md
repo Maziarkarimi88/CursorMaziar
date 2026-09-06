@@ -1,71 +1,56 @@
 # JICA IS + WSM schemes — data review
 
-Latest source: `data/raw_Both_Jica_Irrigation_and_WSM_Schemes_6106.csv`  
-Rows that can go on a map: **14** (7 irrigation + 7 watershed).
+Latest source: `data/raw_Both_Jica_Irrigation_and_WSM_Schemes_3313.csv`  
+Rows that can go on a map: **14** (7 irrigation + 7 watershed). Site GPS will come later; points stay on **district centroids**.
 
-This is a **program tracker**, not the MetroTel telecom sample. Use `data/schemes_dashboard.csv` as the upload layer.
+Upload file: `data/schemes_dashboard.csv`. Rebuild: `python3 scripts/clean_schemes.py`.
 
-## Version history
+## Version 3313 vs 6106
 
-| File | What changed |
-|---|---|
-| `4930` | First export. No XY. WSM 01–03 costs were Excel dates. “Not Awarded” sat in the cost column. Shah Joy IS/WSM shared one code. Yakawlang IS end date was 30 days. |
-| `19a6` | Real WSM USD (`51,075` / `61,696` / `128,468`). Yakawlang IS end `24-Jun-27`. `Awarding_Status` split out. Shah Joy codes `A1-01` / `A1-02`. Raw `UNID` shifted down one row. |
-| `a35a` | `UNID` aligned. Contractor column renamed `Construction_Company`. Shawaroz WSM code was `GDZ-GZI-Shir-Abad-01` (Ghazni family, wrong site). |
-| **`6106` (current)** | `UNID` still aligned. Shawaroz WSM code changed to `KDR-ZBL-A1-01` (correct Zabul family) **but it is now identical to Shawaroz irrigation**. Shawaroz IS code shortened from `KDR-ZBL-JICA-A1-01` to `KDR-ZBL-A1-01`. |
+Only `SchemeCode` changed. Costs, dates, status, households, and contractors are the same.
 
-## What 6106 still needs
-
-| Row | Issue | Suggested action |
+| UID | 6106 | 3313 |
 |---|---|---|
-| IS-05 + WSM-05 Shawaroz | Same `SCHEME_CODE` `KDR-ZBL-A1-01` | Give WSM its own code, e.g. `KDR-ZBL-A1-02` or `KDR-ZBL-B1-01`. Keep our `SCHEME_UID` (`JICA-IS-05` / `JICA-WSM-05`) either way. |
-| WSM-06 Yakawlang | Space in `KDZ-BGN-134-B1- 01` | Drop the space: `KDZ-BGN-134-B1-01` |
-| WSM-03 | Empty female-headed HH; “Rehabilitation fo” in the package name | Fill FHH if known; fix typo |
-| All rows | XY is **district** centroid, not the canal / check dam | Replace with site GPS when you have it |
-| Names | Shir Abd / Shir Abad, Ety Aregh / Ety Orugh, Chsrbagh | Pick one spelling |
+| IS-04 Shah Joy | `KBL-WRK-JCA-A1-01` | `KBL-WRK-A1-01` |
+| IS-06 Yakawlang | `KDZ-BGN-JICA-A1-01` | `KDZ-BGN-A1-01` |
+| WSM-01 Sorkh Joy | `BMN-BMN-02` | `BMN-BMN-A1-02` |
+| WSM-02 Shir Abad | `GDZ-GZI-Shir-Abad-02` | `GDZ-GZI-A2-01` |
+| WSM-03 Yar Mohammad | `HRT-HRT-JCA` | `HRT-HRT-A2-01` |
+| WSM-04 Shah Joy | `KBL-WRK-JCA-A1-02` | `KBL-WRK-A2-01` |
+| WSM-06 Yakawlang | `KDZ-BGN-134-B1- 01` | `KDZ-BGN-A2-01` |
+| WSM-07 Ety Orugh | `MZR-FRB-B-01` | `MZR-FRB-A2-01` |
 
-Households at the same site are **not always equal** (Shir Abad IS 1,056 vs WSM 426; Shawaroz IS 3,250 vs WSM 260). That may be correct (different beneficiary lists). Do not copy IS households onto WSM.
+## Non-GPS checklist (3313)
 
-## Clean file (use this)
-
-`data/schemes_dashboard.csv` — 14 rows, 31 dashboard fields. Rebuild: `python3 scripts/clean_schemes.py` (picks the newest `raw_Both_Jica*.csv`).
-
-| New field | Role on the dashboard |
+| Item | Status |
 |---|---|
-| `SCHEME_UID` | Unique id (`JICA-IS-01` … `JICA-WSM-07`) |
-| `PAIR_ID` | Links the irrigation + WSM works at the same site (`SITE-01` … `07`) |
-| `PROGRAM` | Irrigation / Watershed (pie + filter) |
-| `STATUS` | Awarded / Not Awarded (KPI + list) |
-| `REGION`, `REGION_HUB`, `PROVINCE`, `DISTRICT`, `VILLAGE` | Geography filters |
-| `CONTRACT_START`, `CONTRACT_END` | ISO dates `YYYY-MM-DD` |
-| `DURATION_DAYS` | Contract length |
-| `COST_USD` | Integer USD (blank if not awarded) |
-| `AREA_HA`, `HOUSEHOLDS`, `FEMALE_HEADED_HH`, `FHH_PCT` | Benefit KPIs |
-| `CANAL_KM` | Irrigation only |
-| `COST_PER_HA`, `COST_PER_HH` | Efficiency |
-| `LON`, `LAT` | Map (district centroid — **approximate**) |
-| `DATA_FLAGS` | QA notes; hide from the public view |
+| Unique IDs (`UNID` / `SCHEME_UID`) | Pass — 14 aligned |
+| WSM costs are real USD (not Excel dates) | Pass — $51,075 / $61,696 / $128,468 |
+| Yakawlang IS end date | Pass — `2027-06-24` (395 days) |
+| Yakawlang WSM space in code | **Fixed** — now `KDZ-BGN-A2-01` |
+| Shah Joy / Shir Abad / most WSM codes unique | **Fixed** — A1 / A2 pattern |
+| Shawaroz IS + WSM code | **Still open** — both `KDR-ZBL-A1-01` |
+| Female-headed HH | **Still open** on WSM-03 (2,250 HH) and WSM-05 (260 HH) |
+| Package typo “Rehabilitation fo” | **Still open** on WSM-03 |
+| Site GPS | Deferred — district centroids in use |
+| Name spelling | Cosmetic — Shir Abd vs Shir Abad; Ety Aregh vs Ety Orugh; Chsrbagh |
 
-Current flags: `DUPLICATE_SCHEME_CODE` on IS-05 and WSM-05; `NO_CANAL_EXPECTED` on all seven WSM rows.
+Sorkh Joy WSM is `BMN-BMN-A1-02` while other watershed codes use `A2-01`. Not a clash, just a different pattern. Herat irrigation stays `HRT-HRT-A1-22`.
 
-## Totals (6106, awarded costs only)
+Suggested Shawaroz WSM code to match the new pattern: `KDR-ZBL-A2-01`.
 
-- Schemes: 14
-- Awarded: 9 / Not awarded: 5 (Shawaroz IS+WSM, Shah Joy WSM, Yakawlang WSM, Ety Orugh WSM)
-- Awarded cost: **$2,294,514** (irrigation $2,053,275 + WSM $241,239)
-- Households: do **not** sum IS + WSM at the same site without a rule — they are different lists
+## Totals (awarded costs)
 
-## Dashboard widgets this table can drive
+- 9 awarded / 5 not awarded
+- Awarded cost **$2,294,514** (irrigation $2,053,275 + WSM $241,239)
+- Do not sum IS + WSM households at the same site — the lists differ
 
-- Indicators: schemes (14), awarded, not awarded, sum `COST_USD` (awarded only), sum `AREA_HA`, sum `CANAL_KM`
-- Map: points by `PROGRAM` color; pop-up = name, status, cost, households
-- Pie: `PROGRAM`; donut: `STATUS`
-- Bar: `COST_USD` by `PROVINCE` or `SCHEME_NAME` (awarded only)
-- List: not-awarded packages
-- Selectors: `PROGRAM`, `STATUS`, `PROVINCE`, `REGION`
+## Clean flags
 
-Do **not** put `COST_USD` on a total if `DATA_FLAGS` contains `COST_LOOKS_LIKE_EXCEL_DATE`. The clean file already blanks those cells.
+- `DUPLICATE_SCHEME_CODE` on IS-05 and WSM-05
+- `MISSING_FHH` on WSM-03 and WSM-05
+- `NO_CANAL_EXPECTED` on all seven WSM rows (correct)
 
 ## Next step
 
-Confirm the Shawaroz WSM code (or send site GPS). After that we bind `schemes_dashboard.csv` as the **main upload layer** for a JICA schemes dashboard — same publish path as Pulse/Atlas, new widgets for this program.
+The table is usable for a first dashboard on district centroids. The only code clash left is Shawaroz. Confirm `KDR-ZBL-A2-01` (or send your official code) and we bind this as the main JICA layer.
