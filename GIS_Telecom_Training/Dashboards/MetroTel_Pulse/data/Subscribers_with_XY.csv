@@ -1,0 +1,601 @@
+CUST_ID,CUSTOMER_NAME,ADDRESS,CITY,DIST_ID,DIST_NAME,PLAN_TYPE,TENURE_MONTHS,ARPU_USD,CHURN_RISK,DROP_RATE_PCT,THROUGHPUT_MBPS,COMPLAINTS_90D,JOIN_DATE,LON,LAT,GEOCODE_STATUS
+C00001,Mina Rahimi,"58 Market Rd, University Belt, Capital Region",Capital City,DZ-07,University Belt,Postpaid,44,27.71,0.184,1.37,38.1,1,2025-07-08,69.146337,34.546004,Matched
+C00002,Reza Ahmadi,"195 Market Rd, South Corridor, Capital Region",Capital City,DZ-05,South Corridor,Postpaid,22,35.94,0.282,2.29,30.3,0,2023-10-09,69.164972,34.477156,Matched
+C00003,Samir Karimi,"97 Park Ave, New Town, Capital Region",Capital City,DZ-09,New Town,Prepaid,54,6.25,0.496,1.54,39.6,4,2022-02-13,69.08874,34.545163,Matched
+C00004,Hassan Sadat,"95 Station Rd, East Industrial, Capital Region",Capital City,DZ-03,East Industrial,Prepaid,18,9.13,0.607,2.66,31.0,0,2024-05-21,69.207958,34.524984,Matched
+C00005,Lina Wardak,"197 Main St, University Belt, Capital Region",Capital City,DZ-07,University Belt,Prepaid,3,13.37,0.38,2.69,43.0,0,2024-03-09,69.141344,34.551955,Matched
+C00006,Sara Rahimi,"192 Airport Rd, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Prepaid,38,7.02,0.541,1.78,44.3,2,2022-11-06,69.157378,34.527687,Matched
+C00007,Samir Karimi,"98 Airport Rd, New Town, Capital Region",Capital City,DZ-09,New Town,Enterprise,34,74.83,0.253,2.52,34.5,1,2023-02-10,69.087441,34.556362,Matched
+C00008,Bilal Azizi,"185 River Blvd, West Expansion, Capital Region",Capital City,DZ-04,West Expansion,Enterprise,49,85.66,0.227,3.11,36.4,1,2022-06-25,69.110155,34.500993,Matched
+C00009,Mina Ahmadi,"1 Airport Rd, North Residential, Capital Region",Capital City,DZ-02,North Residential,Prepaid,2,14.9,0.588,3.11,26.7,0,2024-02-25,69.167323,34.55479,Matched
+C00010,Yara Sadat,"141 Market Rd, South Corridor, Capital Region",Capital City,DZ-05,South Corridor,Prepaid,56,16.17,0.249,3.09,39.4,1,2024-11-21,69.179911,34.488267,Matched
+C00011,Tariq Rahimi,"64 Hill St, West Expansion, Capital Region",Capital City,DZ-04,West Expansion,Prepaid,2,9.54,0.814,1.77,35.9,2,2021-09-08,69.107081,34.514829,Matched
+C00012,Reza Hashimi,"186 Airport Rd, East Industrial, Capital Region",Capital City,DZ-03,East Industrial,Prepaid,16,12.46,0.218,2.61,37.5,0,2024-12-02,69.216952,34.520083,Matched
+C00013,Hoda Ahmadi,"104 New Town Blvd, University Belt, Capital Region",Capital City,DZ-07,University Belt,Prepaid,56,14.02,0.164,1.46,40.7,0,2025-02-02,69.143624,34.544638,Matched
+C00014,Ahmad Popal,"24 Hill St, University Belt, Capital Region",Capital City,DZ-07,University Belt,Prepaid,32,11.83,0.165,2.58,47.1,0,2024-05-14,69.143307,34.543665,Matched
+C00015,Mina Wardak,"170 New Town Blvd, University Belt, Capital Region",Capital City,DZ-07,University Belt,Prepaid,13,8.95,0.564,2.3,41.1,0,2025-03-02,,,NeedsGeocode
+C00016,Ahmad Salehi,"153 Park Ave, Tech Park, Capital Region",Capital City,DZ-11,Tech Park,Postpaid,16,29.24,0.257,3.2,32.5,0,2025-10-17,69.145158,34.504493,Matched
+C00017,Mina Ahmadi,"81 Hill St, East Industrial, Capital Region",Capital City,DZ-03,East Industrial,Prepaid,9,10.4,0.265,2.99,25.7,0,2022-09-09,69.219195,34.541881,Matched
+C00018,Bilal Azizi,"63 Station Rd, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Prepaid,29,13.23,0.236,2.52,40.2,0,2025-05-22,69.159045,34.52624,Matched
+C00019,Karim Rahimi,"28 New Town Blvd, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Prepaid,18,11.45,0.238,2.75,36.9,0,2024-05-02,69.16952,34.523654,Matched
+C00020,Yara Noori,"68 Market Rd, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Postpaid,36,22.35,0.234,2.36,33.9,0,2023-10-18,69.170393,34.529507,Matched
+C00021,Yara Noori,"204 Main St, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Postpaid,14,25.54,0.171,2.22,44.7,3,2022-03-26,69.169781,34.532931,Matched
+C00022,Samir Ahmadi,"189 Station Rd, New Town, Capital Region",Capital City,DZ-09,New Town,Postpaid,27,27.39,0.296,3.07,35.1,0,2021-08-08,69.079202,34.556317,Matched
+C00023,Reza Azizi,"211 Hill St, North Residential, Capital Region",Capital City,DZ-02,North Residential,Prepaid,43,13.25,0.31,3.27,28.9,0,2021-02-09,69.156468,34.556362,Matched
+C00024,Tariq Salehi,"28 Airport Rd, North Residential, Capital Region",Capital City,DZ-02,North Residential,Prepaid,47,11.27,0.292,2.42,37.1,0,2021-12-14,69.156686,34.566111,Matched
+C00025,Yara Karimi,"185 New Town Blvd, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Postpaid,13,27.0,0.237,2.05,35.2,0,2024-06-13,69.17388,34.523516,Matched
+C00026,Karim Karimi,"171 University Ave, University Belt, Capital Region",Capital City,DZ-07,University Belt,Postpaid,58,27.12,0.164,2.29,38.9,0,2025-10-21,69.142296,34.540081,Matched
+C00027,Samir Sadat,"131 Garden Ln, East Industrial, Capital Region",Capital City,DZ-03,East Industrial,Postpaid,51,27.48,0.239,2.75,33.7,1,2022-04-05,69.20879,34.534294,Matched
+C00028,Lina Noori,"218 Park Ave, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Prepaid,57,16.54,0.209,1.72,41.8,1,2021-02-25,69.153313,34.528294,Matched
+C00029,Nadia Wardak,"133 Garden Ln, West Expansion, Capital Region",Capital City,DZ-04,West Expansion,Prepaid,16,13.77,0.282,2.74,26.3,1,2025-07-27,69.109044,34.537997,Matched
+C00030,Lina Karimi,"122 Garden Ln, River Park, Capital Region",Capital City,DZ-10,River Park,Prepaid,16,12.79,0.216,1.78,44.2,0,2023-04-09,69.192983,34.495559,Matched
+C00031,Reza Popal,"39 Hill St, East Industrial, Capital Region",Capital City,DZ-03,East Industrial,Prepaid,10,11.61,0.163,2.13,41.6,2,2025-12-01,69.222566,34.527958,Matched
+C00032,Hassan Salehi,"2 Station Rd, New Town, Capital Region",Capital City,DZ-09,New Town,Prepaid,25,8.11,0.594,2.92,37.6,2,2024-04-09,69.087194,34.555766,Matched
+C00033,Ahmad Ahmadi,"174 University Ave, West Expansion, Capital Region",Capital City,DZ-04,West Expansion,Postpaid,54,25.95,0.279,1.82,30.8,1,2022-08-06,69.107121,34.521313,Matched
+C00034,Fatima Rahimi,"84 Station Rd, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Postpaid,25,29.9,0.226,3.12,33.1,1,2021-06-08,69.165851,34.523999,Matched
+C00035,Fatima Karimi,"194 Main St, University Belt, Capital Region",Capital City,DZ-07,University Belt,Enterprise,13,86.12,0.18,2.19,34.9,1,2022-10-20,69.142266,34.533603,Matched
+C00036,Yara Sadat,"42 River Blvd, Peri-Urban North, Capital Region",Capital City,DZ-12,Peri-Urban North,Prepaid,2,5.2,0.835,2.28,44.3,0,2022-02-23,69.150558,34.587259,Matched
+C00037,Fatima Ahmadi,"31 Airport Rd, Old City, Capital Region",Capital City,DZ-08,Old City,Postpaid,23,22.24,0.206,2.67,28.9,0,2023-11-27,69.191385,34.506245,Matched
+C00038,Mina Karimi,"134 Old City Rd, South Corridor, Capital Region",Capital City,DZ-05,South Corridor,Prepaid,52,14.04,0.297,2.89,32.8,0,2022-02-09,69.172594,34.482851,Matched
+C00039,Mina Karimi,"157 Old City Rd, River Park, Capital Region",Capital City,DZ-10,River Park,Prepaid,2,8.46,0.845,2.21,31.8,1,2025-04-03,69.195345,34.508937,Matched
+C00040,Yara Sadat,"62 New Town Blvd, North Residential, Capital Region",Capital City,DZ-02,North Residential,Prepaid,46,14.82,0.221,2.75,32.8,0,2025-06-16,69.150254,34.551527,Matched
+C00041,Samir Noori,"141 Station Rd, South Corridor, Capital Region",Capital City,DZ-05,South Corridor,Prepaid,30,11.6,0.281,2.33,22.2,0,2024-05-24,69.160001,34.502445,Matched
+C00042,Ahmad Azizi,"26 Hill St, Airport Zone, Capital Region",Capital City,DZ-06,Airport Zone,Prepaid,24,6.62,0.518,1.47,39.7,0,2022-11-28,69.216035,34.565691,Matched
+C00043,Sara Salehi,"73 Garden Ln, Old City, Capital Region",Capital City,DZ-08,Old City,Prepaid,22,12.52,0.269,2.29,39.8,1,2021-03-05,69.186005,34.515755,Matched
+C00044,Fatima Wardak,"64 Park Ave, New Town, Capital Region",Capital City,DZ-09,New Town,Prepaid,27,11.47,0.208,2.62,37.0,0,2025-07-10,69.09238,34.558205,Matched
+C00045,Mina Wardak,"26 Hill St, South Corridor, Capital Region",Capital City,DZ-05,South Corridor,Postpaid,17,26.75,0.18,1.63,33.0,0,2022-05-23,69.19387,34.487503,Matched
+C00046,Lina Noori,"60 River Blvd, East Industrial, Capital Region",Capital City,DZ-03,East Industrial,Postpaid,41,26.81,0.221,2.72,35.0,2,2022-02-02,69.216045,34.531954,Matched
+C00047,Ahmad Popal,"146 River Blvd, North Residential, Capital Region",Capital City,DZ-02,North Residential,Prepaid,30,9.67,0.618,2.32,36.7,1,2025-05-01,69.14529,34.572439,Matched
+C00048,Fatima Azizi,"148 Airport Rd, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Enterprise,49,68.24,0.253,2.03,30.8,1,2023-03-19,69.1535,34.542778,Matched
+C00049,Hoda Azizi,"121 Station Rd, West Expansion, Capital Region",Capital City,DZ-04,West Expansion,Prepaid,21,8.2,0.604,2.84,29.3,0,2021-06-09,69.108285,34.500603,Matched
+C00050,Fatima Wardak,"132 Main St, East Industrial, Capital Region",Capital City,DZ-03,East Industrial,Postpaid,35,27.24,0.293,2.02,28.7,1,2022-05-18,69.206149,34.537999,Matched
+C00051,Hoda Ahmadi,"125 Park Ave, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Prepaid,41,9.71,0.55,2.45,36.1,0,2021-11-27,69.161094,34.544033,Matched
+C00052,Tariq Salehi,"181 River Blvd, North Residential, Capital Region",Capital City,DZ-02,North Residential,Prepaid,31,10.64,0.232,1.74,41.7,0,2022-02-09,69.146261,34.56606,Matched
+C00053,Hassan Wardak,"202 Industrial Way, Old City, Capital Region",Capital City,DZ-08,Old City,Prepaid,1,11.31,0.512,3.22,33.2,0,2025-09-13,69.189448,34.509222,Matched
+C00054,Tariq Popal,"179 Hill St, South Corridor, Capital Region",Capital City,DZ-05,South Corridor,Prepaid,15,14.33,0.209,1.93,40.6,0,2022-08-02,69.181594,34.477745,Matched
+C00055,Karim Hashimi,"26 Garden Ln, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Prepaid,59,5.83,0.572,2.59,32.5,1,2024-11-03,69.172017,34.526448,Matched
+C00056,Bilal Karimi,"98 Station Rd, New Town, Capital Region",Capital City,DZ-09,New Town,Postpaid,57,21.66,0.272,2.99,29.6,4,2021-07-04,,,NeedsGeocode
+C00057,Mina Noori,"43 New Town Blvd, Old City, Capital Region",Capital City,DZ-08,Old City,Prepaid,2,18.84,0.489,2.31,29.1,0,2021-10-28,69.183948,34.511471,Matched
+C00058,Tariq Karimi,"150 Market Rd, West Expansion, Capital Region",Capital City,DZ-04,West Expansion,Prepaid,41,7.71,0.572,2.07,29.2,1,2022-02-15,69.104066,34.516171,Matched
+C00059,Karim Karimi,"109 New Town Blvd, Tech Park, Capital Region",Capital City,DZ-11,Tech Park,Prepaid,55,7.06,0.609,1.73,35.5,0,2024-05-01,69.131725,34.499477,Matched
+C00060,Nadia Sadat,"13 Airport Rd, South Corridor, Capital Region",Capital City,DZ-05,South Corridor,Postpaid,54,21.92,0.333,2.34,31.9,1,2025-05-22,69.204093,34.474811,Matched
+C00061,Karim Hashimi,"36 Old City Rd, Old City, Capital Region",Capital City,DZ-08,Old City,Prepaid,41,9.92,0.571,2.45,38.7,1,2022-04-05,69.186325,34.502982,Matched
+C00062,Hoda Hashimi,"129 River Blvd, Old City, Capital Region",Capital City,DZ-08,Old City,Postpaid,17,25.33,0.246,2.89,43.5,2,2024-02-05,69.17953,34.520448,Matched
+C00063,Yara Karimi,"173 University Ave, Old City, Capital Region",Capital City,DZ-08,Old City,Enterprise,52,68.89,0.177,1.79,37.0,1,2023-02-22,69.186834,34.526875,Matched
+C00064,Bilal Popal,"144 Station Rd, North Residential, Capital Region",Capital City,DZ-02,North Residential,Postpaid,15,29.3,0.278,2.72,31.9,0,2021-01-10,69.148774,34.576408,Matched
+C00065,Reza Ahmadi,"138 Market Rd, Peri-Urban North, Capital Region",Capital City,DZ-12,Peri-Urban North,Prepaid,24,8.84,0.6,2.11,41.1,2,2025-07-09,69.164363,34.593901,Matched
+C00066,Karim Sadat,"61 Station Rd, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Prepaid,44,15.15,0.141,2.58,45.9,3,2024-02-22,,,NeedsGeocode
+C00067,Lina Hashimi,"13 Station Rd, North Residential, Capital Region",Capital City,DZ-02,North Residential,Prepaid,9,12.62,0.228,2.26,40.8,1,2025-01-09,69.136372,34.543633,Matched
+C00068,Nadia Rahimi,"65 Market Rd, New Town, Capital Region",Capital City,DZ-09,New Town,Prepaid,56,13.67,0.185,1.64,38.6,0,2021-03-24,69.084724,34.557594,Matched
+C00069,Karim Wardak,"115 Station Rd, West Expansion, Capital Region",Capital City,DZ-04,West Expansion,Prepaid,7,9.3,0.613,2.8,37.7,1,2021-01-16,69.102191,34.521899,Matched
+C00070,Mina Azizi,"183 Garden Ln, New Town, Capital Region",Capital City,DZ-09,New Town,Prepaid,6,12.85,0.15,1.51,39.2,1,2024-10-17,69.091682,34.551579,Matched
+C00071,Nadia Wardak,"204 New Town Blvd, East Industrial, Capital Region",Capital City,DZ-03,East Industrial,Prepaid,42,8.01,0.593,1.88,36.6,0,2021-06-14,69.21152,34.529704,Matched
+C00072,Omar Azizi,"176 Garden Ln, East Industrial, Capital Region",Capital City,DZ-03,East Industrial,Prepaid,54,21.91,0.196,2.29,37.6,0,2025-09-11,69.208875,34.529391,Matched
+C00073,Fatima Sadat,"193 University Ave, University Belt, Capital Region",Capital City,DZ-07,University Belt,Postpaid,47,31.12,0.231,1.86,33.8,2,2023-09-12,69.126218,34.553649,Matched
+C00074,Bilal Karimi,"110 Industrial Way, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Enterprise,53,85.57,0.247,2.64,36.0,0,2023-12-25,69.167093,34.526977,Matched
+C00075,Nadia Noori,"37 Airport Rd, East Industrial, Capital Region",Capital City,DZ-03,East Industrial,Postpaid,5,31.56,0.402,2.56,36.6,0,2023-10-20,69.219526,34.530748,Matched
+C00076,Lina Azizi,"159 Main St, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Postpaid,18,28.76,0.198,2.11,40.0,0,2024-02-10,69.173814,34.532429,Matched
+C00077,Sara Rahimi,"79 Main St, University Belt, Capital Region",Capital City,DZ-07,University Belt,Prepaid,39,14.55,0.237,2.56,42.9,0,2024-03-05,69.13184,34.539593,Matched
+C00078,Sara Hashimi,"214 Old City Rd, West Expansion, Capital Region",Capital City,DZ-04,West Expansion,Postpaid,5,23.49,0.479,2.76,34.3,1,2025-07-23,69.101826,34.517296,Matched
+C00079,Reza Azizi,"84 Market Rd, University Belt, Capital Region",Capital City,DZ-07,University Belt,Postpaid,40,22.07,0.143,1.89,40.3,0,2023-12-11,69.137997,34.552903,Matched
+C00080,Hoda Noori,"163 Park Ave, North Residential, Capital Region",Capital City,DZ-02,North Residential,Prepaid,13,10.43,0.276,2.15,37.6,0,2022-05-07,69.153036,34.56058,Matched
+C00081,Bilal Salehi,"20 Market Rd, North Residential, Capital Region",Capital City,DZ-02,North Residential,Enterprise,41,49.88,0.31,2.54,34.2,0,2023-03-15,69.157736,34.571062,Matched
+C00082,Karim Ahmadi,"71 Airport Rd, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Prepaid,33,13.21,0.203,2.37,29.6,1,2021-10-20,69.165495,34.521648,Matched
+C00083,Fatima Ahmadi,"203 New Town Blvd, South Corridor, Capital Region",Capital City,DZ-05,South Corridor,Postpaid,29,32.38,0.279,2.91,27.0,2,2023-12-03,69.165107,34.482361,Matched
+C00084,Nadia Salehi,"113 Garden Ln, South Corridor, Capital Region",Capital City,DZ-05,South Corridor,Prepaid,40,14.67,0.245,2.4,28.3,0,2023-02-11,69.169366,34.482823,Matched
+C00085,Yara Popal,"186 Old City Rd, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Enterprise,39,84.45,0.227,1.75,35.8,0,2021-05-18,69.162155,34.52211,Matched
+C00086,Hassan Hashimi,"172 New Town Blvd, West Expansion, Capital Region",Capital City,DZ-04,West Expansion,Postpaid,48,20.92,0.264,2.89,33.7,0,2023-03-07,69.094851,34.523792,Matched
+C00087,Tariq Salehi,"36 Market Rd, East Industrial, Capital Region",Capital City,DZ-03,East Industrial,Prepaid,55,13.13,0.168,2.38,43.7,0,2024-03-06,69.220529,34.524803,Matched
+C00088,Samir Wardak,"43 New Town Blvd, North Residential, Capital Region",Capital City,DZ-02,North Residential,Prepaid,27,6.76,0.514,2.42,46.6,0,2022-05-26,69.140748,34.556064,Matched
+C00089,Mina Noori,"174 Airport Rd, Old City, Capital Region",Capital City,DZ-08,Old City,Enterprise,30,78.17,0.233,2.24,32.3,2,2021-11-16,69.189327,34.512019,Matched
+C00090,Hoda Popal,"217 Industrial Way, River Park, Capital Region",Capital City,DZ-10,River Park,Postpaid,19,27.37,0.177,1.78,36.8,0,2022-08-12,69.181221,34.496494,Matched
+C00091,Omar Rahimi,"96 Hill St, Tech Park, Capital Region",Capital City,DZ-11,Tech Park,Prepaid,6,11.32,0.256,2.77,39.4,0,2024-12-27,69.118083,34.504097,Matched
+C00092,Sara Karimi,"2 Park Ave, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Prepaid,14,7.8,0.631,2.51,36.3,0,2021-01-08,69.166353,34.525593,Matched
+C00093,Mina Popal,"29 Garden Ln, West Expansion, Capital Region",Capital City,DZ-04,West Expansion,Prepaid,2,8.46,0.839,1.97,32.4,0,2021-09-12,69.102408,34.511492,Matched
+C00094,Ahmad Hashimi,"130 Industrial Way, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Prepaid,56,11.22,0.19,2.37,44.9,1,2023-04-24,69.157283,34.518608,Matched
+C00095,Bilal Noori,"194 Station Rd, University Belt, Capital Region",Capital City,DZ-07,University Belt,Prepaid,23,4.97,0.528,2.67,37.8,2,2021-12-25,69.148402,34.551405,Matched
+C00096,Karim Rahimi,"203 Hill St, Tech Park, Capital Region",Capital City,DZ-11,Tech Park,Postpaid,21,28.62,0.251,2.26,43.4,1,2022-05-12,69.12082,34.505224,Matched
+C00097,Fatima Hashimi,"70 Park Ave, River Park, Capital Region",Capital City,DZ-10,River Park,Postpaid,28,33.07,0.248,2.07,43.1,3,2025-05-26,69.20616,34.503457,Matched
+C00098,Yara Popal,"211 Market Rd, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Prepaid,21,13.94,0.14,1.84,39.7,0,2024-06-15,69.156557,34.520447,Matched
+C00099,Ahmad Noori,"112 River Blvd, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Postpaid,51,29.5,0.265,2.25,36.6,2,2024-01-05,69.170108,34.522563,Matched
+C00100,Mina Noori,"99 Airport Rd, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Prepaid,10,8.24,0.595,3.01,35.1,0,2024-06-21,69.163984,34.529362,Matched
+C00101,Tariq Wardak,"48 Garden Ln, East Industrial, Capital Region",Capital City,DZ-03,East Industrial,Prepaid,59,9.11,0.512,2.05,45.9,0,2022-02-15,69.221777,34.52955,Matched
+C00102,Karim Noori,"208 Old City Rd, North Residential, Capital Region",Capital City,DZ-02,North Residential,Enterprise,21,24.83,0.238,2.62,37.5,1,2022-06-17,69.147645,34.55373,Matched
+C00103,Reza Wardak,"61 Garden Ln, North Residential, Capital Region",Capital City,DZ-02,North Residential,Prepaid,36,7.97,0.723,2.27,29.2,0,2024-10-03,,,NeedsGeocode
+C00104,Omar Popal,"120 Old City Rd, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Prepaid,9,13.43,0.256,2.71,38.7,0,2021-02-17,69.161061,34.526716,Matched
+C00105,Karim Salehi,"182 Hill St, North Residential, Capital Region",Capital City,DZ-02,North Residential,Prepaid,34,18.11,0.214,2.6,35.5,0,2025-11-06,69.153608,34.56607,Matched
+C00106,Ahmad Salehi,"160 New Town Blvd, Airport Zone, Capital Region",Capital City,DZ-06,Airport Zone,Postpaid,22,26.81,0.243,2.34,41.7,0,2022-10-14,,,NeedsGeocode
+C00107,Fatima Popal,"140 River Blvd, Airport Zone, Capital Region",Capital City,DZ-06,Airport Zone,Postpaid,20,20.81,0.273,2.17,29.0,0,2022-06-20,,,NeedsGeocode
+C00108,Fatima Sadat,"89 University Ave, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Prepaid,24,9.32,0.546,1.58,37.4,0,2021-05-13,69.166546,34.532523,Matched
+C00109,Ahmad Ahmadi,"41 Station Rd, River Park, Capital Region",Capital City,DZ-10,River Park,Enterprise,47,65.23,0.289,2.67,29.3,3,2025-08-08,69.177139,34.510094,Matched
+C00110,Omar Karimi,"127 Airport Rd, North Residential, Capital Region",Capital City,DZ-02,North Residential,Postpaid,42,29.03,0.331,2.45,21.7,1,2024-06-02,69.162537,34.558448,Matched
+C00111,Sara Popal,"142 River Blvd, West Expansion, Capital Region",Capital City,DZ-04,West Expansion,Prepaid,33,7.19,0.571,2.33,41.8,0,2023-09-12,69.095241,34.51775,Matched
+C00112,Tariq Azizi,"129 Main St, Old City, Capital Region",Capital City,DZ-08,Old City,Prepaid,9,16.53,0.222,2.66,39.5,0,2025-06-06,69.188102,34.518003,Matched
+C00113,Reza Salehi,"152 Station Rd, West Expansion, Capital Region",Capital City,DZ-04,West Expansion,Prepaid,33,5.85,0.527,2.66,38.4,0,2021-10-16,69.088557,34.509718,Matched
+C00114,Hoda Popal,"149 Airport Rd, East Industrial, Capital Region",Capital City,DZ-03,East Industrial,Prepaid,4,3.5,0.813,1.73,40.2,0,2022-01-19,69.217464,34.518038,Matched
+C00115,Yara Noori,"81 University Ave, Tech Park, Capital Region",Capital City,DZ-11,Tech Park,Prepaid,45,13.35,0.234,2.27,40.3,0,2025-06-22,69.126206,34.500996,Matched
+C00116,Karim Salehi,"118 Industrial Way, South Corridor, Capital Region",Capital City,DZ-05,South Corridor,Prepaid,23,19.01,0.256,2.94,36.9,0,2022-05-18,69.18405,34.465664,Matched
+C00117,Sara Salehi,"198 River Blvd, East Industrial, Capital Region",Capital City,DZ-03,East Industrial,Postpaid,45,27.03,0.271,3.28,32.6,1,2024-07-27,69.241199,34.521835,Matched
+C00118,Lina Azizi,"11 River Blvd, West Expansion, Capital Region",Capital City,DZ-04,West Expansion,Enterprise,6,66.65,0.171,2.04,38.5,0,2025-12-09,69.093291,34.52065,Matched
+C00119,Omar Rahimi,"63 Main St, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Postpaid,34,28.44,0.141,1.85,41.3,3,2022-07-21,69.157051,34.520932,Matched
+C00120,Yara Rahimi,"52 River Blvd, Tech Park, Capital Region",Capital City,DZ-11,Tech Park,Prepaid,42,8.85,0.473,2.44,44.6,2,2022-07-27,69.130757,34.506581,Matched
+C00121,Nadia Karimi,"102 Garden Ln, North Residential, Capital Region",Capital City,DZ-02,North Residential,Prepaid,48,20.87,0.271,1.63,36.3,0,2025-09-16,69.173986,34.546742,Matched
+C00122,Yara Hashimi,"70 Hill St, River Park, Capital Region",Capital City,DZ-10,River Park,Postpaid,22,31.54,0.216,2.39,31.4,1,2025-11-25,69.190697,34.506303,Matched
+C00123,Reza Sadat,"104 University Ave, North Residential, Capital Region",Capital City,DZ-02,North Residential,Prepaid,6,10.55,0.219,2.02,47.0,0,2023-06-10,,,NeedsGeocode
+C00124,Tariq Karimi,"93 New Town Blvd, Airport Zone, Capital Region",Capital City,DZ-06,Airport Zone,Prepaid,43,10.62,0.165,1.93,38.0,1,2023-06-20,69.21209,34.559412,Matched
+C00125,Lina Salehi,"117 New Town Blvd, North Residential, Capital Region",Capital City,DZ-02,North Residential,Enterprise,24,58.65,0.284,2.69,31.2,2,2021-09-15,69.158799,34.557585,Matched
+C00126,Hassan Wardak,"29 Main St, South Corridor, Capital Region",Capital City,DZ-05,South Corridor,Postpaid,58,34.82,0.224,2.43,33.2,0,2022-12-19,69.180095,34.468462,Matched
+C00127,Hoda Rahimi,"15 Garden Ln, South Corridor, Capital Region",Capital City,DZ-05,South Corridor,Prepaid,27,10.67,0.17,2.53,44.6,1,2025-02-02,69.181993,34.474845,Matched
+C00128,Yara Popal,"16 Park Ave, West Expansion, Capital Region",Capital City,DZ-04,West Expansion,Enterprise,31,57.18,0.184,2.22,38.5,0,2024-08-28,69.10074,34.516937,Matched
+C00129,Ahmad Rahimi,"170 Industrial Way, River Park, Capital Region",Capital City,DZ-10,River Park,Prepaid,56,10.55,0.226,2.35,39.2,3,2024-11-24,69.19265,34.502277,Matched
+C00130,Bilal Popal,"64 Garden Ln, South Corridor, Capital Region",Capital City,DZ-05,South Corridor,Prepaid,18,10.52,0.218,3.01,36.5,1,2021-04-07,,,NeedsGeocode
+C00131,Hassan Karimi,"173 New Town Blvd, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Postpaid,16,27.76,0.157,1.69,44.8,0,2025-06-19,,,NeedsGeocode
+C00132,Tariq Noori,"78 Market Rd, Airport Zone, Capital Region",Capital City,DZ-06,Airport Zone,Enterprise,34,63.34,0.167,1.88,35.5,1,2024-09-16,69.201898,34.561709,Matched
+C00133,Hoda Noori,"98 Industrial Way, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Prepaid,27,9.17,0.554,2.43,32.8,2,2021-09-14,69.158578,34.537525,Matched
+C00134,Hoda Sadat,"63 River Blvd, Peri-Urban North, Capital Region",Capital City,DZ-12,Peri-Urban North,Prepaid,42,11.24,0.123,1.95,42.0,0,2024-11-20,69.163682,34.585982,Matched
+C00135,Lina Ahmadi,"195 Airport Rd, Airport Zone, Capital Region",Capital City,DZ-06,Airport Zone,Postpaid,36,28.56,0.247,1.93,42.8,1,2024-04-23,69.213621,34.561316,Matched
+C00136,Tariq Wardak,"142 Station Rd, Airport Zone, Capital Region",Capital City,DZ-06,Airport Zone,Postpaid,25,36.52,0.164,2.26,41.2,0,2024-06-07,69.215359,34.570009,Matched
+C00137,Mina Sadat,"57 New Town Blvd, West Expansion, Capital Region",Capital City,DZ-04,West Expansion,Prepaid,17,7.0,0.588,1.97,34.6,0,2023-05-25,69.091181,34.525296,Matched
+C00138,Tariq Azizi,"126 Garden Ln, New Town, Capital Region",Capital City,DZ-09,New Town,Prepaid,51,10.8,0.259,2.03,31.5,4,2021-09-02,69.086517,34.566209,Matched
+C00139,Bilal Salehi,"13 Main St, New Town, Capital Region",Capital City,DZ-09,New Town,Prepaid,54,10.98,0.22,2.05,32.7,2,2024-01-01,,,NeedsGeocode
+C00140,Tariq Noori,"185 River Blvd, South Corridor, Capital Region",Capital City,DZ-05,South Corridor,Prepaid,19,12.39,0.195,2.89,36.3,0,2021-09-05,69.172803,34.478753,Matched
+C00141,Hoda Ahmadi,"91 River Blvd, North Residential, Capital Region",Capital City,DZ-02,North Residential,Postpaid,6,25.15,0.215,2.98,35.7,1,2021-02-13,69.145546,34.555829,Matched
+C00142,Sara Azizi,"3 New Town Blvd, West Expansion, Capital Region",Capital City,DZ-04,West Expansion,Prepaid,32,11.56,0.293,2.71,31.1,2,2022-04-28,69.105844,34.517429,Matched
+C00143,Omar Popal,"20 Old City Rd, University Belt, Capital Region",Capital City,DZ-07,University Belt,Enterprise,58,53.82,0.159,2.68,35.5,3,2023-03-19,69.13419,34.542408,Matched
+C00144,Nadia Rahimi,"139 Station Rd, North Residential, Capital Region",Capital City,DZ-02,North Residential,Prepaid,48,8.58,0.497,2.85,43.5,0,2022-02-11,69.14687,34.564028,Matched
+C00145,Mina Popal,"199 Station Rd, Airport Zone, Capital Region",Capital City,DZ-06,Airport Zone,Prepaid,18,12.92,0.186,2.35,36.6,0,2025-05-26,69.201874,34.557939,Matched
+C00146,Karim Wardak,"98 New Town Blvd, North Residential, Capital Region",Capital City,DZ-02,North Residential,Postpaid,10,29.41,0.194,1.77,38.9,0,2023-02-05,,,NeedsGeocode
+C00147,Reza Ahmadi,"132 University Ave, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Prepaid,6,10.93,0.239,2.08,34.9,1,2025-04-19,69.155737,34.53229,Matched
+C00148,Sara Hashimi,"69 River Blvd, South Corridor, Capital Region",Capital City,DZ-05,South Corridor,Prepaid,10,9.76,0.509,2.12,38.3,0,2022-12-21,69.177809,34.478072,Matched
+C00149,Hoda Salehi,"35 River Blvd, South Corridor, Capital Region",Capital City,DZ-05,South Corridor,Prepaid,26,9.25,0.659,2.34,28.9,0,2023-10-23,69.168421,34.474076,Matched
+C00150,Hoda Popal,"82 River Blvd, North Residential, Capital Region",Capital City,DZ-02,North Residential,Postpaid,41,37.51,0.288,2.76,26.8,0,2025-04-19,69.159679,34.551885,Matched
+C00151,Bilal Wardak,"7 New Town Blvd, Peri-Urban North, Capital Region",Capital City,DZ-12,Peri-Urban North,Prepaid,46,13.79,0.307,1.93,34.5,0,2023-04-09,69.165825,34.602364,Matched
+C00152,Reza Azizi,"19 Garden Ln, University Belt, Capital Region",Capital City,DZ-07,University Belt,Enterprise,31,49.17,0.249,2.45,39.1,0,2023-12-26,69.153844,34.541942,Matched
+C00153,Nadia Popal,"197 Hill St, South Corridor, Capital Region",Capital City,DZ-05,South Corridor,Postpaid,23,30.76,0.248,2.63,36.2,0,2021-05-08,69.172821,34.477427,Matched
+C00154,Ahmad Wardak,"148 Hill St, South Corridor, Capital Region",Capital City,DZ-05,South Corridor,Prepaid,26,11.38,0.204,2.51,40.5,0,2024-02-04,69.184531,34.469528,Matched
+C00155,Samir Ahmadi,"88 Garden Ln, New Town, Capital Region",Capital City,DZ-09,New Town,Postpaid,34,23.48,0.171,2.38,40.1,0,2023-11-04,69.089079,34.547654,Matched
+C00156,Bilal Noori,"63 Industrial Way, University Belt, Capital Region",Capital City,DZ-07,University Belt,Prepaid,11,21.87,0.167,2.01,40.8,0,2024-07-01,69.140974,34.556783,Matched
+C00157,Omar Hashimi,"110 University Ave, Old City, Capital Region",Capital City,DZ-08,Old City,Prepaid,14,13.83,0.282,1.8,29.7,0,2024-02-09,69.191488,34.509141,Matched
+C00158,Hoda Karimi,"81 Airport Rd, University Belt, Capital Region",Capital City,DZ-07,University Belt,Prepaid,26,12.69,0.173,1.79,46.8,2,2025-02-22,69.152853,34.524249,Matched
+C00159,Tariq Noori,"47 Station Rd, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Postpaid,33,23.88,0.196,2.03,40.5,1,2024-05-05,69.170041,34.532608,Matched
+C00160,Bilal Wardak,"92 Main St, North Residential, Capital Region",Capital City,DZ-02,North Residential,Prepaid,13,7.34,0.647,3.22,32.1,0,2024-08-06,69.156949,34.566075,Matched
+C00161,Mina Ahmadi,"75 Main St, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Prepaid,35,10.32,0.2,2.58,40.1,0,2025-06-18,69.178283,34.530608,Matched
+C00162,Ahmad Wardak,"140 Hill St, New Town, Capital Region",Capital City,DZ-09,New Town,Enterprise,7,81.18,0.316,2.89,26.5,0,2021-08-28,69.103528,34.567313,Matched
+C00163,Samir Rahimi,"208 New Town Blvd, Peri-Urban North, Capital Region",Capital City,DZ-12,Peri-Urban North,Prepaid,23,15.53,0.17,2.26,44.8,1,2025-05-20,69.160943,34.584193,Matched
+C00164,Samir Popal,"75 Airport Rd, South Corridor, Capital Region",Capital City,DZ-05,South Corridor,Prepaid,55,17.59,0.294,3.26,32.1,2,2023-11-05,69.166584,34.474427,Matched
+C00165,Samir Ahmadi,"83 Hill St, University Belt, Capital Region",Capital City,DZ-07,University Belt,Postpaid,44,26.27,0.183,2.24,41.5,0,2023-12-12,,,NeedsGeocode
+C00166,Reza Sadat,"199 New Town Blvd, South Corridor, Capital Region",Capital City,DZ-05,South Corridor,Prepaid,30,12.4,0.241,2.63,39.8,3,2022-08-09,69.177766,34.469464,Matched
+C00167,Sara Noori,"34 Airport Rd, East Industrial, Capital Region",Capital City,DZ-03,East Industrial,Postpaid,51,24.63,0.226,1.96,34.2,0,2021-07-07,69.21789,34.539849,Matched
+C00168,Tariq Noori,"78 Market Rd, Peri-Urban North, Capital Region",Capital City,DZ-12,Peri-Urban North,Postpaid,57,23.54,0.275,2.92,25.9,0,2023-12-23,69.170077,34.603935,Matched
+C00169,Hoda Popal,"25 Main St, Old City, Capital Region",Capital City,DZ-08,Old City,Prepaid,5,13.93,0.5,1.62,37.7,1,2024-02-08,69.181842,34.516505,Matched
+C00170,Bilal Noori,"81 Station Rd, West Expansion, Capital Region",Capital City,DZ-04,West Expansion,Postpaid,9,26.15,0.25,2.98,36.1,0,2025-01-20,69.104242,34.519552,Matched
+C00171,Yara Popal,"161 New Town Blvd, University Belt, Capital Region",Capital City,DZ-07,University Belt,Prepaid,27,8.78,0.561,2.99,31.3,0,2024-06-26,69.128088,34.549708,Matched
+C00172,Tariq Karimi,"142 Airport Rd, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Prepaid,39,13.65,0.188,2.91,33.6,0,2025-09-07,69.159238,34.527434,Matched
+C00173,Nadia Noori,"204 Hill St, Old City, Capital Region",Capital City,DZ-08,Old City,Prepaid,8,12.32,0.182,2.91,31.6,0,2025-07-12,69.184244,34.517571,Matched
+C00174,Reza Azizi,"198 Park Ave, South Corridor, Capital Region",Capital City,DZ-05,South Corridor,Prepaid,5,15.99,0.408,1.81,42.8,0,2025-07-14,69.186388,34.484211,Matched
+C00175,Samir Ahmadi,"158 Market Rd, University Belt, Capital Region",Capital City,DZ-07,University Belt,Prepaid,20,19.92,0.252,1.7,37.2,0,2024-12-28,69.148621,34.549912,Matched
+C00176,Yara Noori,"30 Garden Ln, North Residential, Capital Region",Capital City,DZ-02,North Residential,Prepaid,4,21.09,0.51,2.96,32.9,1,2022-08-12,69.158585,34.560631,Matched
+C00177,Hassan Ahmadi,"43 Station Rd, South Corridor, Capital Region",Capital City,DZ-05,South Corridor,Prepaid,50,16.55,0.202,3.0,33.2,0,2025-11-03,69.17763,34.467495,Matched
+C00178,Lina Azizi,"220 Airport Rd, South Corridor, Capital Region",Capital City,DZ-05,South Corridor,Prepaid,11,11.91,0.274,2.1,29.1,0,2021-04-02,69.165719,34.477304,Matched
+C00179,Hoda Ahmadi,"220 Main St, South Corridor, Capital Region",Capital City,DZ-05,South Corridor,Prepaid,59,10.69,0.236,2.14,36.4,1,2021-09-22,69.171616,34.48306,Matched
+C00180,Fatima Rahimi,"12 University Ave, River Park, Capital Region",Capital City,DZ-10,River Park,Prepaid,30,18.52,0.295,2.9,30.9,0,2023-10-26,69.183615,34.506207,Matched
+C00181,Lina Azizi,"152 Garden Ln, East Industrial, Capital Region",Capital City,DZ-03,East Industrial,Enterprise,50,85.83,0.218,1.78,35.3,0,2021-06-01,69.213593,34.523774,Matched
+C00182,Karim Ahmadi,"79 Park Ave, Old City, Capital Region",Capital City,DZ-08,Old City,Prepaid,16,16.59,0.201,2.94,43.1,0,2022-09-14,69.201184,34.505666,Matched
+C00183,Karim Karimi,"22 Airport Rd, University Belt, Capital Region",Capital City,DZ-07,University Belt,Prepaid,9,9.39,0.634,1.92,32.6,2,2024-12-27,69.124915,34.560568,Matched
+C00184,Reza Ahmadi,"20 Hill St, Old City, Capital Region",Capital City,DZ-08,Old City,Prepaid,50,14.9,0.276,2.02,28.4,0,2022-08-10,69.178917,34.512357,Matched
+C00185,Nadia Popal,"207 Old City Rd, South Corridor, Capital Region",Capital City,DZ-05,South Corridor,Prepaid,46,11.62,0.241,1.98,34.5,0,2023-05-27,69.177091,34.477214,Matched
+C00186,Ahmad Sadat,"116 Industrial Way, Peri-Urban North, Capital Region",Capital City,DZ-12,Peri-Urban North,Postpaid,16,28.79,0.171,1.66,41.0,0,2024-06-22,69.157831,34.597989,Matched
+C00187,Sara Rahimi,"67 Park Ave, University Belt, Capital Region",Capital City,DZ-07,University Belt,Prepaid,5,13.86,0.46,1.48,45.2,3,2021-03-19,69.133504,34.53666,Matched
+C00188,Ahmad Salehi,"98 Old City Rd, West Expansion, Capital Region",Capital City,DZ-04,West Expansion,Prepaid,23,7.38,0.55,1.87,33.9,1,2022-11-10,69.110913,34.518502,Matched
+C00189,Reza Hashimi,"23 River Blvd, South Corridor, Capital Region",Capital City,DZ-05,South Corridor,Prepaid,27,14.6,0.183,2.3,44.6,0,2024-06-19,69.181768,34.473863,Matched
+C00190,Nadia Salehi,"82 Airport Rd, South Corridor, Capital Region",Capital City,DZ-05,South Corridor,Prepaid,58,13.63,0.217,1.8,44.0,4,2022-02-08,69.190796,34.476152,Matched
+C00191,Lina Salehi,"189 Main St, University Belt, Capital Region",Capital City,DZ-07,University Belt,Postpaid,15,17.87,0.186,2.84,44.7,0,2023-10-01,69.138473,34.559647,Matched
+C00192,Fatima Rahimi,"37 Airport Rd, University Belt, Capital Region",Capital City,DZ-07,University Belt,Enterprise,54,90.59,0.258,2.82,38.3,0,2022-10-08,69.129569,34.538822,Matched
+C00193,Tariq Noori,"158 Hill St, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Postpaid,22,26.15,0.246,1.99,33.3,1,2025-06-03,69.157886,34.52899,Matched
+C00194,Fatima Hashimi,"26 Station Rd, West Expansion, Capital Region",Capital City,DZ-04,West Expansion,Prepaid,9,10.57,0.302,2.82,32.6,0,2025-12-20,69.082459,34.527499,Matched
+C00195,Samir Salehi,"45 University Ave, Old City, Capital Region",Capital City,DZ-08,Old City,Prepaid,45,11.31,0.139,2.45,41.4,0,2025-06-26,69.186785,34.525517,Matched
+C00196,Sara Hashimi,"128 Market Rd, Peri-Urban North, Capital Region",Capital City,DZ-12,Peri-Urban North,Prepaid,5,17.08,0.416,2.88,36.9,0,2023-04-08,69.16481,34.591879,Matched
+C00197,Sara Wardak,"185 Main St, University Belt, Capital Region",Capital City,DZ-07,University Belt,Prepaid,29,10.85,0.25,2.25,36.9,1,2025-11-25,69.131696,34.556358,Matched
+C00198,Omar Ahmadi,"217 Main St, University Belt, Capital Region",Capital City,DZ-07,University Belt,Prepaid,21,13.34,0.285,2.15,25.6,0,2021-06-20,69.11903,34.546633,Matched
+C00199,Tariq Azizi,"111 Old City Rd, Peri-Urban North, Capital Region",Capital City,DZ-12,Peri-Urban North,Prepaid,57,10.78,0.205,3.02,36.0,0,2023-05-08,69.169785,34.582234,Matched
+C00200,Lina Ahmadi,"126 Market Rd, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Prepaid,1,15.15,0.494,2.15,35.2,0,2022-11-10,69.166066,34.520098,Matched
+C00201,Fatima Rahimi,"201 University Ave, Peri-Urban North, Capital Region",Capital City,DZ-12,Peri-Urban North,Prepaid,58,11.07,0.172,1.56,46.9,0,2024-05-08,69.156091,34.590655,Matched
+C00202,Hassan Rahimi,"179 Old City Rd, New Town, Capital Region",Capital City,DZ-09,New Town,Prepaid,43,11.1,0.184,2.26,44.1,2,2025-07-18,69.087035,34.550788,Matched
+C00203,Mina Noori,"61 Garden Ln, University Belt, Capital Region",Capital City,DZ-07,University Belt,Prepaid,26,17.19,0.214,2.87,40.8,0,2024-03-06,69.14961,34.540939,Matched
+C00204,Nadia Ahmadi,"109 Park Ave, Peri-Urban North, Capital Region",Capital City,DZ-12,Peri-Urban North,Enterprise,28,67.73,0.131,2.49,40.3,0,2025-07-18,69.152737,34.591492,Matched
+C00205,Sara Ahmadi,"4 New Town Blvd, East Industrial, Capital Region",Capital City,DZ-03,East Industrial,Postpaid,34,28.39,0.227,2.61,33.2,1,2021-05-28,69.218549,34.538737,Matched
+C00206,Bilal Popal,"99 Old City Rd, South Corridor, Capital Region",Capital City,DZ-05,South Corridor,Prepaid,39,15.42,0.252,1.98,32.2,0,2023-12-08,69.171168,34.475423,Matched
+C00207,Omar Karimi,"96 Main St, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Prepaid,51,10.94,0.215,2.57,33.6,3,2024-06-09,69.158749,34.528981,Matched
+C00208,Hassan Noori,"114 Hill St, Old City, Capital Region",Capital City,DZ-08,Old City,Postpaid,27,26.94,0.251,2.72,40.0,0,2025-07-05,69.191132,34.512266,Matched
+C00209,Hoda Wardak,"45 Hill St, Old City, Capital Region",Capital City,DZ-08,Old City,Postpaid,13,29.57,0.267,3.19,33.3,0,2021-11-01,69.174746,34.513423,Matched
+C00210,Karim Rahimi,"122 Airport Rd, North Residential, Capital Region",Capital City,DZ-02,North Residential,Prepaid,23,12.31,0.162,2.77,42.3,0,2022-10-25,69.144822,34.551326,Matched
+C00211,Omar Salehi,"174 Hill St, Peri-Urban North, Capital Region",Capital City,DZ-12,Peri-Urban North,Prepaid,27,4.03,0.61,2.54,37.6,2,2022-05-20,69.1672,34.580968,Matched
+C00212,Hassan Salehi,"165 River Blvd, New Town, Capital Region",Capital City,DZ-09,New Town,Prepaid,25,21.82,0.213,2.03,39.1,0,2021-01-17,69.088666,34.547864,Matched
+C00213,Karim Karimi,"144 Old City Rd, Peri-Urban North, Capital Region",Capital City,DZ-12,Peri-Urban North,Prepaid,19,11.43,0.208,3.19,35.0,0,2025-04-02,69.174962,34.586802,Matched
+C00214,Reza Popal,"170 Station Rd, New Town, Capital Region",Capital City,DZ-09,New Town,Postpaid,47,22.88,0.151,2.19,37.6,1,2025-12-19,69.093651,34.558499,Matched
+C00215,Omar Karimi,"176 Industrial Way, New Town, Capital Region",Capital City,DZ-09,New Town,Postpaid,31,32.97,0.286,3.14,33.2,0,2022-12-09,69.083012,34.565541,Matched
+C00216,Nadia Hashimi,"175 Station Rd, Old City, Capital Region",Capital City,DZ-08,Old City,Postpaid,15,24.8,0.231,2.79,32.4,0,2023-08-28,69.178382,34.498537,Matched
+C00217,Omar Noori,"149 Airport Rd, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Prepaid,57,12.69,0.233,2.32,36.8,4,2023-07-19,69.175709,34.531755,Matched
+C00218,Fatima Karimi,"184 Market Rd, River Park, Capital Region",Capital City,DZ-10,River Park,Postpaid,32,27.81,0.185,2.94,37.3,0,2022-10-25,,,NeedsGeocode
+C00219,Ahmad Hashimi,"34 Airport Rd, North Residential, Capital Region",Capital City,DZ-02,North Residential,Prepaid,28,3.5,0.567,1.65,33.1,1,2025-04-01,69.153054,34.546423,Matched
+C00220,Karim Karimi,"178 Station Rd, University Belt, Capital Region",Capital City,DZ-07,University Belt,Prepaid,7,9.84,0.568,2.48,32.7,0,2025-10-17,69.151832,34.540766,Matched
+C00221,Lina Rahimi,"88 Garden Ln, East Industrial, Capital Region",Capital City,DZ-03,East Industrial,Prepaid,13,16.44,0.343,2.04,24.1,1,2022-02-12,69.240038,34.512989,Matched
+C00222,Ahmad Rahimi,"164 River Blvd, Old City, Capital Region",Capital City,DZ-08,Old City,Postpaid,40,24.26,0.17,3.02,39.3,1,2024-08-13,69.199998,34.51703,Matched
+C00223,Hoda Ahmadi,"53 New Town Blvd, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Postpaid,1,26.14,0.459,1.82,41.2,0,2025-02-10,69.164786,34.540444,Matched
+C00224,Tariq Sadat,"52 River Blvd, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Postpaid,13,29.65,0.2,2.14,34.4,1,2024-06-08,69.176176,34.532181,Matched
+C00225,Fatima Karimi,"214 Airport Rd, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Postpaid,10,34.61,0.191,2.7,39.6,0,2021-02-27,69.15676,34.512639,Matched
+C00226,Omar Noori,"206 Old City Rd, North Residential, Capital Region",Capital City,DZ-02,North Residential,Prepaid,48,12.81,0.144,2.64,45.3,0,2024-10-09,,,NeedsGeocode
+C00227,Sara Noori,"47 Park Ave, River Park, Capital Region",Capital City,DZ-10,River Park,Prepaid,30,11.46,0.279,2.87,36.0,1,2021-03-04,69.20726,34.508103,Matched
+C00228,Yara Noori,"174 Garden Ln, West Expansion, Capital Region",Capital City,DZ-04,West Expansion,Prepaid,25,8.11,0.618,2.57,38.5,0,2024-02-14,69.107824,34.507875,Matched
+C00229,Hassan Salehi,"4 New Town Blvd, West Expansion, Capital Region",Capital City,DZ-04,West Expansion,Postpaid,34,28.58,0.274,3.25,33.5,0,2022-08-12,69.110759,34.524523,Matched
+C00230,Hoda Wardak,"212 Industrial Way, University Belt, Capital Region",Capital City,DZ-07,University Belt,Postpaid,40,26.24,0.173,2.5,34.0,2,2021-08-11,69.129574,34.542138,Matched
+C00231,Nadia Ahmadi,"58 Industrial Way, North Residential, Capital Region",Capital City,DZ-02,North Residential,Postpaid,26,28.66,0.229,2.48,31.4,4,2021-02-13,69.152526,34.55952,Matched
+C00232,Nadia Hashimi,"24 Airport Rd, West Expansion, Capital Region",Capital City,DZ-04,West Expansion,Enterprise,41,74.9,0.188,2.25,35.6,2,2022-08-11,69.097042,34.519862,Matched
+C00233,Hassan Azizi,"169 Station Rd, South Corridor, Capital Region",Capital City,DZ-05,South Corridor,Postpaid,8,32.8,0.229,2.38,31.8,0,2021-01-06,69.168389,34.47381,Matched
+C00234,Samir Sadat,"105 Park Ave, South Corridor, Capital Region",Capital City,DZ-05,South Corridor,Prepaid,13,6.07,0.544,2.97,35.5,1,2021-07-02,69.181743,34.485748,Matched
+C00235,Hoda Salehi,"198 Garden Ln, Tech Park, Capital Region",Capital City,DZ-11,Tech Park,Prepaid,38,14.07,0.292,2.71,24.5,0,2025-03-23,69.130571,34.490905,Matched
+C00236,Yara Sadat,"100 Old City Rd, Airport Zone, Capital Region",Capital City,DZ-06,Airport Zone,Prepaid,57,9.92,0.497,2.59,42.6,0,2023-05-15,69.208831,34.564487,Matched
+C00237,Yara Karimi,"192 Industrial Way, New Town, Capital Region",Capital City,DZ-09,New Town,Prepaid,45,8.68,0.614,2.48,32.0,1,2022-12-21,69.097022,34.563294,Matched
+C00238,Reza Azizi,"164 Station Rd, Peri-Urban North, Capital Region",Capital City,DZ-12,Peri-Urban North,Postpaid,49,32.5,0.175,2.12,41.2,0,2024-01-17,69.157945,34.594384,Matched
+C00239,Samir Azizi,"15 Hill St, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Prepaid,51,13.75,0.203,2.85,38.1,0,2024-02-20,69.163064,34.529798,Matched
+C00240,Ahmad Popal,"191 Old City Rd, River Park, Capital Region",Capital City,DZ-10,River Park,Prepaid,16,4.01,0.507,2.43,46.3,0,2023-09-02,69.200572,34.498944,Matched
+C00241,Yara Sadat,"200 Garden Ln, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Postpaid,59,23.8,0.174,2.27,43.2,0,2022-11-03,69.164906,34.539137,Matched
+C00242,Fatima Noori,"97 Main St, North Residential, Capital Region",Capital City,DZ-02,North Residential,Prepaid,36,16.26,0.145,1.53,46.4,0,2023-10-02,,,NeedsGeocode
+C00243,Hassan Noori,"78 Garden Ln, Old City, Capital Region",Capital City,DZ-08,Old City,Postpaid,36,23.6,0.278,2.26,25.4,0,2025-07-03,,,NeedsGeocode
+C00244,Bilal Rahimi,"85 Station Rd, West Expansion, Capital Region",Capital City,DZ-04,West Expansion,Prepaid,49,8.05,0.659,2.65,29.1,0,2023-08-08,69.110899,34.528776,Matched
+C00245,Hoda Hashimi,"11 Old City Rd, River Park, Capital Region",Capital City,DZ-10,River Park,Postpaid,25,36.32,0.163,2.13,40.1,0,2025-08-16,69.186579,34.492698,Matched
+C00246,Lina Sadat,"132 Park Ave, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Enterprise,11,69.15,0.275,2.75,36.6,2,2024-02-07,69.15529,34.532199,Matched
+C00247,Samir Karimi,"199 University Ave, South Corridor, Capital Region",Capital City,DZ-05,South Corridor,Postpaid,5,27.95,0.579,2.61,20.3,1,2025-04-09,,,NeedsGeocode
+C00248,Mina Rahimi,"81 Main St, West Expansion, Capital Region",Capital City,DZ-04,West Expansion,Prepaid,8,13.23,0.18,2.3,43.2,1,2021-06-17,69.095378,34.512236,Matched
+C00249,Samir Azizi,"23 River Blvd, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Postpaid,29,22.54,0.207,1.95,30.5,0,2022-05-22,69.166556,34.521406,Matched
+C00250,Mina Popal,"166 Station Rd, River Park, Capital Region",Capital City,DZ-10,River Park,Enterprise,1,68.49,0.511,2.56,29.3,0,2021-05-07,,,NeedsGeocode
+C00251,Hoda Rahimi,"106 Old City Rd, Old City, Capital Region",Capital City,DZ-08,Old City,Postpaid,10,29.5,0.272,1.93,31.9,2,2025-08-21,69.191036,34.510817,Matched
+C00252,Karim Salehi,"26 Hill St, South Corridor, Capital Region",Capital City,DZ-05,South Corridor,Postpaid,32,29.45,0.236,1.94,42.1,0,2022-06-16,69.179789,34.479245,Matched
+C00253,Bilal Popal,"150 Market Rd, South Corridor, Capital Region",Capital City,DZ-05,South Corridor,Prepaid,24,15.58,0.232,2.25,34.9,0,2023-03-22,69.169912,34.475438,Matched
+C00254,Omar Azizi,"92 River Blvd, Old City, Capital Region",Capital City,DZ-08,Old City,Prepaid,7,8.9,0.568,2.61,37.1,0,2021-12-03,69.166119,34.52142,Matched
+C00255,Samir Noori,"209 Airport Rd, River Park, Capital Region",Capital City,DZ-10,River Park,Prepaid,50,4.65,0.565,2.31,43.3,0,2022-10-24,69.201622,34.490836,Matched
+C00256,Omar Azizi,"24 University Ave, New Town, Capital Region",Capital City,DZ-09,New Town,Prepaid,1,15.52,0.542,3.1,33.9,0,2022-03-19,69.080669,34.561289,Matched
+C00257,Hassan Hashimi,"189 New Town Blvd, Tech Park, Capital Region",Capital City,DZ-11,Tech Park,Prepaid,23,18.56,0.363,2.79,15.4,0,2024-01-02,69.113701,34.48234,Matched
+C00258,Reza Hashimi,"134 Old City Rd, Peri-Urban North, Capital Region",Capital City,DZ-12,Peri-Urban North,Postpaid,54,33.58,0.198,2.19,43.0,1,2021-09-09,69.163403,34.5844,Matched
+C00259,Karim Sadat,"91 Station Rd, West Expansion, Capital Region",Capital City,DZ-04,West Expansion,Prepaid,31,12.35,0.273,2.28,32.8,0,2022-06-20,69.108051,34.514693,Matched
+C00260,Reza Rahimi,"208 Station Rd, Old City, Capital Region",Capital City,DZ-08,Old City,Postpaid,31,29.96,0.23,2.23,38.9,0,2022-10-19,69.184401,34.519261,Matched
+C00261,Yara Karimi,"147 Market Rd, North Residential, Capital Region",Capital City,DZ-02,North Residential,Prepaid,17,16.26,0.202,2.96,39.4,3,2022-08-20,69.148447,34.558355,Matched
+C00262,Omar Hashimi,"213 University Ave, Peri-Urban North, Capital Region",Capital City,DZ-12,Peri-Urban North,Prepaid,51,10.19,0.178,2.45,44.0,3,2025-10-03,69.155483,34.593288,Matched
+C00263,Tariq Azizi,"52 Industrial Way, North Residential, Capital Region",Capital City,DZ-02,North Residential,Postpaid,33,25.0,0.196,1.65,45.0,0,2021-02-16,69.147116,34.562528,Matched
+C00264,Samir Wardak,"1 Old City Rd, University Belt, Capital Region",Capital City,DZ-07,University Belt,Postpaid,34,25.12,0.242,3.01,35.8,1,2024-06-19,69.126282,34.55313,Matched
+C00265,Lina Rahimi,"148 Park Ave, New Town, Capital Region",Capital City,DZ-09,New Town,Prepaid,17,9.12,0.622,2.05,39.1,1,2021-10-17,69.102759,34.54666,Matched
+C00266,Reza Salehi,"177 Station Rd, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Prepaid,7,12.26,0.148,2.34,38.9,0,2023-11-13,69.165833,34.539652,Matched
+C00267,Hoda Ahmadi,"124 Market Rd, Old City, Capital Region",Capital City,DZ-08,Old City,Prepaid,36,3.5,0.589,2.77,34.9,1,2024-12-06,69.173029,34.522261,Matched
+C00268,Sara Noori,"206 Industrial Way, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Prepaid,44,11.63,0.301,2.09,35.0,0,2025-07-03,,,NeedsGeocode
+C00269,Bilal Wardak,"10 New Town Blvd, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Prepaid,26,8.34,0.579,2.38,43.0,0,2022-11-26,69.165577,34.531217,Matched
+C00270,Omar Ahmadi,"131 Industrial Way, South Corridor, Capital Region",Capital City,DZ-05,South Corridor,Postpaid,40,34.58,0.258,1.96,26.6,4,2024-06-22,,,NeedsGeocode
+C00271,Lina Salehi,"189 New Town Blvd, West Expansion, Capital Region",Capital City,DZ-04,West Expansion,Prepaid,6,5.87,0.525,2.17,41.3,3,2024-07-19,69.091717,34.515025,Matched
+C00272,Hoda Salehi,"144 Park Ave, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Prepaid,22,16.23,0.272,2.79,40.9,0,2024-07-19,69.161053,34.532313,Matched
+C00273,Bilal Sadat,"199 Garden Ln, South Corridor, Capital Region",Capital City,DZ-05,South Corridor,Postpaid,58,27.19,0.223,1.86,33.9,2,2024-06-17,69.175308,34.487282,Matched
+C00274,Nadia Sadat,"74 Park Ave, South Corridor, Capital Region",Capital City,DZ-05,South Corridor,Prepaid,48,9.02,0.615,1.73,40.0,2,2023-03-24,69.174022,34.478098,Matched
+C00275,Sara Ahmadi,"52 Hill St, University Belt, Capital Region",Capital City,DZ-07,University Belt,Postpaid,56,27.72,0.244,2.76,36.8,1,2024-10-01,69.147939,34.539957,Matched
+C00276,Omar Azizi,"124 Station Rd, Old City, Capital Region",Capital City,DZ-08,Old City,Postpaid,32,27.7,0.264,2.89,37.4,0,2022-10-05,69.190746,34.512728,Matched
+C00277,Ahmad Rahimi,"139 Main St, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Prepaid,26,16.42,0.262,1.96,32.1,1,2024-10-04,69.16778,34.519308,Matched
+C00278,Reza Hashimi,"141 River Blvd, East Industrial, Capital Region",Capital City,DZ-03,East Industrial,Prepaid,31,9.98,0.621,2.09,33.3,0,2024-05-15,69.209361,34.525289,Matched
+C00279,Samir Rahimi,"59 Park Ave, North Residential, Capital Region",Capital City,DZ-02,North Residential,Postpaid,52,28.38,0.257,2.02,36.2,0,2024-03-28,69.157118,34.567689,Matched
+C00280,Hoda Karimi,"125 River Blvd, University Belt, Capital Region",Capital City,DZ-07,University Belt,Prepaid,55,11.26,0.231,2.17,38.6,0,2021-08-24,,,NeedsGeocode
+C00281,Omar Karimi,"208 River Blvd, East Industrial, Capital Region",Capital City,DZ-03,East Industrial,Prepaid,27,17.82,0.31,2.07,32.9,0,2025-08-25,69.213415,34.537863,Matched
+C00282,Mina Salehi,"74 Garden Ln, Old City, Capital Region",Capital City,DZ-08,Old City,Postpaid,10,25.5,0.21,2.28,46.6,0,2021-02-06,69.196099,34.521027,Matched
+C00283,Reza Noori,"182 River Blvd, East Industrial, Capital Region",Capital City,DZ-03,East Industrial,Prepaid,26,11.42,0.317,2.4,31.1,0,2021-03-24,69.215479,34.540726,Matched
+C00284,Ahmad Popal,"192 Park Ave, North Residential, Capital Region",Capital City,DZ-02,North Residential,Prepaid,26,18.6,0.24,1.95,34.1,0,2021-02-09,69.158603,34.559863,Matched
+C00285,Hoda Hashimi,"100 River Blvd, Airport Zone, Capital Region",Capital City,DZ-06,Airport Zone,Prepaid,48,10.8,0.213,2.96,29.1,2,2024-09-09,69.225989,34.574363,Matched
+C00286,Bilal Azizi,"139 Market Rd, South Corridor, Capital Region",Capital City,DZ-05,South Corridor,Prepaid,30,19.31,0.191,2.3,42.4,0,2023-08-18,69.185969,34.492875,Matched
+C00287,Tariq Wardak,"106 River Blvd, North Residential, Capital Region",Capital City,DZ-02,North Residential,Prepaid,1,19.35,0.539,2.24,33.0,3,2024-05-01,,,NeedsGeocode
+C00288,Yara Popal,"204 Main St, Old City, Capital Region",Capital City,DZ-08,Old City,Prepaid,13,6.85,0.562,2.4,35.9,2,2022-05-03,69.185009,34.518202,Matched
+C00289,Sara Wardak,"157 New Town Blvd, West Expansion, Capital Region",Capital City,DZ-04,West Expansion,Postpaid,19,25.06,0.265,2.17,25.2,1,2023-12-20,69.100892,34.533576,Matched
+C00290,Sara Noori,"137 Main St, South Corridor, Capital Region",Capital City,DZ-05,South Corridor,Prepaid,7,14.08,0.266,2.08,28.9,0,2022-06-14,,,NeedsGeocode
+C00291,Omar Sadat,"119 New Town Blvd, East Industrial, Capital Region",Capital City,DZ-03,East Industrial,Postpaid,22,33.84,0.301,2.53,23.0,2,2023-07-27,69.228612,34.503186,Matched
+C00292,Lina Wardak,"99 Garden Ln, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Prepaid,3,10.99,0.4,2.45,37.5,0,2023-06-06,69.171439,34.540509,Matched
+C00293,Reza Hashimi,"134 Park Ave, University Belt, Capital Region",Capital City,DZ-07,University Belt,Prepaid,41,10.86,0.229,2.82,35.8,0,2023-10-04,69.158177,34.549934,Matched
+C00294,Bilal Salehi,"149 New Town Blvd, West Expansion, Capital Region",Capital City,DZ-04,West Expansion,Prepaid,39,22.53,0.229,2.93,29.7,0,2021-01-12,69.107211,34.520915,Matched
+C00295,Nadia Noori,"33 Garden Ln, University Belt, Capital Region",Capital City,DZ-07,University Belt,Prepaid,36,13.61,0.234,2.12,36.0,0,2021-08-23,69.135735,34.531492,Matched
+C00296,Hoda Azizi,"49 Airport Rd, West Expansion, Capital Region",Capital City,DZ-04,West Expansion,Prepaid,23,17.94,0.161,2.04,45.5,0,2025-03-15,69.086942,34.516572,Matched
+C00297,Bilal Azizi,"1 Old City Rd, East Industrial, Capital Region",Capital City,DZ-03,East Industrial,Prepaid,47,12.31,0.287,2.87,31.0,2,2022-09-22,69.219359,34.537625,Matched
+C00298,Omar Rahimi,"83 University Ave, South Corridor, Capital Region",Capital City,DZ-05,South Corridor,Postpaid,8,26.25,0.194,2.61,30.9,0,2024-04-04,69.176429,34.469547,Matched
+C00299,Fatima Ahmadi,"126 Industrial Way, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Postpaid,38,27.86,0.212,1.56,43.5,0,2021-06-18,69.160009,34.52183,Matched
+C00300,Lina Azizi,"204 New Town Blvd, Old City, Capital Region",Capital City,DZ-08,Old City,Prepaid,40,7.28,0.516,1.46,36.3,0,2022-09-13,69.192637,34.526479,Matched
+C00301,Tariq Ahmadi,"161 Market Rd, North Residential, Capital Region",Capital City,DZ-02,North Residential,Prepaid,36,10.37,0.202,1.93,40.3,0,2022-09-13,69.144031,34.559009,Matched
+C00302,Samir Popal,"154 Garden Ln, South Corridor, Capital Region",Capital City,DZ-05,South Corridor,Enterprise,58,59.51,0.193,2.99,36.4,2,2023-10-08,69.176919,34.474575,Matched
+C00303,Tariq Karimi,"191 River Blvd, South Corridor, Capital Region",Capital City,DZ-05,South Corridor,Prepaid,29,8.19,0.613,3.13,35.8,0,2022-04-28,69.178063,34.493281,Matched
+C00304,Nadia Noori,"211 River Blvd, East Industrial, Capital Region",Capital City,DZ-03,East Industrial,Postpaid,33,18.5,0.21,2.86,35.5,0,2023-10-08,,,NeedsGeocode
+C00305,Hoda Ahmadi,"103 Airport Rd, North Residential, Capital Region",Capital City,DZ-02,North Residential,Postpaid,47,31.14,0.236,2.37,39.1,1,2023-01-24,69.151315,34.556743,Matched
+C00306,Yara Salehi,"198 Station Rd, New Town, Capital Region",Capital City,DZ-09,New Town,Prepaid,53,16.72,0.189,2.82,36.1,3,2024-01-10,69.093305,34.544758,Matched
+C00307,Lina Popal,"84 Industrial Way, South Corridor, Capital Region",Capital City,DZ-05,South Corridor,Postpaid,10,34.16,0.288,2.61,29.2,0,2024-03-05,69.170646,34.489357,Matched
+C00308,Hassan Sadat,"141 University Ave, East Industrial, Capital Region",Capital City,DZ-03,East Industrial,Prepaid,26,13.0,0.224,2.73,33.0,0,2025-04-18,69.22405,34.516921,Matched
+C00309,Nadia Salehi,"19 River Blvd, Airport Zone, Capital Region",Capital City,DZ-06,Airport Zone,Postpaid,21,25.91,0.154,2.04,38.8,1,2023-03-12,69.209459,34.559009,Matched
+C00310,Sara Ahmadi,"38 Garden Ln, Airport Zone, Capital Region",Capital City,DZ-06,Airport Zone,Prepaid,53,11.73,0.218,2.7,30.9,1,2022-10-05,69.200389,34.573628,Matched
+C00311,Fatima Salehi,"178 Park Ave, River Park, Capital Region",Capital City,DZ-10,River Park,Prepaid,31,14.71,0.197,1.72,40.4,1,2022-12-23,69.195567,34.498797,Matched
+C00312,Bilal Rahimi,"135 Main St, University Belt, Capital Region",Capital City,DZ-07,University Belt,Prepaid,4,18.09,0.432,2.65,40.1,0,2023-11-28,,,NeedsGeocode
+C00313,Lina Azizi,"75 Old City Rd, River Park, Capital Region",Capital City,DZ-10,River Park,Prepaid,25,5.72,0.617,2.31,37.4,3,2025-12-01,69.192559,34.502942,Matched
+C00314,Hassan Karimi,"126 University Ave, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Postpaid,2,26.4,0.432,1.97,40.9,2,2023-07-27,69.164325,34.534026,Matched
+C00315,Lina Popal,"58 Market Rd, Peri-Urban North, Capital Region",Capital City,DZ-12,Peri-Urban North,Prepaid,26,11.05,0.27,3.3,31.3,0,2022-07-10,69.178334,34.583287,Matched
+C00316,Tariq Azizi,"53 Old City Rd, River Park, Capital Region",Capital City,DZ-10,River Park,Prepaid,35,16.39,0.193,1.63,38.6,2,2024-03-21,69.19214,34.495221,Matched
+C00317,Reza Karimi,"143 Industrial Way, Tech Park, Capital Region",Capital City,DZ-11,Tech Park,Enterprise,8,86.54,0.212,1.73,32.3,0,2023-03-25,69.131065,34.496521,Matched
+C00318,Sara Wardak,"157 Airport Rd, North Residential, Capital Region",Capital City,DZ-02,North Residential,Prepaid,37,12.68,0.332,2.95,23.1,0,2025-08-23,,,NeedsGeocode
+C00319,Lina Sadat,"122 Market Rd, University Belt, Capital Region",Capital City,DZ-07,University Belt,Prepaid,15,18.66,0.138,1.79,40.0,0,2024-10-16,69.143192,34.552249,Matched
+C00320,Yara Salehi,"110 University Ave, University Belt, Capital Region",Capital City,DZ-07,University Belt,Postpaid,39,21.79,0.213,1.97,38.6,1,2025-11-23,69.142736,34.5562,Matched
+C00321,Ahmad Sadat,"212 Main St, Old City, Capital Region",Capital City,DZ-08,Old City,Postpaid,16,24.01,0.287,2.6,32.4,0,2024-05-25,69.176305,34.513865,Matched
+C00322,Sara Noori,"157 Main St, New Town, Capital Region",Capital City,DZ-09,New Town,Postpaid,58,29.01,0.136,2.55,42.1,1,2025-03-13,69.089059,34.546863,Matched
+C00323,Sara Ahmadi,"152 New Town Blvd, West Expansion, Capital Region",Capital City,DZ-04,West Expansion,Postpaid,57,25.09,0.221,2.82,42.1,0,2024-11-12,69.095215,34.521525,Matched
+C00324,Hoda Noori,"131 Airport Rd, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Enterprise,25,51.7,0.26,1.79,29.9,0,2022-03-25,69.166705,34.524582,Matched
+C00325,Hoda Wardak,"197 Garden Ln, Old City, Capital Region",Capital City,DZ-08,Old City,Prepaid,12,13.57,0.192,2.49,34.4,0,2021-10-16,69.178975,34.518333,Matched
+C00326,Hoda Sadat,"105 Garden Ln, North Residential, Capital Region",Capital City,DZ-02,North Residential,Prepaid,39,9.59,0.543,2.99,32.3,0,2022-01-21,69.152861,34.552289,Matched
+C00327,Yara Salehi,"148 Airport Rd, West Expansion, Capital Region",Capital City,DZ-04,West Expansion,Prepaid,59,13.64,0.293,1.91,32.3,1,2025-03-15,69.101255,34.521626,Matched
+C00328,Karim Wardak,"197 River Blvd, Old City, Capital Region",Capital City,DZ-08,Old City,Prepaid,58,12.83,0.219,1.71,35.2,0,2023-06-17,69.187011,34.51362,Matched
+C00329,Reza Salehi,"15 Park Ave, West Expansion, Capital Region",Capital City,DZ-04,West Expansion,Prepaid,41,10.31,0.282,2.65,35.6,2,2023-09-19,69.101368,34.525305,Matched
+C00330,Karim Sadat,"145 Garden Ln, Peri-Urban North, Capital Region",Capital City,DZ-12,Peri-Urban North,Prepaid,41,13.68,0.173,2.53,46.2,0,2021-08-21,69.15938,34.587439,Matched
+C00331,Sara Karimi,"158 University Ave, New Town, Capital Region",Capital City,DZ-09,New Town,Prepaid,22,7.75,0.512,2.36,42.3,0,2025-06-25,69.089571,34.549563,Matched
+C00332,Fatima Wardak,"186 Airport Rd, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Prepaid,2,8.64,0.828,1.72,43.3,1,2022-08-05,69.176741,34.525132,Matched
+C00333,Ahmad Sadat,"86 Garden Ln, University Belt, Capital Region",Capital City,DZ-07,University Belt,Postpaid,27,29.22,0.219,2.38,39.3,1,2023-06-03,69.14773,34.538771,Matched
+C00334,Samir Karimi,"97 Old City Rd, Peri-Urban North, Capital Region",Capital City,DZ-12,Peri-Urban North,Prepaid,11,12.99,0.191,1.95,42.1,1,2023-12-02,69.158809,34.589617,Matched
+C00335,Fatima Azizi,"96 Garden Ln, East Industrial, Capital Region",Capital City,DZ-03,East Industrial,Postpaid,20,28.72,0.235,2.99,33.9,0,2024-09-05,69.234003,34.538496,Matched
+C00336,Omar Sadat,"135 River Blvd, North Residential, Capital Region",Capital City,DZ-02,North Residential,Postpaid,10,25.0,0.305,1.99,35.5,1,2024-07-23,69.156635,34.571524,Matched
+C00337,Mina Karimi,"12 Old City Rd, River Park, Capital Region",Capital City,DZ-10,River Park,Postpaid,56,31.83,0.155,2.24,40.9,1,2022-06-07,69.200155,34.504593,Matched
+C00338,Sara Sadat,"113 Old City Rd, North Residential, Capital Region",Capital City,DZ-02,North Residential,Prepaid,10,15.46,0.218,1.88,38.0,0,2025-06-09,69.154668,34.558831,Matched
+C00339,Reza Rahimi,"63 Market Rd, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Prepaid,40,15.89,0.182,1.63,40.4,0,2024-03-23,,,NeedsGeocode
+C00340,Sara Wardak,"180 Garden Ln, Airport Zone, Capital Region",Capital City,DZ-06,Airport Zone,Prepaid,20,7.81,0.58,1.98,36.7,1,2021-12-15,69.203749,34.552295,Matched
+C00341,Nadia Hashimi,"197 Garden Ln, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Prepaid,15,17.27,0.195,2.09,34.1,0,2021-02-16,69.160739,34.538686,Matched
+C00342,Hassan Ahmadi,"73 Station Rd, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Prepaid,9,13.03,0.267,2.39,34.0,1,2025-08-13,69.178356,34.512671,Matched
+C00343,Yara Sadat,"41 Garden Ln, Airport Zone, Capital Region",Capital City,DZ-06,Airport Zone,Prepaid,22,13.6,0.171,2.81,42.5,0,2021-12-23,69.210429,34.570964,Matched
+C00344,Bilal Salehi,"119 Station Rd, Airport Zone, Capital Region",Capital City,DZ-06,Airport Zone,Prepaid,53,12.45,0.285,2.37,28.2,1,2024-06-16,69.221891,34.554323,Matched
+C00345,Fatima Sadat,"36 Airport Rd, University Belt, Capital Region",Capital City,DZ-07,University Belt,Postpaid,41,30.47,0.185,1.97,40.8,0,2023-05-19,69.145192,34.547112,Matched
+C00346,Hoda Noori,"112 New Town Blvd, New Town, Capital Region",Capital City,DZ-09,New Town,Enterprise,23,44.65,0.283,2.49,36.7,2,2021-06-18,69.077482,34.547328,Matched
+C00347,Reza Azizi,"92 Park Ave, Peri-Urban North, Capital Region",Capital City,DZ-12,Peri-Urban North,Postpaid,56,32.17,0.226,2.47,39.5,0,2022-08-05,69.170251,34.590054,Matched
+C00348,Yara Wardak,"216 University Ave, North Residential, Capital Region",Capital City,DZ-02,North Residential,Prepaid,56,18.03,0.234,1.74,33.1,1,2022-02-05,,,NeedsGeocode
+C00349,Reza Salehi,"202 New Town Blvd, University Belt, Capital Region",Capital City,DZ-07,University Belt,Prepaid,28,8.85,0.552,2.73,37.2,0,2024-12-08,69.132377,34.549453,Matched
+C00350,Yara Ahmadi,"148 Station Rd, Old City, Capital Region",Capital City,DZ-08,Old City,Prepaid,3,21.07,0.521,2.83,28.2,0,2025-05-15,69.178842,34.512794,Matched
+C00351,Nadia Azizi,"63 Garden Ln, South Corridor, Capital Region",Capital City,DZ-05,South Corridor,Postpaid,43,29.56,0.325,3.2,25.0,1,2024-08-17,,,NeedsGeocode
+C00352,Karim Rahimi,"91 River Blvd, River Park, Capital Region",Capital City,DZ-10,River Park,Prepaid,3,10.39,0.458,2.29,38.7,1,2025-03-19,69.194206,34.493582,Matched
+C00353,Karim Rahimi,"160 Main St, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Prepaid,6,13.12,0.199,1.68,43.8,1,2025-03-19,69.179528,34.527119,Matched
+C00354,Sara Noori,"45 River Blvd, Old City, Capital Region",Capital City,DZ-08,Old City,Postpaid,16,24.77,0.247,2.89,37.5,1,2022-08-25,69.187288,34.510847,Matched
+C00355,Fatima Popal,"113 New Town Blvd, Peri-Urban North, Capital Region",Capital City,DZ-12,Peri-Urban North,Postpaid,14,21.22,0.133,1.73,45.1,0,2024-12-25,,,NeedsGeocode
+C00356,Bilal Hashimi,"100 Garden Ln, Tech Park, Capital Region",Capital City,DZ-11,Tech Park,Prepaid,34,18.04,0.273,1.65,39.6,3,2021-02-18,69.117789,34.501244,Matched
+C00357,Bilal Salehi,"167 River Blvd, University Belt, Capital Region",Capital City,DZ-07,University Belt,Prepaid,18,12.99,0.205,2.13,41.5,1,2025-06-22,69.148186,34.542688,Matched
+C00358,Yara Karimi,"173 Main St, University Belt, Capital Region",Capital City,DZ-07,University Belt,Postpaid,1,32.56,0.439,2.23,41.4,0,2021-01-20,69.134186,34.549295,Matched
+C00359,Bilal Salehi,"214 Hill St, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Enterprise,41,102.22,0.165,2.39,37.4,2,2022-02-23,69.175835,34.523592,Matched
+C00360,Karim Noori,"20 Old City Rd, North Residential, Capital Region",Capital City,DZ-02,North Residential,Prepaid,18,17.65,0.337,3.04,28.6,1,2023-01-13,69.163943,34.55675,Matched
+C00361,Samir Popal,"209 River Blvd, West Expansion, Capital Region",Capital City,DZ-04,West Expansion,Prepaid,5,3.5,0.877,2.05,31.9,0,2021-08-23,69.106182,34.519843,Matched
+C00362,Bilal Popal,"187 River Blvd, North Residential, Capital Region",Capital City,DZ-02,North Residential,Postpaid,2,28.33,0.505,1.75,39.0,0,2023-07-19,69.150956,34.562984,Matched
+C00363,Fatima Ahmadi,"123 University Ave, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Prepaid,47,13.36,0.242,1.65,39.6,1,2023-06-22,69.161384,34.514749,Matched
+C00364,Bilal Sadat,"166 Park Ave, East Industrial, Capital Region",Capital City,DZ-03,East Industrial,Prepaid,55,16.64,0.262,1.65,37.2,0,2021-07-22,69.206229,34.555657,Matched
+C00365,Lina Wardak,"162 New Town Blvd, North Residential, Capital Region",Capital City,DZ-02,North Residential,Prepaid,6,15.22,0.136,1.34,38.3,0,2025-11-10,69.144318,34.543938,Matched
+C00366,Bilal Azizi,"5 Main St, South Corridor, Capital Region",Capital City,DZ-05,South Corridor,Prepaid,22,10.4,0.339,2.07,23.2,0,2025-03-24,69.169329,34.494268,Matched
+C00367,Tariq Karimi,"37 Garden Ln, Airport Zone, Capital Region",Capital City,DZ-06,Airport Zone,Postpaid,31,32.63,0.163,2.37,35.8,2,2021-08-20,69.211953,34.564002,Matched
+C00368,Hoda Popal,"28 Park Ave, North Residential, Capital Region",Capital City,DZ-02,North Residential,Prepaid,52,8.0,0.527,1.37,40.3,0,2025-09-05,69.143885,34.547587,Matched
+C00369,Tariq Salehi,"12 Airport Rd, East Industrial, Capital Region",Capital City,DZ-03,East Industrial,Prepaid,5,13.6,0.413,2.35,43.1,0,2021-11-20,69.225405,34.528781,Matched
+C00370,Samir Wardak,"21 Main St, West Expansion, Capital Region",Capital City,DZ-04,West Expansion,Prepaid,60,18.89,0.247,2.87,33.3,1,2022-03-21,69.103037,34.529016,Matched
+C00371,Ahmad Azizi,"45 Airport Rd, East Industrial, Capital Region",Capital City,DZ-03,East Industrial,Postpaid,39,30.0,0.262,2.48,40.3,0,2021-09-04,69.214368,34.531813,Matched
+C00372,Bilal Wardak,"130 Hill St, Airport Zone, Capital Region",Capital City,DZ-06,Airport Zone,Prepaid,41,3.5,0.595,2.01,33.0,0,2022-11-02,69.218521,34.580309,Matched
+C00373,Fatima Azizi,"65 Station Rd, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Prepaid,57,12.06,0.25,2.97,33.2,0,2022-12-15,69.161392,34.532134,Matched
+C00374,Reza Sadat,"174 Station Rd, Airport Zone, Capital Region",Capital City,DZ-06,Airport Zone,Prepaid,8,14.37,0.144,1.4,46.1,0,2025-08-02,69.207622,34.562553,Matched
+C00375,Mina Rahimi,"117 Market Rd, River Park, Capital Region",Capital City,DZ-10,River Park,Prepaid,9,9.46,0.605,2.2,30.0,0,2021-08-15,,,NeedsGeocode
+C00376,Hoda Sadat,"76 Airport Rd, West Expansion, Capital Region",Capital City,DZ-04,West Expansion,Prepaid,51,9.19,0.605,2.57,31.4,0,2025-08-28,69.101379,34.520366,Matched
+C00377,Tariq Salehi,"72 Main St, Peri-Urban North, Capital Region",Capital City,DZ-12,Peri-Urban North,Postpaid,48,30.1,0.237,2.0,38.7,2,2024-01-02,69.147216,34.581708,Matched
+C00378,Hassan Rahimi,"109 Industrial Way, Peri-Urban North, Capital Region",Capital City,DZ-12,Peri-Urban North,Prepaid,52,7.29,0.552,2.54,42.0,1,2024-04-05,69.155667,34.589018,Matched
+C00379,Hoda Popal,"5 Garden Ln, West Expansion, Capital Region",Capital City,DZ-04,West Expansion,Postpaid,11,25.71,0.245,1.59,36.6,0,2023-11-15,69.102035,34.549564,Matched
+C00380,Mina Sadat,"99 New Town Blvd, University Belt, Capital Region",Capital City,DZ-07,University Belt,Prepaid,3,12.05,0.493,2.9,34.2,1,2021-10-11,69.124871,34.556239,Matched
+C00381,Hassan Sadat,"173 Station Rd, Old City, Capital Region",Capital City,DZ-08,Old City,Postpaid,8,24.68,0.184,2.15,37.5,0,2023-04-18,69.203155,34.521512,Matched
+C00382,Reza Karimi,"149 New Town Blvd, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Prepaid,48,13.28,0.342,2.51,30.3,0,2023-06-15,69.171006,34.509243,Matched
+C00383,Tariq Ahmadi,"182 Industrial Way, South Corridor, Capital Region",Capital City,DZ-05,South Corridor,Postpaid,35,31.54,0.245,2.75,34.7,0,2024-02-03,69.170964,34.479317,Matched
+C00384,Bilal Rahimi,"20 Park Ave, West Expansion, Capital Region",Capital City,DZ-04,West Expansion,Prepaid,8,21.09,0.269,2.44,37.6,0,2025-03-16,69.094818,34.528721,Matched
+C00385,Samir Hashimi,"75 Hill St, West Expansion, Capital Region",Capital City,DZ-04,West Expansion,Prepaid,56,14.44,0.208,1.98,39.5,0,2025-09-15,69.0892,34.523976,Matched
+C00386,Nadia Karimi,"79 Market Rd, South Corridor, Capital Region",Capital City,DZ-05,South Corridor,Postpaid,15,24.49,0.361,3.72,23.7,0,2022-10-06,,,NeedsGeocode
+C00387,Nadia Noori,"215 New Town Blvd, Old City, Capital Region",Capital City,DZ-08,Old City,Postpaid,43,28.65,0.187,3.07,37.3,0,2021-11-11,69.180272,34.535999,Matched
+C00388,Tariq Hashimi,"42 Industrial Way, Peri-Urban North, Capital Region",Capital City,DZ-12,Peri-Urban North,Prepaid,59,15.5,0.136,2.76,43.9,0,2025-09-11,69.15544,34.59522,Matched
+C00389,Omar Azizi,"194 Airport Rd, University Belt, Capital Region",Capital City,DZ-07,University Belt,Postpaid,52,20.01,0.207,2.55,40.2,0,2021-07-20,69.135194,34.561328,Matched
+C00390,Sara Azizi,"15 Airport Rd, New Town, Capital Region",Capital City,DZ-09,New Town,Postpaid,38,28.59,0.22,2.71,40.1,2,2021-09-13,69.083054,34.551677,Matched
+C00391,Fatima Azizi,"15 Old City Rd, North Residential, Capital Region",Capital City,DZ-02,North Residential,Prepaid,10,11.1,0.194,1.49,37.2,0,2024-12-14,69.145496,34.569932,Matched
+C00392,Hoda Azizi,"109 New Town Blvd, New Town, Capital Region",Capital City,DZ-09,New Town,Postpaid,9,35.03,0.256,2.46,33.3,4,2021-10-25,69.081741,34.551519,Matched
+C00393,Ahmad Karimi,"70 University Ave, West Expansion, Capital Region",Capital City,DZ-04,West Expansion,Prepaid,30,10.34,0.201,1.92,34.0,2,2023-08-18,69.111407,34.520475,Matched
+C00394,Reza Noori,"40 River Blvd, Old City, Capital Region",Capital City,DZ-08,Old City,Prepaid,41,18.99,0.294,2.46,34.1,0,2022-01-04,69.171994,34.517257,Matched
+C00395,Hassan Salehi,"154 New Town Blvd, Old City, Capital Region",Capital City,DZ-08,Old City,Prepaid,31,4.62,0.61,2.4,36.0,0,2023-03-19,69.163771,34.515928,Matched
+C00396,Karim Azizi,"35 Station Rd, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Prepaid,18,19.44,0.178,2.36,44.9,1,2021-09-07,,,NeedsGeocode
+C00397,Hassan Salehi,"193 Market Rd, Old City, Capital Region",Capital City,DZ-08,Old City,Prepaid,56,8.88,0.591,1.91,40.2,0,2022-01-05,69.186452,34.518256,Matched
+C00398,Yara Azizi,"88 Market Rd, South Corridor, Capital Region",Capital City,DZ-05,South Corridor,Prepaid,10,15.3,0.186,2.63,43.9,2,2025-12-25,69.18913,34.473566,Matched
+C00399,Nadia Noori,"30 Market Rd, New Town, Capital Region",Capital City,DZ-09,New Town,Enterprise,31,61.7,0.292,2.75,29.8,1,2021-12-27,69.074541,34.563838,Matched
+C00400,Sara Rahimi,"177 Hill St, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Prepaid,14,16.45,0.16,1.55,41.7,1,2024-01-07,69.175,34.536503,Matched
+C00401,Mina Sadat,"16 Garden Ln, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Prepaid,17,15.26,0.217,1.92,28.2,0,2023-01-03,69.167566,34.518746,Matched
+C00402,Sara Salehi,"149 Station Rd, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Prepaid,55,8.78,0.579,2.69,33.5,1,2025-04-23,69.166821,34.527846,Matched
+C00403,Bilal Ahmadi,"138 Main St, North Residential, Capital Region",Capital City,DZ-02,North Residential,Enterprise,7,105.0,0.296,2.46,34.5,0,2023-07-14,69.146574,34.576886,Matched
+C00404,Ahmad Ahmadi,"81 Park Ave, North Residential, Capital Region",Capital City,DZ-02,North Residential,Prepaid,34,13.94,0.139,2.47,44.2,0,2021-07-10,69.14175,34.56055,Matched
+C00405,Bilal Hashimi,"216 Garden Ln, South Corridor, Capital Region",Capital City,DZ-05,South Corridor,Prepaid,27,10.02,0.227,1.85,36.2,0,2024-11-04,69.173942,34.467852,Matched
+C00406,Sara Hashimi,"31 Market Rd, West Expansion, Capital Region",Capital City,DZ-04,West Expansion,Prepaid,45,11.15,0.198,1.55,44.8,3,2023-04-20,69.115223,34.508102,Matched
+C00407,Fatima Salehi,"109 New Town Blvd, New Town, Capital Region",Capital City,DZ-09,New Town,Prepaid,49,10.8,0.21,2.8,37.2,3,2024-09-09,69.085197,34.558296,Matched
+C00408,Ahmad Noori,"126 Garden Ln, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Prepaid,9,12.57,0.118,2.38,46.6,0,2023-03-10,69.154711,34.52408,Matched
+C00409,Hassan Azizi,"193 Industrial Way, University Belt, Capital Region",Capital City,DZ-07,University Belt,Postpaid,51,24.74,0.159,2.0,44.4,0,2021-07-04,69.142625,34.546816,Matched
+C00410,Reza Noori,"118 Main St, West Expansion, Capital Region",Capital City,DZ-04,West Expansion,Prepaid,36,15.57,0.251,2.79,39.3,0,2024-08-25,69.101413,34.516932,Matched
+C00411,Bilal Hashimi,"176 Industrial Way, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Prepaid,31,9.84,0.519,1.91,38.8,1,2023-06-02,69.159666,34.517528,Matched
+C00412,Nadia Popal,"90 New Town Blvd, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Prepaid,49,14.13,0.253,2.03,33.8,0,2022-04-08,69.163222,34.542628,Matched
+C00413,Karim Rahimi,"17 River Blvd, University Belt, Capital Region",Capital City,DZ-07,University Belt,Prepaid,11,15.53,0.241,2.97,35.0,1,2025-01-11,69.125315,34.53535,Matched
+C00414,Omar Salehi,"207 Garden Ln, West Expansion, Capital Region",Capital City,DZ-04,West Expansion,Prepaid,44,15.32,0.178,2.23,41.7,0,2024-04-16,69.100878,34.511951,Matched
+C00415,Hoda Salehi,"218 Industrial Way, University Belt, Capital Region",Capital City,DZ-07,University Belt,Prepaid,17,24.77,0.151,1.59,46.2,0,2023-05-03,69.143124,34.544487,Matched
+C00416,Reza Popal,"89 Park Ave, South Corridor, Capital Region",Capital City,DZ-05,South Corridor,Postpaid,20,27.18,0.192,1.86,42.0,0,2025-08-22,69.182863,34.471716,Matched
+C00417,Samir Salehi,"181 Industrial Way, Old City, Capital Region",Capital City,DZ-08,Old City,Postpaid,37,22.12,0.256,2.98,34.4,2,2024-10-24,69.185655,34.516405,Matched
+C00418,Tariq Ahmadi,"38 Hill St, University Belt, Capital Region",Capital City,DZ-07,University Belt,Prepaid,44,11.47,0.202,2.6,41.2,1,2024-05-27,69.140059,34.53746,Matched
+C00419,Bilal Rahimi,"61 University Ave, East Industrial, Capital Region",Capital City,DZ-03,East Industrial,Prepaid,10,13.07,0.297,2.47,32.8,0,2023-03-01,69.226494,34.540317,Matched
+C00420,Mina Karimi,"46 Old City Rd, North Residential, Capital Region",Capital City,DZ-02,North Residential,Postpaid,47,22.46,0.251,1.74,37.0,2,2024-06-22,69.15561,34.563872,Matched
+C00421,Karim Wardak,"186 Market Rd, University Belt, Capital Region",Capital City,DZ-07,University Belt,Prepaid,37,11.09,0.278,3.07,35.3,2,2022-10-04,69.156156,34.555297,Matched
+C00422,Karim Wardak,"189 University Ave, Old City, Capital Region",Capital City,DZ-08,Old City,Postpaid,48,34.97,0.273,2.58,24.7,0,2025-01-16,69.166491,34.509134,Matched
+C00423,Ahmad Salehi,"140 University Ave, South Corridor, Capital Region",Capital City,DZ-05,South Corridor,Prepaid,16,20.01,0.278,2.16,37.7,0,2021-12-26,69.173781,34.476278,Matched
+C00424,Ahmad Popal,"164 New Town Blvd, University Belt, Capital Region",Capital City,DZ-07,University Belt,Prepaid,52,15.94,0.223,2.28,36.2,3,2023-05-03,69.136241,34.544852,Matched
+C00425,Fatima Wardak,"42 Garden Ln, Tech Park, Capital Region",Capital City,DZ-11,Tech Park,Postpaid,57,30.19,0.311,2.27,26.0,1,2023-12-14,69.125282,34.493284,Matched
+C00426,Yara Rahimi,"179 River Blvd, River Park, Capital Region",Capital City,DZ-10,River Park,Prepaid,23,5.25,0.599,2.83,33.4,1,2022-11-15,69.184364,34.506374,Matched
+C00427,Mina Popal,"161 River Blvd, Old City, Capital Region",Capital City,DZ-08,Old City,Prepaid,6,14.33,0.195,2.47,43.8,1,2023-08-16,69.190311,34.521109,Matched
+C00428,Hoda Salehi,"152 Station Rd, River Park, Capital Region",Capital City,DZ-10,River Park,Postpaid,13,29.84,0.152,1.97,39.1,0,2021-09-21,69.198889,34.5033,Matched
+C00429,Mina Ahmadi,"119 Hill St, Airport Zone, Capital Region",Capital City,DZ-06,Airport Zone,Prepaid,55,13.98,0.18,1.78,36.7,0,2025-07-25,69.210461,34.568423,Matched
+C00430,Reza Noori,"31 Hill St, River Park, Capital Region",Capital City,DZ-10,River Park,Postpaid,13,29.72,0.273,2.81,33.8,0,2022-10-07,69.202067,34.488531,Matched
+C00431,Bilal Wardak,"108 Market Rd, Peri-Urban North, Capital Region",Capital City,DZ-12,Peri-Urban North,Prepaid,10,22.75,0.212,2.32,32.5,0,2024-03-28,69.157526,34.601773,Matched
+C00432,Tariq Sadat,"183 University Ave, East Industrial, Capital Region",Capital City,DZ-03,East Industrial,Postpaid,48,22.29,0.167,1.35,44.7,0,2023-10-22,,,NeedsGeocode
+C00433,Omar Karimi,"12 Main St, Peri-Urban North, Capital Region",Capital City,DZ-12,Peri-Urban North,Prepaid,40,3.92,0.599,1.81,39.7,0,2024-06-15,,,NeedsGeocode
+C00434,Nadia Popal,"37 River Blvd, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Prepaid,3,16.48,0.476,2.09,46.6,0,2023-10-27,69.179993,34.523962,Matched
+C00435,Omar Rahimi,"43 Station Rd, Old City, Capital Region",Capital City,DZ-08,Old City,Postpaid,32,28.2,0.228,2.4,43.2,0,2021-08-09,,,NeedsGeocode
+C00436,Omar Ahmadi,"127 Main St, North Residential, Capital Region",Capital City,DZ-02,North Residential,Prepaid,46,12.41,0.215,2.18,34.6,0,2022-05-06,69.145435,34.556111,Matched
+C00437,Fatima Ahmadi,"145 Old City Rd, New Town, Capital Region",Capital City,DZ-09,New Town,Prepaid,38,12.36,0.217,1.67,44.7,2,2021-05-22,69.089994,34.540123,Matched
+C00438,Karim Salehi,"28 Station Rd, Peri-Urban North, Capital Region",Capital City,DZ-12,Peri-Urban North,Prepaid,6,14.68,0.205,2.56,38.2,1,2023-01-21,69.159991,34.595574,Matched
+C00439,Reza Ahmadi,"188 Airport Rd, University Belt, Capital Region",Capital City,DZ-07,University Belt,Prepaid,56,17.48,0.272,1.98,25.0,0,2022-04-25,69.12142,34.550639,Matched
+C00440,Samir Popal,"42 University Ave, River Park, Capital Region",Capital City,DZ-10,River Park,Postpaid,19,32.16,0.244,3.03,32.7,1,2023-11-20,69.198461,34.513254,Matched
+C00441,Omar Popal,"132 Hill St, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Prepaid,57,9.59,0.578,1.68,36.6,1,2021-01-17,69.15735,34.514968,Matched
+C00442,Sara Wardak,"176 New Town Blvd, East Industrial, Capital Region",Capital City,DZ-03,East Industrial,Prepaid,32,12.65,0.167,2.24,39.2,0,2022-11-10,69.22409,34.524448,Matched
+C00443,Nadia Karimi,"13 Industrial Way, New Town, Capital Region",Capital City,DZ-09,New Town,Prepaid,3,7.23,0.824,2.31,37.9,1,2025-01-04,69.083375,34.554032,Matched
+C00444,Bilal Wardak,"216 University Ave, Old City, Capital Region",Capital City,DZ-08,Old City,Prepaid,27,13.62,0.26,2.01,37.7,1,2023-06-28,69.184195,34.501329,Matched
+C00445,Reza Salehi,"155 River Blvd, New Town, Capital Region",Capital City,DZ-09,New Town,Postpaid,7,27.3,0.19,1.47,40.8,1,2023-10-27,69.090782,34.558133,Matched
+C00446,Yara Sadat,"177 Old City Rd, Peri-Urban North, Capital Region",Capital City,DZ-12,Peri-Urban North,Prepaid,20,16.6,0.15,1.61,37.2,2,2022-08-21,69.160615,34.582325,Matched
+C00447,Fatima Wardak,"220 Industrial Way, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Prepaid,20,12.28,0.197,1.65,42.8,0,2024-10-08,69.165793,34.54335,Matched
+C00448,Mina Salehi,"14 Station Rd, North Residential, Capital Region",Capital City,DZ-02,North Residential,Prepaid,41,8.8,0.553,1.94,42.1,1,2023-01-16,69.145504,34.546263,Matched
+C00449,Fatima Ahmadi,"174 Garden Ln, West Expansion, Capital Region",Capital City,DZ-04,West Expansion,Prepaid,4,7.88,0.761,1.44,45.6,0,2023-08-23,69.087197,34.518923,Matched
+C00450,Hoda Wardak,"121 Station Rd, West Expansion, Capital Region",Capital City,DZ-04,West Expansion,Prepaid,33,17.46,0.223,3.07,32.0,0,2023-12-23,69.098518,34.526808,Matched
+C00451,Omar Noori,"168 New Town Blvd, West Expansion, Capital Region",Capital City,DZ-04,West Expansion,Prepaid,31,14.37,0.276,2.19,34.7,0,2025-08-04,69.083495,34.529502,Matched
+C00452,Hoda Azizi,"61 Hill St, New Town, Capital Region",Capital City,DZ-09,New Town,Prepaid,2,10.37,0.559,2.45,27.3,0,2021-06-14,69.075313,34.563743,Matched
+C00453,Hassan Salehi,"125 River Blvd, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Enterprise,51,72.15,0.211,1.71,39.0,1,2021-08-26,69.1665,34.538169,Matched
+C00454,Bilal Ahmadi,"28 Airport Rd, South Corridor, Capital Region",Capital City,DZ-05,South Corridor,Prepaid,55,10.37,0.268,2.8,32.2,2,2023-03-24,69.176952,34.482111,Matched
+C00455,Lina Wardak,"188 Park Ave, East Industrial, Capital Region",Capital City,DZ-03,East Industrial,Prepaid,24,10.9,0.278,2.32,33.7,0,2025-03-03,69.211135,34.533413,Matched
+C00456,Reza Popal,"162 Old City Rd, East Industrial, Capital Region",Capital City,DZ-03,East Industrial,Prepaid,49,7.96,0.544,1.92,40.2,2,2025-11-12,69.223755,34.528203,Matched
+C00457,Tariq Noori,"184 Industrial Way, Tech Park, Capital Region",Capital City,DZ-11,Tech Park,Enterprise,6,66.99,0.252,2.23,35.5,2,2021-11-23,,,NeedsGeocode
+C00458,Ahmad Karimi,"108 University Ave, New Town, Capital Region",Capital City,DZ-09,New Town,Postpaid,45,20.45,0.3,2.38,31.2,2,2025-03-23,69.096892,34.570255,Matched
+C00459,Hassan Hashimi,"160 Airport Rd, West Expansion, Capital Region",Capital City,DZ-04,West Expansion,Postpaid,45,23.88,0.206,2.57,44.2,0,2022-09-18,69.089656,34.506857,Matched
+C00460,Hoda Karimi,"134 Station Rd, East Industrial, Capital Region",Capital City,DZ-03,East Industrial,Postpaid,11,30.79,0.217,3.11,32.5,1,2025-02-24,69.232081,34.53846,Matched
+C00461,Yara Salehi,"91 Park Ave, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Prepaid,42,16.07,0.255,1.69,32.4,1,2025-10-08,69.157157,34.536045,Matched
+C00462,Lina Hashimi,"184 Airport Rd, West Expansion, Capital Region",Capital City,DZ-04,West Expansion,Postpaid,46,34.85,0.189,2.56,35.3,0,2022-12-14,69.096855,34.516981,Matched
+C00463,Fatima Popal,"34 Garden Ln, New Town, Capital Region",Capital City,DZ-09,New Town,Prepaid,5,8.67,0.792,2.14,40.3,4,2024-12-14,69.092495,34.556412,Matched
+C00464,Ahmad Noori,"183 Garden Ln, New Town, Capital Region",Capital City,DZ-09,New Town,Prepaid,46,13.64,0.2,2.24,41.4,3,2023-02-20,69.097158,34.55757,Matched
+C00465,Mina Popal,"75 Main St, New Town, Capital Region",Capital City,DZ-09,New Town,Prepaid,8,3.51,0.542,2.24,41.0,0,2023-05-07,69.095911,34.559911,Matched
+C00466,Samir Popal,"141 Station Rd, North Residential, Capital Region",Capital City,DZ-02,North Residential,Prepaid,3,11.74,0.573,2.96,25.3,0,2025-03-25,69.167748,34.559966,Matched
+C00467,Hassan Rahimi,"171 Garden Ln, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Prepaid,47,8.73,0.56,2.03,37.4,3,2024-12-09,69.156134,34.517755,Matched
+C00468,Mina Azizi,"147 Old City Rd, University Belt, Capital Region",Capital City,DZ-07,University Belt,Postpaid,46,23.32,0.228,2.65,35.5,1,2021-10-17,69.152776,34.553348,Matched
+C00469,Sara Azizi,"31 Old City Rd, North Residential, Capital Region",Capital City,DZ-02,North Residential,Enterprise,12,86.69,0.198,2.83,39.7,1,2024-10-02,69.133144,34.562579,Matched
+C00470,Omar Karimi,"47 University Ave, South Corridor, Capital Region",Capital City,DZ-05,South Corridor,Prepaid,34,10.53,0.249,2.17,27.9,0,2023-02-05,69.173498,34.486671,Matched
+C00471,Hoda Ahmadi,"158 Station Rd, East Industrial, Capital Region",Capital City,DZ-03,East Industrial,Prepaid,46,15.71,0.2,2.16,35.6,0,2022-10-19,69.215933,34.53268,Matched
+C00472,Tariq Rahimi,"30 River Blvd, North Residential, Capital Region",Capital City,DZ-02,North Residential,Prepaid,30,11.74,0.241,1.73,30.6,0,2025-11-04,69.152858,34.550534,Matched
+C00473,Lina Azizi,"78 Airport Rd, North Residential, Capital Region",Capital City,DZ-02,North Residential,Prepaid,6,14.68,0.201,1.53,42.9,3,2025-08-02,69.136789,34.555271,Matched
+C00474,Bilal Popal,"75 Old City Rd, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Enterprise,1,81.21,0.436,2.98,33.8,4,2022-10-27,69.157247,34.513325,Matched
+C00475,Hassan Hashimi,"145 Park Ave, South Corridor, Capital Region",Capital City,DZ-05,South Corridor,Prepaid,26,9.6,0.576,2.97,42.7,2,2023-11-09,69.187584,34.483698,Matched
+C00476,Tariq Rahimi,"170 Station Rd, Peri-Urban North, Capital Region",Capital City,DZ-12,Peri-Urban North,Prepaid,30,8.92,0.617,2.05,41.2,1,2021-01-22,69.145712,34.588324,Matched
+C00477,Sara Hashimi,"126 University Ave, North Residential, Capital Region",Capital City,DZ-02,North Residential,Prepaid,51,16.15,0.174,2.64,45.9,3,2024-10-12,69.138397,34.555758,Matched
+C00478,Bilal Hashimi,"3 Park Ave, West Expansion, Capital Region",Capital City,DZ-04,West Expansion,Prepaid,60,5.81,0.555,1.64,37.8,0,2025-11-10,69.091878,34.527769,Matched
+C00479,Karim Salehi,"93 Main St, New Town, Capital Region",Capital City,DZ-09,New Town,Prepaid,58,10.45,0.297,3.66,24.3,0,2022-09-07,69.094038,34.577027,Matched
+C00480,Tariq Azizi,"145 Market Rd, University Belt, Capital Region",Capital City,DZ-07,University Belt,Prepaid,9,9.57,0.592,1.73,41.7,1,2023-04-28,69.129533,34.533902,Matched
+C00481,Nadia Popal,"137 Airport Rd, University Belt, Capital Region",Capital City,DZ-07,University Belt,Prepaid,36,12.19,0.216,2.58,38.3,2,2024-05-04,69.152279,34.544379,Matched
+C00482,Reza Sadat,"195 Main St, University Belt, Capital Region",Capital City,DZ-07,University Belt,Postpaid,15,28.79,0.127,2.69,42.8,0,2025-01-24,69.139665,34.537589,Matched
+C00483,Tariq Hashimi,"64 Hill St, North Residential, Capital Region",Capital City,DZ-02,North Residential,Prepaid,20,17.17,0.139,2.03,36.1,2,2022-02-16,69.142538,34.541308,Matched
+C00484,Mina Ahmadi,"86 Industrial Way, North Residential, Capital Region",Capital City,DZ-02,North Residential,Postpaid,5,29.13,0.528,2.63,36.3,0,2021-01-13,69.154312,34.558554,Matched
+C00485,Hoda Popal,"33 Main St, East Industrial, Capital Region",Capital City,DZ-03,East Industrial,Postpaid,29,33.17,0.17,1.49,37.5,0,2025-07-08,,,NeedsGeocode
+C00486,Samir Rahimi,"117 University Ave, River Park, Capital Region",Capital City,DZ-10,River Park,Prepaid,28,6.56,0.577,2.32,39.0,0,2023-10-07,69.198709,34.50261,Matched
+C00487,Samir Rahimi,"152 Hill St, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Postpaid,9,26.0,0.182,2.49,39.9,0,2023-10-14,69.177608,34.528975,Matched
+C00488,Hassan Salehi,"150 Industrial Way, South Corridor, Capital Region",Capital City,DZ-05,South Corridor,Postpaid,10,24.93,0.259,2.66,30.3,1,2022-01-08,69.170322,34.475641,Matched
+C00489,Fatima Salehi,"109 Station Rd, South Corridor, Capital Region",Capital City,DZ-05,South Corridor,Prepaid,13,10.3,0.19,1.9,35.4,1,2025-10-11,69.183071,34.466386,Matched
+C00490,Lina Wardak,"117 Main St, Airport Zone, Capital Region",Capital City,DZ-06,Airport Zone,Prepaid,59,13.16,0.127,1.67,39.3,1,2023-12-13,69.205856,34.560847,Matched
+C00491,Ahmad Sadat,"93 Main St, North Residential, Capital Region",Capital City,DZ-02,North Residential,Prepaid,2,9.91,0.789,2.37,44.0,0,2022-04-09,69.159735,34.582207,Matched
+C00492,Bilal Ahmadi,"46 Hill St, Old City, Capital Region",Capital City,DZ-08,Old City,Prepaid,54,16.3,0.25,1.97,34.4,0,2022-05-15,69.183506,34.509559,Matched
+C00493,Yara Hashimi,"135 Airport Rd, North Residential, Capital Region",Capital City,DZ-02,North Residential,Postpaid,57,27.51,0.28,1.86,31.5,0,2024-11-08,69.154296,34.549047,Matched
+C00494,Hoda Azizi,"219 Industrial Way, River Park, Capital Region",Capital City,DZ-10,River Park,Prepaid,10,6.7,0.54,1.57,41.5,3,2024-04-24,69.191102,34.500874,Matched
+C00495,Hassan Wardak,"17 Market Rd, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Prepaid,49,16.93,0.198,2.28,35.0,1,2024-08-09,69.153393,34.530164,Matched
+C00496,Tariq Popal,"167 Main St, Airport Zone, Capital Region",Capital City,DZ-06,Airport Zone,Prepaid,58,6.6,0.551,2.9,34.9,1,2023-05-18,69.201015,34.555853,Matched
+C00497,Nadia Karimi,"133 Station Rd, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Prepaid,3,6.56,0.835,2.36,33.7,0,2022-08-08,69.165068,34.521311,Matched
+C00498,Nadia Rahimi,"76 Industrial Way, East Industrial, Capital Region",Capital City,DZ-03,East Industrial,Prepaid,42,15.95,0.262,2.39,24.9,0,2023-04-22,69.222414,34.545302,Matched
+C00499,Karim Karimi,"175 River Blvd, East Industrial, Capital Region",Capital City,DZ-03,East Industrial,Prepaid,39,26.36,0.332,3.09,31.5,2,2024-07-27,,,NeedsGeocode
+C00500,Samir Azizi,"132 Market Rd, Airport Zone, Capital Region",Capital City,DZ-06,Airport Zone,Postpaid,15,24.26,0.16,2.51,40.5,1,2024-06-26,69.209638,34.559932,Matched
+C00501,Fatima Hashimi,"179 University Ave, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Prepaid,29,12.6,0.223,3.05,30.8,0,2024-07-22,69.169794,34.521022,Matched
+C00502,Nadia Salehi,"77 Station Rd, Old City, Capital Region",Capital City,DZ-08,Old City,Prepaid,37,5.89,0.615,3.02,31.8,1,2025-10-19,69.183422,34.515988,Matched
+C00503,Bilal Azizi,"101 Park Ave, River Park, Capital Region",Capital City,DZ-10,River Park,Prepaid,13,8.47,0.556,2.21,42.0,0,2025-08-01,69.200365,34.499328,Matched
+C00504,Nadia Popal,"73 Hill St, North Residential, Capital Region",Capital City,DZ-02,North Residential,Prepaid,43,16.34,0.256,2.4,32.0,0,2021-03-18,,,NeedsGeocode
+C00505,Hassan Wardak,"53 Market Rd, West Expansion, Capital Region",Capital City,DZ-04,West Expansion,Postpaid,20,22.27,0.196,2.35,43.9,0,2021-03-15,69.099658,34.512066,Matched
+C00506,Bilal Wardak,"135 Station Rd, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Postpaid,57,32.3,0.276,2.53,26.1,0,2023-07-20,69.170199,34.516291,Matched
+C00507,Tariq Noori,"46 Airport Rd, New Town, Capital Region",Capital City,DZ-09,New Town,Postpaid,30,23.61,0.205,1.52,43.1,0,2025-05-22,,,NeedsGeocode
+C00508,Samir Hashimi,"56 Garden Ln, River Park, Capital Region",Capital City,DZ-10,River Park,Prepaid,49,5.93,0.529,2.81,38.0,0,2022-05-07,69.20278,34.495893,Matched
+C00509,Omar Hashimi,"178 Old City Rd, South Corridor, Capital Region",Capital City,DZ-05,South Corridor,Postpaid,25,25.76,0.223,1.77,30.9,1,2024-08-15,69.171968,34.480735,Matched
+C00510,Karim Ahmadi,"113 Market Rd, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Prepaid,18,11.11,0.275,1.91,30.0,0,2024-03-03,69.171719,34.522314,Matched
+C00511,Bilal Ahmadi,"113 Station Rd, University Belt, Capital Region",Capital City,DZ-07,University Belt,Prepaid,46,17.86,0.147,2.37,45.5,0,2023-08-02,69.146376,34.54545,Matched
+C00512,Hoda Sadat,"52 Hill St, Airport Zone, Capital Region",Capital City,DZ-06,Airport Zone,Prepaid,16,13.17,0.132,1.29,38.9,1,2021-04-04,,,NeedsGeocode
+C00513,Reza Ahmadi,"43 Main St, New Town, Capital Region",Capital City,DZ-09,New Town,Prepaid,7,13.42,0.18,2.23,47.3,0,2021-06-11,69.092349,34.550756,Matched
+C00514,Tariq Sadat,"100 Hill St, North Residential, Capital Region",Capital City,DZ-02,North Residential,Prepaid,5,14.01,0.455,1.81,41.8,0,2025-08-04,,,NeedsGeocode
+C00515,Nadia Noori,"146 Market Rd, Old City, Capital Region",Capital City,DZ-08,Old City,Prepaid,7,3.5,0.549,2.36,46.5,1,2023-11-16,69.189635,34.497524,Matched
+C00516,Mina Ahmadi,"115 University Ave, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Prepaid,48,12.98,0.191,2.42,42.2,0,2024-04-20,69.151739,34.545534,Matched
+C00517,Karim Hashimi,"52 Market Rd, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Prepaid,42,20.81,0.183,2.74,44.8,1,2021-09-26,69.171104,34.535151,Matched
+C00518,Lina Sadat,"7 Hill St, Peri-Urban North, Capital Region",Capital City,DZ-12,Peri-Urban North,Postpaid,22,25.35,0.153,1.6,38.5,1,2024-09-11,69.164279,34.586055,Matched
+C00519,Tariq Sadat,"126 Park Ave, North Residential, Capital Region",Capital City,DZ-02,North Residential,Enterprise,4,69.5,0.432,1.65,39.0,0,2021-07-24,69.147995,34.557871,Matched
+C00520,Samir Wardak,"109 Market Rd, South Corridor, Capital Region",Capital City,DZ-05,South Corridor,Prepaid,20,14.28,0.24,2.43,33.8,0,2023-07-13,69.171696,34.482726,Matched
+C00521,Karim Salehi,"189 University Ave, North Residential, Capital Region",Capital City,DZ-02,North Residential,Postpaid,53,32.4,0.189,1.91,39.4,0,2025-12-06,69.141145,34.563418,Matched
+C00522,Ahmad Rahimi,"97 Industrial Way, North Residential, Capital Region",Capital City,DZ-02,North Residential,Prepaid,5,13.0,0.439,2.55,35.7,2,2023-08-13,69.147371,34.551433,Matched
+C00523,Omar Sadat,"96 University Ave, Tech Park, Capital Region",Capital City,DZ-11,Tech Park,Prepaid,42,13.53,0.359,3.54,22.0,1,2023-12-12,69.144759,34.492218,Matched
+C00524,Nadia Rahimi,"179 Main St, South Corridor, Capital Region",Capital City,DZ-05,South Corridor,Postpaid,60,28.44,0.246,2.09,33.1,1,2022-05-20,69.174759,34.467813,Matched
+C00525,Tariq Ahmadi,"155 Airport Rd, South Corridor, Capital Region",Capital City,DZ-05,South Corridor,Enterprise,54,78.95,0.206,2.75,33.0,0,2022-07-06,69.172428,34.474438,Matched
+C00526,Sara Ahmadi,"137 Old City Rd, New Town, Capital Region",Capital City,DZ-09,New Town,Postpaid,38,31.39,0.15,1.91,46.6,1,2023-03-09,69.093384,34.554878,Matched
+C00527,Reza Noori,"79 Main St, Old City, Capital Region",Capital City,DZ-08,Old City,Enterprise,53,68.24,0.258,2.23,35.1,0,2022-12-05,69.192293,34.511569,Matched
+C00528,Tariq Popal,"116 Airport Rd, North Residential, Capital Region",Capital City,DZ-02,North Residential,Postpaid,12,36.87,0.189,2.67,40.3,0,2025-02-28,69.150188,34.568075,Matched
+C00529,Ahmad Salehi,"32 River Blvd, University Belt, Capital Region",Capital City,DZ-07,University Belt,Prepaid,2,8.08,0.774,1.39,39.8,1,2021-02-07,69.14297,34.546628,Matched
+C00530,Nadia Hashimi,"195 River Blvd, South Corridor, Capital Region",Capital City,DZ-05,South Corridor,Enterprise,31,75.93,0.33,2.88,26.0,2,2023-11-13,69.170325,34.490863,Matched
+C00531,Karim Sadat,"85 Park Ave, West Expansion, Capital Region",Capital City,DZ-04,West Expansion,Prepaid,56,9.95,0.663,2.03,32.1,0,2025-11-22,69.107025,34.522642,Matched
+C00532,Yara Hashimi,"1 Old City Rd, River Park, Capital Region",Capital City,DZ-10,River Park,Enterprise,53,72.94,0.201,2.5,41.0,1,2022-10-16,69.182813,34.488297,Matched
+C00533,Tariq Salehi,"110 Garden Ln, West Expansion, Capital Region",Capital City,DZ-04,West Expansion,Enterprise,55,72.85,0.195,2.39,40.7,1,2025-01-05,69.097495,34.517858,Matched
+C00534,Omar Ahmadi,"141 Garden Ln, South Corridor, Capital Region",Capital City,DZ-05,South Corridor,Prepaid,29,15.93,0.339,2.64,29.3,0,2021-03-11,69.171503,34.492912,Matched
+C00535,Nadia Sadat,"66 Old City Rd, River Park, Capital Region",Capital City,DZ-10,River Park,Prepaid,58,9.17,0.592,2.4,39.3,3,2025-02-21,69.195577,34.494385,Matched
+C00536,Sara Karimi,"186 University Ave, East Industrial, Capital Region",Capital City,DZ-03,East Industrial,Postpaid,51,24.47,0.307,3.24,31.1,0,2021-06-24,69.209604,34.541142,Matched
+C00537,Reza Hashimi,"147 Station Rd, Airport Zone, Capital Region",Capital City,DZ-06,Airport Zone,Prepaid,21,17.03,0.193,1.76,34.9,1,2022-09-22,69.217233,34.582668,Matched
+C00538,Mina Karimi,"138 Garden Ln, Airport Zone, Capital Region",Capital City,DZ-06,Airport Zone,Prepaid,53,15.95,0.214,2.56,42.7,0,2021-10-11,69.207014,34.566397,Matched
+C00539,Hoda Sadat,"218 New Town Blvd, East Industrial, Capital Region",Capital City,DZ-03,East Industrial,Prepaid,41,14.22,0.2,1.91,46.5,2,2022-12-24,69.224099,34.529751,Matched
+C00540,Nadia Popal,"125 New Town Blvd, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Prepaid,53,10.12,0.24,2.84,41.6,1,2023-07-13,69.156768,34.531333,Matched
+C00541,Karim Wardak,"50 New Town Blvd, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Postpaid,26,30.9,0.263,2.92,31.1,1,2025-03-15,69.164052,34.521553,Matched
+C00542,Hoda Noori,"56 New Town Blvd, University Belt, Capital Region",Capital City,DZ-07,University Belt,Prepaid,42,14.16,0.118,2.37,43.8,0,2024-11-27,69.14406,34.543858,Matched
+C00543,Ahmad Ahmadi,"122 Market Rd, North Residential, Capital Region",Capital City,DZ-02,North Residential,Enterprise,8,96.57,0.274,3.23,33.4,0,2024-05-23,69.157035,34.562599,Matched
+C00544,Karim Wardak,"199 New Town Blvd, Airport Zone, Capital Region",Capital City,DZ-06,Airport Zone,Enterprise,43,96.92,0.208,2.58,43.9,0,2021-02-03,69.208567,34.571191,Matched
+C00545,Yara Popal,"58 Main St, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Prepaid,37,5.9,0.525,2.42,36.5,0,2022-02-11,69.153968,34.514422,Matched
+C00546,Sara Azizi,"48 University Ave, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Postpaid,2,24.14,0.419,2.57,44.5,2,2025-12-27,69.166581,34.539975,Matched
+C00547,Bilal Noori,"169 Park Ave, Old City, Capital Region",Capital City,DZ-08,Old City,Prepaid,39,11.86,0.169,1.79,37.6,0,2023-01-03,69.194514,34.524406,Matched
+C00548,Samir Karimi,"140 Market Rd, Peri-Urban North, Capital Region",Capital City,DZ-12,Peri-Urban North,Prepaid,43,11.85,0.146,1.88,44.3,1,2024-03-19,69.159222,34.582401,Matched
+C00549,Lina Noori,"91 Airport Rd, South Corridor, Capital Region",Capital City,DZ-05,South Corridor,Prepaid,14,9.76,0.625,2.11,22.3,1,2022-10-12,69.168225,34.496231,Matched
+C00550,Reza Noori,"141 River Blvd, East Industrial, Capital Region",Capital City,DZ-03,East Industrial,Prepaid,42,7.85,0.625,2.22,31.3,0,2021-11-24,69.209092,34.528903,Matched
+C00551,Ahmad Salehi,"183 Station Rd, East Industrial, Capital Region",Capital City,DZ-03,East Industrial,Prepaid,42,14.34,0.2,1.72,43.4,0,2023-02-18,69.212278,34.521447,Matched
+C00552,Sara Popal,"164 Park Ave, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Prepaid,22,11.56,0.202,1.54,45.3,3,2022-07-04,69.155149,34.52518,Matched
+C00553,Ahmad Noori,"79 Airport Rd, Old City, Capital Region",Capital City,DZ-08,Old City,Postpaid,32,31.06,0.167,1.67,41.6,0,2024-03-12,69.191982,34.521852,Matched
+C00554,Omar Noori,"142 Airport Rd, New Town, Capital Region",Capital City,DZ-09,New Town,Postpaid,26,21.66,0.177,1.54,36.8,0,2025-12-09,69.094186,34.548819,Matched
+C00555,Reza Azizi,"182 Hill St, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Postpaid,27,27.32,0.342,3.11,28.9,3,2022-05-21,69.161666,34.506587,Matched
+C00556,Yara Karimi,"81 Park Ave, New Town, Capital Region",Capital City,DZ-09,New Town,Postpaid,5,26.68,0.53,3.15,29.6,1,2024-01-14,,,NeedsGeocode
+C00557,Yara Popal,"128 Industrial Way, University Belt, Capital Region",Capital City,DZ-07,University Belt,Postpaid,44,32.72,0.162,2.23,46.7,1,2023-04-24,69.143948,34.543215,Matched
+C00558,Tariq Sadat,"136 Old City Rd, University Belt, Capital Region",Capital City,DZ-07,University Belt,Prepaid,39,4.78,0.602,1.99,37.3,0,2023-03-17,69.131996,34.571443,Matched
+C00559,Karim Karimi,"44 Station Rd, West Expansion, Capital Region",Capital City,DZ-04,West Expansion,Enterprise,22,84.75,0.27,2.93,28.2,0,2025-07-07,69.108884,34.522943,Matched
+C00560,Nadia Karimi,"132 Main St, Tech Park, Capital Region",Capital City,DZ-11,Tech Park,Enterprise,58,58.66,0.22,2.22,37.0,0,2021-06-24,69.121881,34.518257,Matched
+C00561,Fatima Popal,"126 Hill St, North Residential, Capital Region",Capital City,DZ-02,North Residential,Prepaid,33,15.31,0.231,1.41,43.2,0,2023-07-06,69.147742,34.562929,Matched
+C00562,Sara Sadat,"169 Garden Ln, South Corridor, Capital Region",Capital City,DZ-05,South Corridor,Prepaid,23,23.97,0.288,1.77,36.1,0,2022-07-14,69.170102,34.477055,Matched
+C00563,Samir Popal,"51 Garden Ln, Old City, Capital Region",Capital City,DZ-08,Old City,Enterprise,18,87.76,0.232,2.64,32.0,0,2024-03-04,69.188843,34.512244,Matched
+C00564,Yara Rahimi,"89 Industrial Way, Tech Park, Capital Region",Capital City,DZ-11,Tech Park,Prepaid,44,10.0,0.184,2.52,36.6,0,2023-05-16,69.131295,34.501102,Matched
+C00565,Yara Ahmadi,"187 Industrial Way, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Prepaid,18,12.84,0.282,1.98,39.0,1,2025-10-06,69.154994,34.532789,Matched
+C00566,Mina Sadat,"39 Hill St, North Residential, Capital Region",Capital City,DZ-02,North Residential,Prepaid,26,7.55,0.528,3.06,40.9,0,2021-07-14,69.134103,34.566897,Matched
+C00567,Reza Sadat,"57 Station Rd, South Corridor, Capital Region",Capital City,DZ-05,South Corridor,Prepaid,4,6.26,0.916,2.53,21.9,0,2021-03-02,69.168101,34.46,Matched
+C00568,Karim Ahmadi,"74 Garden Ln, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Prepaid,39,9.02,0.547,1.91,39.8,0,2021-11-18,69.164288,34.52424,Matched
+C00569,Omar Salehi,"208 Station Rd, Old City, Capital Region",Capital City,DZ-08,Old City,Postpaid,38,24.21,0.191,1.65,40.9,0,2025-11-27,69.190168,34.520525,Matched
+C00570,Ahmad Noori,"20 Industrial Way, North Residential, Capital Region",Capital City,DZ-02,North Residential,Prepaid,20,3.5,0.603,3.09,33.0,0,2025-12-09,69.148609,34.554876,Matched
+C00571,Samir Rahimi,"144 Station Rd, River Park, Capital Region",Capital City,DZ-10,River Park,Postpaid,29,26.63,0.235,2.38,34.9,0,2023-12-05,69.195909,34.48455,Matched
+C00572,Fatima Azizi,"178 Hill St, East Industrial, Capital Region",Capital City,DZ-03,East Industrial,Postpaid,26,27.61,0.215,2.33,37.7,0,2024-07-20,,,NeedsGeocode
+C00573,Karim Karimi,"56 Airport Rd, East Industrial, Capital Region",Capital City,DZ-03,East Industrial,Postpaid,57,32.32,0.22,2.63,34.8,1,2022-04-02,69.221902,34.534325,Matched
+C00574,Sara Rahimi,"72 Market Rd, South Corridor, Capital Region",Capital City,DZ-05,South Corridor,Prepaid,51,17.52,0.212,3.21,37.8,1,2025-06-11,69.17084,34.47703,Matched
+C00575,Karim Noori,"185 Market Rd, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Prepaid,40,8.77,0.59,1.6,34.9,0,2021-09-22,69.16221,34.518293,Matched
+C00576,Lina Wardak,"28 New Town Blvd, Peri-Urban North, Capital Region",Capital City,DZ-12,Peri-Urban North,Postpaid,25,21.14,0.36,2.41,27.7,0,2023-04-19,69.182316,34.592454,Matched
+C00577,Lina Salehi,"115 Hill St, University Belt, Capital Region",Capital City,DZ-07,University Belt,Postpaid,28,22.15,0.168,1.76,35.3,0,2022-11-10,69.145047,34.538759,Matched
+C00578,Reza Ahmadi,"101 Old City Rd, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Prepaid,5,14.14,0.411,2.07,39.3,1,2022-12-25,69.177675,34.530604,Matched
+C00579,Mina Rahimi,"6 Park Ave, New Town, Capital Region",Capital City,DZ-09,New Town,Postpaid,49,32.53,0.168,2.63,36.5,1,2021-02-18,69.08379,34.550289,Matched
+C00580,Lina Rahimi,"52 Market Rd, Old City, Capital Region",Capital City,DZ-08,Old City,Prepaid,37,17.33,0.355,3.25,24.4,0,2023-11-18,69.168653,34.508387,Matched
+C00581,Karim Sadat,"76 Park Ave, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Prepaid,54,11.83,0.226,2.06,32.2,3,2024-11-23,69.16669,34.524679,Matched
+C00582,Tariq Ahmadi,"29 Hill St, New Town, Capital Region",Capital City,DZ-09,New Town,Prepaid,19,13.58,0.193,2.41,34.8,2,2025-03-06,69.0902,34.55871,Matched
+C00583,Tariq Karimi,"109 Market Rd, West Expansion, Capital Region",Capital City,DZ-04,West Expansion,Postpaid,44,25.65,0.215,1.76,40.1,2,2021-01-28,69.097428,34.524359,Matched
+C00584,Reza Karimi,"82 Market Rd, Tech Park, Capital Region",Capital City,DZ-11,Tech Park,Prepaid,47,16.7,0.244,2.99,40.9,0,2023-03-06,69.138989,34.506949,Matched
+C00585,Fatima Azizi,"124 New Town Blvd, Old City, Capital Region",Capital City,DZ-08,Old City,Enterprise,39,78.65,0.221,2.38,37.9,0,2025-09-27,69.179387,34.522466,Matched
+C00586,Hoda Rahimi,"135 Airport Rd, North Residential, Capital Region",Capital City,DZ-02,North Residential,Postpaid,52,31.18,0.234,2.55,35.7,0,2024-03-04,,,NeedsGeocode
+C00587,Yara Noori,"200 Market Rd, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Prepaid,10,14.59,0.303,2.38,29.8,0,2022-07-24,69.155912,34.540617,Matched
+C00588,Omar Ahmadi,"180 Park Ave, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Postpaid,5,27.16,0.502,2.61,29.8,0,2021-10-27,69.156288,34.535526,Matched
+C00589,Sara Noori,"191 Market Rd, New Town, Capital Region",Capital City,DZ-09,New Town,Postpaid,45,32.28,0.225,2.13,40.5,0,2021-10-25,,,NeedsGeocode
+C00590,Yara Sadat,"109 Old City Rd, North Residential, Capital Region",Capital City,DZ-02,North Residential,Enterprise,30,87.74,0.191,2.62,45.2,0,2022-05-03,69.147147,34.564292,Matched
+C00591,Fatima Hashimi,"55 University Ave, South Corridor, Capital Region",Capital City,DZ-05,South Corridor,Prepaid,15,6.2,0.594,2.34,35.5,1,2024-07-06,69.179097,34.479428,Matched
+C00592,Hassan Ahmadi,"70 Park Ave, Central Business District, Capital Region",Capital City,DZ-01,Central Business District,Prepaid,24,15.04,0.233,2.83,32.2,0,2025-01-25,69.174316,34.522189,Matched
+C00593,Ahmad Hashimi,"9 Hill St, River Park, Capital Region",Capital City,DZ-10,River Park,Prepaid,37,7.27,0.591,1.58,36.2,1,2024-09-07,69.197047,34.504965,Matched
+C00594,Omar Rahimi,"34 New Town Blvd, East Industrial, Capital Region",Capital City,DZ-03,East Industrial,Postpaid,22,30.38,0.164,2.43,38.4,1,2024-08-19,69.21592,34.5242,Matched
+C00595,Omar Azizi,"175 Garden Ln, River Park, Capital Region",Capital City,DZ-10,River Park,Prepaid,41,17.31,0.213,2.54,43.7,0,2025-11-17,69.199613,34.501105,Matched
+C00596,Lina Sadat,"87 River Blvd, Tech Park, Capital Region",Capital City,DZ-11,Tech Park,Prepaid,55,17.89,0.325,1.91,32.4,4,2025-02-05,69.132046,34.492375,Matched
+C00597,Tariq Karimi,"4 Market Rd, South Corridor, Capital Region",Capital City,DZ-05,South Corridor,Postpaid,20,17.92,0.23,1.59,35.1,0,2023-10-12,69.17862,34.479873,Matched
+C00598,Mina Wardak,"118 River Blvd, West Expansion, Capital Region",Capital City,DZ-04,West Expansion,Enterprise,17,85.21,0.293,2.45,36.1,0,2023-07-14,69.093847,34.531361,Matched
+C00599,Mina Rahimi,"94 Industrial Way, New Town, Capital Region",Capital City,DZ-09,New Town,Postpaid,21,23.75,0.154,1.61,48.4,1,2022-12-27,69.093647,34.552909,Matched
+C00600,Fatima Wardak,"97 Market Rd, South Corridor, Capital Region",Capital City,DZ-05,South Corridor,Prepaid,55,13.56,0.151,2.0,39.7,1,2024-02-03,69.183636,34.48213,Matched

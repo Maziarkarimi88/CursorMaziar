@@ -1,0 +1,58 @@
+{
+  "description": "Map your own columns onto the MetroTel Pulse dashboard. Rename your CSV headers to the 'pulse' names, or keep yours and edit the 'yours' values before publishing.",
+  "layers": {
+    "zones": {
+      "file": "data/ExecZone_KPI_Dashboard.csv",
+      "geometry": "data/MarketingZones.geojson",
+      "join": "DIST_ID",
+      "fields": {
+        "DIST_ID": { "yours": "DIST_ID", "role": "Zone unique id (join key)" },
+        "DIST_NAME": { "yours": "DIST_NAME", "role": "Zone label on map, charts, list" },
+        "POPULATION": { "yours": "POPULATION", "role": "Market size" },
+        "ZONE_TYPE": { "yours": "ZONE_TYPE", "role": "Urban / residential mix" },
+        "SUBSCRIBERS": { "yours": "SUBSCRIBERS", "role": "KPI: subscriber count" },
+        "AVG_ARPU": { "yours": "AVG_ARPU", "role": "KPI: average revenue per user (USD)" },
+        "AVG_CHURN": { "yours": "AVG_CHURN", "role": "KPI: churn risk 0-1 (or percent/100)" },
+        "COV_4G_PCT": { "yours": "COV_4G_PCT", "role": "KPI: 4G coverage percent" },
+        "COV_GAP_POP": { "yours": "COV_GAP_POP", "role": "Uncovered population" },
+        "FIBER_STATUS": { "yours": "FIBER_STATUS", "role": "Lit / Partial / Planned / None" },
+        "SUITABILITY": { "yours": "SUITABILITY", "role": "Day 3/4 suitability score" },
+        "PRIORITY": { "yours": "PRIORITY", "role": "P1-Expand | P2-Defend | P3-FixQoS | P4-Monitor" }
+      }
+    },
+    "sites": {
+      "file": "data/Capstone_CellSites.csv",
+      "x": "LON",
+      "y": "LAT",
+      "fields": {
+        "SITE_ID": { "yours": "SITE_ID" },
+        "SITE_NAME": { "yours": "SITE_NAME" },
+        "TECH": { "yours": "TECH" },
+        "STATUS": { "yours": "STATUS", "role": "OnAir | Candidate" },
+        "DIST_ID": { "yours": "DIST_ID" },
+        "RSRP_MEAN": { "yours": "RSRP_MEAN" }
+      }
+    },
+    "monthly": {
+      "file": "data/Monthly_Executive_KPI_Timeseries.csv",
+      "fields": {
+        "MONTH": { "yours": "MONTH", "role": "YYYY-MM" },
+        "SUBSCRIBERS": { "yours": "SUBSCRIBERS" },
+        "ARPU_USD": { "yours": "ARPU_USD" },
+        "CHURN_PCT": { "yours": "CHURN_PCT" }
+      }
+    },
+    "decisions": {
+      "file": "data/Capstone_Decisions.csv",
+      "fields": {
+        "DECISION_ID": { "yours": "DECISION_ID" },
+        "THEME": { "yours": "THEME" },
+        "ZONE": { "yours": "ZONE" },
+        "TITLE": { "yours": "TITLE" },
+        "PRIORITY": { "yours": "PRIORITY" },
+        "OWNER": { "yours": "OWNER" },
+        "STATUS": { "yours": "STATUS" }
+      }
+    }
+  }
+}
