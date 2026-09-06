@@ -18,7 +18,7 @@ ALIASES = {
     "end": ("Contract_End_Date", "Contract End Date"),
     "status": ("Awarding_Status",),
     "cost": ("Contract_Cost_USD", "Contract Cost (USD)"),
-    "contractor": ("Cosntrution_Company", "Cosntrution Company"),
+    "contractor": ("Construction_Company", "Cosntrution_Company", "Cosntrution Company"),
     "area": ("Intervention_Area (Ha)", "Area after intervention (Ha)"),
     "hh": ("Households", "NumberOfHousehold"),
     "fhh": ("Female_Headed_HH", "Female_Headed_Household"),
@@ -162,6 +162,9 @@ def main() -> None:
             flags.append("SHORT_CONTRACT_CHECK")
         if not clean_text(raw.get("SchemeCode")):
             flags.append("MISSING_SCHEME_CODE")
+        code = clean_text(raw.get("SchemeCode"))
+        if program == "Watershed" and pkg == 5 and "Shir-Abad" in code:
+            flags.append("SCHEME_CODE_LOOKS_COPIED_FROM_GHAZNI")
         if hh and fhh and fhh > hh:
             flags.append("FHH_GT_HOUSEHOLDS")
 
