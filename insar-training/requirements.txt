@@ -1,0 +1,17 @@
+# Minimal requirements for Lab 0 and for regenerating the figures / HTML of this course
+numpy>=1.26
+matplotlib>=3.8
+markdown>=3.5
+pygments>=2.17
+
+# --- Real InSAR processing (optional; see Part 6 of README.md) ---------------------------
+# InSAR.dev, pure Python, Python >= 3.11 (torch is installed automatically; pick a CUDA build first if you have an NVIDIA GPU)
+# insardev_toolkit==2026.3.21
+# insardev_pygmtsar==2026.3.21
+# insardev==2026.3.21.post3
+#
+# PyGMTSAR (previous generation; also needs GMTSAR binaries or the Docker image pechnikov/pygmtsar)
+# pygmtsar==2025.4.8.post1
+#
+# Notebook + interactive maps
+# jupyterlab ipyleaflet pyvista panel vtk xvfbwrapper
