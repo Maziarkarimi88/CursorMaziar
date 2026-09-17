@@ -40,7 +40,9 @@ def copy_pack():
         (ROOT / "figures" / "example_results.png", "figures/example_results.png"),
         (ROOT / "requirements.txt", "rebuild/requirements.txt"),
         (ROOT / "tools" / "build_protocol_assets.py", "rebuild/build_protocol_assets.py"),
-        (ROOT / "tools" / "catchment_fill.py", "rebuild/catchment_fill.py"),
+        (ROOT / "examples" / "README.md", "examples/README.md"),
+        (ROOT / "examples" / "mk_sen_10wells_weekly.csv", "examples/mk_sen_10wells_weekly.csv"),
+        (ROOT / "examples" / "run_mk_sen_weekly.py", "examples/run_mk_sen_weekly.py"),
     ]
     for src, rel in pairs:
         dest = STAGING / rel
