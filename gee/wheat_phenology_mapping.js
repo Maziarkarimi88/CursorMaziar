@@ -2,9 +2,12 @@
  * Wheat crop phenology mapping app for the Earth Engine Code Editor.
  *
  * How to run:
- * 1. Open https://code.earthengine.google.com/
- * 2. Paste this script and click Run.
- * 3. Point "Geometry Assets Folder" at a folder that contains one
+ * 1. Open https://code.earthengine.google.com/ while signed into Google.
+ * 2. If Get Link / Save / Run / Reset are gray, Earth Engine is not ready:
+ *    click your email in the top-right > Change Cloud Project, or register at
+ *    https://code.earthengine.google.com/register
+ * 3. Paste this script into the editor and click Run.
+ * 4. Point "Geometry Assets Folder" at a folder that contains one
  *    subfolder per province. Each province folder should include:
  *      <Province>_<Ag|Wheat>_<IR|RF>
  *    Example: Hilmand/Hilmand_Wheat_IR
@@ -190,39 +193,52 @@ app.createHelpers = function() {
   };
 
   app.listFolderAssets = function(folderId, callback) {
-    ee.data.listAssets(folderId, {}, function(result, error) {
-      if (!error && result) {
-        callback(result.assets || [], null);
-        return;
-      }
-      ee.data.getList({id: folderId}, function(list, err2) {
-        if (err2 || list == null) {
-          callback([], error || err2 || 'Unable to list assets');
+    var finished = false;
+    var finish = function(assets, error) {
+      if (finished) return;
+      finished = true;
+      callback(assets, error);
+    };
+    setTimeout(function() {
+      finish([], 'Timed out listing the geometry folder');
+    }, 20000);
+    try {
+      ee.data.listAssets(folderId, {}, function(result, error) {
+        if (!error && result) {
+          finish(result.assets || [], null);
           return;
         }
-        callback(Array.isArray(list) ? list : (list.assets || []), null);
+        ee.data.getList({id: folderId}, function(list, err2) {
+          if (err2 || list == null) {
+            finish([], error || err2 || 'Unable to list assets');
+            return;
+          }
+          finish(Array.isArray(list) ? list : (list.assets || []), null);
+        });
       });
-    });
+    } catch (err) {
+      finish([], String(err));
+    }
   };
 
   app.populatePickers = function() {
-    app.loading(true);
     var folderId = app.widgets.assetSource.getValue();
     if (!folderId) {
-      app.loading(false);
       app.prompt(true, app.ERROR.NO_FOLDER);
       return;
     }
+    app.widgets.provincePicker.setDisabled(true);
+    app.prompt(true, 'Loading provinces...');
     app.listFolderAssets(folderId, function(assets, error) {
+      app.widgets.provincePicker.setDisabled(false);
       if (error) {
         app.widgets.provincePicker.items().reset([]);
-        app.loading(false);
         app.prompt(true, app.ERROR.NO_FOLDER);
         print('Asset folder error:', error);
         return;
       }
+      app.prompt(false, '');
       app.widgets.provincePicker.items().reset(app.collectFolderNames(assets));
-      app.loading(false);
     });
   };
 
