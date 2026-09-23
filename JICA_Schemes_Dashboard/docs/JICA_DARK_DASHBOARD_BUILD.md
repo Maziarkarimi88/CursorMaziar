@@ -1,6 +1,8 @@
 # JICA irrigation + watershed dashboard (dark Pulse template)
 
-**Upload click-path (use this first):** [`UPLOAD_AND_VISUALIZE.md`](UPLOAD_AND_VISUALIZE.md)
+**Join is done — continue here:** [`AFTER_JOIN_BUILD.md`](AFTER_JOIN_BUILD.md)
+
+Full upload path (if you need to start over): [`UPLOAD_AND_VISUALIZE.md`](UPLOAD_AND_VISUALIZE.md)
 
 Build this in **ArcGIS Dashboards** using the same dark MetroTel Pulse look. Your table is scheme-level. Your GIS has **points, lines, and polygons** that already store `Scheme_UID`, `Pair_ID`, `Program`, `Feature_Role`, `Feature_Name`, and `Asset_Name`.
 
@@ -153,7 +155,7 @@ Turn **Show in map legend** on for the three operational layers, then save. In t
 ```
 HEADER: title + selectors (Program, Status, Province, Pair)
 +------------------------------------------------------------------+
-| KPI row (~16%): Schemes | Awarded | Cost | Area | HH | Canal km  |
+| KPI row: Schemes | Awarded | Progress | Cost | Area | HH | Canal km |
 +---------------------------+--------------------------------------+
 | MAP  (~58%)               | Pie: Program                         |
 | areas + lines + points    | Bar: awarded cost by province        |
@@ -165,12 +167,13 @@ HEADER: title + selectors (Program, Status, Province, Pair)
 
 # Part C — Indicators (use `JICA_Schemes` only)
 
-**Add element → Indicator**, six times. Data source = `JICA_Schemes`.
+**Add element → Indicator**, seven times. Data source = `JICA_Schemes`.
 
 | Tile | Statistic | Field | Filter | Value color |
 | --- | --- | --- | --- | --- |
 | Schemes | Count | `Scheme_UID` | none | `#E8EEF7` |
 | Awarded | Count | `Scheme_UID` | `STATUS` = Awarded | `#3DDC97` |
+| Awarded progress | Average | `PROGRESS_PCT` | `STATUS` = Awarded | `#3DDC97` |
 | Awarded cost | Sum | `COST_USD` | `STATUS` = Awarded | `#F5C15A` |
 | Area | Sum | `AREA_HA` | none | `#2EE6D6` |
 | Households | Sum | `HOUSEHOLDS` | `Program` = Irrigation | `#5B8CFF` |
@@ -188,6 +191,7 @@ Expected totals from this CSV (after selectors = All):
 
 - 14 schemes
 - 9 awarded / 5 not awarded
+- Awarded progress **27.7%** (average of the 9 awarded `%` values)
 - Awarded cost **2,294,514** USD
 
 ---
@@ -292,7 +296,7 @@ Add a header **information window** with the same text so users can reopen it.
 2. Dark web map, legend visible in Map Viewer, save.
 3. Create dashboard from the map, set Pulse dark colors, add header.
 4. Add map + Map legend panel.
-5. Add six indicators on `JICA_Schemes`.
+5. Add seven indicators on `JICA_Schemes` (include Awarded progress).
 6. Add pie, bar, scheme list.
 7. Add four header selectors; wire Filter / Zoom / Flash.
 8. Splash screen; save; test Program, Status, list click, and a Pair_ID site zoom.

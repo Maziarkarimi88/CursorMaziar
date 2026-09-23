@@ -1,6 +1,8 @@
 # Upload the cleaned JICA layers and build the Pulse dark dashboard
 
-Use this after the geodatabase leftovers are cleaned. The product is a **native ArcGIS Online Dashboard** that looks like MetroTel Pulse (dark navy panels, six KPI tiles, map left, pie + bar + list right).
+**Join already done?** Skip to [`AFTER_JOIN_BUILD.md`](AFTER_JOIN_BUILD.md).
+
+Use this if you need to start over. The product is a **native ArcGIS Online Dashboard** that looks like MetroTel Pulse (dark navy panels, **seven** KPI tiles including awarded progress, map left, pie + bars + list right).
 
 Open `design/pulse-jica-preview.html` in a browser to see the target layout. Open `design/metro-tel-pulse-reference.webp` to see the original Pulse template.
 
@@ -50,7 +52,7 @@ Use the **same** teal and gold on the map, pie, bars, and KPI numbers.
 ```
 HEADER: JICA Irrigation & Watershed     [Program] [Status] [Province] [Site] [Asset]
 +------------------------------------------------------------------------+
-| Schemes | Awarded | Awarded cost | Area ha | Households | Canal km     |
+| Schemes | Awarded | Progress | Awarded cost | Area | Households | Canal km |
 +----------------------------------+-------------------------------------+
 | MAP (~58%)                       | Pie: Program mix                    |
 | Areas + lines + points           | Bar: Awarded cost by province       |
@@ -126,7 +128,7 @@ Do this on areas, lines, and points. KPIs still read `JICA_Schemes` only.
    - Input join field: `Scheme_UID`
    - Join table: `schemes_dashboard.csv` (or `JICA_Schemes`)
    - Join table field: `Scheme_UID`
-   - Transfer: `STATUS`, `Scheme_Name`, `COST_USD`, `AREA_HA`, `HOUSEHOLDS`, `CANAL_KM`, `Province`, `District`, `CONTRACTOR`
+   - Transfer: `STATUS`, `PROGRESS_PCT`, `Scheme_Name`, `COST_USD`, `AREA_HA`, `HOUSEHOLDS`, `CANAL_KM`, `Province`, `District`, `CONTRACTOR`
 2. Do **not** transfer fields that already exist (`Program`, `Pair_ID`) unless you want `_1` duplicates. Delete any `*_1` fields if they appear.
 
 ---
@@ -243,14 +245,15 @@ If the legend is empty: the web map does not have “Show in map legend” on (S
 
 ---
 
-# Step 9 — Six KPI indicators (`JICA_Schemes` only)
+# Step 9 — Seven KPI indicators (`JICA_Schemes` only)
 
-**Add element → Indicator**, six times. Data source = `JICA_Schemes` (the 14-point layer).
+**Add element → Indicator**, seven times. Data source = `JICA_Schemes` (the 14-point layer or table).
 
 | Tile | Statistic | Field | Filter | Value color |
 | --- | --- | --- | --- | --- |
 | Schemes | Count | `Scheme_UID` | none | `#E8EEF7` |
 | Awarded | Count | `Scheme_UID` | `STATUS` = `Awarded` | `#3DDC97` |
+| Awarded progress | Average | `PROGRESS_PCT` | `STATUS` = `Awarded` | `#3DDC97` |
 | Awarded cost | Sum | `COST_USD` | `STATUS` = `Awarded` | `#F5C15A` |
 | Area | Sum | `AREA_HA` | none | `#2EE6D6` |
 | Households | Sum | `HOUSEHOLDS` | `Program` = `Irrigation` | `#5B8CFF` |
@@ -262,10 +265,11 @@ If the legend is empty: the web map does not have “Show in map legend” on (S
 - Awarded cost: grouping on, 0 decimals, prefix `$`
 - Area / Households: grouping on, 0 decimals
 - Canal km: 1 decimal
+- Awarded progress: 1 decimal, suffix ` %`
 
-**Layout of each indicator:** top = title in `#8B9BB4`, middle = `{value}` large, bottom = unit (`schemes`, `USD`, `ha`, `HH`, `km`).
+**Layout of each indicator:** top = title in `#8B9BB4`, middle = `{value}` large, bottom = unit (`schemes`, `%`, `USD`, `ha`, `HH`, `km`).
 
-Dock all six in **one row** under the header (~16% height), equal widths.
+Dock all **seven** in **one row** under the header (~16% height), equal widths.
 
 ### Unfiltered totals you must see
 
@@ -273,6 +277,7 @@ Dock all six in **one row** under the header (~16% height), equal widths.
 | --- | --- |
 | Schemes | **14** |
 | Awarded | **9** |
+| Awarded progress | **27.7%** |
 | Awarded cost | **$2,294,514** |
 | Area | **12,225** ha |
 | Households | **15,887** |
@@ -314,7 +319,7 @@ Expected bars (USD): Herat 778,395 · Bamyan 479,862 · Ghazni 400,087 · Faryab
 2. Layer: `JICA_Schemes`
 3. Sort: `Scheme_UID`
 4. Line 1: `{Scheme_Name}`
-5. Line 2: `{Program} · {STATUS} · {Asset_Name}`
+5. Line 2: `{Program} · {STATUS} · {PROGRESS_PCT}%`
 6. Line 3 (optional): `{Province} · {Pair_ID}`
 7. Advanced formatting: Awarded name `#3DDC97`, Not Awarded `#FF5C7A`
 8. Caption: `Select a scheme to zoom the map`
@@ -398,9 +403,9 @@ Share **hosted feature layer + web map + dashboard** together (same group / org 
 
 | Test | Pass |
 | --- | --- |
-| No filters | 14 · 9 · $2,294,514 · 12,225 ha · 15,887 HH · 97.3 km |
-| Program = Irrigation | 7 schemes, households and canal km stay the same, area drops to 4,112 |
-| Program = Watershed | 7 schemes, households **0**, canal km **0**, awarded cost $241,239 |
+| No filters | 14 · 9 · **27.7%** · $2,294,514 · 12,225 ha · 15,887 HH · 97.3 km |
+| Program = Irrigation | 7 schemes, progress **19.7%**, households and canal km stay the same, area 4,112 |
+| Program = Watershed | 7 schemes, progress **43.7%**, households **0**, canal km **0**, awarded cost $241,239 |
 | Status = Not Awarded | 5 schemes, awarded cost $0 or empty |
 | Site = SITE-03 | Map zooms to Obe; list shows IS-03 and WSM-03 |
 | Asset = Yakawlang | IS-06 canals + intakes + WSM-06 dams |
@@ -447,7 +452,7 @@ Share **hosted feature layer + web map + dashboard** together (same group / org 
 6. Dark web map, legend visible, save (Step 6).
 7. Dashboard from the map → Theme Dark + Pulse hex + header (Step 7).
 8. Map + Map legend panel (Step 8).
-9. Six indicators on `JICA_Schemes` (Step 9).
+9. Seven indicators on `JICA_Schemes`, including Awarded progress (Step 9).
 10. Pie, bar, list (Step 10).
 11. Five header selectors + Filter / Zoom / Flash (Step 11).
 12. Splash, share all three items, run the test table (Steps 12–13).

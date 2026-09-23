@@ -11,8 +11,8 @@ Read the full tutorial: [docs/arcgis-dashboards-professional-tutorial.md](docs/a
 
 ## JICA irrigation + watershed (dark template)
 
-Upload the cleaned geodatabase and build the Pulse-dark native dashboard:
+Join is done. Remaining Pulse-dark steps, including the **Awarded progress** KPI:
 
-- [JICA_Schemes_Dashboard/docs/UPLOAD_AND_VISUALIZE.md](JICA_Schemes_Dashboard/docs/UPLOAD_AND_VISUALIZE.md) — step-by-step publish + visualize
-- [JICA_Schemes_Dashboard/design/pulse-jica-preview.html](JICA_Schemes_Dashboard/design/pulse-jica-preview.html) — dark layout mock
-- [JICA_Schemes_Dashboard/data/schemes_dashboard.csv](JICA_Schemes_Dashboard/data/schemes_dashboard.csv) — 14 KPI rows
+- [JICA_Schemes_Dashboard/docs/AFTER_JOIN_BUILD.md](JICA_Schemes_Dashboard/docs/AFTER_JOIN_BUILD.md)
+- [JICA_Schemes_Dashboard/design/pulse-jica-preview.html](JICA_Schemes_Dashboard/design/pulse-jica-preview.html)
+- [JICA_Schemes_Dashboard/data/schemes_dashboard.csv](JICA_Schemes_Dashboard/data/schemes_dashboard.csv) — 14 rows + `PROGRESS_PCT`
