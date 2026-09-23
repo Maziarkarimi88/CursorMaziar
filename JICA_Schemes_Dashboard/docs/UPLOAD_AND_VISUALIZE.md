@@ -2,7 +2,7 @@
 
 **Join already done?** Skip to [`AFTER_JOIN_BUILD.md`](AFTER_JOIN_BUILD.md).
 
-Use this if you need to start over. The product is a **native ArcGIS Online Dashboard** that looks like MetroTel Pulse (dark navy panels, **seven** KPI tiles including awarded progress, map left, pie + bars + list right).
+Use this if you need to start over. The product is a **native ArcGIS Online Dashboard** that looks like MetroTel Pulse (dark navy panels, **seven** KPI tiles including physical works % (per project, also by site), map left, pie + bars + list right).
 
 Open `design/pulse-jica-preview.html` in a browser to see the target layout. Open `design/metro-tel-pulse-reference.webp` to see the original Pulse template.
 
@@ -253,7 +253,7 @@ If the legend is empty: the web map does not have “Show in map legend” on (S
 | --- | --- | --- | --- | --- |
 | Schemes | Count | `Scheme_UID` | none | `#E8EEF7` |
 | Awarded | Count | `Scheme_UID` | `STATUS` = `Awarded` | `#3DDC97` |
-| Awarded progress | Average | `PROGRESS_PCT` | `STATUS` = `Awarded` | `#3DDC97` |
+| Physical works | Average | `PROGRESS_PCT` | `STATUS` = `Awarded` | `#3DDC97` |
 | Awarded cost | Sum | `COST_USD` | `STATUS` = `Awarded` | `#F5C15A` |
 | Area | Sum | `AREA_HA` | none | `#2EE6D6` |
 | Households | Sum | `HOUSEHOLDS` | `Program` = `Irrigation` | `#5B8CFF` |
@@ -265,7 +265,7 @@ If the legend is empty: the web map does not have “Show in map legend” on (S
 - Awarded cost: grouping on, 0 decimals, prefix `$`
 - Area / Households: grouping on, 0 decimals
 - Canal km: 1 decimal
-- Awarded progress: 1 decimal, suffix ` %`
+- Physical works: 1 decimal, suffix ` %`
 
 **Layout of each indicator:** top = title in `#8B9BB4`, middle = `{value}` large, bottom = unit (`schemes`, `%`, `USD`, `ha`, `HH`, `km`).
 
@@ -277,7 +277,7 @@ Dock all **seven** in **one row** under the header (~16% height), equal widths.
 | --- | --- |
 | Schemes | **14** |
 | Awarded | **9** |
-| Awarded progress | **27.7%** |
+| Physical works | **27.7%** (site filter changes this) |
 | Awarded cost | **$2,294,514** |
 | Area | **12,225** ha |
 | Households | **15,887** |
@@ -319,7 +319,7 @@ Expected bars (USD): Herat 778,395 · Bamyan 479,862 · Ghazni 400,087 · Faryab
 2. Layer: `JICA_Schemes`
 3. Sort: `Scheme_UID`
 4. Line 1: `{Scheme_Name}`
-5. Line 2: `{Program} · {STATUS} · {PROGRESS_PCT}%`
+5. Line 2: `{Pair_ID} · {Program} · physical works {PROGRESS_PCT}%`
 6. Line 3 (optional): `{Province} · {Pair_ID}`
 7. Advanced formatting: Awarded name `#3DDC97`, Not Awarded `#FF5C7A`
 8. Caption: `Select a scheme to zoom the map`
@@ -452,7 +452,7 @@ Share **hosted feature layer + web map + dashboard** together (same group / org 
 6. Dark web map, legend visible, save (Step 6).
 7. Dashboard from the map → Theme Dark + Pulse hex + header (Step 7).
 8. Map + Map legend panel (Step 8).
-9. Seven indicators on `JICA_Schemes`, including Awarded progress (Step 9).
+9. Seven indicators on `JICA_Schemes`, including Physical works (Step 9). Add a site chart split by Program.
 10. Pie, bar, list (Step 10).
 11. Five header selectors + Filter / Zoom / Flash (Step 11).
 12. Splash, share all three items, run the test table (Steps 12–13).

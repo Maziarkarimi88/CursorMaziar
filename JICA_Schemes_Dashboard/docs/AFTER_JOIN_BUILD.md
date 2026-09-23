@@ -2,7 +2,7 @@
 
 You already joined the updated scheme table onto **canals, coverage, and structures**. Start here. Do not join again.
 
-The new column is **physical progress on awarded schemes**. The dashboard now has **seven** KPI tiles. The seventh is **Awarded progress** (average `%` of the 9 awarded rows).
+`Physical_Progress_Percentage` is the **% of physical works completed** on that **project** (one irrigation scheme or one watershed scheme). Projects sit in **sites** (`Pair_ID` / `SITE-01` … `SITE-07`). Most sites have two projects. Show progress at **both** grains: the headline KPI (average of awarded projects) **and** a site chart that still shows each project.
 
 Open `design/pulse-jica-preview.html` to see the dark layout.
 
@@ -32,7 +32,7 @@ The attached table used Excel-style names. After Join Field, open each GIS attri
 | Scheme id | `UNID` | `Scheme_UID` |
 | Site pair | `Site_Number` | `Pair_ID` |
 | Award status | `Awarding_Status` | `STATUS` |
-| Progress % | `Physical_Progress_Percentage` | `PROGRESS_PCT` |
+| Physical works % (per project) | `Physical_Progress_Percentage` | `PROGRESS_PCT` |
 | Cost | `Contract_Cost_USD` | `COST_USD` |
 | Area ha | `Intervention_Area (Ha)` → often `Intervention_Area__Ha_` | `AREA_HA` |
 | Households | `Households` | `HOUSEHOLDS` |
@@ -109,7 +109,7 @@ Title: `{Feature_Name}`
 ```
 {Scheme_Name}
 {Program} · {Awarding_Status} · {Asset_Name}
-Progress: {Physical_Progress_Percentage}%
+Physical works: {Physical_Progress_Percentage}%
 Role: {Feature_Role}
 Site: {Pair_ID} · {Scheme_UID}
 ```
@@ -171,7 +171,7 @@ Share the layer, the table, and (next) the map to the **same** group.
 | --- | --- | --- | --- | --- |
 | Schemes | Count | `Scheme_UID` | none | `#E8EEF7` |
 | Awarded | Count | `Scheme_UID` | `STATUS` = Awarded | `#3DDC97` |
-| **Awarded progress** | **Average** | **`PROGRESS_PCT`** | **`STATUS` = Awarded** | **`#3DDC97`** |
+| **Physical works** | **Average** | **`PROGRESS_PCT`** | **`STATUS` = Awarded** | **`#3DDC97`** |
 | Awarded cost | Sum | `COST_USD` | `STATUS` = Awarded | `#F5C15A` |
 | Area | Sum | `AREA_HA` | none | `#2EE6D6` |
 | Households | Sum | `HOUSEHOLDS` | `Program` = Irrigation | `#5B8CFF` |
@@ -179,18 +179,22 @@ Share the layer, the table, and (next) the map to the **same** group.
 
 If the 14-row item still has raw names, use `UNID`, `Awarding_Status`, `Physical_Progress_Percentage`, `Contract_Cost_USD`, `Households`, `Canal_Length_Km`. For area, pick the sanitized `Intervention_Area*` field. `Program` must exist on the KPI source (it does on the clean CSV).
 
-### Awarded progress — exact clicks
+### Physical works KPI — exact clicks
+
+This tile is the **average physical-works % of awarded projects** in the current filter. With no filter it is all 9 awarded projects. With **Site = SITE-01** it becomes that site’s awarded projects only (IS 13% and WSM 85% → **49%**).
 
 1. Indicator → Data → layer `JICA_Schemes`.
 2. Value type: **Statistic**.
-3. Statistic: **Average**.
+3. Statistic: **Average** (never Sum).
 4. Field: `PROGRESS_PCT` (or `Physical_Progress_Percentage`).
 5. **Filter → Add filter:** `STATUS` / `Awarding_Status` **equal** `Awarded`.
-6. Value format: 1 decimal, suffix ` %` (space + percent).
-7. Optional reference: **Fixed value 100** so the tile reads like a target.
-8. Title: `Awarded progress`. Bottom text: `average of 9 awarded schemes`.
+6. Value format: 1 decimal, suffix ` %`.
+7. Optional reference: **Fixed value 100** (complete physical works).
+8. Title: `Physical works`. Bottom text: `avg % of awarded projects at selected sites`.
 
-Do **not** sum progress. Do **not** average on the GIS layers. Do **not** include Not Awarded (blank or 0 would drag the average down).
+Do **not** sum progress. Do **not** average on canals / areas / structures. Do **not** treat blank Not Awarded rows as `0`.
+
+Wire the **Site** header selector to this indicator (Step J). The same tile then serves as the site physical-works KPI when a site is selected.
 
 Dock all **seven** tiles in **one row** under the header, equal widths.
 
@@ -200,7 +204,7 @@ Dock all **seven** tiles in **one row** under the header, equal widths.
 | --- | --- |
 | Schemes | **14** |
 | Awarded | **9** |
-| Awarded progress | **27.7%** |
+| Physical works | **27.7%** (all awarded projects) |
 | Awarded cost | **$2,294,514** |
 | Area | **12,225** ha |
 | Households | **15,887** |
@@ -227,25 +231,38 @@ Right column, stacked.
 - Filter `STATUS` = Awarded. Color `#F5C15A`.
 - Bars (USD): Herat 778,395 · Bamyan 479,862 · Ghazni 400,087 · Faryab 236,870 · Baghlan 229,571 · Maidan Wardak 169,729.
 
-## Bar — Awarded progress by scheme (new)
+## Bar — Physical works by site (each project)
+
+This is the site view. Each site is a category. **Split by `Program`** so irrigation and watershed stay separate (do not blend them into one bar unless you also want a site-average chart).
 
 1. **Serial chart** → `JICA_Schemes`.
-2. Categories from **Features** (or Grouped values → `Scheme_UID`).
-3. Series: **Average** (or Maximum — same on one row) `PROGRESS_PCT`.
-4. Filter: `STATUS` = Awarded.
-5. Horizontal bars, color `#3DDC97`.
-6. Category labels: `{Scheme_Name}` or `{Scheme_UID}`.
-7. Title: `Awarded progress by scheme`.
+2. Categories from **Grouped values** → `Pair_ID`.
+3. **Split by field** → `Program`.
+4. Series: Average `PROGRESS_PCT`.
+5. Filter: `STATUS` = Awarded.
+6. Horizontal grouped bars. Irrigation `#2EE6D6`, Watershed `#F5C15A`.
+7. Title: `Physical works by site`.
+8. Sort categories: `SITE-01` … `SITE-07`.
 
-Expected order if sorted descending: WSM-01 85 · WSM-02 45 · IS-06 39 · IS-04 27 · IS-02 19 · IS-03 15 · IS-01 13 · IS-07 5 · WSM-03 1.
+| Site | Irrigation project | Watershed project | Site average (KPI if that site is selected) |
+| --- | --- | --- | --- |
+| SITE-01 | 13% | 85% | **49.0%** |
+| SITE-02 | 19% | 45% | **32.0%** |
+| SITE-03 | 15% | 1% | **8.0%** |
+| SITE-04 | 27% | not awarded | **27.0%** |
+| SITE-05 | not awarded | not awarded | empty |
+| SITE-06 | 39% | not awarded | **39.0%** |
+| SITE-07 | 5% | not awarded | **5.0%** |
 
-## List — Schemes
+Optional second serial chart (no split): Grouped values → `Pair_ID` → Average `PROGRESS_PCT` → title `Site physical works (average)`. Same numbers as the last column.
 
-- Sort `Scheme_UID`.
+## List — Projects grouped by site
+
+- Sort: `Pair_ID`, then `Scheme_UID` (IS then WSM at the same site).
 - Line 1: `{Scheme_Name}`
-- Line 2: `{Program} · {STATUS} · {PROGRESS_PCT}%`
-- Line 3: `{Province} · {Pair_ID}`
-- Awarded `#3DDC97`, Not Awarded `#FF5C7A`. Blank progress on Not Awarded is correct.
+- Line 2: `{Pair_ID} · {Program} · physical works {PROGRESS_PCT}%`
+- Line 3: `{STATUS} · {Province}`
+- Awarded `#3DDC97`, Not Awarded `#FF5C7A`. Blank % on Not Awarded is correct.
 - Actions: Filter Areas + Lines + Points by `Scheme_UID`; Zoom; Flash.
 
 ---
@@ -259,7 +276,7 @@ Expected order if sorted descending: WSM-01 85 · WSM-02 45 · IS-06 39 · IS-04
 | Program | `Program` | `Program` |
 | Status | `STATUS` | `Awarding_Status` or `STATUS` |
 | Province | `Province` | `Province` |
-| Site | `Pair_ID` | `Pair_ID` or `Site_Number` (+ Zoom) |
+| Site | `Pair_ID` | `Pair_ID` or `Site_Number` (+ Zoom). Also filter the Physical works KPI and both progress charts |
 | Asset | `Asset_Name` (GIS) | `Asset_Name` (+ Zoom) |
 
 Wire each selector to **`JICA_Schemes` + Areas + Lines + Points + every widget**. If a GIS field name differs, set a **field map** on that action.
@@ -275,8 +292,9 @@ Splash body:
 ```
 14 schemes at 7 sites. Teal is irrigation. Gold is watershed.
 
-Awarded progress is the average % of the 9 awarded schemes
-(not a sum, and not taken from canals or structures).
+Physical works % is per project (IS or WSM).
+The green KPI averages awarded projects in the current filter.
+Pick a Site to see that site's projects (often one irrigation + one watershed).
 
 Use the header filters. Click a list row to zoom the map.
 ```
@@ -286,11 +304,13 @@ Share **GIS layer + JICA_Schemes table/points + web map + dashboard** together.
 | Test | Pass |
 | --- | --- |
 | No filters | 14 · 9 · **27.7%** · $2,294,514 · 12,225 ha · 15,887 HH · 97.3 km |
-| Program = Irrigation | progress **19.7%**, 7 schemes, HH and canal km unchanged, area 4,112 |
-| Program = Watershed | progress **43.7%**, HH **0**, canal km **0**, cost $241,239 |
-| Status = Not Awarded | 5 schemes, progress empty / no awarded rows, cost empty |
-| Site = SITE-03 | IS-03 (15%) and WSM-03 (1%) |
-| List click Shah Joy | map zooms; IS-04 shows 27% |
+| Program = Irrigation | physical works **19.7%**, 7 schemes, HH and canal km unchanged, area 4,112 |
+| Program = Watershed | physical works **43.7%**, HH **0**, canal km **0**, cost $241,239 |
+| Status = Not Awarded | 5 schemes, physical works empty, cost empty |
+| Site = SITE-01 | physical works **49.0%**; list shows IS-01 13% and WSM-01 85% |
+| Site = SITE-03 | physical works **8.0%**; IS-03 15% and WSM-03 1% |
+| Site = SITE-06 | physical works **39.0%**; only IS-06 (WSM not awarded) |
+| List click Shah Joy | map zooms; IS-04 physical works 27% |
 | Legend | stays visible on the map |
 
 ---
@@ -313,5 +333,5 @@ Share **GIS layer + JICA_Schemes table/points + web map + dashboard** together.
 3. Step C — Pulse colors + pop-up with progress.
 4. Step D–E — publish / overwrite, save the dark web map.
 5. Step F–G — dashboard theme, map, Map legend element.
-6. Step H — **seven** indicators, including Awarded progress = **27.7%**.
-7. Step I–K — pie, two bars, list, selectors, splash, tests.
+6. Step H — **seven** indicators, including Physical works = **27.7%** (site filter changes this).
+7. Step I–K — pie, cost bar, **physical works by site (split by Program)**, list sorted by site, selectors, splash, tests.

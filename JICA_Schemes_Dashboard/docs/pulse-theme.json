@@ -35,7 +35,14 @@
   "kpis": {
     "Schemes": { "color": "#E8EEF7", "statistic": "count", "field": "Scheme_UID", "filter": null },
     "Awarded": { "color": "#3DDC97", "statistic": "count", "field": "Scheme_UID", "filter": "STATUS = Awarded" },
-    "Awarded progress": { "color": "#3DDC97", "statistic": "average", "field": "PROGRESS_PCT", "filter": "STATUS = Awarded", "suffix": "%" },
+    "Physical works": {
+      "color": "#3DDC97",
+      "statistic": "average",
+      "field": "PROGRESS_PCT",
+      "filter": "STATUS = Awarded",
+      "suffix": "%",
+      "meaning": "Percent of physical works completed on each awarded project. KPI averages those projects in the current filter. Site selector scopes to that Pair_ID."
+    },
     "Awarded cost": { "color": "#F5C15A", "statistic": "sum", "field": "COST_USD", "filter": "STATUS = Awarded" },
     "Area": { "color": "#2EE6D6", "statistic": "sum", "field": "AREA_HA", "filter": null },
     "Households": { "color": "#5B8CFF", "statistic": "sum", "field": "HOUSEHOLDS", "filter": "Program = Irrigation" },
@@ -44,15 +51,24 @@
   "expectedUnfiltered": {
     "schemes": 14,
     "awarded": 9,
-    "awardedProgressPct": 27.7,
-    "awardedProgressIrrigationPct": 19.7,
-    "awardedProgressWatershedPct": 43.7,
+    "physicalWorksAwardedProjectsPct": 27.7,
+    "physicalWorksIrrigationPct": 19.7,
+    "physicalWorksWatershedPct": 43.7,
+    "physicalWorksBySitePct": {
+      "SITE-01": 49.0,
+      "SITE-02": 32.0,
+      "SITE-03": 8.0,
+      "SITE-04": 27.0,
+      "SITE-05": null,
+      "SITE-06": 39.0,
+      "SITE-07": 5.0
+    },
     "awardedCostUsd": 2294514,
     "areaHa": 12225,
     "householdsIrrigationOnly": 15887,
     "canalKmIrrigationOnly": 97.3
   },
-  "awardedProgressByScheme": {
+  "physicalWorksByProjectPct": {
     "JICA-WSM-01": 85,
     "JICA-WSM-02": 45,
     "JICA-IS-06": 39,

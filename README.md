@@ -11,7 +11,7 @@ Read the full tutorial: [docs/arcgis-dashboards-professional-tutorial.md](docs/a
 
 ## JICA irrigation + watershed (dark template)
 
-Join is done. Remaining Pulse-dark steps, including the **Awarded progress** KPI:
+Join is done. Remaining Pulse-dark steps, including **Physical works %** (per project and by site):
 
 - [JICA_Schemes_Dashboard/docs/AFTER_JOIN_BUILD.md](JICA_Schemes_Dashboard/docs/AFTER_JOIN_BUILD.md)
 - [JICA_Schemes_Dashboard/design/pulse-jica-preview.html](JICA_Schemes_Dashboard/design/pulse-jica-preview.html)

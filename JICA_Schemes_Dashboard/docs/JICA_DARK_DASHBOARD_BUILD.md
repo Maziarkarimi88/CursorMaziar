@@ -173,7 +173,7 @@ HEADER: title + selectors (Program, Status, Province, Pair)
 | --- | --- | --- | --- | --- |
 | Schemes | Count | `Scheme_UID` | none | `#E8EEF7` |
 | Awarded | Count | `Scheme_UID` | `STATUS` = Awarded | `#3DDC97` |
-| Awarded progress | Average | `PROGRESS_PCT` | `STATUS` = Awarded | `#3DDC97` |
+| Physical works | Average | `PROGRESS_PCT` | `STATUS` = Awarded | `#3DDC97` |
 | Awarded cost | Sum | `COST_USD` | `STATUS` = Awarded | `#F5C15A` |
 | Area | Sum | `AREA_HA` | none | `#2EE6D6` |
 | Households | Sum | `HOUSEHOLDS` | `Program` = Irrigation | `#5B8CFF` |
@@ -191,7 +191,7 @@ Expected totals from this CSV (after selectors = All):
 
 - 14 schemes
 - 9 awarded / 5 not awarded
-- Awarded progress **27.7%** (average of the 9 awarded `%` values)
+- Physical works **27.7%** (average of awarded **projects**; Site selector scopes to that site)
 - Awarded cost **2,294,514** USD
 
 ---
@@ -296,7 +296,7 @@ Add a header **information window** with the same text so users can reopen it.
 2. Dark web map, legend visible in Map Viewer, save.
 3. Create dashboard from the map, set Pulse dark colors, add header.
 4. Add map + Map legend panel.
-5. Add seven indicators on `JICA_Schemes` (include Awarded progress).
+5. Add seven indicators on `JICA_Schemes` (include Physical works). Chart progress by site, split by Program.
 6. Add pie, bar, scheme list.
 7. Add four header selectors; wire Filter / Zoom / Flash.
 8. Splash screen; save; test Program, Status, list click, and a Pair_ID site zoom.

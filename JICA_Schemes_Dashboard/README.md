@@ -4,7 +4,7 @@ Dark (MetroTel Pulse) ArcGIS Dashboard for the 14 JICA irrigation + watershed sc
 
 Join is complete on the three GIS layers. Continue here:
 
-1. [`docs/AFTER_JOIN_BUILD.md`](docs/AFTER_JOIN_BUILD.md) — publish + visualize + **Awarded progress** KPI
+1. [`docs/AFTER_JOIN_BUILD.md`](docs/AFTER_JOIN_BUILD.md) — publish + visualize + **Physical works** KPI (project + site)
 2. [`design/pulse-jica-preview.html`](design/pulse-jica-preview.html) — Pulse layout mock
 3. [`docs/pulse-theme.json`](docs/pulse-theme.json) — colors and expected totals
 
@@ -18,4 +18,4 @@ Join is complete on the three GIS layers. Continue here:
 | [`data/JICA_Areas_attributes.csv`](data/JICA_Areas_attributes.csv) | Area checklist |
 | [`data/JICA_Points_attributes.csv`](data/JICA_Points_attributes.csv) | Structure checklist |
 
-KPIs use the 14-row table only. Awarded progress is an **average** of the 9 awarded `%` values (**27.7%**), not a sum.
+KPIs use the 14-row table only. **Physical works** is the `%` completed on each project. The KPI averages awarded projects (**27.7%** unfiltered). The site chart splits irrigation vs watershed so both projects at a site stay visible.
