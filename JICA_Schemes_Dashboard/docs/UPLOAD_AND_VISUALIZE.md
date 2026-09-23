@@ -245,19 +245,20 @@ If the legend is empty: the web map does not have “Show in map legend” on (S
 
 ---
 
-# Step 9 — Seven KPI indicators (`JICA_Schemes` only)
+# Step 9 — Six roll-up KPIs + Physical works for the selected project only
 
-**Add element → Indicator**, seven times. Data source = `JICA_Schemes` (the 14-point layer or table).
+**Add element → Indicator**, six times, for roll-ups. Data source = `JICA_Schemes`.
 
 | Tile | Statistic | Field | Filter | Value color |
 | --- | --- | --- | --- | --- |
 | Schemes | Count | `Scheme_UID` | none | `#E8EEF7` |
 | Awarded | Count | `Scheme_UID` | `STATUS` = `Awarded` | `#3DDC97` |
-| Physical works | Average | `PROGRESS_PCT` | `STATUS` = `Awarded` | `#3DDC97` |
 | Awarded cost | Sum | `COST_USD` | `STATUS` = `Awarded` | `#F5C15A` |
 | Area | Sum | `AREA_HA` | none | `#2EE6D6` |
 | Households | Sum | `HOUSEHOLDS` | `Program` = `Irrigation` | `#5B8CFF` |
 | Canal km | Sum | `CANAL_KM` | `Program` = `Irrigation` | `#2EE6D6` |
+
+Seventh tile **Physical works**: Maximum `PROGRESS_PCT`, **no** Awarded-all filter. The scheme list (single select) **Filters** this indicator by `Scheme_UID`. When no row is selected, show empty. Never average all 14, all irrigation, all watershed, or a site pair.
 
 **Value formatting**
 
@@ -265,7 +266,7 @@ If the legend is empty: the web map does not have “Show in map legend” on (S
 - Awarded cost: grouping on, 0 decimals, prefix `$`
 - Area / Households: grouping on, 0 decimals
 - Canal km: 1 decimal
-- Physical works: 1 decimal, suffix ` %`
+- Physical works: 1 decimal, suffix ` %`, empty until one project is selected
 
 **Layout of each indicator:** top = title in `#8B9BB4`, middle = `{value}` large, bottom = unit (`schemes`, `%`, `USD`, `ha`, `HH`, `km`).
 
@@ -277,7 +278,7 @@ Dock all **seven** in **one row** under the header (~16% height), equal widths.
 | --- | --- |
 | Schemes | **14** |
 | Awarded | **9** |
-| Physical works | **27.7%** (site filter changes this) |
+| Physical works | **empty** (click one list row, e.g. IS-01 → 13%) |
 | Awarded cost | **$2,294,514** |
 | Area | **12,225** ha |
 | Households | **15,887** |
@@ -403,9 +404,9 @@ Share **hosted feature layer + web map + dashboard** together (same group / org 
 
 | Test | Pass |
 | --- | --- |
-| No filters | 14 · 9 · **27.7%** · $2,294,514 · 12,225 ha · 15,887 HH · 97.3 km |
-| Program = Irrigation | 7 schemes, progress **19.7%**, households and canal km stay the same, area 4,112 |
-| Program = Watershed | 7 schemes, progress **43.7%**, households **0**, canal km **0**, awarded cost $241,239 |
+| No filters | 14 · 9 · Physical works **empty** · $2,294,514 · 12,225 ha · 15,887 HH · 97.3 km |
+| Program = Irrigation | 7 schemes; progress tile still empty until one IS row is clicked |
+| Program = Watershed | 7 schemes, households **0**, canal km **0**, awarded cost $241,239; no WSM progress total |
 | Status = Not Awarded | 5 schemes, awarded cost $0 or empty |
 | Site = SITE-03 | Map zooms to Obe; list shows IS-03 and WSM-03 |
 | Asset = Yakawlang | IS-06 canals + intakes + WSM-06 dams |
@@ -452,7 +453,7 @@ Share **hosted feature layer + web map + dashboard** together (same group / org 
 6. Dark web map, legend visible, save (Step 6).
 7. Dashboard from the map → Theme Dark + Pulse hex + header (Step 7).
 8. Map + Map legend panel (Step 8).
-9. Seven indicators on `JICA_Schemes`, including Physical works (Step 9). Add a site chart split by Program.
+9. Six roll-up indicators plus Physical works for the selected project only. One bar per project.
 10. Pie, bar, list (Step 10).
 11. Five header selectors + Filter / Zoom / Flash (Step 11).
 12. Splash, share all three items, run the test table (Steps 12–13).

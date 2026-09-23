@@ -167,17 +167,17 @@ HEADER: title + selectors (Program, Status, Province, Pair)
 
 # Part C — Indicators (use `JICA_Schemes` only)
 
-**Add element → Indicator**, seven times. Data source = `JICA_Schemes`.
+**Add element → Indicator**, six roll-up tiles plus one per-project Physical works tile. Data source = `JICA_Schemes`.
 
 | Tile | Statistic | Field | Filter | Value color |
 | --- | --- | --- | --- | --- |
 | Schemes | Count | `Scheme_UID` | none | `#E8EEF7` |
 | Awarded | Count | `Scheme_UID` | `STATUS` = Awarded | `#3DDC97` |
-| Physical works | Average | `PROGRESS_PCT` | `STATUS` = Awarded | `#3DDC97` |
 | Awarded cost | Sum | `COST_USD` | `STATUS` = Awarded | `#F5C15A` |
 | Area | Sum | `AREA_HA` | none | `#2EE6D6` |
 | Households | Sum | `HOUSEHOLDS` | `Program` = Irrigation | `#5B8CFF` |
 | Canal km | Sum | `CANAL_KM` | `Program` = Irrigation | `#2EE6D6` |
+| Physical works | Maximum | `PROGRESS_PCT` | **one** list-selected `Scheme_UID` only | `#3DDC97` |
 
 **Households:** Irrigation and Watershed at the same `Pair_ID` often list the same villages. Sum **Irrigation only** so you do not double-count. (SITE-01 is 630 on both rows.)
 
@@ -191,7 +191,7 @@ Expected totals from this CSV (after selectors = All):
 
 - 14 schemes
 - 9 awarded / 5 not awarded
-- Physical works **27.7%** (average of awarded **projects**; Site selector scopes to that site)
+- Physical works **empty** until one project is selected (then that project’s `%` only)
 - Awarded cost **2,294,514** USD
 
 ---
@@ -296,7 +296,7 @@ Add a header **information window** with the same text so users can reopen it.
 2. Dark web map, legend visible in Map Viewer, save.
 3. Create dashboard from the map, set Pulse dark colors, add header.
 4. Add map + Map legend panel.
-5. Add seven indicators on `JICA_Schemes` (include Physical works). Chart progress by site, split by Program.
+5. Add six roll-up indicators plus Physical works for the **selected project only**. Chart one bar per `Scheme_UID`.
 6. Add pie, bar, scheme list.
 7. Add four header selectors; wire Filter / Zoom / Flash.
 8. Splash screen; save; test Program, Status, list click, and a Pair_ID site zoom.
