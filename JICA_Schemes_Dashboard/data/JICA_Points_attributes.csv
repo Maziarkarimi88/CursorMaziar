@@ -1,0 +1,39 @@
+OBJECTID,Scheme_UID,Pair_ID,Program,Feature_Role,Feature_Name,Asset_Name
+1,JICA-IS-02,SITE-02,Irrigation,Intake,Intake of Shir Abad Canal,Shir Abad
+2,JICA-IS-01,SITE-01,Irrigation,Social_Structure,Social Structure #1,Sorkh Joy
+3,JICA-IS-01,SITE-01,Irrigation,Footpath,Footpath #1,Sorkh Joy
+4,JICA-IS-01,SITE-01,Irrigation,Footpath,Footpath #2,Sorkh Joy
+5,JICA-IS-01,SITE-01,Irrigation,Footpath,Footpath #3,Sorkh Joy
+6,JICA-IS-01,SITE-01,Irrigation,Social_Structure,Social Structure #2,Sorkh Joy
+7,JICA-IS-01,SITE-01,Irrigation,Social_Structure,Social Structure #3,Sorkh Joy
+8,JICA-IS-01,SITE-01,Irrigation,Spillway,Spillway #1,Sorkh Joy
+9,JICA-IS-01,SITE-01,Irrigation,Spillway,Spillway #2,Sorkh Joy
+10,JICA-IS-01,SITE-01,Irrigation,Culvert,Culvert #1,Sorkh Joy
+11,JICA-IS-01,SITE-01,Irrigation,Intake,Intake of Main Canal,Sorkh Joy
+13,JICA-IS-03,SITE-03,Irrigation,Intake,Joi Ulya Bazar Canal intake,Joi Ulya Bazar
+14,JICA-IS-03,SITE-03,Irrigation,Intake,Yar Mohammad Khan canal intake,Yar Mohammad Khan
+15,JICA-IS-07,SITE-07,Irrigation,Intake,Ety Aregh Canal Intake,Ety Aregh
+16,JICA-WSM-01,SITE-01,Watershed,Check_Dam,Sorkh Joy Check Dam,Sorkh Joy
+17,JICA-WSM-04,SITE-04,Watershed,Check_Dam,Kabal Kai Check Dam,Shah Joy
+18,JICA-WSM-04,SITE-04,Watershed,Check_Dam,Mushang Qala Check Dam,Shah Joy
+19,JICA-WSM-04,SITE-04,Watershed,Check_Dam,Shenkai Ghundai Check Dam,Shah Joy
+20,JICA-WSM-04,SITE-04,Watershed,Check_Dam,Baland Kash Check Dam,Shah Joy
+21,JICA-WSM-02,SITE-02,Watershed,Check_Dam,Shir Abad Check Dam,Shir Abad
+22,JICA-WSM-06,SITE-06,Watershed,Check_Dam,Deh Bala/Qool Khaksar Check Dam,Yakawlang
+23,JICA-WSM-06,SITE-06,Watershed,Check_Dam,Maiandeh/Qool Faqir Check Dam,Yakawlang
+24,JICA-WSM-06,SITE-06,Watershed,Check_Dam,Madrasa /Qool Naiazullah Check Dam,Yakawlang
+25,JICA-WSM-06,SITE-06,Watershed,Check_Dam,Qool Mazar Check Dam,Yakawlang
+26,JICA-WSM-06,SITE-06,Watershed,Check_Dam,Qool Khalazai Check Dam,Yakawlang
+27,JICA-WSM-05,SITE-05,Watershed,Check_Dam,Shawaroz Check Dam,Shawaroz
+28,JICA-WSM-03,SITE-03,Watershed,Check_Dam,Joi Ulya Bazar Check Dam #1,Joi Ulya Bazar
+29,JICA-WSM-03,SITE-03,Watershed,Check_Dam,Joi Ulya Bazar Check Dam #2,Joi Ulya Bazar
+30,JICA-WSM-03,SITE-03,Watershed,Pond,Water Storage Pond,Joi Ulya Bazar
+31,JICA-WSM-07,SITE-07,Watershed,Check_Dam,Ety Aregh Check Dam #2,Ety Aregh
+32,JICA-WSM-07,SITE-07,Watershed,Check_Dam,Ety Aregh Check Dam #3,Ety Aregh
+33,JICA-WSM-07,SITE-07,Watershed,Check_Dam,Ety Aregh Check Dam #1,Ety Aregh
+34,JICA-IS-04,SITE-04,Irrigation,Intake,Shah Joy Canal Intake,Shah Joy
+35,JICA-IS-05,SITE-05,Irrigation,Intake,Shawaroz Canal Intake,Shawaroz
+36,JICA-IS-06,SITE-06,Irrigation,Intake,Deh Bala Canal Intake,Yakawlang
+37,JICA-IS-06,SITE-06,Irrigation,Intake,Charbagh Canal Intake,Yakawlang
+38,JICA-IS-06,SITE-06,Irrigation,Intake,Madrasa Canal Intake,Yakawlang
+39,JICA-IS-06,SITE-06,Irrigation,Intake,Islamabad Canal Intake,Yakawlang

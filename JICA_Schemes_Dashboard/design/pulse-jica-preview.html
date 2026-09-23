@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>JICA Irrigation &amp; Watershed — Pulse dark template</title>
+  <style>
+    :root {
+      --bg: #070B14;
+      --panel: #121B2C;
+      --panel-alt: #0C1320;
+      --border: #1E2A40;
+      --text: #E8EEF7;
+      --muted: #8B9BB4;
+      --irrigation: #2EE6D6;
+      --watershed: #F5C15A;
+      --awarded: #3DDC97;
+      --not-awarded: #FF5C7A;
+      --accent: #5B8CFF;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0; padding: 0;
+      background: var(--bg); color: var(--text);
+      font-family: "Segoe UI", Inter, system-ui, sans-serif;
+      min-height: 100%;
+    }
+    body { padding: 16px; }
+    .app {
+      max-width: 1440px; margin: 0 auto;
+      border: 1px solid var(--border); border-radius: 12px;
+      overflow: hidden; background: var(--bg);
+    }
+    header {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 16px; padding: 12px 18px;
+      background: var(--panel); border-bottom: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .logo {
+      width: 32px; height: 32px; border-radius: 8px;
+      background: linear-gradient(135deg, var(--irrigation), var(--accent));
+      display: grid; place-items: center; font-weight: 700; font-size: 12px; color: #06201d;
+    }
+    .brand h1 { margin: 0; font-size: 15px; letter-spacing: 0.02em; }
+    .brand p { margin: 2px 0 0; font-size: 11px; color: var(--muted); }
+    .selectors { display: flex; gap: 8px; flex-wrap: wrap; }
+    .selectors select {
+      background: var(--panel-alt); color: var(--text);
+      border: 1px solid var(--border); border-radius: 6px;
+      padding: 6px 10px; font-size: 12px;
+    }
+    .kpis {
+      display: grid; grid-template-columns: repeat(6, 1fr);
+      gap: 10px; padding: 12px 12px 4px;
+    }
+    .kpi {
+      background: var(--panel); border: 1px solid var(--border);
+      border-radius: 10px; padding: 12px 14px; min-height: 92px;
+    }
+    .kpi .label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
+    .kpi .value { font-size: 26px; font-weight: 650; margin: 6px 0 2px; line-height: 1.1; }
+    .kpi .unit { font-size: 11px; color: var(--muted); }
+    .grid {
+      display: grid; grid-template-columns: 58% 1fr;
+      gap: 10px; padding: 8px 12px 12px;
+    }
+    .card {
+      background: var(--panel); border: 1px solid var(--border);
+      border-radius: 10px; padding: 12px 14px;
+    }
+    .card h2 {
+      margin: 0 0 10px; font-size: 12px; font-weight: 600;
+      color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em;
+    }
+    .map-wrap { min-height: 430px; display: flex; flex-direction: column; }
+    .map {
+      flex: 1; border-radius: 8px; min-height: 360px;
+      background:
+        radial-gradient(circle at 30% 42%, rgba(46,230,214,0.16), transparent 28%),
+        radial-gradient(circle at 62% 48%, rgba(245,193,90,0.14), transparent 26%),
+        linear-gradient(180deg, #101827, #0a101b);
+      position: relative; overflow: hidden;
+    }
+    .site {
+      position: absolute; width: 18px; height: 18px; border-radius: 3px;
+      opacity: 0.9;
+    }
+    .legend {
+      display: flex; flex-wrap: wrap; gap: 10px 14px;
+      margin-top: 10px; font-size: 11px; color: var(--muted);
+    }
+    .swatch { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; vertical-align: -1px; }
+    .stack { display: flex; flex-direction: column; gap: 10px; }
+    .pie-row { display: flex; align-items: center; gap: 16px; }
+    .donut {
+      width: 132px; height: 132px; border-radius: 50%;
+      background: conic-gradient(var(--irrigation) 0 180deg, var(--watershed) 180deg 360deg);
+      position: relative; flex: 0 0 132px;
+    }
+    .donut::after {
+      content: "14"; position: absolute; inset: 28px; border-radius: 50%;
+      background: var(--panel); display: grid; place-items: center;
+      font-size: 22px; font-weight: 650;
+    }
+    .pie-keys { font-size: 12px; color: var(--muted); line-height: 1.7; }
+    .bars { display: flex; flex-direction: column; gap: 6px; }
+    .bar-row { display: grid; grid-template-columns: 92px 1fr 72px; gap: 8px; align-items: center; font-size: 11px; color: var(--muted); }
+    .bar-track { height: 10px; background: #0b1220; border-radius: 99px; overflow: hidden; }
+    .bar-fill { height: 100%; background: var(--watershed); border-radius: 99px; }
+    .list { display: flex; flex-direction: column; gap: 6px; max-height: 210px; overflow: auto; }
+    .row {
+      display: grid; grid-template-columns: 64px 1fr auto;
+      gap: 8px; align-items: center;
+      padding: 8px 8px; border-radius: 8px; background: var(--panel-alt);
+      border: 1px solid transparent;
+    }
+    .row:hover { border-color: var(--accent); }
+    .tag { font-size: 10px; font-weight: 700; letter-spacing: 0.04em; }
+    .row .name { font-size: 12px; }
+    .row .meta { font-size: 11px; color: var(--muted); }
+    .note {
+      margin: 0 12px 14px; padding: 10px 12px; border-radius: 8px;
+      border: 1px dashed var(--border); color: var(--muted); font-size: 12px;
+    }
+    @media (max-width: 1100px) {
+      .kpis { grid-template-columns: repeat(3, 1fr); }
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header>
+      <div class="brand">
+        <div class="logo">IS</div>
+        <div>
+          <h1>JICA Irrigation &amp; Watershed</h1>
+          <p>14 schemes · 7 sites · Pulse dark template</p>
+        </div>
+      </div>
+      <div class="selectors">
+        <select aria-label="Program"><option>All programs</option><option>Irrigation</option><option>Watershed</option></select>
+        <select aria-label="Status"><option>All statuses</option><option>Awarded</option><option>Not Awarded</option></select>
+        <select aria-label="Province"><option>All provinces</option><option>Bamyan</option><option>Ghazni</option><option>Herat</option><option>Maidan Wardak</option><option>Zabul</option><option>Baghlan</option><option>Faryab</option></select>
+        <select aria-label="Site"><option>All sites</option><option>SITE-01</option><option>SITE-02</option><option>SITE-03</option><option>SITE-04</option><option>SITE-05</option><option>SITE-06</option><option>SITE-07</option></select>
+        <select aria-label="Asset"><option>All assets</option><option>Sorkh Joy</option><option>Shir Abad</option><option>Joi Ulya Bazar</option><option>Yar Mohammad Khan</option><option>Shah Joy</option><option>Shawaroz</option><option>Yakawlang</option><option>Ety Aregh</option></select>
+      </div>
+    </header>
+
+    <section class="kpis">
+      <div class="kpi"><div class="label">Schemes</div><div class="value" style="color:#E8EEF7">14</div><div class="unit">one row per scheme</div></div>
+      <div class="kpi"><div class="label">Awarded</div><div class="value" style="color:#3DDC97">9</div><div class="unit">of 14 schemes</div></div>
+      <div class="kpi"><div class="label">Awarded cost</div><div class="value" style="color:#F5C15A">$2.29M</div><div class="unit">2,294,514 USD</div></div>
+      <div class="kpi"><div class="label">Area</div><div class="value" style="color:#2EE6D6">12,225</div><div class="unit">hectares (scheme table)</div></div>
+      <div class="kpi"><div class="label">Households</div><div class="value" style="color:#5B8CFF">15,887</div><div class="unit">Irrigation only</div></div>
+      <div class="kpi"><div class="label">Canal km</div><div class="value" style="color:#2EE6D6">97.3</div><div class="unit">Irrigation only</div></div>
+    </section>
+
+    <section class="grid">
+      <div class="card map-wrap">
+        <h2>Market geography · areas + canals + structures</h2>
+        <div class="map" role="img" aria-label="Dark map placeholder for Afghanistan scheme sites">
+          <div class="site" style="left:48%;top:40%;background:#2EE6D6" title="Sorkh Joy"></div>
+          <div class="site" style="left:52%;top:58%;background:#2EE6D6" title="Shir Abad"></div>
+          <div class="site" style="left:28%;top:46%;background:#F5C15A" title="Joi Ulya / Yarokhan"></div>
+          <div class="site" style="left:44%;top:52%;background:#2EE6D6" title="Shah Joy"></div>
+          <div class="site" style="left:46%;top:68%;background:#F5C15A" title="Shawaroz"></div>
+          <div class="site" style="left:58%;top:28%;background:#2EE6D6" title="Yakawlang"></div>
+          <div class="site" style="left:32%;top:18%;background:#F5C15A" title="Ety Aregh"></div>
+        </div>
+        <div class="legend">
+          <span><i class="swatch" style="background:#2EE6D6"></i>Command / canal / intake</span>
+          <span><i class="swatch" style="background:#F5C15A"></i>Catchment / check dam</span>
+          <span><i class="swatch" style="background:#5B8CFF"></i>Riverbank / pond</span>
+          <span><i class="swatch" style="background:#8B9BB4"></i>Social / footpath / culvert</span>
+        </div>
+      </div>
+
+      <div class="stack">
+        <div class="card">
+          <h2>Program mix</h2>
+          <div class="pie-row">
+            <div class="donut" aria-hidden="true"></div>
+            <div class="pie-keys">
+              <div><i class="swatch" style="background:#2EE6D6"></i>Irrigation · 7</div>
+              <div><i class="swatch" style="background:#F5C15A"></i>Watershed · 7</div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <h2>Awarded cost by province</h2>
+          <div class="bars">
+            <div class="bar-row"><span>Herat</span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div><span>$778k</span></div>
+            <div class="bar-row"><span>Bamyan</span><div class="bar-track"><div class="bar-fill" style="width:62%"></div></div><span>$480k</span></div>
+            <div class="bar-row"><span>Ghazni</span><div class="bar-track"><div class="bar-fill" style="width:51%"></div></div><span>$400k</span></div>
+            <div class="bar-row"><span>Faryab</span><div class="bar-track"><div class="bar-fill" style="width:30%"></div></div><span>$237k</span></div>
+            <div class="bar-row"><span>Baghlan</span><div class="bar-track"><div class="bar-fill" style="width:29%"></div></div><span>$230k</span></div>
+            <div class="bar-row"><span>Wardak</span><div class="bar-track"><div class="bar-fill" style="width:22%"></div></div><span>$170k</span></div>
+          </div>
+        </div>
+        <div class="card">
+          <h2>Schemes · click a row in ArcGIS to zoom</h2>
+          <div class="list">
+            <div class="row"><span class="tag" style="color:#3DDC97">AWARDED</span><div><div class="name">Sorkh Joy Irrigation</div><div class="meta">Irrigation · SITE-01 · Bamyan</div></div><span class="meta">IS-01</span></div>
+            <div class="row"><span class="tag" style="color:#3DDC97">AWARDED</span><div><div class="name">Sorkh Joy Watershed</div><div class="meta">Watershed · SITE-01 · Bamyan</div></div><span class="meta">WSM-01</span></div>
+            <div class="row"><span class="tag" style="color:#3DDC97">AWARDED</span><div><div class="name">Yarokhan &amp; Joi Ulya Irrigation</div><div class="meta">Irrigation · SITE-03 · Herat</div></div><span class="meta">IS-03</span></div>
+            <div class="row"><span class="tag" style="color:#FF5C7A">OPEN</span><div><div class="name">Shawaroz Irrigation</div><div class="meta">Irrigation · SITE-05 · Zabul</div></div><span class="meta">IS-05</span></div>
+            <div class="row"><span class="tag" style="color:#FF5C7A">OPEN</span><div><div class="name">Yakawlang Watershed</div><div class="meta">Watershed · SITE-06 · Baghlan</div></div><span class="meta">WSM-06</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <p class="note">Design reference only. Build the live product in ArcGIS Dashboards with Theme → Dark and the hex tokens in docs/pulse-theme.json. Follow docs/UPLOAD_AND_VISUALIZE.md.</p>
+  </div>
+</body>
+</html>

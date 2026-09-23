@@ -1,8 +1,10 @@
 # JICA irrigation + watershed dashboard (dark Pulse template)
 
-Build this in **ArcGIS Dashboards** using the same dark MetroTel Pulse look. Your table is scheme-level. Your GIS has **points, lines, and polygons** that already store `Scheme_UID`, `Pair_ID`, `Program`, `Feature_role`, and `Feature_Name`.
+**Upload click-path (use this first):** [`UPLOAD_AND_VISUALIZE.md`](UPLOAD_AND_VISUALIZE.md)
 
-Clean attribute table: `data/schemes_dashboard.csv` (14 rows: 7 Irrigation + 7 Watershed).
+Build this in **ArcGIS Dashboards** using the same dark MetroTel Pulse look. Your table is scheme-level. Your GIS has **points, lines, and polygons** that already store `Scheme_UID`, `Pair_ID`, `Program`, `Feature_Role`, `Feature_Name`, and `Asset_Name`.
+
+Clean attribute table: `data/schemes_dashboard.csv` (14 rows: 7 Irrigation + 7 Watershed). GIS attribute checklists: `data/JICA_*_attributes.csv`.
 
 ---
 
@@ -21,17 +23,21 @@ Do **not** sum `COST_USD` on `JICA_Points`. One scheme can have many structures,
 
 ---
 
-## Feature_role values (put these on the GIS features)
+## Feature_Role values (on the cleaned GIS)
 
-| Feature_role | Geometry | Program |
+| Feature_Role | Geometry | Typical program |
 | --- | --- | --- |
-| `command_area` | polygon | Irrigation |
-| `catchment` | polygon | Watershed |
-| `canal` | line | Irrigation |
-| `wsm_line` | line | Watershed (check-dam / gully alignment) |
-| `structure` | point | Irrigation or Watershed |
+| `Command_Area` | polygon | Irrigation |
+| `Incremental_Area` | polygon | Irrigation |
+| `Catchment` | polygon | Watershed |
+| `Canal` | line | Irrigation |
+| `Riverbank` | line | Irrigation or Watershed |
+| `Intake` | point | Irrigation |
+| `Check_Dam` | point | Watershed |
+| `Pond` | point | Watershed |
+| `Social_Structure` / `Footpath` / `Spillway` / `Culvert` | point | Irrigation |
 
-Keep `Feature_Name` on the GIS only (intake, check dam #2, canal reach). Do not put it on the 14-row scheme table.
+Keep `Feature_Name` and `Asset_Name` on the GIS. Do not explode them onto extra KPI rows.
 
 ---
 
@@ -67,14 +73,14 @@ Map symbols must use the **same** teal and gold.
 
 On every feature, these five fields must exist and match the CSV:
 
-`Scheme_UID`, `Pair_ID`, `Program`, `Feature_role`, `Feature_Name`
+`Scheme_UID`, `Pair_ID`, `Program`, `Feature_Role`, `Feature_Name`, `Asset_Name`
 
 `Scheme_UID` examples: `JICA-IS-01` … `JICA-IS-07`, `JICA-WSM-01` … `JICA-WSM-07`  
 `Pair_ID` examples: `SITE-01` … `SITE-07` (IS and WSM at the same site share one Pair_ID)
 
 ## A2. Load geometry
 
-Use **Append** into the three layers. Then **Calculate Field** if `Scheme_UID` / `Feature_role` are missing.
+Use **Append** into the three layers. Then **Calculate Field** if `Scheme_UID` / `Feature_Role` are missing.
 
 ## A3. Join the cleaned CSV
 
@@ -85,7 +91,7 @@ Use **Append** into the three layers. Then **Calculate Field** if `Scheme_UID` /
    - Input join field = Join table field = **`Scheme_UID`**
 3. Repeat for all three layers.
 
-After join, each canal segment still has `Feature_role = canal` and `Feature_Name`, plus scheme fields (`STATUS`, `COST_USD`, `Province`, …).
+After join, each canal segment still has `Feature_Role = Canal` and `Feature_Name`, plus scheme fields (`STATUS`, `COST_USD`, `Province`, …).
 
 ## A4. Scheme KPI layer (14 features)
 
@@ -104,7 +110,7 @@ Fix `JICA-WSM-03` coordinates before using CSV XY: current `Longitude` in the ra
 
 - Areas: unique values `Program` — Irrigation `#2EE6D6` fill 30% transparent, Watershed `#F5C15A` fill 30%
 - Lines: unique values `Program` — same colors, thicker line
-- Points: unique values `Feature_role` or `Program`
+- Points: unique values `Feature_Role` or `Program`
 - Optional definition queries: none at first (dashboard selectors will filter)
 
 **Pop-up**
@@ -112,7 +118,7 @@ Fix `JICA-WSM-03` coordinates before using CSV XY: current `Longitude` in the ra
 ```
 {Scheme_Name}
 {Program} · {STATUS}
-{Feature_role}: {Feature_Name}
+{Feature_Role}: {Feature_Name}
 Cost: {COST_USD} USD
 Area: {AREA_HA} ha
 ```

@@ -1,0 +1,37 @@
+OBJECTID,Shape_Length,Shape_Area,Scheme_UID,Pair_ID,Program,Feature_Role,Feature_Name,Area_HA,Asset_Name
+1,0.162301663,0.000342147,JICA-IS-01,SITE-01,Irrigation,Command_Area,Sorkh Joy Canal Command Area,348.8925476,Sorkh Joy
+3,0.184064395,0.000406673,JICA-IS-03,SITE-03,Irrigation,Command_Area,Joi Ulya Bazar Canal Command Area,414.6450806,Joi Ulya Bazar
+4,0.064459196,5.36072E-05,JICA-IS-03,SITE-03,Irrigation,Incremental_Area,Joi Ulya Bazar Canal Incremental Area,54.66616058,Joi Ulya Bazar
+5,0.448336492,0.000534483,JICA-IS-03,SITE-03,Irrigation,Command_Area,Yar Mohammad Khan Canal Command Area,545.309021,Yar Mohammad Khan
+6,0.06513346,8.34787E-05,JICA-IS-03,SITE-03,Irrigation,Incremental_Area,Yar Mohammad Khan Canal Incremental Area,85.21194458,Yar Mohammad Khan
+7,0.150857382,0.000504599,JICA-IS-04,SITE-04,Irrigation,Command_Area,Shah Joy Canal Command Area,520.7426758,Shah Joy
+8,0.107584261,0.000243332,JICA-IS-05,SITE-05,Irrigation,Command_Area,Shawaroz Canal Command Area,253.3682861,Shawaroz
+9,0.060537085,6.89386E-05,JICA-IS-05,SITE-05,Irrigation,Incremental_Area,Shawaroz Canal Incremental Area,71.77337646,Shawaroz
+10,0.229094804,0.000477095,JICA-IS-07,SITE-07,Irrigation,Command_Area,Ety Aregh Canal Command Area,478.1313477,Ety Aregh
+11,0.041663947,8.5282E-05,JICA-IS-07,SITE-07,Irrigation,Incremental_Area,Ety Aregh Canal Incremental Area,85.42762756,Ety Aregh
+12,0.125863352,0.00041083,JICA-IS-02,SITE-02,Irrigation,Command_Area,Shir Abad Canal Command Area,426.6080627,Shir Abad
+13,0.067495419,8.80816E-05,JICA-IS-02,SITE-02,Irrigation,Incremental_Area,Shir Abad Canal Incremental Area,91.47654724,Shir Abad
+14,0.026582841,1.72444E-05,JICA-IS-06,SITE-06,Irrigation,Command_Area,Islamabad Canal Command Area,17.45369148,Yakawlang
+15,0.051513926,4.48753E-05,JICA-IS-06,SITE-06,Irrigation,Command_Area,Deh Bala Canal Command Area,45.42446518,Yakawlang
+16,0.056486838,4.99084E-05,JICA-IS-06,SITE-06,Irrigation,Command_Area,Madrasa Canal Command Area,50.51256943,Yakawlang
+17,0.109782997,0.000124452,JICA-IS-06,SITE-06,Irrigation,Command_Area,Charbagh Canal Command Area,125.9216614,Yakawlang
+18,0.081515964,0.000140373,JICA-WSM-01,SITE-01,Watershed,Catchment,Sorkh Joy Check Dam Catchment,143.1830597,Sorkh Joy
+19,0.085824612,0.000282747,JICA-WSM-04,SITE-04,Watershed,Catchment,Baland Kash Check Dam Catchment,291.7975159,Shah Joy
+20,0.079820471,0.000256994,JICA-WSM-04,SITE-04,Watershed,Catchment,Mushang Qala Check Dam Catchment,265.3310547,Shah Joy
+21,0.080495176,0.000117205,JICA-WSM-04,SITE-04,Watershed,Catchment,Kabal Kai Check Dam Catchment,121.0381699,Shah Joy
+22,0.074827454,0.000269828,JICA-WSM-04,SITE-04,Watershed,Catchment,Shenkai Ghundai Check Dam Catchment,278.7948914,Shah Joy
+23,0.041229185,4.93012E-05,JICA-WSM-02,SITE-02,Watershed,Catchment,Shir Abad Main Check Dam Catchment,51.16374969,Shir Abad
+24,0.218679916,0.001454816,JICA-WSM-02,SITE-02,Watershed,Catchment,Shir Abad Catchment water transfer to main catchme,1508.762817,Shir Abad
+25,0.022005478,2.01653E-05,JICA-WSM-06,SITE-06,Watershed,Catchment,Qool Khalazai Check Dam Catchment,20.40484047,Yakawlang
+26,0.021404607,2.90139E-05,JICA-WSM-06,SITE-06,Watershed,Catchment,Qool Mazar Check Dam Catchment,29.36707687,Yakawlang
+27,0.024249268,2.52571E-05,JICA-WSM-06,SITE-06,Watershed,Catchment,Madrasa/Qool Naiaz Check Dam Catchment,25.56597137,Yakawlang
+28,0.025876688,2.77177E-05,JICA-WSM-06,SITE-06,Watershed,Catchment,Maiandeh/Qool Faqir Check Dam Catchment,28.0578804,Yakawlang
+29,0.040351944,7.07878E-05,JICA-WSM-06,SITE-06,Watershed,Catchment,DehBala/Qool Khaksar Check Dam Catchment,71.668396,Yakawlang
+31,0.097823839,0.000420218,JICA-WSM-05,SITE-05,Watershed,Catchment,Shawaroz Check Dam Catchment,437.3440247,Shawaroz
+32,0.046118737,0.000106846,JICA-WSM-03,SITE-03,Watershed,Catchment,Joi Ulya Bazar Catchment of Check Dam #2,108.8517761,Joi Ulya Bazar
+33,0.047835565,0.000135235,JICA-WSM-03,SITE-03,Watershed,Catchment,Joi Ulya Bazar Catchment of Check Dam #1,137.7737427,Joi Ulya Bazar
+34,0.332314121,0.002972823,JICA-WSM-03,SITE-03,Watershed,Catchment,Joi Ulya Bazar Coverage of Pond and River bank,3030.358887,Joi Ulya Bazar
+35,0.090916794,0.000331321,JICA-WSM-03,SITE-03,Watershed,Catchment,Joi Ulya Bazar Catchment of Water Pond,337.5554199,Joi Ulya Bazar
+36,0.034247726,4.74542E-05,JICA-WSM-07,SITE-07,Watershed,Catchment,Ety Aregh Catchment of Check Dam #1,47.5882988,Ety Aregh
+37,0.029639731,2.83783E-05,JICA-WSM-07,SITE-07,Watershed,Catchment,Ety Aregh Catchment of Check Dam #2,28.45837402,Ety Aregh
+38,0.019663538,1.73917E-05,JICA-WSM-07,SITE-07,Watershed,Catchment,Ety Aregh Catchment of Check Dam #3,17.44103432,Ety Aregh

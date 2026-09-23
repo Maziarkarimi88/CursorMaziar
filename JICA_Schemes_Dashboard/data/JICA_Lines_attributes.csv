@@ -1,0 +1,16 @@
+OBJECTID,Shape_Length,Scheme_UID,Pair_ID,Program,Feature_Role,Feature_Name,Length_KM,Asset_Name
+1,0.047518147,JICA-IS-01,SITE-01,Irrigation,Canal,Sorkh Joy Canal,4.64401865,Sorkh Joy
+2,0.233770617,JICA-IS-02,SITE-02,Irrigation,Canal,Shir Abad Canal,24.05470085,Shir Abad
+3,0.124663778,JICA-IS-03,SITE-03,Irrigation,Canal,Joi Ulya Bazar Canal,12.03259945,Joi Ulya Bazar
+4,0.280746248,JICA-IS-03,SITE-03,Irrigation,Canal,Yar Mohammad Khan Canal,27.51958084,Yar Mohammad Khan
+5,0.071563082,JICA-IS-04,SITE-04,Irrigation,Canal,Shah Joy Canal,7.221818447,Shah Joy
+6,0.087120796,JICA-IS-05,SITE-05,Irrigation,Canal,Shawaroz Canal,8.781141281,Shawaroz
+7,0.107531561,JICA-IS-07,SITE-07,Irrigation,Canal,Ety Aregh Canal,11.37594509,Ety Aregh
+9,0.020786902,JICA-IS-06,SITE-06,Irrigation,Canal,Deh Bala Canal,2.165409327,Yakawlang
+10,0.029427508,JICA-IS-06,SITE-06,Irrigation,Canal,Madrasa Canal,3.149740934,Yakawlang
+11,0.051853314,JICA-IS-06,SITE-06,Irrigation,Canal,Charbagh Canal,5.422020435,Yakawlang
+12,0.015556169,JICA-IS-06,SITE-06,Irrigation,Canal,Islamabad Canal,1.639387012,Yakawlang
+13,0.002476197,JICA-IS-03,SITE-03,Irrigation,Riverbank,Joi Ulya Bazar River Bank Protection Wall #1,0.234471262,Joi Ulya Bazar
+14,0.003976209,JICA-IS-03,SITE-03,Irrigation,Riverbank,Joi Ulya Bazar River Bank Protection Wall #2,0.371960819,Joi Ulya Bazar
+15,0.001833953,JICA-WSM-03,SITE-03,Watershed,Riverbank,Yar Mohammad Khan River Bank Protection Wall #1,0.173160568,Yar Mohammad Khan
+16,0.001059845,JICA-WSM-03,SITE-03,Watershed,Riverbank,Yar Mohammad Khan River Bank Protection Wall #2,0.100256696,Yar Mohammad Khan

@@ -1,0 +1,53 @@
+{
+  "name": "JICA Pulse Dark",
+  "source": "MetroTel Pulse dark template",
+  "dashboardTheme": "Dark",
+  "colors": {
+    "background": "#070B14",
+    "panel": "#121B2C",
+    "panelAlt": "#0C1320",
+    "border": "#1E2A40",
+    "text": "#E8EEF7",
+    "muted": "#8B9BB4",
+    "irrigation": "#2EE6D6",
+    "watershed": "#F5C15A",
+    "awarded": "#3DDC97",
+    "notAwarded": "#FF5C7A",
+    "accent": "#5B8CFF"
+  },
+  "map": {
+    "basemap": "Human Geography Dark Map or Dark Gray Canvas",
+    "areaFillOpacity": 0.30,
+    "lineWidthMetersHint": "thicker than default so canals read on dark basemap"
+  },
+  "featureRoleColors": {
+    "Command_Area": { "fill": "#2EE6D6", "outline": "#2EE6D6", "opacity": 0.30 },
+    "Incremental_Area": { "fill": "#2EE6D6", "outline": "#2EE6D6", "opacity": 0.12 },
+    "Catchment": { "fill": "#F5C15A", "outline": "#F5C15A", "opacity": 0.30 },
+    "Canal": { "color": "#2EE6D6", "width": 2.5 },
+    "Riverbank": { "color": "#5B8CFF", "width": 2 },
+    "Intake": { "color": "#2EE6D6", "style": "circle" },
+    "Check_Dam": { "color": "#F5C15A", "style": "square" },
+    "Pond": { "color": "#5B8CFF", "style": "circle" },
+    "Social_Structure": { "color": "#8B9BB4", "style": "diamond" },
+    "Footpath": { "color": "#8B9BB4", "style": "circle" },
+    "Spillway": { "color": "#5B8CFF", "style": "triangle" },
+    "Culvert": { "color": "#8B9BB4", "style": "square" }
+  },
+  "kpis": {
+    "Schemes": { "color": "#E8EEF7", "statistic": "count", "field": "Scheme_UID", "filter": null },
+    "Awarded": { "color": "#3DDC97", "statistic": "count", "field": "Scheme_UID", "filter": "STATUS = Awarded" },
+    "Awarded cost": { "color": "#F5C15A", "statistic": "sum", "field": "COST_USD", "filter": "STATUS = Awarded" },
+    "Area": { "color": "#2EE6D6", "statistic": "sum", "field": "AREA_HA", "filter": null },
+    "Households": { "color": "#5B8CFF", "statistic": "sum", "field": "HOUSEHOLDS", "filter": "Program = Irrigation" },
+    "Canal km": { "color": "#2EE6D6", "statistic": "sum", "field": "CANAL_KM", "filter": "Program = Irrigation" }
+  },
+  "expectedUnfiltered": {
+    "schemes": 14,
+    "awarded": 9,
+    "awardedCostUsd": 2294514,
+    "areaHa": 12225,
+    "householdsIrrigationOnly": 15887,
+    "canalKmIrrigationOnly": 97.3
+  }
+}
