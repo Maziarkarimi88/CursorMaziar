@@ -8,6 +8,7 @@ Join is complete on the three GIS layers. Continue here:
 2. [`design/pulse-jica-preview.html`](design/pulse-jica-preview.html) — Pulse layout mock
 3. [`docs/pulse-theme.json`](docs/pulse-theme.json) — colors and expected totals
 4. [`design/icons/`](design/icons/) — KPI SVGs; how to attach: [`docs/ADD_KPI_ICONS.md`](docs/ADD_KPI_ICONS.md)
+5. [`docs/UPDATE_SCHEME_DATA.md`](docs/UPDATE_SCHEME_DATA.md) — efficient progress / table updates
 
 ## Data
 
