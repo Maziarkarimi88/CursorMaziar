@@ -7,6 +7,7 @@ Join is complete on the three GIS layers. Continue here:
 1. [`docs/AFTER_JOIN_BUILD.md`](docs/AFTER_JOIN_BUILD.md) — publish + visualize; **Physical works** is per project only
 2. [`design/pulse-jica-preview.html`](design/pulse-jica-preview.html) — Pulse layout mock
 3. [`docs/pulse-theme.json`](docs/pulse-theme.json) — colors and expected totals
+4. [`design/icons/`](design/icons/) — KPI SVGs; how to attach: [`docs/ADD_KPI_ICONS.md`](docs/ADD_KPI_ICONS.md)
 
 ## Data
 
