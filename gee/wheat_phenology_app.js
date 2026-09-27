@@ -451,23 +451,37 @@ app.createHelpers = function() {
     var years = ee.Date(image.get('system:time_start')).difference(ee.Date(startDate), 'year');
     return image
       .addBands(ee.Image(years).rename('t'))
-      .addBands(ee.Image.constant(1))
-      .float();
+      .addBands(ee.Image.constant(1).rename('constant'))
+      .float()
+      .copyProperties(image, ['system:time_start']);
+  };
+
+  app.asChartPoints = function(fc) {
+    return ee.FeatureCollection(fc).map(function(f) {
+      f = ee.Feature(f);
+      return f.set('sample', ee.String(f.id()));
+    });
   };
 
   app.makePointChart = function(imageCollection, regions, band, scale, title) {
+    var col = ee.ImageCollection(imageCollection)
+      .select([band])
+      .map(function(image) {
+        return ee.Image(image).copyProperties(image, ['system:time_start']);
+      });
     return ui.Chart.image.seriesByRegion({
-      imageCollection: imageCollection.select(band),
+      imageCollection: col,
       regions: regions,
       reducer: ee.Reducer.mean(),
       band: band,
       scale: scale,
       xProperty: 'system:time_start',
-      seriesProperty: 'id'
-    }).setChartType('ScatterChart').setOptions({
+      seriesProperty: 'sample'
+    }).setChartType('LineChart').setOptions({
       title: title,
+      interpolateNulls: true,
       vAxis: {title: 'NDVI'},
-      hAxis: {title: 'Date'},
+      hAxis: {title: 'Date', format: 'MMM yyyy'},
       lineWidth: 1,
       pointSize: 2,
       legend: {position: 'none'}
@@ -530,7 +544,7 @@ app.createHelpers = function() {
     }
     app.setBusy(true);
     app.chartArea.clear();
-    var points = ee.FeatureCollection(fc);
+    var points = app.asChartPoints(fc);
     var clipGeom = points.geometry().bounds();
     var timeField = 'system:time_start';
     var col = app.s2Collection(startDate, endDate, clipGeom, cloud).map(app.addTimeBands);

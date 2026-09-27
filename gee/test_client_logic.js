@@ -216,6 +216,8 @@ check('interface app charts each sample point like MODULE 1', function() {
   assert.strictEqual(appSrc.indexOf('Harmonic model: fitted values') > -1, true);
   assert.strictEqual(appSrc.indexOf('showMonthlyComposite') > -1, true);
   assert.strictEqual(appSrc.indexOf("bands: ['B8', 'B4', 'B3']") > -1, true);
+  assert.strictEqual(appSrc.indexOf("setChartType('LineChart')") > -1, true);
+  assert.strictEqual(appSrc.indexOf("seriesProperty: 'id'") === -1, true);
 });
 
 if (failures) {
