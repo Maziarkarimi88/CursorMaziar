@@ -464,6 +464,96 @@ app.createHelpers = function() {
     });
   };
 
+  app.yearFraction = function(millis) {
+    var t = Number(millis);
+    if (!isFinite(t)) return NaN;
+    var d = new Date(t);
+    var y = d.getUTCFullYear();
+    var start = Date.UTC(y, 0, 1);
+    var end = Date.UTC(y + 1, 0, 1);
+    return y + (t - start) / (end - start);
+  };
+
+  app.isoDateFromMillis = function(millis) {
+    var d = new Date(Number(millis));
+    if (isNaN(d.getTime())) return '';
+    var y = d.getUTCFullYear();
+    var m = d.getUTCMonth() + 1;
+    var day = d.getUTCDate();
+    return y + '-' + (m < 10 ? '0' : '') + m + '-' + (day < 10 ? '0' : '') + day;
+  };
+
+  app.collectChartRows = function(features) {
+    var rows = [];
+    var list = features || [];
+    for (var i = 0; i < list.length; i++) {
+      var p = (list[i] && list[i].properties) || {};
+      var t = app.parseNumericField(p.time);
+      var v = app.parseNumericField(p.value);
+      if (!isFinite(t) || !isFinite(v)) continue;
+      rows.push({
+        t: t,
+        v: v,
+        s: String(p.sample == null ? '1' : p.sample)
+      });
+    }
+    rows.sort(function(a, b) {
+      if (a.t !== b.t) return a.t - b.t;
+      return a.s < b.s ? -1 : a.s > b.s ? 1 : 0;
+    });
+    return rows;
+  };
+
+  app.buildNumericChartTable = function(rows) {
+    rows = rows || [];
+    var samples = [];
+    var seenS = {};
+    var times = [];
+    var seenT = {};
+    var lookup = {};
+    for (var i = 0; i < rows.length; i++) {
+      var r = rows[i];
+      if (!seenS[r.s]) {
+        seenS[r.s] = true;
+        samples.push(r.s);
+      }
+      if (!seenT[r.t]) {
+        seenT[r.t] = true;
+        times.push(r.t);
+      }
+      lookup[r.s + '_' + r.t] = r.v;
+    }
+    times.sort(function(a, b) { return a - b; });
+
+    var cols = [{id: 'x', label: 'Date', type: 'number', role: 'domain'}];
+    for (var s = 0; s < samples.length; s++) {
+      cols.push({
+        id: 's' + s,
+        label: String(samples[s]),
+        type: 'number',
+        role: 'data'
+      });
+    }
+
+    var tableRows = [];
+    for (var ti = 0; ti < times.length; ti++) {
+      var t = times[ti];
+      var cells = [{v: app.yearFraction(t), f: app.isoDateFromMillis(t)}];
+      var any = false;
+      for (var si = 0; si < samples.length; si++) {
+        var val = lookup[samples[si] + '_' + t];
+        if (typeof val === 'number' && isFinite(val)) {
+          cells.push({v: val});
+          any = true;
+        } else {
+          cells.push({v: null});
+        }
+      }
+      if (any) tableRows.push({c: cells});
+    }
+    return {cols: cols, rows: tableRows, samples: samples, times: times};
+  };
+
   app.extractNdviTable = function(imageCollection, points, band, scale) {
     return ee.ImageCollection(imageCollection).select([band]).map(function(img) {
       var t = ee.Number(img.date().millis());
@@ -476,42 +566,48 @@ app.createHelpers = function() {
         f = ee.Feature(f);
         return ee.Feature(null, {
           time: t,
-          value: ee.Number(f.get(band)),
+          value: f.get(band),
           sample: ee.String(ee.Algorithms.If(f.get('sample'), f.get('sample'), f.id()))
         });
       });
     }).flatten().filter(ee.Filter.notNull(['time', 'value']));
   };
 
-  app.makePointChart = function(imageCollection, regions, band, scale, title) {
-    var table = app.extractNdviTable(imageCollection, regions, band, scale);
-    return ui.Chart.feature.groups(table, 'time', 'value', 'sample')
-      .setChartType('LineChart')
-      .setOptions({
-        title: title,
-        interpolateNulls: true,
-        vAxis: {title: 'NDVI'},
-        hAxis: {title: 'Date'},
-        lineWidth: 1,
-        pointSize: 2,
-        legend: {position: 'none'}
-      });
-  };
-
-  app.makeMeanChart = function(imageCollection, region, band, scale, title) {
-    return ui.Chart.image.series(
-      ee.ImageCollection(imageCollection).select([band]),
-      region,
-      ee.Reducer.mean(),
-      scale,
-      'system:time_start'
-    ).setOptions({
-      title: title,
-      vAxis: {title: 'NDVI'},
-      hAxis: {title: 'Date'},
-      lineWidth: 1,
-      pointSize: 2,
-      legend: {position: 'none'}
+  app.addNumericChart = function(table, title, onDone) {
+    ee.FeatureCollection(table).limit(6000).evaluate(function(raw, error) {
+      if (error || !raw || !raw.features) {
+        app.chartArea.add(ui.Label({
+          value: title + ': ' + (error || 'no chart data'),
+          style: {color: 'red'}
+        }));
+        if (onDone) onDone();
+        return;
+      }
+      var rows = app.collectChartRows(raw.features);
+      var dataTable = app.buildNumericChartTable(rows);
+      if (!dataTable.rows.length) {
+        app.chartArea.add(ui.Label({
+          value: title + ': no numeric NDVI values for these points/dates',
+          style: {color: 'red'}
+        }));
+        if (onDone) onDone();
+        return;
+      }
+      var chart = ui.Chart({cols: dataTable.cols, rows: dataTable.rows})
+        .setChartType('LineChart')
+        .setOptions({
+          title: title,
+          interpolateNulls: true,
+          vAxis: {title: 'NDVI'},
+          hAxis: {title: 'Date'},
+          lineWidth: 1,
+          pointSize: 2,
+          legend: {position: dataTable.samples.length > 15 ? 'none' : 'right'},
+          chartArea: {width: '75%'}
+        });
+      chart.style().set({width: '320px'});
+      app.chartArea.add(chart);
+      if (onDone) onDone();
     });
   };
 
@@ -571,7 +667,8 @@ app.createHelpers = function() {
     }
     app.setBusy(true);
     app.chartArea.clear();
-    var points = app.asChartPoints(fc);
+    var allPoints = app.asChartPoints(fc);
+    var points = showMonths ? allPoints.limit(1) : allPoints.limit(60);
     var clipGeom = points.geometry().bounds();
     var timeField = 'system:time_start';
     var col = app.s2Collection(startDate, endDate, clipGeom, cloud).map(app.addTimeBands);
@@ -581,14 +678,7 @@ app.createHelpers = function() {
         app.prompt(true, app.ERROR.NO_IMAGES);
         return;
       }
-      var meanChart = app.makeMeanChart(
-        col, points.geometry(), 'NDVI', scale, 'Mean NDVI (all selected samples)');
-      meanChart.style().set({width: '300px'});
-      app.chartArea.add(meanChart);
-      var timeNDVI = app.makePointChart(col, points, 'NDVI', scale, 'Time series NDVI');
-      timeNDVI.style().set({width: '300px'});
-      app.chartArea.add(timeNDVI);
-
+      print('Sentinel-2 images used:', n);
       var independents = ee.List(['constant', 't']);
       var dependent = 'NDVI';
       var trend = col.select(independents.add(dependent))
@@ -602,11 +692,6 @@ app.createHelpers = function() {
           .rename(dependent)
           .copyProperties(image, [timeField]);
       });
-      var detrendedChart = app.makePointChart(
-        detrended, points, 'NDVI', scale, 'Detrended time series');
-      detrendedChart.style().set({width: '300px'});
-      app.chartArea.add(detrendedChart);
-
       var harmonicIndependents = ee.List(['constant', 't', 'cos', 'sin']);
       var harmonicImage = col.map(function(image) {
         var timeRadians = image.select('t').multiply(cycles * Math.PI);
@@ -627,14 +712,20 @@ app.createHelpers = function() {
             .reduce('sum')
             .rename('fitted'));
       });
-      var harmonicNDVI = app.makePointChart(
-        fittedHarmonic, points, 'NDVI', scale, 'Harmonic model: original values');
-      harmonicNDVI.style().set({width: '300px'});
-      app.chartArea.add(harmonicNDVI);
-      var harmonicFitted = app.makePointChart(
-        fittedHarmonic, points, 'fitted', scale, 'Harmonic model: fitted values');
-      harmonicFitted.style().set({width: '300px'});
-      app.chartArea.add(harmonicFitted);
+
+      var pending = 4;
+      var finishChart = function() {
+        pending -= 1;
+        if (pending <= 0) app.setBusy(false);
+      };
+      app.addNumericChart(app.extractNdviTable(col, points, 'NDVI', scale),
+        'Time series NDVI', finishChart);
+      app.addNumericChart(app.extractNdviTable(detrended, points, 'NDVI', scale),
+        'Detrended time series', finishChart);
+      app.addNumericChart(app.extractNdviTable(fittedHarmonic, points, 'NDVI', scale),
+        'Harmonic model: original values', finishChart);
+      app.addNumericChart(app.extractNdviTable(fittedHarmonic, points, 'fitted', scale),
+        'Harmonic model: fitted values', finishChart);
 
       var seasons = app.seasonsFromRange(startDate, endDate);
       var sowingImg = col.filterDate(seasons[0].start, seasons[0].end).select(['NDVI', 'NDSI']).median();
@@ -655,7 +746,6 @@ app.createHelpers = function() {
       } else {
         app.mainMapPanel.style().set({shown: false});
       }
-      app.setBusy(false);
     });
   };
 

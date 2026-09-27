@@ -144,6 +144,97 @@ function hasRequiredInputs(startDate, endDate, cloud, scale, cycles) {
     !isNaN(cycleNum) && cycleNum > 0;
 }
 
+function yearFraction(millis) {
+  var t = Number(millis);
+  if (!isFinite(t)) return NaN;
+  var d = new Date(t);
+  var y = d.getUTCFullYear();
+  var start = Date.UTC(y, 0, 1);
+  var end = Date.UTC(y + 1, 0, 1);
+  return y + (t - start) / (end - start);
+}
+
+function isoDateFromMillis(millis) {
+  var d = new Date(Number(millis));
+  if (isNaN(d.getTime())) return '';
+  var y = d.getUTCFullYear();
+  var m = d.getUTCMonth() + 1;
+  var day = d.getUTCDate();
+  return y + '-' + (m < 10 ? '0' : '') + m + '-' + (day < 10 ? '0' : '') + day;
+}
+
+function collectChartRows(features) {
+  var rows = [];
+  var list = Array.isArray(features) ? features : [];
+  for (var i = 0; i < list.length; i++) {
+    var p = (list[i] && list[i].properties) || {};
+    var t = parseNumericField(p.time);
+    var v = parseNumericField(p.value);
+    if (!isFinite(t) || !isFinite(v)) continue;
+    rows.push({
+      t: t,
+      v: v,
+      s: String(p.sample == null ? '1' : p.sample)
+    });
+  }
+  rows.sort(function(a, b) {
+    if (a.t !== b.t) return a.t - b.t;
+    return a.s < b.s ? -1 : a.s > b.s ? 1 : 0;
+  });
+  return rows;
+}
+
+function buildNumericChartTable(rows) {
+  rows = Array.isArray(rows) ? rows : [];
+  var samples = [];
+  var seenS = {};
+  var times = [];
+  var seenT = {};
+  var lookup = {};
+  for (var i = 0; i < rows.length; i++) {
+    var r = rows[i];
+    if (!seenS[r.s]) {
+      seenS[r.s] = true;
+      samples.push(r.s);
+    }
+    if (!seenT[r.t]) {
+      seenT[r.t] = true;
+      times.push(r.t);
+    }
+    lookup[r.s + '_' + r.t] = r.v;
+  }
+  times.sort(function(a, b) { return a - b; });
+
+  var cols = [{id: 'x', label: 'Date', type: 'number', role: 'domain'}];
+  for (var s = 0; s < samples.length; s++) {
+    cols.push({
+      id: 's' + s,
+      label: String(samples[s]),
+      type: 'number',
+      role: 'data'
+    });
+  }
+
+  var tableRows = [];
+  for (var ti = 0; ti < times.length; ti++) {
+    var t = times[ti];
+    var cells = [{v: yearFraction(t), f: isoDateFromMillis(t)}];
+    var any = false;
+    for (var si = 0; si < samples.length; si++) {
+      var val = lookup[samples[si] + '_' + t];
+      if (typeof val === 'number' && isFinite(val)) {
+        cells.push({v: val});
+        any = true;
+      } else {
+        cells.push({v: null});
+      }
+    }
+    if (any) tableRows.push({c: cells});
+  }
+
+  return {cols: cols, rows: tableRows, samples: samples, times: times};
+}
+
 module.exports = {
   isFolderType: isFolderType,
   assetShortName: assetShortName,
@@ -157,5 +248,9 @@ module.exports = {
   addMonths: addMonths,
   monthWindows: monthWindows,
   parseNumericField: parseNumericField,
-  hasRequiredInputs: hasRequiredInputs
+  hasRequiredInputs: hasRequiredInputs,
+  yearFraction: yearFraction,
+  isoDateFromMillis: isoDateFromMillis,
+  collectChartRows: collectChartRows,
+  buildNumericChartTable: buildNumericChartTable
 };

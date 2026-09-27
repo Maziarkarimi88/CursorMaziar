@@ -209,15 +209,70 @@ check('interface app has province, IR/RF and date range widgets', function() {
 });
 
 check('interface app charts each sample point like MODULE 1', function() {
-  assert.strictEqual(appSrc.indexOf('Chart.feature.groups') > -1, true);
-  assert.strictEqual(appSrc.indexOf('Chart.image.series') > -1, true);
   assert.strictEqual(appSrc.indexOf('Time series NDVI') > -1, true);
   assert.strictEqual(appSrc.indexOf('Detrended time series') > -1, true);
   assert.strictEqual(appSrc.indexOf('Harmonic model: original values') > -1, true);
   assert.strictEqual(appSrc.indexOf('Harmonic model: fitted values') > -1, true);
   assert.strictEqual(appSrc.indexOf('showMonthlyComposite') > -1, true);
   assert.strictEqual(appSrc.indexOf("bands: ['B8', 'B4', 'B3']") > -1, true);
+  assert.strictEqual(appSrc.indexOf('addNumericChart') > -1, true);
+  assert.strictEqual(appSrc.indexOf("ui.Chart({cols: dataTable.cols, rows: dataTable.rows})") > -1, true);
+});
+
+check('interface app does not use GEE helpers that put strings on axis 0', function() {
   assert.strictEqual(appSrc.indexOf('seriesByRegion') === -1, true);
+  assert.strictEqual(appSrc.indexOf('Chart.feature.groups') === -1, true);
+  assert.strictEqual(appSrc.indexOf('Chart.image.series') === -1, true);
+  assert.strictEqual(appSrc.indexOf('Chart.array.values') === -1, true);
+  assert.strictEqual(appSrc.indexOf("type: 'number'") > -1, true);
+  assert.strictEqual(appSrc.indexOf("role: 'domain'") > -1, true);
+});
+
+check('yearFraction is a number in the same calendar year', function() {
+  var jan = helpers.yearFraction(Date.UTC(2016, 0, 1));
+  var jul = helpers.yearFraction(Date.UTC(2016, 6, 2));
+  assert.strictEqual(jan, 2016);
+  assert.ok(jul > 2016.49 && jul < 2016.51);
+  assert.strictEqual(helpers.isoDateFromMillis(Date.UTC(2016, 10, 15)), '2016-11-15');
+});
+
+check('collectChartRows drops non-numeric time/value and keeps sample as series id', function() {
+  var rows = helpers.collectChartRows([
+    {properties: {time: '1479168000000', value: '0.32', sample: 'pt-a'}},
+    {properties: {time: 1480000000000, value: 0.41, sample: 'pt-b'}},
+    {properties: {time: 'not-a-date', value: 0.5, sample: 'pt-a'}},
+    {properties: {time: 1480000000000, value: null, sample: 'pt-a'}}
+  ]);
+  assert.strictEqual(rows.length, 2);
+  assert.strictEqual(typeof rows[0].t, 'number');
+  assert.strictEqual(typeof rows[0].v, 'number');
+  assert.strictEqual(rows[0].s, 'pt-a');
+  var zeroNdvi = helpers.collectChartRows([
+    {properties: {time: 1480000000000, value: 0, sample: 'pt-z'}}
+  ]);
+  assert.strictEqual(zeroNdvi.length, 1);
+  assert.strictEqual(zeroNdvi[0].v, 0);
+});
+
+check('buildNumericChartTable puts only numbers on axis 0, never sample ids', function() {
+  var table = helpers.buildNumericChartTable([
+    {t: Date.UTC(2016, 10, 15), v: 0.22, s: '0001'},
+    {t: Date.UTC(2016, 11, 15), v: 0.31, s: '0001'},
+    {t: Date.UTC(2016, 10, 15), v: 0.25, s: '0002'}
+  ]);
+  assert.strictEqual(table.cols[0].type, 'number');
+  assert.strictEqual(table.cols[0].role, 'domain');
+  assert.strictEqual(table.cols[1].type, 'number');
+  assert.strictEqual(table.cols[1].label, '0001');
+  assert.strictEqual(table.rows.length, 2);
+  assert.strictEqual(typeof table.rows[0].c[0].v, 'number');
+  assert.strictEqual(table.rows[0].c[0].f, '2016-11-15');
+  assert.strictEqual(typeof table.rows[0].c[1].v, 'number');
+  assert.strictEqual(table.rows[1].c[2].v, null);
+  table.rows.forEach(function(row) {
+    assert.notStrictEqual(typeof row.c[0].v, 'string');
+    assert.ok(isFinite(row.c[0].v));
+  });
 });
 
 if (failures) {
