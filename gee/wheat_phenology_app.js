@@ -399,7 +399,8 @@ app.createHelpers = function() {
   app.addIndices = function(image) {
     return image
       .addBands(image.normalizedDifference(['B8', 'B4']).rename('NDVI'))
-      .addBands(image.normalizedDifference(['B11', 'B8']).rename('NDSI'));
+      .addBands(image.normalizedDifference(['B11', 'B8']).rename('NDSI'))
+      .copyProperties(image, ['system:time_start']);
   };
 
   app.s2Collection = function(start, end, region, cloud) {
@@ -410,7 +411,7 @@ app.createHelpers = function() {
       .map(app.maskS2clouds)
       .map(app.addIndices)
       .map(function(image) {
-        return image.clip(region);
+        return image.clip(region).copyProperties(image, ['system:time_start']);
       });
   };
 
@@ -459,29 +460,55 @@ app.createHelpers = function() {
   app.asChartPoints = function(fc) {
     return ee.FeatureCollection(fc).map(function(f) {
       f = ee.Feature(f);
-      return f.set('sample', ee.String(f.id()));
+      return f.setGeometry(f.geometry().buffer(20)).set('sample', ee.String(f.id()));
     });
   };
 
-  app.makePointChart = function(imageCollection, regions, band, scale, title) {
-    var col = ee.ImageCollection(imageCollection)
-      .select([band])
-      .map(function(image) {
-        return ee.Image(image).copyProperties(image, ['system:time_start']);
+  app.extractNdviTable = function(imageCollection, points, band, scale) {
+    return ee.ImageCollection(imageCollection).select([band]).map(function(img) {
+      var t = ee.Number(img.date().millis());
+      return img.reduceRegions({
+        collection: points,
+        reducer: ee.Reducer.mean(),
+        scale: scale,
+        tileScale: 4
+      }).map(function(f) {
+        f = ee.Feature(f);
+        return ee.Feature(null, {
+          time: t,
+          value: ee.Number(f.get(band)),
+          sample: ee.String(ee.Algorithms.If(f.get('sample'), f.get('sample'), f.id()))
+        });
       });
-    return ui.Chart.image.seriesByRegion({
-      imageCollection: col,
-      regions: regions,
-      reducer: ee.Reducer.mean(),
-      band: band,
-      scale: scale,
-      xProperty: 'system:time_start',
-      seriesProperty: 'sample'
-    }).setChartType('LineChart').setOptions({
+    }).flatten().filter(ee.Filter.notNull(['time', 'value']));
+  };
+
+  app.makePointChart = function(imageCollection, regions, band, scale, title) {
+    var table = app.extractNdviTable(imageCollection, regions, band, scale);
+    return ui.Chart.feature.groups(table, 'time', 'value', 'sample')
+      .setChartType('LineChart')
+      .setOptions({
+        title: title,
+        interpolateNulls: true,
+        vAxis: {title: 'NDVI'},
+        hAxis: {title: 'Date'},
+        lineWidth: 1,
+        pointSize: 2,
+        legend: {position: 'none'}
+      });
+  };
+
+  app.makeMeanChart = function(imageCollection, region, band, scale, title) {
+    return ui.Chart.image.series(
+      ee.ImageCollection(imageCollection).select([band]),
+      region,
+      ee.Reducer.mean(),
+      scale,
+      'system:time_start'
+    ).setOptions({
       title: title,
-      interpolateNulls: true,
       vAxis: {title: 'NDVI'},
-      hAxis: {title: 'Date', format: 'MMM yyyy'},
+      hAxis: {title: 'Date'},
       lineWidth: 1,
       pointSize: 2,
       legend: {position: 'none'}
@@ -554,6 +581,10 @@ app.createHelpers = function() {
         app.prompt(true, app.ERROR.NO_IMAGES);
         return;
       }
+      var meanChart = app.makeMeanChart(
+        col, points.geometry(), 'NDVI', scale, 'Mean NDVI (all selected samples)');
+      meanChart.style().set({width: '300px'});
+      app.chartArea.add(meanChart);
       var timeNDVI = app.makePointChart(col, points, 'NDVI', scale, 'Time series NDVI');
       timeNDVI.style().set({width: '300px'});
       app.chartArea.add(timeNDVI);

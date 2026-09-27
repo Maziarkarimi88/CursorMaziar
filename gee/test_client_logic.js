@@ -209,15 +209,15 @@ check('interface app has province, IR/RF and date range widgets', function() {
 });
 
 check('interface app charts each sample point like MODULE 1', function() {
-  assert.strictEqual(appSrc.indexOf('seriesByRegion') > -1, true);
+  assert.strictEqual(appSrc.indexOf('Chart.feature.groups') > -1, true);
+  assert.strictEqual(appSrc.indexOf('Chart.image.series') > -1, true);
   assert.strictEqual(appSrc.indexOf('Time series NDVI') > -1, true);
   assert.strictEqual(appSrc.indexOf('Detrended time series') > -1, true);
   assert.strictEqual(appSrc.indexOf('Harmonic model: original values') > -1, true);
   assert.strictEqual(appSrc.indexOf('Harmonic model: fitted values') > -1, true);
   assert.strictEqual(appSrc.indexOf('showMonthlyComposite') > -1, true);
   assert.strictEqual(appSrc.indexOf("bands: ['B8', 'B4', 'B3']") > -1, true);
-  assert.strictEqual(appSrc.indexOf("setChartType('LineChart')") > -1, true);
-  assert.strictEqual(appSrc.indexOf("seriesProperty: 'id'") === -1, true);
+  assert.strictEqual(appSrc.indexOf('seriesByRegion') === -1, true);
 });
 
 if (failures) {
