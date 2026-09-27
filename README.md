@@ -26,6 +26,20 @@ You can still click the map (zoom ≥ 9) to chart NDVI phenology at an arbitrary
 - Monthly composites used browser `Date` objects and could skip months or loop.
 - Linear/harmonic regression ran on unclipped Sentinel-2 granules and often timed out.
 
+### Interactive app (province, IR/RF, dates)
+
+`gee/wheat_phenology_app.js` is the original-style interface pointed at:
+
+`projects/ee-maziarkarimi3/assets/Wheat_Mapping`
+
+Select a province, **IR** or **RF**, and a date range, then click **Show Overall Phenology**. The app loads:
+
+- `{root}/Admin/{Province}`
+- `{root}/IR_RF/{Province}_Ag_{IR|RF}`
+- `{root}/GCP/{Province}_{IR|RF}_GCP`
+
+It charts NDVI and reports sowing / peak / harvest values at the wheat GCPs.
+
 ### Nangarhar irrigated wheat (your assets)
 
 `gee/nangarhar_wheat_phenology.js` uses Tiwari et al. (2020) seasonal NDVI composites at sowing, peak and harvest:

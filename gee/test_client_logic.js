@@ -160,6 +160,48 @@ check('Nangarhar season windows are in calendar order', function() {
   assert.strictEqual('2017-05-01' < '2017-06-15', true);
 });
 
+check('buildWheatAssetIds matches the user folder layout', function() {
+  var ids = helpers.buildWheatAssetIds(
+    'projects/ee-maziarkarimi3/assets/Wheat_Mapping',
+    'Nangarhar',
+    'IR'
+  );
+  assert.strictEqual(ids.aoi, 'projects/ee-maziarkarimi3/assets/Wheat_Mapping/Admin/Nangarhar');
+  assert.strictEqual(ids.agri, 'projects/ee-maziarkarimi3/assets/Wheat_Mapping/IR_RF/Nangarhar_Ag_IR');
+  assert.strictEqual(ids.gcp, 'projects/ee-maziarkarimi3/assets/Wheat_Mapping/GCP/Nangarhar_IR_GCP');
+});
+
+check('collectProvinceNames includes Admin tables, not only folders', function() {
+  var names = helpers.collectProvinceNames({
+    assets: [
+      {type: 'TABLE', id: 'projects/x/assets/Wheat_Mapping/Admin/Nangarhar'},
+      {type: 'FOLDER', name: 'projects/x/assets/Wheat_Mapping/Admin/Kabul'}
+    ]
+  });
+  assert.deepStrictEqual(names, ['Kabul', 'Nangarhar']);
+});
+
+check('seasonsFromRange uses start year for sowing and end year for peak/harvest', function() {
+  var seasons = helpers.seasonsFromRange('2016-11-01', '2017-06-30');
+  assert.strictEqual(seasons[0].id, 'sowing');
+  assert.strictEqual(seasons[0].start, '2016-11-15');
+  assert.strictEqual(seasons[1].start, '2017-02-01');
+  assert.strictEqual(seasons[2].end, '2017-06-15');
+});
+
+var appPath = path.join(__dirname, 'wheat_phenology_app.js');
+var appSrc = fs.readFileSync(appPath, 'utf8');
+
+check('interface app has province, IR/RF and date range widgets', function() {
+  assert.strictEqual(appSrc.indexOf('Select Province') > -1, true);
+  assert.strictEqual(appSrc.indexOf("items: ['IR', 'RF']") > -1, true);
+  assert.strictEqual(appSrc.indexOf('startDate') > -1, true);
+  assert.strictEqual(appSrc.indexOf('endDate') > -1, true);
+  assert.strictEqual(appSrc.indexOf('Show Overall Phenology') > -1, true);
+  assert.strictEqual(appSrc.indexOf('ee-maziarkarimi3/assets/Wheat_Mapping') > -1, true);
+  assert.strictEqual(appSrc.indexOf('font-weight') === -1, true);
+});
+
 if (failures) {
   console.log('\n' + failures + ' test(s) failed');
   process.exit(1);

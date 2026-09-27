@@ -28,6 +28,46 @@ function collectFolderNames(assets) {
   return ids;
 }
 
+function isProvinceAssetType(type) {
+  var t = String(type || '').toUpperCase().replace(/ /g, '_');
+  return t === 'FOLDER' || t === 'TABLE' || t === 'FEATURE_COLLECTION' ||
+    t === 'FEATURECOLLECTION' || t === 'ASSET';
+}
+
+function collectProvinceNames(assets) {
+  var list = Array.isArray(assets) ? assets : (assets && assets.assets) || [];
+  var ids = [];
+  for (var i = 0; i < list.length; i++) {
+    var element = list[i] || {};
+    if (!isProvinceAssetType(element.type)) continue;
+    var name = assetShortName(element.id || element.name || '');
+    if (name && ids.indexOf(name) === -1) ids.push(name);
+  }
+  return ids.sort();
+}
+
+function buildWheatAssetIds(root, province, irrf) {
+  var base = String(root || '').replace(/\/+$/, '');
+  var prov = String(province || '');
+  var kind = String(irrf || 'IR');
+  return {
+    aoi: base + '/Admin/' + prov,
+    agri: base + '/IR_RF/' + prov + '_Ag_' + kind,
+    gcp: base + '/GCP/' + prov + '_' + kind + '_GCP'
+  };
+}
+
+function seasonsFromRange(startIso, endIso) {
+  var sy = String(startIso).slice(0, 4);
+  var ey = String(endIso).slice(0, 4);
+  if (!ey) ey = String(parseInt(sy, 10) + 1);
+  return [
+    {id: 'sowing', label: 'Sowing', start: sy + '-11-15', end: sy + '-12-31'},
+    {id: 'peak', label: 'Peak', start: ey + '-02-01', end: ey + '-03-31'},
+    {id: 'harvest', label: 'Harvest', start: ey + '-05-01', end: ey + '-06-15'}
+  ];
+}
+
 function isValidIsoDate(value) {
   if (!/^\d{4}-\d{2}-\d{2}$/.test(String(value))) return false;
   var parts = String(value).split('-');
@@ -108,6 +148,10 @@ module.exports = {
   isFolderType: isFolderType,
   assetShortName: assetShortName,
   collectFolderNames: collectFolderNames,
+  isProvinceAssetType: isProvinceAssetType,
+  collectProvinceNames: collectProvinceNames,
+  buildWheatAssetIds: buildWheatAssetIds,
+  seasonsFromRange: seasonsFromRange,
   isValidIsoDate: isValidIsoDate,
   monthStart: monthStart,
   addMonths: addMonths,
