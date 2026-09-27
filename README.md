@@ -32,6 +32,8 @@ You can still click the map (zoom ≥ 9) to chart NDVI phenology at an arbitrary
 
 `projects/ee-maziarkarimi3/assets/Wheat_Mapping`
 
+This matches MODULE 1: **Show Overall Phenology** draws one NDVI/harmonic line per GPS sample. Click a sample in the list (or on the map) to see that point’s four charts plus monthly false-color Sentinel-2 chips.
+
 Select a province, **IR** or **RF**, and a date range, then click **Show Overall Phenology**. The app loads:
 
 - `{root}/Admin/{Province}`

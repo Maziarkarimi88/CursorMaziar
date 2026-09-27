@@ -27,8 +27,9 @@ app.createConstants = function() {
     SCALE: 10,
     CYCLE: 4,
     START: '2016-11-01',
-    END: '2017-06-30',
-    MAX_FEATURES: 400
+    END: '2017-07-30',
+    MAX_FEATURES: 400,
+    MAX_MONTHS: 24
   };
   app.LABEL = {
     TITLE: 'Wheat Phenology Mapper',
@@ -119,14 +120,62 @@ app.createHelpers = function() {
     return typeof value === 'number' ? value : parseFloat(value);
   };
 
-  app.hasRequiredInputs = function(startDate, endDate, cloud, scale) {
+  app.hasRequiredInputs = function(startDate, endDate, cloud, scale, cycles) {
     var cloudNum = app.parseNumericField(cloud);
     var scaleNum = app.parseNumericField(scale);
+    var cycleNum = app.parseNumericField(cycles);
     return app.isValidIsoDate(startDate) &&
       app.isValidIsoDate(endDate) &&
       startDate < endDate &&
       !isNaN(cloudNum) && cloudNum >= 0 && cloudNum <= 100 &&
-      !isNaN(scaleNum) && scaleNum > 0;
+      !isNaN(scaleNum) && scaleNum > 0 &&
+      !isNaN(cycleNum) && cycleNum > 0;
+  };
+
+  app.monthStart = function(isoDate) {
+    var parts = String(isoDate).split('-');
+    return parts[0] + '-' + parts[1] + '-01';
+  };
+
+  app.pad2 = function(n) {
+    return (n < 10 ? '0' : '') + n;
+  };
+
+  app.addMonths = function(isoDate, n) {
+    var parts = String(isoDate).split('-');
+    var y = parseInt(parts[0], 10);
+    var m = parseInt(parts[1], 10) + n;
+    var d = parts[2] || '01';
+    while (m > 12) {
+      y += 1;
+      m -= 12;
+    }
+    while (m < 1) {
+      y -= 1;
+      m += 12;
+    }
+    return y + '-' + app.pad2(m) + '-' + d;
+  };
+
+  app.monthWindows = function(startIso, endIso) {
+    var windows = [];
+    if (!app.isValidIsoDate(startIso) || !app.isValidIsoDate(endIso) || startIso >= endIso) {
+      return windows;
+    }
+    var cursor = app.monthStart(startIso);
+    var endExclusive = app.addMonths(app.monthStart(endIso), 1);
+    var guard = 0;
+    while (cursor < endExclusive && guard < app.DEFAULT.MAX_MONTHS) {
+      var next = app.addMonths(cursor, 1);
+      windows.push({
+        start: cursor,
+        end: next,
+        label: cursor.slice(0, 7)
+      });
+      cursor = next;
+      guard += 1;
+    }
+    return windows;
   };
 
   app.seasonsFromRange = function(startIso, endIso) {
@@ -397,16 +446,27 @@ app.createHelpers = function() {
     });
   };
 
-  app.makeNdviChart = function(imageCollection, region, band, scale, title) {
-    return ui.Chart.image.series({
+  app.addTimeBands = function(image) {
+    var startDate = app.widgets.startDate.getValue();
+    var years = ee.Date(image.get('system:time_start')).difference(ee.Date(startDate), 'year');
+    return image
+      .addBands(ee.Image(years).rename('t'))
+      .addBands(ee.Image.constant(1))
+      .float();
+  };
+
+  app.makePointChart = function(imageCollection, regions, band, scale, title) {
+    return ui.Chart.image.seriesByRegion({
       imageCollection: imageCollection.select(band),
-      region: region,
+      regions: regions,
       reducer: ee.Reducer.mean(),
+      band: band,
       scale: scale,
-      xProperty: 'system:time_start'
+      xProperty: 'system:time_start',
+      seriesProperty: 'id'
     }).setChartType('ScatterChart').setOptions({
       title: title,
-      vAxis: {title: 'NDVI', viewWindow: {min: 0, max: 1}},
+      vAxis: {title: 'NDVI'},
       hAxis: {title: 'Date'},
       lineWidth: 1,
       pointSize: 2,
@@ -414,42 +474,127 @@ app.createHelpers = function() {
     });
   };
 
-  app.onShowPhenology = function(fc) {
+  app.reduceCollection = function(col, name) {
+    if (name === 'Max') return col.max();
+    if (name === 'Mean') return col.mean();
+    if (name === 'Min') return col.min();
+    return col.median();
+  };
+
+  app.addMonthlyMap = function(selected, win) {
+    var cloud = app.parseNumericField(app.widgets.cloud.getValue());
+    if (isNaN(cloud)) cloud = app.DEFAULT.CLOUD;
+    var col = ee.ImageCollection(app.DEFAULT.S2_COLLECTION)
+      .filterDate(win.start, win.end)
+      .filterBounds(selected.geometry())
+      .filter(ee.Filter.lt('CLOUDY_PIXEL_PERCENTAGE', cloud))
+      .map(app.maskS2clouds)
+      .select(['B8', 'B4', 'B3']);
+    var temp = app.reduceCollection(col, app.widgets.filterPicker.getValue());
+    var map = ui.Map();
+    map.style().set({margin: '2px', height: '100px'});
+    map.setControlVisibility(false);
+    map.addLayer(temp, {bands: ['B8', 'B4', 'B3'], max: 4000}, win.label);
+    map.addLayer(selected, {color: 'FF0000'}, 'Selected');
+    map.centerObject(selected, 15);
+    app.subMapPanel.add(ui.Panel({
+      layout: ui.Panel.Layout.flow('vertical'),
+      widgets: [
+        ui.Label(win.label),
+        map
+      ]
+    }));
+  };
+
+  app.showMonthlyComposite = function(selected) {
+    app.subMapPanel.clear();
+    var windows = app.monthWindows(
+      app.widgets.startDate.getValue(),
+      app.widgets.endDate.getValue()
+    );
+    for (var m = 0; m < windows.length; m++) {
+      app.addMonthlyMap(selected, windows[m]);
+    }
+    app.mainMapPanel.style().set({shown: windows.length > 0});
+  };
+
+  app.onShowPhenology = function(fc, showMonths) {
     var startDate = app.widgets.startDate.getValue();
     var endDate = app.widgets.endDate.getValue();
     var cloud = app.parseNumericField(app.widgets.cloud.getValue());
     var scale = app.parseNumericField(app.widgets.scale.getValue());
-    if (!app.hasRequiredInputs(startDate, endDate, cloud, scale)) {
+    var cycles = app.parseNumericField(app.widgets.cycle.getValue());
+    if (!app.hasRequiredInputs(startDate, endDate, cloud, scale, cycles)) {
       app.prompt(true, app.ERROR.EMPTY_FIELDS);
       return;
     }
     app.setBusy(true);
     app.chartArea.clear();
-    var region = app.agri ? app.agri.geometry() : ee.FeatureCollection(fc).geometry();
     var points = ee.FeatureCollection(fc);
-    var seasons = app.seasonsFromRange(startDate, endDate);
-    var col = app.s2Collection(startDate, endDate, region, cloud);
+    var clipGeom = points.geometry().bounds();
+    var timeField = 'system:time_start';
+    var col = app.s2Collection(startDate, endDate, clipGeom, cloud).map(app.addTimeBands);
     col.size().evaluate(function(n, error) {
       if (error || !n) {
         app.setBusy(false);
         app.prompt(true, app.ERROR.NO_IMAGES);
         return;
       }
-      app.chartArea.add(app.makeNdviChart(
-        col.select('NDVI'), points.geometry(), 'NDVI', scale,
-        'NDVI time series at wheat GCPs'));
-      app.chartArea.add(app.makeNdviChart(
-        col.select('NDVI'), region, 'NDVI', scale,
-        'NDVI time series over agricultural land'));
+      var timeNDVI = app.makePointChart(col, points, 'NDVI', scale, 'Time series NDVI');
+      timeNDVI.style().set({width: '300px'});
+      app.chartArea.add(timeNDVI);
 
+      var independents = ee.List(['constant', 't']);
+      var dependent = 'NDVI';
+      var trend = col.select(independents.add(dependent))
+        .reduce(ee.Reducer.linearRegression(2, 1));
+      var coefficients = trend.select('coefficients')
+        .arrayProject([0])
+        .arrayFlatten([independents]);
+      var detrended = col.map(function(image) {
+        return image.select(dependent).subtract(
+          image.select(independents).multiply(coefficients).reduce('sum'))
+          .rename(dependent)
+          .copyProperties(image, [timeField]);
+      });
+      var detrendedChart = app.makePointChart(
+        detrended, points, 'NDVI', scale, 'Detrended time series');
+      detrendedChart.style().set({width: '300px'});
+      app.chartArea.add(detrendedChart);
+
+      var harmonicIndependents = ee.List(['constant', 't', 'cos', 'sin']);
+      var harmonicImage = col.map(function(image) {
+        var timeRadians = image.select('t').multiply(cycles * Math.PI);
+        return image
+          .addBands(timeRadians.cos().rename('cos'))
+          .addBands(timeRadians.sin().rename('sin'));
+      });
+      var harmonicTrend = harmonicImage
+        .select(harmonicIndependents.add(dependent))
+        .reduce(ee.Reducer.linearRegression(4, 1));
+      var harmonicTrendCoefficients = harmonicTrend.select('coefficients')
+        .arrayProject([0])
+        .arrayFlatten([harmonicIndependents]);
+      var fittedHarmonic = harmonicImage.map(function(image) {
+        return image.addBands(
+          image.select(harmonicIndependents)
+            .multiply(harmonicTrendCoefficients)
+            .reduce('sum')
+            .rename('fitted'));
+      });
+      var harmonicNDVI = app.makePointChart(
+        fittedHarmonic, points, 'NDVI', scale, 'Harmonic model: original values');
+      harmonicNDVI.style().set({width: '300px'});
+      app.chartArea.add(harmonicNDVI);
+      var harmonicFitted = app.makePointChart(
+        fittedHarmonic, points, 'fitted', scale, 'Harmonic model: fitted values');
+      harmonicFitted.style().set({width: '300px'});
+      app.chartArea.add(harmonicFitted);
+
+      var seasons = app.seasonsFromRange(startDate, endDate);
       var sowingImg = col.filterDate(seasons[0].start, seasons[0].end).select(['NDVI', 'NDSI']).median();
       var peakImg = col.filterDate(seasons[1].start, seasons[1].end).select(['NDVI', 'NDSI']).median();
       var harvestImg = col.filterDate(seasons[2].start, seasons[2].end).select(['NDVI', 'NDSI']).median();
-      app.removeLayers(['NDVI sowing', 'NDVI peak', 'NDVI harvest']);
-      Map.addLayer(sowingImg.select('NDVI'), {min: 0, max: 0.8, palette: ['brown', 'yellow', 'green']}, 'NDVI sowing', false);
-      Map.addLayer(peakImg.select('NDVI'), {min: 0, max: 0.8, palette: ['brown', 'yellow', 'green']}, 'NDVI peak', true);
-      Map.addLayer(harvestImg.select('NDVI'), {min: 0, max: 0.8, palette: ['brown', 'yellow', 'green']}, 'NDVI harvest', false);
-
       var sowingPts = app.sampleSeason(sowingImg, points, 'sowing', scale);
       var peakPts = app.sampleSeason(peakImg, points, 'peak', scale);
       var harvestPts = app.sampleSeason(harvestImg, points, 'harvest', scale);
@@ -458,44 +603,14 @@ app.createHelpers = function() {
       table = app.joinSeasonSimple(table, peakPts, 'peak');
       table = app.joinSeasonSimple(table, harvestPts, 'harvest');
       app.seasonTable = table;
+      print('Seasonal NDVI at selected sample points', table);
 
-      var summary = ee.FeatureCollection([
-        ee.Feature(null, app.seasonStats(sowingPts, 'sowing')),
-        ee.Feature(null, app.seasonStats(peakPts, 'peak')),
-        ee.Feature(null, app.seasonStats(harvestPts, 'harvest'))
-      ]);
-      print('Season windows', seasons);
-      print('GCP NDVI summary (mean/min/max = paper-style thresholds)', summary);
-      print('Per-GCP seasonal NDVI', table);
-
-      summary.evaluate(function(info) {
-        app.setBusy(false);
-        if (!info || !info.features) return;
-        var means = [];
-        var labels = [];
-        info.features.forEach(function(feat) {
-          var p = feat.properties || {};
-          labels.push(p.season);
-          means.push(p.mean == null ? 0 : p.mean);
-          var line = p.season +
-            '  mean=' + (p.mean == null ? 'NA' : Number(p.mean).toFixed(3)) +
-            '  min=' + (p.min == null ? 'NA' : Number(p.min).toFixed(3)) +
-            '  max=' + (p.max == null ? 'NA' : Number(p.max).toFixed(3)) +
-            '  n=' + p.count;
-          print(line);
-          app.chartArea.add(ui.Label({value: line, style: {fontWeight: 'bold'}}));
-        });
-        app.chartArea.add(ui.Chart.array.values({
-          array: means,
-          axis: 0,
-          xLabels: labels
-        }).setChartType('ColumnChart').setOptions({
-          title: 'Mean wheat-GCP NDVI at sowing, peak and harvest',
-          vAxis: {title: 'NDVI', viewWindow: {min: 0, max: 1}},
-          legend: {position: 'none'},
-          colors: ['#2e7d32']
-        }));
-      });
+      if (showMonths) {
+        app.showMonthlyComposite(ee.Feature(points.first()));
+      } else {
+        app.mainMapPanel.style().set({shown: false});
+      }
+      app.setBusy(false);
     });
   };
 
@@ -506,6 +621,7 @@ app.createHelpers = function() {
     }
     app.removeLayers(['Selected']);
     app.deactivateListItem();
+    app.mainMapPanel.style().set({shown: false});
     app.fc.size().evaluate(function(n, error) {
       if (error) {
         app.prompt(true, app.ERROR.NO_GEOM);
@@ -515,7 +631,7 @@ app.createHelpers = function() {
         app.prompt(true, app.ERROR.TOO_MANY_FEATURES);
         return;
       }
-      app.onShowPhenology(app.fc);
+      app.onShowPhenology(app.fc, false);
     });
   };
 
@@ -546,7 +662,7 @@ app.createHelpers = function() {
   };
 
   app.showSelectedPoint = function(selected) {
-    app.onShowPhenology(ee.FeatureCollection([selected]));
+    app.onShowPhenology(ee.FeatureCollection([selected]), true);
     app.removeLayers(['Selected']);
     Map.layers().set(3, ui.Map.Layer(selected, {color: 'FF0000'}, 'Selected'));
   };
@@ -703,6 +819,22 @@ app.initializeGUIElements = function() {
       app.chartArea
     ]
   });
+  app.subMapPanel = ui.Panel({
+    layout: ui.Panel.Layout.flow('horizontal'),
+    style: {minHeight: '220px', stretch: 'horizontal', margin: '0px', padding: '0px'}
+  });
+  app.mainMapPanel = ui.Panel({
+    layout: ui.Panel.Layout.flow('horizontal'),
+    style: {
+      minHeight: '240px',
+      width: '95%',
+      margin: '0px',
+      padding: '0px',
+      position: 'bottom-center',
+      shown: false
+    },
+    widgets: [app.subMapPanel]
+  });
   app.promptText = ui.Label({
     style: {shown: false, color: 'red', padding: '8px'}
   });
@@ -718,6 +850,7 @@ app.init = function() {
   Map.add(app.promptText);
   ui.root.insert(0, app.mainPanel);
   ui.root.insert(2, app.chartPanel);
+  Map.add(app.mainMapPanel);
   Map.style().set('cursor', 'crosshair');
   Map.onClick(app.mapClicked);
 };
