@@ -26,10 +26,21 @@ You can still click the map (zoom ≥ 9) to chart NDVI phenology at an arbitrary
 - Monthly composites used browser `Date` objects and could skip months or loop.
 - Linear/harmonic regression ran on unclipped Sentinel-2 granules and often timed out.
 
+### Nangarhar irrigated wheat (your assets)
+
+`gee/nangarhar_wheat_phenology.js` uses Tiwari et al. (2020) seasonal NDVI composites at sowing, peak and harvest:
+
+- AOI: `projects/ee-maziarkarimi3/assets/Wheat_Mapping/Admin/Nangarhar`
+- Irrigated agriculture: `projects/ee-maziarkarimi3/assets/Wheat_Mapping/IR_RF/Nangarhar_Ag_IR`
+- Wheat GCPs: `projects/ee-maziarkarimi3/assets/Wheat_Mapping/GCP/Nangarhar_IR_GCP`
+
+Paste that file, select Cloud project `ee-maziarkarimi3`, and click Run. Charts appear on the left; Console prints mean/min/max NDVI for each season and a per-GCP table.
+
 ### Tests (no Earth Engine login required)
 
 ```bash
 node --check gee/wheat_phenology_mapping.js
+node --check gee/nangarhar_wheat_phenology.js
 node --check gee/client_helpers.js
 node gee/test_client_logic.js
 ```

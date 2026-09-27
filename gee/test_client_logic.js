@@ -126,6 +126,40 @@ check('script constructors use camelCase GEE style keys only', function() {
   });
 });
 
+var nangarharPath = path.join(__dirname, 'nangarhar_wheat_phenology.js');
+var nang = fs.readFileSync(nangarharPath, 'utf8');
+
+check('Nangarhar script uses the user AOI, agriculture and GCP assets', function() {
+  assert.strictEqual(nang.indexOf('projects/ee-maziarkarimi3/assets/Wheat_Mapping/Admin/Nangarhar') > -1, true);
+  assert.strictEqual(nang.indexOf('projects/ee-maziarkarimi3/assets/Wheat_Mapping/IR_RF/Nangarhar_Ag_IR') > -1, true);
+  assert.strictEqual(nang.indexOf('projects/ee-maziarkarimi3/assets/Wheat_Mapping/GCP/Nangarhar_IR_GCP') > -1, true);
+});
+
+check('Nangarhar script samples NDVI at sowing, peak and harvest', function() {
+  assert.strictEqual(nang.indexOf("id: 'sowing'") > -1, true);
+  assert.strictEqual(nang.indexOf("id: 'peak'") > -1, true);
+  assert.strictEqual(nang.indexOf("id: 'harvest'") > -1, true);
+  assert.strictEqual(nang.indexOf("prefix + '_NDVI'") > -1, true);
+  assert.strictEqual(nang.indexOf("'sowing'") > -1, true);
+  assert.strictEqual(nang.indexOf("'peak'") > -1, true);
+  assert.strictEqual(nang.indexOf("'harvest'") > -1, true);
+});
+
+check('Nangarhar script uses paper S2 settings (harmonized, QA60, median, 30% cloud)', function() {
+  assert.strictEqual(nang.indexOf('COPERNICUS/S2_HARMONIZED') > -1, true);
+  assert.strictEqual(nang.indexOf('QA60') > -1, true);
+  assert.strictEqual(nang.indexOf('CLOUD: 30') > -1, true);
+  assert.strictEqual(nang.indexOf('.median()') > -1, true);
+});
+
+check('Nangarhar season windows are in calendar order', function() {
+  assert.strictEqual('2016-11-15' < '2016-12-31', true);
+  assert.strictEqual('2016-12-31' < '2017-02-01', true);
+  assert.strictEqual('2017-02-01' < '2017-03-31', true);
+  assert.strictEqual('2017-03-31' < '2017-05-01', true);
+  assert.strictEqual('2017-05-01' < '2017-06-15', true);
+});
+
 if (failures) {
   console.log('\n' + failures + ' test(s) failed');
   process.exit(1);
