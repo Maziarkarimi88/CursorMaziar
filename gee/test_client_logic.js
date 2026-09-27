@@ -192,6 +192,12 @@ check('seasonsFromRange uses start year for sowing and end year for peak/harvest
 var appPath = path.join(__dirname, 'wheat_phenology_app.js');
 var appSrc = fs.readFileSync(appPath, 'utf8');
 
+check('GEE scripts do not call setTimeout (Code Editor sandbox has none)', function() {
+  assert.strictEqual(src.indexOf('setTimeout') === -1, true);
+  assert.strictEqual(nang.indexOf('setTimeout') === -1, true);
+  assert.strictEqual(appSrc.indexOf('setTimeout') === -1, true);
+});
+
 check('interface app has province, IR/RF and date range widgets', function() {
   assert.strictEqual(appSrc.indexOf('Select Province') > -1, true);
   assert.strictEqual(appSrc.indexOf("items: ['IR', 'RF']") > -1, true);

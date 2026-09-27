@@ -199,9 +199,6 @@ app.createHelpers = function() {
       finished = true;
       callback(assets, error);
     };
-    setTimeout(function() {
-      finish([], 'Timed out listing the geometry folder');
-    }, 20000);
     try {
       ee.data.listAssets(folderId, {}, function(result, error) {
         if (!error && result) {
