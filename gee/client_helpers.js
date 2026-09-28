@@ -132,6 +132,65 @@ function parseNumericField(value) {
   return typeof value === 'number' ? value : parseFloat(value);
 }
 
+function coerceChartNumber(value, asTime) {
+  if (value === null || value === undefined || value === '') return NaN;
+  if (typeof value === 'number') return isFinite(value) ? value : NaN;
+  if (typeof value === 'boolean') return NaN;
+  if (typeof value === 'object') {
+    if (typeof value.getTime === 'function') {
+      var ms = value.getTime();
+      return isFinite(ms) ? ms : NaN;
+    }
+    if (value.value !== undefined && value.value !== value) {
+      return coerceChartNumber(value.value, asTime);
+    }
+    return NaN;
+  }
+  var text = String(value).trim();
+  var dateCtor = text.match(/^Date\((\d+)\)$/);
+  if (dateCtor) return coerceChartNumber(Number(dateCtor[1]), asTime);
+  if (asTime && /^\d{4}-\d{2}-\d{2}/.test(text)) {
+    var parsed = Date.parse(text);
+    return isFinite(parsed) ? parsed : NaN;
+  }
+  var n = parseFloat(text);
+  return isFinite(n) ? n : NaN;
+}
+
+function featureProperties(feature) {
+  if (!feature) return {};
+  if (feature.properties && typeof feature.properties === 'object') return feature.properties;
+  return feature;
+}
+
+function sortChartRows(rows) {
+  rows.sort(function(a, b) {
+    if (a.t !== b.t) return a.t - b.t;
+    return a.s < b.s ? -1 : a.s > b.s ? 1 : 0;
+  });
+  return rows;
+}
+
+function averageRowsBySampleTime(rows) {
+  var sums = {};
+  var counts = {};
+  var i;
+  for (i = 0; i < rows.length; i++) {
+    var key = rows[i].s + '_' + rows[i].t;
+    sums[key] = (sums[key] || 0) + rows[i].v;
+    counts[key] = (counts[key] || 0) + 1;
+  }
+  var out = [];
+  var seen = {};
+  for (i = 0; i < rows.length; i++) {
+    var k = rows[i].s + '_' + rows[i].t;
+    if (seen[k]) continue;
+    seen[k] = true;
+    out.push({t: rows[i].t, v: sums[k] / counts[k], s: rows[i].s});
+  }
+  return sortChartRows(out);
+}
+
 function hasRequiredInputs(startDate, endDate, cloud, scale, cycles) {
   var cloudNum = parseNumericField(cloud);
   var scaleNum = parseNumericField(scale);
@@ -167,21 +226,72 @@ function collectChartRows(features) {
   var rows = [];
   var list = Array.isArray(features) ? features : [];
   for (var i = 0; i < list.length; i++) {
-    var p = (list[i] && list[i].properties) || {};
-    var t = parseNumericField(p.time);
-    var v = parseNumericField(p.value);
+    var p = featureProperties(list[i]);
+    var t = coerceChartNumber(p.time != null ? p.time : p.millis, true);
+    var v = coerceChartNumber(
+      p.value != null ? p.value : (p.NDVI != null ? p.NDVI : p.fitted),
+      false
+    );
     if (!isFinite(t) || !isFinite(v)) continue;
     rows.push({
       t: t,
       v: v,
-      s: String(p.sample == null ? '1' : p.sample)
+      s: String(p.sample != null ? p.sample : (p.id != null ? p.id : '1'))
     });
   }
-  rows.sort(function(a, b) {
-    if (a.t !== b.t) return a.t - b.t;
-    return a.s < b.s ? -1 : a.s > b.s ? 1 : 0;
-  });
-  return rows;
+  return sortChartRows(rows);
+}
+
+function collectChartRowsFromArrays(times, values, samples) {
+  times = Array.isArray(times) ? times : [];
+  values = Array.isArray(values) ? values : [];
+  samples = Array.isArray(samples) ? samples : [];
+  var rows = [];
+  var n = Math.min(times.length, values.length);
+  for (var i = 0; i < n; i++) {
+    var t = coerceChartNumber(times[i], true);
+    var v = coerceChartNumber(values[i], false);
+    if (!isFinite(t) || !isFinite(v)) continue;
+    rows.push({
+      t: t,
+      v: v,
+      s: String(samples[i] == null ? String(i + 1) : samples[i])
+    });
+  }
+  return sortChartRows(rows);
+}
+
+function collectChartRowsFromGetRegion(table, band) {
+  if (!Array.isArray(table) || table.length < 2 || !Array.isArray(table[0])) return [];
+  var header = table[0];
+  var timeIdx = header.indexOf('time');
+  if (timeIdx < 0) timeIdx = 3;
+  var valueIdx = -1;
+  if (band) valueIdx = header.indexOf(band);
+  if (valueIdx < 0) valueIdx = header.indexOf('value');
+  if (valueIdx < 0) valueIdx = header.indexOf('NDVI');
+  if (valueIdx < 0) valueIdx = header.indexOf('fitted');
+  if (valueIdx < 0) valueIdx = header.length - 1;
+  var lonIdx = header.indexOf('longitude');
+  var latIdx = header.indexOf('latitude');
+  var rows = [];
+  for (var i = 1; i < table.length; i++) {
+    var r = table[i];
+    if (!r) continue;
+    var t = coerceChartNumber(r[timeIdx], true);
+    var v = coerceChartNumber(r[valueIdx], false);
+    if (!isFinite(t) || !isFinite(v)) continue;
+    var sample = '1';
+    if (lonIdx >= 0 && latIdx >= 0) {
+      var lon = Number(r[lonIdx]);
+      var lat = Number(r[latIdx]);
+      if (isFinite(lon) && isFinite(lat)) {
+        sample = lon.toFixed(4) + ',' + lat.toFixed(4);
+      }
+    }
+    rows.push({t: t, v: v, s: sample});
+  }
+  return averageRowsBySampleTime(rows);
 }
 
 function buildNumericChartTable(rows) {
@@ -251,6 +361,9 @@ module.exports = {
   hasRequiredInputs: hasRequiredInputs,
   yearFraction: yearFraction,
   isoDateFromMillis: isoDateFromMillis,
+  coerceChartNumber: coerceChartNumber,
   collectChartRows: collectChartRows,
+  collectChartRowsFromArrays: collectChartRowsFromArrays,
+  collectChartRowsFromGetRegion: collectChartRowsFromGetRegion,
   buildNumericChartTable: buildNumericChartTable
 };

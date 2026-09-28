@@ -217,6 +217,9 @@ check('interface app charts each sample point like MODULE 1', function() {
   assert.strictEqual(appSrc.indexOf("bands: ['B8', 'B4', 'B3']") > -1, true);
   assert.strictEqual(appSrc.indexOf('addNumericChart') > -1, true);
   assert.strictEqual(appSrc.indexOf("ui.Chart({cols: dataTable.cols, rows: dataTable.rows})") > -1, true);
+  assert.strictEqual(appSrc.indexOf('aggregate_array') > -1, true);
+  assert.strictEqual(appSrc.indexOf('getRegion') > -1, true);
+  assert.strictEqual(appSrc.indexOf('.buffer(2000)') > -1, true);
 });
 
 check('interface app does not use GEE helpers that put strings on axis 0', function() {
@@ -252,6 +255,42 @@ check('collectChartRows drops non-numeric time/value and keeps sample as series 
   ]);
   assert.strictEqual(zeroNdvi.length, 1);
   assert.strictEqual(zeroNdvi[0].v, 0);
+});
+
+check('collectChartRows reads top-level properties and Date(millis) times', function() {
+  var rows = helpers.collectChartRows([
+    {time: 'Date(1479168000000)', value: {value: 0.44}, sample: 'pt-c'},
+    {properties: {millis: '2016-11-15T00:00:00Z', NDVI: '0.29', id: 'pt-d'}}
+  ]);
+  assert.strictEqual(rows.length, 2);
+  assert.strictEqual(rows[0].t, 1479168000000);
+  assert.strictEqual(rows[0].v, 0.44);
+  assert.strictEqual(rows[1].s, 'pt-d');
+  assert.strictEqual(rows[1].v, 0.29);
+});
+
+check('collectChartRowsFromArrays keeps only numeric pairs', function() {
+  var rows = helpers.collectChartRowsFromArrays(
+    [1479168000000, '1480000000000', null],
+    [0.2, '0.3', 0.4],
+    ['a', 'b', 'c']
+  );
+  assert.strictEqual(rows.length, 2);
+  assert.strictEqual(rows[0].s, 'a');
+  assert.strictEqual(rows[1].v, 0.3);
+});
+
+check('collectChartRowsFromGetRegion uses numeric time and NDVI columns', function() {
+  var rows = helpers.collectChartRowsFromGetRegion([
+    ['id', 'longitude', 'latitude', 'time', 'NDVI'],
+    ['s2a', 70.12345, 34.56789, 1479168000000, 0.21],
+    ['s2b', 70.12345, 34.56789, 1479168000000, 0.31],
+    ['s2c', 70.12345, 34.56789, 1480000000000, null]
+  ], 'NDVI');
+  assert.strictEqual(rows.length, 1);
+  assert.strictEqual(typeof rows[0].t, 'number');
+  assert.ok(Math.abs(rows[0].v - 0.26) < 1e-9);
+  assert.notStrictEqual(typeof rows[0].t, 'string');
 });
 
 check('buildNumericChartTable puts only numbers on axis 0, never sample ids', function() {
