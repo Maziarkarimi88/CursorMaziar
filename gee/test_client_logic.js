@@ -213,6 +213,11 @@ check('interface app charts each sample point like MODULE 1', function() {
   assert.strictEqual(appSrc.indexOf('Detrended time series') > -1, true);
   assert.strictEqual(appSrc.indexOf('Harmonic model: original values') > -1, true);
   assert.strictEqual(appSrc.indexOf('Harmonic model: fitted values') > -1, true);
+  assert.strictEqual(appSrc.indexOf('(all samples)') > -1, true);
+  assert.strictEqual(appSrc.indexOf('(selected sample)') > -1, true);
+  assert.strictEqual(appSrc.indexOf('All sample points') > -1, true);
+  assert.strictEqual(appSrc.indexOf('limit(60)') === -1, true);
+  assert.strictEqual(appSrc.indexOf("app.fc.filter(ee.Filter.eq('id', ind))") > -1, true);
   assert.strictEqual(appSrc.indexOf('showMonthlyComposite') > -1, true);
   assert.strictEqual(appSrc.indexOf("bands: ['B8', 'B4', 'B3']") > -1, true);
   assert.strictEqual(appSrc.indexOf('addNumericChart') > -1, true);
@@ -291,6 +296,20 @@ check('collectChartRowsFromGetRegion uses numeric time and NDVI columns', functi
   assert.strictEqual(typeof rows[0].t, 'number');
   assert.ok(Math.abs(rows[0].v - 0.26) < 1e-9);
   assert.notStrictEqual(typeof rows[0].t, 'string');
+});
+
+check('overall keeps every sample and selected mode filters to one id', function() {
+  var rows = [
+    {t: 1, v: 0.2, s: 'A'},
+    {t: 2, v: 0.3, s: 'B'},
+    {t: 3, v: 0.4, s: 'A'}
+  ];
+  assert.deepStrictEqual(helpers.uniqueSampleIds(rows), ['A', 'B']);
+  var onlyA = helpers.filterChartRowsBySample(rows, 'A');
+  assert.strictEqual(onlyA.length, 2);
+  assert.strictEqual(helpers.uniqueSampleIds(onlyA).length, 1);
+  assert.strictEqual(helpers.chartTitle('Time series NDVI', false), 'Time series NDVI (all samples)');
+  assert.strictEqual(helpers.chartTitle('Time series NDVI', true), 'Time series NDVI (selected sample)');
 });
 
 check('buildNumericChartTable puts only numbers on axis 0, never sample ids', function() {

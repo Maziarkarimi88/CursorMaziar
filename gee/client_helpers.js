@@ -171,6 +171,34 @@ function sortChartRows(rows) {
   return rows;
 }
 
+function uniqueSampleIds(rows) {
+  var ids = [];
+  var seen = {};
+  rows = Array.isArray(rows) ? rows : [];
+  for (var i = 0; i < rows.length; i++) {
+    var s = String(rows[i].s);
+    if (seen[s]) continue;
+    seen[s] = true;
+    ids.push(s);
+  }
+  return ids;
+}
+
+function filterChartRowsBySample(rows, sampleId) {
+  rows = Array.isArray(rows) ? rows : [];
+  if (sampleId === null || sampleId === undefined || sampleId === '') return rows;
+  var want = String(sampleId);
+  var out = [];
+  for (var i = 0; i < rows.length; i++) {
+    if (String(rows[i].s) === want) out.push(rows[i]);
+  }
+  return out;
+}
+
+function chartTitle(base, singleSample) {
+  return String(base) + (singleSample ? ' (selected sample)' : ' (all samples)');
+}
+
 function averageRowsBySampleTime(rows) {
   var sums = {};
   var counts = {};
@@ -365,5 +393,8 @@ module.exports = {
   collectChartRows: collectChartRows,
   collectChartRowsFromArrays: collectChartRowsFromArrays,
   collectChartRowsFromGetRegion: collectChartRowsFromGetRegion,
+  uniqueSampleIds: uniqueSampleIds,
+  filterChartRowsBySample: filterChartRowsBySample,
+  chartTitle: chartTitle,
   buildNumericChartTable: buildNumericChartTable
 };

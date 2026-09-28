@@ -29,7 +29,8 @@ app.createConstants = function() {
     START: '2016-11-01',
     END: '2017-07-30',
     MAX_FEATURES: 400,
-    MAX_MONTHS: 24
+    MAX_MONTHS: 24,
+    MAX_CHART_ROWS: 20000
   };
   app.LABEL = {
     TITLE: 'Wheat Phenology Mapper',
@@ -277,7 +278,7 @@ app.createHelpers = function() {
     if (!app.fc || !Array.isArray(app.idList)) return;
     var ind = btn.getLabel();
     app.activateListItem(app.idList.indexOf(ind));
-    app.showSelectedPoint(ee.Feature(app.fc.filter(ee.Filter.eq('id', ind)).first()));
+    app.showSelectedPoint(app.fc.filter(ee.Filter.eq('id', ind)));
   };
 
   app.activateListItem = function(index) {
@@ -460,7 +461,12 @@ app.createHelpers = function() {
   app.asChartPoints = function(fc) {
     return ee.FeatureCollection(fc).map(function(f) {
       f = ee.Feature(f);
-      return f.setGeometry(f.geometry().buffer(40)).set('sample', ee.String(f.id()));
+      var sid = ee.Algorithms.If(
+        ee.Algorithms.IsEqual(f.get('id'), null),
+        f.id(),
+        f.get('id')
+      );
+      return f.setGeometry(f.geometry().buffer(40)).set('sample', ee.String(sid));
     });
   };
 
@@ -700,7 +706,10 @@ app.createHelpers = function() {
         hAxis: {title: 'Date'},
         lineWidth: 1,
         pointSize: 2,
-        legend: {position: dataTable.samples.length > 15 ? 'none' : 'right'},
+        legend: {
+          position: dataTable.samples.length > 12 ? 'bottom' : 'right',
+          textStyle: {fontSize: 9}
+        },
         chartArea: {width: '75%'}
       });
     chart.style().set({width: '320px'});
@@ -715,14 +724,14 @@ app.createHelpers = function() {
     }));
   };
 
-  app.addNumericChart = function(imageCollection, points, band, scale, title, onDone) {
+  app.addNumericChart = function(imageCollection, points, band, scale, title, onDone, singleSample) {
     var table = app.extractNdviTable(imageCollection, points, band, scale);
     var fc = ee.FeatureCollection(table);
     ee.Dictionary({
       n: fc.size(),
-      time: fc.limit(8000).aggregate_array('time'),
-      value: fc.limit(8000).aggregate_array('value'),
-      sample: fc.limit(8000).aggregate_array('sample')
+      time: fc.limit(app.DEFAULT.MAX_CHART_ROWS).aggregate_array('time'),
+      value: fc.limit(app.DEFAULT.MAX_CHART_ROWS).aggregate_array('value'),
+      sample: fc.limit(app.DEFAULT.MAX_CHART_ROWS).aggregate_array('sample')
     }).evaluate(function(raw, error) {
       var rows = app.collectChartRowsFromArrays(
         raw && raw.time,
@@ -730,6 +739,16 @@ app.createHelpers = function() {
         raw && raw.sample
       );
       if (rows.length && app.renderNumericChart(rows, title)) {
+        if (onDone) onDone();
+        return;
+      }
+      if (!singleSample) {
+        app.addChartError(
+          title,
+          error ||
+            ('sampled ' + ((raw && raw.n) || 0) +
+              ' NDVI values at these points/dates')
+        );
         if (onDone) onDone();
         return;
       }
@@ -798,7 +817,7 @@ app.createHelpers = function() {
     app.mainMapPanel.style().set({shown: windows.length > 0});
   };
 
-  app.onShowPhenology = function(fc, showMonths) {
+  app.onShowPhenology = function(fc, singleSample) {
     var startDate = app.widgets.startDate.getValue();
     var endDate = app.widgets.endDate.getValue();
     var cloud = app.parseNumericField(app.widgets.cloud.getValue());
@@ -810,8 +829,12 @@ app.createHelpers = function() {
     }
     app.setBusy(true);
     app.chartArea.clear();
-    var allPoints = app.asChartPoints(fc);
-    var points = showMonths ? allPoints.limit(1) : allPoints.limit(60);
+    app.chartArea.add(ui.Label({
+      value: singleSample ? 'Selected sample' : 'All sample points',
+      style: {fontWeight: 'bold', margin: '8px 10px 0px 10px'}
+    }));
+    var points = app.asChartPoints(fc);
+    if (singleSample) points = points.limit(1);
     var clipGeom = points.geometry().bounds().buffer(2000);
     var timeField = 'system:time_start';
     var col = app.s2Collection(startDate, endDate, clipGeom, cloud).map(app.addTimeBands);
@@ -862,13 +885,17 @@ app.createHelpers = function() {
         if (pending <= 0) app.setBusy(false);
       };
       app.addNumericChart(col, points, 'NDVI', scale,
-        'Time series NDVI', finishChart);
+        'Time series NDVI' + (singleSample ? ' (selected sample)' : ' (all samples)'),
+        finishChart, singleSample);
       app.addNumericChart(detrended, points, 'NDVI', scale,
-        'Detrended time series', finishChart);
+        'Detrended time series' + (singleSample ? ' (selected sample)' : ' (all samples)'),
+        finishChart, singleSample);
       app.addNumericChart(fittedHarmonic, points, 'NDVI', scale,
-        'Harmonic model: original values', finishChart);
+        'Harmonic model: original values' + (singleSample ? ' (selected sample)' : ' (all samples)'),
+        finishChart, singleSample);
       app.addNumericChart(fittedHarmonic, points, 'fitted', scale,
-        'Harmonic model: fitted values', finishChart);
+        'Harmonic model: fitted values' + (singleSample ? ' (selected sample)' : ' (all samples)'),
+        finishChart, singleSample);
 
       var seasons = app.seasonsFromRange(startDate, endDate);
       var sowingImg = col.filterDate(seasons[0].start, seasons[0].end).select(['NDVI', 'NDSI']).median();
@@ -884,7 +911,7 @@ app.createHelpers = function() {
       app.seasonTable = table;
       print('Seasonal NDVI at selected sample points', table);
 
-      if (showMonths) {
+      if (singleSample) {
         app.showMonthlyComposite(ee.Feature(points.first()));
       } else {
         app.mainMapPanel.style().set({shown: false});
@@ -920,13 +947,17 @@ app.createHelpers = function() {
     }
     var point = ee.Geometry.Point([latlon.lon, latlon.lat]).buffer(3 * Map.getScale());
     if (!app.fc) {
-      app.showSelectedPoint(ee.Feature(ee.Geometry.Point([latlon.lon, latlon.lat])));
+      app.showSelectedPoint(ee.FeatureCollection([
+        ee.Feature(ee.Geometry.Point([latlon.lon, latlon.lat]))
+      ]));
       return;
     }
     var hits = app.fc.filterBounds(point);
     hits.size().evaluate(function(n, error) {
       if (error || !n) {
-        app.showSelectedPoint(ee.Feature(ee.Geometry.Point([latlon.lon, latlon.lat])));
+        app.showSelectedPoint(ee.FeatureCollection([
+          ee.Feature(ee.Geometry.Point([latlon.lon, latlon.lat]))
+        ]));
         return;
       }
       var feat = ee.Feature(hits.first());
@@ -935,14 +966,15 @@ app.createHelpers = function() {
           app.activateListItem(app.idList.indexOf(id));
         }
       });
-      app.showSelectedPoint(feat);
+      app.showSelectedPoint(hits.limit(1));
     });
   };
 
   app.showSelectedPoint = function(selected) {
-    app.onShowPhenology(ee.FeatureCollection([selected]), true);
+    var selectedFc = ee.FeatureCollection(selected);
+    app.onShowPhenology(selectedFc, true);
     app.removeLayers(['Selected']);
-    Map.layers().set(3, ui.Map.Layer(selected, {color: 'FF0000'}, 'Selected'));
+    Map.layers().set(3, ui.Map.Layer(selectedFc, {color: 'FF0000'}, 'Selected'));
   };
 };
 
