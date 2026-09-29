@@ -25,7 +25,7 @@ app.createConstants = function() {
     S2_COLLECTION: 'COPERNICUS/S2_HARMONIZED',
     CLOUD: 30,
     SCALE: 10,
-    CYCLE: 4,
+    CYCLE: 1,
     START: '2016-11-01',
     END: '2017-07-30',
     MAX_FEATURES: 400,
@@ -48,9 +48,8 @@ app.createConstants = function() {
     SCALE: 'Scale',
     CYCLE: 'Frequency',
     GPSLIST: 'List of sample points',
-    DELETE: 'Delete Selected (not wheat)',
-    EXPORT: 'Export Features',
-    HELP: 'Show Overall Phenology draws an NDVI graph for every GPS sample so you can tell wheat from other crops. Click a sample to inspect it. Delete Selected removes a non-wheat point from later processing.'
+    DELETE: 'Delete Selected',
+    EXPORT: 'Export Features'
   };
   app.PATH = {
     ADMIN: 'Admin',
@@ -127,12 +126,19 @@ app.createHelpers = function() {
     var cloudNum = app.parseNumericField(cloud);
     var scaleNum = app.parseNumericField(scale);
     var cycleNum = app.parseNumericField(cycles);
+    var cyclesOk = cycles === null || cycles === undefined || cycles === '' ||
+      (!isNaN(cycleNum) && cycleNum > 0);
     return app.isValidIsoDate(startDate) &&
       app.isValidIsoDate(endDate) &&
       startDate < endDate &&
       !isNaN(cloudNum) && cloudNum >= 0 && cloudNum <= 100 &&
       !isNaN(scaleNum) && scaleNum > 0 &&
-      !isNaN(cycleNum) && cycleNum > 0;
+      cyclesOk;
+  };
+
+  app.resolveCycles = function() {
+    var n = app.parseNumericField(app.widgets.cycle.getValue());
+    return (!isNaN(n) && n > 0) ? n : app.DEFAULT.CYCLE;
   };
 
   app.monthStart = function(isoDate) {
@@ -658,7 +664,7 @@ app.createHelpers = function() {
     }
     times.sort(function(a, b) { return a - b; });
 
-    var cols = [{id: 'x', label: 'Date', type: 'number', role: 'domain'}];
+    var cols = [{id: 'x', label: 'Date', type: 'date', role: 'domain'}];
     for (var s = 0; s < samples.length; s++) {
       cols.push({
         id: 's' + s,
@@ -671,7 +677,7 @@ app.createHelpers = function() {
     var tableRows = [];
     for (var ti = 0; ti < times.length; ti++) {
       var t = times[ti];
-      var cells = [{v: app.yearFraction(t), f: app.isoDateFromMillis(t)}];
+      var cells = [{v: 'Date(' + Math.round(t) + ')', f: app.isoDateFromMillis(t)}];
       var any = false;
       for (var si = 0; si < samples.length; si++) {
         var val = lookup[samples[si] + '_' + t];
@@ -731,31 +737,23 @@ app.createHelpers = function() {
     return groups;
   };
 
-  app.renderNumericChart = function(rows, title, opts) {
-    opts = opts || {};
+  app.renderNumericChart = function(rows, title) {
     var dataTable = app.buildNumericChartTable(rows);
     if (!dataTable.rows.length) return false;
-    var many = dataTable.samples.length > 12;
     var chart = ui.Chart({cols: dataTable.cols, rows: dataTable.rows})
-      .setChartType('LineChart')
+      .setChartType('ScatterChart')
       .setOptions({
         title: title,
         interpolateNulls: true,
-        vAxis: {title: 'NDVI', viewWindowMode: 'pretty'},
-        hAxis: {title: 'Date'},
+        vAxis: {title: 'NDVI'},
+        hAxis: {title: 'Date', format: 'MMM yyyy'},
         lineWidth: 1,
-        pointSize: dataTable.samples.length === 1 ? 3 : 2,
-        legend: {
-          position: dataTable.samples.length === 1 ? 'none' : (many ? 'bottom' : 'right'),
-          textStyle: {fontSize: 9}
-        },
-        chartArea: {width: '75%', height: '65%'},
-        height: opts.height || (dataTable.samples.length === 1 ? 170 : 220)
+        pointSize: 2,
+        legend: {position: 'none'},
+        chartArea: {width: '80%', height: '70%'},
+        height: 180
       });
-    chart.style().set({
-      width: opts.width || '360px',
-      height: (opts.height || (dataTable.samples.length === 1 ? 170 : 220)) + 'px'
-    });
+    chart.style().set({width: '300px', height: '180px'});
     app.chartArea.add(chart);
     return true;
   };
@@ -783,39 +781,6 @@ app.createHelpers = function() {
       );
       callback(rows, error, raw && raw.n);
     });
-  };
-
-  app.renderOverallNdviCharts = function(rows) {
-    var groups = app.groupChartRowsBySample(rows);
-    app.chartArea.add(ui.Label({
-      value: 'All sample points',
-      style: {fontWeight: 'bold', margin: '8px 10px 0px 10px'}
-    }));
-    app.chartArea.add(ui.Label({
-      value: 'NDVI graphs for ' + groups.length +
-        ' samples. Wheat typically greens up after sowing and drops at harvest. ' +
-        'Click a sample, then Delete Selected if it is not wheat.',
-      style: {margin: '4px 10px 8px 10px', fontSize: '11px'}
-    }));
-    if (!groups.length) return false;
-    app.renderNumericChart(rows, 'Time series NDVI (all samples)', {height: 240});
-    var maxPts = app.DEFAULT.MAX_POINT_CHARTS;
-    var n = groups.length < maxPts ? groups.length : maxPts;
-    for (var i = 0; i < n; i++) {
-      app.renderNumericChart(
-        groups[i].rows,
-        'Time series NDVI — sample ' + groups[i].sample,
-        {height: 170}
-      );
-    }
-    if (groups.length > maxPts) {
-      app.chartArea.add(ui.Label({
-        value: 'Showing the first ' + maxPts +
-          ' per-point NDVI graphs. Click a sample in the list for the others.',
-        style: {margin: '8px 10px', fontSize: '11px'}
-      }));
-    }
-    return true;
   };
 
   app.addNumericChart = function(imageCollection, points, band, scale, title, onDone, singleSample) {
@@ -900,8 +865,8 @@ app.createHelpers = function() {
     var endDate = app.widgets.endDate.getValue();
     var cloud = app.parseNumericField(app.widgets.cloud.getValue());
     var scale = app.parseNumericField(app.widgets.scale.getValue());
-    var cycles = app.parseNumericField(app.widgets.cycle.getValue());
-    if (!app.hasRequiredInputs(startDate, endDate, cloud, scale, cycles)) {
+    var cycles = app.resolveCycles();
+    if (!app.hasRequiredInputs(startDate, endDate, cloud, scale, app.widgets.cycle.getValue())) {
       app.prompt(true, app.ERROR.EMPTY_FIELDS);
       return;
     }
@@ -919,50 +884,6 @@ app.createHelpers = function() {
         return;
       }
       print('Sentinel-2 images used:', n);
-
-      var addSeasonTable = function() {
-        var seasons = app.seasonsFromRange(startDate, endDate);
-        var sowingImg = col.filterDate(seasons[0].start, seasons[0].end).select(['NDVI', 'NDSI']).median();
-        var peakImg = col.filterDate(seasons[1].start, seasons[1].end).select(['NDVI', 'NDSI']).median();
-        var harvestImg = col.filterDate(seasons[2].start, seasons[2].end).select(['NDVI', 'NDSI']).median();
-        var sowingPts = app.sampleSeason(sowingImg, points, 'sowing', scale);
-        var peakPts = app.sampleSeason(peakImg, points, 'peak', scale);
-        var harvestPts = app.sampleSeason(harvestImg, points, 'harvest', scale);
-        var table = points.map(function(f) { return f.select(['id']); });
-        table = app.joinSeasonSimple(table, sowingPts, 'sowing');
-        table = app.joinSeasonSimple(table, peakPts, 'peak');
-        table = app.joinSeasonSimple(table, harvestPts, 'harvest');
-        app.seasonTable = table;
-        print('Seasonal NDVI at selected sample points', table);
-      };
-
-      if (!singleSample) {
-        app.loadNdviRows(col, points, 'NDVI', scale, function(rows, err, count) {
-          if (!rows.length || !app.renderOverallNdviCharts(rows)) {
-            app.addChartError(
-              'Time series NDVI',
-              err || ('sampled ' + (count || 0) + ' NDVI values at these points/dates')
-            );
-          } else {
-            print('NDVI series by sample', app.groupChartRowsBySample(rows).length + ' points');
-          }
-          addSeasonTable();
-          app.mainMapPanel.style().set({shown: false});
-          app.setBusy(false);
-          app.prompt(false, '');
-        });
-        return;
-      }
-
-      var selectedId = app.selectedId ? String(app.selectedId) : '';
-      app.chartArea.add(ui.Label({
-        value: selectedId ? ('Selected sample ' + selectedId) : 'Selected sample',
-        style: {fontWeight: 'bold', margin: '8px 10px 0px 10px'}
-      }));
-      app.chartArea.add(ui.Label({
-        value: 'Inspect this NDVI phenology. If it is not wheat, click Delete Selected.',
-        style: {margin: '4px 10px 8px 10px', fontSize: '11px'}
-      }));
 
       var independents = ee.List(['constant', 't']);
       var dependent = 'NDVI';
@@ -1001,20 +922,39 @@ app.createHelpers = function() {
       var pending = 4;
       var finishChart = function() {
         pending -= 1;
-        if (pending <= 0) app.setBusy(false);
+        if (pending <= 0) {
+          app.setBusy(false);
+          app.prompt(false, '');
+        }
       };
-      var sampleTitle = selectedId ? (' — sample ' + selectedId) : ' (selected sample)';
       app.addNumericChart(col, points, 'NDVI', scale,
-        'Time series NDVI' + sampleTitle, finishChart, true);
+        'Time series NDVI', finishChart, singleSample);
       app.addNumericChart(detrended, points, 'NDVI', scale,
-        'Detrended time series' + sampleTitle, finishChart, true);
+        'Detrended time series', finishChart, singleSample);
       app.addNumericChart(fittedHarmonic, points, 'NDVI', scale,
-        'Harmonic model: original values' + sampleTitle, finishChart, true);
+        'Harmonic model: original values', finishChart, singleSample);
       app.addNumericChart(fittedHarmonic, points, 'fitted', scale,
-        'Harmonic model: fitted values' + sampleTitle, finishChart, true);
+        'Harmonic model: fitted values', finishChart, singleSample);
 
-      addSeasonTable();
-      app.showMonthlyComposite(ee.Feature(points.first()));
+      var seasons = app.seasonsFromRange(startDate, endDate);
+      var sowingImg = col.filterDate(seasons[0].start, seasons[0].end).select(['NDVI', 'NDSI']).median();
+      var peakImg = col.filterDate(seasons[1].start, seasons[1].end).select(['NDVI', 'NDSI']).median();
+      var harvestImg = col.filterDate(seasons[2].start, seasons[2].end).select(['NDVI', 'NDSI']).median();
+      var sowingPts = app.sampleSeason(sowingImg, points, 'sowing', scale);
+      var peakPts = app.sampleSeason(peakImg, points, 'peak', scale);
+      var harvestPts = app.sampleSeason(harvestImg, points, 'harvest', scale);
+      var table = points.map(function(f) { return f.select(['id']); });
+      table = app.joinSeasonSimple(table, sowingPts, 'sowing');
+      table = app.joinSeasonSimple(table, peakPts, 'peak');
+      table = app.joinSeasonSimple(table, harvestPts, 'harvest');
+      app.seasonTable = table;
+      print('Seasonal NDVI at selected sample points', table);
+
+      if (singleSample) {
+        app.showMonthlyComposite(ee.Feature(points.first()));
+      } else {
+        app.mainMapPanel.style().set({shown: false});
+      }
     });
   };
 
@@ -1217,17 +1157,13 @@ app.initializeGUIElements = function() {
         ]
       }),
       app.widgets.compute,
-      ui.Label({
-        value: app.LABEL.HELP,
-        style: {margin: '8px 8px 12px 8px', fontSize: '11px', color: '#444'}
-      }),
       app.listPanel
     ]
   });
   app.chartArea = ui.Panel({layout: ui.Panel.Layout.flow('vertical')});
   app.chartPanel = ui.Panel({
     layout: ui.Panel.Layout.flow('vertical'),
-    style: {width: '400px', margin: '0px', padding: '0px'},
+    style: {width: '350px', margin: '0px', padding: '0px'},
     widgets: [
       ui.Label({
         value: app.LABEL.CHARTS,

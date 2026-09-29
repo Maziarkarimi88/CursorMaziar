@@ -86,6 +86,8 @@ check('required inputs reject empty, inverted, and non-numeric values', function
 
 check('cloud cover of 0 is allowed (original truthiness bug)', function() {
   assert.strictEqual(helpers.hasRequiredInputs('2016-11-01', '2017-05-30', 0, 10, 4), true);
+  assert.strictEqual(helpers.hasRequiredInputs('2016-11-01', '2017-05-30', 30, 10, ''), true);
+  assert.strictEqual(helpers.hasRequiredInputs('2016-11-01', '2017-05-30', 30, 10, -1), false);
 });
 
 var scriptPath = path.join(__dirname, 'wheat_phenology_mapping.js');
@@ -213,11 +215,10 @@ check('interface app charts each sample point like MODULE 1', function() {
   assert.strictEqual(appSrc.indexOf('Detrended time series') > -1, true);
   assert.strictEqual(appSrc.indexOf('Harmonic model: original values') > -1, true);
   assert.strictEqual(appSrc.indexOf('Harmonic model: fitted values') > -1, true);
-  assert.strictEqual(appSrc.indexOf('renderOverallNdviCharts') > -1, true);
-  assert.strictEqual(appSrc.indexOf('Time series NDVI — sample') > -1, true);
-  assert.strictEqual(appSrc.indexOf('groupChartRowsBySample') > -1, true);
-  assert.strictEqual(appSrc.indexOf('Delete Selected (not wheat)') > -1, true);
-  assert.strictEqual(appSrc.indexOf('removed from further processing') > -1, true);
+  assert.strictEqual(appSrc.indexOf('setChartType(\'ScatterChart\')') > -1, true);
+  assert.strictEqual(appSrc.indexOf("legend: {position: 'none'}") > -1, true);
+  assert.strictEqual(appSrc.indexOf("type: 'date'") > -1, true);
+  assert.strictEqual(appSrc.indexOf('renderOverallNdviCharts') === -1, true);
   assert.strictEqual(appSrc.indexOf('limit(60)') === -1, true);
   assert.strictEqual(appSrc.indexOf("app.fc.filter(ee.Filter.eq('id', ind))") > -1, true);
   assert.strictEqual(appSrc.indexOf('showMonthlyComposite') > -1, true);
@@ -225,7 +226,6 @@ check('interface app charts each sample point like MODULE 1', function() {
   assert.strictEqual(appSrc.indexOf('addNumericChart') > -1, true);
   assert.strictEqual(appSrc.indexOf("ui.Chart({cols: dataTable.cols, rows: dataTable.rows})") > -1, true);
   assert.strictEqual(appSrc.indexOf('aggregate_array') > -1, true);
-  assert.strictEqual(appSrc.indexOf('getRegion') > -1, true);
   assert.strictEqual(appSrc.indexOf('.buffer(2000)') > -1, true);
 });
 
@@ -234,7 +234,7 @@ check('interface app does not use GEE helpers that put strings on axis 0', funct
   assert.strictEqual(appSrc.indexOf('Chart.feature.groups') === -1, true);
   assert.strictEqual(appSrc.indexOf('Chart.image.series') === -1, true);
   assert.strictEqual(appSrc.indexOf('Chart.array.values') === -1, true);
-  assert.strictEqual(appSrc.indexOf("type: 'number'") > -1, true);
+  assert.strictEqual(appSrc.indexOf("type: 'date'") > -1, true);
   assert.strictEqual(appSrc.indexOf("role: 'domain'") > -1, true);
 });
 
@@ -319,25 +319,22 @@ check('overall keeps every sample and selected mode filters to one id', function
   assert.strictEqual(helpers.chartTitle('Time series NDVI', true), 'Time series NDVI (selected sample)');
 });
 
-check('buildNumericChartTable puts only numbers on axis 0, never sample ids', function() {
+check('buildNumericChartTable uses a date domain and numeric NDVI series', function() {
   var table = helpers.buildNumericChartTable([
     {t: Date.UTC(2016, 10, 15), v: 0.22, s: '0001'},
     {t: Date.UTC(2016, 11, 15), v: 0.31, s: '0001'},
     {t: Date.UTC(2016, 10, 15), v: 0.25, s: '0002'}
   ]);
-  assert.strictEqual(table.cols[0].type, 'number');
+  assert.strictEqual(table.cols[0].type, 'date');
   assert.strictEqual(table.cols[0].role, 'domain');
   assert.strictEqual(table.cols[1].type, 'number');
   assert.strictEqual(table.cols[1].label, '0001');
+  assert.strictEqual(table.cols[2].label, '0002');
   assert.strictEqual(table.rows.length, 2);
-  assert.strictEqual(typeof table.rows[0].c[0].v, 'number');
+  assert.strictEqual(String(table.rows[0].c[0].v).indexOf('Date('), 0);
   assert.strictEqual(table.rows[0].c[0].f, '2016-11-15');
   assert.strictEqual(typeof table.rows[0].c[1].v, 'number');
   assert.strictEqual(table.rows[1].c[2].v, null);
-  table.rows.forEach(function(row) {
-    assert.notStrictEqual(typeof row.c[0].v, 'string');
-    assert.ok(isFinite(row.c[0].v));
-  });
 });
 
 if (failures) {

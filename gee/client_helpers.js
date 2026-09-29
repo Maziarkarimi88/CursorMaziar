@@ -238,12 +238,14 @@ function hasRequiredInputs(startDate, endDate, cloud, scale, cycles) {
   var cloudNum = parseNumericField(cloud);
   var scaleNum = parseNumericField(scale);
   var cycleNum = parseNumericField(cycles);
+  var cyclesOk = cycles === null || cycles === undefined || cycles === '' ||
+    (!isNaN(cycleNum) && cycleNum > 0);
   return isValidIsoDate(startDate) &&
     isValidIsoDate(endDate) &&
     startDate < endDate &&
     !isNaN(cloudNum) && cloudNum >= 0 && cloudNum <= 100 &&
     !isNaN(scaleNum) && scaleNum > 0 &&
-    !isNaN(cycleNum) && cycleNum > 0;
+    cyclesOk;
 }
 
 function yearFraction(millis) {
@@ -358,7 +360,7 @@ function buildNumericChartTable(rows) {
   }
   times.sort(function(a, b) { return a - b; });
 
-  var cols = [{id: 'x', label: 'Date', type: 'number', role: 'domain'}];
+  var cols = [{id: 'x', label: 'Date', type: 'date', role: 'domain'}];
   for (var s = 0; s < samples.length; s++) {
     cols.push({
       id: 's' + s,
@@ -371,7 +373,7 @@ function buildNumericChartTable(rows) {
   var tableRows = [];
   for (var ti = 0; ti < times.length; ti++) {
     var t = times[ti];
-    var cells = [{v: yearFraction(t), f: isoDateFromMillis(t)}];
+    var cells = [{v: 'Date(' + Math.round(t) + ')', f: isoDateFromMillis(t)}];
     var any = false;
     for (var si = 0; si < samples.length; si++) {
       var val = lookup[samples[si] + '_' + t];
