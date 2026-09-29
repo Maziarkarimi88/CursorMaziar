@@ -28,9 +28,9 @@ app.createConstants = function() {
     CYCLE: 1,
     START: '2016-11-01',
     END: '2017-07-30',
-    MAX_FEATURES: 400,
+    MAX_FEATURES: 5000,
     MAX_MONTHS: 24,
-    MAX_CHART_ROWS: 20000,
+    MAX_CHART_ROWS: 100000,
     MAX_POINT_CHARTS: 120
   };
   app.LABEL = {
@@ -407,6 +407,9 @@ app.createHelpers = function() {
           Map.layers().set(2, ui.Map.Layer(app.fc, {color: 'red'}, 'Wheat GCP'));
           Map.centerObject(app.geometry, 8);
           app.renderList(app.fc);
+          app.fc.size().evaluate(function(n) {
+            print('Wheat GCP points loaded:', n);
+          });
           app.setBusy(false);
         });
       });
@@ -968,14 +971,15 @@ app.createHelpers = function() {
     app.selectedId = '';
     app.mainMapPanel.style().set({shown: false});
     app.fc.size().evaluate(function(n, error) {
-      if (error) {
+      if (error || n === null || n === undefined) {
         app.prompt(true, app.ERROR.NO_GEOM);
         return;
       }
-      if (n > app.DEFAULT.MAX_FEATURES) {
-        app.prompt(true, app.ERROR.TOO_MANY_FEATURES);
+      if (!n) {
+        app.prompt(true, 'No GPS sample points loaded for this province / IR-RF.');
         return;
       }
+      print('Show Overall Phenology for', n, 'sample points');
       app.onShowPhenology(app.fc, false);
     });
   };

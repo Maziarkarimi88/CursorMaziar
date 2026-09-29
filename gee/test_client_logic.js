@@ -219,7 +219,8 @@ check('interface app charts each sample point like MODULE 1', function() {
   assert.strictEqual(appSrc.indexOf("legend: {position: 'none'}") > -1, true);
   assert.strictEqual(appSrc.indexOf("type: 'date'") > -1, true);
   assert.strictEqual(appSrc.indexOf('renderOverallNdviCharts') === -1, true);
-  assert.strictEqual(appSrc.indexOf('limit(60)') === -1, true);
+  assert.strictEqual(appSrc.indexOf('if (n > app.DEFAULT.MAX_FEATURES)') === -1, true);
+  assert.strictEqual(appSrc.indexOf('Show Overall Phenology for') > -1, true);
   assert.strictEqual(appSrc.indexOf("app.fc.filter(ee.Filter.eq('id', ind))") > -1, true);
   assert.strictEqual(appSrc.indexOf('showMonthlyComposite') > -1, true);
   assert.strictEqual(appSrc.indexOf("bands: ['B8', 'B4', 'B3']") > -1, true);
