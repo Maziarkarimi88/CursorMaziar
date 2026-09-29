@@ -213,9 +213,11 @@ check('interface app charts each sample point like MODULE 1', function() {
   assert.strictEqual(appSrc.indexOf('Detrended time series') > -1, true);
   assert.strictEqual(appSrc.indexOf('Harmonic model: original values') > -1, true);
   assert.strictEqual(appSrc.indexOf('Harmonic model: fitted values') > -1, true);
-  assert.strictEqual(appSrc.indexOf('(all samples)') > -1, true);
-  assert.strictEqual(appSrc.indexOf('(selected sample)') > -1, true);
-  assert.strictEqual(appSrc.indexOf('All sample points') > -1, true);
+  assert.strictEqual(appSrc.indexOf('renderOverallNdviCharts') > -1, true);
+  assert.strictEqual(appSrc.indexOf('Time series NDVI — sample') > -1, true);
+  assert.strictEqual(appSrc.indexOf('groupChartRowsBySample') > -1, true);
+  assert.strictEqual(appSrc.indexOf('Delete Selected (not wheat)') > -1, true);
+  assert.strictEqual(appSrc.indexOf('removed from further processing') > -1, true);
   assert.strictEqual(appSrc.indexOf('limit(60)') === -1, true);
   assert.strictEqual(appSrc.indexOf("app.fc.filter(ee.Filter.eq('id', ind))") > -1, true);
   assert.strictEqual(appSrc.indexOf('showMonthlyComposite') > -1, true);
@@ -305,6 +307,11 @@ check('overall keeps every sample and selected mode filters to one id', function
     {t: 3, v: 0.4, s: 'A'}
   ];
   assert.deepStrictEqual(helpers.uniqueSampleIds(rows), ['A', 'B']);
+  var grouped = helpers.groupChartRowsBySample(rows);
+  assert.strictEqual(grouped.length, 2);
+  assert.strictEqual(grouped[0].sample, 'A');
+  assert.strictEqual(grouped[0].rows.length, 2);
+  assert.strictEqual(grouped[1].sample, 'B');
   var onlyA = helpers.filterChartRowsBySample(rows, 'A');
   assert.strictEqual(onlyA.length, 2);
   assert.strictEqual(helpers.uniqueSampleIds(onlyA).length, 1);

@@ -30,7 +30,8 @@ app.createConstants = function() {
     END: '2017-07-30',
     MAX_FEATURES: 400,
     MAX_MONTHS: 24,
-    MAX_CHART_ROWS: 20000
+    MAX_CHART_ROWS: 20000,
+    MAX_POINT_CHARTS: 120
   };
   app.LABEL = {
     TITLE: 'Wheat Phenology Mapper',
@@ -47,8 +48,9 @@ app.createConstants = function() {
     SCALE: 'Scale',
     CYCLE: 'Frequency',
     GPSLIST: 'List of sample points',
-    DELETE: 'Delete Selected',
-    EXPORT: 'Export Features'
+    DELETE: 'Delete Selected (not wheat)',
+    EXPORT: 'Export Features',
+    HELP: 'Show Overall Phenology draws an NDVI graph for every GPS sample so you can tell wheat from other crops. Click a sample to inspect it. Delete Selected removes a non-wheat point from later processing.'
   };
   app.PATH = {
     ADMIN: 'Admin',
@@ -260,12 +262,14 @@ app.createHelpers = function() {
     app.widgets.del.style().set({shown: false});
     app.listArea.clear();
     fc.aggregate_array('id').evaluate(function(value) {
-      app.idList = value || [];
-      for (var i = 0; i < app.idList.length; i++) {
+      var raw = value || [];
+      app.idList = [];
+      for (var i = 0; i < raw.length; i++) app.idList.push(String(raw[i]));
+      for (var j = 0; j < app.idList.length; j++) {
         app.listArea.add(ui.Panel({
           style: {padding: '0px', margin: '0px'},
           widgets: [ui.Button({
-            label: app.idList[i] + '',
+            label: app.idList[j],
             style: {stretch: 'horizontal', textAlign: 'left', padding: '0px', margin: '2px'},
             onClick: app.listBtnClick
           })]
@@ -276,7 +280,8 @@ app.createHelpers = function() {
 
   app.listBtnClick = function(btn) {
     if (!app.fc || !Array.isArray(app.idList)) return;
-    var ind = btn.getLabel();
+    var ind = String(btn.getLabel());
+    app.selectedId = ind;
     app.activateListItem(app.idList.indexOf(ind));
     app.showSelectedPoint(app.fc.filter(ee.Filter.eq('id', ind)));
   };
@@ -306,12 +311,22 @@ app.createHelpers = function() {
 
   app.deleteFeatureClick = function() {
     if (app.currentSelection == -1 || !Array.isArray(app.idList)) return;
-    var selectedID = app.idList[app.currentSelection];
+    var selectedID = String(app.idList[app.currentSelection]);
     app.fc = ee.FeatureCollection(app.fc.filter(ee.Filter.notEquals('id', selectedID)));
     app.removeLayers(['Selected']);
     Map.layers().set(2, ui.Map.Layer(app.fc, {color: 'red'}, 'Wheat GCP'));
     app.renderList(app.fc);
     app.chartArea.clear();
+    app.prompt(true, 'Sample ' + selectedID +
+      ' removed from further processing. Refreshing NDVI graphs for remaining points...');
+    app.fc.size().evaluate(function(n) {
+      if (!n) {
+        app.prompt(true, 'No sample points left.');
+        app.setBusy(false);
+        return;
+      }
+      app.onShowPhenology(app.fc, false);
+    });
   };
 
   app.exportClick = function() {
@@ -378,7 +393,8 @@ app.createHelpers = function() {
           app.geometry = aoiFc;
           app.agri = agriFc;
           app.fc = gcpFc.map(function(feature) {
-            return feature.set('id', feature.id());
+            var fid = ee.String(feature.id());
+            return feature.set('id', fid).set('sample', fid);
           }).sort('id');
           Map.layers().set(0, ui.Map.Layer(app.geometry, {color: 'white'}, 'Provincial boundary'));
           Map.layers().set(1, ui.Map.Layer(app.agri, {color: 'ffd468'}, 'Irrigated agriculture', false));
@@ -466,7 +482,9 @@ app.createHelpers = function() {
         f.id(),
         f.get('id')
       );
-      return f.setGeometry(f.geometry().buffer(40)).set('sample', ee.String(sid));
+      return f.setGeometry(f.geometry().buffer(40))
+        .set('id', ee.String(sid))
+        .set('sample', ee.String(sid));
     });
   };
 
@@ -688,31 +706,56 @@ app.createHelpers = function() {
         return ee.Feature(null, {
           time: img.date().millis(),
           value: val,
-          sample: ee.String(ee.Algorithms.If(f.get('sample'), f.get('sample'), f.id()))
+          sample: ee.String(ee.Algorithms.If(
+            ee.Algorithms.IsEqual(f.get('sample'), null),
+            ee.Algorithms.If(ee.Algorithms.IsEqual(f.get('id'), null), f.id(), f.get('id')),
+            f.get('sample')
+          ))
         });
       });
     }).flatten().filter(ee.Filter.notNull(['value']));
   };
 
-  app.renderNumericChart = function(rows, title) {
+  app.groupChartRowsBySample = function(rows) {
+    var groups = [];
+    var index = {};
+    rows = rows || [];
+    for (var i = 0; i < rows.length; i++) {
+      var s = String(rows[i].s);
+      if (index[s] === undefined) {
+        index[s] = groups.length;
+        groups.push({sample: s, rows: []});
+      }
+      groups[index[s]].rows.push(rows[i]);
+    }
+    return groups;
+  };
+
+  app.renderNumericChart = function(rows, title, opts) {
+    opts = opts || {};
     var dataTable = app.buildNumericChartTable(rows);
     if (!dataTable.rows.length) return false;
+    var many = dataTable.samples.length > 12;
     var chart = ui.Chart({cols: dataTable.cols, rows: dataTable.rows})
       .setChartType('LineChart')
       .setOptions({
         title: title,
         interpolateNulls: true,
-        vAxis: {title: 'NDVI'},
+        vAxis: {title: 'NDVI', viewWindowMode: 'pretty'},
         hAxis: {title: 'Date'},
         lineWidth: 1,
-        pointSize: 2,
+        pointSize: dataTable.samples.length === 1 ? 3 : 2,
         legend: {
-          position: dataTable.samples.length > 12 ? 'bottom' : 'right',
+          position: dataTable.samples.length === 1 ? 'none' : (many ? 'bottom' : 'right'),
           textStyle: {fontSize: 9}
         },
-        chartArea: {width: '75%'}
+        chartArea: {width: '75%', height: '65%'},
+        height: opts.height || (dataTable.samples.length === 1 ? 170 : 220)
       });
-    chart.style().set({width: '320px'});
+    chart.style().set({
+      width: opts.width || '360px',
+      height: (opts.height || (dataTable.samples.length === 1 ? 170 : 220)) + 'px'
+    });
     app.chartArea.add(chart);
     return true;
   };
@@ -724,7 +767,7 @@ app.createHelpers = function() {
     }));
   };
 
-  app.addNumericChart = function(imageCollection, points, band, scale, title, onDone, singleSample) {
+  app.loadNdviRows = function(imageCollection, points, band, scale, callback) {
     var table = app.extractNdviTable(imageCollection, points, band, scale);
     var fc = ee.FeatureCollection(table);
     ee.Dictionary({
@@ -738,6 +781,45 @@ app.createHelpers = function() {
         raw && raw.value,
         raw && raw.sample
       );
+      callback(rows, error, raw && raw.n);
+    });
+  };
+
+  app.renderOverallNdviCharts = function(rows) {
+    var groups = app.groupChartRowsBySample(rows);
+    app.chartArea.add(ui.Label({
+      value: 'All sample points',
+      style: {fontWeight: 'bold', margin: '8px 10px 0px 10px'}
+    }));
+    app.chartArea.add(ui.Label({
+      value: 'NDVI graphs for ' + groups.length +
+        ' samples. Wheat typically greens up after sowing and drops at harvest. ' +
+        'Click a sample, then Delete Selected if it is not wheat.',
+      style: {margin: '4px 10px 8px 10px', fontSize: '11px'}
+    }));
+    if (!groups.length) return false;
+    app.renderNumericChart(rows, 'Time series NDVI (all samples)', {height: 240});
+    var maxPts = app.DEFAULT.MAX_POINT_CHARTS;
+    var n = groups.length < maxPts ? groups.length : maxPts;
+    for (var i = 0; i < n; i++) {
+      app.renderNumericChart(
+        groups[i].rows,
+        'Time series NDVI — sample ' + groups[i].sample,
+        {height: 170}
+      );
+    }
+    if (groups.length > maxPts) {
+      app.chartArea.add(ui.Label({
+        value: 'Showing the first ' + maxPts +
+          ' per-point NDVI graphs. Click a sample in the list for the others.',
+        style: {margin: '8px 10px', fontSize: '11px'}
+      }));
+    }
+    return true;
+  };
+
+  app.addNumericChart = function(imageCollection, points, band, scale, title, onDone, singleSample) {
+    app.loadNdviRows(imageCollection, points, band, scale, function(rows, error, n) {
       if (rows.length && app.renderNumericChart(rows, title)) {
         if (onDone) onDone();
         return;
@@ -745,9 +827,7 @@ app.createHelpers = function() {
       if (!singleSample) {
         app.addChartError(
           title,
-          error ||
-            ('sampled ' + ((raw && raw.n) || 0) +
-              ' NDVI values at these points/dates')
+          error || ('sampled ' + (n || 0) + ' NDVI values at these points/dates')
         );
         if (onDone) onDone();
         return;
@@ -764,9 +844,7 @@ app.createHelpers = function() {
           }
           app.addChartError(
             title,
-            error || err2 ||
-              ('sampled ' + ((raw && raw.n) || 0) +
-                ' NDVI values at these points/dates')
+            error || err2 || ('sampled ' + (n || 0) + ' NDVI values at these points/dates')
           );
           if (onDone) onDone();
         });
@@ -829,10 +907,6 @@ app.createHelpers = function() {
     }
     app.setBusy(true);
     app.chartArea.clear();
-    app.chartArea.add(ui.Label({
-      value: singleSample ? 'Selected sample' : 'All sample points',
-      style: {fontWeight: 'bold', margin: '8px 10px 0px 10px'}
-    }));
     var points = app.asChartPoints(fc);
     if (singleSample) points = points.limit(1);
     var clipGeom = points.geometry().bounds().buffer(2000);
@@ -845,6 +919,51 @@ app.createHelpers = function() {
         return;
       }
       print('Sentinel-2 images used:', n);
+
+      var addSeasonTable = function() {
+        var seasons = app.seasonsFromRange(startDate, endDate);
+        var sowingImg = col.filterDate(seasons[0].start, seasons[0].end).select(['NDVI', 'NDSI']).median();
+        var peakImg = col.filterDate(seasons[1].start, seasons[1].end).select(['NDVI', 'NDSI']).median();
+        var harvestImg = col.filterDate(seasons[2].start, seasons[2].end).select(['NDVI', 'NDSI']).median();
+        var sowingPts = app.sampleSeason(sowingImg, points, 'sowing', scale);
+        var peakPts = app.sampleSeason(peakImg, points, 'peak', scale);
+        var harvestPts = app.sampleSeason(harvestImg, points, 'harvest', scale);
+        var table = points.map(function(f) { return f.select(['id']); });
+        table = app.joinSeasonSimple(table, sowingPts, 'sowing');
+        table = app.joinSeasonSimple(table, peakPts, 'peak');
+        table = app.joinSeasonSimple(table, harvestPts, 'harvest');
+        app.seasonTable = table;
+        print('Seasonal NDVI at selected sample points', table);
+      };
+
+      if (!singleSample) {
+        app.loadNdviRows(col, points, 'NDVI', scale, function(rows, err, count) {
+          if (!rows.length || !app.renderOverallNdviCharts(rows)) {
+            app.addChartError(
+              'Time series NDVI',
+              err || ('sampled ' + (count || 0) + ' NDVI values at these points/dates')
+            );
+          } else {
+            print('NDVI series by sample', app.groupChartRowsBySample(rows).length + ' points');
+          }
+          addSeasonTable();
+          app.mainMapPanel.style().set({shown: false});
+          app.setBusy(false);
+          app.prompt(false, '');
+        });
+        return;
+      }
+
+      var selectedId = app.selectedId ? String(app.selectedId) : '';
+      app.chartArea.add(ui.Label({
+        value: selectedId ? ('Selected sample ' + selectedId) : 'Selected sample',
+        style: {fontWeight: 'bold', margin: '8px 10px 0px 10px'}
+      }));
+      app.chartArea.add(ui.Label({
+        value: 'Inspect this NDVI phenology. If it is not wheat, click Delete Selected.',
+        style: {margin: '4px 10px 8px 10px', fontSize: '11px'}
+      }));
+
       var independents = ee.List(['constant', 't']);
       var dependent = 'NDVI';
       var trend = col.select(independents.add(dependent))
@@ -884,38 +1003,18 @@ app.createHelpers = function() {
         pending -= 1;
         if (pending <= 0) app.setBusy(false);
       };
+      var sampleTitle = selectedId ? (' — sample ' + selectedId) : ' (selected sample)';
       app.addNumericChart(col, points, 'NDVI', scale,
-        'Time series NDVI' + (singleSample ? ' (selected sample)' : ' (all samples)'),
-        finishChart, singleSample);
+        'Time series NDVI' + sampleTitle, finishChart, true);
       app.addNumericChart(detrended, points, 'NDVI', scale,
-        'Detrended time series' + (singleSample ? ' (selected sample)' : ' (all samples)'),
-        finishChart, singleSample);
+        'Detrended time series' + sampleTitle, finishChart, true);
       app.addNumericChart(fittedHarmonic, points, 'NDVI', scale,
-        'Harmonic model: original values' + (singleSample ? ' (selected sample)' : ' (all samples)'),
-        finishChart, singleSample);
+        'Harmonic model: original values' + sampleTitle, finishChart, true);
       app.addNumericChart(fittedHarmonic, points, 'fitted', scale,
-        'Harmonic model: fitted values' + (singleSample ? ' (selected sample)' : ' (all samples)'),
-        finishChart, singleSample);
+        'Harmonic model: fitted values' + sampleTitle, finishChart, true);
 
-      var seasons = app.seasonsFromRange(startDate, endDate);
-      var sowingImg = col.filterDate(seasons[0].start, seasons[0].end).select(['NDVI', 'NDSI']).median();
-      var peakImg = col.filterDate(seasons[1].start, seasons[1].end).select(['NDVI', 'NDSI']).median();
-      var harvestImg = col.filterDate(seasons[2].start, seasons[2].end).select(['NDVI', 'NDSI']).median();
-      var sowingPts = app.sampleSeason(sowingImg, points, 'sowing', scale);
-      var peakPts = app.sampleSeason(peakImg, points, 'peak', scale);
-      var harvestPts = app.sampleSeason(harvestImg, points, 'harvest', scale);
-      var table = points.map(function(f) { return f.select(['id']); });
-      table = app.joinSeasonSimple(table, sowingPts, 'sowing');
-      table = app.joinSeasonSimple(table, peakPts, 'peak');
-      table = app.joinSeasonSimple(table, harvestPts, 'harvest');
-      app.seasonTable = table;
-      print('Seasonal NDVI at selected sample points', table);
-
-      if (singleSample) {
-        app.showMonthlyComposite(ee.Feature(points.first()));
-      } else {
-        app.mainMapPanel.style().set({shown: false});
-      }
+      addSeasonTable();
+      app.showMonthlyComposite(ee.Feature(points.first()));
     });
   };
 
@@ -926,6 +1025,7 @@ app.createHelpers = function() {
     }
     app.removeLayers(['Selected']);
     app.deactivateListItem();
+    app.selectedId = '';
     app.mainMapPanel.style().set({shown: false});
     app.fc.size().evaluate(function(n, error) {
       if (error) {
@@ -947,26 +1047,29 @@ app.createHelpers = function() {
     }
     var point = ee.Geometry.Point([latlon.lon, latlon.lat]).buffer(3 * Map.getScale());
     if (!app.fc) {
+      app.selectedId = 'map';
       app.showSelectedPoint(ee.FeatureCollection([
-        ee.Feature(ee.Geometry.Point([latlon.lon, latlon.lat]))
+        ee.Feature(ee.Geometry.Point([latlon.lon, latlon.lat])).set('id', 'map').set('sample', 'map')
       ]));
       return;
     }
     var hits = app.fc.filterBounds(point);
     hits.size().evaluate(function(n, error) {
       if (error || !n) {
+        app.selectedId = 'map';
         app.showSelectedPoint(ee.FeatureCollection([
-          ee.Feature(ee.Geometry.Point([latlon.lon, latlon.lat]))
+          ee.Feature(ee.Geometry.Point([latlon.lon, latlon.lat])).set('id', 'map').set('sample', 'map')
         ]));
         return;
       }
       var feat = ee.Feature(hits.first());
       feat.get('id').evaluate(function(id) {
-        if (Array.isArray(app.idList) && id != null) {
-          app.activateListItem(app.idList.indexOf(id));
+        app.selectedId = id != null ? String(id) : '';
+        if (Array.isArray(app.idList) && app.selectedId) {
+          app.activateListItem(app.idList.indexOf(app.selectedId));
         }
+        app.showSelectedPoint(hits.limit(1));
       });
-      app.showSelectedPoint(hits.limit(1));
     });
   };
 
@@ -1114,13 +1217,17 @@ app.initializeGUIElements = function() {
         ]
       }),
       app.widgets.compute,
+      ui.Label({
+        value: app.LABEL.HELP,
+        style: {margin: '8px 8px 12px 8px', fontSize: '11px', color: '#444'}
+      }),
       app.listPanel
     ]
   });
   app.chartArea = ui.Panel({layout: ui.Panel.Layout.flow('vertical')});
   app.chartPanel = ui.Panel({
     layout: ui.Panel.Layout.flow('vertical'),
-    style: {width: '350px', margin: '0px', padding: '0px'},
+    style: {width: '400px', margin: '0px', padding: '0px'},
     widgets: [
       ui.Label({
         value: app.LABEL.CHARTS,

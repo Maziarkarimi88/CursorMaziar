@@ -171,6 +171,21 @@ function sortChartRows(rows) {
   return rows;
 }
 
+function groupChartRowsBySample(rows) {
+  var groups = [];
+  var index = {};
+  rows = Array.isArray(rows) ? rows : [];
+  for (var i = 0; i < rows.length; i++) {
+    var s = String(rows[i].s);
+    if (index[s] === undefined) {
+      index[s] = groups.length;
+      groups.push({sample: s, rows: []});
+    }
+    groups[index[s]].rows.push(rows[i]);
+  }
+  return groups;
+}
+
 function uniqueSampleIds(rows) {
   var ids = [];
   var seen = {};
@@ -394,6 +409,7 @@ module.exports = {
   collectChartRowsFromArrays: collectChartRowsFromArrays,
   collectChartRowsFromGetRegion: collectChartRowsFromGetRegion,
   uniqueSampleIds: uniqueSampleIds,
+  groupChartRowsBySample: groupChartRowsBySample,
   filterChartRowsBySample: filterChartRowsBySample,
   chartTitle: chartTitle,
   buildNumericChartTable: buildNumericChartTable
