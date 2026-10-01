@@ -114,6 +114,77 @@ function exportDescriptions(province, irrf) {
   };
 }
 
+function opticalExportDescriptions(province, irrf) {
+  var prov = String(province || 'Province').replace(/[^\w]+/g, '_');
+  var kind = String(irrf || 'IR');
+  var prefix = prov + '_' + kind + '_';
+  return {
+    ndviSowing: prefix + 'NDVI_SOWING',
+    ndviPeak: prefix + 'NDVI_PEAK',
+    ndsiPeak: prefix + 'NDSI_PEAK',
+    ndviHarvest: prefix + 'NDVI_HARVEST',
+    finalMask: prefix + 'FINAL_MASK'
+  };
+}
+
+function buildOpticalAssetIds(root, province, irrf) {
+  var base = String(root || '').replace(/\/+$/, '');
+  var names = opticalExportDescriptions(province, irrf);
+  var folder = base + '/Optical/';
+  return {
+    ndviSowing: folder + names.ndviSowing,
+    ndviPeak: folder + names.ndviPeak,
+    ndsiPeak: folder + names.ndsiPeak,
+    ndviHarvest: folder + names.ndviHarvest,
+    finalMask: folder + names.finalMask
+  };
+}
+
+function compositeReducerName(filter) {
+  var f = String(filter || 'Median');
+  if (f === 'Mean' || f === 'Mode' || f === 'Max' || f === 'Min') return f;
+  return 'Median';
+}
+
+function ndviPairInRange(minNdvi, maxNdvi, range) {
+  var minN = parseNumericField(minNdvi);
+  var maxN = parseNumericField(maxNdvi);
+  if (isNaN(minN) || isNaN(maxN) || minN > maxN) return false;
+  if (!range || range.length < 2) return true;
+  return minN >= range[0] && maxN <= range[1];
+}
+
+function ndviMinInRange(minNdvi, range) {
+  var minN = parseNumericField(minNdvi);
+  if (isNaN(minN)) return false;
+  if (!range || range.length < 2) return true;
+  return minN >= range[0] && minN <= range[1];
+}
+
+function opticalSeasonInputsValid(opts) {
+  opts = opts || {};
+  if (!isValidIsoDate(opts.startDate) || !isValidIsoDate(opts.endDate) ||
+      opts.startDate >= opts.endDate) {
+    return false;
+  }
+  var cloudNum = parseNumericField(opts.cloud);
+  if (isNaN(cloudNum) || cloudNum < 0 || cloudNum > 100) return false;
+  if (!opts.filter) return false;
+  if (opts.requireMax) return ndviPairInRange(opts.minNdvi, opts.maxNdvi, opts.range);
+  return ndviMinInRange(opts.minNdvi, opts.range);
+}
+
+function keepPeakWheatPixel(ndvi, ndsi, minNdvi) {
+  return Number(ndvi) > Number(minNdvi) && Number(ndsi) < 0;
+}
+
+function chooseFinalMaskLayer(hasHarvest, hasPeak, hasSowing) {
+  if (hasHarvest) return 'harvest';
+  if (hasPeak) return 'peak';
+  if (hasSowing) return 'sowing';
+  return null;
+}
+
 function seasonsFromRange(startIso, endIso) {
   var sy = String(startIso).slice(0, 4);
   var ey = String(endIso).slice(0, 4);
@@ -460,6 +531,14 @@ module.exports = {
   classifyRandomSplit: classifyRandomSplit,
   shouldConfirmMerged: shouldConfirmMerged,
   exportDescriptions: exportDescriptions,
+  opticalExportDescriptions: opticalExportDescriptions,
+  buildOpticalAssetIds: buildOpticalAssetIds,
+  compositeReducerName: compositeReducerName,
+  ndviPairInRange: ndviPairInRange,
+  ndviMinInRange: ndviMinInRange,
+  opticalSeasonInputsValid: opticalSeasonInputsValid,
+  keepPeakWheatPixel: keepPeakWheatPixel,
+  chooseFinalMaskLayer: chooseFinalMaskLayer,
   seasonsFromRange: seasonsFromRange,
   isValidIsoDate: isValidIsoDate,
   monthStart: monthStart,

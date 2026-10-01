@@ -413,6 +413,98 @@ check('Module 2 script fixes original GEE bugs', function() {
   });
 });
 
+check('Module 3 optical helpers validate dates, NDVI ranges, and peak keep-rule', function() {
+  var soOk = helpers.opticalSeasonInputsValid({
+    startDate: '2016-11-15',
+    endDate: '2016-12-31',
+    cloud: 30,
+    filter: 'Median',
+    minNdvi: 0,
+    maxNdvi: 0.15,
+    range: [0, 0.5],
+    requireMax: true
+  });
+  assert.strictEqual(soOk, true);
+  assert.strictEqual(helpers.opticalSeasonInputsValid({
+    startDate: '2016-11-15',
+    endDate: '2016-10-01',
+    cloud: 30,
+    filter: 'Median',
+    minNdvi: 0,
+    maxNdvi: 0.15,
+    range: [0, 0.5],
+    requireMax: true
+  }), false);
+  assert.strictEqual(helpers.ndviPairInRange(0, 0.15, [0, 0.5]), true);
+  assert.strictEqual(helpers.ndviPairInRange(0.4, 0.2, [0, 0.5]), false);
+  assert.strictEqual(helpers.ndviMinInRange(0.3, [0.2, 1]), true);
+  assert.strictEqual(helpers.ndviMinInRange(0.1, [0.2, 1]), false);
+  assert.strictEqual(helpers.keepPeakWheatPixel(0.45, -0.1, 0.3), true);
+  assert.strictEqual(helpers.keepPeakWheatPixel(0.2, -0.1, 0.3), false);
+  assert.strictEqual(helpers.keepPeakWheatPixel(0.45, 0.05, 0.3), false);
+  assert.strictEqual(helpers.compositeReducerName('Mode'), 'Mode');
+  assert.strictEqual(helpers.compositeReducerName('nope'), 'Median');
+  assert.strictEqual(helpers.chooseFinalMaskLayer(true, true, true), 'harvest');
+  assert.strictEqual(helpers.chooseFinalMaskLayer(false, true, true), 'peak');
+  assert.strictEqual(helpers.chooseFinalMaskLayer(false, false, true), 'sowing');
+  assert.strictEqual(helpers.chooseFinalMaskLayer(false, false, false), null);
+});
+
+check('Module 3 optical asset IDs sit under Optical/', function() {
+  var ids = helpers.buildOpticalAssetIds(
+    'projects/ee-maziarkarimi3/assets/Wheat_Mapping',
+    'Nangarhar',
+    'IR'
+  );
+  var names = helpers.opticalExportDescriptions('Nangarhar', 'IR');
+  assert.strictEqual(ids.ndviSowing, 'projects/ee-maziarkarimi3/assets/Wheat_Mapping/Optical/Nangarhar_IR_NDVI_SOWING');
+  assert.strictEqual(ids.finalMask, 'projects/ee-maziarkarimi3/assets/Wheat_Mapping/Optical/Nangarhar_IR_FINAL_MASK');
+  assert.strictEqual(names.ndsiPeak, 'Nangarhar_IR_NDSI_PEAK');
+  assert.strictEqual(names.ndviHarvest, 'Nangarhar_IR_NDVI_HARVEST');
+});
+
+var opticalPath = path.join(__dirname, 'wheat_optical_mapping_app.js');
+var optical = fs.readFileSync(opticalPath, 'utf8');
+
+check('Module 3 script uses Module 1 user assets and S2_HARMONIZED', function() {
+  assert.strictEqual(optical.indexOf('ee-maziarkarimi3/assets/Wheat_Mapping') > -1, true);
+  assert.strictEqual(optical.indexOf("items: ['IR', 'RF']") > -1, true);
+  assert.strictEqual(optical.indexOf('Sowing Season') > -1, true);
+  assert.strictEqual(optical.indexOf('Peak Season') > -1, true);
+  assert.strictEqual(optical.indexOf('Harvest Season') > -1, true);
+  assert.strictEqual(optical.indexOf('Inspector') > -1, true);
+  assert.strictEqual(optical.indexOf('NDSI Peak') > -1, true);
+  assert.strictEqual(optical.indexOf('Final Mask') > -1, true);
+  assert.strictEqual(optical.indexOf('COPERNICUS/S2_HARMONIZED') > -1, true);
+  assert.strictEqual(/['"]COPERNICUS\/S2['"]/.test(optical), false);
+  assert.strictEqual(optical.indexOf('servir-hkh/WheatMapping') === -1, true);
+  assert.strictEqual(optical.indexOf('users/khanalnishant') === -1, true);
+  assert.strictEqual(optical.indexOf("bands: ['B8', 'B4', 'B3']") > -1, true);
+  assert.strictEqual(optical.indexOf('QA60') > -1, true);
+  assert.strictEqual(optical.indexOf('.clip(') > -1, true);
+  assert.strictEqual(optical.indexOf('Export.image.toAsset') > -1, true);
+  assert.strictEqual(optical.indexOf("kind + '_GCP'") > -1, true);
+  assert.strictEqual(optical.indexOf('_Ag_') > -1, true);
+});
+
+check('Module 3 script fixes original GEE bugs', function() {
+  assert.strictEqual(optical.indexOf('setTimeout') === -1, true);
+  assert.strictEqual(optical.indexOf('font-weight') === -1, true);
+  assert.strictEqual(optical.indexOf('fontWeight') > -1, true);
+  assert.strictEqual(optical.indexOf('getName()') > -1, true);
+  assert.strictEqual(/layer\.get\s*\(/.test(optical), false);
+  assert.strictEqual(optical.indexOf('listAssets') > -1, true);
+  assert.strictEqual(/list\.map\s*\(\s*populateProvinceIDs/.test(optical), false);
+  assert.strictEqual(optical.indexOf('ee.data.getInfo') === -1, true);
+  assert.strictEqual(optical.indexOf('agriPicker') === -1, true);
+  assert.strictEqual(optical.indexOf("MISSING_DATA + ' - Harvest season'") > -1, true);
+  assert.strictEqual(optical.indexOf('gte(minVal)') > -1, true);
+  var styleBlocks = optical.match(/style\s*:\s*\{[^}]+\}/g) || [];
+  styleBlocks.forEach(function(block) {
+    assert.strictEqual(/['"][a-z]+-[a-z]+['"]\s*:/.test(block), false, block);
+  });
+});
+
 if (failures) {
   console.log('\n' + failures + ' test(s) failed');
   process.exit(1);

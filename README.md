@@ -69,6 +69,28 @@ Asset IDs written for later modules:
 - `{root}/GCP/{Province}_{IR|RF}_GCP_TRAIN`
 - `{root}/GCP/{Province}_{IR|RF}_GCP_VALIDATE`
 
+### MODULE 3 — Optical wheat mapping (NDVI / NDSI thresholds)
+
+`gee/wheat_optical_mapping_app.js` is the Module 3 interface on the same assets. After Module 1 phenology (to pick dates and NDVI thresholds) and Module 2 GCPs, it builds Sentinel-2 composites for sowing, peak, and harvest, applies thresholds, and exports the optical wheat mask.
+
+1. In Earth Engine, create folder `projects/ee-maziarkarimi3/assets/Wheat_Mapping/Optical` if it does not exist.
+2. Paste `gee/wheat_optical_mapping_app.js` (replace the entire editor, do not merge with Module 1 or 2).
+3. Select Cloud project `ee-maziarkarimi3` and click **Run**.
+4. Pick a province and **IR** or **RF**. The agriculture mask loads.
+5. Tick **Sowing**, **Peak**, and/or **Harvesting**. Set dates, cloud, filter, and NDVI from your Module 1 charts. Click **Compute** for each season.
+6. Click the map to inspect NDVI/NDSI and open the zoom box.
+7. Tick the layers to save, click **Export**, then **RUN** each task.
+
+Defaults follow Module 1 Tiwari windows (sowing 0–0.15, peak min 0.30, harvest 0.03–0.34). The Module 3 PDF Kabul example used peak `2017-05-01`–`2017-05-30` and harvest `2017-07-11`–`2017-07-20` — type those in if you are repeating that exercise.
+
+Asset IDs written for Module 4:
+
+- `{root}/Optical/{Province}_{IR|RF}_NDVI_SOWING`
+- `{root}/Optical/{Province}_{IR|RF}_NDVI_PEAK`
+- `{root}/Optical/{Province}_{IR|RF}_NDSI_PEAK`
+- `{root}/Optical/{Province}_{IR|RF}_NDVI_HARVEST`
+- `{root}/Optical/{Province}_{IR|RF}_FINAL_MASK`
+
 ### Tests (no Earth Engine login required)
 
 ```bash
@@ -76,6 +98,7 @@ node --check gee/wheat_phenology_mapping.js
 node --check gee/nangarhar_wheat_phenology.js
 node --check gee/wheat_phenology_app.js
 node --check gee/wheat_gcp_preprocess_app.js
+node --check gee/wheat_optical_mapping_app.js
 node --check gee/client_helpers.js
 node gee/test_client_logic.js
 ```
