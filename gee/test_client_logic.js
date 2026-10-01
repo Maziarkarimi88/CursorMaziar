@@ -171,6 +171,9 @@ check('buildWheatAssetIds matches the user folder layout', function() {
   assert.strictEqual(ids.aoi, 'projects/ee-maziarkarimi3/assets/Wheat_Mapping/Admin/Nangarhar');
   assert.strictEqual(ids.agri, 'projects/ee-maziarkarimi3/assets/Wheat_Mapping/IR_RF/Nangarhar_Ag_IR');
   assert.strictEqual(ids.gcp, 'projects/ee-maziarkarimi3/assets/Wheat_Mapping/GCP/Nangarhar_IR_GCP');
+  assert.strictEqual(ids.gcpMerged, 'projects/ee-maziarkarimi3/assets/Wheat_Mapping/GCP/Nangarhar_IR_GCP_MERGED');
+  assert.strictEqual(ids.gcpTrain, 'projects/ee-maziarkarimi3/assets/Wheat_Mapping/GCP/Nangarhar_IR_GCP_TRAIN');
+  assert.strictEqual(ids.gcpValidate, 'projects/ee-maziarkarimi3/assets/Wheat_Mapping/GCP/Nangarhar_IR_GCP_VALIDATE');
 });
 
 check('collectProvinceNames includes Admin tables, not only folders', function() {
@@ -336,6 +339,78 @@ check('buildNumericChartTable uses a date domain and numeric NDVI series', funct
   assert.strictEqual(table.rows[0].c[0].f, '2016-11-15');
   assert.strictEqual(typeof table.rows[0].c[1].v, 'number');
   assert.strictEqual(table.rows[1].c[2].v, null);
+});
+
+check('Module 2 split uses 70/30 and confirms only when extra GPS is set', function() {
+  assert.strictEqual(helpers.splitTrainValidateThreshold(), 0.7);
+  assert.strictEqual(helpers.splitTrainValidateThreshold(0), 0.7);
+  assert.strictEqual(helpers.splitTrainValidateThreshold(1), 0.7);
+  assert.strictEqual(helpers.splitTrainValidateThreshold(0.8), 0.8);
+  var split = helpers.classifyRandomSplit([0.1, 0.69, 0.7, 0.99], 0.7);
+  assert.strictEqual(split.train.length, 2);
+  assert.strictEqual(split.validate.length, 2);
+  assert.strictEqual(helpers.shouldConfirmMerged(true, 'projects/x/assets/quality'), true);
+  assert.strictEqual(helpers.shouldConfirmMerged(true, ''), false);
+  assert.strictEqual(helpers.shouldConfirmMerged(false, 'projects/x/assets/quality'), false);
+});
+
+check('collectPointTableIds keeps tables and skips folders', function() {
+  var ids = helpers.collectPointTableIds({
+    assets: [
+      {type: 'FOLDER', id: 'projects/x/assets/GCP/extra'},
+      {type: 'TABLE', id: 'projects/x/assets/GCP/Nangarhar_IR_GCP_QUALITY'},
+      {type: 'FEATURE_COLLECTION', name: 'projects/x/assets/GCP/more_points'}
+    ]
+  });
+  assert.deepStrictEqual(ids, [
+    'projects/x/assets/GCP/Nangarhar_IR_GCP_QUALITY',
+    'projects/x/assets/GCP/more_points'
+  ]);
+  assert.deepStrictEqual(helpers.collectPointTableIds(null), []);
+  assert.strictEqual(helpers.isPointTableType('Folder'), false);
+  assert.strictEqual(helpers.isPointTableType('TABLE'), true);
+});
+
+check('exportDescriptions follow Module 2 asset naming', function() {
+  var names = helpers.exportDescriptions('Nangarhar', 'IR');
+  assert.strictEqual(names.merged, 'Nangarhar_IR_GCP_MERGED');
+  assert.strictEqual(names.train, 'Nangarhar_IR_GCP_TRAIN');
+  assert.strictEqual(names.validate, 'Nangarhar_IR_GCP_VALIDATE');
+});
+
+var preprocessPath = path.join(__dirname, 'wheat_gcp_preprocess_app.js');
+var preprocess = fs.readFileSync(preprocessPath, 'utf8');
+
+check('Module 2 script uses Module 1 user assets, not SERVIR nested folders', function() {
+  assert.strictEqual(preprocess.indexOf('ee-maziarkarimi3/assets/Wheat_Mapping') > -1, true);
+  assert.strictEqual(preprocess.indexOf("items: ['IR', 'RF']") > -1, true);
+  assert.strictEqual(preprocess.indexOf('Select additional GCP folder (optional)') > -1, true);
+  assert.strictEqual(preprocess.indexOf('Merge all GCP and split to training/validation datasets') > -1, true);
+  assert.strictEqual(preprocess.indexOf("fileFormat: 'SHP'") > -1, true);
+  assert.strictEqual(preprocess.indexOf('Export.table.toDrive') > -1, true);
+  assert.strictEqual(preprocess.indexOf('Export.table.toAsset') > -1, true);
+  assert.strictEqual(preprocess.indexOf('servir-hkh/WheatMapping') === -1, true);
+  assert.strictEqual(preprocess.indexOf('_Ag_') > -1, true);
+  assert.strictEqual(preprocess.indexOf("kind + '_GCP'") > -1, true);
+});
+
+check('Module 2 script fixes original GEE bugs', function() {
+  assert.strictEqual(preprocess.indexOf('setTimeout') === -1, true);
+  assert.strictEqual(preprocess.indexOf('font-weight') === -1, true);
+  assert.strictEqual(preprocess.indexOf('fontWeight') > -1, true);
+  assert.strictEqual(preprocess.indexOf('getName()') > -1, true);
+  assert.strictEqual(/layer\.get\s*\(/.test(preprocess), false);
+  assert.strictEqual(preprocess.indexOf('listAssets') > -1, true);
+  assert.strictEqual(/list\.map\s*\(\s*populateProvinceIDs/.test(preprocess), false);
+  assert.strictEqual(preprocess.indexOf('ee.data.getInfo') === -1, true);
+  assert.strictEqual(preprocess.indexOf('baseFc.merge(') > -1, true);
+  assert.strictEqual(/tempMergedLayer\.merge\s*\(/.test(preprocess), false);
+  assert.strictEqual(preprocess.indexOf("ee.Filter.lt('random'") > -1, true);
+  assert.strictEqual(preprocess.indexOf("ee.Filter.gte('random'") > -1, true);
+  var styleBlocks = preprocess.match(/style\s*:\s*\{[^}]+\}/g) || [];
+  styleBlocks.forEach(function(block) {
+    assert.strictEqual(/['"][a-z]+-[a-z]+['"]\s*:/.test(block), false, block);
+  });
 });
 
 if (failures) {

@@ -46,14 +46,71 @@ function collectProvinceNames(assets) {
   return ids.sort();
 }
 
+function isPointTableType(type) {
+  var t = String(type || '').toUpperCase().replace(/ /g, '_');
+  return t === 'TABLE' || t === 'FEATURE_COLLECTION' ||
+    t === 'FEATURECOLLECTION' || t === 'ASSET';
+}
+
+function collectPointTableIds(assets) {
+  var list = Array.isArray(assets) ? assets : (assets && assets.assets) || [];
+  var ids = [];
+  for (var i = 0; i < list.length; i++) {
+    var element = list[i] || {};
+    if (!isPointTableType(element.type)) continue;
+    var assetId = element.id || element.name || '';
+    if (assetId && ids.indexOf(assetId) === -1) ids.push(assetId);
+  }
+  return ids;
+}
+
 function buildWheatAssetIds(root, province, irrf) {
   var base = String(root || '').replace(/\/+$/, '');
   var prov = String(province || '');
   var kind = String(irrf || 'IR');
+  var gcp = base + '/GCP/' + prov + '_' + kind + '_GCP';
   return {
     aoi: base + '/Admin/' + prov,
     agri: base + '/IR_RF/' + prov + '_Ag_' + kind,
-    gcp: base + '/GCP/' + prov + '_' + kind + '_GCP'
+    gcp: gcp,
+    gcpMerged: gcp + '_MERGED',
+    gcpTrain: gcp + '_TRAIN',
+    gcpValidate: gcp + '_VALIDATE',
+    gcpQuality: gcp + '_QUALITY'
+  };
+}
+
+function splitTrainValidateThreshold(ratio) {
+  var n = Number(ratio);
+  if (!isFinite(n) || n <= 0 || n >= 1) return 0.7;
+  return n;
+}
+
+function classifyRandomSplit(randomValues, ratio) {
+  var threshold = splitTrainValidateThreshold(ratio);
+  var values = Array.isArray(randomValues) ? randomValues : [];
+  var train = [];
+  var validate = [];
+  for (var i = 0; i < values.length; i++) {
+    var v = Number(values[i]);
+    if (!isFinite(v)) continue;
+    if (v < threshold) train.push(v);
+    else validate.push(v);
+  }
+  return {train: train, validate: validate, threshold: threshold};
+}
+
+function shouldConfirmMerged(mergedExists, additionalSource) {
+  return !!mergedExists && String(additionalSource || '').trim() !== '';
+}
+
+function exportDescriptions(province, irrf) {
+  var prov = String(province || 'Province').replace(/[^\w]+/g, '_');
+  var kind = String(irrf || 'IR');
+  return {
+    merged: prov + '_' + kind + '_GCP_MERGED',
+    train: prov + '_' + kind + '_GCP_TRAIN',
+    validate: prov + '_' + kind + '_GCP_VALIDATE'
   };
 }
 
@@ -396,7 +453,13 @@ module.exports = {
   collectFolderNames: collectFolderNames,
   isProvinceAssetType: isProvinceAssetType,
   collectProvinceNames: collectProvinceNames,
+  isPointTableType: isPointTableType,
+  collectPointTableIds: collectPointTableIds,
   buildWheatAssetIds: buildWheatAssetIds,
+  splitTrainValidateThreshold: splitTrainValidateThreshold,
+  classifyRandomSplit: classifyRandomSplit,
+  shouldConfirmMerged: shouldConfirmMerged,
+  exportDescriptions: exportDescriptions,
   seasonsFromRange: seasonsFromRange,
   isValidIsoDate: isValidIsoDate,
   monthStart: monthStart,

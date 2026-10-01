@@ -40,7 +40,7 @@ Select a province, **IR** or **RF**, and a date range, then click **Show Overall
 - `{root}/IR_RF/{Province}_Ag_{IR|RF}`
 - `{root}/GCP/{Province}_{IR|RF}_GCP`
 
-It charts NDVI and reports sowing / peak / harvest values at the wheat GCPs.
+It charts NDVI and reports sowing / peak / harvest values at the wheat GCPs. Delete non-wheat samples here, then continue with MODULE 2 to merge remaining quality wheat GPS and split training/validation points.
 
 ### Nangarhar irrigated wheat (your assets)
 
@@ -52,11 +52,30 @@ It charts NDVI and reports sowing / peak / harvest values at the wheat GCPs.
 
 Paste that file, select Cloud project `ee-maziarkarimi3`, and click Run. Charts appear on the left; Console prints mean/min/max NDVI for each season and a per-GCP table.
 
+### MODULE 2 — GCP preprocessing (train / validation split)
+
+`gee/wheat_gcp_preprocess_app.js` is the Module 2 interface on the same assets as Module 1. After Module 1, use it to visualize the agriculture mask and GPS points, optionally merge quality-wheat GCPs, split 70/30 training/validation, and export.
+
+1. Paste `gee/wheat_gcp_preprocess_app.js` (replace the entire editor, do not merge with Module 1).
+2. Select Cloud project `ee-maziarkarimi3` and click **Run**.
+3. Pick a province and **IR** or **RF**. The agriculture mask and Sample GCP layers load.
+4. Optional: paste an additional GPS **folder** of point tables, or one FeatureCollection (quality wheat remaining from Module 1).
+5. Click **Merge all GCP and split to training/validation datasets**. Training points are red; validation points are green.
+6. Click **Export**. Open **Tasks** and click **RUN** on each queued job (Drive SHP plus Earth Engine Assets under `GCP/`).
+
+Asset IDs written for later modules:
+
+- `{root}/GCP/{Province}_{IR|RF}_GCP_MERGED`
+- `{root}/GCP/{Province}_{IR|RF}_GCP_TRAIN`
+- `{root}/GCP/{Province}_{IR|RF}_GCP_VALIDATE`
+
 ### Tests (no Earth Engine login required)
 
 ```bash
 node --check gee/wheat_phenology_mapping.js
 node --check gee/nangarhar_wheat_phenology.js
+node --check gee/wheat_phenology_app.js
+node --check gee/wheat_gcp_preprocess_app.js
 node --check gee/client_helpers.js
 node gee/test_client_logic.js
 ```
