@@ -499,10 +499,34 @@ check('Module 3 script fixes original GEE bugs', function() {
   assert.strictEqual(optical.indexOf('agriPicker') === -1, true);
   assert.strictEqual(optical.indexOf("MISSING_DATA + ' - Harvest season'") > -1, true);
   assert.strictEqual(optical.indexOf('gte(minVal)') > -1, true);
+  assert.strictEqual(optical.indexOf('MultiLineString') === -1, true);
+  assert.strictEqual(optical.indexOf('ee.Geometry.Rectangle') > -1, true);
+  assert.strictEqual(optical.indexOf('parseMapBounds') > -1, true);
   var styleBlocks = optical.match(/style\s*:\s*\{[^}]+\}/g) || [];
   styleBlocks.forEach(function(block) {
     assert.strictEqual(/['"][a-z]+-[a-z]+['"]\s*:/.test(block), false, block);
   });
+});
+
+check('parseMapBounds accepts GEE list, GeoJSON, and rejects invalid boxes', function() {
+  var fromList = helpers.parseMapBounds([69.1, 34.2, 70.4, 35.3]);
+  assert.strictEqual(fromList.west, 69.1);
+  assert.strictEqual(fromList.south, 34.2);
+  assert.strictEqual(fromList.east, 70.4);
+  assert.strictEqual(fromList.north, 35.3);
+  var fromEvent = helpers.parseMapBounds({
+    bounds: {
+      type: 'Polygon',
+      coordinates: [[
+        [69.1, 34.2], [70.4, 34.2], [70.4, 35.3], [69.1, 35.3], [69.1, 34.2]
+      ]]
+    }
+  });
+  assert.ok(Math.abs(fromEvent.west - 69.1) < 1e-9);
+  assert.ok(Math.abs(fromEvent.north - 35.3) < 1e-9);
+  assert.strictEqual(helpers.parseMapBounds(undefined), null);
+  assert.strictEqual(helpers.parseMapBounds([0, 0, 0, 0]), null);
+  assert.strictEqual(helpers.parseMapBounds([1, 2, undefined, 4]), null);
 });
 
 if (failures) {

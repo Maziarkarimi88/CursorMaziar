@@ -185,6 +185,82 @@ function chooseFinalMaskLayer(hasHarvest, hasPeak, hasSowing) {
   return null;
 }
 
+function normalizeLonLatBox(west, south, east, north) {
+  west = parseNumericField(west);
+  south = parseNumericField(south);
+  east = parseNumericField(east);
+  north = parseNumericField(north);
+  if (isNaN(west) || isNaN(south) || isNaN(east) || isNaN(north)) return null;
+  if (south > north) {
+    var swapLat = south;
+    south = north;
+    north = swapLat;
+  }
+  if (west > east) {
+    var swapLon = west;
+    west = east;
+    east = swapLon;
+  }
+  if (west === east || south === north) return null;
+  if (south < -90 || north > 90 || west < -180 || east > 180) return null;
+  return {west: west, south: south, east: east, north: north};
+}
+
+function flattenLonLatPairs(node, out) {
+  out = out || [];
+  if (!node) return out;
+  if (typeof node[0] === 'number' && typeof node[1] === 'number') {
+    out.push([parseNumericField(node[0]), parseNumericField(node[1])]);
+    return out;
+  }
+  if (Array.isArray(node)) {
+    for (var i = 0; i < node.length; i++) flattenLonLatPairs(node[i], out);
+  }
+  return out;
+}
+
+function parseMapBounds(source) {
+  if (!source) return null;
+  if (source.bounds && source.bounds !== source) {
+    var fromEvent = parseMapBounds(source.bounds);
+    if (fromEvent) return fromEvent;
+  }
+  if (source.geometry && source.geometry !== source) {
+    var fromGeom = parseMapBounds(source.geometry);
+    if (fromGeom) return fromGeom;
+  }
+  if (source.bbox && source.bbox.length >= 4) {
+    var fromBbox = normalizeLonLatBox(
+      source.bbox[0], source.bbox[1], source.bbox[2], source.bbox[3]
+    );
+    if (fromBbox) return fromBbox;
+  }
+  if (source.west != null && source.south != null &&
+      source.east != null && source.north != null) {
+    return normalizeLonLatBox(source.west, source.south, source.east, source.north);
+  }
+  if (source.coordinates) {
+    var pairs = flattenLonLatPairs(source.coordinates, []);
+    if (pairs.length) {
+      var west = pairs[0][0];
+      var east = pairs[0][0];
+      var south = pairs[0][1];
+      var north = pairs[0][1];
+      for (var i = 1; i < pairs.length; i++) {
+        west = Math.min(west, pairs[i][0]);
+        east = Math.max(east, pairs[i][0]);
+        south = Math.min(south, pairs[i][1]);
+        north = Math.max(north, pairs[i][1]);
+      }
+      return normalizeLonLatBox(west, south, east, north);
+    }
+  }
+  if (Array.isArray(source) && source.length === 4 && !Array.isArray(source[0])) {
+    return normalizeLonLatBox(source[0], source[1], source[2], source[3]);
+  }
+  return null;
+}
+
 function seasonsFromRange(startIso, endIso) {
   var sy = String(startIso).slice(0, 4);
   var ey = String(endIso).slice(0, 4);
@@ -539,6 +615,8 @@ module.exports = {
   opticalSeasonInputsValid: opticalSeasonInputsValid,
   keepPeakWheatPixel: keepPeakWheatPixel,
   chooseFinalMaskLayer: chooseFinalMaskLayer,
+  normalizeLonLatBox: normalizeLonLatBox,
+  parseMapBounds: parseMapBounds,
   seasonsFromRange: seasonsFromRange,
   isValidIsoDate: isValidIsoDate,
   monthStart: monthStart,

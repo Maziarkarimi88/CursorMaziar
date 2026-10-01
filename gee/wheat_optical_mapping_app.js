@@ -365,7 +365,112 @@ app.createHelpers = function() {
   };
 
   app.clipRegion = function() {
-    return app.geometry;
+    return ee.FeatureCollection(app.geometry).geometry({maxError: 100}).simplify(100);
+  };
+
+  app.exportRegion = function() {
+    return ee.FeatureCollection(app.geometry).geometry({maxError: 100}).bounds(100);
+  };
+
+  app.normalizeLonLatBox = function(west, south, east, north) {
+    west = app.parseNumericField(west);
+    south = app.parseNumericField(south);
+    east = app.parseNumericField(east);
+    north = app.parseNumericField(north);
+    if (isNaN(west) || isNaN(south) || isNaN(east) || isNaN(north)) return null;
+    if (south > north) {
+      var swapLat = south;
+      south = north;
+      north = swapLat;
+    }
+    if (west > east) {
+      var swapLon = west;
+      west = east;
+      east = swapLon;
+    }
+    if (west === east || south === north) return null;
+    if (south < -90 || north > 90 || west < -180 || east > 180) return null;
+    return {west: west, south: south, east: east, north: north};
+  };
+
+  app.flattenLonLatPairs = function(node, out) {
+    out = out || [];
+    if (!node) return out;
+    if (typeof node[0] === 'number' && typeof node[1] === 'number') {
+      out.push([app.parseNumericField(node[0]), app.parseNumericField(node[1])]);
+      return out;
+    }
+    if (Object.prototype.toString.call(node) === '[object Array]') {
+      for (var i = 0; i < node.length; i++) app.flattenLonLatPairs(node[i], out);
+    }
+    return out;
+  };
+
+  app.parseMapBounds = function(source) {
+    if (!source) return null;
+    if (source.bounds && source.bounds !== source) {
+      var fromEvent = app.parseMapBounds(source.bounds);
+      if (fromEvent) return fromEvent;
+    }
+    if (source.geometry && source.geometry !== source) {
+      var fromGeom = app.parseMapBounds(source.geometry);
+      if (fromGeom) return fromGeom;
+    }
+    if (source.bbox && source.bbox.length >= 4) {
+      var fromBbox = app.normalizeLonLatBox(
+        source.bbox[0], source.bbox[1], source.bbox[2], source.bbox[3]
+      );
+      if (fromBbox) return fromBbox;
+    }
+    if (source.west != null && source.south != null &&
+        source.east != null && source.north != null) {
+      return app.normalizeLonLatBox(source.west, source.south, source.east, source.north);
+    }
+    if (source.coordinates) {
+      var pairs = app.flattenLonLatPairs(source.coordinates, []);
+      if (pairs.length) {
+        var west = pairs[0][0];
+        var east = pairs[0][0];
+        var south = pairs[0][1];
+        var north = pairs[0][1];
+        for (var i = 1; i < pairs.length; i++) {
+          west = Math.min(west, pairs[i][0]);
+          east = Math.max(east, pairs[i][0]);
+          south = Math.min(south, pairs[i][1]);
+          north = Math.max(north, pairs[i][1]);
+        }
+        return app.normalizeLonLatBox(west, south, east, north);
+      }
+    }
+    if (Object.prototype.toString.call(source) === '[object Array]' &&
+        source.length === 4 &&
+        Object.prototype.toString.call(source[0]) !== '[object Array]') {
+      return app.normalizeLonLatBox(source[0], source[1], source[2], source[3]);
+    }
+    return null;
+  };
+
+  app.readZoomBounds = function(event) {
+    var box = app.parseMapBounds(event);
+    if (box) return box;
+    var raw = null;
+    try {
+      raw = app.zp.zoomBox.getBounds(true);
+    } catch (errGeo) {
+      raw = null;
+    }
+    box = app.parseMapBounds(raw);
+    if (box) return box;
+    try {
+      raw = app.zp.zoomBox.getBounds(false);
+    } catch (errList) {
+      try {
+        raw = app.zp.zoomBox.getBounds();
+      } catch (errBare) {
+        raw = null;
+      }
+    }
+    return app.parseMapBounds(raw);
   };
 
   app.getCollection = function(startDate, endDate, cloudThreshold, region) {
@@ -699,7 +804,7 @@ app.createHelpers = function() {
       app.bo.provincePicker.getValue(),
       app.bo.irRfPicker.getValue()
     );
-    var region = app.geometry.geometry().bounds();
+    var region = app.exportRegion();
     var queued = 0;
     var exportImage = function(image, desc, assetId) {
       if (!image) return;
@@ -785,21 +890,20 @@ app.createHelpers = function() {
     app.zp.zoomBox.setCenter(lon, lat);
   };
 
-  app.onZoomBoxChange = function(args, map) {
-    if (!map.style().get('shown')) return;
-    var bounds = map.getBounds();
-    var west = bounds[0];
-    var south = bounds[1];
-    var east = bounds[2];
-    var north = bounds[3];
-    var outline = ee.Geometry.MultiLineString([
-      [[west, south], [west, north]],
-      [[east, south], [east, north]],
-      [[west, south], [east, south]],
-      [[west, north], [east, north]]
-    ]);
-    app.removeLayers([app.LAYER.ZOOM]);
-    Map.addLayer(outline, {color: 'F00'}, app.LAYER.ZOOM, false);
+  app.onZoomBoxChange = function(event) {
+    try {
+      if (!app.zp.zoomBox.style().get('shown')) return;
+      var box = app.readZoomBounds(event);
+      if (!box) return;
+      var outline = ee.Geometry.Rectangle({
+        coords: [box.west, box.south, box.east, box.north],
+        geodesic: false
+      });
+      app.removeLayers([app.LAYER.ZOOM]);
+      Map.addLayer(outline, {color: 'F00'}, app.LAYER.ZOOM, false);
+    } catch (err) {
+      print('Zoom box outline skipped:', err);
+    }
   };
 };
 
