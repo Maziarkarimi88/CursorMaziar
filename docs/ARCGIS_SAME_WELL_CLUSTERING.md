@@ -52,6 +52,18 @@ from `tools/kobo_gw.py`. Use the tools below in this order.
 If ArcGIS still shows ~1,041 / 2,339 after you set 15 m, the search is not 15 m
 on the ground. Fix CRS / Method before you change the well list.
 
+If **Generate Near Table** and **DBSCAN** both show **2,939** points, the 15 m
+search is correct. Those tools must match on that count (a point with ≥1
+neighbour ≤ 15 m). Next checks:
+
+- **415** GPS points with no Near row → 1-visit wells (keep them).
+- DBSCAN **359** groups of 2+. **165** of those groups have diameter **> 15 m**
+  (chains; largest about 44 visits / 76 m). Split those with hulls, or use
+  `tools/kobo_gw.py` for the **1,081**-well list.
+- 2,939 visits ≠ 2,939 wells. Complete-linkage multi-visit wells hold **2,821**
+  visits in **548** sites. The extra **118** points are only “clustered”
+  because they chain through a neighbour.
+
 ---
 
 ## 0. Prepare the layer (do this once)

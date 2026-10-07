@@ -1205,6 +1205,16 @@ def write_cluster_compare(visits: pd.DataFrame, wells: pd.DataFrame, n_empty: in
     cl50, noise50, n50 = _sl_counts(lat, lon, 5.0)
     cl52, noise52, n52 = _sl_counts(lat, lon, 5.2)
     cl522, noise522, n522 = _sl_counts(lat, lon, 5.22)
+    sl_labs = single_linkage_labels(lat, lon, CLUSTER_M)
+    g = g.assign(_sl=sl_labs)
+    n_chain = 0
+    n_chain_visits = 0
+    for _, grp in g.groupby("_sl"):
+        if len(grp) < 2:
+            continue
+        if gps_spread_m(grp) > CLUSTER_M:
+            n_chain += 1
+            n_chain_visits += len(grp)
     n_single_wells = int((wells["n_visits"] == 1).sum())
     n_multi_wells = int((wells["n_visits"] >= 2).sum())
     n_multi_visits = int(wells.loc[wells["n_visits"] >= 2, "n_visits"].sum())
@@ -1239,7 +1249,9 @@ def write_cluster_compare(visits: pd.DataFrame, wells: pd.DataFrame, n_empty: in
         f"**{n_single_wells}** one-visit wells | "
         f"**{n_multi_visits}** visits in {n_multi_wells} wells | "
         f"{n_multi_wells} | every visit is a well |",
-        "| Your GIS result | **1,041** | **2,339** | — | — |",
+        "| Earlier GIS (~5.2 m) | **1,041** | **2,339** | — | GPS precision window |",
+        f"| Your GIS now (15 m geodesic) | **{sl_noise}** GPS isolates | "
+        f"**{cl_pts}** | {n_sl} | Near Table and DBSCAN min 2 must match |",
         f"| Single-linkage **5.0 m** (GPS precision, max 5.0 m) | "
         f"{noise50} GPS + {n_empty} empty = **{noise50 + n_empty}** | "
         f"**{cl50}** | {n50} | GPS-fix window |",
@@ -1252,6 +1264,14 @@ def write_cluster_compare(visits: pd.DataFrame, wells: pd.DataFrame, n_empty: in
         "",
         f"True **{CLUSTER_M:.0f} m** great-circle DBSCAN on this export is "
         f"**{sl_noise + n_empty} noise / {cl_pts} clustered**, not 1,041 / 2,339.",
+        "",
+        f"If Generate Near Table and DBSCAN (15 m, min 2) both show **{cl_pts}** points, "
+        "the search is geodesic metres. Those two tools **must** agree on that count: "
+        "a point is clustered when it has at least one neighbour ≤ 15 m. "
+        f"That is not {cl_pts} wells. DBSCAN still makes **{n_sl}** groups; "
+        f"**{n_chain}** of them span more than 15 m ({n_chain_visits} visits in street chains). "
+        f"Complete linkage gives **{len(wells)}** wells. Keep the **{sl_noise}** GPS isolates "
+        "as one-visit wells.",
         "",
         "1,041 / 2,339 is what we get at about **5.22 m**, not 15 m. "
         "That is the GPS precision field (median 4.62 m, maximum 5.0 m), "
