@@ -1,7 +1,8 @@
 # Using the FAO KOBO groundwater monitoring export
 
 The cleaned export is one **visit per row**. Enumerators resubmitted the whole form; the weekly repeat group is empty. Rebuild wells from a **15 m GPS cluster** (complete linkage). Owner name is a **cross-check** only — the same personal name appears in many provinces. Cleaning rules are in [`KOBO_DATA_CLEANING.md`](KOBO_DATA_CLEANING.md).
-ArcGIS: [`ARCGIS_SAME_WELL_CLUSTERING.md`](ARCGIS_SAME_WELL_CLUSTERING.md).
+ArcGIS: [`ARCGIS_SAME_WELL_CLUSTERING.md`](ARCGIS_SAME_WELL_CLUSTERING.md),
+hydrographs: [`ARCGIS_WELL_HYDROGRAPHS.md`](ARCGIS_WELL_HYDROGRAPHS.md).
 
 **DTW** (questions 14, 15, 24) is depth to water in metres. Larger = deeper = less water, unless an enumerator entered water-column height instead.
 
@@ -18,7 +19,9 @@ python3 tools/kobo_gw.py --csv data/kobo/groundwater_monitoring.csv
 | Output | What it is |
 |--------|------------|
 | `examples/kobo_gw/wells_unique.csv` | One row per well: static attributes, first/last DTW, recalled and measured change, QA exclude flag |
-| `examples/kobo_gw/visits.csv` | Visit panel: `well_id`, dates, DTW, method, location |
+| `examples/kobo_gw/visits.csv` | Visit panel: `well_id`, dates, DTW, `dbscan_id`, `split_review`, `hydro_class` |
+| `examples/kobo_gw/dbscan_chains_review.csv` | DBSCAN 15 m groups that mixed two or more 15 m wells (split these) |
+| `examples/kobo_gw/dbscan_chain_visits.csv` | Visits inside those groups, already tagged with the split `well_id` |
 | `examples/kobo_gw/qa_flags.csv` | One row per flag instance |
 | `examples/kobo_gw/perception_vs_measured.csv` | Reported Q30 vs tape/rope class |
 | `examples/kobo_gw/province_stats.csv` | Usable-well counts and median DTW change by province |

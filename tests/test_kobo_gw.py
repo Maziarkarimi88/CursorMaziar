@@ -62,12 +62,18 @@ def test_run_writes_tables(tmp_path: Path | None = None):
     assert (tables / "visits.csv").exists()
     assert (tables / "qa_flags.csv").exists()
     assert (tables / "CLUSTER_COMPARE.md").exists()
+    assert (tables / "dbscan_chains_review.csv").exists()
+    assert (tables / "dbscan_chain_visits.csv").exists()
     compare = (tables / "CLUSTER_COMPARE.md").read_text(encoding="utf-8")
     assert "1,041" in compare and "2,339" in compare
     assert result["summary"]["n_wells"] == 4
     assert result["summary"]["n_visits"] == 6
+    wells = (tables / "wells_unique.csv").read_text(encoding="utf-8")
+    assert "hydro_class" in wells
+    visits = (tables / "visits.csv").read_text(encoding="utf-8")
+    assert "split_review" in visits and "dbscan_id" in visits
     # owner/phone must not leak into committed-style outputs
-    text = (tables / "wells_unique.csv").read_text(encoding="utf-8")
+    text = wells + visits + (tables / "dbscan_chains_review.csv").read_text(encoding="utf-8")
     assert "Good Owner" not in text
     assert "0701111111" not in text
 

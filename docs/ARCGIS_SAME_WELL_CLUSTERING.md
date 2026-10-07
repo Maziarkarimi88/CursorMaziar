@@ -140,6 +140,8 @@ python3 tools/kobo_gw.py --csv data/kobo/groundwater_monitoring.csv --no-plots
    on `examples/kobo_gw/wells_unique.csv`.
 2. Display wells (one point per `well_id`, size = `n_visits`).
 3. Join `well_id` / `owner_check` back to the original KOBO points if needed.
+4. Review groups DBSCAN mixed: `dbscan_chains_review.csv`. `well_id` is already
+   the split. Hydrographs: [`ARCGIS_WELL_HYDROGRAPHS.md`](ARCGIS_WELL_HYDROGRAPHS.md).
 
 You should get **1,081** wells: **548** with 2+ visits, **533** measured once.
 
@@ -225,3 +227,5 @@ A dissolved 7.5 m or 15 m buffer is the same as DBSCAN. Use **Pairwise Buffer
 Details on why 15 m (not 5 / 10 / 20): `examples/kobo_gw/RADIUS_CHOICE.md`.
 GIS vs script counts: `examples/kobo_gw/CLUSTER_COMPARE.md`.
 Cleaning rules: `KOBO_DATA_CLEANING.md`.
+Walk the well table and chart water level vs date:
+[`ARCGIS_WELL_HYDROGRAPHS.md`](ARCGIS_WELL_HYDROGRAPHS.md).

@@ -457,11 +457,86 @@ def _first_last(g: pd.DataFrame) -> pd.Series:
     )
 
 
+def hydro_class(n_dates) -> str:
+    """How much of a hydrograph this well can support."""
+    n = 0 if pd.isna(n_dates) else int(n_dates)
+    if n <= 1:
+        return "one_visit"
+    if n < 8:
+        return "short_2to7"
+    return "long_8plus"
+
+
 def build_wells(visits: pd.DataFrame) -> pd.DataFrame:
     wells = visits.groupby("well_id", sort=False).apply(_first_last, include_groups=False)
     wells = wells.reset_index()
     wells["measured_class"] = dtw_change_class(wells["dtw_change_recall_m"])
+    wells["hydro_class"] = wells["n_unique_dates"].map(hydro_class)
     return wells
+
+
+def attach_dbscan_and_hydro(visits: pd.DataFrame, wells: pd.DataFrame) -> pd.DataFrame:
+    """Flag DBSCAN groups that mixed two or more 15 m wells (street chains)."""
+    out = visits.copy()
+    labs = single_linkage_labels(out["lat"].to_numpy(), out["lon"].to_numpy(), CLUSTER_M)
+    out["dbscan_id"] = labs.astype(int)
+    n_wells = out.groupby("dbscan_id")["well_id"].transform("nunique")
+    n_pts = out.groupby("dbscan_id")["well_id"].transform("size")
+    out["split_review"] = ((n_wells > 1) & (n_pts >= 2)).astype(int)
+    hydro = wells.set_index("well_id")["hydro_class"]
+    out["hydro_class"] = out["well_id"].map(hydro)
+    return out
+
+
+def dbscan_chain_review(visits: pd.DataFrame) -> pd.DataFrame:
+    """One row per DBSCAN group that merged several complete-linkage wells."""
+    need = {"dbscan_id", "well_id", "lat", "lon", "split_review"}
+    if not need.issubset(visits.columns):
+        return pd.DataFrame()
+    rows = []
+    chained = visits.loc[visits["split_review"] == 1]
+    for did, g in chained.groupby("dbscan_id"):
+        wells = sorted(g["well_id"].astype(str).unique())
+        dates = pd.to_datetime(g["meas_date"], errors="coerce")
+        dtw = pd.to_numeric(g["wt_now"], errors="coerce")
+        villages = sorted({str(v).strip() for v in g["village"].dropna().astype(str) if str(v).strip()})
+        provinces = sorted({str(v).strip() for v in g["province"].dropna().astype(str) if str(v).strip()})
+        rows.append(
+            {
+                "dbscan_id": int(did),
+                "n_visits": int(len(g)),
+                "n_wells_to_split_into": int(len(wells)),
+                "spread_m": round(gps_spread_m(g), 1),
+                "province": "; ".join(provinces)[:80],
+                "village": villages[0] if len(villages) == 1 else f"several ({len(villages)})",
+                "lat": round(float(g["lat"].median()), 6),
+                "lon": round(float(g["lon"].median()), 6),
+                "date_min": dates.min(),
+                "date_max": dates.max(),
+                "wt_now_min_m": None if dtw.isna().all() else round(float(dtw.min()), 2),
+                "wt_now_max_m": None if dtw.isna().all() else round(float(dtw.max()), 2),
+                "well_ids": " ".join(wells),
+            }
+        )
+    cols = [
+        "dbscan_id",
+        "n_visits",
+        "n_wells_to_split_into",
+        "spread_m",
+        "province",
+        "village",
+        "lat",
+        "lon",
+        "date_min",
+        "date_max",
+        "wt_now_min_m",
+        "wt_now_max_m",
+        "well_ids",
+    ]
+    out = pd.DataFrame(rows, columns=cols)
+    if len(out):
+        out = out.sort_values(["n_wells_to_split_into", "spread_m", "n_visits"], ascending=False)
+    return out
 
 
 def perception_crosstab(wells: pd.DataFrame) -> pd.DataFrame:
@@ -515,6 +590,9 @@ def write_tables(visits: pd.DataFrame, wells: pd.DataFrame, qa: pd.DataFrame, ou
         "owner_group",
         "owner_check",
         "gps_prec",
+        "dbscan_id",
+        "split_review",
+        "hydro_class",
     ]
     well_path = out_dir / "wells_unique.csv"
     visit_path = out_dir / "visits.csv"
@@ -552,6 +630,19 @@ def write_tables(visits: pd.DataFrame, wells: pd.DataFrame, qa: pd.DataFrame, ou
     names_path = ROOT / "data" / "kobo" / "review_owners.csv"
     names_path.parent.mkdir(parents=True, exist_ok=True)
     names.to_csv(names_path, index=False)
+    chains = dbscan_chain_review(visits)
+    chains_path = out_dir / "dbscan_chains_review.csv"
+    chain_visits_path = out_dir / "dbscan_chain_visits.csv"
+    chains.to_csv(chains_path, index=False)
+    chain_visit_cols = [c for c in visit_cols if c in visits.columns]
+    if "split_review" in visits.columns:
+        chain_hits = visits.loc[visits["split_review"] == 1, chain_visit_cols]
+        sort_cols = [c for c in ("dbscan_id", "well_id", "meas_date") if c in chain_hits.columns]
+        if len(chain_hits) and sort_cols:
+            chain_hits = chain_hits.sort_values(sort_cols)
+    else:
+        chain_hits = visits.iloc[0:0]
+    chain_hits.to_csv(chain_visits_path, index=False)
     return {
         "wells_unique": well_path,
         "visits": visit_path,
@@ -562,6 +653,8 @@ def write_tables(visits: pd.DataFrame, wells: pd.DataFrame, qa: pd.DataFrame, ou
         "nearby_other_wells": nearby_path,
         "same_owner_splits": splits_path,
         "review_owners": names_path,
+        "dbscan_chains_review": chains_path,
+        "dbscan_chain_visits": chain_visits_path,
     }
 
 
@@ -971,6 +1064,7 @@ def process(csv_path: Path) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame, i
     flagged = flag_after_identity(flag_visits(attach_well_id(kept)))
     visits = build_visits(flagged)
     wells = build_wells(visits)
+    visits = attach_dbscan_and_hydro(visits, wells)
     qa = qa_flags_long(visits)
     return visits, wells, qa, n_empty
 
@@ -1006,6 +1100,9 @@ def write_cleaning_md(
         f"- Median GPS spread on multi-visit wells: **{_finite_median(spread)} m** "
         f"(complete linkage keeps this ≤ {CLUSTER_M:.0f} m)",
         f"- Nearby different wells (centroids ≤ {CLUSTER_M:.0f} m): **{len(nearby)}** pairs.",
+        f"- DBSCAN 15 m groups that mixed two or more wells (split_review): "
+        f"**{int(visits['split_review'].sum()) if 'split_review' in visits.columns else 0}** visits. "
+        "See `dbscan_chains_review.csv`.",
         f"- Same owner name in the same village on several {CLUSTER_M:.0f} m wells: **{len(splits)}** "
         f"({n_split_soft} within 200 m; {n_split_far} farther than 200 m).",
         "",
