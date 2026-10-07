@@ -1,15 +1,16 @@
 # KOBO cleaning review
 
-Well identity: same **owner/phone group** and GPS within **12 m**. GPS-only clustering is not used — that chains neighbouring household wells (example: 40 owners in Kunduz / Yaamchi inside one 12 m component).
+Well identity is **distance first**: a complete-linkage GPS cluster (every pair ≤ **12 m**). Owner name is a **cross-check** only. The same personal name appears in many provinces and is not used as the well key.
 
 ## Identity counts
 
 - Visits: **3354**
-- Wells after 12 m + owner: **1352**
-- Wells with 2+ visits: **394**
-- Median GPS spread on multi-visit wells: **10.85 m** (should stay ≤ 12 m)
-- Nearby different wells (centroids ≤ 12 m): **501** pairs — dense village or GPS copied for several owners. See `nearby_other_wells.csv`.
-- Same owner, several 12 m wells: **215** groups (135 within 200 m to review; 80 farther than 200 m).
+- Wells (12 m GPS clusters): **1224**
+- Owner check agree / mixed / missing: 1078 / 143 / 3
+- Wells with 2+ visits: **606**
+- Median GPS spread on multi-visit wells: **8.75 m** (complete linkage keeps this ≤ 12 m)
+- Nearby different wells (centroids ≤ 12 m): **182** pairs.
+- Same owner name in the same village on several 12 m wells: **297** (203 within 200 m; 94 farther than 200 m).
 
 ## How to treat outliers
 
@@ -27,6 +28,7 @@ Use rule flags first, then look at the review lists.
 | Form clone (≥5 owners, same depth+before) | Copied static fields | Do not treat as independent wells |
 | DTW jump > 3 m in ≤21 days | Two wells merged, or bad tape | Split well or drop those visits |
 | Same owner, GPS > 200 m apart | Two wells, or office vs field GPS | Keep as two wells until checked |
-| Nearby other owners ≤ 12 m | Neighbours, or one GPS for many wells | Keep separate unless owner confirms one well |
+| Mixed owner names at one 12 m site | Shared well, or one GPS for many interviews | Keep as one site; review names |
+| Same owner name, several 12 m sites in one village | Two wells, or office vs field GPS | Review; do not merge by name across provinces |
 
 Owner names for follow-up (not in git): `data/kobo/review_owners.csv`.

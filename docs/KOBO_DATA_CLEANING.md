@@ -5,35 +5,38 @@ each week. GPS precision in this export is about **4.6–5 m**, so 10–12 m is
 the right “same standing point” window. That is **not** the same as “every
 well in the hamlet.”
 
-## 1. Identify the well (12 m + owner)
+## 1. Identify the well (distance first, then owner check)
+
+Personal names repeat across Afghanistan (`Gul Ahmad`, `Mohammad`). Do **not**
+use owner name as the well key. Cluster **GPS first**. Then read the names
+on that cluster.
 
 **Do this**
 
-1. Normalize owner name (trim, lower case, ignore extra spaces and punctuation).
-2. Treat the same **phone** in the same village as the same caretaker, even if
-   the name spelling drifted (`Malik Mohammad Rasikh` / `malik Muhammad rasikh`).
-3. Treat fuzzy-equal names as the same person **only if phones do not conflict**
-   (edit distance ≤ 2, or one name contains the other). Different phones stay
-   apart — often father and son.
-4. Inside that owner group, cluster GPS points within **12 m**. Those visits
-   are one well with repeat monitoring.
-5. If the same owner has two clusters **more than 12 m** apart, keep them as
-   two wells until you check. 12–50 m is usually leftover GPS jitter (same
-   depth → you may merge). More than 200 m is either a second well or an
-   office GPS.
-
-**Do not do this**
-
-Do not cluster GPS alone. Home-dug wells sit close together. A 12 m
-connected-component in Kunduz / Yaamchi glued **40 owners** and 23 different
-depths into one “well.” Owner is the cross-check that stops that.
+1. Group visits whose GPS points are all within **12 m** of each other
+   (complete linkage: every pair ≤ 12 m). That is one monitoring site / well.
+   GPS precision in this export is about 4.6–5 m, so 12 m is two-to-three
+   fixes of jitter, not a whole street.
+2. Do **not** use single-linkage (A near B, B near C…). That chains a hamlet.
+   Complete linkage keeps A and C at 22 m as two wells.
+3. Cluster inside each **province** so a common name in Kapisa never touches
+   the same name in Kunduz.
+4. **Cross-check owner names** on the cluster:
+   - `agree` — one caretaker (spelling drift allowed). Repeat visits to one well.
+   - `mixed` — several distinct names at the same spot. Shared/public well, or
+     the enumerator stood in one courtyard and entered many households.
+   - `missing` — no name.
+5. If the **same name in the same village** appears on two 12 m sites more
+   than 200 m apart, treat them as two wells (or office vs field GPS). Do not
+   merge that name nationwide.
 
 | Pattern | Meaning |
 |---------|---------|
-| Same owner, GPS ≤ 12 m | One well, several visits. Merge. |
-| Same owner, GPS 12–50 m, same depth | Probably jitter. Review, then merge. |
-| Same owner, GPS > 200 m | Two wells, or field GPS vs office GPS. |
-| Different owners, GPS ≤ 12 m | Neighbours, a shared/public well, or one GPS used for many interviews. Keep separate unless the enumerator confirms one well. |
+| GPS ≤ 12 m (all pairs) | One well. Merge visits. Then check the owner name. |
+| Owner names agree | Confident repeat monitoring. |
+| Owner names mixed | Keep as one site; review. Do not split on name. |
+| Same name, other province | Different well. Distance already kept them apart. |
+| Same name, same village, GPS > 200 m | Two wells or office GPS. |
 
 The script writes:
 
@@ -95,7 +98,7 @@ you reject after a look.
 ## 3. Suggested cleaning order
 
 1. Drop empty / no-consent rows.
-2. Build owner groups, then 12 m clusters → `well_id`.
+2. Build 12 m complete-linkage GPS clusters → `well_id`. Cross-check owner names on each cluster.
 3. Apply rule flags (A).
 4. Mark form clones (B) and DTW jumps (C).
 5. Walk `nearby_other_wells.csv` and `same_owner_splits.csv` with the

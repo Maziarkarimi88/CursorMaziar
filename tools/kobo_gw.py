@@ -1,8 +1,8 @@
 """Clean FAO KOBO well visits and build inventory, QA, and impact tables.
 
-Each KOBO row is one visit, not one well. Well identity is an owner/phone
-group plus a 12 m GPS cluster (see kobo_identity.py). Depth-to-water (DTW):
-larger = deeper.
+Each KOBO row is one visit, not one well. Well identity is a 12 m GPS
+cluster (complete linkage). Owner name is a cross-check only — the same
+personal name appears in many provinces. Depth-to-water (DTW): larger = deeper.
 
   python3 tools/kobo_gw.py --csv data/kobo/groundwater_monitoring.csv
 """
@@ -215,7 +215,7 @@ def drop_empty_rows(df: pd.DataFrame) -> tuple[pd.DataFrame, int]:
 
 
 def attach_well_id(df: pd.DataFrame) -> pd.DataFrame:
-    """Owner/phone group + 12 m GPS cluster. Does not chain neighbouring houses."""
+    """12 m complete-linkage GPS cluster; owner name is a check, not the key."""
     return attach_identity(df, cluster_m=CLUSTER_M)
 
 
@@ -291,6 +291,7 @@ def flag_visits(df: pd.DataFrame) -> pd.DataFrame:
     out["flag_recall_extreme"] = (out["wt_before"] - out["wt_now"]).abs() > 15
     out["flag_form_clone"] = False
     out["flag_dtw_jump"] = False
+    out["flag_owner_mixed"] = False
     return out
 
 
@@ -306,8 +307,9 @@ def flag_after_identity(df: pd.DataFrame) -> pd.DataFrame:
         + "|"
         + out["wt_before"].round(0).astype("string")
     )
-    n_owners = out.assign(_k=key).groupby("_k")["owner_group"].transform("nunique")
+    n_owners = out.assign(_k=key).groupby("_k")["owner_n"].transform("nunique")
     out["flag_form_clone"] = n_owners >= 5
+    out["flag_owner_mixed"] = out.get("owner_check", pd.Series("agree", index=out.index)) == "mixed"
 
     out["flag_dtw_jump"] = False
     for _, g in out.groupby("well_id"):
@@ -344,6 +346,7 @@ FLAG_COLS = [
     "flag_recall_extreme",
     "flag_form_clone",
     "flag_dtw_jump",
+    "flag_owner_mixed",
 ]
 
 IMPACT_EXCLUDE_FLAGS = [
@@ -443,6 +446,7 @@ def _first_last(g: pd.DataFrame) -> pd.Series:
             "n_flagged_visits": n_flags,
             "exclude_from_impact": exclude,
             "owner_group": last["owner_group"] if "owner_group" in last.index else "",
+            "owner_check": last["owner_check"] if "owner_check" in last.index else "",
             "gps_spread_m": round(gps_spread_m(g), 1),
             "n_owner_spellings": int(g["owner_n"].nunique()) if "owner_n" in g.columns else 1,
         }
@@ -505,6 +509,7 @@ def write_tables(visits: pd.DataFrame, wells: pd.DataFrame, qa: pd.DataFrame, ou
         "distance_bin",
         "project",
         "owner_group",
+        "owner_check",
         "gps_prec",
     ]
     well_path = out_dir / "wells_unique.csv"
@@ -534,7 +539,7 @@ def write_tables(visits: pd.DataFrame, wells: pd.DataFrame, qa: pd.DataFrame, ou
         .to_csv(prov_path)
     )
     nearby = nearby_other_wells(wells, radius_m=CLUSTER_M)
-    splits = same_owner_splits(wells) if "owner_group" in wells.columns else pd.DataFrame()
+    splits = same_owner_splits(wells, visits)
     nearby_path = out_dir / "nearby_other_wells.csv"
     splits_path = out_dir / "same_owner_splits.csv"
     nearby.to_csv(nearby_path, index=False)
@@ -592,6 +597,7 @@ def summarize(visits: pd.DataFrame, wells: pd.DataFrame, qa: pd.DataFrame, n_emp
         "check_dam_wells_by_province": wells.loc[wells["intervention"] == "Check dam", "province"]
         .value_counts()
         .to_dict(),
+        "owner_check": wells["owner_check"].value_counts().to_dict() if "owner_check" in wells.columns else {},
     }
 
 
@@ -829,6 +835,7 @@ QA_LABELS = {
     "recall_extreme": "Recalled DTW change > 15 m",
     "form_clone": "Same depth+before copied across ≥5 owners",
     "dtw_jump": "DTW jumped > 3 m within 21 days",
+    "owner_mixed": "Several distinct owner names at one 12 m site",
 }
 
 
@@ -979,21 +986,24 @@ def write_cleaning_md(
     lines = [
         "# KOBO cleaning review",
         "",
-        f"Well identity: same **owner/phone group** and GPS within **{CLUSTER_M:.0f} m**. "
-        "GPS-only clustering is not used — that chains neighbouring household wells "
-        "(example: 40 owners in Kunduz / Yaamchi inside one 12 m component).",
+        f"Well identity is **distance first**: a complete-linkage GPS cluster "
+        f"(every pair ≤ **{CLUSTER_M:.0f} m**). Owner name is a **cross-check** only. "
+        "The same personal name appears in many provinces and is not used as the well key.",
         "",
         "## Identity counts",
         "",
         f"- Visits: **{len(visits)}**",
-        f"- Wells after 12 m + owner: **{len(wells)}**",
+        f"- Wells (12 m GPS clusters): **{len(wells)}**",
+        f"- Owner check agree / mixed / missing: "
+        f"{int((wells['owner_check']=='agree').sum()) if 'owner_check' in wells.columns else '?'} / "
+        f"{int((wells['owner_check']=='mixed').sum()) if 'owner_check' in wells.columns else '?'} / "
+        f"{int((wells['owner_check']=='missing').sum()) if 'owner_check' in wells.columns else '?'}",
         f"- Wells with 2+ visits: **{n_multi}**",
         f"- Median GPS spread on multi-visit wells: **{_finite_median(spread)} m** "
-        f"(should stay ≤ {CLUSTER_M:.0f} m)",
-        f"- Nearby different wells (centroids ≤ {CLUSTER_M:.0f} m): **{len(nearby)}** pairs — "
-        "dense village or GPS copied for several owners. See `nearby_other_wells.csv`.",
-        f"- Same owner, several 12 m wells: **{len(splits)}** groups "
-        f"({n_split_soft} within 200 m to review; {n_split_far} farther than 200 m).",
+        f"(complete linkage keeps this ≤ {CLUSTER_M:.0f} m)",
+        f"- Nearby different wells (centroids ≤ {CLUSTER_M:.0f} m): **{len(nearby)}** pairs.",
+        f"- Same owner name in the same village on several 12 m wells: **{len(splits)}** "
+        f"({n_split_soft} within 200 m; {n_split_far} farther than 200 m).",
         "",
         "## How to treat outliers",
         "",
@@ -1011,7 +1021,8 @@ def write_cleaning_md(
         "| Form clone (≥5 owners, same depth+before) | Copied static fields | Do not treat as independent wells |",
         "| DTW jump > 3 m in ≤21 days | Two wells merged, or bad tape | Split well or drop those visits |",
         "| Same owner, GPS > 200 m apart | Two wells, or office vs field GPS | Keep as two wells until checked |",
-        "| Nearby other owners ≤ 12 m | Neighbours, or one GPS for many wells | Keep separate unless owner confirms one well |",
+        "| Mixed owner names at one 12 m site | Shared well, or one GPS for many interviews | Keep as one site; review names |",
+        "| Same owner name, several 12 m sites in one village | Two wells, or office vs field GPS | Review; do not merge by name across provinces |",
         "",
         "Owner names for follow-up (not in git): `data/kobo/review_owners.csv`.",
         "",
