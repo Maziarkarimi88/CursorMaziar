@@ -10,6 +10,7 @@ Well identity is **distance first**: a complete-linkage GPS cluster (every pair 
 - Wells with 2+ visits: **548**
 - Median GPS spread on multi-visit wells: **10.7 m** (complete linkage keeps this ≤ 15 m)
 - Nearby different wells (centroids ≤ 15 m): **161** pairs.
+- DBSCAN 15 m groups that mixed two or more wells (split_review): **1966** visits. See `dbscan_chains_review.csv`.
 - Same owner name in the same village on several 15 m wells: **272** (177 within 200 m; 95 farther than 200 m).
 
 ## How to treat outliers
