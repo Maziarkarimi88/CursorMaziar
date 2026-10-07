@@ -5,26 +5,26 @@ DTW change = typical water level before − latest measured depth. **Positive = 
 ## Counts
 
 - Visits kept: **3354** (dropped 26 empty rows)
-- Unique wells: **1224** in 30 provinces, 86 districts, 339 villages
-- Wells used for impact tables: **1151** (73 excluded by QA)
+- Unique wells: **1081** in 30 provinces, 85 districts, 321 villages
+- Wells used for impact tables: **1016** (65 excluded by QA)
 - Measurement dates: 2024-12-30 to 2026-09-16
-- Repeat visits: 618 wells with 1 visit; 606 with 2+; 282 with 4+; 78 with ≥8 unique dates
+- Repeat visits: 533 wells with 1 visit; 548 with 2+; 298 with 4+; 99 with ≥8 unique dates
 
 ## Median recalled DTW change (m)
 
-- All usable wells: **0.19**
-- First-to-last measured DTW, wells with ≥4 visits: **-0.06**
+- All usable wells: **0.15**
+- First-to-last measured DTW, wells with ≥4 visits: **0.0**
 
 By intervention:
 
-- Both: 0.21
-- Check dam: 0.39
-- Trench: -0.54
+- Both: 0.2
+- Check dam: 0.3
+- Trench: -0.5
 
 By distance (m):
 
-- 0-200: 0.77
-- 1000-2000: 0.17
+- 0-200: 0.8
+- 1000-2000: 0.15
 - 200-500: 0.0
 - 500-1000: 0.0
 - >2000: -1.0
@@ -36,8 +36,8 @@ By relative location:
 
 ## QA flag counts (visit-level)
 
-- owner_mixed: 769
-- dtw_jump: 274
+- owner_mixed: 813
+- dtw_jump: 298
 - recall_extreme: 166
 - wt_now_gt_depth: 72
 - form_clone: 68
@@ -56,34 +56,34 @@ By relative location:
 
 | Province | Wells | Median change (m) |
 |---|---:|---:|
-| Kapisa | 235 | 0.90 |
-| Parwan | 179 | 0.32 |
-| Panjsher | 124 | 0.50 |
-| Kunduz | 95 | -0.10 |
-| Daykundi | 52 | 1.00 |
+| Kapisa | 216 | 1.00 |
+| Parwan | 148 | 0.20 |
+| Panjsher | 105 | 0.50 |
+| Kunduz | 88 | -0.10 |
 | Kunar | 46 | 0.00 |
-| Kabul | 42 | -2.97 |
-| Balkh | 40 | 1.55 |
-| Faryab | 33 | 0.40 |
-| Logar | 30 | 0.10 |
-| Maidan Wardak | 29 | -0.20 |
-| Jawzjan | 25 | -0.80 |
+| Daykundi | 41 | 1.00 |
+| Kabul | 36 | -3.25 |
+| Balkh | 34 | 1.50 |
+| Faryab | 31 | -0.20 |
+| Logar | 27 | 0.10 |
+| Jawzjan | 24 | -0.80 |
+| Maidan Wardak | 24 | -0.22 |
 | Bamyan | 22 | 0.30 |
-| Khost | 22 | 6.50 |
-| Paktya | 18 | -16.50 |
-| Laghman | 17 | 0.25 |
-| Paktika | 17 | -1.20 |
-| Helmand | 17 | 0.00 |
+| Khost | 21 | 6.20 |
+| Paktya | 15 | -16.00 |
+| Laghman | 15 | 0.25 |
 | Farah | 15 | -3.40 |
-| Zabul | 15 | 3.70 |
-| Sar-e-Pul | 15 | -0.50 |
-| Nangarhar | 14 | 0.00 |
+| Helmand | 15 | 0.00 |
+| Paktika | 14 | -1.30 |
+| Nangarhar | 13 | 0.00 |
+| Zabul | 12 | 4.43 |
 | Nimroz | 11 | 0.00 |
-| Ghazni | 9 | 1.35 |
-| Badghis | 8 | 0.05 |
+| Sar-e-Pul | 11 | -0.30 |
 | Kandahar | 8 | -1.00 |
-| Uruzgan | 7 | 7.50 |
+| Ghazni | 7 | 1.35 |
+| Badghis | 6 | -0.50 |
 | Ghor | 6 | 0.00 |
+| Uruzgan | 5 | 0.20 |
 
 ## How to read this
 

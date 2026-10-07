@@ -1,183 +1,162 @@
 province,village,well_id_a,well_id_b,distance_m,owner_check_a,owner_check_b,depth_a_m,depth_b_m,n_visits_a,n_visits_b
-Badghis,Baghak,d213335bdee5,03dd5a3509b1,9.2,agree,agree,56.0,56.0,2,1
-Balkh,Paikan dara ,7f3357b26e7c,84787416d6d9,9.9,agree,agree,20.0,20.0,3,3
-Balkh,Paikan dara ,bdf927c8dda6,220cbc570202,10.6,agree,agree,14.0,14.0,3,1
-Balkh,Paikan dara ,469e21779cc4,9924587bd049,9.0,agree,agree,14.0,14.0,8,2
-Balkh,Paikan dara ,ad1ffc96edae,2d588351a341,6.7,agree,agree,14.0,14.0,7,6
-Balkh,Paikan dara ,9db4d7ba91a8,be7ee0d52233,7.8,agree,agree,13.0,13.0,7,3
-Balkh,Paikan dara ,9db4d7ba91a8,acf22e5b1b17,9.3,agree,agree,13.0,13.0,7,2
-Balkh,Paikan dara ,eb5216f5b8d2,105bdabc0fdc,7.0,agree,agree,13.0,13.0,4,1
-Balkh,Paikan dara ,e10324a620e1,da4ca4fecce9,9.6,agree,agree,15.0,15.0,4,6
-Balkh,Paikan dara ,b3506eaec5d0,d9f989214f7a,8.9,agree,agree,15.0,15.0,2,2
-Balkh,Paikan dara ,f6a406e24635,7eb6ece67702,11.7,agree,agree,13.0,13.0,2,1
-Balkh,Qeflan dara ,6f873efbcc6c,a07c1763cafd,11.9,agree,agree,15.0,15.0,2,6
-Daykundi,Daghur Sufla,aeb75a0cd666,b8e958be6170,5.8,agree,agree,10.0,10.0,3,3
-Daykundi,Daghur Sufla,81ace25dbfb0,b8e958be6170,10.2,agree,agree,10.0,10.0,2,3
-Daykundi,Kakrak,6e17d76aa552,59327aa002cf,7.7,agree,agree,17.0,17.0,4,2
-Daykundi,Khawalak,1504436b6555,a2aebf391972,5.9,agree,agree,11.0,11.0,3,1
-Daykundi,Markaz wotma ,0d2332d6d8e6,b48a80ad935d,9.5,agree,agree,10.0,10.0,7,2
-Daykundi,Payeen Bagh Lazer,20f97d5962d3,4d7f0f519569,7.4,agree,agree,14.5,14.5,2,2
-Daykundi,Sarqul,dd380bdf4b40,b34c62dbf300,11.4,agree,agree,16.2,16.2,3,2
-Daykundi,Sarqul ,b8d54bfd8654,4f9a18eed8f3,4.9,agree,agree,17.0,17.0,10,2
-Daykundi,Zanbor Khana,9d9ce3c1e8c6,0838b88272a1,12.0,agree,agree,20.0,20.0,5,2
-Farah,Babo kariz ,a6fc7419068e,916d24c6d010,6.6,agree,agree,120.0,120.0,4,5
+Badghis,Baghak ,de060d4bb826,6487ff8a4272,14.5,agree,agree,56.0,56.0,19,2
+Balkh,Paikan dara ,bdf927c8dda6,9924587bd049,6.2,agree,agree,14.0,14.0,8,2
+Balkh,Paikan dara ,469e21779cc4,9db4d7ba91a8,13.5,agree,agree,15.0,15.0,6,3
+Balkh,Paikan dara ,469e21779cc4,d9f989214f7a,14.6,agree,agree,15.0,15.0,6,3
+Balkh,Paikan dara ,df154a37c171,f0e5d3bdcbb9,6.7,agree,agree,14.0,14.0,7,6
+Balkh,Paikan dara ,842cd9cbc745,5385d4aad77e,10.8,agree,agree,13.0,13.0,10,2
+Balkh,Paikan dara ,9db4d7ba91a8,d9f989214f7a,14.1,agree,agree,15.0,15.0,3,3
+Balkh,Paikan dara ,eb5216f5b8d2,527ac0f85d82,7.4,agree,agree,15.0,15.0,5,5
+Balkh,Paikan dara ,e10324a620e1,b20a0aecfe79,8.9,agree,agree,15.0,15.0,2,2
+Balkh,Paikan dara ,ef4da03b08b5,9924587bd049,14.7,agree,agree,14.0,14.0,3,2
+Balkh,Qeflan dara ,be7ee0d52233,c1a06ca2e7c6,11.9,agree,agree,15.0,15.0,2,6
+Balkh,Qeflan dara ,2d588351a341,0f5e1d519030,13.6,agree,agree,15.0,15.0,5,4
+Daykundi,Daghur Sufla,aeb75a0cd666,8126be3b1b64,13.2,agree,agree,10.0,10.0,6,2
+Daykundi,Markaz wotma ,8082c009f3b8,d2ec2edf970d,9.5,agree,agree,10.0,10.0,7,2
+Daykundi,Payeen Bagh Lazer,20f97d5962d3,68d0594c908b,9.2,agree,agree,14.5,14.5,4,1
+Daykundi,Sarqul,90d7c70f16c6,dd380bdf4b40,8.4,agree,agree,16.2,16.2,5,7
+Farah,Babo kariz ,a6fc7419068e,916d24c6d010,9.9,agree,agree,120.0,120.0,8,1
 Farah,Taparig ,9424d88d0019,94d9e050f0ec,8.5,mixed,agree,80.0,80.0,7,1
-Ghazni,Kariz bala,e3c13595a97d,8559b456d2a8,4.0,agree,agree,60.0,60.0,26,3
-Ghazni,Mushak,78df189f8d4d,bead3acbc7a6,11.1,agree,agree,11.0,11.0,4,2
-Ghazni,Mushak,78df189f8d4d,6ecfba81094c,9.5,agree,agree,11.0,11.0,4,3
-Ghazni,Mushak,9c808bda89d5,6ecfba81094c,11.0,agree,agree,11.0,11.0,19,3
-Helmand,Ghori,3fd658151749,762aedb26fd9,10.9,agree,agree,140.0,140.0,8,3
-Helmand,Ghori,3fd658151749,dd8d7d0caf84,9.5,agree,agree,140.0,140.0,8,1
-Helmand,Ghori,762aedb26fd9,dd8d7d0caf84,4.3,agree,agree,140.0,140.0,3,1
-Kabul,Danaw,612b8c60513c,4f1eca16364e,6.7,agree,agree,24.2,24.2,5,1
-Kabul,Danaw,2421389718b5,4f1eca16364e,10.4,agree,agree,24.2,24.2,2,1
-Kabul,Esmila,ee4c37c4f078,00947f87adbd,11.5,agree,agree,25.25,25.25,6,1
-Kabul,Kariz bala,0e2df6d1ec1e,19c68f7855cd,11.7,mixed,agree,18.7,17.4,7,2
-Kabul,Kariz bala,0e2df6d1ec1e,54de982efe03,6.9,mixed,agree,18.7,18.7,7,3
-Kabul,Kariz bala,19c68f7855cd,54de982efe03,11.7,agree,agree,17.4,18.7,2,3
-Kabul,Khord kabul,54a86931e72f,d248230f89aa,9.0,agree,agree,18.62,18.53,2,1
-Kabul,Khwaja shahab,1dca47dc4b31,44093619f46f,8.2,agree,agree,14.57,17.57,4,2
-Kapisa,Adezai ,c4ba3bfccfb3,349889373a27,6.5,mixed,agree,34.0,34.0,5,2
-Kapisa,Gado china,e1809de05c0d,690c7dc0cfce,5.7,mixed,mixed,11.0,13.5,6,6
-Kapisa,Gado china,6bfd3299cdb3,9954c35c2325,8.4,agree,agree,13.5,13.5,5,1
-Kapisa,Gado china,310640b30e44,00a1a02693bd,8.5,mixed,mixed,12.0,12.0,6,3
-Kapisa,Gado china,b028eac48ec3,723279a41d89,5.7,agree,agree,11.0,11.0,5,1
-Kapisa,Ghazi Khan Khil,ce3c1cafd760,bd669c3b1100,10.5,agree,agree,19.0,19.0,7,2
-Kapisa,Ghazi Khan Khil ,712e6c8e5811,4493aa2d9fe1,10.9,agree,agree,19.0,19.0,1,5
-Kapisa,Ghazi Khan Khil ,91046205fc46,fd90c41617d8,9.0,mixed,agree,8.5,8.5,4,1
-Kapisa,Ghazi Khan Khil ,33a907ec56f4,22dfb2c14e47,12.0,mixed,agree,8.5,9.5,5,1
-Kapisa,Ghazi khan khil ,42037f485d51,b7243b5391c9,5.9,mixed,agree,9.5,9.5,8,4
-Kapisa,Konj Paryat ,5453968d8144,f26e8373b96a,6.7,mixed,mixed,70.0,65.0,4,2
-Kapisa,Landa khill ,6a59016ac548,e350ef3f66de,11.7,agree,agree,42.0,42.0,3,1
-Kapisa,Landakhil ,a470cc360fbf,78c0a7696f12,11.5,mixed,mixed,42.0,48.0,9,4
-Kapisa,Mahtan ,18a107155fd1,3ca299ece2f3,8.2,mixed,agree,24.0,24.0,3,2
-Kapisa,Naser Mula Khil ,d57b14511241,00b3dddba5e7,8.6,agree,agree,60.0,60.0,5,3
-Kapisa,Naser Mula Khil ,05dc8fe774b6,383b6fff5410,11.0,agree,agree,50.0,50.0,6,2
-Kapisa,Naser Mula Khil ,8900804a608d,20386829bade,10.8,agree,agree,60.0,60.0,7,1
-Kapisa,Tawachian ,cd9bed6e6e34,b5162a3d3067,8.4,agree,agree,53.0,53.0,4,1
-Kapisa,Tawachian ,59290e8e98a6,ed3adfe1ff16,10.2,agree,mixed,53.0,29.0,1,3
-Khost,University hill,99cded050b3e,b9a11e81e82e,8.7,agree,agree,67.0,67.0,5,2
-Khost,University site,d9bd5293ecc9,4e8dea38fb84,9.7,agree,agree,67.0,67.0,3,3
-Khost,Werza,7dad60bab709,fdf32ddf1d3e,6.0,agree,agree,45.0,45.0,14,4
-Khost,Werza,7dad60bab709,cc7db73383ba,7.9,agree,agree,45.0,45.0,14,6
-Khost,Werza,fdf32ddf1d3e,cc7db73383ba,8.6,agree,agree,45.0,45.0,4,6
-Kunduz,Kabali Qushlaq,c7de6e5c7705,7052d1d33b51,9.1,agree,agree,46.0,46.0,6,1
-Kunduz,Lala Maidan 3,f76a47e9d087,78ccef236835,7.8,mixed,agree,35.0,33.0,25,1
-Kunduz,Lala Maidan 3,08e5b009a0a0,6fdcb9b3af76,11.9,agree,agree,36.5,36.5,2,2
-Kunduz,Mola khel,c5d7e3de9a77,9a55d84757db,11.2,agree,agree,31.8,31.8,5,2
-Kunduz,Mola khel,f0be65183da8,3ab82b54cb15,4.6,agree,agree,31.6,31.6,6,3
-Kunduz,Niazi,fc7690b090b7,2016942ae929,11.3,agree,agree,19.4,19.4,5,2
-Kunduz,Niazi,542ec84f3692,412deaf27782,7.5,agree,agree,18.0,18.5,4,2
-Kunduz,Niazi,542ec84f3692,84d81b11181e,10.3,agree,agree,18.0,18.0,4,2
-Kunduz,Niazi,412deaf27782,84d81b11181e,8.6,agree,agree,18.5,18.0,2,2
-Kunduz,Yaamchi,b6828ca41e6e,68f537247fa9,10.4,agree,agree,6.7,6.7,5,1
-Kunduz,Yaamchi,b6828ca41e6e,35a300c17253,6.7,agree,agree,6.7,6.7,5,1
-Laghman,Maidani,be932122ffeb,c05f211f5262,6.9,agree,agree,23.5,23.5,11,1
-Laghman,Zerani,18d7c5fa8f15,ca2d0ffdbdb8,5.8,agree,agree,14.0,14.0,3,1
-Logar,Bala deh,b4ffc30b260c,20295b6c0fd2,11.2,agree,agree,18.0,18.0,8,3
-Logar,Bala deh,b4ffc30b260c,bfa24b97a541,7.6,agree,agree,18.0,18.0,8,2
-Logar,Bala deh,83b4f13a8379,58aec97a6c07,8.6,agree,agree,28.0,28.0,5,1
-Logar,Bala deh,40f6c9ab738e,5b24a8fd41e2,8.2,mixed,agree,25.0,25.0,13,6
-Logar,Bala deh,40f6c9ab738e,5a8275a572b1,7.5,mixed,agree,25.0,25.0,13,2
-Logar,Bala deh,40f6c9ab738e,57b3b1f47dfb,9.4,mixed,agree,25.0,25.0,13,1
-Logar,Bala deh,91cfdbe5fae3,da85a89f827a,9.5,agree,agree,28.0,28.0,3,1
-Logar,Bala deh,5e7484826c7c,bfa24b97a541,9.2,agree,agree,18.0,18.0,3,2
-Logar,Bala deh,20295b6c0fd2,c1778d2446f8,10.3,agree,agree,18.0,18.0,3,2
-Logar,Bala deh,9673ff8238f2,c1778d2446f8,10.8,agree,agree,18.0,18.0,1,2
-Maidan Wardak,Deh Hayat,1bd114305274,83dc48a84df2,10.3,agree,agree,21.6,21.6,7,4
-Maidan Wardak,Deh Hayat,1bd114305274,257969c44e2d,10.8,agree,agree,21.6,21.6,7,3
-Maidan Wardak,Deh Hayat,1bd114305274,b580d392895c,10.5,agree,mixed,21.6,60.0,7,3
-Maidan Wardak,Deh Hayat,357a416e9831,284b032a3821,10.0,mixed,agree,22.0,22.0,14,3
-Maidan Wardak,Deh Hayat,357a416e9831,bd27e5f4387e,11.7,mixed,agree,22.0,22.0,14,1
-Maidan Wardak,Deh Hayat,772f49e70ab0,ae28ba186aea,10.3,mixed,agree,21.6,60.0,4,1
-Maidan Wardak,Musa Khil,c91b315c2c8c,07b996b32627,10.9,mixed,agree,12.2,12.2,7,1
-Maidan Wardak,Musa Khil,c91b315c2c8c,835b7a959646,8.1,mixed,agree,12.2,12.2,7,3
-Maidan Wardak,Musa Khil,37c017784bb8,c13430774163,5.0,mixed,agree,8.0,8.0,11,1
-Nimroz,Dangar Abad,3e3ef620849a,d8da85d32e3d,6.6,agree,agree,21.0,21.0,11,1
-Nimroz,Gulistan,2a9480e170fd,ad79ba58e76e,3.8,agree,agree,95.0,95.0,4,7
-Nimroz,Kaj-e-Satar,08696dfc8b4a,8e3e8cfb5743,8.7,agree,agree,80.0,80.0,10,2
-Paktika,Kachi,8456ab7d3ff3,b4721bbe3d16,10.6,agree,agree,65.0,65.0,4,2
-Paktika,Kachi,8456ab7d3ff3,b90859a6f6f8,10.6,agree,agree,65.0,65.0,4,8
-Paktika,Kachi,b90859a6f6f8,6eba32384762,12.0,agree,agree,65.0,65.0,8,4
-Paktya,Bar Halim khil,7f08074f5174,328fd53d210f,8.6,agree,agree,105.0,105.0,16,1
-Paktya,Halim khil,c7d4daa6a461,c76438f89b84,8.2,mixed,agree,105.0,105.0,12,2
-Paktya,Husin khil,af57d65e5505,5177f7c451d4,11.1,agree,agree,100.0,100.0,11,4
-Paktya,Husin khil,af57d65e5505,2dc3c996501e,5.8,agree,agree,100.0,100.0,11,4
-Paktya,Husin khil,af57d65e5505,3ad79e2168b7,9.7,agree,agree,100.0,100.0,11,1
-Paktya,Husin khil,5177f7c451d4,3ad79e2168b7,11.2,agree,agree,100.0,100.0,4,1
-Panjsher,Abdaba,ada3c4bf0477,b7b6ce687af5,4.2,agree,agree,15.0,15.0,7,4
-Panjsher,Aspiyana,5dc8038f4f2e,35477c8ecdb6,3.2,mixed,agree,13.0,14.0,11,1
-Panjsher,Asticha,d7f359949d70,da13685790ed,9.3,mixed,agree,14.0,16.0,12,2
-Panjsher,Asticha,d7f359949d70,cc3534727426,6.7,mixed,agree,14.0,16.0,12,4
-Panjsher,Asticha,d7b22ee96d14,a6a8152f9b54,10.5,agree,agree,16.0,16.0,10,2
-Panjsher,Asticha,d7b22ee96d14,ab394eb86617,10.6,agree,agree,16.0,16.0,10,4
-Panjsher,Baharak,761effd7c5e6,f4298e1b78ad,8.9,agree,agree,12.2,12.2,4,1
-Panjsher,Baharak,8d46fbdef6f5,35a44ea5b96c,11.2,mixed,agree,9.0,9.0,4,1
-Panjsher,Baharak,06a6500f2834,e9a6ccdb7bd8,9.0,agree,agree,26.0,26.0,6,1
-Panjsher,Baharak,3ae9e8f0148c,201f9f4972dc,6.8,agree,agree,13.5,13.5,6,1
-Panjsher,Chashma 3,8b57e15334d7,c5d97a3af4f6,9.6,mixed,agree,23.0,23.0,13,4
-Panjsher,Chashma 3,7c59d063f18f,58c5545f266a,6.2,mixed,agree,34.0,25.0,18,1
-Panjsher,Chashma 3,c0b58075a52b,65b8bc70f432,9.5,agree,agree,29.0,25.0,12,2
-Panjsher,Orati,4c173af523e8,dd4f6f092395,7.1,agree,agree,16.0,16.0,15,2
-Panjsher,Orati,31008b37bbb4,daf90b8f2c9c,11.2,mixed,agree,18.0,18.0,12,2
-Panjsher,Oroo,4cb86fcb8643,48d24c8d7d34,10.9,agree,mixed,13.0,12.0,4,2
-Panjsher,Oroo,b5460ceb6049,e21d0b33b4bb,7.9,mixed,mixed,12.0,13.0,5,2
-Panjsher,Qala Mirsha,1540597afdc7,0e5e2112bab8,9.4,agree,agree,17.0,17.3,14,1
-Panjsher,Qalacha,8e84736b9bbe,56c1bb7359e7,7.7,mixed,agree,6.0,6.5,16,1
-Panjsher,Qalacha,84a29773bad3,ab38e2eddddf,9.3,mixed,agree,23.0,23.0,18,1
-Panjsher,Qalacha,84a29773bad3,d9730be3255d,9.4,mixed,agree,23.0,23.0,18,1
-Panjsher,Qalacha,d5bb9f327f31,eba3d2776d42,12.0,mixed,agree,6.0,6.0,10,2
-Panjsher,Qalacha,d5bb9f327f31,771546f53a99,9.4,mixed,agree,6.0,6.0,10,2
-Panjsher,Qalacha,d5bb9f327f31,35f273f55b07,8.4,mixed,agree,6.0,6.0,10,3
-Parwan,Aghil Kabuly,055bce83dc2a,e97565d6933b,8.2,agree,agree,10.0,10.0,4,5
-Parwan,Aghil Kabuly,b96732bca698,8ab1c0941022,10.4,agree,mixed,13.0,13.0,6,3
-Parwan,Aghil Kabuly,b96732bca698,53601717429e,8.8,agree,agree,13.0,13.0,6,3
-Parwan,Aghil Kabuly,3afdf4390b85,ca675b61fb01,11.9,agree,agree,12.0,12.0,2,2
-Parwan,Aghil Kabuly,8ab1c0941022,53601717429e,11.3,mixed,agree,13.0,13.0,3,3
-Parwan,Aghil Kabuly,f1a2548fec58,ca675b61fb01,7.9,agree,agree,12.0,12.0,5,2
-Parwan,Dah Naw,9c4200bb7469,e3ee3ab5ab19,7.9,agree,agree,25.0,25.0,6,7
-Parwan,Dah Naw,9c4200bb7469,2ac4334addc8,10.9,agree,agree,25.0,25.0,6,1
-Parwan,Dah Naw,4127adaaf52a,3fe69ecb8207,9.8,mixed,agree,25.0,25.0,4,1
-Parwan,Dah Naw ,72359929e39a,5a24a16d842b,10.9,mixed,agree,25.0,20.1,5,4
-Parwan,Daraz gerd,37e73d54ca54,9567f9126adf,11.5,mixed,agree,26.0,26.0,10,1
-Parwan,Daraz gerd,eacb3d71cced,068e5c0e3dd5,7.0,mixed,agree,24.0,24.0,4,3
-Parwan,Daraz gerd ,0a46a34aec3a,e4df63ead7ed,8.7,mixed,mixed,19.0,19.0,3,3
-Parwan,Fendaqistan Bala ghail ,c11f8dbb2a47,f1d312570429,7.8,agree,agree,10.0,10.0,3,2
-Parwan,Fendaqistan Bala ghail ,c11f8dbb2a47,2f0d6ca76dfe,7.2,agree,agree,10.0,10.0,3,1
-Parwan,Fendaqistan Bala ghail ,e37222f462b0,e0a382b17d8c,8.5,agree,agree,8.0,8.0,5,1
-Parwan,Fendaqistan Bala ghail ,e37222f462b0,1cb34d983c6c,11.0,agree,agree,8.0,8.0,5,2
-Parwan,Fendaqistan Bala ghail ,0ac12067d714,2f0d6ca76dfe,9.9,agree,agree,10.0,10.0,3,1
-Parwan,Fendaqistan Bala ghail ,9fab35861c79,42965f9ee54d,11.4,agree,agree,10.0,10.0,3,1
-Parwan,Khawaja Sayaran Bala ,564457fd04a8,20cce0c40d80,8.1,mixed,agree,23.0,23.0,5,3
-Parwan,Khawaja Sayaran Bala ,564457fd04a8,0bdb2ac6a935,10.3,mixed,agree,23.0,20.0,5,1
-Parwan,Khawaja Sayaran Bala ,54ac54824c37,8c25aed02bd9,11.6,agree,mixed,20.0,23.0,2,4
-Parwan,Khawaja Sayaran Bala ,20cce0c40d80,0bdb2ac6a935,6.7,agree,agree,23.0,20.0,3,1
-Parwan,Ofyan,0c72cbe59e05,369a00f994b8,9.8,agree,agree,15.0,15.0,6,3
-Parwan,Ofyan,0c72cbe59e05,cd3f118480dd,10.8,agree,agree,15.0,13.0,6,2
-Parwan,Ofyan,0c72cbe59e05,ba5cf3850a90,6.7,agree,agree,15.0,13.0,6,1
-Parwan,Ofyan,6a825cb4cce8,0f1145cd481a,7.4,agree,agree,19.0,19.0,6,4
-Parwan,Ofyan,6a825cb4cce8,0966daa77b03,11.7,agree,agree,19.0,19.0,6,2
-Parwan,Ofyan,0f1145cd481a,0966daa77b03,9.2,agree,agree,19.0,19.0,4,2
-Parwan,Ofyan,337c1552616d,ba5cf3850a90,9.2,mixed,agree,13.0,13.0,2,1
-Parwan,Ofyan,cd3f118480dd,ba5cf3850a90,11.2,agree,agree,13.0,13.0,2,1
-Parwan,Shiwa,7d79c95c6fcb,7271051c32ae,10.3,agree,agree,25.0,25.0,5,5
-Parwan,Shiwa,7d79c95c6fcb,ce80ae0ef516,7.9,agree,agree,25.0,25.0,5,1
-Parwan,Shiwa,609d22633934,4121bdd8048b,9.2,agree,agree,25.0,25.0,5,2
-Parwan,Shiwa,4121bdd8048b,ce76e366edb1,11.3,agree,agree,25.0,25.0,2,1
-Parwan,Sinjid Dara,96730b21d11d,402894d51d53,10.4,agree,agree,13.0,13.0,2,1
-Parwan,Surkhi,08757ed15a40,abe47c88482a,8.4,agree,agree,15.0,15.0,8,1
-Parwan,Surkhi,a90e1427ea40,bb4be9e00af3,8.4,agree,agree,15.0,15.0,5,2
-Sar-e-Pul,Kariz,4abb058d5cab,23ddf105748e,6.7,agree,agree,52.0,52.0,6,2
-Sar-e-Pul,Kariz ,6d3c85b1929f,afe32d1f8d8f,8.2,agree,agree,50.0,50.0,12,1
-Uruzgan,Chagai,76475739b3d1,736b761646a6,9.5,missing,missing,2.5,2.5,7,1
-Zabul,Jajga,ce70935475fc,4f0eb04dfa92,12.0,agree,agree,25.0,25.0,10,2
-Zabul,Jajga,ce70935475fc,45451f899b4e,7.1,agree,agree,25.0,25.0,10,2
-Zabul,Kakar,5b8b610d4b01,487cc431d82d,11.1,mixed,agree,0.1,0.1,9,2
-Zabul,Kakar,5b8b610d4b01,cb235cb79de1,5.8,mixed,agree,0.1,0.1,9,3
-Zabul,Kakar,5b8b610d4b01,1f79f5ee91c8,11.5,mixed,agree,0.1,0.1,9,1
-Zabul,Kawshak,eae4a1358f13,8423e8a4d297,9.1,agree,agree,24.0,24.0,8,2
-Zabul,Kawshak,eae4a1358f13,2a9e511f1cc1,8.0,agree,agree,24.0,24.0,8,3
-Zabul,Kawshak,1a210716cab2,2a9e511f1cc1,11.5,agree,agree,24.0,24.0,1,3
-Zabul,Loy-Kariz,ec9158674e0b,49409af2834a,9.1,agree,agree,12.0,12.0,3,1
-Zabul,Patkhil,b53c2a86da51,11e70bdd18a5,6.3,agree,agree,18.0,18.0,10,3
-Zabul,Patkhil,b53c2a86da51,8e78c3b7d281,11.0,agree,agree,18.0,18.0,10,1
+Farah,Taparig ,c2e3dc6e744c,94d9e050f0ec,12.0,agree,agree,80.0,80.0,2,1
+Ghazni,Mushak,78df189f8d4d,bead3acbc7a6,9.7,agree,agree,11.0,11.0,4,3
+Ghazni,Mushak,9c808bda89d5,279584c81ed9,5.8,agree,agree,11.0,11.0,19,3
+Helmand,Ghori,3fd658151749,af55936ccc35,10.0,agree,agree,140.0,140.0,9,3
+Herat,Khwaja Mohammad Kamil,b3a384a255c3,b7dff90902b5,13.0,mixed,agree,18.55,16.55,4,2
+Kabul,Esmila,62857a06f189,13be56f60ba9,14.1,agree,mixed,20.7,20.7,2,6
+Kabul,Esmila,62857a06f189,a281c4a510e7,11.4,agree,agree,20.7,20.7,2,1
+Kabul,Esmila,9c422f5a8fb7,d0f82586a151,8.5,agree,agree,25.25,25.25,3,2
+Kabul,Esmila,13be56f60ba9,a281c4a510e7,13.9,mixed,agree,20.7,20.7,6,1
+Kabul,Esmila,99c5c1e06f19,d0f82586a151,8.6,agree,agree,25.25,25.25,6,2
+Kabul,Kariz bala,0e2df6d1ec1e,844c90b6b354,8.5,mixed,agree,18.7,18.7,8,1
+Kabul,Kariz bala,0e2df6d1ec1e,00947f87adbd,8.6,mixed,agree,18.7,18.7,8,3
+Kabul,Kariz bala,844c90b6b354,00947f87adbd,11.5,agree,agree,18.7,18.7,1,3
+Kapisa,Aram kot,a899b4bc0dc5,250963b44f5e,12.7,agree,mixed,57.0,57.0,6,3
+Kapisa,Gado china,310640b30e44,7be0093158f0,12.2,mixed,mixed,12.0,12.0,7,5
+Kapisa,Ghazi Khan Khil,ce3c1cafd760,d6e8eee79139,6.5,agree,agree,19.0,19.0,8,2
+Kapisa,Ghazi Khan Khil ,91046205fc46,383b6fff5410,12.7,mixed,mixed,8.5,8.5,5,6
+Kapisa,Ghazi Khan Khil ,29a3c1d61851,0eaf1a6b23ea,5.6,mixed,agree,9.5,19.0,5,1
+Kapisa,Konj Paryat ,5453968d8144,740b5d44d0fc,14.0,mixed,mixed,65.0,70.0,6,4
+Kapisa,Landakhil ,19b536536612,245785b2943b,11.5,mixed,mixed,42.0,48.0,9,4
+Kapisa,Mahtan ,18a107155fd1,1e76f39eac66,9.3,mixed,agree,24.0,24.0,5,1
+Kapisa,Moman khil,a75b4a8a447e,cf53842ca492,10.8,agree,agree,38.0,38.0,6,15
+Kapisa,Naser Mula Khil ,05dc8fe774b6,e4e02e07578f,11.0,agree,agree,50.0,50.0,6,2
+Kapisa,Naser Mula Khil ,8900804a608d,c12d3b86c045,10.8,agree,agree,60.0,60.0,7,1
+Kapisa,Sheenkai ,ef1a1d164351,96458a24ae19,12.5,agree,agree,8.5,8.5,3,1
+Kapisa,Surghi ,03245a2ee708,b5162a3d3067,13.3,agree,agree,11.0,11.0,6,1
+Kapisa,Surghi ,21f1a04efba9,00e39cc7e372,10.9,mixed,agree,16.0,11.0,2,1
+Kapisa,Tawachian ,9379de0fea3a,5060bfca4df7,14.9,agree,agree,27.0,27.0,3,3
+Kapisa,Tawachian ,cd9bed6e6e34,3209e77323af,8.8,agree,agree,53.0,53.0,5,1
+Kapisa,Ziawodin khil,f16edf5655d7,c5e88f72ec71,6.1,agree,agree,16.0,16.0,15,3
+Khost,University hill,4e8dea38fb84,cc7db73383ba,13.0,agree,agree,67.0,67.0,4,2
+Khost,University site,b9a11e81e82e,fdf32ddf1d3e,9.7,agree,agree,67.0,67.0,3,3
+Khost,Werza,7dad60bab709,3bd98886ab85,10.9,agree,agree,45.0,45.0,18,5
+Khost,Werza,7dad60bab709,ee3aae5266c3,7.0,agree,agree,45.0,45.0,18,3
+Khost,Werza,7dad60bab709,de3420be0ca7,8.4,agree,agree,45.0,45.0,18,1
+Khost,Werza,ee3aae5266c3,de3420be0ca7,8.8,agree,agree,45.0,45.0,3,1
+Kunduz,Lala Maidan 2,ba17ee7be433,ce3fe86f8089,13.5,mixed,mixed,28.0,30.0,4,5
+Kunduz,Lala Maidan 3,f76a47e9d087,93f830d1759b,12.2,mixed,mixed,35.0,33.0,28,5
+Kunduz,Lala Maidan 3,c7de6e5c7705,6fdcb9b3af76,13.4,agree,agree,36.5,36.5,3,1
+Kunduz,Mola khel,43f81a7716ca,46f3957667a0,14.3,agree,agree,31.8,31.8,6,1
+Kunduz,Mola khel,f8fdf1d2c927,9a55d84757db,9.7,agree,agree,31.6,31.6,8,1
+Kunduz,Niazi,4ab80b3a12fe,335f1f410e02,11.3,agree,agree,19.4,19.4,5,2
+Kunduz,Niazi,4ab80b3a12fe,5d3277aa0301,13.5,agree,agree,19.4,19.4,5,1
+Kunduz,Niazi,db1487416460,1f73b9b40b65,10.7,agree,agree,18.0,18.0,7,1
+Kunduz,Niazi,335f1f410e02,5d3277aa0301,14.4,agree,agree,19.4,19.4,2,1
+Kunduz,Yaamchi,78ccef236835,aa1e1fe576cd,13.7,agree,agree,6.7,6.7,5,5
+Kunduz,Yaamchi,aa20d238c28d,08e5b009a0a0,12.8,agree,agree,6.5,6.5,3,5
+Kunduz,Yaamchi,aa1e1fe576cd,2016942ae929,7.8,agree,agree,6.7,6.7,5,1
+Laghman,Maidani,06a5b7429728,ca2d0ffdbdb8,5.2,agree,agree,40.0,40.0,9,3
+Logar,Bala deh,b4ffc30b260c,5e7484826c7c,14.2,agree,agree,18.0,18.0,10,3
+Logar,Bala deh,b4ffc30b260c,10f40bd82411,12.1,agree,agree,18.0,18.0,10,5
+Logar,Bala deh,b4ffc30b260c,58aec97a6c07,12.6,agree,agree,18.0,28.0,10,5
+Logar,Bala deh,b4ffc30b260c,c1778d2446f8,8.3,agree,agree,18.0,18.0,10,2
+Logar,Bala deh,83b4f13a8379,91cfdbe5fae3,9.5,agree,agree,28.0,28.0,6,2
+Logar,Bala deh,83b4f13a8379,330ce6a80a6c,13.1,agree,mixed,28.0,25.0,6,9
+Logar,Bala deh,83b4f13a8379,42bba6321099,10.6,agree,agree,28.0,28.0,6,2
+Logar,Bala deh,40f6c9ab738e,5b24a8fd41e2,8.5,mixed,agree,25.0,25.0,13,7
+Logar,Bala deh,40f6c9ab738e,5a8275a572b1,8.3,mixed,agree,25.0,25.0,13,2
+Logar,Bala deh,5e7484826c7c,c1778d2446f8,9.2,agree,agree,18.0,18.0,3,2
+Logar,Bala deh,10f40bd82411,58aec97a6c07,10.2,agree,agree,18.0,28.0,5,5
+Logar,Bala deh,10f40bd82411,c1778d2446f8,12.9,agree,agree,18.0,18.0,5,2
+Logar,Bala deh,5b24a8fd41e2,5a8275a572b1,13.5,agree,agree,25.0,25.0,7,2
+Logar,Bala deh,868223576842,a2ddf47eeb32,10.3,agree,agree,18.0,18.0,3,1
+Logar,Bala deh,868223576842,32525f48f0b0,12.3,agree,agree,18.0,18.0,3,1
+Maidan Wardak,Deh Hayat,1bd114305274,83dc48a84df2,10.4,agree,agree,21.6,21.6,9,4
+Maidan Wardak,Deh Hayat,1bd114305274,257969c44e2d,11.3,agree,mixed,21.6,60.0,9,3
+Maidan Wardak,Deh Hayat,357a416e9831,b580d392895c,8.5,agree,mixed,22.0,22.0,7,11
+Maidan Wardak,Musa Khil,c91b315c2c8c,cc73858e4391,8.3,mixed,agree,12.2,12.2,9,2
+Maidan Wardak,Musa Khil,c91b315c2c8c,835b7a959646,9.9,mixed,agree,12.2,12.2,9,2
+Maidan Wardak,Musa Khil,cc73858e4391,835b7a959646,11.6,agree,agree,12.2,12.2,2,2
+Maidan Wardak,Zamborak,e2ac6521c15d,284b032a3821,12.9,agree,mixed,19.6,19.6,4,3
+Nimroz,Dangar Abad,3e3ef620849a,ad79ba58e76e,6.6,agree,agree,21.0,21.0,11,1
+Nimroz,Gulistan,2a9480e170fd,e45e9d673b7a,4.8,agree,agree,95.0,95.0,10,1
+Nimroz,Kaj-e-Satar,08696dfc8b4a,8e3e8cfb5743,10.5,agree,agree,80.0,80.0,11,1
+Paktika,Kachi,8456ab7d3ff3,b90859a6f6f8,10.8,agree,agree,65.0,65.0,7,7
+Paktika,Kachi,b4721bbe3d16,b90859a6f6f8,12.4,agree,agree,65.0,65.0,7,7
+Paktya,Bar Halim khil,7f08074f5174,c76438f89b84,8.6,agree,agree,105.0,105.0,16,1
+Paktya,Husin khil,af57d65e5505,201c7d56fbed,7.5,agree,agree,100.0,100.0,13,4
+Paktya,Husin khil,af57d65e5505,29809b697f95,9.0,agree,agree,100.0,100.0,13,3
+Panjsher,Asticha,d7f359949d70,c5d97a3af4f6,7.5,mixed,agree,14.0,16.0,9,9
+Panjsher,Asticha,d7b22ee96d14,9805cd8c7bcc,10.5,agree,agree,16.0,16.0,10,2
+Panjsher,Asticha,d7b22ee96d14,0e5e2112bab8,13.7,agree,agree,16.0,16.0,10,1
+Panjsher,Asticha,d7b22ee96d14,cc4bd4f35f6e,10.6,agree,agree,16.0,16.0,10,4
+Panjsher,Asticha,9805cd8c7bcc,cc4bd4f35f6e,12.8,agree,agree,16.0,16.0,2,4
+Panjsher,Chashma 3,8b57e15334d7,eb1c28502f1d,7.7,agree,mixed,23.0,23.0,5,12
+Panjsher,Chashma 3,9fb1c46b6926,cc3534727426,5.7,agree,agree,29.0,25.0,9,6
+Panjsher,Orati,790380451d4e,a6a8152f9b54,4.8,mixed,agree,17.5,18.0,6,9
+Panjsher,Oroo,e2dfd4a1aed6,daf90b8f2c9c,6.0,agree,mixed,12.0,12.0,5,3
+Panjsher,Oroo,771546f53a99,35a44ea5b96c,10.9,agree,mixed,13.0,12.0,4,2
+Panjsher,Oroo,8d46fbdef6f5,f9eec428715a,10.1,mixed,agree,13.0,12.0,6,1
+Panjsher,Qala Mirsha,1540597afdc7,f4573bcbfeca,8.5,agree,agree,17.0,17.0,14,1
+Panjsher,Qalacha,85703f047f2a,fc659dcd5933,12.6,mixed,agree,11.0,11.0,15,2
+Panjsher,Qalacha,84a29773bad3,e5e994ee8564,9.7,mixed,agree,23.0,23.0,19,1
+Panjsher,Qalacha,d5bb9f327f31,c4de5e6c1f92,8.2,mixed,agree,6.0,6.0,11,4
+Panjsher,Qalacha,d5bb9f327f31,3bb9938595e6,12.8,mixed,agree,6.0,6.0,11,1
+Panjsher,Qalacha,d5bb9f327f31,53f1413a35fb,10.4,mixed,agree,6.0,6.0,11,3
+Panjsher,Qalacha,c4de5e6c1f92,53f1413a35fb,9.3,agree,agree,6.0,6.0,4,3
+Panjsher,Sangana,3ae9e8f0148c,a68302d03dae,12.6,mixed,agree,17.0,13.0,5,1
+Parwan,Aghil Kabuly,6cefb1ac5099,0a46a34aec3a,10.3,agree,agree,12.0,12.0,5,1
+Parwan,Aghil Kabuly,d30d57dd7a3c,7d3e08d8121b,13.7,agree,mixed,12.0,12.0,9,4
+Parwan,Aghil Kabuly,b96732bca698,7d3e08d8121b,8.5,agree,mixed,13.0,12.0,8,4
+Parwan,Aghil Kabuly,b43ff723388f,b03b4faf6959,14.7,agree,agree,25.0,25.0,4,1
+Parwan,Dah Naw,e06b6a5c02d9,ca608a4b555d,12.5,agree,agree,20.0,20.1,2,1
+Parwan,Dah Naw,9c4200bb7469,1cb34d983c6c,10.9,agree,mixed,25.0,25.0,12,4
+Parwan,Dah Naw,1cb34d983c6c,fbfe6895621f,11.4,mixed,mixed,25.0,25.0,4,2
+Parwan,Dah Naw,7271051c32ae,fe6b36ba3049,12.8,agree,agree,34.0,34.0,2,1
+Parwan,Dah Naw ,7b3a6031e870,22fe49b962b1,9.2,agree,agree,20.1,25.0,8,2
+Parwan,Dah Naw ,a19f05a8d125,a6951b2fad07,14.6,agree,agree,34.0,34.0,2,1
+Parwan,Daraz gerd ,3caba5e8b222,9829fec64433,8.3,agree,agree,19.0,19.0,5,1
+Parwan,Daraz gerd ,10163cd24ae0,8ad490b81f71,10.4,agree,mixed,19.0,19.0,4,5
+Parwan,Daraz gerd ,10163cd24ae0,9829fec64433,9.0,agree,agree,19.0,19.0,4,1
+Parwan,Daraz gerd ,54ac54824c37,57300aca7233,13.8,mixed,agree,24.0,26.0,5,3
+Parwan,Fendaqistan Bala ghail ,b189ee47167a,cd3f118480dd,14.2,agree,agree,10.0,10.0,5,1
+Parwan,Fendaqistan Bala ghail ,456902ee2365,96730b21d11d,13.5,agree,agree,10.0,10.0,6,3
+Parwan,Fendaqistan Bala ghail ,e37222f462b0,5fe9fa386fba,11.6,agree,agree,8.0,8.0,6,2
+Parwan,Fendaqistan Bala ghail ,5a24a16d842b,cd3f118480dd,11.4,agree,agree,10.0,10.0,3,1
+Parwan,Khawaja Sayaran Bala ,0f1145cd481a,cac7cceb17b1,9.4,mixed,agree,20.0,23.0,5,1
+Parwan,Ofyan,0c72cbe59e05,197b1fa0ded5,12.4,mixed,agree,13.0,13.0,9,2
+Parwan,Ofyan,0c72cbe59e05,438e62410ab3,10.7,mixed,agree,13.0,15.0,9,1
+Parwan,Ofyan,77189572934c,f1a2548fec58,13.0,agree,agree,13.0,13.0,6,2
+Parwan,Ofyan,6a825cb4cce8,2214298cd745,8.8,agree,agree,19.0,19.0,8,2
+Parwan,Ofyan,2a04872e8747,f1a2548fec58,14.0,agree,agree,15.0,13.0,3,2
+Parwan,Ofyan,9b965cc7ed83,197b1fa0ded5,12.4,mixed,agree,13.0,13.0,2,2
+Parwan,Ofyan,7affb7325f78,197b1fa0ded5,13.4,agree,agree,13.0,13.0,2,2
+Parwan,Shiwa,7d79c95c6fcb,4127adaaf52a,10.4,agree,agree,25.0,25.0,9,1
+Parwan,Shiwa,7d79c95c6fcb,be8525076f5b,14.7,agree,agree,25.0,25.0,9,1
+Parwan,Shiwa,7bc022729664,e97565d6933b,12.7,agree,agree,25.0,25.0,3,6
+Parwan,Shiwa,e97565d6933b,20cce0c40d80,10.0,agree,agree,25.0,25.0,6,2
+Parwan,Shiwa,20cce0c40d80,35ad52027929,11.3,agree,agree,25.0,25.0,2,1
+Parwan,Surkhi,cba9cce663f8,8ab1c0941022,9.0,agree,agree,15.0,15.0,8,4
+Parwan,Surkhi,2119f4db6cc6,dac217426f2a,10.2,agree,agree,15.0,15.0,5,3
+Uruzgan,Chagai,76475739b3d1,e0c4bcf44249,9.5,missing,missing,2.5,2.5,7,1
+Zabul,Jajga,ce70935475fc,cd864e236b3c,12.2,agree,agree,25.0,25.0,12,2
+Zabul,Kakar,5b8b610d4b01,4f0eb04dfa92,5.9,agree,mixed,0.1,0.1,9,4
+Zabul,Kakar,5b8b610d4b01,1a210716cab2,11.7,agree,agree,0.1,0.1,9,1
+Zabul,Kakar,5b8b610d4b01,2a9e511f1cc1,11.4,agree,agree,0.1,0.1,9,1
+Zabul,Kakar,4f0eb04dfa92,2a9e511f1cc1,13.4,mixed,agree,0.1,0.1,4,1
+Zabul,Kawshak,eae4a1358f13,81ec7ca56b5e,9.3,agree,agree,24.0,24.0,10,3
+Zabul,Kawshak,eae4a1358f13,cb235cb79de1,7.2,agree,agree,24.0,24.0,10,1
+Zabul,Kawshak,81ec7ca56b5e,cb235cb79de1,7.6,agree,agree,24.0,24.0,3,1
+Zabul,Loy-Kariz,84ed2206a287,8e78c3b7d281,12.8,agree,agree,12.0,12.0,9,2
+Zabul,Loy-Kariz,11e70bdd18a5,8e78c3b7d281,9.8,agree,agree,12.0,12.0,3,2
+Zabul,Patkhil,b53c2a86da51,8423e8a4d297,11.2,agree,agree,18.0,18.0,13,1

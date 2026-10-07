@@ -16,7 +16,7 @@ import re
 import numpy as np
 import pandas as pd
 
-CLUSTER_M = 12.0
+CLUSTER_M = 15.0
 SOFT_MERGE_M = 50.0
 FAR_GPS_M = 200.0
 R_EARTH_M = 6_371_000.0
@@ -149,7 +149,7 @@ def owner_check_status(names) -> str:
 
 
 def attach_identity(df: pd.DataFrame, cluster_m: float = CLUSTER_M) -> pd.DataFrame:
-    """well_id = 12 m complete-linkage site. Owner is a check, not the key."""
+    """well_id = 15 m complete-linkage site. Owner is a check, not the key."""
     out = df.copy()
     out["owner_n"] = out["owner"].map(norm_text)
     out["phone_k"] = out["phone"].map(phone_key)
@@ -224,7 +224,7 @@ def nearby_other_wells(wells: pd.DataFrame, radius_m: float = CLUSTER_M) -> pd.D
 
 
 def same_owner_splits(wells: pd.DataFrame, visits: pd.DataFrame | None = None) -> pd.DataFrame:
-    """Same owner name in the same village on more than one 12 m well.
+    """Same owner name in the same village on more than one 15 m well.
 
     Country-wide repeats of 'Mohammad' are ignored — we group by village.
     """

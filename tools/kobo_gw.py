@@ -1,6 +1,6 @@
 """Clean FAO KOBO well visits and build inventory, QA, and impact tables.
 
-Each KOBO row is one visit, not one well. Well identity is a 12 m GPS
+Each KOBO row is one visit, not one well. Well identity is a 15 m GPS
 cluster (complete linkage). Owner name is a cross-check only — the same
 personal name appears in many provinces. Depth-to-water (DTW): larger = deeper.
 
@@ -215,7 +215,7 @@ def drop_empty_rows(df: pd.DataFrame) -> tuple[pd.DataFrame, int]:
 
 
 def attach_well_id(df: pd.DataFrame) -> pd.DataFrame:
-    """12 m complete-linkage GPS cluster; owner name is a check, not the key."""
+    """15 m complete-linkage GPS cluster; owner name is a check, not the key."""
     return attach_identity(df, cluster_m=CLUSTER_M)
 
 
@@ -835,7 +835,7 @@ QA_LABELS = {
     "recall_extreme": "Recalled DTW change > 15 m",
     "form_clone": "Same depth+before copied across ≥5 owners",
     "dtw_jump": "DTW jumped > 3 m within 21 days",
-    "owner_mixed": "Several distinct owner names at one 12 m site",
+    "owner_mixed": "Several distinct owner names at one 15 m site",
 }
 
 
@@ -993,7 +993,7 @@ def write_cleaning_md(
         "## Identity counts",
         "",
         f"- Visits: **{len(visits)}**",
-        f"- Wells (12 m GPS clusters): **{len(wells)}**",
+        f"- Wells ({CLUSTER_M:.0f} m GPS clusters): **{len(wells)}**",
         f"- Owner check agree / mixed / missing: "
         f"{int((wells['owner_check']=='agree').sum()) if 'owner_check' in wells.columns else '?'} / "
         f"{int((wells['owner_check']=='mixed').sum()) if 'owner_check' in wells.columns else '?'} / "
@@ -1002,7 +1002,7 @@ def write_cleaning_md(
         f"- Median GPS spread on multi-visit wells: **{_finite_median(spread)} m** "
         f"(complete linkage keeps this ≤ {CLUSTER_M:.0f} m)",
         f"- Nearby different wells (centroids ≤ {CLUSTER_M:.0f} m): **{len(nearby)}** pairs.",
-        f"- Same owner name in the same village on several 12 m wells: **{len(splits)}** "
+        f"- Same owner name in the same village on several {CLUSTER_M:.0f} m wells: **{len(splits)}** "
         f"({n_split_soft} within 200 m; {n_split_far} farther than 200 m).",
         "",
         "## How to treat outliers",
@@ -1021,8 +1021,8 @@ def write_cleaning_md(
         "| Form clone (≥5 owners, same depth+before) | Copied static fields | Do not treat as independent wells |",
         "| DTW jump > 3 m in ≤21 days | Two wells merged, or bad tape | Split well or drop those visits |",
         "| Same owner, GPS > 200 m apart | Two wells, or office vs field GPS | Keep as two wells until checked |",
-        "| Mixed owner names at one 12 m site | Shared well, or one GPS for many interviews | Keep as one site; review names |",
-        "| Same owner name, several 12 m sites in one village | Two wells, or office vs field GPS | Review; do not merge by name across provinces |",
+        "| Mixed owner names at one 15 m site | Shared well, or one GPS for many interviews | Keep as one site; review names |",
+        "| Same owner name, several 15 m sites in one village | Two wells, or office vs field GPS | Review; do not merge by name across provinces |",
         "",
         "Owner names for follow-up (not in git): `data/kobo/review_owners.csv`.",
         "",

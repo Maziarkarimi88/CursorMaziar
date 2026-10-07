@@ -17,7 +17,7 @@ This is a simple, low-cost protocol copied from farmer-run check-dam studies in 
 | [`docs/forms/`](docs/forms/) |  Form A setup, Form B daily pond, Form C wells/karez, Form D scorecard, observer card. |
 | [`figures/sampling_layout.png`](figures/sampling_layout.png) |  Where to put W-N, W-M, W-F, control wells, *sarchah* and *owkura*. |
 | [`templates/CheckDam_Recharge_Calculator.xlsx`](templates/CheckDam_Recharge_Calculator.xlsx) |  Yellow = type field data. Blue = formulas. An example spring filling is already entered. |
-| [`docs/KOBO_DATA_CLEANING.md`](docs/KOBO_DATA_CLEANING.md) | How to identify a well (12 m GPS + owner) and what counts as an outlier. |
+| [`docs/KOBO_DATA_CLEANING.md`](docs/KOBO_DATA_CLEANING.md) | How to identify a well (15 m GPS, then owner check) and what counts as an outlier. |
 | [`docs/KOBO_GW_MONITORING_ANALYSIS.md`](docs/KOBO_GW_MONITORING_ANALYSIS.md) | Tables and plots after cleaning. |
 | [`examples/`](examples/) | Teaching set: 10 wells, 104 weekly water levels, Mann–Kendall + Sen’s slope. |
 | [`examples/kobo_gw/`](examples/kobo_gw/) | De-identified well/visit/QA tables from the KOBO export (no owner names or phones). |

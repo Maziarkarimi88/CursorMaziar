@@ -1,6 +1,6 @@
 # Using the FAO KOBO groundwater monitoring export
 
-The cleaned export is one **visit per row**. Enumerators resubmitted the whole form; the weekly repeat group is empty. Rebuild wells from a **12 m GPS cluster** (complete linkage). Owner name is a **cross-check** only — the same personal name appears in many provinces. Cleaning rules are in [`KOBO_DATA_CLEANING.md`](KOBO_DATA_CLEANING.md).
+The cleaned export is one **visit per row**. Enumerators resubmitted the whole form; the weekly repeat group is empty. Rebuild wells from a **15 m GPS cluster** (complete linkage). Owner name is a **cross-check** only — the same personal name appears in many provinces. Cleaning rules are in [`KOBO_DATA_CLEANING.md`](KOBO_DATA_CLEANING.md).
 
 **DTW** (questions 14, 15, 24) is depth to water in metres. Larger = deeper = less water, unless an enumerator entered water-column height instead.
 
@@ -21,8 +21,8 @@ python3 tools/kobo_gw.py --csv data/kobo/groundwater_monitoring.csv
 | `examples/kobo_gw/qa_flags.csv` | One row per flag instance |
 | `examples/kobo_gw/perception_vs_measured.csv` | Reported Q30 vs tape/rope class |
 | `examples/kobo_gw/province_stats.csv` | Usable-well counts and median DTW change by province |
-| `examples/kobo_gw/nearby_other_wells.csv` | Different wells with centroids ≤ 12 m (owner cross-check) |
-| `examples/kobo_gw/same_owner_splits.csv` | Same owner, more than one 12 m site |
+| `examples/kobo_gw/nearby_other_wells.csv` | Different wells with centroids ≤ 15 m (owner cross-check) |
+| `examples/kobo_gw/same_owner_splits.csv` | Same owner, more than one 15 m site |
 | `examples/kobo_gw/CLEANING.md` | Identity counts and outlier rules from the last run |
 | `examples/kobo_gw/SUMMARY.md` | Counts and medians written by the last run |
 | `figures/kobo_gw/map_wells.png` | Unique-well map (size = visits) |

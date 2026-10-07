@@ -1,4 +1,4 @@
-"""Distance-first 12 m clusters; owner name is a check, not the key."""
+"""Distance-first 15 m clusters; owner name is a check, not the key."""
 from __future__ import annotations
 
 import sys
@@ -28,13 +28,13 @@ def test_haversine_8m_and_40m():
     assert 38 < haversine_m(lat0, lon0, lat40, lon0) < 42
 
 
-def test_cluster_merges_within_12m_only():
+def test_cluster_merges_within_15m_only():
     lat0, lon0 = 35.0, 69.5
-    lat = np.array([lat0, lat0 + 8 / 111_320, lat0 + 40 / 111_320])
-    lon = np.array([lon0, lon0, lon0])
+    lat = np.array([lat0, lat0 + 8 / 111_320, lat0 + 14 / 111_320, lat0 + 40 / 111_320])
+    lon = np.array([lon0, lon0, lon0, lon0])
     labs = cluster_coords(lat, lon, CLUSTER_M)
-    assert labs[0] == labs[1]
-    assert labs[0] != labs[2]
+    assert labs[0] == labs[1] == labs[2]
+    assert labs[0] != labs[3]
 
 
 def test_complete_linkage_does_not_chain_a_street():
@@ -67,9 +67,9 @@ def _visits(**kwargs) -> pd.DataFrame:
     return pd.DataFrame([base])
 
 
-def test_same_owner_within_12m_is_one_well():
+def test_same_owner_within_15m_is_one_well():
     a = _visits()
-    b = _visits(lat=35.0 + 8 / 111_320)
+    b = _visits(lat=35.0 + 14 / 111_320)
     df = attach_identity(pd.concat([a, b], ignore_index=True))
     assert df["well_id"].nunique() == 1
     assert set(df["owner_check"]) == {"agree"}
@@ -89,10 +89,10 @@ def test_same_name_in_two_provinces_stays_two_wells():
     assert df["well_id"].nunique() == 2
 
 
-def test_different_owners_within_12m_are_one_site_mixed_check():
+def test_different_owners_within_15m_are_one_site_mixed_check():
     """Distance is the key. Owner disagreement is a flag, not a split."""
     a = _visits()
-    b = _visits(owner="Other Owner", phone="0709999999", lat=35.0 + 8 / 111_320)
+    b = _visits(owner="Other Owner", phone="0709999999", lat=35.0 + 14 / 111_320)
     df = attach_identity(pd.concat([a, b], ignore_index=True))
     assert df["well_id"].nunique() == 1
     assert set(df["owner_check"]) == {"mixed"}
@@ -108,19 +108,19 @@ def test_village_trailing_space_does_not_collide_far_gps():
 if __name__ == "__main__":
     test_haversine_8m_and_40m()
     print("ok test_haversine_8m_and_40m")
-    test_cluster_merges_within_12m_only()
-    print("ok test_cluster_merges_within_12m_only")
+    test_cluster_merges_within_15m_only()
+    print("ok test_cluster_merges_within_15m_only")
     test_complete_linkage_does_not_chain_a_street()
     print("ok test_complete_linkage_does_not_chain_a_street")
     test_names_and_phone()
     print("ok test_names_and_phone")
-    test_same_owner_within_12m_is_one_well()
-    print("ok test_same_owner_within_12m_is_one_well")
+    test_same_owner_within_15m_is_one_well()
+    print("ok test_same_owner_within_15m_is_one_well")
     test_same_owner_40m_is_two_wells()
     print("ok test_same_owner_40m_is_two_wells")
     test_same_name_in_two_provinces_stays_two_wells()
     print("ok test_same_name_in_two_provinces_stays_two_wells")
-    test_different_owners_within_12m_are_one_site_mixed_check()
-    print("ok test_different_owners_within_12m_are_one_site_mixed_check")
+    test_different_owners_within_15m_are_one_site_mixed_check()
+    print("ok test_different_owners_within_15m_are_one_site_mixed_check")
     test_village_trailing_space_does_not_collide_far_gps()
     print("ok test_village_trailing_space_does_not_collide_far_gps")
