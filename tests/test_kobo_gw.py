@@ -8,21 +8,12 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "tools"))
 
 from kobo_gw import (  # noqa: E402
-    build_wells,
     parse_daily_use,
     process,
     run,
-    well_id_hash,
 )
 
 FIXTURE = ROOT / "tests" / "fixtures" / "kobo_mini.csv"
-
-
-def test_well_id_ignores_case_and_spaces():
-    a = well_id_hash("Kapisa", "Test Village", "Good Owner", "0701111111")
-    b = well_id_hash("kapisa", " test  village ", "good owner", "070-111-1111")
-    assert a == b
-    assert len(a) == 12
 
 
 def test_parse_daily_use_liters_hours_and_bare_number():
@@ -39,12 +30,10 @@ def test_process_fixture_counts_and_flags():
     assert len(visits) == 6
     assert len(wells) == 4
 
-    good_id = well_id_hash("Kapisa", "Test Village", "Good Owner", "0701111111")
-    good = wells.set_index("well_id").loc[good_id]
-    assert int(good["n_visits"]) == 3
+    good = wells.loc[(wells["province"] == "Kapisa") & (wells["n_visits"] == 3)].iloc[0]
     assert abs(float(good["dtw_change_recall_m"]) - 3.0) < 1e-9  # 12 - 9
     assert abs(float(good["dtw_change_measured_m"]) - 1.0) < 1e-9  # 10 - 9
-    assert good["exclude_from_impact"] is False or good["exclude_from_impact"] == False
+    assert not bool(good["exclude_from_impact"])
 
     flags = set(qa["flag"])
     assert "wt_now_gt_depth" in flags
@@ -53,8 +42,8 @@ def test_process_fixture_counts_and_flags():
     assert "distance_gt_5000" in flags
     assert "unit_confusion" in flags
 
-    deep_id = well_id_hash("Kandahar", "Deep Village", "Deep Owner", "0702222222")
-    assert bool(wells.set_index("well_id").loc[deep_id, "exclude_from_impact"])
+    deep = wells.loc[wells["province"] == "Kandahar"].iloc[0]
+    assert bool(deep["exclude_from_impact"])
 
 
 def test_run_writes_tables(tmp_path: Path | None = None):
@@ -79,8 +68,6 @@ def test_run_writes_tables(tmp_path: Path | None = None):
 
 
 if __name__ == "__main__":
-    test_well_id_ignores_case_and_spaces()
-    print("ok test_well_id_ignores_case_and_spaces")
     test_parse_daily_use_liters_hours_and_bare_number()
     print("ok test_parse_daily_use_liters_hours_and_bare_number")
     test_process_fixture_counts_and_flags()

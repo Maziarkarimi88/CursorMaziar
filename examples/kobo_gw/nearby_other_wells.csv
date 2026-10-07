@@ -1,0 +1,502 @@
+province,village,well_id_a,well_id_b,distance_m,same_owner_group,depth_a_m,depth_b_m,n_visits_a,n_visits_b
+Badghis,Abedi Ha,ab66e8787e26,3b6b590143e5,0.8,False,16.0,16.0,1,1
+Badghis,Abedi Ha ,6a5ac2e971ab,28e0c4918a83,5.4,False,16.0,16.0,23,1
+Balkh,Paikan dara ,34e3f4f9217b,056154bef7bd,2.7,False,15.0,15.0,3,1
+Daykundi,Daghur Sufla,4e22e7727d2d,7cff7ed1a4e7,6.0,False,10.0,10.0,7,1
+Daykundi,Jawzak,95a5c8604a28,21b791232815,4.2,False,20.0,20.0,1,8
+Daykundi,Kakrak,3840a71c748d,14b5b68f07a9,7.1,False,17.0,17.0,4,1
+Daykundi,Kakrak,3840a71c748d,c3706c28b52b,4.2,False,17.0,17.0,4,1
+Daykundi,Kakrak,e87a520bd7c3,d69743ffb3b4,10.2,False,17.0,17.0,1,1
+Daykundi,Kakrak,14b5b68f07a9,c3706c28b52b,3.1,False,17.0,17.0,1,1
+Daykundi,Khajachasht,77e5a76256da,2028b1f7db55,1.5,False,31.0,31.0,8,1
+Daykundi,Kharbed,2bcba12311b4,2ee6e41e7ee7,3.6,False,21.7,21.7,2,8
+Daykundi,Payqol,3399223a6bfc,a6b7e286a0f8,3.5,False,13.0,13.0,3,5
+Daykundi,Sarqul,e922ae90350d,9f1834fb4f15,2.8,False,16.2,16.2,9,2
+Daykundi,Sarqul,cc5f97f68ea2,6b9cae5e080e,2.2,False,18.0,18.0,5,1
+Daykundi,Sarqul ,e56189ec44c0,e04dec30338a,4.9,False,17.0,17.0,11,1
+Daykundi,Selbetu,fa24727d2c3f,a5609d1e06e8,3.7,False,18.0,18.0,2,2
+Daykundi,Surkhbid,e3dcd7a3c036,d6d48de8ec02,5.2,False,33.0,33.0,4,1
+Daykundi,Surkhbid,e3dcd7a3c036,7f0125e8fb7d,3.3,False,33.0,33.0,4,3
+Daykundi,Surkhbid,e3dcd7a3c036,2a639140d284,3.7,False,33.0,33.0,4,1
+Daykundi,Surkhbid,d6d48de8ec02,7f0125e8fb7d,3.9,False,33.0,33.0,1,3
+Daykundi,Surkhbid,d6d48de8ec02,2a639140d284,5.5,False,33.0,33.0,1,1
+Daykundi,Surkhbid,7f0125e8fb7d,2a639140d284,1.6,False,33.0,33.0,3,1
+Farah,Babo Kariz,165c4ce8837e,653be66ffa54,8.0,False,120.0,120.0,2,1
+Faryab,Gozari ,0cd6bdc07fd3,76004c8518d7,0.1,False,13.0,12.0,1,1
+Faryab,Khwaja qoshri ,6ff8eed4c60e,cedad5438b96,10.0,False,12.5,10.0,3,1
+Faryab,Khwaja qoshri ,1d551a2c013b,b1ac6af3e4a2,9.6,False,12.0,12.5,1,1
+Faryab,Yangi qala,546d463d147b,719eba4397bc,7.6,False,26.0,25.0,1,1
+Ghazni,Kariz bala,9d9b3aac9e53,41e598296273,1.9,False,60.0,60.0,1,1
+Ghazni,Mushak,2874f569e01f,e8154edbc50b,4.4,False,11.0,10.0,28,1
+Ghor,Siyasang,73d2a08af7fd,4c4af3f8e5d6,5.2,False,10.6,7.3,1,1
+Herat,Khwaja Mohammad Kamil,485c5e0ed50a,45e4e38923e6,6.2,False,16.4,18.65,2,2
+Herat,Khwaja Mohammad Kamil,a89f119a60ff,51a8b0721529,6.7,False,18.65,16.4,2,1
+Herat,Parvanah,60fa5254136b,7a387fc76a5d,10.8,False,8.4,8.4,15,1
+Herat,Parvaneh,c227ca0429a0,247f5915366e,5.4,False,8.4,8.4,5,1
+Jawzjan,Turkman qudogh Afghania,aa4031f05239,3059a65ecb59,6.6,False,40.2,40.2,1,1
+Jawzjan,Turkman qudogh Afghania,a5a73f0db3fe,3d3d36b7953d,6.0,False,41.35,41.35,1,2
+Jawzjan,Turkman qudogh Afghania,cecfb24f3b0e,3b215dff8c53,6.8,False,45.3,45.5,1,1
+Kabul,Danaw,44d9321130e6,75c546aeb563,5.2,False,22.6,22.6,1,1
+Kabul,Danaw,4899ba5fffcf,40ca27e3b450,6.3,False,24.2,24.2,1,7
+Kabul,Esmila,71465a35e84d,4ae5f5ee3789,9.3,False,25.25,25.25,9,1
+Kapisa,Adezai ,f91fd48a07a4,ce43c4b8d233,7.1,False,12.0,34.0,3,1
+Kapisa,Adezai ,6e28ceed376b,85ccc86ee2c5,7.2,False,34.0,12.0,6,1
+Kapisa,Badam Ali,dc57b5b979cb,3c9e8eb50153,3.8,False,12.7,12.7,6,1
+Kapisa,Blanday,a6b23be2730e,7a580ee9bf4a,0.8,False,26.0,26.0,2,1
+Kapisa,Gado china,80a5c182c214,2408dec5712a,10.3,False,11.0,12.0,1,1
+Kapisa,Gado china,a6eccf915e3c,f686f9ec4fc0,11.0,False,13.5,12.0,3,3
+Kapisa,Gado china ,718f255ad7ae,3cede0611aa3,2.0,False,13.5,12.0,1,1
+Kapisa,Gado china ,718f255ad7ae,da791ce23ff9,4.8,False,13.5,11.0,1,2
+Kapisa,Gado china ,3cede0611aa3,da791ce23ff9,5.3,False,12.0,11.0,1,2
+Kapisa,Gado china ,c40eb8b0ebb7,2396f0094912,6.3,False,13.5,12.0,1,1
+Kapisa,Gado china ,99918787bc7a,a0b8d400b37f,7.4,False,13.5,12.0,1,1
+Kapisa,Gado china ,99918787bc7a,c37c2d9341d5,8.1,False,13.5,11.0,1,1
+Kapisa,Gado china ,a0b8d400b37f,c37c2d9341d5,0.8,False,12.0,11.0,1,1
+Kapisa,Konj Paryat ,ff02118c8ab1,e9d8a0662d44,3.1,False,70.0,65.0,5,4
+Kapisa,Konj Paryat ,ab485b80e99e,3b06788adcbc,6.3,False,65.0,70.0,1,1
+Kapisa,Konj paryat,251ff3ce345a,d250905e10ad,2.0,False,65.0,70.0,2,2
+Kapisa,Landa khil,ad1a22bc72c4,6e5ab60ae62d,10.6,False,42.0,48.0,1,1
+Kapisa,Landa khil,7483301ea8f1,7856ec9f684c,1.7,False,42.0,48.0,1,1
+Kapisa,Landa khill ,c7141e544d28,9755dda29bf1,7.2,False,48.0,48.0,1,1
+Kapisa,Landakhil ,b1429b28e9e1,f690a2b82476,2.7,False,42.0,48.0,3,3
+Kapisa,Naser Mula Khil ,01c8ebb99095,3cab7faf11d4,4.9,False,50.0,60.0,2,1
+Kapisa,Nezam khil,5ce7982f1d10,f08b5d2702ce,3.1,False,11.0,16.0,9,1
+Kapisa,Surghi ,b24c31282d62,0559dbf2263e,9.4,False,16.0,11.0,1,1
+Kapisa,Tawachian ,6926392b0086,c512385eb3a4,5.1,False,53.0,53.0,3,1
+Kapisa,Tawachian ,6926392b0086,6788a759d740,8.0,False,53.0,53.0,3,1
+Kapisa,Tawachian ,150f94eeef9a,c39500a720de,6.3,False,27.0,53.0,2,1
+Kapisa,Tawachian ,404e192956a5,fc617e9f800d,9.5,False,53.0,29.0,1,2
+Kapisa,Tawachian ,5b861dd83064,fc617e9f800d,2.7,False,53.0,29.0,1,2
+Khost,University hill,02f67ef9ee9d,1ca8e8daa33c,7.7,False,67.0,67.0,2,1
+Khost,Werza,76b42cca924b,ee4f0f16c24f,9.4,False,45.0,45.0,26,1
+Kunar,Babad,e62c07adddda,d3e63604ee12,3.6,False,19.0,19.0,2,1
+Kunar,Ghondai ,979ae5514237,b7f3ceaedae8,3.6,False,46.0,46.0,1,1
+Kunar,Shahilaam,e1c210920aa9,9d95f8e6524b,7.7,False,125.0,125.0,1,1
+Kunduz,Kabali Qushlaq,a531e51590d9,9433247fbb7e,5.5,False,52.0,46.0,1,1
+Kunduz,Lala Kai ,352764d4b93b,fd9377a5c03e,6.3,False,15.0,16.0,1,1
+Kunduz,Lala Kai ,352764d4b93b,e55dc2bf81e1,5.6,False,15.0,15.0,1,1
+Kunduz,Lala Kai ,352764d4b93b,4cab831e87dc,6.8,False,15.0,15.0,1,1
+Kunduz,Lala Kai ,352764d4b93b,7ea37b479b2b,4.7,False,15.0,13.0,1,1
+Kunduz,Lala Kai ,fd9377a5c03e,e55dc2bf81e1,1.0,False,16.0,15.0,1,1
+Kunduz,Lala Kai ,fd9377a5c03e,4cab831e87dc,7.0,False,16.0,15.0,1,1
+Kunduz,Lala Kai ,fd9377a5c03e,7ea37b479b2b,4.5,False,16.0,13.0,1,1
+Kunduz,Lala Kai ,e55dc2bf81e1,4cab831e87dc,6.0,False,15.0,15.0,1,1
+Kunduz,Lala Kai ,e55dc2bf81e1,7ea37b479b2b,4.7,False,15.0,13.0,1,1
+Kunduz,Lala Kai ,4cab831e87dc,7ea37b479b2b,9.5,False,15.0,13.0,1,1
+Kunduz,Lala Maidan 2,7cc3ec307c84,ea27b2dff6fa,11.1,False,40.0,28.0,1,1
+Kunduz,Lala Maidan 2,39f3e2fedbc6,686d12253ea1,10.5,False,30.0,21.0,1,1
+Kunduz,Lala Maidan 2,096bf4189e97,686d12253ea1,11.4,False,24.0,21.0,1,1
+Kunduz,Lala Maidan 2,096bf4189e97,60cb8e0f760a,1.2,False,24.0,28.0,1,1
+Kunduz,Lala Maidan 2,096bf4189e97,f411bd7c0584,2.6,False,24.0,25.0,1,1
+Kunduz,Lala Maidan 2,686d12253ea1,f411bd7c0584,10.0,False,21.0,25.0,1,1
+Kunduz,Lala Maidan 2,60cb8e0f760a,f411bd7c0584,3.7,False,28.0,25.0,1,1
+Kunduz,Lala Maidan 3,a359ef8fc31d,eeabbd38ce08,3.5,False,40.0,46.0,1,1
+Kunduz,Lala Maidan 3,a359ef8fc31d,aceb6f50cfca,11.9,False,40.0,33.0,1,1
+Kunduz,Lala Maidan 3,a359ef8fc31d,6f2390861a38,7.4,False,40.0,33.0,1,1
+Kunduz,Lala Maidan 3,a359ef8fc31d,c31279a52b1d,4.8,False,40.0,35.0,1,1
+Kunduz,Lala Maidan 3,eeabbd38ce08,6f2390861a38,4.5,False,46.0,33.0,1,1
+Kunduz,Lala Maidan 3,eeabbd38ce08,c31279a52b1d,8.3,False,46.0,35.0,1,1
+Kunduz,Lala Maidan 3,aceb6f50cfca,c31279a52b1d,10.1,False,33.0,35.0,1,1
+Kunduz,Lala Maidan 3,6f2390861a38,c31279a52b1d,11.9,False,33.0,35.0,1,1
+Kunduz,Mola khel,4a8fd93bfdf7,c71c59ae0aec,8.3,False,30.0,27.0,1,1
+Kunduz,Mola khel,4a8fd93bfdf7,218bf8391a1b,8.9,False,30.0,36.0,1,3
+Kunduz,Mola khel,4a8fd93bfdf7,9731b58389a1,10.3,False,30.0,33.0,1,1
+Kunduz,Mola khel,4a8fd93bfdf7,0bf07edbe2ee,6.6,False,30.0,27.0,1,1
+Kunduz,Mola khel,c71c59ae0aec,218bf8391a1b,2.3,False,27.0,36.0,1,3
+Kunduz,Mola khel,c71c59ae0aec,8a2b7b93b177,8.1,False,27.0,30.0,1,1
+Kunduz,Mola khel,c71c59ae0aec,9731b58389a1,3.5,False,27.0,33.0,1,1
+Kunduz,Mola khel,c71c59ae0aec,0bf07edbe2ee,6.0,False,27.0,27.0,1,1
+Kunduz,Mola khel,218bf8391a1b,8a2b7b93b177,6.1,False,36.0,30.0,3,1
+Kunduz,Mola khel,218bf8391a1b,9731b58389a1,5.5,False,36.0,33.0,3,1
+Kunduz,Mola khel,218bf8391a1b,0bf07edbe2ee,8.1,False,36.0,27.0,3,1
+Kunduz,Mola khel,8a2b7b93b177,9731b58389a1,10.3,False,30.0,33.0,1,1
+Kunduz,Mola khel,9731b58389a1,0bf07edbe2ee,5.5,False,33.0,27.0,1,1
+Kunduz,Niazi,9acdf67758f8,34b1e988da9e,6.8,False,21.0,23.0,1,1
+Kunduz,Niazi,9acdf67758f8,5428a8a4bc32,2.5,False,21.0,23.0,1,1
+Kunduz,Niazi,9acdf67758f8,9fa71f3a2632,6.7,False,21.0,23.0,1,1
+Kunduz,Niazi,34b1e988da9e,5428a8a4bc32,5.1,False,23.0,23.0,1,1
+Kunduz,Niazi,34b1e988da9e,9fa71f3a2632,3.1,False,23.0,23.0,1,1
+Kunduz,Niazi,8f1c043fad3e,94195d28b3cd,2.5,False,20.0,22.0,1,1
+Kunduz,Niazi,5428a8a4bc32,9fa71f3a2632,6.1,False,23.0,23.0,1,1
+Kunduz,Niazi,944952ae4afd,6762bb416934,7.8,False,18.1,19.4,1,1
+Kunduz,Yaamchi ,ab2577e63892,65219c882417,11.5,False,12.0,13.0,1,1
+Kunduz,Yaamchi ,ab2577e63892,f571397843fd,5.4,False,12.0,12.0,1,1
+Kunduz,Yaamchi ,ab2577e63892,e079194c92d1,5.5,False,12.0,18.0,1,2
+Kunduz,Yaamchi ,ab2577e63892,1b7947503bf0,6.1,False,12.0,14.0,1,1
+Kunduz,Yaamchi ,ab2577e63892,e7c79194380f,9.9,False,12.0,12.0,1,1
+Kunduz,Yaamchi ,ab2577e63892,cd266f798973,6.8,False,12.0,12.0,1,1
+Kunduz,Yaamchi ,ab2577e63892,0210d98b5b1b,5.7,False,12.0,11.0,1,1
+Kunduz,Yaamchi ,65219c882417,f571397843fd,7.0,False,13.0,12.0,1,1
+Kunduz,Yaamchi ,65219c882417,e079194c92d1,6.7,False,13.0,18.0,1,2
+Kunduz,Yaamchi ,65219c882417,1b7947503bf0,5.7,False,13.0,14.0,1,1
+Kunduz,Yaamchi ,65219c882417,e7c79194380f,3.8,False,13.0,12.0,1,1
+Kunduz,Yaamchi ,65219c882417,cd266f798973,9.3,False,13.0,12.0,1,1
+Kunduz,Yaamchi ,65219c882417,3346f9c63b6a,6.1,False,13.0,18.0,1,1
+Kunduz,Yaamchi ,65219c882417,0210d98b5b1b,7.1,False,13.0,11.0,1,1
+Kunduz,Yaamchi ,f571397843fd,e079194c92d1,0.3,False,12.0,18.0,1,2
+Kunduz,Yaamchi ,f571397843fd,1b7947503bf0,1.4,False,12.0,14.0,1,1
+Kunduz,Yaamchi ,f571397843fd,e7c79194380f,7.1,False,12.0,12.0,1,1
+Kunduz,Yaamchi ,f571397843fd,cd266f798973,7.9,False,12.0,12.0,1,1
+Kunduz,Yaamchi ,f571397843fd,0210d98b5b1b,0.5,False,12.0,11.0,1,1
+Kunduz,Yaamchi ,e079194c92d1,1b7947503bf0,1.1,False,18.0,14.0,2,1
+Kunduz,Yaamchi ,e079194c92d1,e7c79194380f,6.8,False,18.0,12.0,2,1
+Kunduz,Yaamchi ,e079194c92d1,cd266f798973,7.6,False,18.0,12.0,2,1
+Kunduz,Yaamchi ,e079194c92d1,0210d98b5b1b,0.8,False,18.0,11.0,2,1
+Kunduz,Yaamchi ,1b7947503bf0,e7c79194380f,5.7,False,14.0,12.0,1,1
+Kunduz,Yaamchi ,1b7947503bf0,cd266f798973,7.1,False,14.0,12.0,1,1
+Kunduz,Yaamchi ,1b7947503bf0,3346f9c63b6a,11.7,False,14.0,18.0,1,1
+Kunduz,Yaamchi ,1b7947503bf0,0210d98b5b1b,1.8,False,14.0,11.0,1,1
+Kunduz,Yaamchi ,e7c79194380f,cd266f798973,5.9,False,12.0,12.0,1,1
+Kunduz,Yaamchi ,e7c79194380f,3346f9c63b6a,7.5,False,12.0,18.0,1,1
+Kunduz,Yaamchi ,e7c79194380f,0210d98b5b1b,7.5,False,12.0,11.0,1,1
+Kunduz,Yaamchi ,cd266f798973,0210d98b5b1b,8.3,False,12.0,11.0,1,1
+Laghman,Maidani,740427887fa2,05885e548f82,6.7,False,40.0,40.0,10,1
+Logar,Bala deh,f792d51ab73d,7d2654294d2c,11.1,False,28.0,25.0,20,2
+Logar,Bala deh,8e99fbc64126,1892ed1a9c6b,7.3,False,25.0,28.0,21,1
+Logar,Bala deh,dd7aca071503,25e78952f98b,0.8,False,28.0,25.0,1,1
+Logar,Bala deh,2a9dd7eed70a,105d2b84966c,3.0,False,18.0,25.0,2,1
+Maidan Wardak,Deh Hayat,d756b5af0528,2c6e5e2f5370,5.5,False,21.6,21.6,9,1
+Maidan Wardak,Deh Hayat,d756b5af0528,89e875d6821f,10.2,False,21.6,60.0,9,1
+Maidan Wardak,Deh Hayat,d5c4862f9e76,e44bfd901af4,3.7,False,22.0,21.6,13,1
+Maidan Wardak,Deh Hayat,2c6e5e2f5370,89e875d6821f,6.1,False,21.6,60.0,1,1
+Maidan Wardak,Deh Hayat,b2445d1dc5ac,683bd407ff7d,2.7,False,60.0,21.6,3,1
+Maidan Wardak,Musa Khil,967fc5089ca5,2a86184ca2d8,5.9,False,8.0,8.0,4,1
+Maidan Wardak,Musa Khil,967fc5089ca5,c73ec172671c,3.4,False,8.0,8.0,4,2
+Maidan Wardak,Musa Khil,2a86184ca2d8,c73ec172671c,3.8,False,8.0,8.0,1,2
+Nimroz,Dangar Abad,2b77dd159c63,62d6436df2bf,3.2,False,21.0,21.0,11,1
+Nimroz,Gulistan,9b62b7f367c7,e75920eda84a,2.9,False,95.0,95.0,10,1
+Paktika,Kachi,3099c8c88e67,d0396eb56a2f,9.7,False,65.0,60.0,13,1
+Paktika,Kachi,3099c8c88e67,2df4052bab0a,10.6,False,65.0,65.0,13,1
+Paktika,Kachi,3099c8c88e67,c91a4ab548d7,2.7,False,65.0,65.0,13,1
+Paktika,Kachi,3099c8c88e67,34b2deb460b2,8.1,False,65.0,65.0,13,1
+Paktika,Kachi,3099c8c88e67,685416a96c77,10.2,False,65.0,65.0,13,1
+Paktika,Kachi,3099c8c88e67,04e6f692a36a,6.3,False,65.0,65.0,13,1
+Paktika,Kachi,3099c8c88e67,ab40ba3482a4,4.1,False,65.0,65.0,13,1
+Paktika,Kachi,d0396eb56a2f,2df4052bab0a,3.9,False,60.0,65.0,1,1
+Paktika,Kachi,d0396eb56a2f,c91a4ab548d7,7.5,False,60.0,65.0,1,1
+Paktika,Kachi,d0396eb56a2f,ab40ba3482a4,8.2,False,60.0,65.0,1,1
+Paktika,Kachi,2df4052bab0a,c91a4ab548d7,9.2,False,65.0,65.0,1,1
+Paktika,Kachi,2df4052bab0a,685416a96c77,11.8,False,65.0,65.0,1,1
+Paktika,Kachi,2df4052bab0a,ab40ba3482a4,10.5,False,65.0,65.0,1,1
+Paktika,Kachi,c91a4ab548d7,34b2deb460b2,8.2,False,65.0,65.0,1,1
+Paktika,Kachi,c91a4ab548d7,685416a96c77,11.9,False,65.0,65.0,1,1
+Paktika,Kachi,c91a4ab548d7,04e6f692a36a,7.9,False,65.0,65.0,1,1
+Paktika,Kachi,c91a4ab548d7,ab40ba3482a4,2.0,False,65.0,65.0,1,1
+Paktika,Kachi,34b2deb460b2,04e6f692a36a,4.8,False,65.0,65.0,1,1
+Paktika,Kachi,34b2deb460b2,ab40ba3482a4,6.9,False,65.0,65.0,1,1
+Paktika,Kachi,34b2deb460b2,27eea23344fa,10.9,False,65.0,65.0,1,1
+Paktika,Kachi,04e6f692a36a,ab40ba3482a4,7.7,False,65.0,65.0,1,1
+Paktika,Kachi,ab40ba3482a4,27eea23344fa,11.4,False,65.0,65.0,1,1
+Paktya,Bar Halim khil,db74d342e9df,1e55eeba63c1,4.1,False,105.0,105.0,1,4
+Paktya,Bar Halim khil,db74d342e9df,7834b2b23e74,3.7,False,105.0,105.0,1,1
+Paktya,Bar Halim khil,db74d342e9df,6337d6105e4b,5.1,False,105.0,105.0,1,1
+Paktya,Bar Halim khil,db74d342e9df,38db0b4145dc,9.3,False,105.0,105.0,1,1
+Paktya,Bar Halim khil,db74d342e9df,f6bc9ee95753,2.2,False,105.0,105.0,1,1
+Paktya,Bar Halim khil,db74d342e9df,0bdbd0dd9d98,8.6,False,105.0,105.0,1,1
+Paktya,Bar Halim khil,db74d342e9df,e8d9a1ba94ce,2.8,False,105.0,105.0,1,1
+Paktya,Bar Halim khil,db74d342e9df,efd52a425a13,1.3,False,105.0,105.0,1,1
+Paktya,Bar Halim khil,db74d342e9df,711e0aad4d7a,6.3,False,105.0,105.0,1,1
+Paktya,Bar Halim khil,db74d342e9df,dc2907a8f12d,3.2,False,105.0,105.0,1,1
+Paktya,Bar Halim khil,db74d342e9df,00b913f3c875,5.5,False,105.0,105.0,1,1
+Paktya,Bar Halim khil,1e55eeba63c1,7834b2b23e74,1.4,False,105.0,105.0,4,1
+Paktya,Bar Halim khil,1e55eeba63c1,6337d6105e4b,5.4,False,105.0,105.0,4,1
+Paktya,Bar Halim khil,1e55eeba63c1,38db0b4145dc,7.8,False,105.0,105.0,4,1
+Paktya,Bar Halim khil,1e55eeba63c1,f6bc9ee95753,3.8,False,105.0,105.0,4,1
+Paktya,Bar Halim khil,1e55eeba63c1,0bdbd0dd9d98,6.7,False,105.0,105.0,4,1
+Paktya,Bar Halim khil,1e55eeba63c1,e8d9a1ba94ce,1.5,False,105.0,105.0,4,1
+Paktya,Bar Halim khil,1e55eeba63c1,efd52a425a13,2.7,False,105.0,105.0,4,1
+Paktya,Bar Halim khil,1e55eeba63c1,711e0aad4d7a,8.4,False,105.0,105.0,4,1
+Paktya,Bar Halim khil,1e55eeba63c1,dc2907a8f12d,1.4,False,105.0,105.0,4,1
+Paktya,Bar Halim khil,1e55eeba63c1,00b913f3c875,5.3,False,105.0,105.0,4,1
+Paktya,Bar Halim khil,7a3881937292,81102a370d14,9.8,False,105.0,105.0,1,1
+Paktya,Bar Halim khil,7834b2b23e74,6337d6105e4b,3.9,False,105.0,105.0,1,1
+Paktya,Bar Halim khil,7834b2b23e74,38db0b4145dc,6.7,False,105.0,105.0,1,1
+Paktya,Bar Halim khil,7834b2b23e74,f6bc9ee95753,4.2,False,105.0,105.0,1,1
+Paktya,Bar Halim khil,7834b2b23e74,0bdbd0dd9d98,5.7,False,105.0,105.0,1,1
+Paktya,Bar Halim khil,7834b2b23e74,e8d9a1ba94ce,2.1,False,105.0,105.0,1,1
+Paktya,Bar Halim khil,7834b2b23e74,efd52a425a13,2.5,False,105.0,105.0,1,1
+Paktya,Bar Halim khil,7834b2b23e74,711e0aad4d7a,9.0,False,105.0,105.0,1,1
+Paktya,Bar Halim khil,7834b2b23e74,dc2907a8f12d,0.4,False,105.0,105.0,1,1
+Paktya,Bar Halim khil,7834b2b23e74,00b913f3c875,3.9,False,105.0,105.0,1,1
+Paktya,Bar Halim khil,6337d6105e4b,38db0b4145dc,4.4,False,105.0,105.0,1,1
+Paktya,Bar Halim khil,6337d6105e4b,f6bc9ee95753,6.9,False,105.0,105.0,1,1
+Paktya,Bar Halim khil,6337d6105e4b,0bdbd0dd9d98,4.2,False,105.0,105.0,1,1
+Paktya,Bar Halim khil,6337d6105e4b,e8d9a1ba94ce,5.6,False,105.0,105.0,1,1
+Paktya,Bar Halim khil,6337d6105e4b,efd52a425a13,4.9,False,105.0,105.0,1,1
+Paktya,Bar Halim khil,6337d6105e4b,711e0aad4d7a,11.5,False,105.0,105.0,1,1
+Paktya,Bar Halim khil,6337d6105e4b,dc2907a8f12d,4.0,False,105.0,105.0,1,1
+Paktya,Bar Halim khil,6337d6105e4b,00b913f3c875,0.6,False,105.0,105.0,1,1
+Paktya,Bar Halim khil,81102a370d14,85493aea4dda,10.6,False,105.0,105.0,1,1
+Paktya,Bar Halim khil,38db0b4145dc,f6bc9ee95753,10.7,False,105.0,105.0,1,1
+Paktya,Bar Halim khil,38db0b4145dc,0bdbd0dd9d98,1.3,False,105.0,105.0,1,1
+Paktya,Bar Halim khil,38db0b4145dc,e8d9a1ba94ce,8.8,False,105.0,105.0,1,1
+Paktya,Bar Halim khil,38db0b4145dc,efd52a425a13,8.7,False,105.0,105.0,1,1
+Paktya,Bar Halim khil,38db0b4145dc,dc2907a8f12d,7.0,False,105.0,105.0,1,1
+Paktya,Bar Halim khil,38db0b4145dc,00b913f3c875,3.9,False,105.0,105.0,1,1
+Paktya,Bar Halim khil,f6bc9ee95753,0bdbd0dd9d98,9.8,False,105.0,105.0,1,1
+Paktya,Bar Halim khil,f6bc9ee95753,e8d9a1ba94ce,2.3,False,105.0,105.0,1,1
+Paktya,Bar Halim khil,f6bc9ee95753,efd52a425a13,2.0,False,105.0,105.0,1,1
+Paktya,Bar Halim khil,f6bc9ee95753,711e0aad4d7a,4.8,False,105.0,105.0,1,1
+Paktya,Bar Halim khil,f6bc9ee95753,dc2907a8f12d,3.8,False,105.0,105.0,1,1
+Paktya,Bar Halim khil,f6bc9ee95753,00b913f3c875,7.2,False,105.0,105.0,1,1
+Paktya,Bar Halim khil,0bdbd0dd9d98,e8d9a1ba94ce,7.8,False,105.0,105.0,1,1
+Paktya,Bar Halim khil,0bdbd0dd9d98,efd52a425a13,7.9,False,105.0,105.0,1,1
+Paktya,Bar Halim khil,0bdbd0dd9d98,dc2907a8f12d,6.0,False,105.0,105.0,1,1
+Paktya,Bar Halim khil,0bdbd0dd9d98,00b913f3c875,3.6,False,105.0,105.0,1,1
+Paktya,Bar Halim khil,e8d9a1ba94ce,efd52a425a13,1.5,False,105.0,105.0,1,1
+Paktya,Bar Halim khil,e8d9a1ba94ce,711e0aad4d7a,7.0,False,105.0,105.0,1,1
+Paktya,Bar Halim khil,e8d9a1ba94ce,dc2907a8f12d,1.8,False,105.0,105.0,1,1
+Paktya,Bar Halim khil,e8d9a1ba94ce,00b913f3c875,5.7,False,105.0,105.0,1,1
+Paktya,Bar Halim khil,efd52a425a13,711e0aad4d7a,6.7,False,105.0,105.0,1,1
+Paktya,Bar Halim khil,efd52a425a13,dc2907a8f12d,2.1,False,105.0,105.0,1,1
+Paktya,Bar Halim khil,efd52a425a13,00b913f3c875,5.2,False,105.0,105.0,1,1
+Paktya,Bar Halim khil,711e0aad4d7a,dc2907a8f12d,8.6,False,105.0,105.0,1,1
+Paktya,Bar Halim khil,711e0aad4d7a,00b913f3c875,11.8,False,105.0,105.0,1,1
+Paktya,Bar Halim khil,9599963c54f0,588018a3df14,8.2,False,105.0,105.0,1,1
+Paktya,Bar Halim khil,dc2907a8f12d,00b913f3c875,4.0,False,105.0,105.0,1,1
+Paktya,Halim khil,092b5d13b78a,f16d7098f4c4,8.1,False,105.0,105.0,6,1
+Paktya,Halim khil,092b5d13b78a,9cdb33707329,10.3,False,105.0,105.0,6,1
+Paktya,Halim khil,092b5d13b78a,6e2f3d5a1e02,1.3,False,105.0,105.0,6,1
+Paktya,Halim khil,092b5d13b78a,afcd9fd820d1,4.0,False,105.0,105.0,6,1
+Paktya,Halim khil,092b5d13b78a,4c0c4d0a9026,11.1,False,105.0,105.0,6,1
+Paktya,Halim khil,092b5d13b78a,dbf14f976188,6.2,False,105.0,105.0,6,1
+Paktya,Halim khil,092b5d13b78a,c8b668da9b93,3.6,False,105.0,105.0,6,1
+Paktya,Halim khil,092b5d13b78a,0c72b041abae,7.9,False,105.0,105.0,6,1
+Paktya,Halim khil,092b5d13b78a,683098dd0511,3.3,False,105.0,105.0,6,1
+Paktya,Halim khil,092b5d13b78a,268ca42020f9,3.0,False,105.0,105.0,6,1
+Paktya,Halim khil,092b5d13b78a,fd46ccc41832,1.6,False,105.0,105.0,6,1
+Paktya,Halim khil,092b5d13b78a,7452c2a01830,4.0,False,105.0,105.0,6,1
+Paktya,Halim khil,092b5d13b78a,174eff6f74f6,4.2,False,105.0,105.0,6,1
+Paktya,Halim khil,f16d7098f4c4,6e2f3d5a1e02,9.0,False,105.0,105.0,1,1
+Paktya,Halim khil,f16d7098f4c4,afcd9fd820d1,9.5,False,105.0,105.0,1,1
+Paktya,Halim khil,f16d7098f4c4,4c0c4d0a9026,3.6,False,105.0,105.0,1,1
+Paktya,Halim khil,f16d7098f4c4,dbf14f976188,10.9,False,105.0,105.0,1,1
+Paktya,Halim khil,f16d7098f4c4,c8b668da9b93,11.1,False,105.0,105.0,1,1
+Paktya,Halim khil,f16d7098f4c4,0c72b041abae,0.5,False,105.0,105.0,1,1
+Paktya,Halim khil,f16d7098f4c4,683098dd0511,8.8,False,105.0,105.0,1,1
+Paktya,Halim khil,f16d7098f4c4,268ca42020f9,6.5,False,105.0,105.0,1,1
+Paktya,Halim khil,f16d7098f4c4,fd46ccc41832,7.3,False,105.0,105.0,1,1
+Paktya,Halim khil,f16d7098f4c4,7452c2a01830,4.1,False,105.0,105.0,1,1
+Paktya,Halim khil,f16d7098f4c4,174eff6f74f6,5.6,False,105.0,105.0,1,1
+Paktya,Halim khil,9cdb33707329,6e2f3d5a1e02,9.3,False,105.0,105.0,1,1
+Paktya,Halim khil,9cdb33707329,afcd9fd820d1,6.3,False,105.0,105.0,1,1
+Paktya,Halim khil,9cdb33707329,dbf14f976188,4.1,False,105.0,105.0,1,1
+Paktya,Halim khil,9cdb33707329,c8b668da9b93,8.3,False,105.0,105.0,1,1
+Paktya,Halim khil,9cdb33707329,683098dd0511,7.0,False,105.0,105.0,1,1
+Paktya,Halim khil,9cdb33707329,fd46ccc41832,9.1,False,105.0,105.0,1,1
+Paktya,Halim khil,9cdb33707329,7452c2a01830,11.1,False,105.0,105.0,1,1
+Paktya,Halim khil,9cdb33707329,174eff6f74f6,8.6,False,105.0,105.0,1,1
+Paktya,Halim khil,6e2f3d5a1e02,afcd9fd820d1,3.0,False,105.0,105.0,1,1
+Paktya,Halim khil,6e2f3d5a1e02,4c0c4d0a9026,11.8,False,105.0,105.0,1,1
+Paktya,Halim khil,6e2f3d5a1e02,dbf14f976188,5.2,False,105.0,105.0,1,1
+Paktya,Halim khil,6e2f3d5a1e02,c8b668da9b93,2.3,False,105.0,105.0,1,1
+Paktya,Halim khil,6e2f3d5a1e02,0c72b041abae,8.9,False,105.0,105.0,1,1
+Paktya,Halim khil,6e2f3d5a1e02,683098dd0511,2.4,False,105.0,105.0,1,1
+Paktya,Halim khil,6e2f3d5a1e02,268ca42020f9,4.3,False,105.0,105.0,1,1
+Paktya,Halim khil,6e2f3d5a1e02,fd46ccc41832,1.8,False,105.0,105.0,1,1
+Paktya,Halim khil,6e2f3d5a1e02,7452c2a01830,4.9,False,105.0,105.0,1,1
+Paktya,Halim khil,6e2f3d5a1e02,174eff6f74f6,4.4,False,105.0,105.0,1,1
+Paktya,Halim khil,afcd9fd820d1,4c0c4d0a9026,11.6,False,105.0,105.0,1,1
+Paktya,Halim khil,afcd9fd820d1,dbf14f976188,2.2,False,105.0,105.0,1,1
+Paktya,Halim khil,afcd9fd820d1,c8b668da9b93,2.9,False,105.0,105.0,1,1
+Paktya,Halim khil,afcd9fd820d1,0c72b041abae,9.6,False,105.0,105.0,1,1
+Paktya,Halim khil,afcd9fd820d1,683098dd0511,0.8,False,105.0,105.0,1,1
+Paktya,Halim khil,afcd9fd820d1,268ca42020f9,6.7,False,105.0,105.0,1,1
+Paktya,Halim khil,afcd9fd820d1,fd46ccc41832,3.0,False,105.0,105.0,1,1
+Paktya,Halim khil,afcd9fd820d1,7452c2a01830,5.8,False,105.0,105.0,1,1
+Paktya,Halim khil,afcd9fd820d1,174eff6f74f6,3.9,False,105.0,105.0,1,1
+Paktya,Halim khil,4c0c4d0a9026,0c72b041abae,4.1,False,105.0,105.0,1,1
+Paktya,Halim khil,4c0c4d0a9026,683098dd0511,11.0,False,105.0,105.0,1,1
+Paktya,Halim khil,4c0c4d0a9026,268ca42020f9,10.1,False,105.0,105.0,1,1
+Paktya,Halim khil,4c0c4d0a9026,fd46ccc41832,10.1,False,105.0,105.0,1,1
+Paktya,Halim khil,4c0c4d0a9026,7452c2a01830,7.2,False,105.0,105.0,1,1
+Paktya,Halim khil,4c0c4d0a9026,174eff6f74f6,7.8,False,105.0,105.0,1,1
+Paktya,Halim khil,dbf14f976188,c8b668da9b93,4.5,False,105.0,105.0,1,1
+Paktya,Halim khil,dbf14f976188,0c72b041abae,11.0,False,105.0,105.0,1,1
+Paktya,Halim khil,dbf14f976188,683098dd0511,3.0,False,105.0,105.0,1,1
+Paktya,Halim khil,dbf14f976188,268ca42020f9,8.9,False,105.0,105.0,1,1
+Paktya,Halim khil,dbf14f976188,fd46ccc41832,5.1,False,105.0,105.0,1,1
+Paktya,Halim khil,dbf14f976188,7452c2a01830,7.6,False,105.0,105.0,1,1
+Paktya,Halim khil,dbf14f976188,174eff6f74f6,5.3,False,105.0,105.0,1,1
+Paktya,Halim khil,c8b668da9b93,0c72b041abae,11.1,False,105.0,105.0,1,1
+Paktya,Halim khil,c8b668da9b93,683098dd0511,3.0,False,105.0,105.0,1,1
+Paktya,Halim khil,c8b668da9b93,268ca42020f9,6.5,False,105.0,105.0,1,1
+Paktya,Halim khil,c8b668da9b93,fd46ccc41832,3.8,False,105.0,105.0,1,1
+Paktya,Halim khil,c8b668da9b93,7452c2a01830,7.1,False,105.0,105.0,1,1
+Paktya,Halim khil,c8b668da9b93,174eff6f74f6,6.0,False,105.0,105.0,1,1
+Paktya,Halim khil,0c72b041abae,683098dd0511,8.8,False,105.0,105.0,1,1
+Paktya,Halim khil,0c72b041abae,268ca42020f9,6.3,False,105.0,105.0,1,1
+Paktya,Halim khil,0c72b041abae,fd46ccc41832,7.3,False,105.0,105.0,1,1
+Paktya,Halim khil,0c72b041abae,7452c2a01830,4.0,False,105.0,105.0,1,1
+Paktya,Halim khil,0c72b041abae,174eff6f74f6,5.7,False,105.0,105.0,1,1
+Paktya,Halim khil,683098dd0511,268ca42020f9,5.9,False,105.0,105.0,1,1
+Paktya,Halim khil,683098dd0511,fd46ccc41832,2.2,False,105.0,105.0,1,1
+Paktya,Halim khil,683098dd0511,7452c2a01830,5.0,False,105.0,105.0,1,1
+Paktya,Halim khil,683098dd0511,174eff6f74f6,3.3,False,105.0,105.0,1,1
+Paktya,Halim khil,268ca42020f9,fd46ccc41832,3.8,False,105.0,105.0,1,1
+Paktya,Halim khil,268ca42020f9,7452c2a01830,3.3,False,105.0,105.0,1,1
+Paktya,Halim khil,268ca42020f9,174eff6f74f6,5.2,False,105.0,105.0,1,1
+Paktya,Halim khil,fd46ccc41832,7452c2a01830,3.3,False,105.0,105.0,1,1
+Paktya,Halim khil,fd46ccc41832,174eff6f74f6,2.7,False,105.0,105.0,1,1
+Paktya,Halim khil,109f409390ab,5e19cb95902c,4.3,False,105.0,105.0,1,1
+Paktya,Halim khil,7452c2a01830,174eff6f74f6,2.6,False,105.0,105.0,1,1
+Paktya,Husin khil,02790420ce45,5f19da565427,3.7,False,100.0,100.0,7,1
+Paktya,Husin khil,02790420ce45,920f28717bf5,3.3,False,100.0,100.0,7,1
+Paktya,Husin khil,02790420ce45,3cc898d8f506,5.7,False,100.0,100.0,7,1
+Paktya,Husin khil,02790420ce45,614b8a04a298,9.8,False,100.0,100.0,7,1
+Paktya,Husin khil,02790420ce45,122c3b0d912b,9.1,False,100.0,100.0,7,1
+Paktya,Husin khil,02790420ce45,87d7aeb2d684,10.5,False,100.0,100.0,7,1
+Paktya,Husin khil,02790420ce45,a9a7217c8f10,8.2,False,100.0,100.0,7,1
+Paktya,Husin khil,02790420ce45,cd13ae12189b,3.9,False,100.0,100.0,7,1
+Paktya,Husin khil,02790420ce45,5800d66ae048,6.4,False,100.0,100.0,7,1
+Paktya,Husin khil,02790420ce45,48f1edc0d326,11.2,False,100.0,100.0,7,1
+Paktya,Husin khil,02790420ce45,a563745f4de6,5.4,False,100.0,100.0,7,1
+Paktya,Husin khil,02790420ce45,2ef702a8b79a,9.3,False,100.0,100.0,7,1
+Paktya,Husin khil,02790420ce45,9f35af460e96,6.8,False,100.0,100.0,7,1
+Paktya,Husin khil,5f19da565427,920f28717bf5,1.8,False,100.0,100.0,1,1
+Paktya,Husin khil,5f19da565427,3cc898d8f506,3.6,False,100.0,100.0,1,1
+Paktya,Husin khil,5f19da565427,614b8a04a298,6.4,False,100.0,100.0,1,1
+Paktya,Husin khil,5f19da565427,122c3b0d912b,6.4,False,100.0,100.0,1,1
+Paktya,Husin khil,5f19da565427,87d7aeb2d684,7.7,False,100.0,100.0,1,1
+Paktya,Husin khil,5f19da565427,a9a7217c8f10,4.8,False,100.0,100.0,1,1
+Paktya,Husin khil,5f19da565427,cd13ae12189b,2.6,False,100.0,100.0,1,1
+Paktya,Husin khil,5f19da565427,5800d66ae048,10.1,False,100.0,100.0,1,1
+Paktya,Husin khil,5f19da565427,a563745f4de6,3.1,False,100.0,100.0,1,1
+Paktya,Husin khil,5f19da565427,2ef702a8b79a,11.3,False,100.0,100.0,1,1
+Paktya,Husin khil,5f19da565427,9f35af460e96,7.2,False,100.0,100.0,1,1
+Paktya,Husin khil,920f28717bf5,3cc898d8f506,2.5,False,100.0,100.0,1,1
+Paktya,Husin khil,920f28717bf5,614b8a04a298,6.6,False,100.0,100.0,1,1
+Paktya,Husin khil,920f28717bf5,122c3b0d912b,8.1,False,100.0,100.0,1,1
+Paktya,Husin khil,920f28717bf5,87d7aeb2d684,7.3,False,100.0,100.0,1,1
+Paktya,Husin khil,920f28717bf5,a9a7217c8f10,5.1,False,100.0,100.0,1,1
+Paktya,Husin khil,920f28717bf5,cd13ae12189b,4.0,False,100.0,100.0,1,1
+Paktya,Husin khil,920f28717bf5,5800d66ae048,9.3,False,100.0,100.0,1,1
+Paktya,Husin khil,920f28717bf5,a563745f4de6,4.9,False,100.0,100.0,1,1
+Paktya,Husin khil,920f28717bf5,9f35af460e96,8.5,False,100.0,100.0,1,1
+Paktya,Husin khil,3cc898d8f506,614b8a04a298,4.8,False,100.0,100.0,1,1
+Paktya,Husin khil,3cc898d8f506,122c3b0d912b,9.0,False,100.0,100.0,1,1
+Paktya,Husin khil,3cc898d8f506,87d7aeb2d684,4.9,False,100.0,100.0,1,1
+Paktya,Husin khil,3cc898d8f506,a9a7217c8f10,3.6,False,100.0,100.0,1,1
+Paktya,Husin khil,3cc898d8f506,cd13ae12189b,6.1,False,100.0,100.0,1,1
+Paktya,Husin khil,3cc898d8f506,5800d66ae048,11.2,False,100.0,100.0,1,1
+Paktya,Husin khil,3cc898d8f506,a563745f4de6,6.5,False,100.0,100.0,1,1
+Paktya,Husin khil,3cc898d8f506,9f35af460e96,10.8,False,100.0,100.0,1,1
+Paktya,Husin khil,614b8a04a298,122c3b0d912b,8.1,False,100.0,100.0,1,1
+Paktya,Husin khil,614b8a04a298,87d7aeb2d684,2.8,False,100.0,100.0,1,1
+Paktya,Husin khil,614b8a04a298,a9a7217c8f10,1.6,False,100.0,100.0,1,1
+Paktya,Husin khil,614b8a04a298,cd13ae12189b,8.3,False,100.0,100.0,1,1
+Paktya,Husin khil,614b8a04a298,a563745f4de6,7.7,False,100.0,100.0,1,1
+Paktya,Husin khil,122c3b0d912b,87d7aeb2d684,10.7,False,100.0,100.0,1,1
+Paktya,Husin khil,122c3b0d912b,a9a7217c8f10,7.3,False,100.0,100.0,1,1
+Paktya,Husin khil,122c3b0d912b,cd13ae12189b,5.3,False,100.0,100.0,1,1
+Paktya,Husin khil,122c3b0d912b,a563745f4de6,3.7,False,100.0,100.0,1,1
+Paktya,Husin khil,122c3b0d912b,2ef702a8b79a,11.9,False,100.0,100.0,1,1
+Paktya,Husin khil,122c3b0d912b,9f35af460e96,6.9,False,100.0,100.0,1,1
+Paktya,Husin khil,87d7aeb2d684,a9a7217c8f10,3.5,False,100.0,100.0,1,1
+Paktya,Husin khil,87d7aeb2d684,cd13ae12189b,10.0,False,100.0,100.0,1,1
+Paktya,Husin khil,87d7aeb2d684,a563745f4de6,9.7,False,100.0,100.0,1,1
+Paktya,Husin khil,a9a7217c8f10,cd13ae12189b,6.8,False,100.0,100.0,1,1
+Paktya,Husin khil,a9a7217c8f10,a563745f4de6,6.3,False,100.0,100.0,1,1
+Paktya,Husin khil,a9a7217c8f10,9f35af460e96,11.4,False,100.0,100.0,1,1
+Paktya,Husin khil,cd13ae12189b,5800d66ae048,9.9,False,100.0,100.0,1,1
+Paktya,Husin khil,cd13ae12189b,48f1edc0d326,10.8,False,100.0,100.0,1,1
+Paktya,Husin khil,cd13ae12189b,a563745f4de6,1.6,False,100.0,100.0,1,1
+Paktya,Husin khil,cd13ae12189b,2ef702a8b79a,9.0,False,100.0,100.0,1,1
+Paktya,Husin khil,cd13ae12189b,9f35af460e96,4.7,False,100.0,100.0,1,1
+Paktya,Husin khil,5800d66ae048,48f1edc0d326,11.0,False,100.0,100.0,1,1
+Paktya,Husin khil,5800d66ae048,a563745f4de6,11.5,False,100.0,100.0,1,1
+Paktya,Husin khil,5800d66ae048,2ef702a8b79a,9.8,False,100.0,100.0,1,1
+Paktya,Husin khil,5800d66ae048,9f35af460e96,10.5,False,100.0,100.0,1,1
+Paktya,Husin khil,48f1edc0d326,a563745f4de6,11.6,False,100.0,100.0,1,1
+Paktya,Husin khil,48f1edc0d326,2ef702a8b79a,1.9,False,100.0,100.0,1,1
+Paktya,Husin khil,48f1edc0d326,9f35af460e96,6.6,False,100.0,100.0,1,1
+Paktya,Husin khil,a563745f4de6,2ef702a8b79a,9.8,False,100.0,100.0,1,1
+Paktya,Husin khil,a563745f4de6,9f35af460e96,5.1,False,100.0,100.0,1,1
+Paktya,Husin khil,2ef702a8b79a,9f35af460e96,4.9,False,100.0,100.0,1,1
+Panjsher,Abdaba,4c7fbed6f6de,12fb1a0d06e6,1.0,False,15.0,15.0,8,1
+Panjsher,Abdaba,4c7fbed6f6de,bb32b4f37bd6,1.0,False,15.0,13.0,8,1
+Panjsher,Abdaba,4c7fbed6f6de,b75b995ea3f6,9.9,False,15.0,15.0,8,1
+Panjsher,Abdaba,12fb1a0d06e6,bb32b4f37bd6,1.8,False,15.0,13.0,1,1
+Panjsher,Abdaba,12fb1a0d06e6,b75b995ea3f6,10.9,False,15.0,15.0,1,1
+Panjsher,Abdaba,bb32b4f37bd6,b75b995ea3f6,9.3,False,13.0,15.0,1,1
+Panjsher,Abdaba,fca6b2ba55da,1681bc12c64b,2.5,False,14.0,14.0,3,7
+Panjsher,Aspaniya,be002eb4f5d4,ee6feb99a298,2.4,False,14.0,13.0,8,1
+Panjsher,Aspaniya,4027b4d63bd3,ae39f92c8a65,1.1,False,13.0,13.0,5,1
+Panjsher,Aspaniya,4027b4d63bd3,663d005f7c73,0.2,False,13.0,14.0,5,1
+Panjsher,Aspaniya,ae39f92c8a65,663d005f7c73,1.3,False,13.0,14.0,1,1
+Panjsher,Aspiyana,e3b85bb02a44,728db2bc2e72,4.6,False,13.0,14.0,2,1
+Panjsher,Aspiyana,4d6ac7b1e4b0,408ac886ce76,5.8,False,14.0,13.0,1,1
+Panjsher,Aspiyana,c90b54abbcd2,1a84216e5358,4.3,False,13.0,15.0,1,2
+Panjsher,Asticha,63afc8e68af1,5fba9f21c0a7,5.9,False,16.0,16.0,15,1
+Panjsher,Asticha,258384b579e2,dbe3b29c61e3,3.1,False,25.0,25.0,10,1
+Panjsher,Asticha,258384b579e2,42c8a3513784,3.1,False,25.0,25.0,10,5
+Panjsher,Asticha,c3989a19525c,ddfef03f01e0,8.1,False,14.0,14.0,1,15
+Panjsher,Asticha,c3989a19525c,dbd4f7b5c422,4.1,False,14.0,23.0,1,1
+Panjsher,Asticha,ddfef03f01e0,dbd4f7b5c422,5.5,False,14.0,23.0,15,1
+Panjsher,Asticha,dbe3b29c61e3,42c8a3513784,0.8,False,25.0,25.0,1,5
+Panjsher,Baharak,25ae4b32acf6,5d430683b1de,4.7,False,13.5,13.5,4,1
+Panjsher,Bahark,82b9cb7ff970,5e8783ddd796,7.9,False,17.0,9.0,1,1
+Panjsher,Bahark,40d6c07297bd,9e2b27c442f6,5.4,False,9.0,17.0,1,1
+Panjsher,Chashma 3,5306c93dc3f2,bd7217e8a6c1,1.2,False,23.0,23.0,6,9
+Panjsher,Chashma 3,5306c93dc3f2,2f2fb846d0ae,0.6,False,23.0,23.0,6,1
+Panjsher,Chashma 3,5306c93dc3f2,6922e590370d,3.1,False,23.0,25.0,6,1
+Panjsher,Chashma 3,b738941f01a1,3ca627269516,3.5,False,34.0,34.0,9,5
+Panjsher,Chashma 3,6e523ccd8a55,7a5429985e1d,3.3,False,25.0,25.0,15,1
+Panjsher,Chashma 3,6e523ccd8a55,ec2ad438ae23,3.5,False,25.0,34.0,15,1
+Panjsher,Chashma 3,bd7217e8a6c1,2f2fb846d0ae,1.6,False,23.0,23.0,9,1
+Panjsher,Chashma 3,bd7217e8a6c1,6922e590370d,2.0,False,23.0,25.0,9,1
+Panjsher,Chashma 3,2f2fb846d0ae,6922e590370d,3.3,False,23.0,25.0,1,1
+Panjsher,Chashma 3,7a5429985e1d,ec2ad438ae23,3.7,False,25.0,34.0,1,1
+Panjsher,Chashma 3,83368c95d135,ad116581ae8d,5.7,False,34.0,25.0,1,1
+Panjsher,Orati,98c192691dbe,0e195c1c7143,1.0,False,15.5,18.0,1,13
+Panjsher,Orati,98c192691dbe,4474b7f0481b,3.6,False,15.5,15.0,1,1
+Panjsher,Orati,0e195c1c7143,4474b7f0481b,2.6,False,18.0,15.0,13,1
+Panjsher,Oroo,d7b9ef27720a,ca3610af235e,7.4,False,14.0,14.0,5,1
+Panjsher,Oroo,2866dbd70564,012d5a0aa510,11.1,False,13.0,13.0,1,1
+Panjsher,Oroo,cd70dc76cb90,30405ea36f1d,3.5,False,12.0,13.0,1,1
+Panjsher,Oroo,784741f123d0,5b4a22859756,4.5,False,13.0,12.0,3,2
+Panjsher,Oroo,7443db5dbe7a,984337a5591e,2.4,False,12.0,11.0,2,1
+Panjsher,Oroo,d755884d6f79,d091d66ccd84,7.6,False,13.0,12.0,1,1
+Panjsher,Oroo,30405ea36f1d,d091d66ccd84,10.9,False,13.0,12.0,1,1
+Panjsher,Qala Mirsha,c18c88976e5c,afb4219bd3c4,1.1,False,17.0,17.0,12,1
+Panjsher,Qalacha,f430700bfbf3,8a7b2854b418,2.6,False,6.0,6.0,13,1
+Panjsher,Qalacha,f430700bfbf3,e57842bd0892,3.0,False,6.0,6.5,13,1
+Panjsher,Qalacha,f430700bfbf3,b6e5ff01abb3,0.6,False,6.0,6.0,13,1
+Panjsher,Qalacha,7ac8807f0631,387aa6d76bfd,3.5,False,23.0,6.5,19,1
+Panjsher,Qalacha,d8c82e47a19e,17c495e5ffbe,4.5,False,6.0,6.5,17,1
+Panjsher,Qalacha,8a7b2854b418,e57842bd0892,3.6,False,6.0,6.5,1,1
+Panjsher,Qalacha,8a7b2854b418,b6e5ff01abb3,3.1,False,6.0,6.0,1,1
+Panjsher,Qalacha,e57842bd0892,b6e5ff01abb3,2.6,False,6.5,6.0,1,1
+Panjsher,Qalacha,2e1ad6580232,5628f9824bc4,5.3,False,6.0,11.0,1,1
+Panjsher,Sangana,e939a5c5158a,fe73c1dfd18d,10.8,False,12.0,10.0,1,1
+Panjsher,Sangana,e939a5c5158a,200fe905243c,9.9,False,12.0,13.0,1,1
+Panjsher,Sangana,e939a5c5158a,ae6e26de503c,3.6,False,12.0,17.0,1,3
+Panjsher,Sangana,fe73c1dfd18d,ae6e26de503c,8.2,False,10.0,17.0,1,3
+Panjsher,Sangana,200fe905243c,ae6e26de503c,11.9,False,13.0,17.0,1,3
+Panjsher,Sangana,6b3ecd85052b,42eab82f7bea,7.6,False,17.0,9.0,1,1
+Parwan,Aghil Kabuly,8b1a07f6cda2,55d7b9a1df99,2.3,False,13.0,13.0,9,2
+Parwan,Dah Naw,d6b966a0a518,bd8e684735bf,8.3,False,25.0,25.0,8,9
+Parwan,Dah Naw ,e0f4ef25220a,5fc94ac767ac,2.2,False,20.0,20.0,11,1
+Parwan,Daraz gerd ,27b107fc31b7,e05c7bcde0e3,5.2,False,19.0,19.0,7,2
+Parwan,Khawaja Sayaran Bala ,591a22584eac,4470e46512d6,11.3,False,20.0,23.0,2,2
+Parwan,Khawaja Sayaran Bala ,591a22584eac,edd23ed23da9,7.7,False,20.0,20.0,2,1
+Parwan,Khawaja Sayaran Bala ,8534c034ef8b,e7fb721be41a,7.4,False,23.0,23.0,6,1
+Parwan,Khawaja Sayaran Bala ,8534c034ef8b,f5eb8b075605,7.8,False,23.0,20.0,6,1
+Parwan,Khawaja Sayaran Bala ,4470e46512d6,edd23ed23da9,4.0,False,23.0,20.0,2,1
+Parwan,Khawaja Sayaran Bala ,e7fb721be41a,f5eb8b075605,2.2,False,23.0,20.0,1,1
+Parwan,Khawaja Sayaran Bala ,4c0719d6c31c,5c1d5be937ac,11.0,True,32.0,32.0,1,1
+Parwan,Ofyan,f27ba98203fc,a9895cb9f780,8.4,False,15.0,15.0,2,10
+Parwan,Ofyan,f27ba98203fc,999915282241,8.7,False,15.0,13.0,2,6
+Parwan,Shiwa,78d14d033da1,4d0a2b60b481,5.2,False,25.0,25.0,10,1
+Sar-e-Pul,Kariz,e2cfeae8a93d,b43d9fe50483,6.2,False,52.0,52.0,7,1
+Sar-e-Pul,Kariz,2166a94ad2e1,5476065e7601,1.4,False,59.0,60.0,9,1
+Sar-e-Pul,Kariz,c78d752aa74a,238f1044fd92,4.9,False,45.0,45.0,11,1
+Sar-e-Pul,Kariz,8fb7f381693b,311aa39d5c50,1.8,False,60.0,60.0,9,1
+Sar-e-Pul,Kariz,8fb7f381693b,8877fcd7b1a3,2.9,False,60.0,60.0,9,1
+Sar-e-Pul,Kariz,79db6b54b73c,dc00115c1406,4.8,False,60.0,60.0,4,2
+Sar-e-Pul,Kariz,79db6b54b73c,97b1de639b0f,5.8,False,60.0,50.0,4,1
+Sar-e-Pul,Kariz,dc00115c1406,97b1de639b0f,1.8,False,60.0,50.0,2,1
+Sar-e-Pul,Kariz,8d2929e7f673,927c5a1dbbae,4.3,False,50.0,50.0,1,1
+Sar-e-Pul,Kariz,311aa39d5c50,8877fcd7b1a3,1.9,False,60.0,60.0,1,1
+Sar-e-Pul,Kariz,9be034279e03,703361743eae,5.6,False,60.0,55.5,1,1
+Zabul,Kakar,96dcb8da93ca,b01fca63c79a,5.8,False,0.1,18.0,14,1

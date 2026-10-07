@@ -1,0 +1,216 @@
+owner_group,province,village,n_wells,max_centroid_separation_m,band,well_ids,depths_m
+000fc26166e1,Faryab,Khwaja Qoshri,6,1650.3,far_likely_two_wells_or_office_gps,1553609707a9 6ff8eed4c60e 6b905061e1b8 b1ac6af3e4a2 10ff72c23980 cc9e043c7f57,12.5 12.5 12.5 12.5 12.5 12.5
+004c4eefc6d6,Kunduz,Yaamchi ,2,60606.0,far_likely_two_wells_or_office_gps,0210d98b5b1b 82ad00116055,11.0 6.0
+00a87fd5f6db,Helmand,Lawar Tangi,2,121.0,50-200m_review,d028d9bd0e68 2597b12266fa,15.0 15.0
+02aeefe5e22d,Kunduz,Yaamchi ,3,60678.5,far_likely_two_wells_or_office_gps,ab2577e63892 ceb07824e306 571cfb3523f2,12.0 6.7 6.5
+03996cbc431f,Daykundi,Sarqul,3,21.7,12-50m_review,e922ae90350d 93984495e5f5 dc7a5e6a8239,16.2 16.2 16.2
+03ca9841f157,Farah,Babo Kariz,2,23.2,12-50m_review,165c4ce8837e 1e1288a38952,120.0 120.0
+05cfd218b67b,Nangarhar,Ador,3,39.9,12-50m_review,37809e68f836 36fca08fa049 57dbcde62415,50.0 50.0 50.0
+06dc4299a939,Kapisa,Paryat ,2,40.9,12-50m_review,a5375375127c 87149f913329,65.0 65.0
+07eb094c2004,Logar,Bala deh,7,402.6,far_likely_two_wells_or_office_gps,8e99fbc64126 e542eda9331c 7d2654294d2c ae6ac842996d a52fe864f50a 105d2b84966c 25e78952f98b,25.0 22.0 25.0 25.0 25.0 25.0 25.0
+09929cc1daed,Kunduz,Lala Kai ,2,77262.0,far_likely_two_wells_or_office_gps,7ea37b479b2b d792f97917a6,13.0 9.2
+0ab0f13bbf8b,Parwan,Daraz gerd ,9,109.5,50-200m_review,58cc4e5511f0 ae7d34932af0 a521239aea5a 103ed7999871 e05c7bcde0e3 3144b92687e8 50f084f6db49 f608dd794a6e 993691ea8d91,19.0 19.0 19.0 19.0 19.0 19.0 19.0 19.0 19.0
+0c9e00ccc271,Parwan,Dah Naw,2,33.9,12-50m_review,e0763dc9eadb 5fc94ac767ac,20.0 20.0
+0d853bd73ee1,Farah,Noor Mohammad Kariz ,2,12.6,12-50m_review,efbb08b1e215 c48411dc5d98,70.0 70.0
+0dd5a990006d,Panjsher,Asticha,2,16.9,12-50m_review,90c9a6f3b444 dbe3b29c61e3,25.0 25.0
+0f1a481e446b,Kunduz,Niazi,2,50161.4,far_likely_two_wells_or_office_gps,9acdf67758f8 4cf49c1beb4f,21.0 18.0
+0f579486cd4a,Nangarhar,Loya Tarmai,2,1290.1,far_likely_two_wells_or_office_gps,7357589dc41e 6d847308f4ab,20.0 20.0
+0ff42b9e4647,Daykundi,Surkhbid,3,34.0,12-50m_review,e3dcd7a3c036 01f15ba7dbab 5da6c404bfbf,33.0 33.0 33.0
+106856c1b9b7,Kapisa,Shenkai ,4,4043.2,far_likely_two_wells_or_office_gps,c3af2cc1c56c 4ca69a84f1bf b67421254f4e cdd9e005cce3,8.5 8.5 8.5 8.5
+10cfa0c19047,Balkh,Paikan dara ,2,189.4,50-200m_review,59904dff60b7 2498f466a839,14.0 13.0
+13f6ba2690a8,Kunduz,Niazi,2,27.5,12-50m_review,46ba8e708298 6762bb416934,19.4 19.4
+1538be668afe,Laghman,Zerani,2,15.8,12-50m_review,97c73e6406f5 57b6ae7d281f,8.5 8.5
+158f2472c47a,Kapisa,Kam Sheenkai ,4,2808.8,far_likely_two_wells_or_office_gps,6be5dd9393a2 4e047e27dbe7 543496f3f5a3 7cba2cc861a4,8.5 8.5 8.5 8.5
+170ed2cecac5,Panjsher,Abdaba Village,2,42.2,12-50m_review,519b06eb35a6 a2f0d300079a,14.0 15.0
+1937f22b681b,Parwan,Aghil Kabuly,2,24.3,12-50m_review,8b1a07f6cda2 0320f985dc5b,13.0 13.0
+1974c0a07634,Kapisa,Aram kot ,2,26.9,12-50m_review,f570373e0532 40058000c9ab,62.0 62.0
+1b19d9d1f1a5,Faryab,Khwaja qoshri ,3,90.5,50-200m_review,ca8c7ff7e88d 6b8ff8c365ff 1d551a2c013b,12.0 12.0 12.0
+1cef16dc9b71,Kapisa,Mahtan ,13,3293.8,far_likely_two_wells_or_office_gps,799aeb68a6f2 33952e1d30c3 e62a2d668edb 855f0bb280a3 de1f33959f85 0d1aee7b413e 7786ff623eb5 6b80029de6b1 06dbdf79a1ff d7c70c2a8353 c0b983cfac07 9d8cbfcf054e 65c3a5b681e0,24.0 29.0 29.0 24.0 29.0 24.0 24.0 24.0 24.0 24.0 24.0 24.0 24.0
+212bb0de1134,Faryab,Gozari,4,625.6,far_likely_two_wells_or_office_gps,745cff843a4a 777612339b10 76004c8518d7 eadf58846b5c,12.0 12.0 12.0 12.0
+23835ddbf4f2,Farah,Taparig ,3,43.4,12-50m_review,a14471df09e4 523ac503d7c4 ab47cc1408a8,80.0 80.0 80.0
+28526bed6643,Kunar,Damgalik,2,15.8,12-50m_review,4c32ab42b86d 5ba720bb8bc2,130.0 130.0
+29062c550dfa,Daykundi,Hijdi Ulya,2,15.6,12-50m_review,53e90c47ff3e 2686b5a3c238,4.3 4.3
+29464353228a,Kabul,Khwaja shahab,4,102.0,50-200m_review,78755070a3dd dc48735d831e 2ff4c3891865 90d2345c5b49,14.7 14.7 14.6 14.6
+2ab4f9126583,Kapisa,Konj Paryat,12,3880.3,far_likely_two_wells_or_office_gps,8b64b88a3b56 e9d8a0662d44 b87751fa87b5 171b5fd9bdac ab485b80e99e b7e3654aeb85 f4f01cf31b0e c434c5fa05b5 ac02757347d1 a4ebcc618b12 348b9d06ac8a 251ff3ce345a,65.0 65.0 65.0 65.0 65.0 65.0 65.0 65.0 65.0 65.0 65.0 65.0
+2b8650b200a5,Kapisa,Landakhil ,2,14.3,12-50m_review,912396214651 b1429b28e9e1,42.0 42.0
+2bb52ad063a4,Kapisa,Surghi ,10,2027.1,far_likely_two_wells_or_office_gps,d4af25972254 7df880ec6c92 05687666cc83 cc1615178d12 a82c67542f7d f2458d955cf4 0559dbf2263e 0c0c0e913ac8 24249c60ecd3 c545544386b9,11.0 11.0 11.0 11.0 11.0 11.0 11.0 11.0 11.0 11.0
+2ceaa770caaf,Paktya,Husin khil,4,4315.2,far_likely_two_wells_or_office_gps,02790420ce45 650ed906fcab 66e4305af442 4ccce7a7d8a1,100.0 100.0 100.0 100.0
+2e18b6c073c4,Parwan,Dah Naw,5,47.0,12-50m_review,6e1542aead1c 59e44056ed98 8b945c335148 5f6363576ab7 c69a7a4f6b1e,20.1 20.1 20.1 20.1 20.1
+2e3cc8862fa1,Panjsher,Bahark,2,110.1,50-200m_review,40d6c07297bd 5e8783ddd796,9.0 9.0
+2fab1e1f9a30,Parwan,Ofyan,3,48.5,12-50m_review,a9895cb9f780 7e4eb6ab7246 d580a2ad2f63,15.0 15.0 15.0
+32c0924a091b,Daykundi,Sarqul ,2,23.2,12-50m_review,e56189ec44c0 9200e3f23706,17.0 17.0
+32ec5f8358c8,Kunduz,Kabali Qushlaq,3,38.9,12-50m_review,1c9ddc132b79 826f5e451a09 d8991f3699e1,46.0 46.0 46.0
+33245143a718,Panjsher,Qalacha,5,126.4,50-200m_review,f430700bfbf3 17c495e5ffbe 2e1ad6580232 24bfe77f0d7f 1b681dddd15f,6.0 6.5 6.0 6.0 6.5
+33de64c3b1ca,Panjsher,Qalacha,3,129.8,50-200m_review,d8c82e47a19e 8a7b2854b418 1b2c55847085,6.0 6.0 6.0
+3515e9c3c035,Zabul,Patkhil,2,18.4,12-50m_review,cbdba7ab1f5a 40d8e1596d1f,18.0 18.0
+36d830064a4f,Parwan,Khawaja Sayaran Bala ,2,17.2,12-50m_review,591a22584eac 78d65400965f,20.0 20.0
+37b69d444e85,Nangarhar,Mandarkhil ,2,40.2,12-50m_review,b2241b67fda1 e0c654745411,28.0 60.0
+3b45d5e47b3f,Balkh,Paikan dara,3,22.5,12-50m_review,25aa0c5230fa 941629d70ad4 34e3f4f9217b,15.0 15.0 15.0
+3b9549e459c0,Panjsher,Qala Mirsha,5,103.1,50-200m_review,069b4b836200 ff70b0b5c72e 4b39be49a45e 03b9b9bed37e 9e09f6568291,37.0 37.0 37.0 37.0 37.0
+3ba96a0521b4,Panjsher,Chashma 3,4,176.0,50-200m_review,1616503f4606 3ca627269516 83368c95d135 ec2ad438ae23,34.0 34.0 34.0 34.0
+3c8f4dbe6e65,Panjsher,Sangana,5,46.6,12-50m_review,dfa021d2b162 2124215a59a8 6b3ecd85052b ae6e26de503c 5a5e231e0099,17.0 17.0 17.0 17.0 19.0
+3d619d9bd18d,Panjsher,Sangana,2,152.0,50-200m_review,c1400cce16e4 200fe905243c,13.0 13.0
+3d6e8c31d9ee,Khost,University site,10,535.0,far_likely_two_wells_or_office_gps,696441aa1a80 b41f6a0397ed 6512170975ea 214b5ad94f45 468e0c4f901d 2c968903993e 49f07907f6cf a70e9a668e33 8c550310568a b7cc8c9214f5,67.0 67.0 67.0 67.0 67.0 67.0 67.0 67.0 67.0 67.0
+3eed80d8c80f,Parwan,Khawaja Sayaran Bala ,8,200.0,50-200m_review,edd23ed23da9 68d6b6317b0b 86d4f2840cf6 51c3b0cedac9 649c81799de1 b88700521e65 d35b3527a989 f5eb8b075605,20.0 20.0 20.0 20.0 20.0 20.0 20.0 20.0
+3f8657c10a96,Balkh,Qeflan dara ,2,43.4,12-50m_review,64fea795fc82 3d0d748fc2a7,15.0 15.0
+40eff21c0d6e,Panjsher,Chashma 3,5,345.0,far_likely_two_wells_or_office_gps,6e523ccd8a55 204768db42ac 89d35041ece1 6922e590370d ad116581ae8d,25.0 29.0 29.0 25.0 25.0
+43ffe4a59f7e,Herat,Khwaja Mohammad Kamil,4,123.2,50-200m_review,81c39a6eb7e4 a89f119a60ff 108ecb776482 45e4e38923e6,16.5 18.6 18.6 18.6
+45b1c9d4a1ba,Panjsher,Sangana,3,317.1,far_likely_two_wells_or_office_gps,9bccac6acca0 fe73c1dfd18d b65b0927b323,10.0 10.0 10.0
+467ca4017b2b,Parwan,Aghil Kabuly,3,71.1,50-200m_review,137ef24068e4 d0ea7829b520 6a1d51f815ac,12.0 25.0 12.0
+47cc0d044f10,Panjsher,Sangana,2,168.5,50-200m_review,e939a5c5158a 28341f662af2,12.0 12.0
+480b1ef9f392,Faryab,Yangi qala,3,6975.3,far_likely_two_wells_or_office_gps,546d463d147b 2d131ba2300d e2ed755b0ae2,26.0 26.0 26.0
+4821af30f835,Kapisa,Sheenkai ,3,40.9,12-50m_review,41ebf9f24174 6dfd3642fb23 d4e51c4bac24,8.5 8.5 8.5
+4a8b3170fbf1,Parwan,Dah Naw,5,60.7,50-200m_review,4796402711f5 0d8be5d705dd 599df60636d9 f8012d855ac3 b57681d52a75,34.0 34.0 34.0 34.0 34.0
+4ab267fd1c97,Kabul,Danaw,2,151.9,50-200m_review,44d9321130e6 4899ba5fffcf,22.6 24.2
+4ccad61fb107,Kunduz,Lala Maidan 2,2,78732.0,far_likely_two_wells_or_office_gps,ea27b2dff6fa 71db6a2717bb,28.0 26.0
+4d981f22d11a,Kunduz,Niazi,2,50276.1,far_likely_two_wells_or_office_gps,a8fcdd0f6706 944952ae4afd,22.0 18.1
+4ea96b6f6350,Badghis,Sarcheshma,2,51.3,50-200m_review,487c79936aaa a6c88f71a7e2,20.0 20.0
+50064c419f66,Balkh,Paikan dara ,2,28.7,12-50m_review,d895be471332 d5c32fb859f7,14.0 14.0
+504bf0778253,Kapisa,Ziawodin khil,2,51.3,50-200m_review,9db7f9fa809d 7475b8972174,16.0 16.0
+505d8398e4b8,Panjsher,Baharak,2,22.8,12-50m_review,4a5ce553b8f7 439928284875,12.2 12.2
+5160011cab78,Helmand,Malazai,2,620.8,far_likely_two_wells_or_office_gps,3068a11ae8ae f71bf45a28df,109.0 109.0
+516c782c70ce,Herat,Khwaja Mohammad Kamil ,2,94.4,50-200m_review,3a97ff6feb99 a219c5a2af7e,16.0 15.6
+51cb1ee9453b,Faryab,Jamshidi bala,4,15459.7,far_likely_two_wells_or_office_gps,0ae3ed3894bc 01f33b456811 d60f016b25f5 9f248c010506,33.0 33.0 33.0 33.0
+53d04316b432,Bamyan,Zabzjobak,4,644.7,far_likely_two_wells_or_office_gps,8772e42407cb fb60cc95f6a0 0b6a7b617be7 a33fc32fb780,9.0 9.0 9.0 9.0
+578751f25b93,Kunduz,Mola khel,2,52007.0,far_likely_two_wells_or_office_gps,0bf07edbe2ee 6777dfbeeac0,27.0 26.3
+58dda48a0ca1,Khost,Werza,2,4718.3,far_likely_two_wells_or_office_gps,76b42cca924b 5d0b8cc8277a,45.0 45.0
+59978c9cd28d,Panjsher,Abdaba,2,38.6,12-50m_review,4c7fbed6f6de 8d6afce85fd2,15.0 15.0
+5a07f848d00b,Kapisa,Gado china,9,3179.3,far_likely_two_wells_or_office_gps,497af7791dd4 03688fa4df96 6c42635c6a77 5fd8483c2f4e 1cd47b72b93b 718f255ad7ae c40eb8b0ebb7 99918787bc7a a6eccf915e3c,13.5 13.5 13.5 13.5 13.5 13.5 13.5 13.5 13.5
+5ff66afbc4e5,Faryab,Gozari,3,620.8,far_likely_two_wells_or_office_gps,c2a5cc816ae3 0cd6bdc07fd3 a9e92e7a68b9,13.0 13.0 13.0
+60135aedf25e,Panjsher,Baharak ,2,24.6,12-50m_review,5f0dc7213b54 9eda80ac90c0,17.0 17.0
+601c982e7aa4,Kapisa,Badam Ali,2,84.5,50-200m_review,719370d76a63 dc57b5b979cb,12.7 12.7
+604f872fef09,Panjsher,Baharak,3,117.8,50-200m_review,bcc76d3330bd cc189bf7e40f 32cb760bc969,9.0 17.0 9.0
+6066c802c2f9,Kapisa,Chashma-e-Muazullah,2,19.0,12-50m_review,0e962293c113 e894a25bc6f7,40.0 40.0
+60cd117cde4f,Kunduz,Lala Maidan 3,3,76669.8,far_likely_two_wells_or_office_gps,a359ef8fc31d 888130f4e526 6114ece32bed,40.0 36.5 36.5
+60e707be8c33,Daykundi,Sarqul,2,2157.5,far_likely_two_wells_or_office_gps,9f1834fb4f15 e04dec30338a,16.2 17.0
+6229a8aaaac0,Maidan Wardak,Zanborak,2,19.8,12-50m_review,12a9bbc9593a bcc430b0d710,27.5 27.5
+63561584bf67,Kapisa,Gado china,9,3142.8,far_likely_two_wells_or_office_gps,80a5c182c214 0af5bd3a8287 ba69640feb5b eb72530d0b46 49df3d6ea029 81c1ffefaf3a da791ce23ff9 c37c2d9341d5 f20042854aef,11.0 11.0 11.0 11.0 11.0 11.0 11.0 11.0 11.0
+64247fa319d1,Panjsher,Orati,2,181.2,50-200m_review,3d96fc5240ae 4474b7f0481b,15.0 15.0
+64b77a62540c,Kapisa,Landa khil,7,1528.1,far_likely_two_wells_or_office_gps,f0e7fcd9cde5 ad1a22bc72c4 7483301ea8f1 7ca75858ba97 450542c1adff 543d812d9315 5c477186cdf1,42.0 42.0 42.0 42.0 42.0 42.0 42.0
+6526c8652432,Parwan,Fendaqistan Bala ghail ,4,150.0,50-200m_review,64cafc158ad5 6dae995d160f 33c4b5027457 14611dabb95b,8.0 8.0 8.0 8.0
+68398c1b3d9e,Takhar,Uzbakia,2,29.7,12-50m_review,23bc6b9c18d5 138c5ee9b9a7,25.0 25.0
+695137927664,Faryab,Khwaja qoshri,5,14436.7,far_likely_two_wells_or_office_gps,d712d6c86aa1 cedad5438b96 0e2ae1e119ab 08536cc3b527 6d365fc6ce32,10.0 10.0 10.0 10.0 10.0
+695e0cbe1c83,Panjsher,Qala Mirsha,4,30.9,12-50m_review,7b74f727f73b 99328a3785ce 5ef4c98507cd 8bcc3246d6ab,15.3 15.3 15.3 15.3
+6aee42aed97d,Kapisa,Tawachian,13,1442.6,far_likely_two_wells_or_office_gps,16f099123a1d 71eaef23f2a9 6926392b0086 c39500a720de 68653e2b3a1c 21164fbc4396 8c324cf2633b ba6acc7fa515 63552fb0f3f9 cae08e21de5a fc617e9f800d ca5d6fc33b76 424adcd773ab,27.0 29.0 53.0 53.0 29.0 29.0 29.0 29.0 29.0 53.0 29.0 29.0 29.0
+6afb4caeb5ee,Kunduz,Kabali Qushlaq,2,54776.1,far_likely_two_wells_or_office_gps,a531e51590d9 7ccfdd555aae,52.0 52.0
+6e079a130d0b,Panjsher,Asticha,2,173.2,50-200m_review,c3989a19525c 5fba9f21c0a7,14.0 16.0
+6e6c069db237,Panjsher,Orro,2,15.1,12-50m_review,ffe5eef78d68 fdac07fdfdb5,13.0 13.0
+6ec8229ac0b1,Kapisa,Naser Mula Khil ,13,4872.6,far_likely_two_wells_or_office_gps,accaa0e7d33b ed46ada8eb40 963539c7ef32 77a0fc033893 6a5b78b55977 01c8ebb99095 45abad02ec63 5ee65536b793 e4ce8a6e5a79 4f2ff4f7b4ad d824de7fc594 d9534fbb37c1 bd61dceed6f4,60.0 50.0 50.0 60.0 50.0 50.0 60.0 60.0 50.0 50.0 60.0 50.0 60.0
+6ef333f378dd,Panjsher,Aspiyana,5,231.8,far_likely_two_wells_or_office_gps,4d6ac7b1e4b0 713a49c414df 07aa9ac28fca f8cb28d3b3cf 728db2bc2e72,14.0 14.0 14.0 14.0 14.0
+700dc8d90112,Parwan,Khawaja  Sayaran,2,121.3,50-200m_review,6d8f9052227e ad2450b5edf0,23.0 23.0
+70798a0ea105,Parwan,Dah Naw,2,20.8,12-50m_review,5775b9818a72 bd8e684735bf,25.0 25.0
+70d4124ac0a0,Kapisa,Nezam khil,3,1255.1,far_likely_two_wells_or_office_gps,5ce7982f1d10 8131f834f95e 33825c1d94f7,11.0 11.0 11.0
+738a216cb67e,Kunduz,Mola khel,4,51872.4,far_likely_two_wells_or_office_gps,8a2b7b93b177 7b56f12ae25d cb521cd4b86a a54147796112,30.0 31.8 31.8 31.8
+745a1feb8fd3,Paktika,Loy Kariz,7,1396.6,far_likely_two_wells_or_office_gps,f5a26ac6461f e83c744e41eb a4589ab3eee0 aed2c657dfa1 3a8a6512aa91 fc34c13aa99d 5fcdc4e5d194,10.0 10.0 10.0 10.0 10.0 10.0 10.0
+753f5a8049ca,Faryab,Yangi qala,4,6900.8,far_likely_two_wells_or_office_gps,ea148b923cc1 af2bd4249de1 719eba4397bc 874b861bf1ff,25.0 25.0 25.0 25.0
+7632bc441d9b,Parwan,Aghil Kabuly,3,72.9,50-200m_review,2aa0e71c0661 b8f7d1f1ff74 e29335c49f62,10.0 10.0 10.0
+779fe412e837,Parwan,Daraz gerd,5,71.6,50-200m_review,a670e604cdf3 6e2d0a9691a1 e594e8c472aa 5ad581ab12f6 9c979ca3e649,24.0 24.0 24.0 24.0 24.0
+77dcf040531b,Kunduz,Yaamchi ,6,60679.4,far_likely_two_wells_or_office_gps,65219c882417 b8b01b695e1e 1a2031eb3adf a9a1f4430dd5 60bc09399d65 a1c9913cbe4e,13.0 6.5 6.5 6.5 6.5 6.5
+7888b73cc693,Kapisa,Aramkot ,2,21.9,12-50m_review,1ad05f647d5f 8bb39b20bfb4,62.0 62.0
+7a218fc7a305,Herat,Khwaja mohamma kamil,2,18.5,12-50m_review,0b495248f905 a7d86fa2067a,16.4 16.6
+7c11bbba1105,Farah,Babo kariz,3,32.7,12-50m_review,87b5a9af1aef 79a5468d9fe2 653be66ffa54,120.0 120.0 120.0
+7c533463e9cd,Faryab,Jamshidi Bala ,4,15483.1,far_likely_two_wells_or_office_gps,e18dca5387bb 7e50e5b00387 dda39b0065cb 9a1c08581ad3,26.0 26.0 26.0 26.0
+7d0a02f7b7c5,Panjsher,Baharak,2,50.6,50-200m_review,8c4a5a29d761 b5dae2f3629f,26.0 26.0
+7e44c9bcf359,Kunduz,Niazi,3,50368.6,far_likely_two_wells_or_office_gps,5428a8a4bc32 4c36dbfb200b 2edf45a4de05,23.0 18.0 18.0
+7f534cfd4b16,Kapisa,Adezai ,14,1936.4,far_likely_two_wells_or_office_gps,f91fd48a07a4 85ccc86ee2c5 a4fdbe18ee73 82514b7d08e5 2f07df114456 cb59a352bee4 75092f6e0c03 5c548904bdae 5b95f935409a ec116f3845ca 2dd5a353271d 136e16d17560 03db76d0c38a 8d8f474ee65f,12.0 12.0 12.0 12.0 12.0 12.0 12.0 12.0 12.0 12.0 12.0 12.0 12.0 12.0
+7f9ab97f0c28,Farah,Naw Abad Taparig,2,17.0,12-50m_review,8a38dd8f770f a42f501e705b,80.0 80.0
+800d702d4480,Kapisa,Gado china,10,3112.5,far_likely_two_wells_or_office_gps,53c309f9c601 ad5149762847 71a132c2fdb9 8fd6ac923df0 589203048efa 3cede0611aa3 2396f0094912 a0b8d400b37f 2408dec5712a f686f9ec4fc0,12.0 12.0 12.0 12.0 12.0 12.0 12.0 12.0 12.0 12.0
+8010cad685ef,Kapisa,Adezai ,10,1984.5,far_likely_two_wells_or_office_gps,ce43c4b8d233 6e28ceed376b cc61d37a0e27 3f240c002fda 148749b97052 210b87614916 a4f37a47a428 89e6f453d6b4 bb840a4b8547 c0e0879f1564,34.0 34.0 34.0 34.0 34.0 34.0 34.0 34.0 34.0 34.0
+80b5efa685ae,Parwan,Fendaqistan Bala ghail ,5,186.4,50-200m_review,3486a19530aa 5ce8ffe7c565 dbf5d934d994 afd41d78ebd8 015b13d60659,10.0 10.0 10.0 10.0 10.0
+8247e9668f34,Maidan Wardak,Deh Hayat,5,1748.2,far_likely_two_wells_or_office_gps,d756b5af0528 6b889f72c71a e44bfd901af4 683bd407ff7d 9ecdc8fe2b3a,21.6 22.0 21.6 21.6 21.6
+84c538d23748,Balkh,Paikan dara ,3,39.9,12-50m_review,6fbc87ea8215 93bdfae3cb00 dd70fc7df97b,15.0 15.0 15.0
+868abb942292,Panjsher,Oroo,4,53.1,50-200m_review,2866dbd70564 9174a98aa4eb 7443db5dbe7a 9e9c8fd5536d,13.0 12.0 12.0 12.0
+8755d4241e7b,Faryab,Gozari,2,42.6,12-50m_review,08c0bef1d19a 700921caceb0,13.0 13.0
+87978b2ffc24,Herat,Khwaja mohamma kamil,2,23.4,12-50m_review,08c3c2603870 658eef9f3ae6,18.6 18.6
+879800a4c022,Panjsher,Qala Mirsha,2,267.0,far_likely_two_wells_or_office_gps,ce98c0ed11d0 a04306cd26f5,28.0 28.0
+89aea6dfde35,Panjsher,Abdaba,2,48.2,12-50m_review,1681bc12c64b 5fca0899b704,14.0 14.0
+8aa0dafcbb9f,Kunduz,Yaamchi ,2,60718.8,far_likely_two_wells_or_office_gps,e079194c92d1 99da9caff131,18.0 10.3
+8b1be5d0c83e,Parwan,Shiwa,2,94.3,50-200m_review,60410d839228 4d0a2b60b481,25.0 25.0
+8b3c94be8519,Helmand,Ghori village,2,14.7,12-50m_review,555d4484e4b5 6baedc36b8d7,140.0 140.0
+8bda99f0f1ca,Parwan,Dah Naw ,5,47.2,12-50m_review,e0f4ef25220a 9ab638d312dd 02eb671d25bc fa49885e95e8 909248e768ef,20.0 20.0 20.0 20.0 20.0
+8c0aee5a3e19,Kunduz,Lala Kai ,2,76895.2,far_likely_two_wells_or_office_gps,352764d4b93b da04c9a2beff,15.0 15.0
+8d198a6acba6,Kunduz,Lala Kai ,2,76911.1,far_likely_two_wells_or_office_gps,4cab831e87dc 8cf37b420379,15.0 13.0
+8e3ea8f514a0,Laghman,Karahu,2,17.0,12-50m_review,2018dfe86175 2e372be30b43,6.0 6.0
+8e9954d08589,Kapisa,Tawachian ,18,1494.8,far_likely_two_wells_or_office_gps,fbfd8f743d3e 95194c20be02 e89e466641d4 c512385eb3a4 6788a759d740 150f94eeef9a 9e17af870114 5683af7abc37 dfc9c73a1a71 5adfa49bbad9 29d687c4e2d0 2200b5fef9ed 404e192956a5 5b861dd83064 6ccf7ff4262b 0766b03d2506 86a851d1a14c 5d0c5370042b,27.0 27.0 53.0 53.0 53.0 27.0 53.0 27.0 53.0 27.0 53.0 27.0 53.0 53.0 27.0 27.0 27.0 27.0
+91ecd4413cea,Panjsher,Qala Mirsha,2,46.8,12-50m_review,c18c88976e5c 97fa363cd58d,17.0 17.0
+92d27c741cb4,Kunduz,Niazi,2,50517.7,far_likely_two_wells_or_office_gps,9fa71f3a2632 1a97bdff383b,23.0 19.6
+9604732b6b38,Panjsher,Oroo,2,17.6,12-50m_review,e849b7cc48e3 bb04f02476a4,11.0 11.0
+971922cf3e00,Kabul,Kariz bala,4,131.3,50-200m_review,0300a1b68559 793a19cd4110 160f9772d03b f9b976802a49,18.7 18.0 16.8 18.7
+97ed15a90347,Maidan Wardak,Deh Hayat,4,1721.6,far_likely_two_wells_or_office_gps,b2445d1dc5ac 89e875d6821f 53efd4fedf47 14d302d50dfe,60.0 60.0 60.0 60.0
+9bd3f10bd135,Parwan,Shiwa,3,100.5,50-200m_review,78d14d033da1 8c7f2832360d efdac7e6d555,25.0 25.0 25.0
+9c959ce38591,Farah,Kurghzard,2,20.0,12-50m_review,a3e363d3b5ed 15128ab803f3,50.0 50.0
+9cb911f09d1e,Maidan Wardak,Zanborak,3,54.4,50-200m_review,b69d2d779c4a 98ce14a7da97 3cc71824402d,19.5 19.5 19.5
+9de8afca727c,Zabul,Loy-Kariz,2,50.5,50-200m_review,090854e7a611 b419a7b765af,12.0 12.0
+9e176eb46b8a,Paktya,Bar Halim khil,5,58.0,50-200m_review,1e55eeba63c1 1bd2edcbf391 0339d13ef3e1 0c93e9394787 7a3881937292,105.0 105.0 105.0 105.0 105.0
+9f7fc84d9ef5,Sar-e-Pul,Kariz,8,956.1,far_likely_two_wells_or_office_gps,4f01fa017249 9be034279e03 8877fcd7b1a3 238f1044fd92 5476065e7601 ad6a2b080e41 927c5a1dbbae 97b1de639b0f,39.0 60.0 60.0 45.0 60.0 55.0 50.0 50.0
+a08911f706f6,Panjsher,Qalacha,4,339.0,far_likely_two_wells_or_office_gps,114bed80f1b5 5628f9824bc4 d2182793d8f3 76170dc911d7,11.0 11.0 11.0 11.0
+a0cca5fccc3d,Parwan,Surkhi,6,217.7,far_likely_two_wells_or_office_gps,f4a21d22ba0c b8bfab295b30 2cd331b55620 90e71a21a40c 98eaa901ad16 780cc09533ee,15.0 15.0 17.0 17.0 17.0 17.0
+a382f07aefd7,Kapisa,Ghazi Khan Khil,7,135.1,50-200m_review,fe55c54c951b 4e84563d405e 7510b5a67c4f 3e528deb4d2d 773f574fc9c3 f5c4a8c78ab4 fa5849bc7fed,19.0 8.5 10.7 9.5 8.5 8.5 8.5
+a63ac20ba8d1,Kapisa,Landa khill ,4,113.4,50-200m_review,74fa69248b72 9755dda29bf1 4e98d0244b76 932282e472f0,48.0 48.0 48.0 48.0
+a64ef7f31265,Kapisa,Landakhil ,2,116.8,50-200m_review,15b7e0e5b1ef f690a2b82476,48.0 48.0
+a79cc00c2ff4,Kapisa,Chashma-e-Allah Dad,2,196.1,50-200m_review,3afb7d191a5a 5791c34cd9dc,49.0 49.0
+a8b56a95129b,Maidan Wardak,Musa Khil,2,38.1,12-50m_review,967fc5089ca5 7cb9fe3dab8e,8.0 8.0
+add855e9f20d,Helmand,Ghori,2,34.4,12-50m_review,4a07133d187d dda485629c48,140.0 140.0
+ae466b55e6c8,Kandahar,Akhunzada,5,44.0,12-50m_review,3038f8721f71 7484934ecb15 df3398e1fa55 f07e1c2fd8eb 03f031d8c303,9.0 9.0 9.0 9.0 9.0
+aef820354038,Herat,Khwaja Mohammad Kamil,4,134.6,50-200m_review,485c5e0ed50a ee0e2f6d6f4c 18ca8c94b518 51a8b0721529,16.4 16.2 16.6 16.4
+b1ef20218e10,Parwan,Surkhi,2,34.5,12-50m_review,21e758f32470 9420b5b89478,15.0 15.0
+b249a1517f1a,Daykundi,Selbetu,4,29.7,12-50m_review,82fc2a5b03a3 a5609d1e06e8 8894213f03c6 44e4a9478a4c,18.0 18.0 18.0 18.0
+b40aebe398e3,Nangarhar,Mandar khill,3,71.7,50-200m_review,12d9aca90f90 54b2fea04fca 72d41aae3288,28.0 60.0 28.0
+b6cb3b581b84,Kapisa,Landa khill ,2,64.3,50-200m_review,ae2c5464baf8 79762bf950d0,42.0 42.0
+b7469730fef9,Kunduz,Yaamchi ,2,60525.5,far_likely_two_wells_or_office_gps,1b7947503bf0 3ad9813f2a38,14.0 4.5
+b83b1ca20c51,Kapisa,Balandy,2,95.2,50-200m_review,d02f098aa709 7a1c577e05bd,26.0 26.0
+b83f011a77c4,Nimroz,Gulistan,2,80.6,50-200m_review,71965492449d e75920eda84a,100.0 95.0
+b938848840d7,Kabul,Danaw,4,174.0,50-200m_review,75c546aeb563 40ca27e3b450 a054d4e59357 919a86c6faa3,22.6 24.2 24.2 24.2
+bc996245e455,Kapisa,Aram kot,2,59.2,50-200m_review,cf0a00855046 3ee5366c7b89,57.0 57.0
+bd00cfee63bf,Kapisa,Naser Mula Khil ,9,5901.9,far_likely_two_wells_or_office_gps,90999cab7d20 19a25d8e1050 c04faef1be97 3cab7faf11d4 f5a74fb647a5 c839182a7aea edff02af6479 5117b088587f ce0c3df88889,60.0 60.0 60.0 60.0 60.0 60.0 60.0 60.0 60.0
+bede997cfffb,Parwan,Khawaja Sayaran Bala ,5,125.7,50-200m_review,8534c034ef8b 4470e46512d6 fee141d95c3f e5291f64563b 188d02087125,23.0 23.0 23.0 23.0 23.0
+c1c7002320ad,Jawzjan,Turkman qudogh Afghania,2,19.9,12-50m_review,48188fc3bea3 c212b1e0e591,50.1 50.1
+c21cc1b98895,Ghazni,Kariz bala,2,47.7,12-50m_review,689e320889cd 41e598296273,60.0 60.0
+c30c69eaf484,Panjsher,Aspiyana,4,152.0,50-200m_review,e3b85bb02a44 c90b54abbcd2 dc7aeabdabc2 408ac886ce76,13.0 13.0 13.0 13.0
+c4026b7a93d2,Parwan,Daraz gerd,8,161.0,50-200m_review,72ac4bf247e9 27b107fc31b7 26fc0139ebe9 df824de854bb 37078257595e 8f236f6f1da5 e993999fdcea c66878bd7678,26.0 19.0 26.0 19.0 26.0 19.0 19.0 19.0
+c52bdb0a0fcd,Parwan,Ofyan,2,31.4,12-50m_review,e356cd7b7842 999915282241,13.0 13.0
+c5ca0610c6a2,Panjsher,Asticha,2,17.0,12-50m_review,f27c01ae372a b03e4576b9d0,19.0 19.0
+c7366a49ad53,Daykundi,Kakrak,4,197.2,50-200m_review,3840a71c748d 509e1e4d55e3 e5a26fc665c1 e87a520bd7c3,17.0 17.0 17.0 17.0
+c901d9f1c319,Sar-e-Pul,Kariz ,2,56.7,50-200m_review,989878d8268c 8d2929e7f673,57.0 50.0
+c942884a02e6,Maidan Wardak,Musa Khil,2,43.0,12-50m_review,5b58d8c7affb 8c5e209c3cdd,12.2 12.2
+c9fa36c03ac2,Kabul,Qol-e-nehal,2,17.1,12-50m_review,9eea1bd86b28 44bbc8453c07,9.1 9.1
+caa0de147026,Ghazni,Mushak,2,49.5,12-50m_review,2874f569e01f c7a636604c99,11.0 11.0
+cb1e6002f1c8,Kunduz,Niazi,2,50083.3,far_likely_two_wells_or_office_gps,34b1e988da9e 48c71b29de03,23.0 21.0
+cca936153ba0,Kandahar,Toghraq,2,29617.1,far_likely_two_wells_or_office_gps,31e4155c7b5c f761b69bc91e,20.0 20.0
+cd911e9b946d,Parwan,Ofyan,6,178.4,50-200m_review,56795c911c4e 352e9f3f23b8 8e2caa682616 c69f89879075 b5ad83b4034a 25a4b119e2e0,28.0 28.0 28.0 28.0 28.0 28.0
+ce321e67bace,Panjsher,Oroo,3,1620.1,far_likely_two_wells_or_office_gps,65113662a77a 5b4a22859756 d091d66ccd84,12.0 12.0 12.0
+cf0f25850df4,Logar,Bala deh,9,456.5,far_likely_two_wells_or_office_gps,93fa0a98b209 f792d51ab73d a8616198db70 1892ed1a9c6b 8039aa2dc84d dd7aca071503 745f08371d20 2a9dd7eed70a b6e882a70c76,28.0 28.0 28.0 28.0 28.0 28.0 28.0 18.0 18.0
+cf4f5a71c911,Herat,Parvanah,2,34.8,12-50m_review,60fa5254136b eedfab30d36a,8.4 8.4
+cf7dbfe01355,Khost,University hill,4,231.9,far_likely_two_wells_or_office_gps,02f67ef9ee9d 4f550ca97203 50fd7510ff14 9df4feb93f06,67.0 67.0 67.0 67.0
+d0f1cfb06943,Kunduz,Lala Maidan 2,6,78843.7,far_likely_two_wells_or_office_gps,39f3e2fedbc6 e31b42daca3f 5763253e2a97 351237fd5fa8 5e1b9164a2a0 e6f7ec509f7e,30.0 25.5 25.5 25.5 25.5 25.5
+d6004913fa25,Panjsher,Aspaniya,2,46.6,12-50m_review,be002eb4f5d4 663d005f7c73,14.0 14.0
+d734c08acf4b,Kapisa,Zeiawodin khil,2,15.3,12-50m_review,b5771858c745 96e836df7e68,16.0 16.0
+d8e44fe929a3,Kunduz,Lala Kai ,2,76859.4,far_likely_two_wells_or_office_gps,fd9377a5c03e 367822cdb461,16.0 14.0
+d9d1359199af,Nangarhar,Dago ,4,42.4,12-50m_review,0b3fb70a0ee1 b28570b6eb33 94f01ab8feac 5cb2f59f969b,65.0 70.0 65.0 70.0
+d9d3b947954e,Kunduz,Yaamchi ,2,60606.5,far_likely_two_wells_or_office_gps,f571397843fd 22c6219c4323,12.0 5.5
+de8ea1e66876,Nimroz,Kaj-e-Satar,2,31.7,12-50m_review,55e0d9c1d2e2 58618adf48c8,62.0 62.0
+df54acbf4d24,Kunduz,Niazi,2,50281.3,far_likely_two_wells_or_office_gps,94195d28b3cd 744acca3261c,22.0 17.8
+e16ccaec44b3,Kunduz,Mola khel,2,51803.6,far_likely_two_wells_or_office_gps,c71c59ae0aec 8695b02ed9a2,27.0 29.0
+e1cd870b8e6c,Panjsher,Oroo,2,87.3,50-200m_review,cd70dc76cb90 f2467136dfcd,12.0 12.0
+e27378b5a789,Panjsher,Shikhan,2,12.9,12-50m_review,d814e80a7691 a81df362a2f4,4.0 4.0
+e3a12f80265a,Kapisa,Surghi ,11,2338.9,far_likely_two_wells_or_office_gps,2b2b107394c7 bcfa029668e3 b24c31282d62 8460fd7189e1 9a212c164946 f5d7d24dbce3 392b47eecd70 46118d9c1c08 d884f2ac35b5 7ce92f96c20a 1ef79a6d7ded,16.0 16.0 16.0 16.0 16.0 16.0 16.0 16.0 16.0 16.0 16.0
+e4c3225ccc7c,Zabul,Jajga,2,23.7,12-50m_review,b605108c8ae9 024f2b9ce408,25.0 25.0
+e53148a08e71,Parwan,Sinjid Dara,3,34.7,12-50m_review,97a1a47dd033 73bce4e7a9eb fe8a56a6c3f4,13.0 13.0 13.0
+e6f8d08ecf0b,Panjsher,Oroo,4,371.4,far_likely_two_wells_or_office_gps,784741f123d0 d755884d6f79 30405ea36f1d 012d5a0aa510,13.0 13.0 13.0 13.0
+e72d03ab84bc,Parwan,Fendaqistan Bala ghail ,3,40.1,12-50m_review,126db720d166 2cc4034256cf 0ade46fa32f6,10.0 10.0 10.0
+e75dadb76729,Kapisa,Landa khil,6,635.6,far_likely_two_wells_or_office_gps,6e5ab60ae62d 7856ec9f684c 78f3560411de 7289be23596e a287df1998d2 4e42ed36f46c,48.0 48.0 48.0 48.0 48.0 48.0
+e7f7527af99a,Panjsher,Asticha,2,38.6,12-50m_review,42c8a3513784 970e601f0b24,25.0 25.0
+e8020be4eea9,Kunduz,Yaamchi ,2,60602.1,far_likely_two_wells_or_office_gps,cd266f798973 45fe3f8e148f,12.0 5.6
+e8379425d6f6,Panjsher,Aspiyana,3,787.2,far_likely_two_wells_or_office_gps,15a163a5a889 930ef0e90184 1a84216e5358,15.0 15.0 15.0
+e9084eed7ed6,Panjsher,Chashma 3,3,357.7,far_likely_two_wells_or_office_gps,5306c93dc3f2 5e61123c4889 c2db1e81bd8b,23.0 23.0 23.0
+ec56bcc9672a,Kapisa,Konj Paryat ,11,4172.4,far_likely_two_wells_or_office_gps,8541a0d3b140 ff02118c8ab1 fe52d4852be1 d9363de8046a 3b06788adcbc 6044f1d09043 025988f8a754 9ae42987cfcc dcd8c45d78c3 44a967cf700d d250905e10ad,70.0 70.0 70.0 70.0 70.0 70.0 70.0 70.0 70.0 70.0 70.0
+eceaa4b7bbf3,Bamyan,Deh-Nola,2,42123.0,far_likely_two_wells_or_office_gps,41bd0b7b8961 abd80ed8a753,6.0 6.0
+ee034ea01a90,Panjsher,Aspaniya,3,44.2,12-50m_review,4027b4d63bd3 43916257818d ee6feb99a298,13.0 13.0 13.0
+f28e7b1f83d5,Panjsher,Asticha,2,174.7,50-200m_review,63afc8e68af1 ddfef03f01e0,16.0 14.0
+f2e62c138433,Kapisa,Moman Khil ,10,1405.4,far_likely_two_wells_or_office_gps,dfcf0e76607a 28c106a1150f 26beab88764c 4e5834a1b4cf 86f2bcb3a1c8 044bed2c20d3 bc6f2cf30f4a 8dc261a82a1f ee6a5ee297ef 33eeda4ed713,38.0 38.0 38.0 35.0 35.0 35.0 35.0 38.0 35.0 38.0
+f51f5ca06664,Kunduz,Mola khel,2,51793.8,far_likely_two_wells_or_office_gps,9731b58389a1 d1d918539758,33.0 31.6
+f57257b78880,Parwan,Khawaja Sayaran Bala ,6,70.7,50-200m_review,ec50a84f292f db3cace5372b 4c0719d6c31c 5c1d5be937ac 3caaf20f63a9 e9950e66b152,32.0 32.0 32.0 32.0 32.0 32.0
+f73f7dc37183,Panjsher,Bahark,2,107.6,50-200m_review,82b9cb7ff970 9e2b27c442f6,17.0 17.0
+fa7e753e3a5d,Ghor,Qutos,2,13.8,12-50m_review,9907859c06ae b68efac673ec,18.0 11.0
+fd91129f7b1e,Kunduz,Yaamchi ,2,60653.3,far_likely_two_wells_or_office_gps,e7c79194380f 6352af599ee6,12.0 6.8
+fe0b1b91feb7,Balkh,Paikan dara ,2,18.5,12-50m_review,e1002b2743d0 dc273c990028,14.0 14.0

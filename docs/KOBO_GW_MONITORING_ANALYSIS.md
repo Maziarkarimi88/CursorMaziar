@@ -1,6 +1,6 @@
 # Using the FAO KOBO groundwater monitoring export
 
-The cleaned export is one **visit per row**. Enumerators resubmitted the whole form; the weekly repeat group is empty. Rebuild wells from **province + village + owner + phone** (hashed as `well_id` in outputs). Do not key wells on GPS: the same well jumps a few metres between visits.
+The cleaned export is one **visit per row**. Enumerators resubmitted the whole form; the weekly repeat group is empty. Rebuild wells from the **owner/phone group plus a 12 m GPS cluster** (hashed as `well_id`). Do not cluster GPS alone: that glues neighbouring household wells together. Cleaning rules are in [`KOBO_DATA_CLEANING.md`](KOBO_DATA_CLEANING.md).
 
 **DTW** (questions 14, 15, 24) is depth to water in metres. Larger = deeper = less water, unless an enumerator entered water-column height instead.
 
@@ -21,6 +21,9 @@ python3 tools/kobo_gw.py --csv data/kobo/groundwater_monitoring.csv
 | `examples/kobo_gw/qa_flags.csv` | One row per flag instance |
 | `examples/kobo_gw/perception_vs_measured.csv` | Reported Q30 vs tape/rope class |
 | `examples/kobo_gw/province_stats.csv` | Usable-well counts and median DTW change by province |
+| `examples/kobo_gw/nearby_other_wells.csv` | Different wells with centroids ≤ 12 m (owner cross-check) |
+| `examples/kobo_gw/same_owner_splits.csv` | Same owner, more than one 12 m site |
+| `examples/kobo_gw/CLEANING.md` | Identity counts and outlier rules from the last run |
 | `examples/kobo_gw/SUMMARY.md` | Counts and medians written by the last run |
 | `figures/kobo_gw/map_wells.png` | Unique-well map (size = visits) |
 | `figures/kobo_gw/box_dtw_change_by_*.png` | Recalled DTW change by province, distance, intervention |

@@ -1,7 +1,8 @@
 """Clean FAO KOBO well visits and build inventory, QA, and impact tables.
 
-Each KOBO row is one visit, not one well. Well identity is province + village
-+ owner + phone (hashed in outputs). Depth-to-water (DTW): larger = deeper.
+Each KOBO row is one visit, not one well. Well identity is an owner/phone
+group plus a 12 m GPS cluster (see kobo_identity.py). Depth-to-water (DTW):
+larger = deeper.
 
   python3 tools/kobo_gw.py --csv data/kobo/groundwater_monitoring.csv
 """
@@ -12,10 +13,25 @@ import hashlib
 import json
 import math
 import re
+import sys
 from pathlib import Path
 
 import numpy as np
 import pandas as pd
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from kobo_identity import (  # noqa: E402
+    CLUSTER_M,
+    FAR_GPS_M,
+    SOFT_MERGE_M,
+    attach_identity,
+    gps_spread_m,
+    named_review_table,
+    nearby_other_wells,
+    norm_text,
+    phone_key,
+    same_owner_splits,
+)
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_CSV = ROOT / "data" / "kobo" / "groundwater_monitoring.csv"
@@ -115,6 +131,7 @@ def _phone_key(value) -> str:
 
 
 def well_id_hash(province, village, owner, phone) -> str:
+    """Deprecated owner+phone hash. Prefer attach_identity()."""
     key = "|".join(
         [_norm_text(province), _norm_text(village), _norm_text(owner), _phone_key(phone)]
     )
@@ -198,12 +215,8 @@ def drop_empty_rows(df: pd.DataFrame) -> tuple[pd.DataFrame, int]:
 
 
 def attach_well_id(df: pd.DataFrame) -> pd.DataFrame:
-    out = df.copy()
-    out["well_id"] = [
-        well_id_hash(p, v, o, ph)
-        for p, v, o, ph in zip(out["province"], out["village"], out["owner"], out["phone"])
-    ]
-    return out
+    """Owner/phone group + 12 m GPS cluster. Does not chain neighbouring houses."""
+    return attach_identity(df, cluster_m=CLUSTER_M)
 
 
 def parse_daily_use(value) -> tuple[float | None, float | None]:
@@ -275,6 +288,43 @@ def flag_visits(df: pd.DataFrame) -> pd.DataFrame:
         )
     )
     out["flag_diam_missing"] = out["diam_m"].isna()
+    out["flag_recall_extreme"] = (out["wt_before"] - out["wt_now"]).abs() > 15
+    out["flag_form_clone"] = False
+    out["flag_dtw_jump"] = False
+    return out
+
+
+def flag_after_identity(df: pd.DataFrame) -> pd.DataFrame:
+    """Clone villages and week-to-week DTW jumps — need well_id / owner_group."""
+    out = df.copy()
+    key = (
+        out["province"].map(_norm_text)
+        + "|"
+        + out["village"].map(_norm_text)
+        + "|"
+        + out["total_depth"].round(0).astype("string")
+        + "|"
+        + out["wt_before"].round(0).astype("string")
+    )
+    n_owners = out.assign(_k=key).groupby("_k")["owner_group"].transform("nunique")
+    out["flag_form_clone"] = n_owners >= 5
+
+    out["flag_dtw_jump"] = False
+    for _, g in out.groupby("well_id"):
+        g = g.sort_values(["meas_date", "collect_date"], kind="mergesort")
+        if len(g) < 2:
+            continue
+        prev_dtw = None
+        prev_date = None
+        prev_idx = None
+        for idx, row in g.iterrows():
+            dtw, date = row["wt_now"], row["meas_date"]
+            if prev_dtw is not None and pd.notna(dtw) and pd.notna(prev_dtw) and pd.notna(date) and pd.notna(prev_date):
+                days = (date - prev_date).days
+                if 0 <= days <= 21 and abs(float(dtw) - float(prev_dtw)) > 3:
+                    out.at[idx, "flag_dtw_jump"] = True
+                    out.at[prev_idx, "flag_dtw_jump"] = True
+            prev_dtw, prev_date, prev_idx = dtw, date, idx
     return out
 
 
@@ -291,6 +341,9 @@ FLAG_COLS = [
     "flag_est_rise_gt_20",
     "flag_meas_before_interv",
     "flag_gps_outside_af",
+    "flag_recall_extreme",
+    "flag_form_clone",
+    "flag_dtw_jump",
 ]
 
 IMPACT_EXCLUDE_FLAGS = [
@@ -389,6 +442,9 @@ def _first_last(g: pd.DataFrame) -> pd.Series:
             "condition": last["condition"],
             "n_flagged_visits": n_flags,
             "exclude_from_impact": exclude,
+            "owner_group": last["owner_group"] if "owner_group" in last.index else "",
+            "gps_spread_m": round(gps_spread_m(g), 1),
+            "n_owner_spellings": int(g["owner_n"].nunique()) if "owner_n" in g.columns else 1,
         }
     )
 
@@ -448,6 +504,8 @@ def write_tables(visits: pd.DataFrame, wells: pd.DataFrame, qa: pd.DataFrame, ou
         "distance_m",
         "distance_bin",
         "project",
+        "owner_group",
+        "gps_prec",
     ]
     well_path = out_dir / "wells_unique.csv"
     visit_path = out_dir / "visits.csv"
@@ -475,6 +533,16 @@ def write_tables(visits: pd.DataFrame, wells: pd.DataFrame, qa: pd.DataFrame, ou
         .sort_values("n_wells", ascending=False)
         .to_csv(prov_path)
     )
+    nearby = nearby_other_wells(wells, radius_m=CLUSTER_M)
+    splits = same_owner_splits(wells) if "owner_group" in wells.columns else pd.DataFrame()
+    nearby_path = out_dir / "nearby_other_wells.csv"
+    splits_path = out_dir / "same_owner_splits.csv"
+    nearby.to_csv(nearby_path, index=False)
+    splits.to_csv(splits_path, index=False)
+    names = named_review_table(visits, nearby, splits)
+    names_path = ROOT / "data" / "kobo" / "review_owners.csv"
+    names_path.parent.mkdir(parents=True, exist_ok=True)
+    names.to_csv(names_path, index=False)
     return {
         "wells_unique": well_path,
         "visits": visit_path,
@@ -482,6 +550,9 @@ def write_tables(visits: pd.DataFrame, wells: pd.DataFrame, qa: pd.DataFrame, ou
         "perception_vs_measured": perc_path,
         "perception_vs_reported_change": perc2_path,
         "province_stats": prov_path,
+        "nearby_other_wells": nearby_path,
+        "same_owner_splits": splits_path,
+        "review_owners": names_path,
     }
 
 
@@ -755,6 +826,9 @@ QA_LABELS = {
     "wt_now_gt_100": "Current DTW > 100 m",
     "est_rise_gt_20": "Estimated rise > 20 m",
     "gps_outside_af": "GPS outside Afghanistan box",
+    "recall_extreme": "Recalled DTW change > 15 m",
+    "form_clone": "Same depth+before copied across ≥5 owners",
+    "dtw_jump": "DTW jumped > 3 m within 21 days",
 }
 
 
@@ -883,19 +957,81 @@ def process(csv_path: Path) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame, i
     raw = read_kobo_csv(csv_path)
     named = coerce_types(rename_kobo_columns(raw))
     kept, n_empty = drop_empty_rows(named)
-    flagged = flag_visits(attach_well_id(kept))
+    flagged = flag_after_identity(flag_visits(attach_well_id(kept)))
     visits = build_visits(flagged)
     wells = build_wells(visits)
     qa = qa_flags_long(visits)
     return visits, wells, qa, n_empty
 
 
+def write_cleaning_md(
+    visits: pd.DataFrame,
+    wells: pd.DataFrame,
+    nearby: pd.DataFrame,
+    splits: pd.DataFrame,
+    qa: pd.DataFrame,
+    path: Path,
+) -> None:
+    n_multi = int((wells["n_visits"] >= 2).sum())
+    spread = wells.loc[wells["n_visits"] >= 2, "gps_spread_m"] if "gps_spread_m" in wells.columns else pd.Series(dtype=float)
+    n_split_far = int((splits["band"] == "far_likely_two_wells_or_office_gps").sum()) if len(splits) else 0
+    n_split_soft = int(splits["band"].isin(["12-50m_review", "50-200m_review"]).sum()) if len(splits) else 0
+    lines = [
+        "# KOBO cleaning review",
+        "",
+        f"Well identity: same **owner/phone group** and GPS within **{CLUSTER_M:.0f} m**. "
+        "GPS-only clustering is not used — that chains neighbouring household wells "
+        "(example: 40 owners in Kunduz / Yaamchi inside one 12 m component).",
+        "",
+        "## Identity counts",
+        "",
+        f"- Visits: **{len(visits)}**",
+        f"- Wells after 12 m + owner: **{len(wells)}**",
+        f"- Wells with 2+ visits: **{n_multi}**",
+        f"- Median GPS spread on multi-visit wells: **{_finite_median(spread)} m** "
+        f"(should stay ≤ {CLUSTER_M:.0f} m)",
+        f"- Nearby different wells (centroids ≤ {CLUSTER_M:.0f} m): **{len(nearby)}** pairs — "
+        "dense village or GPS copied for several owners. See `nearby_other_wells.csv`.",
+        f"- Same owner, several 12 m wells: **{len(splits)}** groups "
+        f"({n_split_soft} within 200 m to review; {n_split_far} farther than 200 m).",
+        "",
+        "## How to treat outliers",
+        "",
+        "Do **not** drop wells with IQR on total depth. A 100 m well in Paktya is not an error.",
+        "Use rule flags first, then look at the review lists.",
+        "",
+        "| Flag | Why it is an outlier | Action |",
+        "|---|---|---|",
+        "| Current DTW > well depth | Impossible | Exclude from impact; ask enumerator |",
+        "| WT before < 1 m in a well > 5 m | Likely water-column, not DTW | Exclude; recode if confirmed |",
+        "| Diameter ≥ 100 m or 5–100 m | Year or centimetres | Blank diameter |",
+        "| Households = phone or > 200 | Field mix-up | Blank households |",
+        "| Distance > 5 km | Office GPS or wrong structure | Exclude from distance plots |",
+        "| Recalled change > 15 m | Memory or unit error | Review; often form clone |",
+        "| Form clone (≥5 owners, same depth+before) | Copied static fields | Do not treat as independent wells |",
+        "| DTW jump > 3 m in ≤21 days | Two wells merged, or bad tape | Split well or drop those visits |",
+        "| Same owner, GPS > 200 m apart | Two wells, or office vs field GPS | Keep as two wells until checked |",
+        "| Nearby other owners ≤ 12 m | Neighbours, or one GPS for many wells | Keep separate unless owner confirms one well |",
+        "",
+        "Owner names for follow-up (not in git): `data/kobo/review_owners.csv`.",
+        "",
+    ]
+    path.write_text("\n".join(lines), encoding="utf-8")
+
+
 def run(csv_path: Path, table_dir: Path, fig_dir: Path, plots: bool = True) -> dict:
     visits, wells, qa, n_empty = process(csv_path)
     paths = write_tables(visits, wells, qa, table_dir)
+    nearby = pd.read_csv(paths["nearby_other_wells"]) if Path(paths["nearby_other_wells"]).exists() else pd.DataFrame()
+    splits = pd.read_csv(paths["same_owner_splits"]) if Path(paths["same_owner_splits"]).exists() else pd.DataFrame()
     summary = summarize(visits, wells, qa, n_empty)
+    summary["cluster_m"] = CLUSTER_M
+    summary["n_nearby_pairs"] = int(len(nearby))
+    summary["n_owner_splits"] = int(len(splits))
     (table_dir / "summary.json").write_text(json.dumps(summary, indent=2, default=str), encoding="utf-8")
     write_summary_md(summary, wells, table_dir / "SUMMARY.md")
+    write_cleaning_md(visits, wells, nearby, splits, qa, table_dir / "CLEANING.md")
+    paths["cleaning"] = table_dir / "CLEANING.md"
     if plots:
         paths.update(plot_all(visits, wells, qa, fig_dir))
     return {"summary": summary, "paths": {k: str(v) for k, v in paths.items()}}

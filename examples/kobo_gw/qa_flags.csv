@@ -1,304 +1,737 @@
 well_id,submission_id,province,village,meas_date,flag
-8d40f64bd05a,22048010,Panjsher,Bahark,2026-06-16,diameter_outlier
-1d9fcb94763f,23167328,Sar-e-Pul,Kariz ,2026-08-19,diameter_outlier
-54707aea4a53,20975979,Sar-e-Pul,Kariz,2026-03-02,diameter_outlier
-08c5898ec456,21196068,Daykundi,Khajachasht,2026-04-13,diameter_suspect
-0a02895e5886,20855052,Daykundi,Selbetu,2026-02-08,diameter_suspect
-10eaa36fd457,21118421,Daykundi,Kharbed,2026-03-31,diameter_suspect
-10eaa36fd457,21196067,Daykundi,Kharbed,2026-04-13,diameter_suspect
-10eaa36fd457,21250305,Daykundi,Kharbed,2026-04-20,diameter_suspect
-10eaa36fd457,21424338,Daykundi,Kharbed ,2026-05-06,diameter_suspect
-10eaa36fd457,21814626,Daykundi,Kharbed,2026-05-25,diameter_suspect
-10eaa36fd457,21947711,Daykundi,Kharbed ,2026-06-08,diameter_suspect
-10eaa36fd457,22114476,Daykundi,Kharbed,2026-06-22,diameter_suspect
-10eaa36fd457,22508980,Daykundi,Kharbed,2026-07-19,diameter_suspect
-1ad4ba7563b0,20891513,Daykundi,Pay qol,2026-02-14,diameter_suspect
-3629ffaa5f19,21049712,Daykundi,Payqol,2026-03-16,diameter_suspect
-3629ffaa5f19,21151111,Daykundi,Payqol,2026-04-05,diameter_suspect
-39c2a2c631c0,20835326,Daykundi,Pay waragha,2026-02-04,diameter_suspect
-39c2a2c631c0,20947477,Daykundi,Pay waragha,2026-02-23,diameter_suspect
-39c2a2c631c0,21118420,Daykundi,Pay waragha,2026-03-30,diameter_suspect
-39c2a2c631c0,21198661,Daykundi,Pay waragha,2026-04-14,diameter_suspect
-39c2a2c631c0,21814623,Daykundi,Pay waragha ,2026-05-24,diameter_suspect
-39c2a2c631c0,22114475,Daykundi,Pay waragha ,2026-06-21,diameter_suspect
-39c2a2c631c0,22508979,Daykundi,Pay waragha,2026-07-18,diameter_suspect
-3c87e1950b66,21424337,Daykundi,Pay waragha.,2026-05-05,diameter_suspect
-49cacf5ba4ab,20966620,Daykundi,Payqol,2026-02-28,diameter_suspect
-590e906574d3,21424336,Daykundi,Payqol ,2026-05-04,diameter_suspect
-6e96ba084f3b,20855053,Daykundi,Daghur Sufla,2026-02-08,diameter_suspect
-6f216c167f5d,21259980,Daykundi,Payqol,2026-04-22,diameter_suspect
-6f216c167f5d,21702942,Daykundi,Payqol ,2026-05-21,diameter_suspect
-6f216c167f5d,21895001,Daykundi,Payqol ,2026-06-04,diameter_suspect
-6f216c167f5d,22052155,Daykundi,Payqol ,2026-06-16,diameter_suspect
-6f216c167f5d,22290181,Daykundi,Payqol,2026-07-05,diameter_suspect
-9fcf483e7fc3,20835324,Daykundi,Khaja chasht,2026-02-03,diameter_suspect
-acf82460a00c,20835325,Daykundi,Kharbed,2026-02-03,diameter_suspect
-acf82460a00c,21007509,Daykundi,Kharbed,2026-03-08,diameter_suspect
-bf3598477f11,21947710,Daykundi,Pay waragha ,2026-06-07,diameter_suspect
-c59b96dcb703,21007510,Daykundi,Khajachasht,2026-03-08,diameter_suspect
-c59b96dcb703,21118422,Daykundi,Khajachasht,2026-03-31,diameter_suspect
-c59b96dcb703,21250306,Daykundi,Khajachasht,2026-04-20,diameter_suspect
-c59b96dcb703,21424339,Daykundi,Khajachasht ,2026-05-06,diameter_suspect
-c59b96dcb703,21814624,Daykundi,Khajachasht ,2026-05-25,diameter_suspect
-c59b96dcb703,21947712,Daykundi,Khajachasht,2026-06-08,diameter_suspect
-c59b96dcb703,22114477,Daykundi,Khajachasht,2026-06-22,diameter_suspect
-c59b96dcb703,22508982,Daykundi,Khajachasht,2026-07-19,diameter_suspect
-11be4cee4e69,20829832,Farah,Taparig,2026-02-03,diameter_suspect
-13afdfa61dfd,20788209,Farah,Tapa rig Now abad,2026-01-27,diameter_suspect
-433c96d49e39,20788210,Farah,Noor Ahmad kariz,2026-01-27,diameter_suspect
-4c7660a76d5c,20795829,Farah,Kurghzard,2026-01-29,diameter_suspect
-4c7660a76d5c,20848760,Farah,Kurghzard ,2026-02-05,diameter_suspect
-645211884b3f,20908540,Farah,Taparig Naw Abad,2026-02-17,diameter_suspect
-6e6059a3e92a,20866807,Farah,Tapa rig,2026-02-10,diameter_suspect
-7ca047aeb36f,20829833,Farah,Babo kariz,2026-02-03,diameter_suspect
-7ca047aeb36f,20866803,Farah,Babo kariz,2026-02-10,diameter_suspect
-7ca047aeb36f,20908538,Farah,Babo kariz ,2026-02-17,diameter_suspect
-8328b7ece111,20887493,Farah,Kurghzard ,2026-02-12,diameter_suspect
-8328b7ece111,20938108,Farah,Kurghzard ,2026-02-19,diameter_suspect
-d8d4a826a449,20829831,Farah,Noor Mohammad Kariz,2026-02-03,diameter_suspect
-d8d4a826a449,20866804,Farah,Noor Mohammad Kariz,2026-02-10,diameter_suspect
-d8d4a826a449,20908539,Farah,Noor Mohammad Kariz ,2026-02-17,diameter_suspect
-ebfb9979663d,20788211,Farah,Babo kariz,2026-01-27,diameter_suspect
-625c53f7375f,20810908,Ghazni,Kariz bala,2026-02-01,diameter_suspect
-625c53f7375f,20853090,Ghazni,Kariz bala,2026-02-08,diameter_suspect
-aa121b7606c6,20824483,Ghazni,Mushak,2026-02-02,diameter_suspect
-8d9ece94cc14,21117766,Kapisa,Mahtan,2026-03-31,diameter_suspect
-4cf79ac4424a,20931395,Paktika,Kachi,2026-02-20,diameter_suspect
-fbe95fa49cb8,21647075,Panjsher,Chashma 3,2026-05-20,diameter_suspect
-014441cb1803,21936774,Herat,Khwaja mohamma kamil,2026-06-08,distance_gt_5000
-03a56b8731ad,23167255,Herat,Parvaneh ,2026-08-20,distance_gt_5000
-0a53bded3519,21415930,Herat,Khwaja Mohammad Kamil,2026-05-05,distance_gt_5000
-0ade14a525ec,20788516,Herat,Pearvanh,2026-01-27,distance_gt_5000
-1cb1cdc1ae9f,21936775,Herat,Khwaja mohamma kamil,2026-06-08,distance_gt_5000
-1cb1cdc1ae9f,22303790,Herat,Khwaja mohamma kamil,2026-07-06,distance_gt_5000
-1f555cefefc5,22303793,Herat,Khwaja mohamma kamil,2026-07-06,distance_gt_5000
-33dd65e0faa3,21090676,Herat,Parvanah,2026-03-26,distance_gt_5000
-3771464a690a,20827599,Herat,Parvaneh,2026-02-03,distance_gt_5000
-3771464a690a,20871012,Herat,Parvaneh,2026-02-11,distance_gt_5000
-3771464a690a,20895906,Herat,Parvaneh,2026-02-15,distance_gt_5000
-3771464a690a,22699634,Herat,Parvaneh ,2026-07-28,distance_gt_5000
-3771464a690a,22850967,Herat,Parvaneh,2026-08-06,distance_gt_5000
-3b2b122027b1,23719337,Herat,Parvaneh,2026-09-15,distance_gt_5000
-44956af621e8,20859981,Herat,Khwaja M.kamil,2026-02-09,distance_gt_5000
-50ca81689287,21936776,Herat,Khwaja mohamma kamil,2026-06-08,distance_gt_5000
-625290124a2d,20859980,Herat,Khwaja M.Kamil,2026-02-09,distance_gt_5000
-6b0bd42c3906,20971766,Herat,Khoja M. Kamil,2026-03-01,distance_gt_5000
-79c37730aa52,22303791,Herat,Khwaja mohamma kamil,2026-07-06,distance_gt_5000
-7ea1c5d15997,21020089,Herat,Khwaja Mohammad Kamil,2026-03-11,distance_gt_5000
-7ea1c5d15997,21064321,Herat,Khwaja Mohammad Kamil,2026-03-17,distance_gt_5000
-7ea1c5d15997,21252736,Herat,Khwaja Mohammad Kamil,2026-04-21,distance_gt_5000
-7ea1c5d15997,21415931,Herat,Khwaja Mohammad Kamil,2026-05-05,distance_gt_5000
-86dc8a1686a9,20971765,Herat,Khwaja Mohammad Kamil,2026-03-01,distance_gt_5000
-86dc8a1686a9,21020087,Herat,Khwaja Mohammad Kamil,2026-03-11,distance_gt_5000
-86dc8a1686a9,21202331,Herat,Khwaja Mohammad Kamil,2026-04-13,distance_gt_5000
-86dc8a1686a9,21252734,Herat,Khwaja Mohammad Kamil ,2026-04-21,distance_gt_5000
-8dbbe2cc4558,21202330,Herat,Khwaja Mohammad Kamil,2026-04-13,distance_gt_5000
-9aab5eec81a8,20813466,Herat,Khwaja Mohammad Kamil,2026-02-01,distance_gt_5000
-a4e68d0e80b5,20859979,Herat,Khwaja M.Kamil,2026-02-09,distance_gt_5000
-bcbec164f4c5,20813467,Herat,Khwaja M. Kamil,2026-02-01,distance_gt_5000
-bcbec164f4c5,20971768,Herat,Khwaja M. Kamil,2026-03-01,distance_gt_5000
-bffab4fffd2e,20958998,Herat,Parvanah ,2026-02-26,distance_gt_5000
-bffab4fffd2e,20983503,Herat,Parvanah,2026-03-04,distance_gt_5000
-bffab4fffd2e,21009418,Herat,Parvanah,2026-03-09,distance_gt_5000
-bffab4fffd2e,21155000,Herat,Parvanah,2026-04-06,distance_gt_5000
-bffab4fffd2e,21309919,Herat,Parvanah,2026-04-26,distance_gt_5000
-bffab4fffd2e,21387111,Herat,Parvanah,2026-05-03,distance_gt_5000
-bffab4fffd2e,21505082,Herat,Parvanah,2026-05-11,distance_gt_5000
-bffab4fffd2e,21808762,Herat,Parvanah ,2026-05-31,distance_gt_5000
-bffab4fffd2e,21953659,Herat,Parvanah ,2026-06-10,distance_gt_5000
-bffab4fffd2e,22007499,Herat,Parvanah ,2026-06-14,distance_gt_5000
-bffab4fffd2e,22112163,Herat,Parvanah,2026-06-21,distance_gt_5000
-bffab4fffd2e,22209937,Herat,Parvanah ,2026-06-28,distance_gt_5000
-bffab4fffd2e,22319259,Herat,Parvanah,2026-07-07,distance_gt_5000
-bffab4fffd2e,22471264,Herat,Parvanah,2026-07-16,distance_gt_5000
-bffab4fffd2e,22552037,Herat,Parvanah,2026-07-21,distance_gt_5000
-e1eb4ffb32c2,21252735,Herat,Khwaja Mohammad Kamil,2026-04-21,distance_gt_5000
-e89b2d48086b,23348726,Herat,Parvaneh ,2026-08-31,distance_gt_5000
-f3a172ce1829,20813468,Herat,Khwaja Mohammad Kamil,2026-02-01,distance_gt_5000
-fc8090d82256,21020088,Herat,Khwaja Mohammad Kamil,2026-03-11,distance_gt_5000
-fc8090d82256,21064322,Herat,Khwaja Mohammad Kamil,2026-03-17,distance_gt_5000
-fc8090d82256,21202329,Herat,Khwaja Mohammad Kamil,2026-04-13,distance_gt_5000
-fc8090d82256,21415932,Herat,Khwaja Mohammad Kamil,2026-05-05,distance_gt_5000
-d8d4a826a449,20908539,Farah,Noor Mohammad Kariz ,2026-02-17,est_rise_gt_20
-98f58d167a6e,21002992,Kunar,Shahilaam,2026-03-08,est_rise_gt_20
-8495e7c04304,20953157,Logar,Bala deh,2026-02-25,est_rise_gt_20
-eaad627c8738,21841210,Parwan,???,2026-06-02,est_rise_gt_20
-8d2d76b2ce5c,21484558,Bamyan,Zabzjobak,2026-04-19,hh_implausible
-8d2d76b2ce5c,21484566,Bamyan,Zabzjobak,2026-04-26,hh_implausible
-8d2d76b2ce5c,21484574,Bamyan,Zabzjobak,2026-05-09,hh_implausible
-085829552a77,21000652,Ghor,Bahari,2026-03-02,hh_implausible
-5ff9a814a1dc,21234328,Ghor,Kendiwal,2026-02-18,hh_implausible
-0adf7acb0699,22319915,Helmand,Lwar Tangai,2026-07-07,hh_implausible
-1a29bff4a2ac,22111313,Helmand,Lwar Tangi,2026-06-21,hh_implausible
-48d06f9b2a7b,21463555,Helmand,Lawar Tangi Kariz,2026-05-06,hh_implausible
-d4a455fa78cf,21605143,Helmand,Lawar Tangi Razdan,2026-05-17,hh_implausible
-f82e2b90a9b5,21016025,Helmand,Lawar Tangi,2026-03-10,hh_implausible
-f82e2b90a9b5,21209429,Helmand,Lawar Tangi,2026-04-15,hh_implausible
-f82e2b90a9b5,21344774,Helmand,Lawar Tangi,2026-04-28,hh_implausible
-0ade14a525ec,20788516,Herat,Pearvanh,2026-01-27,hh_implausible
-728e632b16a5,20788515,Herat,Khwaja Sarbor,2026-01-27,hh_implausible
-6dd344f346ea,20951872,Kabul,Ismila,2026-02-25,hh_implausible
-12b74f271642,21016365,Kunar,Babad ,2026-03-10,hh_implausible
-12b74f271642,21056329,Kunar,Babad,2026-03-15,hh_implausible
-d91d070c0f0e,21351936,Kunar,Damgalik,2026-04-29,hh_implausible
-d91d070c0f0e,21430091,Kunar,Damgalik,2026-05-06,hh_implausible
-ea3501002bc5,21006828,Laghman,Zerani,2026-03-09,hh_implausible
-ea3501002bc5,21108306,Laghman,Zerani,2026-03-18,hh_implausible
-ea3501002bc5,21114413,Laghman,Zerani,2026-03-30,hh_implausible
-ea3501002bc5,21152954,Laghman,Zerani,2026-04-06,hh_implausible
-8d2d76b2ce5c,21484566,Bamyan,Zabzjobak,2026-04-26,hh_looks_like_phone
-8d2d76b2ce5c,21484574,Bamyan,Zabzjobak,2026-05-09,hh_looks_like_phone
-0ade14a525ec,20788516,Herat,Pearvanh,2026-01-27,hh_looks_like_phone
-728e632b16a5,20788515,Herat,Khwaja Sarbor,2026-01-27,hh_looks_like_phone
-649a22258925,20853789,Bamyan,Qala-e-Meyana,2026-01-05,meas_before_interv
-46caf9298892,21177093,Daykundi,Sarqul,2026-04-06,meas_before_interv
-c741fa03b5ba,21177094,Daykundi,Surkhbid,2026-04-07,meas_before_interv
-cb3ac465bd67,21177092,Daykundi,Kakrak,2026-04-05,meas_before_interv
-5ff9a814a1dc,21234328,Ghor,Kendiwal,2026-02-18,meas_before_interv
-3771464a690a,20895906,Herat,Parvaneh,2026-02-15,meas_before_interv
-bcbec164f4c5,20813467,Herat,Khwaja M. Kamil,2026-02-01,meas_before_interv
-d98afb092c9b,20897745,Kunduz,Mola khel,2025-01-12,meas_before_interv
-22e8b07f8a14,21586665,Logar,Bala deh,2026-05-14,meas_before_interv
-043ad35e67fa,21371986,Nangarhar,Loya Tarmai ,2026-04-11,meas_before_interv
-043ad35e67fa,21371992,Nangarhar,Loya Tarmai ,2026-04-21,meas_before_interv
-6d5f504a707d,21371989,Nangarhar,Ador,2026-04-15,meas_before_interv
-6d5f504a707d,21371993,Nangarhar,Ador,2026-04-22,meas_before_interv
-11b81ae50eac,21000873,Zabul,Pat khil ,2026-01-14,meas_before_interv
-5aab8935ed6c,20786845,Badghis,Baghak,2026-01-27,unit_confusion
-5aab8935ed6c,20940450,Badghis,Baghak,2026-02-22,unit_confusion
-92b9287767f4,20893390,Badghis,Abedi Ha,2026-02-15,unit_confusion
-2173e216fcb5,21510292,Ghor,Bahari,2026-05-13,unit_confusion
-34be131e7155,20868441,Ghor,Siyasang,2026-02-01,unit_confusion
-5ff9a814a1dc,21234328,Ghor,Kendiwal,2026-02-18,unit_confusion
-62c71bd6fdbe,21234329,Ghor,Siyasang,2026-04-20,unit_confusion
-a47e0105a3df,21234330,Ghor,Qutos,2026-04-21,unit_confusion
-a612c759c0d5,21510282,Ghor,Bahari ,2026-04-13,unit_confusion
-840df7897786,20973117,Helmand,Lawar tangai,2026-03-01,unit_confusion
-9a3b78e0e67b,20973177,Helmand,Kashata kanai,2026-03-01,unit_confusion
-b5ce199556c5,20944682,Helmand,Gala beda,2026-02-23,unit_confusion
-d9a397611e97,20975943,Helmand,Baba faqir,2026-03-02,unit_confusion
-e337a126219e,20973178,Helmand,Bazadah,2026-03-01,unit_confusion
-12b74f271642,21016365,Kunar,Babad ,2026-03-10,unit_confusion
-aa7ed5c613a5,20811608,Maidan Wardak,Dah Hayat,2026-02-01,unit_confusion
-07242bd280c3,21005097,Nimroz,Khashrod ,2026-03-08,unit_confusion
-08a3e04a7e4d,21193071,Nimroz,Dangar Abad,2026-04-12,unit_confusion
-9e43e0690384,21402491,Nimroz,Gulistan,2026-05-04,unit_confusion
-bfe30d8724bd,20999086,Nimroz,Dangar Abad,2026-03-07,unit_confusion
-bfe30d8724bd,21043863,Nimroz,Dangar Abad,2026-03-15,unit_confusion
-bfe30d8724bd,21081327,Nimroz,Dangar Abad,2026-03-24,unit_confusion
-bfe30d8724bd,21107326,Nimroz,Dangar Abad,2026-03-29,unit_confusion
-bfe30d8724bd,21228298,Nimroz,Dangar Abad,2026-04-18,unit_confusion
-bfe30d8724bd,21402489,Nimroz,Dangar Abad,2026-05-04,unit_confusion
-bfe30d8724bd,21511917,Nimroz,Dangar Abad,2026-05-11,unit_confusion
-bfe30d8724bd,21641368,Nimroz,Dangar Abad,2026-05-20,unit_confusion
-bfe30d8724bd,21730028,Nimroz,Dangar Abad,2026-05-24,unit_confusion
-bfe30d8724bd,21831412,Nimroz,Dangar Abad,2026-06-01,unit_confusion
-bfe30d8724bd,22110468,Nimroz,Dangar Abad,2026-06-21,unit_confusion
-ce8ee6f5925b,21043864,Nimroz,Gulistan,2026-03-15,unit_confusion
-ce8ee6f5925b,21081330,Nimroz,Gulistan,2026-03-24,unit_confusion
-ce8ee6f5925b,21107328,Nimroz,Gulistan,2026-03-29,unit_confusion
-ce8ee6f5925b,21193070,Nimroz,Gulistan,2026-04-12,unit_confusion
-ce8ee6f5925b,21228343,Nimroz,Gulistan,2026-04-18,unit_confusion
-ce8ee6f5925b,21511920,Nimroz,Gulistan,2026-05-11,unit_confusion
-ce8ee6f5925b,21641370,Nimroz,Gulistan,2026-05-20,unit_confusion
-ce8ee6f5925b,21730030,Nimroz,Gulistan,2026-05-24,unit_confusion
-ce8ee6f5925b,21831414,Nimroz,Gulistan,2026-06-01,unit_confusion
-ce8ee6f5925b,22110470,Nimroz,Gulistan,2026-06-21,unit_confusion
-33b15fde61c6,21266837,Takhar,Uzbekia,2026-04-23,unit_confusion
-4caf4a1d93bc,21356560,Takhar,Uzbakia,2026-04-29,unit_confusion
-883c500e531a,21558186,Takhar,Uzbakia,2026-05-13,unit_confusion
-11b81ae50eac,21000873,Zabul,Pat khil ,2026-01-14,unit_confusion
-11b81ae50eac,21079433,Zabul,Pat khil,2026-03-24,unit_confusion
-11b81ae50eac,21106623,Zabul,Pat khil,2026-03-29,unit_confusion
-11b81ae50eac,21199860,Zabul,Pat khil ,2026-04-13,unit_confusion
-4754488cdd81,21261086,Zabul,Kakar,2026-04-22,unit_confusion
-99beffe4c2ca,21049988,Zabul,Pat khil,2026-03-16,unit_confusion
-a161c7e203ad,21170568,Zabul,Patkhil,2026-04-08,unit_confusion
-a161c7e203ad,21261088,Zabul,Patkhil,2026-04-22,unit_confusion
-a161c7e203ad,21319404,Zabul,Patkhil,2026-04-26,unit_confusion
-a161c7e203ad,21488438,Zabul,Patkhil,2026-05-10,unit_confusion
-a161c7e203ad,21598717,Zabul,Patkhil,2026-05-17,unit_confusion
-a161c7e203ad,21706050,Zabul,Patkhil,2026-05-23,unit_confusion
-a161c7e203ad,21829926,Zabul,Patkhil,2026-06-01,unit_confusion
-a161c7e203ad,21914039,Zabul,Patkhil,2026-06-07,unit_confusion
-a161c7e203ad,22034045,Zabul,Patkhil,2026-06-15,unit_confusion
-a161c7e203ad,22121747,Zabul,Patkhil,2026-06-22,unit_confusion
-728e632b16a5,20788515,Herat,Khwaja Sarbor,2026-01-27,wt_now_gt_100
-1dd4693564f3,20895840,Kunar,Shahilaam,2026-02-15,wt_now_gt_100
-a7ad6b1f1309,23016427,Jawzjan,Turkman qudogh Afghania,2026-01-12,wt_now_gt_depth
-36fdd69b0617,20876003,Kandahar,Toghraq,2026-02-11,wt_now_gt_depth
-36fdd69b0617,21036304,Kandahar,Toghraq,2026-03-11,wt_now_gt_depth
-36fdd69b0617,21101765,Kandahar,Toghraq,2026-03-26,wt_now_gt_depth
-36fdd69b0617,21184680,Kandahar,Toghraq,2026-04-08,wt_now_gt_depth
-36fdd69b0617,21251947,Kandahar,Toghraq,2026-04-21,wt_now_gt_depth
-5e12d7fe512a,20843465,Kandahar,Toghraq,2026-02-05,wt_now_gt_depth
-281136fde80b,21185406,Kapisa,Mahtan ,2026-04-11,wt_now_gt_depth
-b0a4292cf401,22991907,Kapisa,Landakhil ,2026-08-13,wt_now_gt_depth
-b0a4292cf401,23153141,Kapisa,Landakhil ,2026-08-20,wt_now_gt_depth
-b0a4292cf401,23292092,Kapisa,Landakhil ,2026-08-27,wt_now_gt_depth
-b0a4292cf401,23440146,Kapisa,Landakhil ,2026-09-01,wt_now_gt_depth
-c7f2f8be2668,21216111,Kapisa,Moman Khil ,2026-04-16,wt_now_gt_depth
-c7f2f8be2668,21216110,Kapisa,Moman Khil ,2026-04-16,wt_now_gt_depth
-c7f2f8be2668,22378493,Kapisa,Moman Khil ,2026-07-11,wt_now_gt_depth
-c7f2f8be2668,22839551,Kapisa,Moman khil,2026-08-03,wt_now_gt_depth
-c7f2f8be2668,22590581,Kapisa,Moman Khil ,2026-07-21,wt_now_gt_depth
-c7f2f8be2668,22558927,Kapisa,Moman Khil ,2026-07-16,wt_now_gt_depth
-22e8b07f8a14,21023752,Logar,Bala deh,2026-03-11,wt_now_gt_depth
-92058299b7a0,22687300,Maidan Wardak,Deh Haaat,2026-07-22,wt_now_gt_depth
-6fcbfe0301b2,21066325,Nangarhar,Mandar khill,2026-02-24,wt_now_gt_depth
-6fcbfe0301b2,21066329,Nangarhar,Mandar khill ,2026-02-28,wt_now_gt_depth
-0921fca42733,23355024,Panjsher,Chashma 3,2026-08-31,wt_now_gt_depth
-0921fca42733,23690093,Panjsher,Chashma 3,2026-09-14,wt_now_gt_depth
-12df152d5fcd,23544340,Panjsher,Baharak,2026-09-08,wt_now_gt_depth
-171aacdd84b2,23715018,Panjsher,Sangana,2026-09-15,wt_now_gt_depth
-1bc4fa77b779,20984462,Panjsher,Abdaba,2026-03-02,wt_now_gt_depth
-3da8ac28535a,23261225,Panjsher,Baharak,2026-08-25,wt_now_gt_depth
-4259f965ff53,22956543,Panjsher,Qalacha,2026-08-11,wt_now_gt_depth
-42b95df8f276,23431155,Panjsher,Qala Mirsha,2026-09-03,wt_now_gt_depth
-63af66a049b2,22727921,Panjsher,Baharak,2026-07-29,wt_now_gt_depth
-72c7015adc0b,23408117,Panjsher,Oroo,2026-09-02,wt_now_gt_depth
-8a38c4ee5835,23492254,Panjsher,Chashma 3,2026-09-06,wt_now_gt_depth
-930b40e6b148,22471491,Panjsher,Qalacha ,2026-07-16,wt_now_gt_depth
-9897e9b62dd9,22244510,Panjsher,Qala Mirsha,2026-06-25,wt_now_gt_depth
-a93295462af2,23383118,Panjsher,Asticha,2026-09-01,wt_now_gt_depth
-b91f2d13e7b2,21966964,Panjsher,Qalacha,2026-06-09,wt_now_gt_depth
-bb8565714fa0,23226302,Panjsher,Chashma 3,2026-08-24,wt_now_gt_depth
-c465045af9b9,23408110,Panjsher,Baharak ,2026-09-02,wt_now_gt_depth
-c7b631f204a8,22471486,Panjsher,Chshma3,2026-07-16,wt_now_gt_depth
-f162e0a35db2,23261236,Panjsher,Asticha,2026-08-26,wt_now_gt_depth
-f3b10d260c02,23431153,Panjsher,Qala Mirsha,2026-09-03,wt_now_gt_depth
-f50285835dcc,23123554,Panjsher,Sangana,2026-08-18,wt_now_gt_depth
-fb352dcab5b3,22514212,Panjsher,Qalacha,2026-07-19,wt_now_gt_depth
-fbe95fa49cb8,21416830,Panjsher,Chashma 3,2026-05-05,wt_now_gt_depth
-fbe95fa49cb8,22537516,Panjsher,Chashma 3,2026-07-20,wt_now_gt_depth
-fbe95fa49cb8,22703332,Panjsher,Chashma 3,2026-07-28,wt_now_gt_depth
-fbe95fa49cb8,23226299,Panjsher,Chashma 3,2026-08-24,wt_now_gt_depth
-fbe95fa49cb8,23355020,Panjsher,Chashma 3,2026-08-31,wt_now_gt_depth
-fbe95fa49cb8,23492252,Panjsher,Chashma 3,2026-09-06,wt_now_gt_depth
-fbe95fa49cb8,23690090,Panjsher,Chashma 3,2026-09-14,wt_now_gt_depth
-0b3d826930dc,21405432,Parwan,Daraz gerd ,2026-05-04,wt_now_gt_depth
-16643995254c,21207102,Parwan,Khawaja Sayaran Bala ,2026-04-15,wt_now_gt_depth
-1e4db86f8c67,23520826,Parwan,Khawaja Sayaran Bala,2026-09-06,wt_now_gt_depth
-40b9a7238600,21084230,Parwan,Ofyan,2026-03-24,wt_now_gt_depth
-40b9a7238600,21200119,Parwan,Ofyan,2026-04-14,wt_now_gt_depth
-54660c2b408c,23717190,Parwan,Khawaja Sayaran,2026-09-13,wt_now_gt_depth
-799d95968008,23019779,Parwan,Ofyan,2026-08-13,wt_now_gt_depth
-799d95968008,23218919,Parwan,Ofyan,2026-08-20,wt_now_gt_depth
-799d95968008,23520832,Parwan,Ofyan,2026-09-06,wt_now_gt_depth
-799d95968008,23682939,Parwan,Ofyan,2026-09-13,wt_now_gt_depth
-a42048d13a88,23682941,Parwan,Khawaja Sayaran Bala ,2026-09-13,wt_now_gt_depth
-ccd3ca0f75c1,21441049,Parwan,Da,2026-05-07,wt_now_gt_depth
-20118e4053b0,21079495,Zabul,Kakar,2026-03-24,wt_now_gt_depth
-20118e4053b0,21106625,Zabul,Kakar,2026-03-29,wt_now_gt_depth
-20118e4053b0,21170606,Zabul,Kakar,2026-04-08,wt_now_gt_depth
-20118e4053b0,21199862,Zabul,Kakar ,2026-04-13,wt_now_gt_depth
-20118e4053b0,21319467,Zabul,Kakar,2026-04-26,wt_now_gt_depth
-20118e4053b0,21488441,Zabul,Kakar,2026-05-10,wt_now_gt_depth
-20118e4053b0,21598719,Zabul,Kakar,2026-05-17,wt_now_gt_depth
-20118e4053b0,22121748,Zabul,Kakar,2026-06-22,wt_now_gt_depth
-a161c7e203ad,21914039,Zabul,Patkhil,2026-06-07,wt_now_gt_depth
-f735510805a1,21392396,Daykundi,Hijdi Sufla,2026-05-03,wt_now_zero
-f735510805a1,21881651,Daykundi,Hijdi Sufla,2026-06-05,wt_now_zero
-b5ce199556c5,20944682,Helmand,Gala beda,2026-02-23,wt_now_zero
-d9a397611e97,20975943,Helmand,Baba faqir,2026-03-02,wt_now_zero
-62ec3e222487,20984461,Panjsher,Shikhan,2026-03-02,wt_now_zero
+82b9cb7ff970,22048010,Panjsher,Bahark,2026-06-16,diameter_outlier
+689a72d0f9c3,20975979,Sar-e-Pul,Kariz,2026-03-02,diameter_outlier
+989878d8268c,23167328,Sar-e-Pul,Kariz ,2026-08-19,diameter_outlier
+1600383b3a13,21947710,Daykundi,Pay waragha ,2026-06-07,diameter_suspect
+2028b1f7db55,21196068,Daykundi,Khajachasht,2026-04-13,diameter_suspect
+2bcba12311b4,20835325,Daykundi,Kharbed,2026-02-03,diameter_suspect
+2bcba12311b4,21007509,Daykundi,Kharbed,2026-03-08,diameter_suspect
+2ee6e41e7ee7,21118421,Daykundi,Kharbed,2026-03-31,diameter_suspect
+2ee6e41e7ee7,21196067,Daykundi,Kharbed,2026-04-13,diameter_suspect
+2ee6e41e7ee7,21250305,Daykundi,Kharbed,2026-04-20,diameter_suspect
+2ee6e41e7ee7,21424338,Daykundi,Kharbed ,2026-05-06,diameter_suspect
+2ee6e41e7ee7,21814626,Daykundi,Kharbed,2026-05-25,diameter_suspect
+2ee6e41e7ee7,21947711,Daykundi,Kharbed ,2026-06-08,diameter_suspect
+2ee6e41e7ee7,22114476,Daykundi,Kharbed,2026-06-22,diameter_suspect
+2ee6e41e7ee7,22508980,Daykundi,Kharbed,2026-07-19,diameter_suspect
+3399223a6bfc,20966620,Daykundi,Payqol,2026-02-28,diameter_suspect
+3399223a6bfc,21049712,Daykundi,Payqol,2026-03-16,diameter_suspect
+3399223a6bfc,21151111,Daykundi,Payqol,2026-04-05,diameter_suspect
+4e22e7727d2d,20855053,Daykundi,Daghur Sufla,2026-02-08,diameter_suspect
+5395d718f227,21424336,Daykundi,Payqol ,2026-05-04,diameter_suspect
+77e5a76256da,21007510,Daykundi,Khajachasht,2026-03-08,diameter_suspect
+77e5a76256da,21118422,Daykundi,Khajachasht,2026-03-31,diameter_suspect
+77e5a76256da,21250306,Daykundi,Khajachasht,2026-04-20,diameter_suspect
+77e5a76256da,21424339,Daykundi,Khajachasht ,2026-05-06,diameter_suspect
+77e5a76256da,21814624,Daykundi,Khajachasht ,2026-05-25,diameter_suspect
+77e5a76256da,21947712,Daykundi,Khajachasht,2026-06-08,diameter_suspect
+77e5a76256da,22114477,Daykundi,Khajachasht,2026-06-22,diameter_suspect
+77e5a76256da,22508982,Daykundi,Khajachasht,2026-07-19,diameter_suspect
+7f71e6bc1a78,20891513,Daykundi,Pay qol,2026-02-14,diameter_suspect
+7fd2f699b95b,20835324,Daykundi,Khaja chasht,2026-02-03,diameter_suspect
+a6b7e286a0f8,21259980,Daykundi,Payqol,2026-04-22,diameter_suspect
+a6b7e286a0f8,21702942,Daykundi,Payqol ,2026-05-21,diameter_suspect
+a6b7e286a0f8,21895001,Daykundi,Payqol ,2026-06-04,diameter_suspect
+a6b7e286a0f8,22052155,Daykundi,Payqol ,2026-06-16,diameter_suspect
+a6b7e286a0f8,22290181,Daykundi,Payqol,2026-07-05,diameter_suspect
+c4419a6ea20e,20835326,Daykundi,Pay waragha,2026-02-04,diameter_suspect
+c4419a6ea20e,20947477,Daykundi,Pay waragha,2026-02-23,diameter_suspect
+c4419a6ea20e,21118420,Daykundi,Pay waragha,2026-03-30,diameter_suspect
+c4419a6ea20e,21198661,Daykundi,Pay waragha,2026-04-14,diameter_suspect
+c4419a6ea20e,21424337,Daykundi,Pay waragha.,2026-05-05,diameter_suspect
+c4419a6ea20e,21814623,Daykundi,Pay waragha ,2026-05-24,diameter_suspect
+c4419a6ea20e,22114475,Daykundi,Pay waragha ,2026-06-21,diameter_suspect
+c4419a6ea20e,22508979,Daykundi,Pay waragha,2026-07-18,diameter_suspect
+fa24727d2c3f,20855052,Daykundi,Selbetu,2026-02-08,diameter_suspect
+15128ab803f3,20848760,Farah,Kurghzard ,2026-02-05,diameter_suspect
+165c4ce8837e,20788211,Farah,Babo kariz,2026-01-27,diameter_suspect
+5b4e3d6fe672,20788209,Farah,Tapa rig Now abad,2026-01-27,diameter_suspect
+7df32c7a7709,20866807,Farah,Tapa rig,2026-02-10,diameter_suspect
+7edf71cb0a77,20788210,Farah,Noor Ahmad kariz,2026-01-27,diameter_suspect
+a14471df09e4,20829832,Farah,Taparig,2026-02-03,diameter_suspect
+a3e363d3b5ed,20795829,Farah,Kurghzard,2026-01-29,diameter_suspect
+a3e363d3b5ed,20887493,Farah,Kurghzard ,2026-02-12,diameter_suspect
+a3e363d3b5ed,20938108,Farah,Kurghzard ,2026-02-19,diameter_suspect
+c30fb55ec1c9,20908540,Farah,Taparig Naw Abad,2026-02-17,diameter_suspect
+c5b0b85af613,20829833,Farah,Babo kariz,2026-02-03,diameter_suspect
+c5b0b85af613,20866803,Farah,Babo kariz,2026-02-10,diameter_suspect
+c5b0b85af613,20908538,Farah,Babo kariz ,2026-02-17,diameter_suspect
+efbb08b1e215,20829831,Farah,Noor Mohammad Kariz,2026-02-03,diameter_suspect
+efbb08b1e215,20866804,Farah,Noor Mohammad Kariz,2026-02-10,diameter_suspect
+efbb08b1e215,20908539,Farah,Noor Mohammad Kariz ,2026-02-17,diameter_suspect
+2874f569e01f,20824483,Ghazni,Mushak,2026-02-02,diameter_suspect
+689e320889cd,20810908,Ghazni,Kariz bala,2026-02-01,diameter_suspect
+689e320889cd,20853090,Ghazni,Kariz bala,2026-02-08,diameter_suspect
+799aeb68a6f2,21117766,Kapisa,Mahtan,2026-03-31,diameter_suspect
+2df4052bab0a,20931395,Paktika,Kachi,2026-02-20,diameter_suspect
+89d35041ece1,21647075,Panjsher,Chashma 3,2026-05-20,diameter_suspect
+08c3c2603870,21936775,Herat,Khwaja mohamma kamil,2026-06-08,distance_gt_5000
+0b495248f905,21936774,Herat,Khwaja mohamma kamil,2026-06-08,distance_gt_5000
+108ecb776482,21064322,Herat,Khwaja Mohammad Kamil,2026-03-17,distance_gt_5000
+18ca8c94b518,21202330,Herat,Khwaja Mohammad Kamil,2026-04-13,distance_gt_5000
+247f5915366e,23719337,Herat,Parvaneh,2026-09-15,distance_gt_5000
+26e8f173b272,20813467,Herat,Khwaja M. Kamil,2026-02-01,distance_gt_5000
+26e8f173b272,20859980,Herat,Khwaja M.Kamil,2026-02-09,distance_gt_5000
+26e8f173b272,20971768,Herat,Khwaja M. Kamil,2026-03-01,distance_gt_5000
+2f8bd5f0a9e6,23167255,Herat,Parvaneh ,2026-08-20,distance_gt_5000
+3a5d31b64c78,20788516,Herat,Pearvanh,2026-01-27,distance_gt_5000
+3a97ff6feb99,20813466,Herat,Khwaja Mohammad Kamil,2026-02-01,distance_gt_5000
+3a97ff6feb99,20971765,Herat,Khwaja Mohammad Kamil,2026-03-01,distance_gt_5000
+3a97ff6feb99,21020087,Herat,Khwaja Mohammad Kamil,2026-03-11,distance_gt_5000
+3a97ff6feb99,21202331,Herat,Khwaja Mohammad Kamil,2026-04-13,distance_gt_5000
+3a97ff6feb99,21252734,Herat,Khwaja Mohammad Kamil ,2026-04-21,distance_gt_5000
+45e4e38923e6,21202329,Herat,Khwaja Mohammad Kamil,2026-04-13,distance_gt_5000
+45e4e38923e6,21252735,Herat,Khwaja Mohammad Kamil,2026-04-21,distance_gt_5000
+485c5e0ed50a,21020089,Herat,Khwaja Mohammad Kamil,2026-03-11,distance_gt_5000
+485c5e0ed50a,21415931,Herat,Khwaja Mohammad Kamil,2026-05-05,distance_gt_5000
+51a8b0721529,21252736,Herat,Khwaja Mohammad Kamil,2026-04-21,distance_gt_5000
+60fa5254136b,20958998,Herat,Parvanah ,2026-02-26,distance_gt_5000
+60fa5254136b,20983503,Herat,Parvanah,2026-03-04,distance_gt_5000
+60fa5254136b,21009418,Herat,Parvanah,2026-03-09,distance_gt_5000
+60fa5254136b,21309919,Herat,Parvanah,2026-04-26,distance_gt_5000
+60fa5254136b,21387111,Herat,Parvanah,2026-05-03,distance_gt_5000
+60fa5254136b,21505082,Herat,Parvanah,2026-05-11,distance_gt_5000
+60fa5254136b,21808762,Herat,Parvanah ,2026-05-31,distance_gt_5000
+60fa5254136b,21953659,Herat,Parvanah ,2026-06-10,distance_gt_5000
+60fa5254136b,22007499,Herat,Parvanah ,2026-06-14,distance_gt_5000
+60fa5254136b,22112163,Herat,Parvanah,2026-06-21,distance_gt_5000
+60fa5254136b,22209937,Herat,Parvanah ,2026-06-28,distance_gt_5000
+60fa5254136b,22319259,Herat,Parvanah,2026-07-07,distance_gt_5000
+60fa5254136b,22471264,Herat,Parvanah,2026-07-16,distance_gt_5000
+60fa5254136b,22552037,Herat,Parvanah,2026-07-21,distance_gt_5000
+65323c7ecce5,20859979,Herat,Khwaja M.Kamil,2026-02-09,distance_gt_5000
+658eef9f3ae6,22303790,Herat,Khwaja mohamma kamil,2026-07-06,distance_gt_5000
+7a387fc76a5d,21090676,Herat,Parvanah,2026-03-26,distance_gt_5000
+81c39a6eb7e4,20813468,Herat,Khwaja Mohammad Kamil,2026-02-01,distance_gt_5000
+83bee01e306e,21936776,Herat,Khwaja mohamma kamil,2026-06-08,distance_gt_5000
+9f5aaeaa3763,23348726,Herat,Parvaneh ,2026-08-31,distance_gt_5000
+a219c5a2af7e,21415930,Herat,Khwaja Mohammad Kamil,2026-05-05,distance_gt_5000
+a7d86fa2067a,22303791,Herat,Khwaja mohamma kamil,2026-07-06,distance_gt_5000
+a89f119a60ff,21020088,Herat,Khwaja Mohammad Kamil,2026-03-11,distance_gt_5000
+a89f119a60ff,21415932,Herat,Khwaja Mohammad Kamil,2026-05-05,distance_gt_5000
+b0585e9097f6,22303793,Herat,Khwaja mohamma kamil,2026-07-06,distance_gt_5000
+c227ca0429a0,20827599,Herat,Parvaneh,2026-02-03,distance_gt_5000
+c227ca0429a0,20871012,Herat,Parvaneh,2026-02-11,distance_gt_5000
+c227ca0429a0,20895906,Herat,Parvaneh,2026-02-15,distance_gt_5000
+c227ca0429a0,22699634,Herat,Parvaneh ,2026-07-28,distance_gt_5000
+c227ca0429a0,22850967,Herat,Parvaneh,2026-08-06,distance_gt_5000
+c24026047f18,20859981,Herat,Khwaja M.kamil,2026-02-09,distance_gt_5000
+d42c60ee6d73,20971766,Herat,Khoja M. Kamil,2026-03-01,distance_gt_5000
+ee0e2f6d6f4c,21064321,Herat,Khwaja Mohammad Kamil,2026-03-17,distance_gt_5000
+eedfab30d36a,21155000,Herat,Parvanah,2026-04-06,distance_gt_5000
+2ee6e41e7ee7,21118421,Daykundi,Kharbed,2026-03-31,dtw_jump
+2ee6e41e7ee7,21196067,Daykundi,Kharbed,2026-04-13,dtw_jump
+2ee6e41e7ee7,21947711,Daykundi,Kharbed ,2026-06-08,dtw_jump
+2ee6e41e7ee7,22114476,Daykundi,Kharbed,2026-06-22,dtw_jump
+5cbd5f721c4b,20871478,Daykundi,Khawalak,2026-02-11,dtw_jump
+5cbd5f721c4b,20944713,Daykundi,Khawalak,2026-02-23,dtw_jump
+5e33c1d13eef,20943823,Daykundi,Sarqul Sangmom,2026-02-23,dtw_jump
+5e33c1d13eef,21008736,Daykundi,Sarqul Sangmom ,2026-03-09,dtw_jump
+a3e363d3b5ed,20996621,Farah,Kurghzard ,2026-03-05,dtw_jump
+a3e363d3b5ed,21101490,Farah,Kurghzard,2026-03-25,dtw_jump
+689e320889cd,20853090,Ghazni,Kariz bala,2026-02-08,dtw_jump
+689e320889cd,20892238,Ghazni,Kariz bala,2026-02-15,dtw_jump
+31e4155c7b5c,21184680,Kandahar,Toghraq,2026-04-08,dtw_jump
+31e4155c7b5c,21251947,Kandahar,Toghraq,2026-04-21,dtw_jump
+31e4155c7b5c,21482361,Kandahar,Toghraq,2026-05-04,dtw_jump
+01c8ebb99095,22000857,Kapisa,Naser Mula Khil ,2026-06-13,dtw_jump
+01c8ebb99095,22000858,Kapisa,Naser Mula Khil ,2026-06-13,dtw_jump
+15b7e0e5b1ef,22839545,Kapisa,Landakhil ,2026-08-04,dtw_jump
+15b7e0e5b1ef,22991907,Kapisa,Landakhil ,2026-08-13,dtw_jump
+26beab88764c,23292093,Kapisa,Moman khil,2026-08-27,dtw_jump
+26beab88764c,23440147,Kapisa,Moman khil,2026-09-01,dtw_jump
+26beab88764c,23292095,Kapisa,Moman khil,2026-08-27,dtw_jump
+26beab88764c,23440148,Kapisa,Moman khil,2026-09-01,dtw_jump
+3e528deb4d2d,21577896,Kapisa,Ghazi Khan Khil ,2026-05-15,dtw_jump
+3e528deb4d2d,21707447,Kapisa,Ghazi Khan Khil ,2026-05-23,dtw_jump
+3e528deb4d2d,22839556,Kapisa,Ghazi Khan Khil ,2026-08-03,dtw_jump
+3e528deb4d2d,23292099,Kapisa,Ghazi khan khil,2026-08-27,dtw_jump
+3e528deb4d2d,23440152,Kapisa,Ghazi khan khil,2026-09-01,dtw_jump
+3e528deb4d2d,23169054,Kapisa,Ghazi khan khil ,2026-08-20,dtw_jump
+3e528deb4d2d,23292100,Kapisa,Ghazi khan khil,2026-08-27,dtw_jump
+3e528deb4d2d,23440153,Kapisa,Ghazi khan khil ,2026-09-01,dtw_jump
+3e528deb4d2d,23169050,Kapisa,Ghazi khan khil ,2026-08-20,dtw_jump
+799aeb68a6f2,21117766,Kapisa,Mahtan,2026-03-31,dtw_jump
+799aeb68a6f2,21241832,Kapisa,Mahtan ,2026-04-20,dtw_jump
+963539c7ef32,21535116,Kapisa,Naser Mula Khil ,2026-05-12,dtw_jump
+963539c7ef32,21344582,Kapisa,Naser Mula Khil ,2026-04-28,dtw_jump
+963539c7ef32,21535117,Kapisa,Naser Mula Khil ,2026-05-12,dtw_jump
+963539c7ef32,21344581,Kapisa,Naser Mula Khil ,2026-04-28,dtw_jump
+accaa0e7d33b,20850814,Kapisa,Naser Mula Khil ,2026-02-07,dtw_jump
+accaa0e7d33b,20801570,Kapisa,Naser Mula Khil ,2026-01-30,dtw_jump
+accaa0e7d33b,20915694,Kapisa,Naser Mula Khil ,2026-02-18,dtw_jump
+accaa0e7d33b,21117763,Kapisa,Naser Mula Khil ,2026-03-31,dtw_jump
+accaa0e7d33b,21117764,Kapisa,Naser Mula Khil ,2026-03-31,dtw_jump
+bcfa029668e3,21005225,Kapisa,Surghi ,2026-03-08,dtw_jump
+bcfa029668e3,21049703,Kapisa,Surghi ,2026-03-15,dtw_jump
+bd61dceed6f4,23619339,Kapisa,Naser Mula khil,2026-09-08,dtw_jump
+bd61dceed6f4,23462045,Kapisa,Naser Mula khil ,2026-09-05,dtw_jump
+bd61dceed6f4,23619340,Kapisa,Naser Mula khil,2026-09-08,dtw_jump
+bd61dceed6f4,23462044,Kapisa,Naser Mula khil,2026-09-05,dtw_jump
+ed46ada8eb40,20850813,Kapisa,Naser Mula Khil ,2026-02-07,dtw_jump
+ed46ada8eb40,20801569,Kapisa,Naser Mula Khil ,2026-01-30,dtw_jump
+ed46ada8eb40,20915695,Kapisa,Naser Mula Khil ,2026-02-18,dtw_jump
+ed46ada8eb40,21185450,Kapisa,Naser Mula Khil ,2026-04-11,dtw_jump
+ed46ada8eb40,21241824,Kapisa,Naser Mula Khil ,2026-04-20,dtw_jump
+ed46ada8eb40,21241825,Kapisa,Naser Mula Khil ,2026-04-20,dtw_jump
+f5c4a8c78ab4,21905290,Kapisa,Ghazi Khan Khil ,2026-06-07,dtw_jump
+f5c4a8c78ab4,21905293,Kapisa,Ghazi Khan Khil ,2026-06-07,dtw_jump
+76b42cca924b,21079602,Khost,Werza,2026-03-24,dtw_jump
+76b42cca924b,21178382,Khost,Werza,2026-04-09,dtw_jump
+76b42cca924b,22451081,Khost,Werza,2026-07-13,dtw_jump
+76b42cca924b,22609003,Khost,Werza,2026-07-24,dtw_jump
+218bf8391a1b,20859152,Kunduz,Mola khel,2026-01-12,dtw_jump
+218bf8391a1b,20859156,Kunduz,Mola khel,2026-01-12,dtw_jump
+71db6a2717bb,21002846,Kunduz,Lala Maidan 2,2026-03-08,dtw_jump
+71db6a2717bb,21043717,Kunduz,Lala Maidan 2,2026-03-15,dtw_jump
+71db6a2717bb,21105782,Kunduz,Lala Maidan 2,2026-03-29,dtw_jump
+e079194c92d1,20843437,Kunduz,Yaamchi ,2026-01-04,dtw_jump
+e079194c92d1,20843440,Kunduz,Yaamchi ,2026-01-05,dtw_jump
+394dbdc13dbe,22763324,Logar,Deh bala,2026-07-30,dtw_jump
+394dbdc13dbe,22763325,Logar,Deh Bala,2026-07-30,dtw_jump
+93fa0a98b209,20911744,Logar,Bala deh,2026-02-16,dtw_jump
+93fa0a98b209,20911745,Logar,Bala deh,2026-02-17,dtw_jump
+93fa0a98b209,20953155,Logar,Bala deh,2026-02-25,dtw_jump
+93fa0a98b209,20986059,Logar,Bala deh,2026-03-04,dtw_jump
+93fa0a98b209,21023752,Logar,Bala deh,2026-03-11,dtw_jump
+93fa0a98b209,21063010,Logar,Bala deh,2026-03-18,dtw_jump
+93fa0a98b209,21134147,Logar,Bala deh,2026-04-02,dtw_jump
+93fa0a98b209,21134148,Logar,Bala deh,2026-04-02,dtw_jump
+93fa0a98b209,21189631,Logar,Bala deh,2026-04-09,dtw_jump
+f792d51ab73d,20872688,Logar,Bala deh,2026-02-09,dtw_jump
+f792d51ab73d,20872689,Logar,Bala deh,2026-02-09,dtw_jump
+1af4466eccf4,22173378,Maidan Wardak,Zamborak,2026-06-17,dtw_jump
+1af4466eccf4,22245160,Maidan Wardak,Zamborak,2026-06-27,dtw_jump
+5b58d8c7affb,20916673,Maidan Wardak,Musa khil,2026-02-19,dtw_jump
+5b58d8c7affb,20974416,Maidan Wardak,Musa khil,2026-03-02,dtw_jump
+adb21668e837,20916672,Maidan Wardak,Musa khil,2026-02-19,dtw_jump
+adb21668e837,20974415,Maidan Wardak,Musa khil,2026-03-02,dtw_jump
+bcc430b0d710,20913835,Maidan Wardak,Zanborak,2026-02-18,dtw_jump
+bcc430b0d710,20948370,Maidan Wardak,Zanborak,2026-02-24,dtw_jump
+d5c4862f9e76,21557018,Maidan Wardak,Deh Hayat,2026-05-14,dtw_jump
+d5c4862f9e76,21865081,Maidan Wardak,Deh Hayat,2026-05-24,dtw_jump
+d5c4862f9e76,21979943,Maidan Wardak,Deh Hayat,2026-06-03,dtw_jump
+d5c4862f9e76,22099927,Maidan Wardak,Deh Hayat,2026-06-12,dtw_jump
+d5c4862f9e76,22338996,Maidan Wardak,Deh Hayat,2026-06-05,dtw_jump
+0b3fb70a0ee1,21066332,Nangarhar,Dago,2026-03-01,dtw_jump
+0b3fb70a0ee1,21066333,Nangarhar,Dago,2026-03-01,dtw_jump
+36fca08fa049,21066340,Nangarhar,Ador ,2026-03-17,dtw_jump
+36fca08fa049,21371985,Nangarhar,Ador,2026-04-01,dtw_jump
+36fca08fa049,21371989,Nangarhar,Ador,2026-04-15,dtw_jump
+36fca08fa049,21371993,Nangarhar,Ador,2026-04-22,dtw_jump
+36fca08fa049,21371994,Nangarhar,Ador,2026-04-28,dtw_jump
+6d847308f4ab,21371986,Nangarhar,Loya Tarmai ,2026-04-11,dtw_jump
+6d847308f4ab,21371992,Nangarhar,Loya Tarmai ,2026-04-21,dtw_jump
+b2241b67fda1,21788887,Nangarhar,Mandarkhil ,2026-05-07,dtw_jump
+b2241b67fda1,21788889,Nangarhar,Mandarkhil ,2026-05-14,dtw_jump
+b28570b6eb33,21371990,Nangarhar,Dago ,2026-04-15,dtw_jump
+b28570b6eb33,21371997,Nangarhar,Dago,2026-04-29,dtw_jump
+e95e144a9c25,20999087,Nimroz,Kaj-e-Satar,2026-03-07,dtw_jump
+e95e144a9c25,21043865,Nimroz,Kaj-e-Satar,2026-03-15,dtw_jump
+092b5d13b78a,21096602,Paktya,Halim khil,2026-03-27,dtw_jump
+092b5d13b78a,21124486,Paktya,Halim khil,2026-04-01,dtw_jump
+204768db42ac,22703332,Panjsher,Chashma 3,2026-07-28,dtw_jump
+204768db42ac,23073767,Panjsher,Chashma 3,2026-08-16,dtw_jump
+204768db42ac,23226299,Panjsher,Chashma 3,2026-08-24,dtw_jump
+258384b579e2,22451833,Panjsher,Asticha,2026-07-15,dtw_jump
+258384b579e2,22746272,Panjsher,Asticha,2026-07-30,dtw_jump
+42c8a3513784,23140672,Panjsher,Asticha,2026-08-19,dtw_jump
+42c8a3513784,23383118,Panjsher,Asticha,2026-09-01,dtw_jump
+5306c93dc3f2,23073770,Panjsher,Chashma 3,2026-08-16,dtw_jump
+5306c93dc3f2,23226302,Panjsher,Chashma 3,2026-08-24,dtw_jump
+7ac8807f0631,22956539,Panjsher,Qalacha,2026-08-11,dtw_jump
+7ac8807f0631,23090344,Panjsher,Qalacha,2026-08-17,dtw_jump
+7ac8807f0631,23226306,Panjsher,Qalacha,2026-08-24,dtw_jump
+7ac8807f0631,23355018,Panjsher,Qalacha,2026-08-31,dtw_jump
+7ac8807f0631,23511179,Panjsher,Qalacha,2026-09-07,dtw_jump
+7ac8807f0631,23690089,Panjsher,Qalacha,2026-09-14,dtw_jump
+b738941f01a1,21252631,Panjsher,Chashma 3,2026-04-21,dtw_jump
+b738941f01a1,21416829,Panjsher,Chashma 3,2026-05-05,dtw_jump
+bcc76d3330bd,22727921,Panjsher,Baharak,2026-07-29,dtw_jump
+bcc76d3330bd,23123538,Panjsher,Baharak,2026-08-18,dtw_jump
+bd7217e8a6c1,22956554,Panjsher,Chashma 3,2026-08-11,dtw_jump
+bd7217e8a6c1,23355024,Panjsher,Chashma 3,2026-08-31,dtw_jump
+c18c88976e5c,21966973,Panjsher,Qala Mirsha,2026-06-10,dtw_jump
+c18c88976e5c,22244510,Panjsher,Qala Mirsha,2026-06-25,dtw_jump
+c18c88976e5c,22345265,Panjsher,Qala Mirsha,2026-07-09,dtw_jump
+ce98c0ed11d0,23090346,Panjsher,Qala Mirsha,2026-08-17,dtw_jump
+ce98c0ed11d0,23431153,Panjsher,Qala Mirsha,2026-09-03,dtw_jump
+d8c82e47a19e,22334571,Panjsher,Qalacha,2026-07-08,dtw_jump
+d8c82e47a19e,22471491,Panjsher,Qalacha ,2026-07-16,dtw_jump
+d8c82e47a19e,22514208,Panjsher,Qalacha,2026-07-19,dtw_jump
+e849b7cc48e3,22305710,Panjsher,Oroo,2026-07-06,dtw_jump
+e849b7cc48e3,22451823,Panjsher,oroo,2026-07-15,dtw_jump
+689a72d0f9c3,20866331,Sar-e-Pul,Kariz,2026-02-10,dtw_jump
+689a72d0f9c3,20900103,Sar-e-Pul,Kariz,2026-02-16,dtw_jump
+689a72d0f9c3,21004708,Sar-e-Pul,Kariz,2026-03-08,dtw_jump
+689a72d0f9c3,21097053,Sar-e-Pul,Kariz,2026-03-26,dtw_jump
+689a72d0f9c3,21206894,Sar-e-Pul,Kariz,2026-04-14,dtw_jump
+689a72d0f9c3,21242043,Sar-e-Pul,Kariz,2026-04-20,dtw_jump
+689a72d0f9c3,21413784,Sar-e-Pul,Kariz,2026-05-05,dtw_jump
+689a72d0f9c3,23015884,Sar-e-Pul,Kariz,2026-08-13,dtw_jump
+689a72d0f9c3,23167326,Sar-e-Pul,Kariz,2026-08-19,dtw_jump
+8a9f75763979,20837837,Sar-e-Pul,Kariz,2026-02-04,dtw_jump
+8a9f75763979,20866332,Sar-e-Pul,Kariz,2026-02-10,dtw_jump
+8a9f75763979,21004715,Sar-e-Pul,Kariz,2026-03-08,dtw_jump
+8a9f75763979,21097052,Sar-e-Pul,Kariz,2026-03-26,dtw_jump
+8a9f75763979,21206896,Sar-e-Pul,Kariz,2026-04-14,dtw_jump
+8a9f75763979,21242042,Sar-e-Pul,Kariz,2026-04-20,dtw_jump
+8a9f75763979,21413795,Sar-e-Pul,Kariz,2026-05-05,dtw_jump
+934d96cce13f,23015888,Sar-e-Pul,Kariz ,2026-08-13,dtw_jump
+934d96cce13f,23167327,Sar-e-Pul,Kariz ,2026-08-19,dtw_jump
+989878d8268c,21206900,Sar-e-Pul,Kariz,2026-04-14,dtw_jump
+989878d8268c,21242036,Sar-e-Pul,Kariz,2026-04-20,dtw_jump
+989878d8268c,23015887,Sar-e-Pul,Kariz ,2026-08-13,dtw_jump
+989878d8268c,23167328,Sar-e-Pul,Kariz ,2026-08-19,dtw_jump
+c78d752aa74a,20837843,Sar-e-Pul,Kariz,2026-02-04,dtw_jump
+c78d752aa74a,20866336,Sar-e-Pul,Kariz,2026-02-10,dtw_jump
+e2cfeae8a93d,20837839,Sar-e-Pul,kariz,2026-02-04,dtw_jump
+e2cfeae8a93d,20866339,Sar-e-Pul,kariz,2026-02-10,dtw_jump
+e2cfeae8a93d,21004709,Sar-e-Pul,Kariz,2026-03-08,dtw_jump
+e2cfeae8a93d,21097050,Sar-e-Pul,Kariz,2026-03-26,dtw_jump
+3f10832ae6c9,21102776,Uruzgan,Safar kariz,2026-03-29,dtw_jump
+3f10832ae6c9,21150743,Uruzgan,Safar kariz,2026-04-05,dtw_jump
+aa5243bbbd47,21092819,Uruzgan,Khoshko,2026-03-26,dtw_jump
+aa5243bbbd47,21150744,Uruzgan,Khoshko,2026-04-05,dtw_jump
+090854e7a611,21319405,Zabul,Loy-Kariz,2026-04-26,dtw_jump
+090854e7a611,21488440,Zabul,Loy-Kariz,2026-05-10,dtw_jump
+95462d2452e7,21728121,Zabul,Kawshak,2026-05-24,dtw_jump
+95462d2452e7,21842717,Zabul,Kawshak,2026-06-02,dtw_jump
+95462d2452e7,21944089,Zabul,Kawshak,2026-06-09,dtw_jump
+efbb08b1e215,20908539,Farah,Noor Mohammad Kariz ,2026-02-17,est_rise_gt_20
+9d95f8e6524b,21002992,Kunar,Shahilaam,2026-03-08,est_rise_gt_20
+8e99fbc64126,20953157,Logar,Bala deh,2026-02-25,est_rise_gt_20
+914acf27c0f5,21841210,Parwan,???,2026-06-02,est_rise_gt_20
+14b5b68f07a9,21955739,Daykundi,Kakrak,2026-06-08,form_clone
+3840a71c748d,20946529,Daykundi,Kakrak,2026-02-19,form_clone
+3840a71c748d,21066589,Daykundi,Kakrak,2026-03-18,form_clone
+3840a71c748d,21177092,Daykundi,Kakrak,2026-04-05,form_clone
+3840a71c748d,21403085,Daykundi,Kakrak,2026-05-04,form_clone
+509e1e4d55e3,20958547,Daykundi,Kakrak ,2026-02-25,form_clone
+6b810e595f3d,21616837,Daykundi,Kakrak,2026-05-14,form_clone
+c3706c28b52b,22077834,Daykundi,Kakrak,2026-06-18,form_clone
+d69743ffb3b4,21717834,Daykundi,Kakrak,2026-05-21,form_clone
+e5a26fc665c1,20996786,Daykundi,Kakrak,2026-03-06,form_clone
+e87a520bd7c3,21114382,Daykundi,Kakrak,2026-03-30,form_clone
+04e6f692a36a,21579115,Paktika,Kachi,2026-05-14,form_clone
+0db690403163,23288987,Paktika,Kachi,2026-08-27,form_clone
+27eea23344fa,22859934,Paktika,Kachi,2026-08-04,form_clone
+3099c8c88e67,21030979,Paktika,Kachi,2026-03-13,form_clone
+3099c8c88e67,21092698,Paktika,Kachi,2026-03-26,form_clone
+3099c8c88e67,21164289,Paktika,Kachi,2026-04-02,form_clone
+3099c8c88e67,21164290,Paktika,Kachi,2026-04-07,form_clone
+3099c8c88e67,21295819,Paktika,Kachi,2026-04-24,form_clone
+3099c8c88e67,21369333,Paktika,Kachi,2026-04-29,form_clone
+3099c8c88e67,22166224,Paktika,Kachi,2026-06-13,form_clone
+3099c8c88e67,22166226,Paktika,Kachi,2026-06-21,form_clone
+3099c8c88e67,22166227,Paktika,Kachi,2026-06-26,form_clone
+3099c8c88e67,22372377,Paktika,Kachi,2026-07-03,form_clone
+3099c8c88e67,23608797,Paktika,Kachi,2026-09-11,form_clone
+34b2deb460b2,21295817,Paktika,Kachi,2026-04-16,form_clone
+4f4b70e8e06f,23265816,Paktika,Kachi,2026-08-19,form_clone
+685416a96c77,21459140,Paktika,Kachi,2026-05-07,form_clone
+ab40ba3482a4,22685611,Paktika,Kachi,2026-07-27,form_clone
+dc7dc10ee202,22166222,Paktika,Kachi ,2026-06-10,form_clone
+00b913f3c875,23783242,Paktya,Bar Halim khil,2026-09-08,form_clone
+02790420ce45,20976033,Paktya,Husin khil,2026-03-02,form_clone
+02790420ce45,21022424,Paktya,Husin khil,2026-03-11,form_clone
+02790420ce45,21065907,Paktya,Husin khil,2026-03-21,form_clone
+02790420ce45,21124480,Paktya,Husin khil,2026-03-30,form_clone
+092b5d13b78a,21022422,Paktya,Halim khil,2026-03-11,form_clone
+092b5d13b78a,21065908,Paktya,Halim khil,2026-03-21,form_clone
+092b5d13b78a,21096602,Paktya,Halim khil,2026-03-27,form_clone
+092b5d13b78a,21124486,Paktya,Halim khil,2026-04-01,form_clone
+0bdbd0dd9d98,21881166,Paktya,Bar Halim khil,2026-06-01,form_clone
+0c72b041abae,21590593,Paktya,Halim khil,2026-05-10,form_clone
+0c93e9394787,21022423,Paktya,Bar Halim khil,2026-03-11,form_clone
+109f409390ab,22766127,Paktya,Halim khil,2026-07-29,form_clone
+122c3b0d912b,21881168,Paktya,Husin khil,2026-05-18,form_clone
+174eff6f74f6,23273444,Paktya,Halim khil,2026-08-27,form_clone
+1e55eeba63c1,20976034,Paktya,Bar Halim khil,2026-03-02,form_clone
+1e55eeba63c1,21096601,Paktya,Bar Halim khil,2026-03-27,form_clone
+1e55eeba63c1,21221592,Paktya,Bar Halim khil,2026-04-17,form_clone
+268ca42020f9,22179577,Paktya,Halim khil,2026-06-17,form_clone
+2ef702a8b79a,23783241,Paktya,Husin khil,2026-09-06,form_clone
+38db0b4145dc,21450287,Paktya,Bar Halim khil,2026-05-04,form_clone
+3cc898d8f506,21450286,Paktya,Husin khil,2026-05-03,form_clone
+48f1edc0d326,23273450,Paktya,Husin khil,2026-08-10,form_clone
+4c0c4d0a9026,21276030,Paktya,Halim khil,2026-04-19,form_clone
+4ccce7a7d8a1,21096603,Paktya,Husin khil,2026-03-27,form_clone
+5800d66ae048,22902769,Paktya,Husin khil,2026-08-05,form_clone
+588018a3df14,23273448,Paktya,Bar Halim khil,2026-08-20,form_clone
+5e19cb95902c,23273449,Paktya,Halim khil,2026-08-16,form_clone
+5f19da565427,21276028,Paktya,Husin khil,2026-04-23,form_clone
+614b8a04a298,21590595,Paktya,Husin khil,2026-05-12,form_clone
+6337d6105e4b,21177467,Paktya,Bar Halim khil,2026-04-09,form_clone
+66e4305af442,20944470,Paktya,Husin khil,2026-02-23,form_clone
+683098dd0511,21881167,Paktya,Halim khil,2026-06-02,form_clone
+6e2f3d5a1e02,21177466,Paktya,Halim khil,2026-04-09,form_clone
+711e0aad4d7a,22479307,Paktya,Bar Halim khil,2026-07-13,form_clone
+7452c2a01830,22902771,Paktya,Halim khil,2026-08-08,form_clone
+7834b2b23e74,21124482,Paktya,Bar Halim khil,2026-03-31,form_clone
+7a3881937292,21043883,Paktya,Bar Halim khil,2026-03-15,form_clone
+81102a370d14,21276031,Paktya,Bar Halim khil,2026-04-21,form_clone
+85493aea4dda,21370427,Paktya,Bar Halim khil,2026-04-29,form_clone
+87d7aeb2d684,21881169,Paktya,Husin khil,2026-05-31,form_clone
+920f28717bf5,21370426,Paktya,Husin khil,2026-04-28,form_clone
+9599963c54f0,22766128,Paktya,Bar Halim khil,2026-07-30,form_clone
+9cdb33707329,20984833,Paktya,Halim khil,2026-03-05,form_clone
+9f35af460e96,23783243,Paktya,Husin khil,2026-09-14,form_clone
+a563745f4de6,23273446,Paktya,Husin khil,2026-08-22,form_clone
+a9a7217c8f10,22179578,Paktya,Husin khil,2026-06-24,form_clone
+afcd9fd820d1,21221591,Paktya,Halim khil,2026-04-17,form_clone
+c8b668da9b93,21450289,Paktya,Halim khil,2026-05-05,form_clone
+cd13ae12189b,22766126,Paktya,Husin khil,2026-07-28,form_clone
+ce1d0185d4f4,21177465,Paktya,Husin khil,2026-04-09,form_clone
+dbf14f976188,21370428,Paktya,Halim khil,2026-04-28,form_clone
+dc2907a8f12d,23273445,Paktya,Bar Halim khil,2026-08-24,form_clone
+e8d9a1ba94ce,22179573,Paktya,Bar Halim khil,2026-06-11,form_clone
+efd52a425a13,22179575,Paktya,Bar Halim khil,2026-06-16,form_clone
+f16d7098f4c4,20953150,Paktya,Halim khil,2026-02-25,form_clone
+f6bc9ee95753,21590594,Paktya,Bar Halim khil,2026-05-11,form_clone
+fd46ccc41832,22479309,Paktya,Halim khil,2026-07-12,form_clone
+0b6a7b617be7,21484566,Bamyan,Zabzjobak,2026-04-26,hh_implausible
+a33fc32fb780,21484574,Bamyan,Zabzjobak,2026-05-09,hh_implausible
+fb60cc95f6a0,21484558,Bamyan,Zabzjobak,2026-04-19,hh_implausible
+107089521ebe,21234328,Ghor,Kendiwal,2026-02-18,hh_implausible
+153e94198c77,21000652,Ghor,Bahari,2026-03-02,hh_implausible
+2597b12266fa,21209429,Helmand,Lawar Tangi,2026-04-15,hh_implausible
+2597b12266fa,21344774,Helmand,Lawar Tangi,2026-04-28,hh_implausible
+82d5153a799c,21463555,Helmand,Lawar Tangi Kariz,2026-05-06,hh_implausible
+abf6175de9a4,22111313,Helmand,Lwar Tangi,2026-06-21,hh_implausible
+cb535f044d44,21605143,Helmand,Lawar Tangi Razdan,2026-05-17,hh_implausible
+d028d9bd0e68,21016025,Helmand,Lawar Tangi,2026-03-10,hh_implausible
+dd9ed95ad9b8,22319915,Helmand,Lwar Tangai,2026-07-07,hh_implausible
+3a5d31b64c78,20788516,Herat,Pearvanh,2026-01-27,hh_implausible
+b8be4bf0d021,20788515,Herat,Khwaja Sarbor,2026-01-27,hh_implausible
+2706c3ac2562,20951872,Kabul,Ismila,2026-02-25,hh_implausible
+4c32ab42b86d,21351936,Kunar,Damgalik,2026-04-29,hh_implausible
+5ba720bb8bc2,21430091,Kunar,Damgalik,2026-05-06,hh_implausible
+e62c07adddda,21016365,Kunar,Babad ,2026-03-10,hh_implausible
+e62c07adddda,21056329,Kunar,Babad,2026-03-15,hh_implausible
+75fefbbf689a,21006828,Laghman,Zerani,2026-03-09,hh_implausible
+75fefbbf689a,21108306,Laghman,Zerani,2026-03-18,hh_implausible
+75fefbbf689a,21114413,Laghman,Zerani,2026-03-30,hh_implausible
+75fefbbf689a,21152954,Laghman,Zerani,2026-04-06,hh_implausible
+0b6a7b617be7,21484566,Bamyan,Zabzjobak,2026-04-26,hh_looks_like_phone
+a33fc32fb780,21484574,Bamyan,Zabzjobak,2026-05-09,hh_looks_like_phone
+3a5d31b64c78,20788516,Herat,Pearvanh,2026-01-27,hh_looks_like_phone
+b8be4bf0d021,20788515,Herat,Khwaja Sarbor,2026-01-27,hh_looks_like_phone
+82ae7753adb8,20853789,Bamyan,Qala-e-Meyana,2026-01-05,meas_before_interv
+3840a71c748d,21177092,Daykundi,Kakrak,2026-04-05,meas_before_interv
+6b9cae5e080e,21177093,Daykundi,Sarqul,2026-04-06,meas_before_interv
+7f0125e8fb7d,21177094,Daykundi,Surkhbid,2026-04-07,meas_before_interv
+107089521ebe,21234328,Ghor,Kendiwal,2026-02-18,meas_before_interv
+26e8f173b272,20813467,Herat,Khwaja M. Kamil,2026-02-01,meas_before_interv
+c227ca0429a0,20895906,Herat,Parvaneh,2026-02-15,meas_before_interv
+8695b02ed9a2,20897745,Kunduz,Mola khel,2025-01-12,meas_before_interv
+a8616198db70,21586665,Logar,Bala deh,2026-05-14,meas_before_interv
+36fca08fa049,21371989,Nangarhar,Ador,2026-04-15,meas_before_interv
+36fca08fa049,21371993,Nangarhar,Ador,2026-04-22,meas_before_interv
+6d847308f4ab,21371986,Nangarhar,Loya Tarmai ,2026-04-11,meas_before_interv
+6d847308f4ab,21371992,Nangarhar,Loya Tarmai ,2026-04-21,meas_before_interv
+476491320e5a,21000873,Zabul,Pat khil ,2026-01-14,meas_before_interv
+4cc1c44ac267,20850081,Daykundi,Lazer Balabagh,2026-02-07,recall_extreme
+bd00ecddedb8,20998747,Daykundi,Lazir Balabagh,2026-03-07,recall_extreme
+bd00ecddedb8,21049268,Daykundi,Lazir Balabagh,2026-03-16,recall_extreme
+bd00ecddedb8,21586940,Daykundi,Lazir Balabagh ,2026-05-11,recall_extreme
+bd00ecddedb8,22521886,Daykundi,Lazir Balabagh,2026-07-19,recall_extreme
+de3cd8e5c757,20887487,Daykundi,Deh Payeen Sangmom,2026-02-12,recall_extreme
+de3cd8e5c757,20935738,Daykundi,Deh Payeen Sangmom,2026-02-12,recall_extreme
+de3cd8e5c757,21008737,Daykundi,Deh Payeen Sangmom,2026-03-09,recall_extreme
+de3cd8e5c757,21126974,Daykundi,Deh Payeen Sangmom,2026-04-02,recall_extreme
+de3cd8e5c757,21150613,Daykundi,Deh Payeen Sangmom ,2026-04-05,recall_extreme
+37e5cbb4dd7f,20996619,Farah,Noor Mohammad ,2026-03-03,recall_extreme
+a3e363d3b5ed,21101490,Farah,Kurghzard,2026-03-25,recall_extreme
+db5ae1ef70c3,21118775,Farah,Noor Mohammad Kariz ,2026-03-31,recall_extreme
+efbb08b1e215,20829831,Farah,Noor Mohammad Kariz,2026-02-03,recall_extreme
+0b2ee990302f,20973177,Helmand,Kashata kanai,2026-03-01,recall_extreme
+36ac8fa8a43e,20973178,Helmand,Bazadah,2026-03-01,recall_extreme
+c63a86e48d39,20973117,Helmand,Lawar tangai,2026-03-01,recall_extreme
+0b495248f905,21936774,Herat,Khwaja mohamma kamil,2026-06-08,recall_extreme
+18ca8c94b518,21202330,Herat,Khwaja Mohammad Kamil,2026-04-13,recall_extreme
+3a97ff6feb99,21020087,Herat,Khwaja Mohammad Kamil,2026-03-11,recall_extreme
+3a97ff6feb99,21202331,Herat,Khwaja Mohammad Kamil,2026-04-13,recall_extreme
+485c5e0ed50a,21020089,Herat,Khwaja Mohammad Kamil,2026-03-11,recall_extreme
+485c5e0ed50a,21415931,Herat,Khwaja Mohammad Kamil,2026-05-05,recall_extreme
+51a8b0721529,21252736,Herat,Khwaja Mohammad Kamil,2026-04-21,recall_extreme
+83bee01e306e,21936776,Herat,Khwaja mohamma kamil,2026-06-08,recall_extreme
+a219c5a2af7e,21415930,Herat,Khwaja Mohammad Kamil,2026-05-05,recall_extreme
+c24026047f18,20859981,Herat,Khwaja M.kamil,2026-02-09,recall_extreme
+d42c60ee6d73,20971766,Herat,Khoja M. Kamil,2026-03-01,recall_extreme
+ee0e2f6d6f4c,21064321,Herat,Khwaja Mohammad Kamil,2026-03-17,recall_extreme
+029683d74baa,21010694,Kabul,Drgi,2026-03-09,recall_extreme
+44d9321130e6,20843758,Kabul,Danaw,2026-02-05,recall_extreme
+c5af410113d1,20860141,Kabul,Kariz bala,2026-02-09,recall_extreme
+5d0b8cc8277a,21130349,Khost,Werza,2026-04-01,recall_extreme
+76b42cca924b,20915130,Khost,Werza,2026-02-18,recall_extreme
+76b42cca924b,20983912,Khost,Werza,2026-03-04,recall_extreme
+76b42cca924b,21026959,Khost,Werza,2026-03-11,recall_extreme
+76b42cca924b,21060494,Khost,Werza,2026-03-18,recall_extreme
+76b42cca924b,21079602,Khost,Werza,2026-03-24,recall_extreme
+76b42cca924b,21178382,Khost,Werza,2026-04-09,recall_extreme
+76b42cca924b,21215233,Khost,Werza,2026-04-16,recall_extreme
+76b42cca924b,21301833,Khost,Werza,2026-04-23,recall_extreme
+76b42cca924b,21374506,Khost,Werza,2026-04-30,recall_extreme
+76b42cca924b,21464433,Khost,Werza,2026-05-07,recall_extreme
+76b42cca924b,21569696,Khost,Werza,2026-05-14,recall_extreme
+76b42cca924b,21702869,Khost,Werza,2026-05-23,recall_extreme
+76b42cca924b,21891952,Khost,Werza,2026-06-04,recall_extreme
+76b42cca924b,21995974,Khost,Werza,2026-06-12,recall_extreme
+76b42cca924b,22079206,Khost,Werza,2026-06-18,recall_extreme
+76b42cca924b,22165438,Khost,Werza,2026-06-24,recall_extreme
+76b42cca924b,22249456,Khost,Werza,2026-06-30,recall_extreme
+76b42cca924b,22345279,Khost,Werza,2026-07-06,recall_extreme
+76b42cca924b,22451081,Khost,Werza,2026-07-13,recall_extreme
+76b42cca924b,22609003,Khost,Werza,2026-07-24,recall_extreme
+76b42cca924b,22736259,Khost,Werza,2026-07-28,recall_extreme
+76b42cca924b,22842897,Khost,Werza,2026-08-03,recall_extreme
+76b42cca924b,22962745,Khost,Werza,2026-08-11,recall_extreme
+76b42cca924b,23280705,Khost,Werza,2026-08-25,recall_extreme
+76b42cca924b,23416029,Khost,Werza,2026-09-02,recall_extreme
+76b42cca924b,23556089,Khost,Werza,2026-09-07,recall_extreme
+ee4f0f16c24f,20951967,Khost,Werza,2026-02-25,recall_extreme
+9d95f8e6524b,21002992,Kunar,Shahilaam,2026-03-08,recall_extreme
+e62c07adddda,21016365,Kunar,Babad ,2026-03-10,recall_extreme
+33db13dcd097,20903585,Maidan Wardak,Dah Hayat,2026-02-17,recall_extreme
+33db13dcd097,20983838,Maidan Wardak,Dah hayat,2026-03-04,recall_extreme
+98ce14a7da97,20913836,Maidan Wardak,Zanborak,2026-02-18,recall_extreme
+b69d2d779c4a,20868481,Maidan Wardak,Zanborak,2026-02-11,recall_extreme
+d10cc94a7114,20853059,Maidan Wardak,Dah hayat,2026-02-08,recall_extreme
+d756b5af0528,20983839,Maidan Wardak,Deh hayat,2026-03-04,recall_extreme
+b28570b6eb33,21371990,Nangarhar,Dago ,2026-04-15,recall_extreme
+1b8a288bf4d6,21005097,Nimroz,Khashrod ,2026-03-08,recall_extreme
+975fc449347e,21005098,Nimroz,Khashrod,2026-03-08,recall_extreme
+9b62b7f367c7,21043864,Nimroz,Gulistan,2026-03-15,recall_extreme
+9b62b7f367c7,21081330,Nimroz,Gulistan,2026-03-24,recall_extreme
+9b62b7f367c7,21107328,Nimroz,Gulistan,2026-03-29,recall_extreme
+9b62b7f367c7,21193070,Nimroz,Gulistan,2026-04-12,recall_extreme
+9b62b7f367c7,21228343,Nimroz,Gulistan,2026-04-18,recall_extreme
+9b62b7f367c7,21511920,Nimroz,Gulistan,2026-05-11,recall_extreme
+9b62b7f367c7,21641370,Nimroz,Gulistan,2026-05-20,recall_extreme
+9b62b7f367c7,21730030,Nimroz,Gulistan,2026-05-24,recall_extreme
+9b62b7f367c7,21831414,Nimroz,Gulistan,2026-06-01,recall_extreme
+9b62b7f367c7,22110470,Nimroz,Gulistan,2026-06-21,recall_extreme
+e75920eda84a,21402491,Nimroz,Gulistan,2026-05-04,recall_extreme
+00b913f3c875,23783242,Paktya,Bar Halim khil,2026-09-08,recall_extreme
+02790420ce45,20976033,Paktya,Husin khil,2026-03-02,recall_extreme
+02790420ce45,21022424,Paktya,Husin khil,2026-03-11,recall_extreme
+02790420ce45,21065907,Paktya,Husin khil,2026-03-21,recall_extreme
+02790420ce45,21124480,Paktya,Husin khil,2026-03-30,recall_extreme
+02790420ce45,21221590,Paktya,Husin khil,2026-04-17,recall_extreme
+092b5d13b78a,21022422,Paktya,Halim khil,2026-03-11,recall_extreme
+092b5d13b78a,21065908,Paktya,Halim khil,2026-03-21,recall_extreme
+092b5d13b78a,21096602,Paktya,Halim khil,2026-03-27,recall_extreme
+092b5d13b78a,21124486,Paktya,Halim khil,2026-04-01,recall_extreme
+0bdbd0dd9d98,21881166,Paktya,Bar Halim khil,2026-06-01,recall_extreme
+0c93e9394787,21022423,Paktya,Bar Halim khil,2026-03-11,recall_extreme
+109f409390ab,22766127,Paktya,Halim khil,2026-07-29,recall_extreme
+122c3b0d912b,21881168,Paktya,Husin khil,2026-05-18,recall_extreme
+174eff6f74f6,23273444,Paktya,Halim khil,2026-08-27,recall_extreme
+1e55eeba63c1,20976034,Paktya,Bar Halim khil,2026-03-02,recall_extreme
+1e55eeba63c1,21096601,Paktya,Bar Halim khil,2026-03-27,recall_extreme
+1e55eeba63c1,21221592,Paktya,Bar Halim khil,2026-04-17,recall_extreme
+2ef702a8b79a,23783241,Paktya,Husin khil,2026-09-06,recall_extreme
+38db0b4145dc,21450287,Paktya,Bar Halim khil,2026-05-04,recall_extreme
+3cc898d8f506,21450286,Paktya,Husin khil,2026-05-03,recall_extreme
+48f1edc0d326,23273450,Paktya,Husin khil,2026-08-10,recall_extreme
+4c0c4d0a9026,21276030,Paktya,Halim khil,2026-04-19,recall_extreme
+4ccce7a7d8a1,21096603,Paktya,Husin khil,2026-03-27,recall_extreme
+5800d66ae048,22902769,Paktya,Husin khil,2026-08-05,recall_extreme
+588018a3df14,23273448,Paktya,Bar Halim khil,2026-08-20,recall_extreme
+5e19cb95902c,23273449,Paktya,Halim khil,2026-08-16,recall_extreme
+5f19da565427,21276028,Paktya,Husin khil,2026-04-23,recall_extreme
+614b8a04a298,21590595,Paktya,Husin khil,2026-05-12,recall_extreme
+6337d6105e4b,21177467,Paktya,Bar Halim khil,2026-04-09,recall_extreme
+66e4305af442,20944470,Paktya,Husin khil,2026-02-23,recall_extreme
+6e2f3d5a1e02,21177466,Paktya,Halim khil,2026-04-09,recall_extreme
+711e0aad4d7a,22479307,Paktya,Bar Halim khil,2026-07-13,recall_extreme
+7452c2a01830,22902771,Paktya,Halim khil,2026-08-08,recall_extreme
+7834b2b23e74,21124482,Paktya,Bar Halim khil,2026-03-31,recall_extreme
+7a3881937292,21043883,Paktya,Bar Halim khil,2026-03-15,recall_extreme
+81102a370d14,21276031,Paktya,Bar Halim khil,2026-04-21,recall_extreme
+85493aea4dda,21370427,Paktya,Bar Halim khil,2026-04-29,recall_extreme
+87d7aeb2d684,21881169,Paktya,Husin khil,2026-05-31,recall_extreme
+920f28717bf5,21370426,Paktya,Husin khil,2026-04-28,recall_extreme
+9599963c54f0,22766128,Paktya,Bar Halim khil,2026-07-30,recall_extreme
+9cdb33707329,20984833,Paktya,Halim khil,2026-03-05,recall_extreme
+9f35af460e96,23783243,Paktya,Husin khil,2026-09-14,recall_extreme
+a563745f4de6,23273446,Paktya,Husin khil,2026-08-22,recall_extreme
+a9a7217c8f10,22179578,Paktya,Husin khil,2026-06-24,recall_extreme
+cd13ae12189b,22766126,Paktya,Husin khil,2026-07-28,recall_extreme
+ce1d0185d4f4,21177465,Paktya,Husin khil,2026-04-09,recall_extreme
+e8d9a1ba94ce,22179573,Paktya,Bar Halim khil,2026-06-11,recall_extreme
+efd52a425a13,22179575,Paktya,Bar Halim khil,2026-06-16,recall_extreme
+f16d7098f4c4,20953150,Paktya,Halim khil,2026-02-25,recall_extreme
+f6bc9ee95753,21590594,Paktya,Bar Halim khil,2026-05-11,recall_extreme
+fd46ccc41832,22479309,Paktya,Halim khil,2026-07-12,recall_extreme
+387aa6d76bfd,22514212,Panjsher,Qalacha,2026-07-19,recall_extreme
+7ac8807f0631,21966964,Panjsher,Qalacha,2026-06-09,recall_extreme
+7ac8807f0631,23090344,Panjsher,Qalacha,2026-08-17,recall_extreme
+7ac8807f0631,23511179,Panjsher,Qalacha,2026-09-07,recall_extreme
+c18c88976e5c,22244510,Panjsher,Qala Mirsha,2026-06-25,recall_extreme
+d8c82e47a19e,22471491,Panjsher,Qalacha ,2026-07-16,recall_extreme
+f27c01ae372a,20797648,Panjsher,Asticha,2026-01-28,recall_extreme
+53a68b3bc18a,21441049,Parwan,Da,2026-05-07,recall_extreme
+e2cfeae8a93d,20837839,Sar-e-Pul,kariz,2026-02-04,recall_extreme
+138c5ee9b9a7,21558186,Takhar,Uzbakia,2026-05-13,recall_extreme
+3f10832ae6c9,21150743,Uruzgan,Safar kariz,2026-04-05,recall_extreme
+3f10832ae6c9,21224108,Uruzgan,Safar kariz,2026-04-15,recall_extreme
+40d8e1596d1f,21914039,Zabul,Patkhil,2026-06-07,recall_extreme
+476491320e5a,21000873,Zabul,Pat khil ,2026-01-14,recall_extreme
+476491320e5a,21049988,Zabul,Pat khil,2026-03-16,recall_extreme
+476491320e5a,21079433,Zabul,Pat khil,2026-03-24,recall_extreme
+476491320e5a,21106623,Zabul,Pat khil,2026-03-29,recall_extreme
+476491320e5a,21199860,Zabul,Pat khil ,2026-04-13,recall_extreme
+95462d2452e7,21215571,Zabul,Kawshak,2026-04-16,recall_extreme
+95462d2452e7,21235099,Zabul,Kawshak,2026-04-19,recall_extreme
+95462d2452e7,21352385,Zabul,Kawshak,2026-04-29,recall_extreme
+b01fca63c79a,21261086,Zabul,Kakar,2026-04-22,recall_extreme
+b605108c8ae9,21215570,Zabul,Jajga,2026-04-16,recall_extreme
+cbdba7ab1f5a,21170568,Zabul,Patkhil,2026-04-08,recall_extreme
+cbdba7ab1f5a,21261088,Zabul,Patkhil,2026-04-22,recall_extreme
+cbdba7ab1f5a,21319404,Zabul,Patkhil,2026-04-26,recall_extreme
+cbdba7ab1f5a,21488438,Zabul,Patkhil,2026-05-10,recall_extreme
+cbdba7ab1f5a,21598717,Zabul,Patkhil,2026-05-17,recall_extreme
+cbdba7ab1f5a,21706050,Zabul,Patkhil,2026-05-23,recall_extreme
+cbdba7ab1f5a,21829926,Zabul,Patkhil,2026-06-01,recall_extreme
+cbdba7ab1f5a,22034045,Zabul,Patkhil,2026-06-15,recall_extreme
+cbdba7ab1f5a,22121747,Zabul,Patkhil,2026-06-22,recall_extreme
+6a5ac2e971ab,20893390,Badghis,Abedi Ha,2026-02-15,unit_confusion
+d3e8f080f230,20786845,Badghis,Baghak,2026-01-27,unit_confusion
+d3e8f080f230,20940450,Badghis,Baghak,2026-02-22,unit_confusion
+0dd3d7ebab4d,21510282,Ghor,Bahari ,2026-04-13,unit_confusion
+107089521ebe,21234328,Ghor,Kendiwal,2026-02-18,unit_confusion
+4c4af3f8e5d6,21234329,Ghor,Siyasang,2026-04-20,unit_confusion
+73d2a08af7fd,20868441,Ghor,Siyasang,2026-02-01,unit_confusion
+9907859c06ae,21234330,Ghor,Qutos,2026-04-21,unit_confusion
+e38b79cf0fc6,21510292,Ghor,Bahari,2026-05-13,unit_confusion
+0b2ee990302f,20973177,Helmand,Kashata kanai,2026-03-01,unit_confusion
+36ac8fa8a43e,20973178,Helmand,Bazadah,2026-03-01,unit_confusion
+90516d7b65fc,20975943,Helmand,Baba faqir,2026-03-02,unit_confusion
+c63a86e48d39,20973117,Helmand,Lawar tangai,2026-03-01,unit_confusion
+e5a921b5c1c1,20944682,Helmand,Gala beda,2026-02-23,unit_confusion
+e62c07adddda,21016365,Kunar,Babad ,2026-03-10,unit_confusion
+d10cc94a7114,20811608,Maidan Wardak,Dah Hayat,2026-02-01,unit_confusion
+1b8a288bf4d6,21005097,Nimroz,Khashrod ,2026-03-08,unit_confusion
+2b77dd159c63,20999086,Nimroz,Dangar Abad,2026-03-07,unit_confusion
+2b77dd159c63,21043863,Nimroz,Dangar Abad,2026-03-15,unit_confusion
+2b77dd159c63,21081327,Nimroz,Dangar Abad,2026-03-24,unit_confusion
+2b77dd159c63,21107326,Nimroz,Dangar Abad,2026-03-29,unit_confusion
+2b77dd159c63,21228298,Nimroz,Dangar Abad,2026-04-18,unit_confusion
+2b77dd159c63,21402489,Nimroz,Dangar Abad,2026-05-04,unit_confusion
+2b77dd159c63,21511917,Nimroz,Dangar Abad,2026-05-11,unit_confusion
+2b77dd159c63,21641368,Nimroz,Dangar Abad,2026-05-20,unit_confusion
+2b77dd159c63,21730028,Nimroz,Dangar Abad,2026-05-24,unit_confusion
+2b77dd159c63,21831412,Nimroz,Dangar Abad,2026-06-01,unit_confusion
+2b77dd159c63,22110468,Nimroz,Dangar Abad,2026-06-21,unit_confusion
+62d6436df2bf,21193071,Nimroz,Dangar Abad,2026-04-12,unit_confusion
+9b62b7f367c7,21043864,Nimroz,Gulistan,2026-03-15,unit_confusion
+9b62b7f367c7,21081330,Nimroz,Gulistan,2026-03-24,unit_confusion
+9b62b7f367c7,21107328,Nimroz,Gulistan,2026-03-29,unit_confusion
+9b62b7f367c7,21193070,Nimroz,Gulistan,2026-04-12,unit_confusion
+9b62b7f367c7,21228343,Nimroz,Gulistan,2026-04-18,unit_confusion
+9b62b7f367c7,21511920,Nimroz,Gulistan,2026-05-11,unit_confusion
+9b62b7f367c7,21641370,Nimroz,Gulistan,2026-05-20,unit_confusion
+9b62b7f367c7,21730030,Nimroz,Gulistan,2026-05-24,unit_confusion
+9b62b7f367c7,21831414,Nimroz,Gulistan,2026-06-01,unit_confusion
+9b62b7f367c7,22110470,Nimroz,Gulistan,2026-06-21,unit_confusion
+e75920eda84a,21402491,Nimroz,Gulistan,2026-05-04,unit_confusion
+138c5ee9b9a7,21558186,Takhar,Uzbakia,2026-05-13,unit_confusion
+23bc6b9c18d5,21356560,Takhar,Uzbakia,2026-04-29,unit_confusion
+61d531682953,21266837,Takhar,Uzbekia,2026-04-23,unit_confusion
+40d8e1596d1f,21914039,Zabul,Patkhil,2026-06-07,unit_confusion
+476491320e5a,21000873,Zabul,Pat khil ,2026-01-14,unit_confusion
+476491320e5a,21049988,Zabul,Pat khil,2026-03-16,unit_confusion
+476491320e5a,21079433,Zabul,Pat khil,2026-03-24,unit_confusion
+476491320e5a,21106623,Zabul,Pat khil,2026-03-29,unit_confusion
+476491320e5a,21199860,Zabul,Pat khil ,2026-04-13,unit_confusion
+b01fca63c79a,21261086,Zabul,Kakar,2026-04-22,unit_confusion
+cbdba7ab1f5a,21170568,Zabul,Patkhil,2026-04-08,unit_confusion
+cbdba7ab1f5a,21261088,Zabul,Patkhil,2026-04-22,unit_confusion
+cbdba7ab1f5a,21319404,Zabul,Patkhil,2026-04-26,unit_confusion
+cbdba7ab1f5a,21488438,Zabul,Patkhil,2026-05-10,unit_confusion
+cbdba7ab1f5a,21598717,Zabul,Patkhil,2026-05-17,unit_confusion
+cbdba7ab1f5a,21706050,Zabul,Patkhil,2026-05-23,unit_confusion
+cbdba7ab1f5a,21829926,Zabul,Patkhil,2026-06-01,unit_confusion
+cbdba7ab1f5a,22034045,Zabul,Patkhil,2026-06-15,unit_confusion
+cbdba7ab1f5a,22121747,Zabul,Patkhil,2026-06-22,unit_confusion
+b8be4bf0d021,20788515,Herat,Khwaja Sarbor,2026-01-27,wt_now_gt_100
+e1c210920aa9,20895840,Kunar,Shahilaam,2026-02-15,wt_now_gt_100
+3059a65ecb59,23016427,Jawzjan,Turkman qudogh Afghania,2026-01-12,wt_now_gt_depth
+31e4155c7b5c,20876003,Kandahar,Toghraq,2026-02-11,wt_now_gt_depth
+31e4155c7b5c,21036304,Kandahar,Toghraq,2026-03-11,wt_now_gt_depth
+31e4155c7b5c,21101765,Kandahar,Toghraq,2026-03-26,wt_now_gt_depth
+31e4155c7b5c,21184680,Kandahar,Toghraq,2026-04-08,wt_now_gt_depth
+31e4155c7b5c,21251947,Kandahar,Toghraq,2026-04-21,wt_now_gt_depth
+6db3bc4203d6,20843465,Kandahar,Toghraq,2026-02-05,wt_now_gt_depth
+15b7e0e5b1ef,22991907,Kapisa,Landakhil ,2026-08-13,wt_now_gt_depth
+15b7e0e5b1ef,23153141,Kapisa,Landakhil ,2026-08-20,wt_now_gt_depth
+26beab88764c,21216111,Kapisa,Moman Khil ,2026-04-16,wt_now_gt_depth
+26beab88764c,21216110,Kapisa,Moman Khil ,2026-04-16,wt_now_gt_depth
+26beab88764c,22839551,Kapisa,Moman khil,2026-08-03,wt_now_gt_depth
+26beab88764c,22590581,Kapisa,Moman Khil ,2026-07-21,wt_now_gt_depth
+26beab88764c,22558927,Kapisa,Moman Khil ,2026-07-16,wt_now_gt_depth
+de1f33959f85,21185406,Kapisa,Mahtan ,2026-04-11,wt_now_gt_depth
+ee6a5ee297ef,22378493,Kapisa,Moman Khil ,2026-07-11,wt_now_gt_depth
+f690a2b82476,23292092,Kapisa,Landakhil ,2026-08-27,wt_now_gt_depth
+f690a2b82476,23440146,Kapisa,Landakhil ,2026-09-01,wt_now_gt_depth
+93fa0a98b209,21023752,Logar,Bala deh,2026-03-11,wt_now_gt_depth
+89a33b2aaf9f,22687300,Maidan Wardak,Deh Haaat,2026-07-22,wt_now_gt_depth
+12d9aca90f90,21066325,Nangarhar,Mandar khill,2026-02-24,wt_now_gt_depth
+54b2fea04fca,21066329,Nangarhar,Mandar khill ,2026-02-28,wt_now_gt_depth
+204768db42ac,21416830,Panjsher,Chashma 3,2026-05-05,wt_now_gt_depth
+204768db42ac,22537516,Panjsher,Chashma 3,2026-07-20,wt_now_gt_depth
+204768db42ac,22703332,Panjsher,Chashma 3,2026-07-28,wt_now_gt_depth
+204768db42ac,23226299,Panjsher,Chashma 3,2026-08-24,wt_now_gt_depth
+204768db42ac,23355020,Panjsher,Chashma 3,2026-08-31,wt_now_gt_depth
+204768db42ac,23492252,Panjsher,Chashma 3,2026-09-06,wt_now_gt_depth
+204768db42ac,23690090,Panjsher,Chashma 3,2026-09-14,wt_now_gt_depth
+28341f662af2,23123554,Panjsher,Sangana,2026-08-18,wt_now_gt_depth
+387aa6d76bfd,22514212,Panjsher,Qalacha,2026-07-19,wt_now_gt_depth
+42c8a3513784,23383118,Panjsher,Asticha,2026-09-01,wt_now_gt_depth
+42eab82f7bea,23715018,Panjsher,Sangana,2026-09-15,wt_now_gt_depth
+5306c93dc3f2,23226302,Panjsher,Chashma 3,2026-08-24,wt_now_gt_depth
+5306c93dc3f2,23492254,Panjsher,Chashma 3,2026-09-06,wt_now_gt_depth
+5ae68c567e6a,22471486,Panjsher,Chshma3,2026-07-16,wt_now_gt_depth
+5b4a22859756,23408117,Panjsher,Oroo,2026-09-02,wt_now_gt_depth
+5f0dc7213b54,23408110,Panjsher,Baharak ,2026-09-02,wt_now_gt_depth
+611943397faa,22956543,Panjsher,Qalacha,2026-08-11,wt_now_gt_depth
+7310ab0e69be,23261225,Panjsher,Baharak,2026-08-25,wt_now_gt_depth
+7ac8807f0631,21966964,Panjsher,Qalacha,2026-06-09,wt_now_gt_depth
+970e601f0b24,23261236,Panjsher,Asticha,2026-08-26,wt_now_gt_depth
+afb4219bd3c4,23431155,Panjsher,Qala Mirsha,2026-09-03,wt_now_gt_depth
+bb32b4f37bd6,20984462,Panjsher,Abdaba,2026-03-02,wt_now_gt_depth
+bcc76d3330bd,22727921,Panjsher,Baharak,2026-07-29,wt_now_gt_depth
+bd7217e8a6c1,23355024,Panjsher,Chashma 3,2026-08-31,wt_now_gt_depth
+bd7217e8a6c1,23690093,Panjsher,Chashma 3,2026-09-14,wt_now_gt_depth
+be8fcc55d1d1,23544340,Panjsher,Baharak,2026-09-08,wt_now_gt_depth
+c18c88976e5c,22244510,Panjsher,Qala Mirsha,2026-06-25,wt_now_gt_depth
+ce98c0ed11d0,23431153,Panjsher,Qala Mirsha,2026-09-03,wt_now_gt_depth
+d8c82e47a19e,22471491,Panjsher,Qalacha ,2026-07-16,wt_now_gt_depth
+188d02087125,23520826,Parwan,Khawaja Sayaran Bala,2026-09-06,wt_now_gt_depth
+4470e46512d6,23682941,Parwan,Khawaja Sayaran Bala ,2026-09-13,wt_now_gt_depth
+53a68b3bc18a,21441049,Parwan,Da,2026-05-07,wt_now_gt_depth
+81b3eee22915,21084230,Parwan,Ofyan,2026-03-24,wt_now_gt_depth
+81b3eee22915,21200119,Parwan,Ofyan,2026-04-14,wt_now_gt_depth
+999915282241,23019779,Parwan,Ofyan,2026-08-13,wt_now_gt_depth
+999915282241,23218919,Parwan,Ofyan,2026-08-20,wt_now_gt_depth
+999915282241,23520832,Parwan,Ofyan,2026-09-06,wt_now_gt_depth
+999915282241,23682939,Parwan,Ofyan,2026-09-13,wt_now_gt_depth
+a670e604cdf3,21405432,Parwan,Daraz gerd ,2026-05-04,wt_now_gt_depth
+ad2450b5edf0,23717190,Parwan,Khawaja Sayaran,2026-09-13,wt_now_gt_depth
+ec50a84f292f,21207102,Parwan,Khawaja Sayaran Bala ,2026-04-15,wt_now_gt_depth
+40d8e1596d1f,21914039,Zabul,Patkhil,2026-06-07,wt_now_gt_depth
+96dcb8da93ca,21079495,Zabul,Kakar,2026-03-24,wt_now_gt_depth
+96dcb8da93ca,21106625,Zabul,Kakar,2026-03-29,wt_now_gt_depth
+96dcb8da93ca,21170606,Zabul,Kakar,2026-04-08,wt_now_gt_depth
+96dcb8da93ca,21199862,Zabul,Kakar ,2026-04-13,wt_now_gt_depth
+96dcb8da93ca,21319467,Zabul,Kakar,2026-04-26,wt_now_gt_depth
+96dcb8da93ca,21488441,Zabul,Kakar,2026-05-10,wt_now_gt_depth
+96dcb8da93ca,21598719,Zabul,Kakar,2026-05-17,wt_now_gt_depth
+96dcb8da93ca,22121748,Zabul,Kakar,2026-06-22,wt_now_gt_depth
+0e66f747e3da,21392396,Daykundi,Hijdi Sufla,2026-05-03,wt_now_zero
+0e66f747e3da,21881651,Daykundi,Hijdi Sufla,2026-06-05,wt_now_zero
+90516d7b65fc,20975943,Helmand,Baba faqir,2026-03-02,wt_now_zero
+e5a921b5c1c1,20944682,Helmand,Gala beda,2026-02-23,wt_now_zero
+a81df362a2f4,20984461,Panjsher,Shikhan,2026-03-02,wt_now_zero
