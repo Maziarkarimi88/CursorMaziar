@@ -11,3 +11,5 @@ python3 examples/run_mk_sen_weekly.py
 ```
 
 Interpret with **modified p-value** on weekly data. Original p can look “significant” only because each week looks like last week.
+
+Real FAO KOBO visits (after cleaning) live in [`kobo_gw/`](kobo_gw/). Those series are at most about one year — use them for inventory, QA, recalled before/after, and seasonal traces, not for this MK teaching script.

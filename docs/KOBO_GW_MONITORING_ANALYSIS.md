@@ -1,0 +1,47 @@
+# Using the FAO KOBO groundwater monitoring export
+
+The cleaned export is one **visit per row**. Enumerators resubmitted the whole form; the weekly repeat group is empty. Rebuild wells from **province + village + owner + phone** (hashed as `well_id` in outputs). Do not key wells on GPS: the same well jumps a few metres between visits.
+
+**DTW** (questions 14, 15, 24) is depth to water in metres. Larger = deeper = less water, unless an enumerator entered water-column height instead.
+
+## Run
+
+Put the export at `data/kobo/groundwater_monitoring.csv` (gitignored; owner names and phones stay off GitHub).
+
+```bash
+pip install -r requirements.txt
+python3 tests/test_kobo_gw.py
+python3 tools/kobo_gw.py --csv data/kobo/groundwater_monitoring.csv
+```
+
+| Output | What it is |
+|--------|------------|
+| `examples/kobo_gw/wells_unique.csv` | One row per well: static attributes, first/last DTW, recalled and measured change, QA exclude flag |
+| `examples/kobo_gw/visits.csv` | Visit panel: `well_id`, dates, DTW, method, location |
+| `examples/kobo_gw/qa_flags.csv` | One row per flag instance |
+| `examples/kobo_gw/perception_vs_measured.csv` | Reported Q30 vs tape/rope class |
+| `examples/kobo_gw/SUMMARY.md` | Counts and medians written by the last run |
+| `figures/kobo_gw/map_wells.png` | Unique-well map (size = visits) |
+| `figures/kobo_gw/box_dtw_change_by_*.png` | Recalled DTW change by province, distance, intervention |
+| `figures/kobo_gw/perception_vs_measured.png` | Heatmap of Q30 vs measured class |
+| `figures/kobo_gw/hydrographs_longest12.png` | Twelve longest series (y inverted: 0 at top) |
+| `figures/kobo_gw/hydrographs_8plus.pdf` | Every well with ≥8 unique dates |
+
+Recalled change = typical WT before − latest measured DTW. **Positive means the water is shallower now.** Impact medians drop wells flagged for unit confusion, DTW deeper than well depth, DTW > 100 m, or distance > 5 km.
+
+## What to do with the tables
+
+1. **Inventory and map** — `wells_unique.csv` plus `map_wells.png`. Depth, year dug, use, intervention, upstream/downstream.
+2. **Recalled before vs now** — boxplots. This is memory + one snapshot, not a designed BACI. Stratify by distance and intervention; do not read “Check dam looks better” as a national result (Kapisa/Kunar dominate that class).
+3. **Short hydrographs** — wells with ≥8 dates. These show the 2026 season, not a multi-year recovery.
+4. **Perception vs tape** — treat Q32 as satisfaction. It often disagrees with measured DTW.
+5. **QA** — diameter 2025/900, household = phone, Herat 12–15 km, WT-before < 1 m in a deep well.
+
+## What not to do
+
+- Mann–Kendall / Sen on the full file. Most wells have one visit; the longest series is about one year. A “significant” weekly slope is usually the season.
+- Treat upstream wells as a control wadi. They sit on the same intervention.
+- Convert DTW to water-table elevation until GPS altitude is checked against a DEM.
+- Claim I4 from the check-dam protocol. This survey has no pond log, no untreated fan, and no pumping meter.
+
+Join later: CHIRPS or station rain, structure GPS, DEM elevation. Keep collecting the same `well_id` weekly if you want a real trend test in later years.
