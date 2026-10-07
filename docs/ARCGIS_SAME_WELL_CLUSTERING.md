@@ -3,6 +3,14 @@
 Each KOBO row is a **visit**. The same home-dug well is sent again each week with a
 new GPS ping. You want one site = one courtyard, not one hamlet.
 
+**Most accurate and efficient method**
+
+1. **Generate Near Table** — 15 m, geodesic, all neighbours (`IN_FID`, `NEAR_FID`, `NEAR_DIST`).
+2. **Complete linkage on those pairs** (`tools/near_table_wells.py` or `tools/kobo_gw.py`) — a visit joins a well only if it has a Near row to **every** member.
+3. **Owner / caretaker as a check** on the GPS well (`agree` / `mixed` / `missing`). Same name does **not** merge wells; mixed names do **not** split a 15 m site.
+
+Do **not** Join, Dissolve, or “connect” `IN_FID`–`NEAR_FID` into groups. That treats the Near Table as a network and **is DBSCAN**. A–B 11 m and B–C 11 m become one well even when A–C is 22 m.
+
 **Target rule (this project):** every pair of visits in a well is ≤ **15 m**
 (complete linkage). Isolated points stay as **1-visit wells**. They are not
 “noise” to delete. Owner name is a **check after** the GPS group exists.
@@ -23,7 +31,8 @@ from `tools/kobo_gw.py`. Use the tools below in this order.
 | 4 | **Minimum Bounding Geometry** (circle or convex hull) on a trial cluster | Measures the diameter of a GIS cluster. | Split any cluster whose diameter **> 15 m** — it chained. |
 | 5 | **Summary Statistics** / **Frequency** of owner name by cluster | Counts distinct caretakers on one GPS site. | Owner check: one name = agree; several = mixed. |
 | 6 | **Density-based Clustering (DBSCAN)** at **8–10 m**, min features = 2 | Single-linkage groups + “noise”. | Draft picture only. Then check hull diameter. **Do not use 15 m.** |
-| — | `tools/kobo_gw.py` (complete linkage) | Every pair ≤ 15 m; isolates kept as wells. | **Best well_id.** Join that table back into ArcGIS. |
+| — | `tools/near_table_wells.py` | Reads your Near Table pairs; complete linkage + owner check | **Best use of `NEAR_FID` / `NEAR_DIST`.** |
+| — | `tools/kobo_gw.py` (complete linkage) | Same rule from coordinates if you skip the Near Table | **Best well_id.** Join that table back into ArcGIS. |
 
 **Do not use for well identity**
 
@@ -116,6 +125,37 @@ This is the table you should trust in GIS. It does not chain a street.
 - If the same three IDs form a triangle and one side is 22 m, that side will
   **not** be in the table. Those three points are **two wells**, not one.
   DBSCAN would have merged them.
+
+### Turn the Near Table into `well_id` (do this, not DBSCAN)
+
+The Near Table is an **edge list**. Complete linkage = a group is valid only
+if **every pair** in the group has a row.
+
+1. Copy ObjectID to a long field `VID` (so ids do not change after an export).
+2. Table To Excel / Export Table: visit points (include `VID` / `OBJECTID`,
+   `X`, `Y`, province, village, owner, `meas_date`, `wt_now`) → `visits_points.csv`
+3. Export `near_15m` → `near_15m.csv` (`IN_FID`, `NEAR_FID`, `NEAR_DIST`)
+4. Run:
+
+```bash
+python3 tools/near_table_wells.py --points visits_points.csv --near near_15m.csv --oid OBJECTID --out-dir examples/kobo_gw
+```
+
+5. **Add Join** in Pro: `OBJECTID` → `visits_from_near.csv` `OBJECTID`.
+   Bring in `well_id` and `owner_check`.
+6. **Summary Statistics** on `well_id`: Count Distinct of owner name
+   (should match `owner_check`: one name = agree, several = mixed).
+7. Same owner on **two** `well_id`s in one village → review
+   `same_owner_splits_from_near.csv`. Do **not** merge by name. If GPS > 200 m
+   they are two wells (or office vs field GPS).
+
+**Wrong use of the same table:** Join the Near Table to points and Dissolve on
+`IN_FID`/`NEAR_FID`, Spatial Join with a chain, or Generate Connected
+Components. That ignores a missing A–C row and rebuilds DBSCAN.
+
+**Owner is not a GPS substitute.** `Gul Ahmad` / `Mohammad` repeat across
+provinces. Distance already kept those apart. Mixed names at one 15 m site
+are a shared well or one courtyard, many interviews — keep one `well_id`.
 
 **Optional QA histogram**
 

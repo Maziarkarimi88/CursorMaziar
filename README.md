@@ -33,6 +33,8 @@ python3 tests/test_water_balance.py
 python3 tests/test_workbook.py
 python3 tests/test_kobo_gw.py
 python3 tests/test_kobo_identity.py
+# optional: well_id from an ArcGIS Generate Near Table (IN_FID, NEAR_FID, NEAR_DIST)
+# python3 tools/near_table_wells.py --points visits_points.csv --near near_15m.csv
 # optional: place the KOBO export at data/kobo/groundwater_monitoring.csv
 # python3 tools/kobo_gw.py --csv data/kobo/groundwater_monitoring.csv
 ```

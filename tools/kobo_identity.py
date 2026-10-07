@@ -119,6 +119,117 @@ def cluster_coords(lat: np.ndarray, lon: np.ndarray, eps_m: float = CLUSTER_M) -
     return labels
 
 
+def cluster_from_near_pairs(
+    lat: np.ndarray,
+    lon: np.ndarray,
+    pairs: list[tuple[int, int]],
+    eps_m: float = CLUSTER_M,
+) -> np.ndarray:
+    """Complete linkage using Generate Near Table pairs (IN_FID–NEAR_FID).
+
+    An edge means NEAR_DIST ≤ eps_m. A visit joins a cluster only if it has
+    an edge to **every** member (no A–B–C street chain). Isolates stay as
+    their own well. Connecting the Near Table as a network (union-find)
+    would recreate DBSCAN — do not do that.
+    """
+    n = len(lat)
+    if n == 0:
+        return np.array([], dtype=int)
+    adj: list[set[int]] = [set() for _ in range(n)]
+    for i, j in pairs:
+        if i == j or i < 0 or j < 0 or i >= n or j >= n:
+            continue
+        adj[i].add(j)
+        adj[j].add(i)
+    clusters: list[list[int]] = []
+    for i in range(n):
+        best: int | None = None
+        best_d = 1e18
+        for c_idx, members in enumerate(clusters):
+            if any(j not in adj[i] for j in members):
+                continue
+            clat = float(np.mean(lat[members]))
+            clon = float(np.mean(lon[members]))
+            d_cent = haversine_m(lat[i], lon[i], clat, clon)
+            if d_cent > eps_m:
+                continue
+            if d_cent < best_d:
+                best, best_d = c_idx, d_cent
+        if best is None:
+            clusters.append([i])
+        else:
+            clusters[best].append(i)
+    labels = np.empty(n, dtype=int)
+    for k, members in enumerate(clusters):
+        for i in members:
+            labels[i] = k
+    return labels
+
+
+def _pick_col(df: pd.DataFrame, *names: str) -> str:
+    lower = {str(c).lower(): c for c in df.columns}
+    for name in names:
+        if name.lower() in lower:
+            return lower[name.lower()]
+    raise KeyError(f"Need one of {names}; got {list(df.columns)}")
+
+
+def near_table_pairs(near: pd.DataFrame, oid_to_index: dict[int, int], eps_m: float = CLUSTER_M) -> list[tuple[int, int]]:
+    """Turn ArcGIS Generate Near Table rows into index pairs ≤ eps_m."""
+    in_c = _pick_col(near, "IN_FID", "IN_OBJECTID", "INID")
+    near_c = _pick_col(near, "NEAR_FID", "NEAR_OBJECTID", "NEARID")
+    dist_c = _pick_col(near, "NEAR_DIST", "NEAR_DISTANCE", "DISTANCE")
+    pairs: list[tuple[int, int]] = []
+    for in_fid, near_fid, dist in zip(near[in_c].tolist(), near[near_c].tolist(), near[dist_c].tolist()):
+        try:
+            a, b, d = int(in_fid), int(near_fid), float(dist)
+        except (TypeError, ValueError):
+            continue
+        if d < 0 or d > eps_m or a == b:
+            continue
+        if a not in oid_to_index or b not in oid_to_index:
+            continue
+        pairs.append((oid_to_index[a], oid_to_index[b]))
+    return pairs
+
+
+def attach_identity_from_near(
+    df: pd.DataFrame,
+    near: pd.DataFrame,
+    oid_col: str | None = None,
+    cluster_m: float = CLUSTER_M,
+) -> pd.DataFrame:
+    """Same well_id rule as attach_identity, but edges come from a Near Table."""
+    out = df.copy()
+    out["owner_n"] = out["owner"].map(norm_text) if "owner" in out.columns else ""
+    out["phone_k"] = out["phone"].map(phone_key) if "phone" in out.columns else ""
+    out["village_n"] = out["village"].map(norm_text) if "village" in out.columns else ""
+    out["province_n"] = out["province"].map(norm_text) if "province" in out.columns else ""
+    if oid_col is None:
+        oid_col = _pick_col(out, "OBJECTID", "ObjectID", "OID", "FID", "oid")
+    well_ids = pd.Series(index=out.index, dtype=object)
+    cluster_labels = pd.Series(index=out.index, dtype=int)
+    for prov, g in out.groupby("province_n", dropna=False):
+        local_oids = g[oid_col].astype(int).tolist()
+        oid_to_index = {int(oid): k for k, oid in enumerate(local_oids)}
+        pairs = near_table_pairs(near, oid_to_index, cluster_m)
+        labs = cluster_from_near_pairs(
+            g["lat"].to_numpy(), g["lon"].to_numpy(), pairs, cluster_m
+        )
+        for loc, lab in zip(g.index, labs):
+            cluster_labels.at[loc] = int(lab)
+            well_ids.at[loc] = _hash_id(str(prov), str(int(lab)))
+    out["cluster_label"] = cluster_labels.astype(int)
+    out["well_id"] = well_ids
+    if "owner" in out.columns:
+        check = out.groupby("well_id")["owner"].transform(lambda s: owner_check_status(s.tolist()))
+        out["owner_check"] = check
+    else:
+        out["owner_check"] = "missing"
+    out["owner_group"] = out["well_id"]
+    return out
+
+
 def single_linkage_labels(lat: np.ndarray, lon: np.ndarray, eps_m: float = CLUSTER_M) -> np.ndarray:
     """DBSCAN-style clusters with min_samples=2: join every pair ≤ eps_m (chaining allowed)."""
     n = len(lat)
@@ -208,6 +319,7 @@ def attach_identity(df: pd.DataFrame, cluster_m: float = CLUSTER_M) -> pd.DataFr
     well_ids = pd.Series(index=out.index, dtype=object)
     cluster_labels = pd.Series(index=out.index, dtype=int)
     # Cluster inside each province only — names like "Gul Ahmad" stay local.
+    # GPS is the key. Owner is applied after this loop as owner_check.
     for prov, g in out.groupby("province_n", dropna=False):
         labs = cluster_coords(g["lat"].to_numpy(), g["lon"].to_numpy(), cluster_m)
         for loc, lab in zip(g.index, labs):

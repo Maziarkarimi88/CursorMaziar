@@ -13,7 +13,9 @@ sys.path.insert(0, str(ROOT / "tools"))
 from kobo_identity import (  # noqa: E402
     CLUSTER_M,
     attach_identity,
+    attach_identity_from_near,
     cluster_coords,
+    cluster_from_near_pairs,
     haversine_m,
     names_match,
     noise_vs_clustered,
@@ -64,6 +66,48 @@ def test_single_linkage_does_not_miss_pairs_just_inside_eps():
     lons.append(lons[-1])
     sl = single_linkage_labels(np.array(lats), np.array(lons), 5.2)
     assert sl[-1] == sl[-2]
+
+
+def test_near_table_complete_linkage_does_not_chain():
+    """Near Table has A–B and B–C at 11 m, not A–C at 22 m → two wells."""
+    lat0, lon0 = 35.0, 69.5
+    lat = np.array([lat0, lat0 + 11 / 111_320, lat0 + 22 / 111_320])
+    lon = np.array([lon0, lon0, lon0])
+    pts = pd.DataFrame(
+        {
+            "OBJECTID": [1, 2, 3],
+            "lat": lat,
+            "lon": lon,
+            "province": ["Kapisa"] * 3,
+            "village": ["V"] * 3,
+            "owner": ["Same Person"] * 3,
+            "phone": [""] * 3,
+        }
+    )
+    near = pd.DataFrame(
+        {
+            "IN_FID": [1, 2, 2, 3],
+            "NEAR_FID": [2, 1, 3, 2],
+            "NEAR_DIST": [11.0, 11.0, 11.0, 11.0],
+        }
+    )
+    sl = single_linkage_labels(lat, lon, 15.0)
+    assert sl[0] == sl[1] == sl[2]
+    cl = cluster_from_near_pairs(lat, lon, [(0, 1), (1, 2)], 15.0)
+    assert cl[0] != cl[2]
+    labeled = attach_identity_from_near(pts, near)
+    assert labeled["well_id"].nunique() == 2
+    assert set(labeled["owner_check"]) == {"agree"}
+    from near_table_wells import main as near_main
+    import tempfile
+
+    tmp = Path(tempfile.mkdtemp())
+    pts.to_csv(tmp / "pts.csv", index=False)
+    near.to_csv(tmp / "near.csv", index=False)
+    assert near_main(["--points", str(tmp / "pts.csv"), "--near", str(tmp / "near.csv"), "--out-dir", str(tmp)]) == 0
+    wells = pd.read_csv(tmp / "wells_from_near.csv")
+    assert len(wells) == 2
+    assert "Same Person" not in (tmp / "visits_from_near.csv").read_text(encoding="utf-8")
 
 
 def test_complete_linkage_does_not_chain_a_street():
@@ -145,6 +189,8 @@ if __name__ == "__main__":
     print("ok test_single_linkage_does_not_miss_pairs_just_inside_eps")
     test_complete_linkage_does_not_chain_a_street()
     print("ok test_complete_linkage_does_not_chain_a_street")
+    test_near_table_complete_linkage_does_not_chain()
+    print("ok test_near_table_complete_linkage_does_not_chain")
     test_names_and_phone()
     print("ok test_names_and_phone")
     test_same_owner_within_15m_is_one_well()
