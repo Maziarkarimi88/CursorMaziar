@@ -11,6 +11,8 @@ from kobo_gw import (  # noqa: E402
     parse_daily_use,
     process,
     run,
+    scan_radii,
+    write_radius_choice,
 )
 
 FIXTURE = ROOT / "tests" / "fixtures" / "kobo_mini.csv"
@@ -70,6 +72,25 @@ def test_run_writes_tables(tmp_path: Path | None = None):
     assert "0701111111" not in text
 
 
+def test_scan_radii_fixture_and_radius_choice(tmp_path: Path | None = None):
+    rows = scan_radii(FIXTURE, radii=(5.0, 15.0))
+    by = {rec["r"]: rec for rec in rows}
+    assert by[5.0]["wells"] >= by[15.0]["wells"]
+    if tmp_path is None:
+        import tempfile
+
+        tmp = Path(tempfile.mkdtemp())
+    else:
+        tmp = tmp_path
+    visits, _wells, _qa, _n = process(FIXTURE)
+    out = tmp / "RADIUS_CHOICE.md"
+    write_radius_choice(visits, rows, out)
+    text = out.read_text(encoding="utf-8")
+    assert "15 m" in text
+    assert "5 m" in text
+    assert "Good Owner" not in text
+
+
 if __name__ == "__main__":
     test_parse_daily_use_liters_hours_and_bare_number()
     print("ok test_parse_daily_use_liters_hours_and_bare_number")
@@ -77,3 +98,5 @@ if __name__ == "__main__":
     print("ok test_process_fixture_counts_and_flags")
     test_run_writes_tables()
     print("ok test_run_writes_tables")
+    test_scan_radii_fixture_and_radius_choice()
+    print("ok test_scan_radii_fixture_and_radius_choice")

@@ -1,9 +1,12 @@
 # How to clean the KOBO well file (before more analysis)
 
 Each row is a **visit**. The same physical well is resubmitted with a new GPS
-each week. GPS precision in this export is about **4.6–5 m**, so **15 m** is
-the same-standing-point window (about three fixes of jitter). That is **not**
-the same as “every well in the hamlet.”
+each week. GPS precision in this export is about **4.6–5 m**, so **15 m complete
+linkage** is the same-standing-point window (about three fixes of jitter).
+That is **not** the same as “every well in the hamlet.” **5 m is too
+small** (it is the GPS precision itself and splits weekly revisits).
+**20 m is too large** (it reaches the next compound). See
+`examples/kobo_gw/RADIUS_CHOICE.md`.
 
 ## 1. Identify the well (distance first, then owner check)
 
@@ -15,8 +18,9 @@ on that cluster.
 
 1. Group visits whose GPS points are all within **15 m** of each other
    (complete linkage: every pair ≤ 15 m). That is one monitoring site / well.
-   GPS precision in this export is about 4.6–5 m, so 15 m is about three
-   fixes of jitter, not a whole street.
+   Same-owner revisits on a later date sit **3.2 m** apart at the median and
+   **7.3 m** at the 75th percentile. 15 m is about three GPS-precision
+   fixes, not a whole street. Do not use 5 m — that is the precision field.
 2. Do **not** use single-linkage (A near B, B near C…). That chains a hamlet.
    Complete linkage keeps A and C at 22 m as two wells.
 3. Cluster inside each **province** so a common name in Kapisa never touches

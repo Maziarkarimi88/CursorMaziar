@@ -25,6 +25,7 @@ python3 tools/kobo_gw.py --csv data/kobo/groundwater_monitoring.csv
 | `examples/kobo_gw/same_owner_splits.csv` | Same owner, more than one 15 m site |
 | `examples/kobo_gw/CLEANING.md` | Identity counts and outlier rules from the last run |
 | `examples/kobo_gw/CLUSTER_COMPARE.md` | 15 m wells vs GIS DBSCAN (1,041 noise / 2,339 clustered is ~5.2 m) |
+| `examples/kobo_gw/RADIUS_CHOICE.md` | Why 15 m (not 5 / 10 / 12 / 20) is the same-well radius |
 | `examples/kobo_gw/SUMMARY.md` | Counts and medians written by the last run |
 | `figures/kobo_gw/map_wells.png` | Unique-well map (size = visits) |
 | `figures/kobo_gw/box_dtw_change_by_*.png` | Recalled DTW change by province, distance, intervention |
