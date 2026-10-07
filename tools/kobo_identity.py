@@ -119,6 +119,54 @@ def cluster_coords(lat: np.ndarray, lon: np.ndarray, eps_m: float = CLUSTER_M) -
     return labels
 
 
+def single_linkage_labels(lat: np.ndarray, lon: np.ndarray, eps_m: float = CLUSTER_M) -> np.ndarray:
+    """DBSCAN-style clusters with min_samples=2: join every pair ≤ eps_m (chaining allowed)."""
+    n = len(lat)
+    if n == 0:
+        return np.array([], dtype=int)
+    parent = np.arange(n)
+
+    def find(i: int) -> int:
+        while parent[i] != i:
+            parent[i] = parent[parent[i]]
+            i = parent[i]
+        return i
+
+    def union(i: int, j: int) -> None:
+        ri, rj = find(i), find(j)
+        if ri != rj:
+            parent[rj] = ri
+
+    cell = max(eps_m, 1.0)
+    lat_c = np.floor(lat * 111_320 / cell).astype(int)
+    lon_c = np.floor(lon * 111_320 * np.cos(np.radians(np.clip(lat, -89.0, 89.0))) / cell).astype(int)
+    buckets: dict[tuple[int, int], list[int]] = {}
+    for i, key in enumerate(zip(lat_c.tolist(), lon_c.tolist())):
+        buckets.setdefault(key, []).append(i)
+    for (a, b), idxs in buckets.items():
+        neigh: list[int] = []
+        for da in (-1, 0, 1):
+            for db in (-1, 0, 1):
+                neigh.extend(buckets.get((a + da, b + db), []))
+        for i in idxs:
+            for j in neigh:
+                if j <= i:
+                    continue
+                if haversine_m(lat[i], lon[i], lat[j], lon[j]) <= eps_m:
+                    union(i, j)
+    roots = [find(i) for i in range(n)]
+    remap = {r: k for k, r in enumerate(sorted(set(roots)))}
+    return np.array([remap[r] for r in roots], dtype=int)
+
+
+def noise_vs_clustered(labels: np.ndarray) -> tuple[int, int, int]:
+    """Return (clustered_points, singleton_points, n_clusters_of_2plus)."""
+    if len(labels) == 0:
+        return 0, 0, 0
+    sizes = pd.Series(labels).value_counts()
+    return int(sizes[sizes >= 2].sum()), int((sizes == 1).sum()), int((sizes >= 2).sum())
+
+
 def _hash_id(*parts: str) -> str:
     key = "|".join(parts)
     return hashlib.sha1(key.encode("utf-8")).hexdigest()[:12]

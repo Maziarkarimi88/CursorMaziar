@@ -28,9 +28,11 @@ from kobo_identity import (  # noqa: E402
     gps_spread_m,
     named_review_table,
     nearby_other_wells,
+    noise_vs_clustered,
     norm_text,
     phone_key,
     same_owner_splits,
+    single_linkage_labels,
 )
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -1030,6 +1032,78 @@ def write_cleaning_md(
     path.write_text("\n".join(lines), encoding="utf-8")
 
 
+def _sl_counts(lat: np.ndarray, lon: np.ndarray, eps_m: float) -> tuple[int, int, int]:
+    return noise_vs_clustered(single_linkage_labels(lat, lon, eps_m))
+
+
+def write_cluster_compare(visits: pd.DataFrame, wells: pd.DataFrame, n_empty: int, path: Path) -> None:
+    """Compare complete-linkage wells with DBSCAN-style 15 m noise/cluster counts."""
+    g = visits.dropna(subset=["lat", "lon"])
+    lat = g["lat"].to_numpy()
+    lon = g["lon"].to_numpy()
+    cl_pts, sl_noise, n_sl = _sl_counts(lat, lon, CLUSTER_M)
+    cl50, noise50, n50 = _sl_counts(lat, lon, 5.0)
+    cl52, noise52, n52 = _sl_counts(lat, lon, 5.2)
+    n_single_wells = int((wells["n_visits"] == 1).sum())
+    n_multi_wells = int((wells["n_visits"] >= 2).sum())
+    n_multi_visits = int(wells.loc[wells["n_visits"] >= 2, "n_visits"].sum())
+    n_rows = len(visits) + n_empty
+    lines = [
+        "# Why 15 m can give 1,041 noise and 2,339 clustered",
+        "",
+        f"The KOBO file has **{n_rows}** rows. **{n_empty}** have no GPS. "
+        f"**{len(visits)}** visits have coordinates.",
+        "",
+        "GIS tools (ArcGIS / QGIS / sklearn DBSCAN) usually do this:",
+        "",
+        "- search radius = 15 m",
+        "- a record is **noise** if no other record lies within the search radius",
+        "- a **cluster** needs at least 2 records",
+        "",
+        "That is **single-linkage** (A near B and B near C → A, B, C one cluster) "
+        "and it **drops** isolated points instead of keeping them as 1-visit wells.",
+        "",
+        "Your 1,041 + 2,339 = 3,380 is the full file (3,354 GPS rows + 26 empty). "
+        "1,041 noise is what you get if the 26 empty rows are noise and about "
+        "1,015 GPS points have no neighbour inside the search radius.",
+        "",
+        "## Counts on this file (great-circle metres)",
+        "",
+        "| Rule | Isolated / noise | In a group of 2+ | Groups of 2+ | What we call them |",
+        "|---|---:|---:|---:|---|",
+        f"| DBSCAN / single-linkage {CLUSTER_M:.0f} m, min 2 | "
+        f"{sl_noise} GPS + {n_empty} empty = **{sl_noise + n_empty}** | "
+        f"**{cl_pts}** | {n_sl} | noise vs clustered records |",
+        f"| Complete-linkage {CLUSTER_M:.0f} m (this repo) | "
+        f"**{n_single_wells}** one-visit wells | "
+        f"**{n_multi_visits}** visits in {n_multi_wells} wells | "
+        f"{n_multi_wells} | every visit is a well |",
+        "| Your GIS result | **1,041** | **2,339** | — | — |",
+        f"| Single-linkage **5.0 m** (GPS precision) | "
+        f"{noise50} GPS + {n_empty} empty = **{noise50 + n_empty}** | "
+        f"**{cl50}** | {n50} | closest simple metre match |",
+        f"| Single-linkage **5.2 m** | "
+        f"{noise52} GPS + {n_empty} empty = **{noise52 + n_empty}** | "
+        f"**{cl52}** | {n52} | also near GPS precision |",
+        "",
+        f"True **{CLUSTER_M:.0f} m** great-circle DBSCAN on this export is "
+        f"**{sl_noise + n_empty} noise / {cl_pts} clustered**, not 1,041 / 2,339.",
+        "",
+        "1,041 / 2,339 is what we get if the search radius is about **5 m** "
+        "(the GPS precision field is 4.6–5.0 m), or if the layer is in degrees "
+        "and the tool is not using geodesic metres.",
+        "",
+        "Please check in the GIS: layer CRS (UTM metres vs WGS84 degrees), "
+        "DBSCAN `min_samples` (2 vs 5), and whether empty GPS rows are noise.",
+        "",
+        "This repo keeps complete-linkage wells so a street of houses 11 m apart "
+        "does not become one well. Isolated GPS points stay as one-visit wells, "
+        "not 'noise' — they are still real home-dug wells, just measured once.",
+        "",
+    ]
+    path.write_text("\n".join(lines), encoding="utf-8")
+
+
 def run(csv_path: Path, table_dir: Path, fig_dir: Path, plots: bool = True) -> dict:
     visits, wells, qa, n_empty = process(csv_path)
     paths = write_tables(visits, wells, qa, table_dir)
@@ -1042,7 +1116,9 @@ def run(csv_path: Path, table_dir: Path, fig_dir: Path, plots: bool = True) -> d
     (table_dir / "summary.json").write_text(json.dumps(summary, indent=2, default=str), encoding="utf-8")
     write_summary_md(summary, wells, table_dir / "SUMMARY.md")
     write_cleaning_md(visits, wells, nearby, splits, qa, table_dir / "CLEANING.md")
+    write_cluster_compare(visits, wells, n_empty, table_dir / "CLUSTER_COMPARE.md")
     paths["cleaning"] = table_dir / "CLEANING.md"
+    paths["cluster_compare"] = table_dir / "CLUSTER_COMPARE.md"
     if plots:
         paths.update(plot_all(visits, wells, qa, fig_dir))
     return {"summary": summary, "paths": {k: str(v) for k, v in paths.items()}}

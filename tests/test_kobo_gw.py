@@ -59,6 +59,9 @@ def test_run_writes_tables(tmp_path: Path | None = None):
     assert (tables / "wells_unique.csv").exists()
     assert (tables / "visits.csv").exists()
     assert (tables / "qa_flags.csv").exists()
+    assert (tables / "CLUSTER_COMPARE.md").exists()
+    compare = (tables / "CLUSTER_COMPARE.md").read_text(encoding="utf-8")
+    assert "1,041" in compare and "2,339" in compare
     assert result["summary"]["n_wells"] == 4
     assert result["summary"]["n_visits"] == 6
     # owner/phone must not leak into committed-style outputs

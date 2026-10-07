@@ -16,7 +16,9 @@ from kobo_identity import (  # noqa: E402
     cluster_coords,
     haversine_m,
     names_match,
+    noise_vs_clustered,
     phone_key,
+    single_linkage_labels,
 )
 
 
@@ -35,6 +37,17 @@ def test_cluster_merges_within_15m_only():
     labs = cluster_coords(lat, lon, CLUSTER_M)
     assert labs[0] == labs[1] == labs[2]
     assert labs[0] != labs[3]
+
+
+def test_single_linkage_chains_and_counts_noise():
+    lat0, lon0 = 35.0, 69.5
+    lat = np.array([lat0, lat0 + 11 / 111_320, lat0 + 22 / 111_320, lat0 + 200 / 111_320])
+    lon = np.array([lon0, lon0, lon0, lon0])
+    sl = single_linkage_labels(lat, lon, 15.0)
+    assert sl[0] == sl[1] == sl[2]
+    assert sl[0] != sl[3]
+    clustered, noise, ncl = noise_vs_clustered(sl)
+    assert clustered == 3 and noise == 1 and ncl == 1
 
 
 def test_complete_linkage_does_not_chain_a_street():
@@ -110,6 +123,8 @@ if __name__ == "__main__":
     print("ok test_haversine_8m_and_40m")
     test_cluster_merges_within_15m_only()
     print("ok test_cluster_merges_within_15m_only")
+    test_single_linkage_chains_and_counts_noise()
+    print("ok test_single_linkage_chains_and_counts_noise")
     test_complete_linkage_does_not_chain_a_street()
     print("ok test_complete_linkage_does_not_chain_a_street")
     test_names_and_phone()

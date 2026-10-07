@@ -38,6 +38,11 @@ on that cluster.
 | Same name, other province | Different well. Distance already kept them apart. |
 | Same name, same village, GPS > 200 m | Two wells or office GPS. |
 
+GIS DBSCAN “noise” is not the same as a 1-visit well. On this file a true
+15 m great-circle DBSCAN (min 2) gives about **441 noise / 2,939 clustered**,
+not 1,041 / 2,339. That 1,041 / 2,339 split matches a search of about **5 m**
+(the GPS precision). See `examples/kobo_gw/CLUSTER_COMPARE.md`.
+
 The script writes:
 
 - `examples/kobo_gw/nearby_other_wells.csv` — different wells whose centroids are ≤ 15 m
