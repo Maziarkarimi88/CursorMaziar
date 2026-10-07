@@ -11,6 +11,7 @@ This is a simple, low-cost protocol copied from farmer-run check-dam studies in 
 | [`docs/FIELD_PROTOCOL_Kandahar_Zabul.md`](docs/FIELD_PROTOCOL_Kandahar_Zabul.md) | Print this first (about six pages). How to site gauges, sample wells and karez, calculate I1–I5. |
 | [`docs/STORAGE_DURATION_AND_FILLING.md`](docs/STORAGE_DURATION_AND_FILLING.md) | What controls 1–3 month hold; rainfall (SCS-CN) to fill the **pond** to crest (not the catchment). |
 | [`docs/ARCGIS_STORAGE_FROM_DEM.md`](docs/ARCGIS_STORAGE_FROM_DEM.md) | ArcGIS Surface Volume / Storage Capacity: \(A(h), V(h)\) from DEM at 2–6 m crest. |
+| [`docs/ARCGIS_SAME_WELL_CLUSTERING.md`](docs/ARCGIS_SAME_WELL_CLUSTERING.md) | ArcGIS tools for the same well: Near Table 15 m geodesic, not DBSCAN 15 m. |
 | [`docs/ANNEX_A_Flood_Detention_Check_Dams.md`](docs/ANNEX_A_Flood_Detention_Check_Dams.md) | Only if a dam actually empties in hours (gabion/leaky outlier). |
 | [`docs/COUNTRY_STORIES_AND_METHODS.md`](docs/COUNTRY_STORIES_AND_METHODS.md) | Methods and field stories from Pakistan, Tunisia, Ethiopia, Arizona, Oman, Spain, Cyprus, Morocco, Yemen, India, China, Kenya — similar dry climates. |
 | [`docs/WAPOR_SUITABILITY.md`](docs/WAPOR_SUITABILITY.md) | Why FAO WaPOR is basin ET/biomass context only — not a substitute for I4/I5 on these dams. |

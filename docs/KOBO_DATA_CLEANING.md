@@ -46,6 +46,8 @@ GIS DBSCAN “noise” is not the same as a 1-visit well. On this file a true
 15 m great-circle DBSCAN (min 2) gives **441 noise / 2,939 clustered**,
 not 1,041 / 2,339. That 1,041 / 2,339 split matches a search of about **5.22 m**
 (the GPS precision is 4.6–5.0 m). See `examples/kobo_gw/CLUSTER_COMPARE.md`.
+ArcGIS steps and which tool to use: `ARCGIS_SAME_WELL_CLUSTERING.md`
+(**Generate Near Table**, geodesic 15 m — not DBSCAN at 15 m).
 
 The script writes:
 
