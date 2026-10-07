@@ -50,6 +50,22 @@ def test_single_linkage_chains_and_counts_noise():
     assert clustered == 3 and noise == 1 and ncl == 1
 
 
+def test_single_linkage_does_not_miss_pairs_just_inside_eps():
+    """A pair 5.1 m apart must join at 5.2 m, including near a cell edge."""
+    lat0, lon0 = 35.0, 69.5
+    dlat = 5.1 / 111_320
+    rng = np.random.default_rng(0)
+    lats = [lat0]
+    lons = [lon0]
+    for _ in range(20):
+        lats.append(lat0 + float(rng.uniform(-0.002, 0.002)))
+        lons.append(lon0 + float(rng.uniform(-0.002, 0.002)))
+    lats.append(lats[-1] + dlat)
+    lons.append(lons[-1])
+    sl = single_linkage_labels(np.array(lats), np.array(lons), 5.2)
+    assert sl[-1] == sl[-2]
+
+
 def test_complete_linkage_does_not_chain_a_street():
     """A–B 11 m and B–C 11 m, A–C 22 m → two wells, not one chain."""
     lat0, lon0 = 35.0, 69.5
@@ -125,6 +141,8 @@ if __name__ == "__main__":
     print("ok test_cluster_merges_within_15m_only")
     test_single_linkage_chains_and_counts_noise()
     print("ok test_single_linkage_chains_and_counts_noise")
+    test_single_linkage_does_not_miss_pairs_just_inside_eps()
+    print("ok test_single_linkage_does_not_miss_pairs_just_inside_eps")
     test_complete_linkage_does_not_chain_a_street()
     print("ok test_complete_linkage_does_not_chain_a_street")
     test_names_and_phone()

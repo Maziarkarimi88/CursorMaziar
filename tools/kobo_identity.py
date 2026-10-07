@@ -137,7 +137,9 @@ def single_linkage_labels(lat: np.ndarray, lon: np.ndarray, eps_m: float = CLUST
         if ri != rj:
             parent[rj] = ri
 
-    cell = max(eps_m, 1.0)
+    # Cells smaller than eps, and a 5×5 neighbourhood, so a pair at distance
+    # eps is not missed when the metre-per-degree conversion is a little off.
+    cell = max(eps_m * 0.6, 1.0)
     lat_c = np.floor(lat * 111_320 / cell).astype(int)
     lon_c = np.floor(lon * 111_320 * np.cos(np.radians(np.clip(lat, -89.0, 89.0))) / cell).astype(int)
     buckets: dict[tuple[int, int], list[int]] = {}
@@ -145,8 +147,8 @@ def single_linkage_labels(lat: np.ndarray, lon: np.ndarray, eps_m: float = CLUST
         buckets.setdefault(key, []).append(i)
     for (a, b), idxs in buckets.items():
         neigh: list[int] = []
-        for da in (-1, 0, 1):
-            for db in (-1, 0, 1):
+        for da in (-2, -1, 0, 1, 2):
+            for db in (-2, -1, 0, 1, 2):
                 neigh.extend(buckets.get((a + da, b + db), []))
         for i in idxs:
             for j in neigh:

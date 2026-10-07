@@ -39,9 +39,9 @@ on that cluster.
 | Same name, same village, GPS > 200 m | Two wells or office GPS. |
 
 GIS DBSCAN “noise” is not the same as a 1-visit well. On this file a true
-15 m great-circle DBSCAN (min 2) gives about **441 noise / 2,939 clustered**,
-not 1,041 / 2,339. That 1,041 / 2,339 split matches a search of about **5 m**
-(the GPS precision). See `examples/kobo_gw/CLUSTER_COMPARE.md`.
+15 m great-circle DBSCAN (min 2) gives **441 noise / 2,939 clustered**,
+not 1,041 / 2,339. That 1,041 / 2,339 split matches a search of about **5.22 m**
+(the GPS precision is 4.6–5.0 m). See `examples/kobo_gw/CLUSTER_COMPARE.md`.
 
 The script writes:
 

@@ -1044,6 +1044,7 @@ def write_cluster_compare(visits: pd.DataFrame, wells: pd.DataFrame, n_empty: in
     cl_pts, sl_noise, n_sl = _sl_counts(lat, lon, CLUSTER_M)
     cl50, noise50, n50 = _sl_counts(lat, lon, 5.0)
     cl52, noise52, n52 = _sl_counts(lat, lon, 5.2)
+    cl522, noise522, n522 = _sl_counts(lat, lon, 5.22)
     n_single_wells = int((wells["n_visits"] == 1).sum())
     n_multi_wells = int((wells["n_visits"] >= 2).sum())
     n_multi_visits = int(wells.loc[wells["n_visits"] >= 2, "n_visits"].sum())
@@ -1079,19 +1080,22 @@ def write_cluster_compare(visits: pd.DataFrame, wells: pd.DataFrame, n_empty: in
         f"**{n_multi_visits}** visits in {n_multi_wells} wells | "
         f"{n_multi_wells} | every visit is a well |",
         "| Your GIS result | **1,041** | **2,339** | — | — |",
-        f"| Single-linkage **5.0 m** (GPS precision) | "
+        f"| Single-linkage **5.0 m** (GPS precision, max 5.0 m) | "
         f"{noise50} GPS + {n_empty} empty = **{noise50 + n_empty}** | "
-        f"**{cl50}** | {n50} | closest simple metre match |",
+        f"**{cl50}** | {n50} | GPS-fix window |",
         f"| Single-linkage **5.2 m** | "
         f"{noise52} GPS + {n_empty} empty = **{noise52 + n_empty}** | "
-        f"**{cl52}** | {n52} | also near GPS precision |",
+        f"**{cl52}** | {n52} | near your split |",
+        f"| Single-linkage **5.22 m** | "
+        f"{noise522} GPS + {n_empty} empty = **{noise522 + n_empty}** | "
+        f"**{cl522}** | {n522} | one record from your 1,041 / 2,339 |",
         "",
         f"True **{CLUSTER_M:.0f} m** great-circle DBSCAN on this export is "
         f"**{sl_noise + n_empty} noise / {cl_pts} clustered**, not 1,041 / 2,339.",
         "",
-        "1,041 / 2,339 is what we get if the search radius is about **5 m** "
-        "(the GPS precision field is 4.6–5.0 m), or if the layer is in degrees "
-        "and the tool is not using geodesic metres.",
+        "1,041 / 2,339 is what we get at about **5.22 m**, not 15 m. "
+        "That is the GPS precision field (median 4.62 m, maximum 5.0 m), "
+        "or a layer in degrees whose tool is not using geodesic metres.",
         "",
         "Please check in the GIS: layer CRS (UTM metres vs WGS84 degrees), "
         "DBSCAN `min_samples` (2 vs 5), and whether empty GPS rows are noise.",
