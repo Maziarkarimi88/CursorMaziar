@@ -103,24 +103,48 @@ def _digits(value) -> str:
     return re.sub(r"\D", "", str(value)) if not pd.isna(value) else ""
 
 
+def _phone_key(value) -> str:
+    """Stable phone key: digits only, no leading zeros, no float '.0'."""
+    if pd.isna(value):
+        return ""
+    if isinstance(value, float) and value.is_integer():
+        value = int(value)
+    elif isinstance(value, str) and re.fullmatch(r"\d+\.0", value.strip()):
+        value = value.strip()[:-2]
+    return _digits(value).lstrip("0")
+
+
 def well_id_hash(province, village, owner, phone) -> str:
     key = "|".join(
-        [_norm_text(province), _norm_text(village), _norm_text(owner), _digits(phone)]
+        [_norm_text(province), _norm_text(village), _norm_text(owner), _phone_key(phone)]
     )
     return hashlib.sha1(key.encode("utf-8")).hexdigest()[:12]
 
 
+STRING_COLS = [
+    "9. Phone number",
+    "8. Owner/caretaker name",
+    "3. Village Name",
+    "6. Enumerator name",
+    "19. Sub-project name/code",
+    "27. Average daily water use (lit/day or hr/day)",
+    "16. Months of water scarcity (before)",
+    "Remarks",
+]
+
+
 def read_kobo_csv(path: Path) -> pd.DataFrame:
-    raw = Path(path).read_bytes()
+    dtype = {c: "string" for c in STRING_COLS}
     last_err: Exception | None = None
     for enc in ("utf-8", "utf-8-sig", "cp1252", "latin-1"):
         try:
-            return pd.read_csv(path, low_memory=False, encoding=enc)
+            return pd.read_csv(path, low_memory=False, encoding=enc, dtype=dtype)
         except UnicodeDecodeError as err:
             last_err = err
-    # last resort: ignore undecodable bytes
     if last_err is not None:
-        return pd.read_csv(path, low_memory=False, encoding="cp1252", encoding_errors="replace")
+        return pd.read_csv(
+            path, low_memory=False, encoding="cp1252", encoding_errors="replace", dtype=dtype
+        )
     raise last_err  # pragma: no cover
 
 
@@ -223,8 +247,8 @@ def dtw_change_class(delta: pd.Series) -> pd.Series:
 def flag_visits(df: pd.DataFrame) -> pd.DataFrame:
     """Add boolean QA columns on the visit table."""
     out = df.copy()
-    phone_digits = out["phone"].map(_digits)
-    hh_digits = out["hh"].map(_digits)
+    phone_digits = out["phone"].map(_phone_key)
+    hh_digits = out["hh"].map(_phone_key)
     out["flag_wt_now_gt_depth"] = out["wt_now"].notna() & out["total_depth"].notna() & (
         out["wt_now"] > out["total_depth"]
     )
@@ -435,12 +459,29 @@ def write_tables(visits: pd.DataFrame, wells: pd.DataFrame, qa: pd.DataFrame, ou
     qa.sort_values(["flag", "province", "well_id"]).to_csv(qa_path, index=False)
     perception_crosstab(wells).to_csv(perc_path, index=False)
     perception_vs_perception(wells).to_csv(perc2_path, index=False)
+    usable = wells.loc[~wells["exclude_from_impact"]]
+    prov_path = out_dir / "province_stats.csv"
+    (
+        usable.groupby("province")
+        .agg(
+            n_wells=("well_id", "nunique"),
+            median_depth_m=("total_depth_m", "median"),
+            median_wt_before_m=("wt_before_m", "median"),
+            median_wt_now_m=("last_wt_now_m", "median"),
+            median_recall_change_m=("dtw_change_recall_m", "median"),
+            median_distance_m=("distance_m", "median"),
+        )
+        .round(2)
+        .sort_values("n_wells", ascending=False)
+        .to_csv(prov_path)
+    )
     return {
         "wells_unique": well_path,
         "visits": visit_path,
         "qa_flags": qa_path,
         "perception_vs_measured": perc_path,
         "perception_vs_reported_change": perc2_path,
+        "province_stats": prov_path,
     }
 
 
@@ -487,7 +528,7 @@ def _finite_median(s: pd.Series) -> float | None:
     s = pd.to_numeric(s, errors="coerce").replace([np.inf, -np.inf], np.nan).dropna()
     if s.empty:
         return None
-    return float(s.median())
+    return round(float(s.median()), 2)
 
 
 def _group_median(df: pd.DataFrame, by: str, col: str) -> dict:
@@ -559,6 +600,11 @@ def write_summary_md(summary: dict, wells: pd.DataFrame, out_path: Path) -> None
         "- Do not run Mann–Kendall / Sen on the full file; series are at most about one year.",
         "- Check-dam wells are concentrated in Kapisa and Kunar; do not generalise that mix "
         "as a national check-dam effect.",
+        "- Paktya’s large negative median is a few villages with the same well depth and "
+        "the same “before” DTW copied across many owners — treat as enumerator cloning, "
+        "not 49 independent declines.",
+        "- Some long hydrographs (for example Logar / Bala deh) jump several metres between "
+        "visits; that is a measurement or well-ID problem, not a real weekly water-table swing.",
         "",
     ]
     out_path.write_text("\n".join(lines), encoding="utf-8")
@@ -612,30 +658,60 @@ def plot_map(wells: pd.DataFrame, path: Path) -> None:
     plt.close(fig)
 
 
-def _boxplot(ax, data: dict[str, np.ndarray], ylabel: str, title: str, hline: bool = True) -> None:
+def _boxplot(ax, data: dict[str, np.ndarray], ylabel: str, title: str, horizontal: bool = False) -> None:
     labels = list(data.keys())
     values = [data[k] for k in labels]
-    ax.boxplot(values, tick_labels=labels, showfliers=False, medianprops={"color": "#1f4e79", "linewidth": 2})
-    if hline:
+    if horizontal:
+        ax.boxplot(
+            values,
+            tick_labels=labels,
+            showfliers=False,
+            orientation="horizontal",
+            medianprops={"color": "#1f4e79", "linewidth": 2},
+        )
+        ax.axvline(0, color="#666666", linewidth=0.8)
+        ax.set_xlabel(ylabel)
+    else:
+        ax.boxplot(
+            values,
+            tick_labels=labels,
+            showfliers=False,
+            medianprops={"color": "#1f4e79", "linewidth": 2},
+        )
         ax.axhline(0, color="#666666", linewidth=0.8)
-    ax.set_ylabel(ylabel)
+        ax.set_ylabel(ylabel)
+        ax.tick_params(axis="x", rotation=20)
     ax.set_title(title)
-    ax.tick_params(axis="x", rotation=35)
 
 
-def plot_box_change(wells: pd.DataFrame, by: str, path: Path, title: str) -> None:
+def plot_box_change(
+    wells: pd.DataFrame,
+    by: str,
+    path: Path,
+    title: str,
+    order: list | None = None,
+    min_n: int = 1,
+    horizontal: bool = False,
+) -> None:
     import matplotlib.pyplot as plt
 
     _style()
     use = wells.loc[~wells["exclude_from_impact"]].copy()
     use = use.dropna(subset=["dtw_change_recall_m", by])
-    order = list(use[by].value_counts().index)
+    counts = use[by].value_counts()
+    if order is None:
+        order = [k for k in counts.index if counts[k] >= min_n]
+    else:
+        order = [k for k in order if k in counts.index and counts[k] >= min_n]
     data = {
-        f"{k}\n(n={int((use[by] == k).sum())})": use.loc[use[by] == k, "dtw_change_recall_m"].to_numpy()
+        f"{k}  (n={int(counts[k])})": use.loc[use[by] == k, "dtw_change_recall_m"].to_numpy()
         for k in order
     }
-    fig, ax = plt.subplots(figsize=(max(7.5, 0.55 * len(order) + 3), 5.2))
-    _boxplot(ax, data, "Recalled DTW change (m)\npositive = water rose", title)
+    if horizontal:
+        fig, ax = plt.subplots(figsize=(8.2, max(4.5, 0.32 * len(order) + 1.5)))
+    else:
+        fig, ax = plt.subplots(figsize=(max(7.2, 0.9 * len(order) + 2), 5.2))
+    _boxplot(ax, data, "Recalled DTW change (m); positive = water rose", title, horizontal=horizontal)
     fig.tight_layout()
     fig.savefig(path, dpi=140)
     plt.close(fig)
@@ -666,13 +742,30 @@ def plot_perception(wells: pd.DataFrame, path: Path) -> None:
     plt.close(fig)
 
 
+QA_LABELS = {
+    "wt_now_gt_depth": "Current DTW deeper than well",
+    "diameter_suspect": "Diameter 5–100 m (likely cm)",
+    "diameter_outlier": "Diameter ≥ 100 m",
+    "unit_confusion": "WT before < 1 m in a deep well",
+    "distance_gt_5000": "Distance to structure > 5 km",
+    "hh_implausible": "Households > 200",
+    "hh_looks_like_phone": "Households = phone number",
+    "meas_before_interv": "Measured before completion date",
+    "wt_now_zero": "Current DTW = 0",
+    "wt_now_gt_100": "Current DTW > 100 m",
+    "est_rise_gt_20": "Estimated rise > 20 m",
+    "gps_outside_af": "GPS outside Afghanistan box",
+}
+
+
 def plot_qa_bars(qa: pd.DataFrame, path: Path) -> None:
     import matplotlib.pyplot as plt
 
     _style()
     counts = qa["flag"].value_counts().sort_values()
-    fig, ax = plt.subplots(figsize=(7.5, 4.8))
-    ax.barh(counts.index, counts.values, color="#1f4e79")
+    labels = [QA_LABELS.get(k, k) for k in counts.index]
+    fig, ax = plt.subplots(figsize=(7.8, 5.0))
+    ax.barh(labels, counts.values, color="#1f4e79")
     ax.set_xlabel("Visit rows flagged")
     ax.set_title("QA flags")
     fig.tight_layout()
@@ -749,9 +842,36 @@ def plot_all(visits: pd.DataFrame, wells: pd.DataFrame, qa: pd.DataFrame, fig_di
         "hydro_pdf": fig_dir / "hydrographs_8plus.pdf",
     }
     plot_map(wells, paths["map"])
-    plot_box_change(wells, "province", paths["box_province"], "Recalled DTW change by province")
-    plot_box_change(wells, "distance_bin", paths["box_distance"], "Recalled DTW change by distance to intervention")
-    plot_box_change(wells, "intervention", paths["box_intervention"], "Recalled DTW change by intervention type")
+    prov_order = (
+        wells.loc[~wells["exclude_from_impact"]]
+        .groupby("province")["dtw_change_recall_m"]
+        .median()
+        .sort_values()
+        .index.tolist()
+    )
+    plot_box_change(
+        wells,
+        "province",
+        paths["box_province"],
+        "Recalled DTW change by province (n ≥ 8)",
+        order=prov_order,
+        min_n=8,
+        horizontal=True,
+    )
+    plot_box_change(
+        wells,
+        "distance_bin",
+        paths["box_distance"],
+        "Recalled DTW change by distance to intervention",
+        order=DISTANCE_LABELS,
+    )
+    plot_box_change(
+        wells,
+        "intervention",
+        paths["box_intervention"],
+        "Recalled DTW change by intervention type",
+        order=["Check dam", "Trench", "Both"],
+    )
     plot_perception(wells, paths["perception"])
     plot_qa_bars(qa, paths["qa"])
     plot_hydrographs_sample(visits, wells, paths["hydro_sample"])

@@ -1,0 +1,114 @@
+{
+  "n_raw_empty_dropped": 26,
+  "n_visits": 3354,
+  "n_wells": 1015,
+  "n_wells_impact": 933,
+  "n_wells_excluded_impact": 82,
+  "n_provinces": 30,
+  "n_districts": 84,
+  "n_villages": 406,
+  "meas_date_min": "2024-12-30 00:00:00",
+  "meas_date_max": "2026-09-16 00:00:00",
+  "visits_1": 638,
+  "visits_2plus": 377,
+  "visits_4plus": 257,
+  "visits_8plus_dates": 137,
+  "visits_12plus_dates": 69,
+  "source_type": {
+    "Well": 995,
+    "Kariz": 20
+  },
+  "well_type": {
+    "Home dug well": 884,
+    "Monitoring well": 70,
+    "Observation well": 31,
+    "Other": 30
+  },
+  "intervention": {
+    "Both": 696,
+    "Check dam": 215,
+    "Trench": 104
+  },
+  "rel_loc": {
+    "Downstream": 594,
+    "Upstream": 421
+  },
+  "qa_flag_counts": {
+    "wt_now_gt_depth": 72,
+    "diameter_suspect": 63,
+    "unit_confusion": 59,
+    "distance_gt_5000": 54,
+    "hh_implausible": 23,
+    "meas_before_interv": 14,
+    "wt_now_zero": 5,
+    "hh_looks_like_phone": 4,
+    "est_rise_gt_20": 4,
+    "diameter_outlier": 3,
+    "wt_now_gt_100": 2
+  },
+  "dtw_change_recall_median_m": 0.2,
+  "dtw_change_measured_median_m_4plus": 0.0,
+  "by_intervention_median_recall_m": {
+    "Both": 0.1,
+    "Check dam": 0.5,
+    "Trench": 0.01
+  },
+  "by_distance_median_recall_m": {
+    "0-200": 0.6,
+    "1000-2000": -0.2,
+    "200-500": 0.0,
+    "500-1000": 0.15,
+    ">2000": -1.2
+  },
+  "by_rel_loc_median_recall_m": {
+    "Downstream": 0.0,
+    "Upstream": 0.5
+  },
+  "wells_by_province": {
+    "Panjsher": 184,
+    "Kapisa": 119,
+    "Parwan": 92,
+    "Kunduz": 82,
+    "Daykundi": 60,
+    "Paktya": 49,
+    "Kunar": 49,
+    "Kabul": 32,
+    "Jawzjan": 32,
+    "Maidan Wardak": 31,
+    "Sar-e-Pul": 30,
+    "Herat": 26,
+    "Bamyan": 24,
+    "Faryab": 21,
+    "Helmand": 20,
+    "Balkh": 19,
+    "Paktika": 18,
+    "Farah": 17,
+    "Laghman": 17,
+    "Nimroz": 14,
+    "Ghor": 12,
+    "Nangarhar": 12,
+    "Badghis": 10,
+    "Khost": 10,
+    "Uruzgan": 10,
+    "Zabul": 9,
+    "Logar": 5,
+    "Ghazni": 5,
+    "Kandahar": 3,
+    "Takhar": 3
+  },
+  "long_series_wells": 137,
+  "check_dam_wells_by_province": {
+    "Kapisa": 111,
+    "Kunar": 41,
+    "Faryab": 21,
+    "Maidan Wardak": 12,
+    "Laghman": 8,
+    "Nangarhar": 5,
+    "Parwan": 5,
+    "Daykundi": 4,
+    "Bamyan": 3,
+    "Kabul": 2,
+    "Helmand": 2,
+    "Ghazni": 1
+  }
+}

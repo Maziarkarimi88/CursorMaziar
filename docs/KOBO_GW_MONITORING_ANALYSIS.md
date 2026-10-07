@@ -20,6 +20,7 @@ python3 tools/kobo_gw.py --csv data/kobo/groundwater_monitoring.csv
 | `examples/kobo_gw/visits.csv` | Visit panel: `well_id`, dates, DTW, method, location |
 | `examples/kobo_gw/qa_flags.csv` | One row per flag instance |
 | `examples/kobo_gw/perception_vs_measured.csv` | Reported Q30 vs tape/rope class |
+| `examples/kobo_gw/province_stats.csv` | Usable-well counts and median DTW change by province |
 | `examples/kobo_gw/SUMMARY.md` | Counts and medians written by the last run |
 | `figures/kobo_gw/map_wells.png` | Unique-well map (size = visits) |
 | `figures/kobo_gw/box_dtw_change_by_*.png` | Recalled DTW change by province, distance, intervention |
