@@ -129,6 +129,8 @@ def test_names_and_phone():
     assert names_match("  Good   Owner  ", "Good Owner")
     assert names_match("Mosque well", "well musq")
     assert names_match("Haji Abdul Motalib", "Abdul Motalib")
+    assert names_match("Abdul Mobin Khan", "Abdul Mobine")
+    assert names_match("Fakharul Aslam", "Faghrul Aslam")
     assert names_match("sardar mohammad", "sardamohammad")
     assert not names_match("Saadullah", "Mostafa")
     assert not names_match("Fahim", "Zahir")

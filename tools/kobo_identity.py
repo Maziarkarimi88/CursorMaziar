@@ -27,11 +27,12 @@ SOFT_MERGE_M = 50.0
 FAR_GPS_M = 200.0
 R_EARTH_M = 6_371_000.0
 MISSING_OWNER_REP = "__missing__"
-NAME_SIMILARITY_MIN = 0.90
+NAME_SIMILARITY_MIN = 0.88
 _TITLE_PREFIX = re.compile(
     r"^(?:haji|hagi|hajji|higi|hahi|alhaj|al haji|mullah|mulla|molvi|mawlawi|"
     r"malik|engineer|eng|damollah|molah)\s+"
 )
+_TITLE_SUFFIX = re.compile(r"\s+(?:khan|jan|agha|sahib|wal)$")
 
 
 def norm_text(value) -> str:
@@ -77,6 +78,7 @@ def _strip_titles(text: str) -> str:
         if nxt == out:
             break
         out = nxt
+    out = _TITLE_SUFFIX.sub("", out).strip()
     return out.strip()
 
 
@@ -121,7 +123,7 @@ def name_similarity(a: str, b: str) -> float:
 
 
 def names_match(a: str, b: str) -> bool:
-    """Same caretaker if cleaned names are ≥ 90% similar — not exact spelling."""
+    """Same caretaker if cleaned names are about 90% similar — not exact spelling."""
     return name_similarity(a, b) >= NAME_SIMILARITY_MIN
 
 
