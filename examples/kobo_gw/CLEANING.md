@@ -6,9 +6,9 @@ Well identity is **distance first**: a complete-linkage GPS cluster (every pair 
 
 - Visits: **3354**
 - GPS sites (`well_id`, 15 m complete linkage): **1081**
-- Monitoring wells (`cluster_id` = GPS + owner/caretaker split): **1244**
-- GPS sites split because owners differ inside 15 m: **135**
-- Owner check agree / mixed / missing: 938 / 140 / 3
+- Monitoring wells (`cluster_id` = GPS + owner/caretaker split): **1253**
+- GPS sites split because owners differ inside 15 m: **141**
+- Owner check agree / mixed / missing: 932 / 146 / 3
 - Wells with 2+ visits: **548**
 - Median GPS spread on multi-visit wells: **10.7 m** (complete linkage keeps this ≤ 15 m)
 - Nearby different wells (centroids ≤ 15 m): **161** pairs.

@@ -34,7 +34,7 @@
     "Upstream": 452
   },
   "qa_flag_counts": {
-    "owner_mixed": 813,
+    "owner_mixed": 844,
     "dtw_jump": 298,
     "recall_extreme": 166,
     "wt_now_gt_depth": 72,
@@ -115,14 +115,14 @@
     "Bamyan": 1
   },
   "owner_check": {
-    "agree": 938,
-    "mixed": 140,
+    "agree": 932,
+    "mixed": 146,
     "missing": 3
   },
-  "n_cluster_ids": 1244,
-  "n_clusters_1": 706,
-  "n_clusters_2plus": 538,
-  "n_sites_split_by_owner": 135,
+  "n_cluster_ids": 1253,
+  "n_clusters_1": 718,
+  "n_clusters_2plus": 535,
+  "n_sites_split_by_owner": 141,
   "cluster_m": 15.0,
   "n_nearby_pairs": 161,
   "n_owner_splits": 272
