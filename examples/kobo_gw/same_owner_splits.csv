@@ -1,273 +1,273 @@
-province,village,owner_n,n_wells,max_centroid_separation_m,band,well_ids
-badghis,azim abad,mohammad hanif,2,14.4,12-50m_review,6875f3c35e4b 193f7d23a06f
-badghis,baghak,mohammad taher,3,26.0,12-50m_review,de060d4bb826 d19a00074fcf 6487ff8a4272
-badghis,sarcheshma,abdullah,2,51.3,50-200m_review,5d5c7a6f95d2 d213335bdee5
-balkh,paikan dara,abdul khaleq,4,194.0,50-200m_review,df154a37c171 842cd9cbc745 f0e5d3bdcbb9 5385d4aad77e
-balkh,paikan dara,abdul khaleq 2 chinar,2,16.5,12-50m_review,da4ca4fecce9 842cd9cbc745
-balkh,paikan dara,nezamudine,4,25.8,12-50m_review,84787416d6d9 bc1941393f15 e10324a620e1 b20a0aecfe79
-balkh,paikan dara,sakhi rahman,4,44.2,12-50m_review,ad1ffc96edae eb5216f5b8d2 6f873efbcc6c 527ac0f85d82
-balkh,paikan dara,shah mohammad,2,15.5,12-50m_review,7f3357b26e7c 721b2f77a99b
-balkh,paikan dara,shamsodin,2,28.7,12-50m_review,92b074c816e6 b3506eaec5d0
-balkh,paikan dara,sofi gol morad,3,14.6,12-50m_review,469e21779cc4 9db4d7ba91a8 d9f989214f7a
-balkh,paikan dara,sofi gul murad,2,14.6,12-50m_review,469e21779cc4 d9f989214f7a
-balkh,paikan dara,tajudine,4,31.2,12-50m_review,2ca72434d3a9 bdf927c8dda6 ef4da03b08b5 9924587bd049
-balkh,paikan dara,ziaudine,4,42.2,12-50m_review,f5048b7a81d9 e92ba2316eb0 220cbc570202 105bdabc0fdc
-balkh,qeflan dara,lal mohammad,3,53.4,50-200m_review,be7ee0d52233 c1a06ca2e7c6 acf22e5b1b17
-balkh,qeflan dara,nematullah,2,13.6,12-50m_review,2d588351a341 0f5e1d519030
-bamyan,deh nola,naqib arbab,2,42123.0,far_likely_two_wells_or_office_gps,860fd583794c 5e7e2d930f67
-bamyan,zabzjobak,m rasol,4,644.7,far_likely_two_wells_or_office_gps,bfadfed45112 159f3aba145d 07e8b65e7481 78f30c30e3c6
-daykundi,daghur sufla,khodadad fatehi,2,13.2,12-50m_review,aeb75a0cd666 8126be3b1b64
-daykundi,hijdi ulya,khan mohammad,2,15.6,12-50m_review,a00ef16a403c 5eacfbb9ea11
-daykundi,kakrak,ali akbar,5,195.6,50-200m_review,eaefbd9198ad a49ee2fc4953 3e6fef3a068b b8e958be6170 b48a80ad935d
-daykundi,kharbed,sayed husain,2,8.2,12-50m_review,4b560feae044 ef5e27e1e778
-daykundi,markaz wotma,nader,2,9.5,12-50m_review,8082c009f3b8 d2ec2edf970d
-daykundi,payeen bagh lazer,qurban ehsani,2,9.2,12-50m_review,20f97d5962d3 68d0594c908b
-daykundi,sarqul,nawrooz nabizada,3,19.3,12-50m_review,90d7c70f16c6 dd380bdf4b40 0d2332d6d8e6
-daykundi,sarqul,zaman ekhlaqi,2,23.0,12-50m_review,b8d54bfd8654 b34c62dbf300
-daykundi,selbetu,karim,3,32.0,12-50m_review,5f3271f2e890 ef9668efc0fe 94b998ce0a49
-daykundi,surkhbid,amin,3,33.4,12-50m_review,6e17d76aa552 1f9ada9eaf4b 0989883fb04e
-daykundi,zanbor khana,qasim ali,2,15.5,12-50m_review,9d9ce3c1e8c6 f1a4c3c3451a
-farah,babo kariz,abdul rahim,5,45.4,12-50m_review,a6fc7419068e 916d24c6d010 85ccd6c26b24 71669daffdce ce91f2d726ec
-farah,kurghzard,shah mohammad,2,19.4,12-50m_review,6c7251853888 a60103a1d9db
-farah,kurghzard,shahmohammad,2,10.0,12-50m_review,6c7251853888 3c181631d777
-farah,naw abad taparig,allah noor,2,20.5,12-50m_review,c2e3dc6e744c 9424d88d0019
-farah,noor mohammad kariz,qudratullah,2,12.3,12-50m_review,59ddc37a668f e00436147193
-farah,taparig,allah noor,4,38.9,12-50m_review,9be3f24fbe85 c2e3dc6e744c 9424d88d0019 94d9e050f0ec
-faryab,gozari,qotbadin,5,620.8,far_likely_two_wells_or_office_gps,7d352b1bcf92 12c573e64cc9 8f45c27199a3 fa4b955c49cc 664e7e35220d
-faryab,gozari,sonatullah,4,625.6,far_likely_two_wells_or_office_gps,d8e2ca15a81b ea28529fa7e1 fa4b955c49cc 12c573e64cc9
-faryab,jamshidi bala,jawad,4,15454.1,far_likely_two_wells_or_office_gps,de3cf1d353b2 58610f380b63 cdb0bfa1450c 9088cc2b6c2f
-faryab,jamshidi bala,sebghatullah,4,15486.1,far_likely_two_wells_or_office_gps,ce6dc4b66bdf ae65c2920bf5 de3cf1d353b2 9088cc2b6c2f
-faryab,khwaja qoshri,hedayatullah,3,90.0,50-200m_review,ad8766c6b4ed 0508902ea0ca dfd74845ce97
-faryab,khwaja qoshri,sakhi mohammad,6,14430.8,far_likely_two_wells_or_office_gps,63967f286460 35538cecd8c9 4d4e2b0c39ce dfd74845ce97 cdb0bfa1450c dbc63ae2d85b
-faryab,khwaja qoshri,yar mohamad,6,1650.3,far_likely_two_wells_or_office_gps,dad31e068c09 35538cecd8c9 0508902ea0ca dfd74845ce97 6e0f3431cf6b 0bcc792d77a6
-faryab,yangi qala,najebullah,4,6898.2,far_likely_two_wells_or_office_gps,ef8db624b321 29069174f5b9 e5e6a4c3edb5 28c4a10a2b7a
-faryab,yangi qala,taj mohammad,2,6978.6,far_likely_two_wells_or_office_gps,29069174f5b9 18726c2d2938
-ghazni,kariz bala,khair mohammad,2,48.2,12-50m_review,e3c13595a97d 56d4d599d2f6
-ghazni,mushak,abdul matin,5,54.1,50-200m_review,78df189f8d4d 9c808bda89d5 279584c81ed9 bead3acbc7a6 6ecfba81094c
-helmand,ghori,shah wali,3,34.6,12-50m_review,3fd658151749 af55936ccc35 b5d36393caf6
-helmand,lawar tangi,abdul karim,2,124.0,50-200m_review,762aedb26fd9 8e0eb7799a29
-helmand,malazai,abdul rashid,2,620.8,far_likely_two_wells_or_office_gps,a3d13a086b1a 237b6f0a6f1c
-herat,khwaja mohamma kamil,seed jalal,2,23.7,12-50m_review,789ee87e33cb 466f2b0436da
-herat,khwaja mohammad kamil,seed jalal,3,116.5,50-200m_review,789ee87e33cb 45e2d2e454df b3a384a255c3
-herat,khwaja mohammad kamil,seed mohammad,4,137.2,50-200m_review,b7dff90902b5 a5faf8f4e90c 789ee87e33cb e3118cef77f1
-herat,khwaja mohammad kamil,seed mohammad khan,2,13.0,12-50m_review,b3a384a255c3 b7dff90902b5
-herat,parvanah,gholam habib,3,34.9,12-50m_review,f4b28920ea4b bbc08b080082 8fad4e1572c2
-herat,parvaneh,gholam habib,3,18.6,12-50m_review,8fad4e1572c2 f4b28920ea4b 8203c66d4aae
-jawzjan,turkman qudogh afghania,gholam sakhi,2,19.9,12-50m_review,ffe8c69e39fb 53de5b751d65
-jawzjan,turkman qudogh afghania,khoday rahim,2,42.7,12-50m_review,f7b609ffe338 22adc012daad
-kabul,danaw,social,4,39.2,12-50m_review,612b8c60513c ee4c37c4f078 51ee6d251d7b d248230f89aa
-kabul,esmila,said arif,3,14.1,12-50m_review,13be56f60ba9 62857a06f189 a281c4a510e7
-kabul,esmila,social,3,17.0,12-50m_review,99c5c1e06f19 9c422f5a8fb7 d0f82586a151
-kabul,kariz bala,social,4,80.4,50-200m_review,0e2df6d1ec1e 9860dcf76382 844c90b6b354 00947f87adbd
-kabul,khwaja shahab,social,5,102.0,50-200m_review,5e14b2535610 41b8cd26662e 798401d036ce 74599552e589 44093619f46f
-kabul,qol e nehal,jawid,3,24.3,12-50m_review,f94363e1bbad 2421389718b5 1dca47dc4b31
-kandahar,akhunzada,mohebullah,5,44.0,12-50m_review,e5eaf14923af 14dc3867c13f 89da82bd25f8 64e78c77e481 869e746545ed
-kandahar,toghraq,gulahmad,3,29631.1,far_likely_two_wells_or_office_gps,87d0f7339aef 23223f5567f1 8e215029c172
-kapisa,adezai,luforahman,2,527.8,far_likely_two_wells_or_office_gps,0f0f1e4c55b8 1751dbdfa41e
-kapisa,adezai,lutforahman,7,1844.3,far_likely_two_wells_or_office_gps,c4ba3bfccfb3 de434f8e555f 349889373a27 f95ff189c0cb 21d1a00e5183 9954c35c2325 0757906b2cf3
-kapisa,adezai,lutforhman,7,1936.3,far_likely_two_wells_or_office_gps,de434f8e555f 7ffcd1d8d12e d46a34b1c34f 00a1a02693bd 501806cb603f 8367c46229a3 9954c35c2325
-kapisa,adezai,noorani,11,1982.6,far_likely_two_wells_or_office_gps,de434f8e555f c4ba3bfccfb3 00573b04522a f26e8373b96a c39b7e496a37 1f5c6220e9d3 d7e3f1bf0aba 46b5df603813 ae2bc5035aab fd0c7f544f34 b7243b5391c9
-kapisa,aram kot,mohammad auob,2,24.5,12-50m_review,a3eae15dc839 59290e8e98a6
-kapisa,aram kot,ustad salim,2,60.2,50-200m_review,ed3adfe1ff16 a899b4bc0dc5
-kapisa,aramkot,mohammad auob,2,24.5,12-50m_review,a3eae15dc839 59290e8e98a6
-kapisa,aramkot,ustad salim,2,12.7,12-50m_review,a899b4bc0dc5 250963b44f5e
-kapisa,badam ali,hafizullah,3,85.3,50-200m_review,bbc973b5e5f6 6cd9eed50db3 f92719f757c3
-kapisa,chashma e allah dad,baba jan,3,208.0,far_likely_two_wells_or_office_gps,d6de96bd8ae6 f1fc003ceeeb bd669c3b1100
-kapisa,chashma e muazullah,hekmatullah,2,16.8,12-50m_review,d6de96bd8ae6 f1fc003ceeeb
-kapisa,gado china,astan gul,2,1842.3,far_likely_two_wells_or_office_gps,7be0093158f0 e1809de05c0d
-kapisa,gado china,astana ghul,6,3079.1,far_likely_two_wells_or_office_gps,a8a61ccc85f1 318dc7ef848e 98007e8ddc8d 180023705798 7be0093158f0 310640b30e44
-kapisa,gado china,astana gul,7,3061.5,far_likely_two_wells_or_office_gps,f85f01a8f587 310640b30e44 aa1c086816d2 fd90c41617d8 2b56ba2fdc2d 0c0dcf70c4fd e1809de05c0d
-kapisa,gado china,mohamad agha,3,1958.6,far_likely_two_wells_or_office_gps,6bfd3299cdb3 8319fd7e8c76 0c0dcf70c4fd
-kapisa,gado china,mohammad agha,8,3179.2,far_likely_two_wells_or_office_gps,6bfd3299cdb3 310640b30e44 f85f01a8f587 299ead6b173f a8a61ccc85f1 2b56ba2fdc2d 318dc7ef848e 8319fd7e8c76
-kapisa,gado china,zar alaam,3,183.4,50-200m_review,b028eac48ec3 20386829bade 0e6a3d38ed20
-kapisa,gado china,zar alam,7,3042.3,far_likely_two_wells_or_office_gps,7be0093158f0 e9f6367f9faf 94590207ee3a d87dae0e4f6c a8a61ccc85f1 b028eac48ec3 e1809de05c0d
-kapisa,ghazi khan khil,abdul malik,8,113.7,50-200m_review,c24c8220104f 91046205fc46 42037f485d51 29a3c1d61851 383b6fff5410 371ba6134370 8ab1202d6262 75260eb83894
-kapisa,ghazi khan khil,fakharul aslam,3,70.0,50-200m_review,42037f485d51 383b6fff5410 c24c8220104f
-kapisa,ghazi khan khil,fakhrol aslam,3,67.7,50-200m_review,383b6fff5410 c96d4928ad48 42037f485d51
-kapisa,ghazi khan khil,fakhrul aslam,2,113.7,50-200m_review,42037f485d51 29a3c1d61851
-kapisa,ghazi khan khil,fazal rabi,5,55.4,50-200m_review,276d8149528e 75260eb83894 29a3c1d61851 b90f707c6c53 98ca81871f10
-kapisa,ghazi khan khil,zainullah,3,48.6,12-50m_review,712e6c8e5811 ce3c1cafd760 42037f485d51
-kapisa,ghazi khan khil,zinullah,5,160.6,50-200m_review,0eaf1a6b23ea d6e8eee79139 712e6c8e5811 ce3c1cafd760 42037f485d51
-kapisa,kam sheenkai,safatullah,4,2806.1,far_likely_two_wells_or_office_gps,ef1a1d164351 a96e4c59b224 e0274002889b 6a59016ac548
-kapisa,konj paryat,deen mohammad,12,3881.1,far_likely_two_wells_or_office_gps,0375453c1475 5453968d8144 0560623fe935 740b5d44d0fc a6fdc1a92838 e1f2f00e5fda 56bac3de19e2 3b9d43448ce9 f18a8be4e8b0 3d35c6c5e3c5 a11a6e92bbc0 a6d7964fe303
-kapisa,konj paryat,habibullah,11,3350.4,far_likely_two_wells_or_office_gps,5453968d8144 6d3d5352a73e 3b4a601762f5 740b5d44d0fc a6fdc1a92838 b8252df52884 56bac3de19e2 ebc530ad0cfd 3d35c6c5e3c5 a11a6e92bbc0 a6d7964fe303
-kapisa,konj paryat,habiullah,2,3030.7,far_likely_two_wells_or_office_gps,740b5d44d0fc 8983bb1927a7
-kapisa,landa khil,abadullah,6,638.6,far_likely_two_wells_or_office_gps,3979db767b45 e25e94769f5f 0c6af1ce1596 92fa00998670 0b6e5ee90dba d25cab61511a
-kapisa,landa khil,hajratullah,7,1525.3,far_likely_two_wells_or_office_gps,d9c978cb5c41 3979db767b45 e25e94769f5f 6c773d73bc1a fd93837b4ae5 245785b2943b 19b536536612
-kapisa,landa khill,abadullah,5,111.9,50-200m_review,0b6e5ee90dba f5d9a6da928a 518b34177138 2d3f55415afe 19b536536612
-kapisa,landa khill,hajratullah,2,59.7,50-200m_review,d9c978cb5c41 19b536536612
-kapisa,landakhil,abadullah,3,118.8,50-200m_review,d25cab61511a 19b536536612 245785b2943b
-kapisa,landakhil,hajratullah,2,11.5,12-50m_review,245785b2943b 19b536536612
-kapisa,mahtan,abdul jalil,4,250.9,far_likely_two_wells_or_office_gps,18a107155fd1 1c521f431978 dba99b2a3cd7 e350ef3f66de
-kapisa,mahtan,abdul mobin,8,3176.4,far_likely_two_wells_or_office_gps,0a5629aa7081 e123e68f9573 18a107155fd1 2f6b8032d007 25c6502204f7 5ba5a62c8833 a145197f6282 849ac2cb5879
-kapisa,mahtan,abdul mobin khan,5,2956.9,far_likely_two_wells_or_office_gps,18a107155fd1 a2264ef9f5fa d977a85524bc 849ac2cb5879 1b9c8197bb15
-kapisa,mahtan,abdul mobine,3,1541.3,far_likely_two_wells_or_office_gps,18a107155fd1 1e76f39eac66 1b9c8197bb15
-kapisa,moman khil,ahmad sha,13,1405.4,far_likely_two_wells_or_office_gps,9c2413b229e5 a38d59eecafd 6e8a6acd7fbb 00b3dddba5e7 a75b4a8a447e 39ae42988f03 cf53842ca492 742a304c3660 2c332a703533 fb55c3215131 22dfb2c14e47 6f5bad3ed2a5 d20937570c44
-kapisa,naser mula khil,fada mohammad,10,5910.2,far_likely_two_wells_or_office_gps,8900804a608d c12d3b86c045 defb82c68d7d a470cc360fbf b27af618af32 25776c3db9d5 07b2ae8797f6 c961ae4bd598 0b8cc774ddd5 2541a370f93c
-kapisa,naser mula khil,mohamad nazam,2,773.8,far_likely_two_wells_or_office_gps,d57b14511241 05dc8fe774b6
-kapisa,naser mula khil,mohammad nazam,11,4874.6,far_likely_two_wells_or_office_gps,d57b14511241 05dc8fe774b6 e4e02e07578f 5667f889eee9 4b7a06fc86fe 122715b9c25b b27af618af32 6e8f2b47aac5 b6b73890014f d395b3fb73c3 df7fdc7e5e1d
-kapisa,naser mula khil,mohammad nezam,3,4165.4,far_likely_two_wells_or_office_gps,e4e02e07578f 065cfed0a8b5 57b425a623b1
-kapisa,nawabad,hayat khan,2,8.2,12-50m_review,8c3d8b09852d ad17a034fa5a
-kapisa,nezam khil,asadullah,4,1261.1,far_likely_two_wells_or_office_gps,e1809de05c0d a8a61ccc85f1 2b56ba2fdc2d 0c0dcf70c4fd
-kapisa,sheenkai,asadullah,2,8.9,12-50m_review,e1809de05c0d 6a59016ac548
-kapisa,sheenkai,safatullah,3,32.6,12-50m_review,ef1a1d164351 96458a24ae19 8c27de2d7b17
-kapisa,shenkai,safatullah,4,4041.3,far_likely_two_wells_or_office_gps,a8a61ccc85f1 d56787dd5284 8c27de2d7b17 723279a41d89
-kapisa,surghi,abdul mobin,9,1909.4,far_likely_two_wells_or_office_gps,03245a2ee708 b5162a3d3067 21f1a04efba9 0c681eb2d50b e0b6e77bbe02 6d7282f3e908 29df72ab6308 00e39cc7e372 e6314ce12a53
-kapisa,surghi,abdul mobine,3,1751.1,far_likely_two_wells_or_office_gps,03245a2ee708 f6eb194b2ef0 ee5dafff1796
-kapisa,surghi,sha mohammad,10,2338.9,far_likely_two_wells_or_office_gps,60a59084fc86 3ca299ece2f3 21f1a04efba9 7c306cbd72ba 97b46cb46d29 2e8e2eba7a2c abbab4ce60de 8c2b8ec7c55a 30c6b395a9a1 bad302615f4b
-kapisa,tawachian,abdul malik,13,1394.7,far_likely_two_wells_or_office_gps,9379de0fea3a 5060bfca4df7 4493aa2d9fe1 0eca8e4a6528 fe61d78a17d1 c30c72df9068 2864aca33920 6ffc0959bc73 a76b1b879e25 8fc139179c97 78c0a7696f12 5e7f7f1a74de 1508c767cd66
-kapisa,tawachian,qasim khan,10,1485.8,far_likely_two_wells_or_office_gps,cd9bed6e6e34 3209e77323af 33a907ec56f4 1508c767cd66 0eca8e4a6528 fe61d78a17d1 bfe377573d04 5df870416a35 8fc139179c97 5e7f7f1a74de
-kapisa,tawachian,said akbar,10,1328.4,far_likely_two_wells_or_office_gps,1c4d8b7cbba7 4493aa2d9fe1 8545d24390e0 340d13c0299a 7a43e4db31c8 dd2fc5c60234 5df870416a35 e706b665e87c 88e26470902e cb5ca6153045
-kapisa,ziawodin khil,ghul agha,3,52.3,50-200m_review,f16edf5655d7 c5e88f72ec71 c45b9c2ad437
-kapisa,ziawodin khil,gul agha,2,6.1,12-50m_review,f16edf5655d7 c5e88f72ec71
-khost,university hill,baryalai,5,229.4,far_likely_two_wells_or_office_gps,4e8dea38fb84 1b60cb15df43 cc7db73383ba 99cded050b3e b077fccf702a
-khost,university site,baryalai,11,535.0,far_likely_two_wells_or_office_gps,ed66ecec1ffd 99cded050b3e b9a11e81e82e 5e91182fa02d 70625b9b0787 fdf32ddf1d3e 841b52c1711e 4e8dea38fb84 cc7db73383ba 46f3bb239d37 dd64d92f3c6b
-khost,werza,alamudin,5,4722.4,far_likely_two_wells_or_office_gps,7dad60bab709 3bd98886ab85 d9bd5293ecc9 ee3aae5266c3 de3420be0ca7
-kunar,damgalik,roohullah,2,15.8,12-50m_review,d35c147db812 66237048f7f8
-kunduz,kabali qushlaq,masjid well,4,55036.7,far_likely_two_wells_or_office_gps,f76a47e9d087 de1ba704d431 ef7d6004db10 b6828ca41e6e
-kunduz,kabali qushlaq,zahir,2,54777.0,far_likely_two_wells_or_office_gps,f76a47e9d087 33199e191252
-kunduz,lala kai,abdul fatah,2,76896.1,far_likely_two_wells_or_office_gps,f76a47e9d087 60d50c02b3d2
-kunduz,lala kai,gul ahmad,2,77260.4,far_likely_two_wells_or_office_gps,f76a47e9d087 e57168631d66
-kunduz,lala kai,ishaq,2,76861.7,far_likely_two_wells_or_office_gps,f76a47e9d087 ea9a26b0ab76
-kunduz,lala kai,kabir,2,76790.1,far_likely_two_wells_or_office_gps,f76a47e9d087 8f1aa8d2fec9
-kunduz,lala kai,safar mohammad,2,76910.8,far_likely_two_wells_or_office_gps,ba17ee7be433 88658b0d9087
-kunduz,lala maidan 2,abdul baqi,2,78727.6,far_likely_two_wells_or_office_gps,3664fe918a20 4192014ad357
-kunduz,lala maidan 2,janat gul,6,78839.1,far_likely_two_wells_or_office_gps,ce3fe86f8089 aa7c30b82a3c ea907dc3075e d024598d93cc 00534eec6277 3e3d4a99ecda
-kunduz,lala maidan 3,khudai nazar,4,76680.7,far_likely_two_wells_or_office_gps,f76a47e9d087 c7de6e5c7705 5f2048987d9d 6fdcb9b3af76
-kunduz,mola khel,abdullah jan,2,51859.6,far_likely_two_wells_or_office_gps,f76a47e9d087 a0af8ed91da2
-kunduz,mola khel,habibullah,3,51791.6,far_likely_two_wells_or_office_gps,f76a47e9d087 f8fdf1d2c927 9a55d84757db
-kunduz,mola khel,haji sher,2,51823.4,far_likely_two_wells_or_office_gps,f76a47e9d087 273696e172d6
-kunduz,mola khel,hazar gul,2,51803.9,far_likely_two_wells_or_office_gps,f76a47e9d087 542ec84f3692
-kunduz,mola khel,mohammad rasool,2,52001.6,far_likely_two_wells_or_office_gps,f76a47e9d087 f0be65183da8
-kunduz,mola khel,shah wali,2,51829.8,far_likely_two_wells_or_office_gps,ce3fe86f8089 c5d7e3de9a77
-kunduz,mola khel,zabihullah,5,51872.7,far_likely_two_wells_or_office_gps,ba17ee7be433 43f81a7716ca 412deaf27782 84d81b11181e 46f3957667a0
-kunduz,niazi,abdul majed,2,50274.3,far_likely_two_wells_or_office_gps,a1629806db65 1df6d37a048f
-kunduz,niazi,fahim,2,50281.7,far_likely_two_wells_or_office_gps,ce3fe86f8089 5048e50dbeaf
-kunduz,niazi,jumadin,2,50522.1,far_likely_two_wells_or_office_gps,93f830d1759b fc7690b090b7
-kunduz,niazi,mohammad khan,2,50160.1,far_likely_two_wells_or_office_gps,93f830d1759b d9d85db5a790
-kunduz,niazi,qudratullah,4,50372.0,far_likely_two_wells_or_office_gps,93f830d1759b db1487416460 b71ff93381c1 1f73b9b40b65
-kunduz,niazi,qurban,4,35.2,12-50m_review,4ab80b3a12fe 1df6d37a048f 335f1f410e02 5d3277aa0301
-kunduz,niazi,samiullah,2,50076.8,far_likely_two_wells_or_office_gps,f76a47e9d087 496d6be2c61b
-kunduz,yaamchi,abduraziq,2,60600.2,far_likely_two_wells_or_office_gps,f76a47e9d087 4c9b8ed656e7
-kunduz,yaamchi,azizullah,2,60525.6,far_likely_two_wells_or_office_gps,f76a47e9d087 c47bc0569df6
-kunduz,yaamchi,mir hamza,2,60718.0,far_likely_two_wells_or_office_gps,f76a47e9d087 82885c45a007
-kunduz,yaamchi,mohammad karim,2,60656.8,far_likely_two_wells_or_office_gps,f76a47e9d087 81ae4258b20d
-kunduz,yaamchi,mustafa,6,92.3,50-200m_review,aa20d238c28d 08e5b009a0a0 03722603b97c 0c2d6edf8fae 3ab82b54cb15 6514cd04fe6b
-kunduz,yaamchi,saadullah,5,60682.7,far_likely_two_wells_or_office_gps,f76a47e9d087 4fa2d48dd0d8 78ccef236835 aa1e1fe576cd 2016942ae929
-kunduz,yaamchi,zabihullah,2,60605.6,far_likely_two_wells_or_office_gps,f76a47e9d087 23ed69e016dd
-laghman,karahu,gul zaman,2,16.0,12-50m_review,4d7a8ed261a8 bdba58880854
-laghman,maidani,noor ahmad,2,5.2,12-50m_review,06a5b7429728 ca2d0ffdbdb8
-laghman,zerani,abdul mutalib,2,15.8,12-50m_review,fc0feb9406b3 48a705ecc73f
-logar,bala deh,nader ali,21,482.4,far_likely_two_wells_or_office_gps,b4ffc30b260c 83b4f13a8379 91cfdbe5fae3 5e7484826c7c 10f40bd82411 330ce6a80a6c 5db6b994e695 40f6c9ab738e 20295b6c0fd2 868223576842 9673ff8238f2 42bba6321099 58aec97a6c07 a2ddf47eeb32 c1778d2446f8 da85a89f827a bfa24b97a541 32525f48f0b0 0d02e759e9a3 2c2da22e00e5 246216944239
-logar,bala deh,shawkat,10,402.9,far_likely_two_wells_or_office_gps,40f6c9ab738e 5b24a8fd41e2 5a8275a572b1 23ff005f1873 330ce6a80a6c 57b3b1f47dfb 8ea642fe4b0d 00b8e0f6e87d 2c2da22e00e5 bfa24b97a541
-maidan wardak,dah hayat,allah mohammad,2,10.4,12-50m_review,1bd114305274 83dc48a84df2
-maidan wardak,deh hayat,allah mohammad,6,1741.9,far_likely_two_wells_or_office_gps,1bd114305274 257969c44e2d 83dc48a84df2 b580d392895c bced2bd909ce 6e80c464451d
-maidan wardak,deh hayat,emal,2,8.5,12-50m_review,357a416e9831 b580d392895c
-maidan wardak,deh hayat,mohammad fawad,4,1721.1,far_likely_two_wells_or_office_gps,bced2bd909ce 257969c44e2d 07b996b32627 c13430774163
-maidan wardak,musa khil,m esa,2,36.7,12-50m_review,37c017784bb8 ae28ba186aea
-maidan wardak,musa khil,noor habib,4,50.0,12-50m_review,c91b315c2c8c ea0e87b0eba8 cc73858e4391 835b7a959646
-maidan wardak,zamborak,mohammad nabi,3,30.4,12-50m_review,e2ac6521c15d 284b032a3821 05881f170095
-maidan wardak,zanborak,mohammad nabi,3,54.4,50-200m_review,9aeda31abc86 bfa1ec3fd74f e2ac6521c15d
-nangarhar,ador,sherbahader,3,39.9,12-50m_review,4ebffce7bf19 c9e247d31507 0caf9a8e8be2
-nangarhar,dago,pacha,3,27.7,12-50m_review,feaf40526f7d 1357f2491061 2c72a9796501
-nangarhar,dago,zahir khan,3,42.4,12-50m_review,feaf40526f7d 1357f2491061 451dcd550353
-nangarhar,loya tarmai,zaref,2,1290.1,far_likely_two_wells_or_office_gps,745d7972fb87 64fc7d92e557
-nangarhar,mandar khill,mer wali,3,74.0,50-200m_review,541bcce60151 8f48c869022f 862f9575acab
-nangarhar,mandar khill,zar wali,2,45.8,12-50m_review,541bcce60151 8f48c869022f
-nangarhar,mandarkhil,zar wali,2,45.8,12-50m_review,541bcce60151 8f48c869022f
-nimroz,dangar abad,ehsanullah,2,6.6,12-50m_review,3e3ef620849a ad79ba58e76e
-nimroz,gulistan,haji saifudin,2,4.8,12-50m_review,2a9480e170fd e45e9d673b7a
-nimroz,kaj e satar,rahmatullah,2,31.7,12-50m_review,c208f14e95df d8da85d32e3d
-nimroz,kaj e satar,samiullah,2,10.5,12-50m_review,08696dfc8b4a 8e3e8cfb5743
-paktika,kachi,mohammad shafiq,2,17.8,12-50m_review,8456ab7d3ff3 b4721bbe3d16
-paktika,kachi,shafiq,7,1714.1,far_likely_two_wells_or_office_gps,8456ab7d3ff3 b4721bbe3d16 b90859a6f6f8 6eba32384762 28d822016782 13e29eaf8dfa d2de67ff6d67
-paktika,loy kariz,amin,6,1396.6,far_likely_two_wells_or_office_gps,c9aab7e74f02 ca1a49fdd420 7b645c827299 77c077360e29 a1e71d20ab6b 84090fa0e08a
-paktika,loy kariz,mohammad amin,2,27.9,12-50m_review,cf42c3f16f7d c9aab7e74f02
-paktya,bar halim khil,bahar,7,58.9,50-200m_review,7f08074f5174 12e4a67ebd37 ca868dde02df 9ef2c26c06ab 55cb93663e22 5177f7c451d4 c76438f89b84
-paktya,bar halim khil,zari,2,6.4,12-50m_review,9cd4eec6c9b1 c7d4daa6a461
-paktya,halim khil,zari,2,6.4,12-50m_review,c7d4daa6a461 9cd4eec6c9b1
-paktya,husin khil,fisal,6,4323.6,far_likely_two_wells_or_office_gps,af57d65e5505 0caa33e9f9a2 f170853576ad a9fb4e1ecbe0 201c7d56fbed 29809b697f95
-panjsher,abdaba,aqa jan,2,38.2,12-50m_review,ada3c4bf0477 33127ba67311
-panjsher,abdaba,mohammad nime,2,48.0,12-50m_review,696553803b03 48d24c8d7d34
-panjsher,aspaniya,mustafa,2,46.3,12-50m_review,059b470e29f3 5dc8038f4f2e
-panjsher,aspaniya,nasrtullah,3,46.3,12-50m_review,5dc8038f4f2e b70757f06284 059b470e29f3
-panjsher,aspiyana,mustafa,5,231.8,far_likely_two_wells_or_office_gps,059b470e29f3 88a91541abfa 52d22f2bee78 201f9f4972dc 5dc8038f4f2e
-panjsher,aspiyana,nasratullah,4,146.2,50-200m_review,5dc8038f4f2e 35f273f55b07 25dfe30783d9 059b470e29f3
-panjsher,aspiyana,salim,3,787.2,far_likely_two_wells_or_office_gps,126518e51fe1 698581a2413a 35f273f55b07
-panjsher,asticha,habib rahman,4,24.2,12-50m_review,d7b22ee96d14 9805cd8c7bcc 0e5e2112bab8 cc4bd4f35f6e
-panjsher,asticha,hagi shirin agha,2,16.7,12-50m_review,b8c5f522d261 6736c83ed4d7
-panjsher,asticha,hagi shirn agha,2,15.9,12-50m_review,31008b37bbb4 b8c5f522d261
-panjsher,asticha,khalil rahman,3,19.9,12-50m_review,574b92d0a886 a777d9603694 eba3d2776d42
-panjsher,asticha,musq well,2,7.5,12-50m_review,d7f359949d70 c5d97a3af4f6
-panjsher,asticha,musqe well,2,7.5,12-50m_review,c5d97a3af4f6 d7f359949d70
-panjsher,asticha,shirin agha,2,40.4,12-50m_review,b8c5f522d261 e9a6ccdb7bd8
-panjsher,baharak,agha mir,3,23.4,12-50m_review,a7b7ddd98a4d e40ed7a1bd1c 83977583c055
-panjsher,baharak,mir afghan,2,37.1,12-50m_review,dd4f6f092395 960d1420cd13
-panjsher,baharak,mohammad amin,2,22.8,12-50m_review,b7b6ce687af5 336b3821f5de
-panjsher,baharak,noor ali,2,50.6,50-200m_review,a7b162db991c 36554445e668
-panjsher,bahark,agha mir,2,112.9,50-200m_review,a7b7ddd98a4d dd4f6f092395
-panjsher,chashma 3,agmal,2,15.7,12-50m_review,5816b3b0e49d 2f8ba643552e
-panjsher,chashma 3,ajmal,5,175.5,50-200m_review,d50858ef1b5e 5816b3b0e49d 2f8ba643552e c1faa11d31e6 7c59d063f18f
-panjsher,chashma 3,nagib allah,4,358.2,far_likely_two_wells_or_office_gps,c0b58075a52b 8b57e15334d7 eb1c28502f1d 6a6c12311741
-panjsher,chashma 3,sharif,3,26.0,12-50m_review,9fb1c46b6926 0210d59e776c cc3534727426
-panjsher,chashma 3,syeed omar,2,175.5,50-200m_review,7c59d063f18f c1faa11d31e6
-panjsher,orati,yasar,2,4.8,12-50m_review,790380451d4e a6a8152f9b54
-panjsher,orati,yaser,2,4.8,12-50m_review,a6a8152f9b54 790380451d4e
-panjsher,orati,yssar,2,4.8,12-50m_review,790380451d4e a6a8152f9b54
-panjsher,oroo,dad allah,3,243.2,far_likely_two_wells_or_office_gps,761effd7c5e6 ab38e2eddddf daf90b8f2c9c
-panjsher,oroo,hagi hasham,2,10.9,12-50m_review,771546f53a99 35a44ea5b96c
-panjsher,oroo,hakim shah,2,1301.4,far_likely_two_wells_or_office_gps,06a6500f2834 8d46fbdef6f5
-panjsher,oroo,hazrat karim,2,319.8,far_likely_two_wells_or_office_gps,8d46fbdef6f5 35a44ea5b96c
-panjsher,oroo,namatullah,2,6.0,12-50m_review,e2dfd4a1aed6 daf90b8f2c9c
-panjsher,qala mirsha,baryaly,4,30.7,12-50m_review,08c30feea31e 7266892865f7 4dc001f93d0c 2bef171776e1
-panjsher,qala mirsha,mohammad nabi,3,47.2,12-50m_review,1540597afdc7 c2c76df8774d f4573bcbfeca
-panjsher,qala mirsha,noor aldin,5,103.9,50-200m_review,da13685790ed b5460ceb6049 e21d0b33b4bb f3c597b98a2d a261881ec1f2
-panjsher,qalacha,marza rahman,6,127.0,50-200m_review,d5bb9f327f31 8e84736b9bbe c4de5e6c1f92 0831247efc30 3bb9938595e6 53f1413a35fb
-panjsher,qalacha,masque well,2,9.7,12-50m_review,84a29773bad3 e5e994ee8564
-panjsher,qalacha,mohammad nabi,4,76.4,50-200m_review,8e84736b9bbe 26a3947806f5 140be3b7302b 6da19961d0b6
-panjsher,qalacha,mola jan,5,353.9,far_likely_two_wells_or_office_gps,85703f047f2a fc659dcd5933 26a3947806f5 65b8bc70f432 fb2c783e44f9
-panjsher,sangana,hakim shah,2,166.6,50-200m_review,3ae9e8f0148c 6b881b558cdf
-panjsher,sangana,shams arahman,2,30.8,12-50m_review,2ee99b88cfb6 bdab2b482c4c
-panjsher,sangana,shams rahman,3,44.4,12-50m_review,f83e7158ae7d 3ae9e8f0148c ce23a32f3739
-panjsher,sangana,syif rahman,2,30.8,12-50m_review,ab394eb86617 4cb86fcb8643
-parwan,aghil kabuly,abdul rahim,3,27.5,12-50m_review,b96732bca698 7d3e08d8121b 47dca2af938f
-parwan,aghil kabuly,chanar gul,3,25.7,12-50m_review,d30d57dd7a3c 7cf325b0ee49 7d3e08d8121b
-parwan,aghil kabuly,ghazi gul,3,72.9,50-200m_review,055bce83dc2a 65811f94855f fb78acc0b020
-parwan,aghil kabuly,khudai noor,3,16.2,12-50m_review,6cefb1ac5099 0ec4a26eb679 0a46a34aec3a
-parwan,aghil kabuly,sayd rasul,3,17.9,12-50m_review,2ebf3b283372 b43ff723388f b03b4faf6959
-parwan,aghil kabuly,sayed rasul,2,4.1,12-50m_review,b43ff723388f 2ebf3b283372
-parwan,dah naw,ahmadullah,6,57.7,50-200m_review,e06b6a5c02d9 6641a99091fb 7b3a6031e870 e57bc2388995 ca608a4b555d 74fd46e5fa5a
-parwan,dah naw,ezmarai,7,82.0,50-200m_review,961d26d6cc77 894e1f93304c 08757ed15a40 9fab35861c79 139cfb5dffd8 1cb34d983c6c fbfe6895621f
-parwan,dah naw,lal agha,8,65.9,50-200m_review,5f16fdc5132d f6ae041b18e3 63b659940b99 44a32c1eec2f 7271051c32ae a19f05a8d125 a6951b2fad07 fe6b36ba3049
-parwan,dah naw,noor mohammad,4,32.2,12-50m_review,9c4200bb7469 22fe49b962b1 1cb34d983c6c fbfe6895621f
-parwan,daraz gerd,gul mar jan,9,110.0,50-200m_review,3caba5e8b222 8c25aed02bd9 48416028ad8a b4b797b3aedb 8ad490b81f71 369a00f994b8 e4df63ead7ed 9ee8d86f6d6a b7a7d9b60401
-parwan,daraz gerd,haji mohammad kaber,5,121.8,50-200m_review,37e73d54ca54 a90e1427ea40 c97e85a595da 54ac54824c37 57300aca7233
-parwan,daraz gerd,mohammad anwer,6,67.1,50-200m_review,eacb3d71cced 068e5c0e3dd5 54ac54824c37 402894d51d53 b8ababfda922 579946706837
-parwan,daraz gerd,mohammad kaber,3,13.8,12-50m_review,37e73d54ca54 54ac54824c37 57300aca7233
-parwan,daraz gerd,rohullah,6,90.2,50-200m_review,10163cd24ae0 e0a382b17d8c 8ad490b81f71 9829fec64433 3dfd69e1bb01 04bb03eed691
-parwan,fendaqistan bala ghail,abdul jalal,5,150.0,50-200m_review,e37222f462b0 5fe9fa386fba c4f91e5f9c84 1e8eaa902802 6d03436ff6d4
-parwan,fendaqistan bala ghail,ali reza,5,41.8,12-50m_review,b189ee47167a dff81cee27d7 5a24a16d842b 1ee6be760100 cd3f118480dd
-parwan,fendaqistan bala ghail,enayatul haq,4,91.2,50-200m_review,456902ee2365 c4df3d5f07b6 96730b21d11d b1fb3fb6320d
-parwan,fendaqistan bala ghail,noorul haq,3,24.9,12-50m_review,c11f8dbb2a47 0ac12067d714 609d22633934
-parwan,khawaja sayaran,majer,2,18.8,12-50m_review,5f3482f83d7d 0f1145cd481a
-parwan,khawaja sayaran,masjid jami,2,123.0,50-200m_review,564457fd04a8 bb4be9e00af3
-parwan,khawaja sayaran bala,majer,8,205.4,far_likely_two_wells_or_office_gps,0f1145cd481a 564457fd04a8 99bb09b0f4a8 ca675b61fb01 2ac4334addc8 e85a86909e29 1f2b03ec6c40 23a2c229bf0c
-parwan,khawaja sayaran bala,masjid jami,6,121.8,50-200m_review,564457fd04a8 0f1145cd481a 337c1552616d f1d312570429 abe47c88482a 0d220c70d3c5
-parwan,khawaja sayaran bala,wahidullah,6,68.4,50-200m_review,3592e43348b2 d25b2bcfe1b1 e3ee3ab5ab19 0d220c70d3c5 2ac4334addc8 337c1552616d
-parwan,ofyan,ajizullah,6,45.7,12-50m_review,77189572934c f1a2548fec58 7affb7325f78 197b1fa0ded5 9b965cc7ed83 0c72cbe59e05
-parwan,ofyan,haji mola,2,16.0,12-50m_review,0c72cbe59e05 2a04872e8747
-parwan,ofyan,haji mula,5,46.4,12-50m_review,0c72cbe59e05 9b965cc7ed83 2a04872e8747 438e62410ab3 89a61932fb67
-parwan,ofyan,hakimullah,3,18.6,12-50m_review,6a825cb4cce8 2214298cd745 6e062a177317
-parwan,ofyan,mer awlia,6,178.4,50-200m_review,8ab42924f59a 9567f9126adf e52aed58f352 e23da7d38a0a 9f33cef10f20 1f13f8e61075
-parwan,shiwa,masjid public,4,38.6,12-50m_review,7d79c95c6fcb 4121bdd8048b 4127adaaf52a be8525076f5b
-parwan,shiwa,public,5,92.9,50-200m_review,7d79c95c6fcb 7bc022729664 e97565d6933b 20cce0c40d80 35ad52027929
-parwan,sinjid dara,mohammad ali,4,50.8,50-200m_review,932e60b7ab2b 72359929e39a 945efdcfc1e4 f2e7fc3c8a80
-parwan,surkhi,mahmada jan,5,44.8,12-50m_review,d3585e95193e 53601717429e 72dba6875754 a0b6450670c2 8ecc1c10f184
-parwan,surkhi,mohammad arif,4,46.1,12-50m_review,3afdf4390b85 2119f4db6cc6 dac217426f2a dd2270e5d80d
-parwan,surkhi,public,3,23.7,12-50m_review,9a4d21194fb2 cba9cce663f8 8ab1c0941022
-sar e pul,kariz,khairuddin,2,309.2,far_likely_two_wells_or_office_gps,c355ddc219bd f5d797ad88fd
-zabul,jajga,mohammad nabi,3,26.4,12-50m_review,ce70935475fc cd864e236b3c 487cc431d82d
-zabul,kakar,gull mohammad,4,17.6,12-50m_review,5b8b610d4b01 4f0eb04dfa92 1a210716cab2 2a9e511f1cc1
-zabul,kawshak,nimatullah,3,9.3,12-50m_review,eae4a1358f13 81ec7ca56b5e cb235cb79de1
-zabul,loy kariz,yar mohammad,4,50.9,50-200m_review,84ed2206a287 11e70bdd18a5 ec9158674e0b 8e78c3b7d281
-zabul,patkhil,haji mohammad ibrahim,3,21.4,12-50m_review,b53c2a86da51 8423e8a4d297 45451f899b4e
+province,village,n_wells,max_centroid_separation_m,band,well_ids
+badghis,azim abad,2,14.4,12-50m_review,6875f3c35e4b 193f7d23a06f
+badghis,baghak,3,26.0,12-50m_review,de060d4bb826 d19a00074fcf 6487ff8a4272
+badghis,sarcheshma,2,51.3,50-200m_review,5d5c7a6f95d2 d213335bdee5
+balkh,paikan dara,4,194.0,50-200m_review,df154a37c171 842cd9cbc745 f0e5d3bdcbb9 5385d4aad77e
+balkh,paikan dara,2,16.5,12-50m_review,da4ca4fecce9 842cd9cbc745
+balkh,paikan dara,4,25.8,12-50m_review,84787416d6d9 bc1941393f15 e10324a620e1 b20a0aecfe79
+balkh,paikan dara,4,44.2,12-50m_review,ad1ffc96edae eb5216f5b8d2 6f873efbcc6c 527ac0f85d82
+balkh,paikan dara,2,15.5,12-50m_review,7f3357b26e7c 721b2f77a99b
+balkh,paikan dara,2,28.7,12-50m_review,92b074c816e6 b3506eaec5d0
+balkh,paikan dara,3,14.6,12-50m_review,469e21779cc4 9db4d7ba91a8 d9f989214f7a
+balkh,paikan dara,2,14.6,12-50m_review,469e21779cc4 d9f989214f7a
+balkh,paikan dara,4,31.2,12-50m_review,2ca72434d3a9 bdf927c8dda6 ef4da03b08b5 9924587bd049
+balkh,paikan dara,4,42.2,12-50m_review,f5048b7a81d9 e92ba2316eb0 220cbc570202 105bdabc0fdc
+balkh,qeflan dara,3,53.4,50-200m_review,be7ee0d52233 c1a06ca2e7c6 acf22e5b1b17
+balkh,qeflan dara,2,13.6,12-50m_review,2d588351a341 0f5e1d519030
+bamyan,deh nola,2,42123.0,far_likely_two_wells_or_office_gps,860fd583794c 5e7e2d930f67
+bamyan,zabzjobak,4,644.7,far_likely_two_wells_or_office_gps,bfadfed45112 159f3aba145d 07e8b65e7481 78f30c30e3c6
+daykundi,daghur sufla,2,13.2,12-50m_review,aeb75a0cd666 8126be3b1b64
+daykundi,hijdi ulya,2,15.6,12-50m_review,a00ef16a403c 5eacfbb9ea11
+daykundi,kakrak,5,195.6,50-200m_review,eaefbd9198ad a49ee2fc4953 3e6fef3a068b b8e958be6170 b48a80ad935d
+daykundi,kharbed,2,8.2,12-50m_review,4b560feae044 ef5e27e1e778
+daykundi,markaz wotma,2,9.5,12-50m_review,8082c009f3b8 d2ec2edf970d
+daykundi,payeen bagh lazer,2,9.2,12-50m_review,20f97d5962d3 68d0594c908b
+daykundi,sarqul,3,19.3,12-50m_review,90d7c70f16c6 dd380bdf4b40 0d2332d6d8e6
+daykundi,sarqul,2,23.0,12-50m_review,b8d54bfd8654 b34c62dbf300
+daykundi,selbetu,3,32.0,12-50m_review,5f3271f2e890 ef9668efc0fe 94b998ce0a49
+daykundi,surkhbid,3,33.4,12-50m_review,6e17d76aa552 1f9ada9eaf4b 0989883fb04e
+daykundi,zanbor khana,2,15.5,12-50m_review,9d9ce3c1e8c6 f1a4c3c3451a
+farah,babo kariz,5,45.4,12-50m_review,a6fc7419068e 916d24c6d010 85ccd6c26b24 71669daffdce ce91f2d726ec
+farah,kurghzard,2,19.4,12-50m_review,6c7251853888 a60103a1d9db
+farah,kurghzard,2,10.0,12-50m_review,6c7251853888 3c181631d777
+farah,naw abad taparig,2,20.5,12-50m_review,c2e3dc6e744c 9424d88d0019
+farah,noor mohammad kariz,2,12.3,12-50m_review,59ddc37a668f e00436147193
+farah,taparig,4,38.9,12-50m_review,9be3f24fbe85 c2e3dc6e744c 9424d88d0019 94d9e050f0ec
+faryab,gozari,5,620.8,far_likely_two_wells_or_office_gps,7d352b1bcf92 12c573e64cc9 8f45c27199a3 fa4b955c49cc 664e7e35220d
+faryab,gozari,4,625.6,far_likely_two_wells_or_office_gps,d8e2ca15a81b ea28529fa7e1 fa4b955c49cc 12c573e64cc9
+faryab,jamshidi bala,4,15454.1,far_likely_two_wells_or_office_gps,de3cf1d353b2 58610f380b63 cdb0bfa1450c 9088cc2b6c2f
+faryab,jamshidi bala,4,15486.1,far_likely_two_wells_or_office_gps,ce6dc4b66bdf ae65c2920bf5 de3cf1d353b2 9088cc2b6c2f
+faryab,khwaja qoshri,3,90.0,50-200m_review,ad8766c6b4ed 0508902ea0ca dfd74845ce97
+faryab,khwaja qoshri,6,14430.8,far_likely_two_wells_or_office_gps,63967f286460 35538cecd8c9 4d4e2b0c39ce dfd74845ce97 cdb0bfa1450c dbc63ae2d85b
+faryab,khwaja qoshri,6,1650.3,far_likely_two_wells_or_office_gps,dad31e068c09 35538cecd8c9 0508902ea0ca dfd74845ce97 6e0f3431cf6b 0bcc792d77a6
+faryab,yangi qala,4,6898.2,far_likely_two_wells_or_office_gps,ef8db624b321 29069174f5b9 e5e6a4c3edb5 28c4a10a2b7a
+faryab,yangi qala,2,6978.6,far_likely_two_wells_or_office_gps,29069174f5b9 18726c2d2938
+ghazni,kariz bala,2,48.2,12-50m_review,e3c13595a97d 56d4d599d2f6
+ghazni,mushak,5,54.1,50-200m_review,78df189f8d4d 9c808bda89d5 279584c81ed9 bead3acbc7a6 6ecfba81094c
+helmand,ghori,3,34.6,12-50m_review,3fd658151749 af55936ccc35 b5d36393caf6
+helmand,lawar tangi,2,124.0,50-200m_review,762aedb26fd9 8e0eb7799a29
+helmand,malazai,2,620.8,far_likely_two_wells_or_office_gps,a3d13a086b1a 237b6f0a6f1c
+herat,khwaja mohamma kamil,2,23.7,12-50m_review,789ee87e33cb 466f2b0436da
+herat,khwaja mohammad kamil,3,116.5,50-200m_review,789ee87e33cb 45e2d2e454df b3a384a255c3
+herat,khwaja mohammad kamil,4,137.2,50-200m_review,b7dff90902b5 a5faf8f4e90c 789ee87e33cb e3118cef77f1
+herat,khwaja mohammad kamil,2,13.0,12-50m_review,b3a384a255c3 b7dff90902b5
+herat,parvanah,3,34.9,12-50m_review,f4b28920ea4b bbc08b080082 8fad4e1572c2
+herat,parvaneh,3,18.6,12-50m_review,8fad4e1572c2 f4b28920ea4b 8203c66d4aae
+jawzjan,turkman qudogh afghania,2,19.9,12-50m_review,ffe8c69e39fb 53de5b751d65
+jawzjan,turkman qudogh afghania,2,42.7,12-50m_review,f7b609ffe338 22adc012daad
+kabul,danaw,4,39.2,12-50m_review,612b8c60513c ee4c37c4f078 51ee6d251d7b d248230f89aa
+kabul,esmila,3,14.1,12-50m_review,13be56f60ba9 62857a06f189 a281c4a510e7
+kabul,esmila,3,17.0,12-50m_review,99c5c1e06f19 9c422f5a8fb7 d0f82586a151
+kabul,kariz bala,4,80.4,50-200m_review,0e2df6d1ec1e 9860dcf76382 844c90b6b354 00947f87adbd
+kabul,khwaja shahab,5,102.0,50-200m_review,5e14b2535610 41b8cd26662e 798401d036ce 74599552e589 44093619f46f
+kabul,qol e nehal,3,24.3,12-50m_review,f94363e1bbad 2421389718b5 1dca47dc4b31
+kandahar,akhunzada,5,44.0,12-50m_review,e5eaf14923af 14dc3867c13f 89da82bd25f8 64e78c77e481 869e746545ed
+kandahar,toghraq,3,29631.1,far_likely_two_wells_or_office_gps,87d0f7339aef 23223f5567f1 8e215029c172
+kapisa,adezai,2,527.8,far_likely_two_wells_or_office_gps,0f0f1e4c55b8 1751dbdfa41e
+kapisa,adezai,7,1844.3,far_likely_two_wells_or_office_gps,c4ba3bfccfb3 de434f8e555f 349889373a27 f95ff189c0cb 21d1a00e5183 9954c35c2325 0757906b2cf3
+kapisa,adezai,7,1936.3,far_likely_two_wells_or_office_gps,de434f8e555f 7ffcd1d8d12e d46a34b1c34f 00a1a02693bd 501806cb603f 8367c46229a3 9954c35c2325
+kapisa,adezai,11,1982.6,far_likely_two_wells_or_office_gps,de434f8e555f c4ba3bfccfb3 00573b04522a f26e8373b96a c39b7e496a37 1f5c6220e9d3 d7e3f1bf0aba 46b5df603813 ae2bc5035aab fd0c7f544f34 b7243b5391c9
+kapisa,aram kot,2,24.5,12-50m_review,a3eae15dc839 59290e8e98a6
+kapisa,aram kot,2,60.2,50-200m_review,ed3adfe1ff16 a899b4bc0dc5
+kapisa,aramkot,2,24.5,12-50m_review,a3eae15dc839 59290e8e98a6
+kapisa,aramkot,2,12.7,12-50m_review,a899b4bc0dc5 250963b44f5e
+kapisa,badam ali,3,85.3,50-200m_review,bbc973b5e5f6 6cd9eed50db3 f92719f757c3
+kapisa,chashma e allah dad,3,208.0,far_likely_two_wells_or_office_gps,d6de96bd8ae6 f1fc003ceeeb bd669c3b1100
+kapisa,chashma e muazullah,2,16.8,12-50m_review,d6de96bd8ae6 f1fc003ceeeb
+kapisa,gado china,2,1842.3,far_likely_two_wells_or_office_gps,7be0093158f0 e1809de05c0d
+kapisa,gado china,6,3079.1,far_likely_two_wells_or_office_gps,a8a61ccc85f1 318dc7ef848e 98007e8ddc8d 180023705798 7be0093158f0 310640b30e44
+kapisa,gado china,7,3061.5,far_likely_two_wells_or_office_gps,f85f01a8f587 310640b30e44 aa1c086816d2 fd90c41617d8 2b56ba2fdc2d 0c0dcf70c4fd e1809de05c0d
+kapisa,gado china,3,1958.6,far_likely_two_wells_or_office_gps,6bfd3299cdb3 8319fd7e8c76 0c0dcf70c4fd
+kapisa,gado china,8,3179.2,far_likely_two_wells_or_office_gps,6bfd3299cdb3 310640b30e44 f85f01a8f587 299ead6b173f a8a61ccc85f1 2b56ba2fdc2d 318dc7ef848e 8319fd7e8c76
+kapisa,gado china,3,183.4,50-200m_review,b028eac48ec3 20386829bade 0e6a3d38ed20
+kapisa,gado china,7,3042.3,far_likely_two_wells_or_office_gps,7be0093158f0 e9f6367f9faf 94590207ee3a d87dae0e4f6c a8a61ccc85f1 b028eac48ec3 e1809de05c0d
+kapisa,ghazi khan khil,8,113.7,50-200m_review,c24c8220104f 91046205fc46 42037f485d51 29a3c1d61851 383b6fff5410 371ba6134370 8ab1202d6262 75260eb83894
+kapisa,ghazi khan khil,3,70.0,50-200m_review,42037f485d51 383b6fff5410 c24c8220104f
+kapisa,ghazi khan khil,3,67.7,50-200m_review,383b6fff5410 c96d4928ad48 42037f485d51
+kapisa,ghazi khan khil,2,113.7,50-200m_review,42037f485d51 29a3c1d61851
+kapisa,ghazi khan khil,5,55.4,50-200m_review,276d8149528e 75260eb83894 29a3c1d61851 b90f707c6c53 98ca81871f10
+kapisa,ghazi khan khil,3,48.6,12-50m_review,712e6c8e5811 ce3c1cafd760 42037f485d51
+kapisa,ghazi khan khil,5,160.6,50-200m_review,0eaf1a6b23ea d6e8eee79139 712e6c8e5811 ce3c1cafd760 42037f485d51
+kapisa,kam sheenkai,4,2806.1,far_likely_two_wells_or_office_gps,ef1a1d164351 a96e4c59b224 e0274002889b 6a59016ac548
+kapisa,konj paryat,12,3881.1,far_likely_two_wells_or_office_gps,0375453c1475 5453968d8144 0560623fe935 740b5d44d0fc a6fdc1a92838 e1f2f00e5fda 56bac3de19e2 3b9d43448ce9 f18a8be4e8b0 3d35c6c5e3c5 a11a6e92bbc0 a6d7964fe303
+kapisa,konj paryat,11,3350.4,far_likely_two_wells_or_office_gps,5453968d8144 6d3d5352a73e 3b4a601762f5 740b5d44d0fc a6fdc1a92838 b8252df52884 56bac3de19e2 ebc530ad0cfd 3d35c6c5e3c5 a11a6e92bbc0 a6d7964fe303
+kapisa,konj paryat,2,3030.7,far_likely_two_wells_or_office_gps,740b5d44d0fc 8983bb1927a7
+kapisa,landa khil,6,638.6,far_likely_two_wells_or_office_gps,3979db767b45 e25e94769f5f 0c6af1ce1596 92fa00998670 0b6e5ee90dba d25cab61511a
+kapisa,landa khil,7,1525.3,far_likely_two_wells_or_office_gps,d9c978cb5c41 3979db767b45 e25e94769f5f 6c773d73bc1a fd93837b4ae5 245785b2943b 19b536536612
+kapisa,landa khill,5,111.9,50-200m_review,0b6e5ee90dba f5d9a6da928a 518b34177138 2d3f55415afe 19b536536612
+kapisa,landa khill,2,59.7,50-200m_review,d9c978cb5c41 19b536536612
+kapisa,landakhil,3,118.8,50-200m_review,d25cab61511a 19b536536612 245785b2943b
+kapisa,landakhil,2,11.5,12-50m_review,245785b2943b 19b536536612
+kapisa,mahtan,4,250.9,far_likely_two_wells_or_office_gps,18a107155fd1 1c521f431978 dba99b2a3cd7 e350ef3f66de
+kapisa,mahtan,8,3176.4,far_likely_two_wells_or_office_gps,0a5629aa7081 e123e68f9573 18a107155fd1 2f6b8032d007 25c6502204f7 5ba5a62c8833 a145197f6282 849ac2cb5879
+kapisa,mahtan,5,2956.9,far_likely_two_wells_or_office_gps,18a107155fd1 a2264ef9f5fa d977a85524bc 849ac2cb5879 1b9c8197bb15
+kapisa,mahtan,3,1541.3,far_likely_two_wells_or_office_gps,18a107155fd1 1e76f39eac66 1b9c8197bb15
+kapisa,moman khil,13,1405.4,far_likely_two_wells_or_office_gps,9c2413b229e5 a38d59eecafd 6e8a6acd7fbb 00b3dddba5e7 a75b4a8a447e 39ae42988f03 cf53842ca492 742a304c3660 2c332a703533 fb55c3215131 22dfb2c14e47 6f5bad3ed2a5 d20937570c44
+kapisa,naser mula khil,10,5910.2,far_likely_two_wells_or_office_gps,8900804a608d c12d3b86c045 defb82c68d7d a470cc360fbf b27af618af32 25776c3db9d5 07b2ae8797f6 c961ae4bd598 0b8cc774ddd5 2541a370f93c
+kapisa,naser mula khil,2,773.8,far_likely_two_wells_or_office_gps,d57b14511241 05dc8fe774b6
+kapisa,naser mula khil,11,4874.6,far_likely_two_wells_or_office_gps,d57b14511241 05dc8fe774b6 e4e02e07578f 5667f889eee9 4b7a06fc86fe 122715b9c25b b27af618af32 6e8f2b47aac5 b6b73890014f d395b3fb73c3 df7fdc7e5e1d
+kapisa,naser mula khil,3,4165.4,far_likely_two_wells_or_office_gps,e4e02e07578f 065cfed0a8b5 57b425a623b1
+kapisa,nawabad,2,8.2,12-50m_review,8c3d8b09852d ad17a034fa5a
+kapisa,nezam khil,4,1261.1,far_likely_two_wells_or_office_gps,e1809de05c0d a8a61ccc85f1 2b56ba2fdc2d 0c0dcf70c4fd
+kapisa,sheenkai,2,8.9,12-50m_review,e1809de05c0d 6a59016ac548
+kapisa,sheenkai,3,32.6,12-50m_review,ef1a1d164351 96458a24ae19 8c27de2d7b17
+kapisa,shenkai,4,4041.3,far_likely_two_wells_or_office_gps,a8a61ccc85f1 d56787dd5284 8c27de2d7b17 723279a41d89
+kapisa,surghi,9,1909.4,far_likely_two_wells_or_office_gps,03245a2ee708 b5162a3d3067 21f1a04efba9 0c681eb2d50b e0b6e77bbe02 6d7282f3e908 29df72ab6308 00e39cc7e372 e6314ce12a53
+kapisa,surghi,3,1751.1,far_likely_two_wells_or_office_gps,03245a2ee708 f6eb194b2ef0 ee5dafff1796
+kapisa,surghi,10,2338.9,far_likely_two_wells_or_office_gps,60a59084fc86 3ca299ece2f3 21f1a04efba9 7c306cbd72ba 97b46cb46d29 2e8e2eba7a2c abbab4ce60de 8c2b8ec7c55a 30c6b395a9a1 bad302615f4b
+kapisa,tawachian,13,1394.7,far_likely_two_wells_or_office_gps,9379de0fea3a 5060bfca4df7 4493aa2d9fe1 0eca8e4a6528 fe61d78a17d1 c30c72df9068 2864aca33920 6ffc0959bc73 a76b1b879e25 8fc139179c97 78c0a7696f12 5e7f7f1a74de 1508c767cd66
+kapisa,tawachian,10,1485.8,far_likely_two_wells_or_office_gps,cd9bed6e6e34 3209e77323af 33a907ec56f4 1508c767cd66 0eca8e4a6528 fe61d78a17d1 bfe377573d04 5df870416a35 8fc139179c97 5e7f7f1a74de
+kapisa,tawachian,10,1328.4,far_likely_two_wells_or_office_gps,1c4d8b7cbba7 4493aa2d9fe1 8545d24390e0 340d13c0299a 7a43e4db31c8 dd2fc5c60234 5df870416a35 e706b665e87c 88e26470902e cb5ca6153045
+kapisa,ziawodin khil,3,52.3,50-200m_review,f16edf5655d7 c5e88f72ec71 c45b9c2ad437
+kapisa,ziawodin khil,2,6.1,12-50m_review,f16edf5655d7 c5e88f72ec71
+khost,university hill,5,229.4,far_likely_two_wells_or_office_gps,4e8dea38fb84 1b60cb15df43 cc7db73383ba 99cded050b3e b077fccf702a
+khost,university site,11,535.0,far_likely_two_wells_or_office_gps,ed66ecec1ffd 99cded050b3e b9a11e81e82e 5e91182fa02d 70625b9b0787 fdf32ddf1d3e 841b52c1711e 4e8dea38fb84 cc7db73383ba 46f3bb239d37 dd64d92f3c6b
+khost,werza,5,4722.4,far_likely_two_wells_or_office_gps,7dad60bab709 3bd98886ab85 d9bd5293ecc9 ee3aae5266c3 de3420be0ca7
+kunar,damgalik,2,15.8,12-50m_review,d35c147db812 66237048f7f8
+kunduz,kabali qushlaq,4,55036.7,far_likely_two_wells_or_office_gps,f76a47e9d087 de1ba704d431 ef7d6004db10 b6828ca41e6e
+kunduz,kabali qushlaq,2,54777.0,far_likely_two_wells_or_office_gps,f76a47e9d087 33199e191252
+kunduz,lala kai,2,76896.1,far_likely_two_wells_or_office_gps,f76a47e9d087 60d50c02b3d2
+kunduz,lala kai,2,77260.4,far_likely_two_wells_or_office_gps,f76a47e9d087 e57168631d66
+kunduz,lala kai,2,76861.7,far_likely_two_wells_or_office_gps,f76a47e9d087 ea9a26b0ab76
+kunduz,lala kai,2,76790.1,far_likely_two_wells_or_office_gps,f76a47e9d087 8f1aa8d2fec9
+kunduz,lala kai,2,76910.8,far_likely_two_wells_or_office_gps,ba17ee7be433 88658b0d9087
+kunduz,lala maidan 2,2,78727.6,far_likely_two_wells_or_office_gps,3664fe918a20 4192014ad357
+kunduz,lala maidan 2,6,78839.1,far_likely_two_wells_or_office_gps,ce3fe86f8089 aa7c30b82a3c ea907dc3075e d024598d93cc 00534eec6277 3e3d4a99ecda
+kunduz,lala maidan 3,4,76680.7,far_likely_two_wells_or_office_gps,f76a47e9d087 c7de6e5c7705 5f2048987d9d 6fdcb9b3af76
+kunduz,mola khel,2,51859.6,far_likely_two_wells_or_office_gps,f76a47e9d087 a0af8ed91da2
+kunduz,mola khel,3,51791.6,far_likely_two_wells_or_office_gps,f76a47e9d087 f8fdf1d2c927 9a55d84757db
+kunduz,mola khel,2,51823.4,far_likely_two_wells_or_office_gps,f76a47e9d087 273696e172d6
+kunduz,mola khel,2,51803.9,far_likely_two_wells_or_office_gps,f76a47e9d087 542ec84f3692
+kunduz,mola khel,2,52001.6,far_likely_two_wells_or_office_gps,f76a47e9d087 f0be65183da8
+kunduz,mola khel,2,51829.8,far_likely_two_wells_or_office_gps,ce3fe86f8089 c5d7e3de9a77
+kunduz,mola khel,5,51872.7,far_likely_two_wells_or_office_gps,ba17ee7be433 43f81a7716ca 412deaf27782 84d81b11181e 46f3957667a0
+kunduz,niazi,2,50274.3,far_likely_two_wells_or_office_gps,a1629806db65 1df6d37a048f
+kunduz,niazi,2,50281.7,far_likely_two_wells_or_office_gps,ce3fe86f8089 5048e50dbeaf
+kunduz,niazi,2,50522.1,far_likely_two_wells_or_office_gps,93f830d1759b fc7690b090b7
+kunduz,niazi,2,50160.1,far_likely_two_wells_or_office_gps,93f830d1759b d9d85db5a790
+kunduz,niazi,4,50372.0,far_likely_two_wells_or_office_gps,93f830d1759b db1487416460 b71ff93381c1 1f73b9b40b65
+kunduz,niazi,4,35.2,12-50m_review,4ab80b3a12fe 1df6d37a048f 335f1f410e02 5d3277aa0301
+kunduz,niazi,2,50076.8,far_likely_two_wells_or_office_gps,f76a47e9d087 496d6be2c61b
+kunduz,yaamchi,2,60600.2,far_likely_two_wells_or_office_gps,f76a47e9d087 4c9b8ed656e7
+kunduz,yaamchi,2,60525.6,far_likely_two_wells_or_office_gps,f76a47e9d087 c47bc0569df6
+kunduz,yaamchi,2,60718.0,far_likely_two_wells_or_office_gps,f76a47e9d087 82885c45a007
+kunduz,yaamchi,2,60656.8,far_likely_two_wells_or_office_gps,f76a47e9d087 81ae4258b20d
+kunduz,yaamchi,6,92.3,50-200m_review,aa20d238c28d 08e5b009a0a0 03722603b97c 0c2d6edf8fae 3ab82b54cb15 6514cd04fe6b
+kunduz,yaamchi,5,60682.7,far_likely_two_wells_or_office_gps,f76a47e9d087 4fa2d48dd0d8 78ccef236835 aa1e1fe576cd 2016942ae929
+kunduz,yaamchi,2,60605.6,far_likely_two_wells_or_office_gps,f76a47e9d087 23ed69e016dd
+laghman,karahu,2,16.0,12-50m_review,4d7a8ed261a8 bdba58880854
+laghman,maidani,2,5.2,12-50m_review,06a5b7429728 ca2d0ffdbdb8
+laghman,zerani,2,15.8,12-50m_review,fc0feb9406b3 48a705ecc73f
+logar,bala deh,21,482.4,far_likely_two_wells_or_office_gps,b4ffc30b260c 83b4f13a8379 91cfdbe5fae3 5e7484826c7c 10f40bd82411 330ce6a80a6c 5db6b994e695 40f6c9ab738e 20295b6c0fd2 868223576842 9673ff8238f2 42bba6321099 58aec97a6c07 a2ddf47eeb32 c1778d2446f8 da85a89f827a bfa24b97a541 32525f48f0b0 0d02e759e9a3 2c2da22e00e5 246216944239
+logar,bala deh,10,402.9,far_likely_two_wells_or_office_gps,40f6c9ab738e 5b24a8fd41e2 5a8275a572b1 23ff005f1873 330ce6a80a6c 57b3b1f47dfb 8ea642fe4b0d 00b8e0f6e87d 2c2da22e00e5 bfa24b97a541
+maidan wardak,dah hayat,2,10.4,12-50m_review,1bd114305274 83dc48a84df2
+maidan wardak,deh hayat,6,1741.9,far_likely_two_wells_or_office_gps,1bd114305274 257969c44e2d 83dc48a84df2 b580d392895c bced2bd909ce 6e80c464451d
+maidan wardak,deh hayat,2,8.5,12-50m_review,357a416e9831 b580d392895c
+maidan wardak,deh hayat,4,1721.1,far_likely_two_wells_or_office_gps,bced2bd909ce 257969c44e2d 07b996b32627 c13430774163
+maidan wardak,musa khil,2,36.7,12-50m_review,37c017784bb8 ae28ba186aea
+maidan wardak,musa khil,4,50.0,12-50m_review,c91b315c2c8c ea0e87b0eba8 cc73858e4391 835b7a959646
+maidan wardak,zamborak,3,30.4,12-50m_review,e2ac6521c15d 284b032a3821 05881f170095
+maidan wardak,zanborak,3,54.4,50-200m_review,9aeda31abc86 bfa1ec3fd74f e2ac6521c15d
+nangarhar,ador,3,39.9,12-50m_review,4ebffce7bf19 c9e247d31507 0caf9a8e8be2
+nangarhar,dago,3,27.7,12-50m_review,feaf40526f7d 1357f2491061 2c72a9796501
+nangarhar,dago,3,42.4,12-50m_review,feaf40526f7d 1357f2491061 451dcd550353
+nangarhar,loya tarmai,2,1290.1,far_likely_two_wells_or_office_gps,745d7972fb87 64fc7d92e557
+nangarhar,mandar khill,3,74.0,50-200m_review,541bcce60151 8f48c869022f 862f9575acab
+nangarhar,mandar khill,2,45.8,12-50m_review,541bcce60151 8f48c869022f
+nangarhar,mandarkhil,2,45.8,12-50m_review,541bcce60151 8f48c869022f
+nimroz,dangar abad,2,6.6,12-50m_review,3e3ef620849a ad79ba58e76e
+nimroz,gulistan,2,4.8,12-50m_review,2a9480e170fd e45e9d673b7a
+nimroz,kaj e satar,2,31.7,12-50m_review,c208f14e95df d8da85d32e3d
+nimroz,kaj e satar,2,10.5,12-50m_review,08696dfc8b4a 8e3e8cfb5743
+paktika,kachi,2,17.8,12-50m_review,8456ab7d3ff3 b4721bbe3d16
+paktika,kachi,7,1714.1,far_likely_two_wells_or_office_gps,8456ab7d3ff3 b4721bbe3d16 b90859a6f6f8 6eba32384762 28d822016782 13e29eaf8dfa d2de67ff6d67
+paktika,loy kariz,6,1396.6,far_likely_two_wells_or_office_gps,c9aab7e74f02 ca1a49fdd420 7b645c827299 77c077360e29 a1e71d20ab6b 84090fa0e08a
+paktika,loy kariz,2,27.9,12-50m_review,cf42c3f16f7d c9aab7e74f02
+paktya,bar halim khil,7,58.9,50-200m_review,7f08074f5174 12e4a67ebd37 ca868dde02df 9ef2c26c06ab 55cb93663e22 5177f7c451d4 c76438f89b84
+paktya,bar halim khil,2,6.4,12-50m_review,9cd4eec6c9b1 c7d4daa6a461
+paktya,halim khil,2,6.4,12-50m_review,c7d4daa6a461 9cd4eec6c9b1
+paktya,husin khil,6,4323.6,far_likely_two_wells_or_office_gps,af57d65e5505 0caa33e9f9a2 f170853576ad a9fb4e1ecbe0 201c7d56fbed 29809b697f95
+panjsher,abdaba,2,38.2,12-50m_review,ada3c4bf0477 33127ba67311
+panjsher,abdaba,2,48.0,12-50m_review,696553803b03 48d24c8d7d34
+panjsher,aspaniya,2,46.3,12-50m_review,059b470e29f3 5dc8038f4f2e
+panjsher,aspaniya,3,46.3,12-50m_review,5dc8038f4f2e b70757f06284 059b470e29f3
+panjsher,aspiyana,5,231.8,far_likely_two_wells_or_office_gps,059b470e29f3 88a91541abfa 52d22f2bee78 201f9f4972dc 5dc8038f4f2e
+panjsher,aspiyana,4,146.2,50-200m_review,5dc8038f4f2e 35f273f55b07 25dfe30783d9 059b470e29f3
+panjsher,aspiyana,3,787.2,far_likely_two_wells_or_office_gps,126518e51fe1 698581a2413a 35f273f55b07
+panjsher,asticha,4,24.2,12-50m_review,d7b22ee96d14 9805cd8c7bcc 0e5e2112bab8 cc4bd4f35f6e
+panjsher,asticha,2,16.7,12-50m_review,b8c5f522d261 6736c83ed4d7
+panjsher,asticha,2,15.9,12-50m_review,31008b37bbb4 b8c5f522d261
+panjsher,asticha,3,19.9,12-50m_review,574b92d0a886 a777d9603694 eba3d2776d42
+panjsher,asticha,2,7.5,12-50m_review,d7f359949d70 c5d97a3af4f6
+panjsher,asticha,2,7.5,12-50m_review,c5d97a3af4f6 d7f359949d70
+panjsher,asticha,2,40.4,12-50m_review,b8c5f522d261 e9a6ccdb7bd8
+panjsher,baharak,3,23.4,12-50m_review,a7b7ddd98a4d e40ed7a1bd1c 83977583c055
+panjsher,baharak,2,37.1,12-50m_review,dd4f6f092395 960d1420cd13
+panjsher,baharak,2,22.8,12-50m_review,b7b6ce687af5 336b3821f5de
+panjsher,baharak,2,50.6,50-200m_review,a7b162db991c 36554445e668
+panjsher,bahark,2,112.9,50-200m_review,a7b7ddd98a4d dd4f6f092395
+panjsher,chashma 3,2,15.7,12-50m_review,5816b3b0e49d 2f8ba643552e
+panjsher,chashma 3,5,175.5,50-200m_review,d50858ef1b5e 5816b3b0e49d 2f8ba643552e c1faa11d31e6 7c59d063f18f
+panjsher,chashma 3,4,358.2,far_likely_two_wells_or_office_gps,c0b58075a52b 8b57e15334d7 eb1c28502f1d 6a6c12311741
+panjsher,chashma 3,3,26.0,12-50m_review,9fb1c46b6926 0210d59e776c cc3534727426
+panjsher,chashma 3,2,175.5,50-200m_review,7c59d063f18f c1faa11d31e6
+panjsher,orati,2,4.8,12-50m_review,790380451d4e a6a8152f9b54
+panjsher,orati,2,4.8,12-50m_review,a6a8152f9b54 790380451d4e
+panjsher,orati,2,4.8,12-50m_review,790380451d4e a6a8152f9b54
+panjsher,oroo,3,243.2,far_likely_two_wells_or_office_gps,761effd7c5e6 ab38e2eddddf daf90b8f2c9c
+panjsher,oroo,2,10.9,12-50m_review,771546f53a99 35a44ea5b96c
+panjsher,oroo,2,1301.4,far_likely_two_wells_or_office_gps,06a6500f2834 8d46fbdef6f5
+panjsher,oroo,2,319.8,far_likely_two_wells_or_office_gps,8d46fbdef6f5 35a44ea5b96c
+panjsher,oroo,2,6.0,12-50m_review,e2dfd4a1aed6 daf90b8f2c9c
+panjsher,qala mirsha,4,30.7,12-50m_review,08c30feea31e 7266892865f7 4dc001f93d0c 2bef171776e1
+panjsher,qala mirsha,3,47.2,12-50m_review,1540597afdc7 c2c76df8774d f4573bcbfeca
+panjsher,qala mirsha,5,103.9,50-200m_review,da13685790ed b5460ceb6049 e21d0b33b4bb f3c597b98a2d a261881ec1f2
+panjsher,qalacha,6,127.0,50-200m_review,d5bb9f327f31 8e84736b9bbe c4de5e6c1f92 0831247efc30 3bb9938595e6 53f1413a35fb
+panjsher,qalacha,2,9.7,12-50m_review,84a29773bad3 e5e994ee8564
+panjsher,qalacha,4,76.4,50-200m_review,8e84736b9bbe 26a3947806f5 140be3b7302b 6da19961d0b6
+panjsher,qalacha,5,353.9,far_likely_two_wells_or_office_gps,85703f047f2a fc659dcd5933 26a3947806f5 65b8bc70f432 fb2c783e44f9
+panjsher,sangana,2,166.6,50-200m_review,3ae9e8f0148c 6b881b558cdf
+panjsher,sangana,2,30.8,12-50m_review,2ee99b88cfb6 bdab2b482c4c
+panjsher,sangana,3,44.4,12-50m_review,f83e7158ae7d 3ae9e8f0148c ce23a32f3739
+panjsher,sangana,2,30.8,12-50m_review,ab394eb86617 4cb86fcb8643
+parwan,aghil kabuly,3,27.5,12-50m_review,b96732bca698 7d3e08d8121b 47dca2af938f
+parwan,aghil kabuly,3,25.7,12-50m_review,d30d57dd7a3c 7cf325b0ee49 7d3e08d8121b
+parwan,aghil kabuly,3,72.9,50-200m_review,055bce83dc2a 65811f94855f fb78acc0b020
+parwan,aghil kabuly,3,16.2,12-50m_review,6cefb1ac5099 0ec4a26eb679 0a46a34aec3a
+parwan,aghil kabuly,3,17.9,12-50m_review,2ebf3b283372 b43ff723388f b03b4faf6959
+parwan,aghil kabuly,2,4.1,12-50m_review,b43ff723388f 2ebf3b283372
+parwan,dah naw,6,57.7,50-200m_review,e06b6a5c02d9 6641a99091fb 7b3a6031e870 e57bc2388995 ca608a4b555d 74fd46e5fa5a
+parwan,dah naw,7,82.0,50-200m_review,961d26d6cc77 894e1f93304c 08757ed15a40 9fab35861c79 139cfb5dffd8 1cb34d983c6c fbfe6895621f
+parwan,dah naw,8,65.9,50-200m_review,5f16fdc5132d f6ae041b18e3 63b659940b99 44a32c1eec2f 7271051c32ae a19f05a8d125 a6951b2fad07 fe6b36ba3049
+parwan,dah naw,4,32.2,12-50m_review,9c4200bb7469 22fe49b962b1 1cb34d983c6c fbfe6895621f
+parwan,daraz gerd,9,110.0,50-200m_review,3caba5e8b222 8c25aed02bd9 48416028ad8a b4b797b3aedb 8ad490b81f71 369a00f994b8 e4df63ead7ed 9ee8d86f6d6a b7a7d9b60401
+parwan,daraz gerd,5,121.8,50-200m_review,37e73d54ca54 a90e1427ea40 c97e85a595da 54ac54824c37 57300aca7233
+parwan,daraz gerd,6,67.1,50-200m_review,eacb3d71cced 068e5c0e3dd5 54ac54824c37 402894d51d53 b8ababfda922 579946706837
+parwan,daraz gerd,3,13.8,12-50m_review,37e73d54ca54 54ac54824c37 57300aca7233
+parwan,daraz gerd,6,90.2,50-200m_review,10163cd24ae0 e0a382b17d8c 8ad490b81f71 9829fec64433 3dfd69e1bb01 04bb03eed691
+parwan,fendaqistan bala ghail,5,150.0,50-200m_review,e37222f462b0 5fe9fa386fba c4f91e5f9c84 1e8eaa902802 6d03436ff6d4
+parwan,fendaqistan bala ghail,5,41.8,12-50m_review,b189ee47167a dff81cee27d7 5a24a16d842b 1ee6be760100 cd3f118480dd
+parwan,fendaqistan bala ghail,4,91.2,50-200m_review,456902ee2365 c4df3d5f07b6 96730b21d11d b1fb3fb6320d
+parwan,fendaqistan bala ghail,3,24.9,12-50m_review,c11f8dbb2a47 0ac12067d714 609d22633934
+parwan,khawaja sayaran,2,18.8,12-50m_review,5f3482f83d7d 0f1145cd481a
+parwan,khawaja sayaran,2,123.0,50-200m_review,564457fd04a8 bb4be9e00af3
+parwan,khawaja sayaran bala,8,205.4,far_likely_two_wells_or_office_gps,0f1145cd481a 564457fd04a8 99bb09b0f4a8 ca675b61fb01 2ac4334addc8 e85a86909e29 1f2b03ec6c40 23a2c229bf0c
+parwan,khawaja sayaran bala,6,121.8,50-200m_review,564457fd04a8 0f1145cd481a 337c1552616d f1d312570429 abe47c88482a 0d220c70d3c5
+parwan,khawaja sayaran bala,6,68.4,50-200m_review,3592e43348b2 d25b2bcfe1b1 e3ee3ab5ab19 0d220c70d3c5 2ac4334addc8 337c1552616d
+parwan,ofyan,6,45.7,12-50m_review,77189572934c f1a2548fec58 7affb7325f78 197b1fa0ded5 9b965cc7ed83 0c72cbe59e05
+parwan,ofyan,2,16.0,12-50m_review,0c72cbe59e05 2a04872e8747
+parwan,ofyan,5,46.4,12-50m_review,0c72cbe59e05 9b965cc7ed83 2a04872e8747 438e62410ab3 89a61932fb67
+parwan,ofyan,3,18.6,12-50m_review,6a825cb4cce8 2214298cd745 6e062a177317
+parwan,ofyan,6,178.4,50-200m_review,8ab42924f59a 9567f9126adf e52aed58f352 e23da7d38a0a 9f33cef10f20 1f13f8e61075
+parwan,shiwa,4,38.6,12-50m_review,7d79c95c6fcb 4121bdd8048b 4127adaaf52a be8525076f5b
+parwan,shiwa,5,92.9,50-200m_review,7d79c95c6fcb 7bc022729664 e97565d6933b 20cce0c40d80 35ad52027929
+parwan,sinjid dara,4,50.8,50-200m_review,932e60b7ab2b 72359929e39a 945efdcfc1e4 f2e7fc3c8a80
+parwan,surkhi,5,44.8,12-50m_review,d3585e95193e 53601717429e 72dba6875754 a0b6450670c2 8ecc1c10f184
+parwan,surkhi,4,46.1,12-50m_review,3afdf4390b85 2119f4db6cc6 dac217426f2a dd2270e5d80d
+parwan,surkhi,3,23.7,12-50m_review,9a4d21194fb2 cba9cce663f8 8ab1c0941022
+sar e pul,kariz,2,309.2,far_likely_two_wells_or_office_gps,c355ddc219bd f5d797ad88fd
+zabul,jajga,3,26.4,12-50m_review,ce70935475fc cd864e236b3c 487cc431d82d
+zabul,kakar,4,17.6,12-50m_review,5b8b610d4b01 4f0eb04dfa92 1a210716cab2 2a9e511f1cc1
+zabul,kawshak,3,9.3,12-50m_review,eae4a1358f13 81ec7ca56b5e cb235cb79de1
+zabul,loy kariz,4,50.9,50-200m_review,84ed2206a287 11e70bdd18a5 ec9158674e0b 8e78c3b7d281
+zabul,patkhil,3,21.4,12-50m_review,b53c2a86da51 8423e8a4d297 45451f899b4e

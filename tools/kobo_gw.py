@@ -1146,8 +1146,10 @@ def write_cleaning_md(
         "# KOBO cleaning review",
         "",
         f"Well identity is **distance first**: a complete-linkage GPS cluster "
-        f"(every pair ≤ **{CLUSTER_M:.0f} m**). Owner name is a **cross-check** only. "
-        "The same personal name appears in many provinces and is not used as the well key.",
+        f"(every pair ≤ **{CLUSTER_M:.0f} m**) → `well_id` / `site_id`. "
+        "Different owner/caretaker names inside that radius get different "
+        "`cluster_id`s (spelling drift stays one cluster). "
+        "The same personal name is not used as a nationwide well key.",
         "",
         "## Identity counts",
         "",

@@ -1,7 +1,8 @@
 # ArcGIS Pro: review chained groups, then hydrographs per well
 
-**Do not chart DBSCAN clusters.** Chart **`well_id`** from the 15 m complete-linkage
-list. DBSCAN at 15 m still glues neighbouring courtyards into one group.
+**Do not chart DBSCAN clusters.** Chart **`cluster_id`** (15 m GPS + owner/caretaker
+split) from `wells_clusters.csv` / `visits_clusters.csv`. GPS courtyard is
+`well_id` / `site_id`. DBSCAN at 15 m still glues neighbouring courtyards into one group.
 
 On this export that list is **1,081 wells**. DBSCAN’s 2,939 “clustered” visits
 are only “has a neighbour within 15 m.” **165** of the 359 DBSCAN groups mix
@@ -9,8 +10,10 @@ are only “has a neighbour within 15 m.” **165** of the 359 DBSCAN groups mix
 
 | File | Load as | Use |
 |---|---|---|
-| `examples/kobo_gw/wells_unique.csv` | XY to point (`lon`, `lat`) | One row per well. Walk this table. |
-| `examples/kobo_gw/visits.csv` | XY to point (`lon`, `lat`) | One row per visit. Time + DTW chart. |
+| `examples/kobo_gw/wells_clusters.csv` | XY to point (`lon`, `lat`) | One row per monitoring well (`cluster_id`). Walk this table. |
+| `examples/kobo_gw/visits_clusters.csv` | XY to point (`lon`, `lat`) | One row per visit. Time + DTW chart on `cluster_id`. |
+| `examples/kobo_gw/wells_unique.csv` | XY to point (`lon`, `lat`) | One row per GPS site (`well_id`). |
+| `examples/kobo_gw/visits.csv` | XY to point (`lon`, `lat`) | One row per visit (includes `cluster_id` and `well_id`). |
 | `examples/kobo_gw/dbscan_chains_review.csv` | XY to point (`lon`, `lat`) | Centroids of **wrong** DBSCAN groups. |
 | `examples/kobo_gw/dbscan_chain_visits.csv` | XY to point (`lon`, `lat`) | Visits inside those groups, already tagged with the **split** `well_id`. |
 
@@ -30,7 +33,8 @@ are only “has a neighbour within 15 m.” **165** of the 359 DBSCAN groups mix
 You do **not** have to digitise new well ids by hand.
 
 - **`dbscan_id`** = the ArcGIS DBSCAN / Near-Table chain (can be a street).
-- **`well_id`** = the courtyard (every GPS pair ≤ 15 m). This is the split.
+- **`well_id` / `site_id`** = the courtyard (every GPS pair ≤ 15 m).
+- **`cluster_id`** = that courtyard **split by owner/caretaker**. Chart this.
 - **`split_review = 1`** = this visit sits in a DBSCAN group that contains
   **several** `well_id`s. Review on the map; keep `well_id` for analysis.
 

@@ -119,6 +119,10 @@
     "mixed": 140,
     "missing": 3
   },
+  "n_cluster_ids": 1244,
+  "n_clusters_1": 706,
+  "n_clusters_2plus": 538,
+  "n_sites_split_by_owner": 135,
   "cluster_m": 15.0,
   "n_nearby_pairs": 161,
   "n_owner_splits": 272

@@ -1,11 +1,13 @@
 # KOBO cleaning review
 
-Well identity is **distance first**: a complete-linkage GPS cluster (every pair ≤ **15 m**). Owner name is a **cross-check** only. The same personal name appears in many provinces and is not used as the well key.
+Well identity is **distance first**: a complete-linkage GPS cluster (every pair ≤ **15 m**) → `well_id` / `site_id`. Different owner/caretaker names inside that radius get different `cluster_id`s (spelling drift stays one cluster). The same personal name is not used as a nationwide well key.
 
 ## Identity counts
 
 - Visits: **3354**
-- Wells (15 m GPS clusters): **1081**
+- GPS sites (`well_id`, 15 m complete linkage): **1081**
+- Monitoring wells (`cluster_id` = GPS + owner/caretaker split): **1244**
+- GPS sites split because owners differ inside 15 m: **135**
 - Owner check agree / mixed / missing: 938 / 140 / 3
 - Wells with 2+ visits: **548**
 - Median GPS spread on multi-visit wells: **10.7 m** (complete linkage keeps this ≤ 15 m)
@@ -29,7 +31,7 @@ Use rule flags first, then look at the review lists.
 | Form clone (≥5 owners, same depth+before) | Copied static fields | Do not treat as independent wells |
 | DTW jump > 3 m in ≤21 days | Two wells merged, or bad tape | Split well or drop those visits |
 | Same owner, GPS > 200 m apart | Two wells, or office vs field GPS | Keep as two wells until checked |
-| Mixed owner names at one 15 m site | Shared well, or one GPS for many interviews | Keep as one site; review names |
+| Mixed owner names at one 15 m site | Two wells in one courtyard, or one GPS for many interviews | Split into `cluster_id`s; `well_id` stays the GPS site |
 | Same owner name, several 15 m sites in one village | Two wells, or office vs field GPS | Review; do not merge by name across provinces |
 
 Owner names for follow-up (not in git): `data/kobo/review_owners.csv`.

@@ -9,6 +9,7 @@ DTW change = typical water level before − latest measured depth. **Positive = 
 - Wells used for impact tables: **1016** (65 excluded by QA)
 - Measurement dates: 2024-12-30 to 2026-09-16
 - Repeat visits: 533 wells with 1 visit; 548 with 2+; 298 with 4+; 99 with ≥8 unique dates
+- Owner-split clusters (`cluster_id`): **1244** (538 with 2+ visits; 135 GPS sites split by different caretakers)
 
 ## Median recalled DTW change (m)
 
