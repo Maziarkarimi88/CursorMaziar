@@ -390,6 +390,44 @@ def attach_owner_clusters(df: pd.DataFrame, cluster_m: float = CLUSTER_M) -> pd.
     out["cluster_id"] = cluster_ids
     n_cid = out.groupby("site_id")["cluster_id"].transform("nunique")
     out["split_by_owner"] = (n_cid > 1).astype(int)
+    return number_cluster_ids(out)
+
+
+def number_cluster_ids(df: pd.DataFrame, id_col: str = "cluster_id") -> pd.DataFrame:
+    """Replace hashed cluster keys with 01, 02, … N (zero-padded).
+
+    Order is stable: province, then median lat, lon, then first date.
+    `n_monitorings` is the visit count in that cluster.
+    """
+    out = df.copy()
+    if id_col not in out.columns or out[id_col].isna().all():
+        return out
+    out["cluster_key"] = out[id_col].astype(str)
+    rows = []
+    for key, g in out.groupby("cluster_key", sort=False):
+        first_date = pd.NaT
+        if "meas_date" in g.columns:
+            first_date = pd.to_datetime(g["meas_date"], errors="coerce").min()
+        rows.append(
+            {
+                "cluster_key": key,
+                "province": str(g["province"].iloc[0]) if "province" in g.columns else "",
+                "lat": float(pd.to_numeric(g["lat"], errors="coerce").median()) if "lat" in g.columns else 0.0,
+                "lon": float(pd.to_numeric(g["lon"], errors="coerce").median()) if "lon" in g.columns else 0.0,
+                "first_date": first_date,
+            }
+        )
+    order = pd.DataFrame(rows)
+    order = order.sort_values(
+        ["province", "lat", "lon", "first_date", "cluster_key"],
+        kind="mergesort",
+        na_position="last",
+    )
+    n = len(order)
+    width = max(2, len(str(n)))
+    mapping = {k: f"{i:0{width}d}" for i, k in enumerate(order["cluster_key"].tolist(), start=1)}
+    out[id_col] = out["cluster_key"].map(mapping)
+    out["n_monitorings"] = out.groupby(id_col, sort=False)[id_col].transform("size").astype(int)
     return out
 
 

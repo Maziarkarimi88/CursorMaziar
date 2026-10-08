@@ -62,7 +62,9 @@ def test_run_writes_tables(tmp_path: Path | None = None):
     result = run(FIXTURE, tables, figs, plots=False)
     assert (tables / "wells_unique.csv").exists()
     assert (tables / "visits.csv").exists()
+    assert (tables / "kobo_monitoring_clusters.csv").exists()
     assert (tables / "visits_clusters.csv").exists()
+    assert (figs / "cluster_monitorings.png").exists()
     assert (tables / "wells_clusters.csv").exists()
     assert (tables / "owner_split_sites.csv").exists()
     assert (tables / "qa_flags.csv").exists()
@@ -78,6 +80,11 @@ def test_run_writes_tables(tmp_path: Path | None = None):
     visits = (tables / "visits.csv").read_text(encoding="utf-8")
     assert "split_review" in visits and "dbscan_id" in visits
     assert "cluster_id" in visits
+    final = pd.read_csv(tables / "kobo_monitoring_clusters.csv", dtype={"cluster_id": str})
+    assert len(final) == 6
+    assert "n_monitorings" in final.columns
+    assert final["cluster_id"].min() == "01"
+    assert set(final["cluster_id"].str.len()) == {2}
     clusters = pd.read_csv(tables / "wells_clusters.csv")
     assert "cluster_id" in clusters.columns and "site_id" in clusters.columns
     assert len(clusters) == 4
@@ -90,6 +97,7 @@ def test_run_writes_tables(tmp_path: Path | None = None):
         + (tables / "wells_clusters.csv").read_text(encoding="utf-8")
         + (tables / "owner_split_sites.csv").read_text(encoding="utf-8")
         + (tables / "same_owner_splits.csv").read_text(encoding="utf-8")
+        + (tables / "kobo_monitoring_clusters.csv").read_text(encoding="utf-8")
     )
     assert "Good Owner" not in text
     assert "0701111111" not in text

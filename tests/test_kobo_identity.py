@@ -177,6 +177,8 @@ def test_same_owner_within_15m_is_one_cluster():
     b = _visits(lat=35.0 + 14 / 111_320)
     df = attach_owner_clusters(pd.concat([a, b], ignore_index=True))
     assert df["cluster_id"].nunique() == 1
+    assert set(df["cluster_id"]) == {"01"}
+    assert set(df["n_monitorings"]) == {2}
     assert df["well_id"].nunique() == 1
     assert int(df["split_by_owner"].max()) == 0
 
@@ -187,7 +189,17 @@ def test_different_owners_within_15m_get_two_cluster_ids():
     df = attach_owner_clusters(pd.concat([a, b], ignore_index=True))
     assert df["well_id"].nunique() == 1
     assert df["cluster_id"].nunique() == 2
+    assert set(df["cluster_id"]) == {"01", "02"}
     assert set(df["split_by_owner"]) == {1}
+
+
+def test_cluster_ids_run_from_01_with_width_of_count():
+    rows = [_visits(owner=f"Owner {i}", lat=35.0 + i * 40 / 111_320) for i in range(12)]
+    df = attach_owner_clusters(pd.concat(rows, ignore_index=True))
+    ids = sorted(df["cluster_id"].unique())
+    assert ids[0] == "01"
+    assert ids[-1] == "12"
+    assert all(len(i) == 2 for i in ids)
 
 
 def test_same_owner_40m_is_two_clusters():
@@ -255,6 +267,8 @@ if __name__ == "__main__":
     print("ok test_same_owner_within_15m_is_one_cluster")
     test_different_owners_within_15m_get_two_cluster_ids()
     print("ok test_different_owners_within_15m_get_two_cluster_ids")
+    test_cluster_ids_run_from_01_with_width_of_count()
+    print("ok test_cluster_ids_run_from_01_with_width_of_count")
     test_same_owner_40m_is_two_clusters()
     print("ok test_same_owner_40m_is_two_clusters")
     test_same_name_in_two_provinces_stays_two_clusters()

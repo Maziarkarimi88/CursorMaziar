@@ -591,6 +591,7 @@ def write_tables(visits: pd.DataFrame, wells: pd.DataFrame, qa: pd.DataFrame, ou
     _safe_mkdir(out_dir)
     visit_cols = [
         "cluster_id",
+        "n_monitorings",
         "site_id",
         "well_id",
         "submission_id",
@@ -622,10 +623,13 @@ def write_tables(visits: pd.DataFrame, wells: pd.DataFrame, qa: pd.DataFrame, ou
     visit_cols = [c for c in visit_cols if c in visits.columns]
     well_path = out_dir / "wells_unique.csv"
     visit_path = out_dir / "visits.csv"
+    final_path = out_dir / "kobo_monitoring_clusters.csv"
     qa_path = out_dir / "qa_flags.csv"
     perc_path = out_dir / "perception_vs_measured.csv"
     perc2_path = out_dir / "perception_vs_reported_change.csv"
     visits.loc[:, visit_cols].sort_values(["province", "well_id", "meas_date"]).to_csv(visit_path, index=False)
+    final_sort = [c for c in ("cluster_id", "meas_date") if c in visits.columns]
+    visits.loc[:, visit_cols].sort_values(final_sort).to_csv(final_path, index=False)
     wells.sort_values(["province", "village", "well_id"]).to_csv(well_path, index=False)
     qa.sort_values(["flag", "province", "well_id"]).to_csv(qa_path, index=False)
     perception_crosstab(wells).to_csv(perc_path, index=False)
@@ -686,6 +690,7 @@ def write_tables(visits: pd.DataFrame, wells: pd.DataFrame, qa: pd.DataFrame, ou
     return {
         "wells_unique": well_path,
         "visits": visit_path,
+        "kobo_monitoring_clusters": final_path,
         "visits_clusters": cluster_visits_path,
         "wells_clusters": cluster_wells_path,
         "owner_split_sites": owner_splits_path,
@@ -852,6 +857,59 @@ def _style() -> None:
             "figure.dpi": 120,
         }
     )
+
+
+def plot_cluster_monitorings(visits: pd.DataFrame, path: Path) -> Path:
+    """Bar + histogram: how many monitorings sit in each sequential cluster_id."""
+    import matplotlib.pyplot as plt
+
+    path.parent.mkdir(parents=True, exist_ok=True)
+    sizes = (
+        visits.groupby("cluster_id", sort=True)
+        .size()
+        .rename("n_monitorings")
+        .reset_index()
+    )
+    sizes["_ord"] = sizes["cluster_id"].astype(str).map(lambda s: int(s) if str(s).isdigit() else s)
+    sizes = sizes.sort_values("_ord", kind="mergesort")
+    n_cl = len(sizes)
+    vc = sizes["n_monitorings"].value_counts().sort_index()
+
+    _style()
+    fig, axes = plt.subplots(
+        2,
+        1,
+        figsize=(14, 8.5),
+        gridspec_kw={"height_ratios": [1.0, 1.35]},
+    )
+    axes[0].bar(vc.index.astype(int), vc.values, color="#2c7fb8", width=0.85, zorder=3)
+    axes[0].set_xlabel("Monitorings in a cluster")
+    axes[0].set_ylabel("Number of clusters")
+    axes[0].set_title(
+        f"Cluster size: {n_cl} wells (15 m GPS, then owner split). "
+        f"{int((sizes['n_monitorings'] >= 2).sum())} have 2+ monitorings."
+    )
+    axes[0].set_xticks(list(vc.index.astype(int)))
+    if len(vc) > 20:
+        axes[0].set_xticks(list(vc.index.astype(int)[:: max(1, len(vc) // 16)]))
+
+    x = np.arange(n_cl)
+    colors = np.where(sizes["n_monitorings"].to_numpy() >= 2, "#31a354", "#bdbdbd")
+    axes[1].bar(x, sizes["n_monitorings"].to_numpy(), color=colors, width=1.0, linewidth=0, zorder=3)
+    axes[1].set_xlabel("Cluster ID (01 … N)")
+    axes[1].set_ylabel("Monitorings")
+    axes[1].set_title("Monitorings available in each cluster (green = 2 or more visits)")
+    step = max(1, n_cl // 24)
+    ticks = list(range(0, n_cl, step))
+    if ticks[-1] != n_cl - 1:
+        ticks.append(n_cl - 1)
+    axes[1].set_xticks(ticks)
+    axes[1].set_xticklabels([str(sizes.iloc[i]["cluster_id"]) for i in ticks], rotation=90, fontsize=8)
+    axes[1].set_xlim(-0.5, n_cl - 0.5)
+    fig.tight_layout()
+    fig.savefig(path, dpi=150, bbox_inches="tight")
+    plt.close(fig)
+    return path
 
 
 def plot_map(wells: pd.DataFrame, path: Path) -> None:
@@ -1461,6 +1519,16 @@ def run(
 ) -> dict:
     visits, wells, qa, n_empty = process(csv_path)
     paths = write_tables(visits, wells, qa, table_dir)
+    _safe_mkdir(fig_dir)
+    mon_fig = fig_dir / "cluster_monitorings.png"
+    plot_cluster_monitorings(visits, mon_fig)
+    paths["cluster_monitorings"] = mon_fig
+    table_fig = table_dir / "cluster_monitorings.png"
+    if mon_fig.resolve() != table_fig.resolve():
+        import shutil
+
+        shutil.copy2(mon_fig, table_fig)
+        paths["cluster_monitorings_table"] = table_fig
     nearby = pd.read_csv(paths["nearby_other_wells"]) if Path(paths["nearby_other_wells"]).exists() else pd.DataFrame()
     splits = pd.read_csv(paths["same_owner_splits"]) if Path(paths["same_owner_splits"]).exists() else pd.DataFrame()
     summary = summarize(visits, wells, qa, n_empty)
