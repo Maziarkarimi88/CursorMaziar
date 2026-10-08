@@ -17,6 +17,7 @@ from __future__ import annotations
 import hashlib
 import re
 from collections import Counter
+from difflib import SequenceMatcher
 
 import numpy as np
 import pandas as pd
@@ -26,6 +27,11 @@ SOFT_MERGE_M = 50.0
 FAR_GPS_M = 200.0
 R_EARTH_M = 6_371_000.0
 MISSING_OWNER_REP = "__missing__"
+NAME_SIMILARITY_MIN = 0.90
+_TITLE_PREFIX = re.compile(
+    r"^(?:haji|hagi|hajji|higi|hahi|alhaj|al haji|mullah|mulla|molvi|mawlawi|"
+    r"malik|engineer|eng|damollah|molah)\s+"
+)
 
 
 def norm_text(value) -> str:
@@ -64,21 +70,59 @@ def levenshtein(a: str, b: str) -> int:
     return prev[-1]
 
 
-def names_match(a: str, b: str) -> bool:
-    """Same caretaker, allowing spelling drift — not two different people."""
+def _strip_titles(text: str) -> str:
+    out = text
+    for _ in range(3):
+        nxt = _TITLE_PREFIX.sub("", out)
+        if nxt == out:
+            break
+        out = nxt
+    return out.strip()
+
+
+def _consonant_key(text: str) -> str:
+    """Vowels dropped, tokens sorted — 'mosque well' and 'well musqe' collapse."""
+    tokens = []
+    for tok in text.split():
+        core = re.sub(r"[aeiou]", "", tok)
+        if core:
+            tokens.append(core)
+    return " ".join(sorted(tokens))
+
+
+def name_similarity(a: str, b: str) -> float:
+    """0–1 similarity after trim, case fold, extra-space collapse, and title strip."""
     a, b = norm_text(a), norm_text(b)
     if not a or not b:
-        return False
-    if a == b or a.replace(" ", "") == b.replace(" ", ""):
-        return True
-    if min(len(a), len(b)) >= 6 and (a in b or b in a):
-        return True
-    if min(len(a), len(b)) >= 6 and levenshtein(a, b) <= 2:
-        return True
-    ta, tb = set(a.split()), set(b.split())
-    if len(ta) >= 2 and len(tb) >= 2 and ta == tb:
-        return True
-    return False
+        return 0.0
+    compact_a, compact_b = a.replace(" ", ""), b.replace(" ", "")
+    if a == b or compact_a == compact_b:
+        return 1.0
+    sort_a = " ".join(sorted(a.split()))
+    sort_b = " ".join(sorted(b.split()))
+    ta, tb = _strip_titles(a), _strip_titles(b)
+    ca, cb = _consonant_key(ta), _consonant_key(tb)
+    scores = [
+        SequenceMatcher(None, a, b).ratio(),
+        SequenceMatcher(None, compact_a, compact_b).ratio(),
+        SequenceMatcher(None, sort_a, sort_b).ratio(),
+        SequenceMatcher(None, ta, tb).ratio(),
+        SequenceMatcher(None, ta.replace(" ", ""), tb.replace(" ", "")).ratio(),
+    ]
+    if ca and cb and min(len(ca), len(cb)) >= 4:
+        scores.append(SequenceMatcher(None, ca, cb).ratio())
+    shorter, longer = (a, b) if len(a) <= len(b) else (b, a)
+    if len(shorter) >= 8 and shorter in longer:
+        scores.append(1.0)
+    ts, tl = (ta, tb) if len(ta) <= len(tb) else (tb, ta)
+    if len(ts) >= 8 and ts and ts in tl:
+        scores.append(1.0)
+    return float(max(scores))
+
+
+def names_match(a: str, b: str) -> bool:
+    """Same caretaker if cleaned names are ≥ 90% similar — not exact spelling."""
+    return name_similarity(a, b) >= NAME_SIMILARITY_MIN
 
 
 def haversine_m(lat1, lon1, lat2, lon2) -> float:
@@ -356,11 +400,11 @@ def owner_reps_for_names(names: list[str]) -> list[str]:
 
 
 def attach_owner_clusters(df: pd.DataFrame, cluster_m: float = CLUSTER_M) -> pd.DataFrame:
-    """cluster_id = 15 m complete linkage within one owner/caretaker.
+    """cluster_id: 15 m GPS first, then owner names ≥ 90% similar.
 
-    `well_id` / `site_id` stay the GPS-only courtyard. Different owners inside
-    that radius get different `cluster_id`s. Missing names cluster together
-    by GPS only. Spelling drift (`names_match`) stays one cluster.
+    `well_id` / `site_id` is the GPS courtyard. Inside that courtyard, names
+    that match at NAME_SIMILARITY_MIN share one cluster_id. Different names
+    split. Missing names cluster together by GPS only.
     """
     if "well_id" not in df.columns:
         out = attach_identity(df, cluster_m=cluster_m)
@@ -374,19 +418,14 @@ def attach_owner_clusters(df: pd.DataFrame, cluster_m: float = CLUSTER_M) -> pd.
         out["owner"] = ""
     out["site_id"] = out["well_id"]
     owner_rep = pd.Series(index=out.index, dtype=object)
-    for _prov, g in out.groupby("province_n", dropna=False):
+    for _site, g in out.groupby("site_id", dropna=False):
         reps = owner_reps_for_names(g["owner"].tolist())
         for loc, rep in zip(g.index, reps):
             owner_rep.at[loc] = rep
     out["owner_rep"] = owner_rep
     cluster_ids = pd.Series(index=out.index, dtype=object)
-    cluster_labels = pd.Series(index=out.index, dtype=int)
-    for (prov, orep), g in out.groupby(["province_n", "owner_rep"], dropna=False):
-        labs = cluster_coords(g["lat"].to_numpy(), g["lon"].to_numpy(), cluster_m)
-        for loc, lab in zip(g.index, labs):
-            cluster_labels.at[loc] = int(lab)
-            cluster_ids.at[loc] = _hash_id(str(prov), str(orep), str(int(lab)))
-    out["owner_cluster_label"] = cluster_labels.astype(int)
+    for loc, site, orep in zip(out.index, out["site_id"].tolist(), out["owner_rep"].tolist()):
+        cluster_ids.at[loc] = _hash_id(str(site), str(orep))
     out["cluster_id"] = cluster_ids
     n_cid = out.groupby("site_id")["cluster_id"].transform("nunique")
     out["split_by_owner"] = (n_cid > 1).astype(int)

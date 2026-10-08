@@ -15,6 +15,8 @@ from kobo_identity import (  # noqa: E402
     attach_identity,
     attach_identity_from_near,
     attach_owner_clusters,
+    name_similarity,
+    names_match,
     cluster_coords,
     cluster_from_near_pairs,
     haversine_m,
@@ -124,9 +126,16 @@ def test_complete_linkage_does_not_chain_a_street():
 def test_names_and_phone():
     assert names_match("Malik Mohammad Rasikh", "malik mohammad rasikh")
     assert names_match("Abdul Ghafoor Rahmani", "Abdul Ghafoor Rahamni")
+    assert names_match("  Good   Owner  ", "Good Owner")
+    assert names_match("Mosque well", "well musq")
+    assert names_match("Haji Abdul Motalib", "Abdul Motalib")
+    assert names_match("sardar mohammad", "sardamohammad")
     assert not names_match("Saadullah", "Mostafa")
     assert not names_match("Fahim", "Zahir")
     assert not names_match("Kabir", "Zahir")
+    assert not names_match("Good Owner", "Other Owner")
+    assert name_similarity("Abdul Ghafoor Rahmani", "Abdul Ghafoor Rahamni") >= 0.90
+    assert name_similarity("Fahim", "Zahir") < 0.90
     assert phone_key("0701111111") == phone_key(701111111.0)
 
 
@@ -227,6 +236,14 @@ def test_spelling_drift_within_15m_is_one_cluster():
     assert int(df["split_by_owner"].max()) == 0
 
 
+def test_extra_spaces_and_90pct_name_within_15m_is_one_cluster():
+    a = _visits(owner="  Mosque   well ")
+    b = _visits(owner="Musqe Well", lat=35.0 + 10 / 111_320)
+    df = attach_owner_clusters(pd.concat([a, b], ignore_index=True))
+    assert df["cluster_id"].nunique() == 1
+    assert df["well_id"].nunique() == 1
+
+
 def test_missing_owner_does_not_merge_with_named_owner():
     a = _visits(owner="Good Owner")
     b = _visits(owner="", lat=35.0 + 8 / 111_320)
@@ -277,6 +294,8 @@ if __name__ == "__main__":
     print("ok test_same_name_in_two_provinces_stays_two_clusters")
     test_spelling_drift_within_15m_is_one_cluster()
     print("ok test_spelling_drift_within_15m_is_one_cluster")
+    test_extra_spaces_and_90pct_name_within_15m_is_one_cluster()
+    print("ok test_extra_spaces_and_90pct_name_within_15m_is_one_cluster")
     test_missing_owner_does_not_merge_with_named_owner()
     print("ok test_missing_owner_does_not_merge_with_named_owner")
     test_village_trailing_space_does_not_collide_far_gps()
