@@ -423,9 +423,7 @@ def number_cluster_ids(df: pd.DataFrame, id_col: str = "cluster_id") -> pd.DataF
         kind="mergesort",
         na_position="last",
     )
-    n = len(order)
-    width = max(2, len(str(n)))
-    mapping = {k: f"{i:0{width}d}" for i, k in enumerate(order["cluster_key"].tolist(), start=1)}
+    mapping = {k: f"{i:02d}" for i, k in enumerate(order["cluster_key"].tolist(), start=1)}
     out[id_col] = out["cluster_key"].map(mapping)
     out["n_monitorings"] = out.groupby(id_col, sort=False)[id_col].transform("size").astype(int)
     return out

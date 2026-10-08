@@ -587,7 +587,45 @@ def _safe_mkdir(path: Path) -> Path:
     return path
 
 
-def write_tables(visits: pd.DataFrame, wells: pd.DataFrame, qa: pd.DataFrame, out_dir: Path) -> dict[str, Path]:
+FINAL_PII_COLS = {
+    "9. Phone number",
+    "8. Owner/caretaker name",
+    "6. Enumerator name",
+}
+
+
+def write_kobo_final_csv(visits: pd.DataFrame, source_csv: Path, out_path: Path) -> Path:
+    """One file: every GPS visit from the KOBO export plus sequential cluster_id.
+
+    Original KOBO columns are kept (no owner, phone, or enumerator). Join those
+    later on `_id`. `gps_group` is the 15 m courtyard before the owner split.
+    """
+    raw = read_kobo_csv(source_csv)
+    keys = visits.loc[:, ["submission_id", "cluster_id", "n_monitorings", "site_id", "split_by_owner"]].copy()
+    keys["submission_id"] = keys["submission_id"].astype(str)
+    raw = raw.copy()
+    raw["_id"] = raw["_id"].astype(str)
+    keep_raw = [c for c in raw.columns if c not in FINAL_PII_COLS]
+    merged = keys.merge(raw.loc[:, keep_raw], left_on="submission_id", right_on="_id", how="inner")
+    merged = merged.rename(columns={"site_id": "gps_group"})
+    if "submission_id" in merged.columns:
+        merged = merged.drop(columns=["submission_id"])
+    front = ["cluster_id", "n_monitorings", "gps_group", "split_by_owner"]
+    rest = [c for c in merged.columns if c not in front]
+    merged = merged.loc[:, front + rest]
+    date_col = "23. Date of water level measurement"
+    sort_cols = [c for c in ("cluster_id", date_col) if c in merged.columns]
+    merged.sort_values(sort_cols).to_csv(out_path, index=False)
+    return out_path
+
+
+def write_tables(
+    visits: pd.DataFrame,
+    wells: pd.DataFrame,
+    qa: pd.DataFrame,
+    out_dir: Path,
+    source_csv: Path | None = None,
+) -> dict[str, Path]:
     _safe_mkdir(out_dir)
     visit_cols = [
         "cluster_id",
@@ -628,8 +666,11 @@ def write_tables(visits: pd.DataFrame, wells: pd.DataFrame, qa: pd.DataFrame, ou
     perc_path = out_dir / "perception_vs_measured.csv"
     perc2_path = out_dir / "perception_vs_reported_change.csv"
     visits.loc[:, visit_cols].sort_values(["province", "well_id", "meas_date"]).to_csv(visit_path, index=False)
-    final_sort = [c for c in ("cluster_id", "meas_date") if c in visits.columns]
-    visits.loc[:, visit_cols].sort_values(final_sort).to_csv(final_path, index=False)
+    if source_csv is not None and source_csv.exists() and "cluster_id" in visits.columns:
+        write_kobo_final_csv(visits, source_csv, final_path)
+    else:
+        final_sort = [c for c in ("cluster_id", "meas_date") if c in visits.columns]
+        visits.loc[:, visit_cols].sort_values(final_sort).to_csv(final_path, index=False)
     wells.sort_values(["province", "village", "well_id"]).to_csv(well_path, index=False)
     qa.sort_values(["flag", "province", "well_id"]).to_csv(qa_path, index=False)
     perception_crosstab(wells).to_csv(perc_path, index=False)
@@ -1518,7 +1559,7 @@ def run(
     scan_radii_flag: bool = False,
 ) -> dict:
     visits, wells, qa, n_empty = process(csv_path)
-    paths = write_tables(visits, wells, qa, table_dir)
+    paths = write_tables(visits, wells, qa, table_dir, source_csv=csv_path)
     _safe_mkdir(fig_dir)
     mon_fig = fig_dir / "cluster_monitorings.png"
     plot_cluster_monitorings(visits, mon_fig)

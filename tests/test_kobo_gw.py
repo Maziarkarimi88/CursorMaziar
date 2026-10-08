@@ -83,6 +83,11 @@ def test_run_writes_tables(tmp_path: Path | None = None):
     final = pd.read_csv(tables / "kobo_monitoring_clusters.csv", dtype={"cluster_id": str})
     assert len(final) == 6
     assert "n_monitorings" in final.columns
+    assert "gps_group" in final.columns
+    assert "1. Province" in final.columns
+    assert "Y" in final.columns and "X" in final.columns
+    assert "8. Owner/caretaker name" not in final.columns
+    assert "9. Phone number" not in final.columns
     assert final["cluster_id"].min() == "01"
     assert set(final["cluster_id"].str.len()) == {2}
     clusters = pd.read_csv(tables / "wells_clusters.csv")
