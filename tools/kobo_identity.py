@@ -1,18 +1,23 @@
-"""Well identity: cluster by distance first, then cross-check owner names.
+"""Well identity: 15 m GPS first, then split on owner/caretaker.
 
-Same personal names appear in many provinces. Do not key wells on owner.
-A visit belongs to a well when it sits within CLUSTER_M of every other
-point in that well (complete linkage — no street-long chains).
+Same personal names appear in many provinces. Do not key wells on owner
+nationwide. A visit belongs to a GPS **site** (`well_id` / `site_id`) when
+it sits within CLUSTER_M of every other point (complete linkage — no
+street-long chains).
 
-Owner name is only a check after the GPS cluster exists:
+`cluster_id` is the monitoring well: 15 m complete linkage **inside** one
+owner/caretaker (spelling drift allowed). Two names within 15 m become two
+cluster_ids. Owner check on the GPS site stays:
   agree  = one caretaker (allowing spelling drift)
-  mixed  = several distinct names at the same spot (review)
+  mixed  = several distinct names at the same spot (split into cluster_ids)
   missing = no name
 """
 from __future__ import annotations
 
 import hashlib
 import re
+from collections import Counter
+
 import numpy as np
 import pandas as pd
 
@@ -20,6 +25,7 @@ CLUSTER_M = 15.0
 SOFT_MERGE_M = 50.0
 FAR_GPS_M = 200.0
 R_EARTH_M = 6_371_000.0
+MISSING_OWNER_REP = "__missing__"
 
 
 def norm_text(value) -> str:
@@ -307,6 +313,134 @@ def owner_check_status(names) -> str:
     if not reps:
         return "missing"
     return "agree" if len(reps) == 1 else "mixed"
+
+
+def owner_reps_for_names(names: list[str]) -> list[str]:
+    """Stable caretaker key: spelling-drift names share one rep; blanks are missing."""
+    norms = [norm_text(n) for n in names]
+    unique: list[str] = []
+    seen: set[str] = set()
+    for n in norms:
+        if n and n not in seen:
+            unique.append(n)
+            seen.add(n)
+    if not unique:
+        return [MISSING_OWNER_REP] * len(names)
+    parent = {u: u for u in unique}
+
+    def find(x: str) -> str:
+        while parent[x] != x:
+            parent[x] = parent[parent[x]]
+            x = parent[x]
+        return x
+
+    def union(a: str, b: str) -> None:
+        ra, rb = find(a), find(b)
+        if ra != rb:
+            parent[rb] = ra
+
+    for i, a in enumerate(unique):
+        for b in unique[i + 1 :]:
+            if names_match(a, b):
+                union(a, b)
+    counts = Counter(n for n in norms if n)
+    groups: dict[str, list[str]] = {}
+    for u in unique:
+        groups.setdefault(find(u), []).append(u)
+    canon: dict[str, str] = {}
+    for members in groups.values():
+        rep = sorted(members, key=lambda m: (-counts[m], m))[0]
+        for m in members:
+            canon[m] = rep
+    return [canon[n] if n else MISSING_OWNER_REP for n in norms]
+
+
+def attach_owner_clusters(df: pd.DataFrame, cluster_m: float = CLUSTER_M) -> pd.DataFrame:
+    """cluster_id = 15 m complete linkage within one owner/caretaker.
+
+    `well_id` / `site_id` stay the GPS-only courtyard. Different owners inside
+    that radius get different `cluster_id`s. Missing names cluster together
+    by GPS only. Spelling drift (`names_match`) stays one cluster.
+    """
+    if "well_id" not in df.columns:
+        out = attach_identity(df, cluster_m=cluster_m)
+    else:
+        out = df.copy()
+        if "owner" in out.columns and "owner_n" not in out.columns:
+            out["owner_n"] = out["owner"].map(norm_text)
+        if "province_n" not in out.columns:
+            out["province_n"] = out["province"].map(norm_text) if "province" in out.columns else ""
+    if "owner" not in out.columns:
+        out["owner"] = ""
+    out["site_id"] = out["well_id"]
+    owner_rep = pd.Series(index=out.index, dtype=object)
+    for _prov, g in out.groupby("province_n", dropna=False):
+        reps = owner_reps_for_names(g["owner"].tolist())
+        for loc, rep in zip(g.index, reps):
+            owner_rep.at[loc] = rep
+    out["owner_rep"] = owner_rep
+    cluster_ids = pd.Series(index=out.index, dtype=object)
+    cluster_labels = pd.Series(index=out.index, dtype=int)
+    for (prov, orep), g in out.groupby(["province_n", "owner_rep"], dropna=False):
+        labs = cluster_coords(g["lat"].to_numpy(), g["lon"].to_numpy(), cluster_m)
+        for loc, lab in zip(g.index, labs):
+            cluster_labels.at[loc] = int(lab)
+            cluster_ids.at[loc] = _hash_id(str(prov), str(orep), str(int(lab)))
+    out["owner_cluster_label"] = cluster_labels.astype(int)
+    out["cluster_id"] = cluster_ids
+    n_cid = out.groupby("site_id")["cluster_id"].transform("nunique")
+    out["split_by_owner"] = (n_cid > 1).astype(int)
+    return out
+
+
+def owner_split_sites(visits: pd.DataFrame) -> pd.DataFrame:
+    """GPS sites that hold more than one owner-split cluster_id. No names."""
+    need = {"site_id", "cluster_id", "split_by_owner", "lat", "lon"}
+    if not need.issubset(visits.columns):
+        return pd.DataFrame(
+            columns=[
+                "site_id",
+                "n_clusters",
+                "n_visits",
+                "province",
+                "village",
+                "lat",
+                "lon",
+                "cluster_ids",
+            ]
+        )
+    rows = []
+    hit = visits.loc[visits["split_by_owner"] == 1]
+    for site, g in hit.groupby("site_id"):
+        cids = sorted(g["cluster_id"].astype(str).unique())
+        villages = sorted({str(v).strip() for v in g["village"].dropna().astype(str) if str(v).strip()}) if "village" in g.columns else []
+        provinces = sorted({str(v).strip() for v in g["province"].dropna().astype(str) if str(v).strip()}) if "province" in g.columns else []
+        rows.append(
+            {
+                "site_id": site,
+                "n_clusters": int(len(cids)),
+                "n_visits": int(len(g)),
+                "province": "; ".join(provinces)[:80],
+                "village": villages[0] if len(villages) == 1 else (f"several ({len(villages)})" if villages else ""),
+                "lat": round(float(g["lat"].median()), 6),
+                "lon": round(float(g["lon"].median()), 6),
+                "cluster_ids": " ".join(cids),
+            }
+        )
+    cols = [
+        "site_id",
+        "n_clusters",
+        "n_visits",
+        "province",
+        "village",
+        "lat",
+        "lon",
+        "cluster_ids",
+    ]
+    out = pd.DataFrame(rows, columns=cols)
+    if len(out):
+        out = out.sort_values(["n_clusters", "n_visits"], ascending=False)
+    return out
 
 
 def attach_identity(df: pd.DataFrame, cluster_m: float = CLUSTER_M) -> pd.DataFrame:

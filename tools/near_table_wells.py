@@ -30,6 +30,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from kobo_identity import (  # noqa: E402
     CLUSTER_M,
     attach_identity_from_near,
+    attach_owner_clusters,
     same_owner_splits,
 )
 
@@ -81,10 +82,12 @@ def main(argv: list[str] | None = None) -> int:
 
     oid_col = args.oid
     labeled = attach_identity_from_near(points, near, oid_col=oid_col, cluster_m=args.eps)
+    labeled = attach_owner_clusters(labeled, cluster_m=args.eps)
     out_dir = args.out_dir
     out_dir.mkdir(parents=True, exist_ok=True)
 
-    keep = [c for c in labeled.columns if c.lower() not in {"owner", "phone", "owner_n", "phone_k"}]
+    pii = {"owner", "phone", "owner_n", "phone_k", "owner_rep"}
+    keep = [c for c in labeled.columns if str(c).lower() not in pii]
     visits_path = out_dir / "visits_from_near.csv"
     labeled.loc[:, keep].to_csv(visits_path, index=False)
 
@@ -117,6 +120,12 @@ def main(argv: list[str] | None = None) -> int:
         "n_multi": int((wells["n_visits"] >= 2).sum()),
         "eps_m": args.eps,
         "n_owner_splits": int(len(splits)),
+        "n_cluster_ids": int(labeled["cluster_id"].nunique()) if "cluster_id" in labeled.columns else int(len(wells)),
+        "n_sites_split_by_owner": (
+            int(labeled.loc[labeled["split_by_owner"] == 1, "well_id"].nunique())
+            if "split_by_owner" in labeled.columns
+            else 0
+        ),
         "paths": {"visits": str(visits_path), "wells": str(wells_path), "splits": str(splits_path)},
     }
     print(json.dumps(summary, indent=2, default=str))

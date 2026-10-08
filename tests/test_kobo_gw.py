@@ -7,6 +7,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "tools"))
 
+import pandas as pd  # noqa: E402
+
 from kobo_gw import (  # noqa: E402
     parse_daily_use,
     process,
@@ -60,6 +62,9 @@ def test_run_writes_tables(tmp_path: Path | None = None):
     result = run(FIXTURE, tables, figs, plots=False)
     assert (tables / "wells_unique.csv").exists()
     assert (tables / "visits.csv").exists()
+    assert (tables / "visits_clusters.csv").exists()
+    assert (tables / "wells_clusters.csv").exists()
+    assert (tables / "owner_split_sites.csv").exists()
     assert (tables / "qa_flags.csv").exists()
     assert (tables / "CLUSTER_COMPARE.md").exists()
     assert (tables / "dbscan_chains_review.csv").exists()
@@ -72,10 +77,23 @@ def test_run_writes_tables(tmp_path: Path | None = None):
     assert "hydro_class" in wells
     visits = (tables / "visits.csv").read_text(encoding="utf-8")
     assert "split_review" in visits and "dbscan_id" in visits
+    assert "cluster_id" in visits
+    clusters = pd.read_csv(tables / "wells_clusters.csv")
+    assert "cluster_id" in clusters.columns and "site_id" in clusters.columns
+    assert len(clusters) == 4
     # owner/phone must not leak into committed-style outputs
-    text = wells + visits + (tables / "dbscan_chains_review.csv").read_text(encoding="utf-8")
+    text = (
+        wells
+        + visits
+        + (tables / "dbscan_chains_review.csv").read_text(encoding="utf-8")
+        + (tables / "visits_clusters.csv").read_text(encoding="utf-8")
+        + (tables / "wells_clusters.csv").read_text(encoding="utf-8")
+        + (tables / "owner_split_sites.csv").read_text(encoding="utf-8")
+        + (tables / "same_owner_splits.csv").read_text(encoding="utf-8")
+    )
     assert "Good Owner" not in text
     assert "0701111111" not in text
+    assert "owner_n" not in (tables / "same_owner_splits.csv").read_text(encoding="utf-8").splitlines()[0]
 
 
 def test_scan_radii_fixture_and_radius_choice(tmp_path: Path | None = None):

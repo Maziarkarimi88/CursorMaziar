@@ -1,8 +1,9 @@
 """Clean FAO KOBO well visits and build inventory, QA, and impact tables.
 
-Each KOBO row is one visit, not one well. Well identity is a 15 m GPS
-cluster (complete linkage). Owner name is a cross-check only — the same
-personal name appears in many provinces. Depth-to-water (DTW): larger = deeper.
+Each KOBO row is one visit, not one well. `well_id` / `site_id` is a 15 m
+GPS cluster (complete linkage). `cluster_id` is that GPS group split by
+owner/caretaker: different names within 15 m become different wells.
+Depth-to-water (DTW): larger = deeper.
 
   python3 tools/kobo_gw.py --csv data/kobo/groundwater_monitoring.csv
 """
@@ -25,6 +26,7 @@ from kobo_identity import (  # noqa: E402
     FAR_GPS_M,
     SOFT_MERGE_M,
     attach_identity,
+    attach_owner_clusters,
     gps_spread_m,
     haversine_m,
     named_review_table,
@@ -32,6 +34,7 @@ from kobo_identity import (  # noqa: E402
     nearby_other_wells,
     noise_vs_clustered,
     norm_text,
+    owner_split_sites,
     phone_key,
     same_owner_splits,
     single_linkage_labels,
@@ -221,6 +224,24 @@ def drop_empty_rows(df: pd.DataFrame) -> tuple[pd.DataFrame, int]:
 def attach_well_id(df: pd.DataFrame) -> pd.DataFrame:
     """15 m complete-linkage GPS cluster; owner name is a check, not the key."""
     return attach_identity(df, cluster_m=CLUSTER_M)
+
+
+def build_cluster_wells(visits: pd.DataFrame) -> pd.DataFrame:
+    """One row per owner-split cluster_id (the monitoring well)."""
+    if "cluster_id" not in visits.columns:
+        return pd.DataFrame()
+    tmp = visits.copy()
+    tmp["well_id"] = tmp["cluster_id"]
+    wells = build_wells(tmp)
+    wells = wells.rename(columns={"well_id": "cluster_id"})
+    site = visits.groupby("cluster_id")["well_id"].first()
+    wells["site_id"] = wells["cluster_id"].map(site)
+    if "split_by_owner" in visits.columns:
+        wells["split_by_owner"] = wells["cluster_id"].map(
+            visits.groupby("cluster_id")["split_by_owner"].max()
+        )
+    cols = ["cluster_id", "site_id"] + [c for c in wells.columns if c not in {"cluster_id", "site_id"}]
+    return wells.loc[:, [c for c in cols if c in wells.columns]]
 
 
 def parse_daily_use(value) -> tuple[float | None, float | None]:
@@ -569,6 +590,8 @@ def _safe_mkdir(path: Path) -> Path:
 def write_tables(visits: pd.DataFrame, wells: pd.DataFrame, qa: pd.DataFrame, out_dir: Path) -> dict[str, Path]:
     _safe_mkdir(out_dir)
     visit_cols = [
+        "cluster_id",
+        "site_id",
         "well_id",
         "submission_id",
         "province",
@@ -592,8 +615,11 @@ def write_tables(visits: pd.DataFrame, wells: pd.DataFrame, qa: pd.DataFrame, ou
         "gps_prec",
         "dbscan_id",
         "split_review",
+        "split_by_owner",
         "hydro_class",
+        "cluster_hydro_class",
     ]
+    visit_cols = [c for c in visit_cols if c in visits.columns]
     well_path = out_dir / "wells_unique.csv"
     visit_path = out_dir / "visits.csv"
     qa_path = out_dir / "qa_flags.csv"
@@ -625,7 +651,21 @@ def write_tables(visits: pd.DataFrame, wells: pd.DataFrame, qa: pd.DataFrame, ou
     nearby_path = out_dir / "nearby_other_wells.csv"
     splits_path = out_dir / "same_owner_splits.csv"
     nearby.to_csv(nearby_path, index=False)
-    splits.to_csv(splits_path, index=False)
+    splits_public = splits.drop(columns=["owner_n"], errors="ignore")
+    splits_public.to_csv(splits_path, index=False)
+    cluster_wells = build_cluster_wells(visits)
+    cluster_visit_cols = [c for c in visit_cols if c in visits.columns]
+    cluster_visits_path = out_dir / "visits_clusters.csv"
+    cluster_wells_path = out_dir / "wells_clusters.csv"
+    visits.loc[:, cluster_visit_cols].sort_values(
+        ["province", "cluster_id", "meas_date"] if "cluster_id" in visits.columns else ["province", "meas_date"]
+    ).to_csv(cluster_visits_path, index=False)
+    if len(cluster_wells):
+        cluster_wells.sort_values(["province", "village", "cluster_id"]).to_csv(cluster_wells_path, index=False)
+    else:
+        cluster_wells.to_csv(cluster_wells_path, index=False)
+    owner_splits_path = out_dir / "owner_split_sites.csv"
+    owner_split_sites(visits).to_csv(owner_splits_path, index=False)
     names = named_review_table(visits, nearby, splits)
     names_path = ROOT / "data" / "kobo" / "review_owners.csv"
     names_path.parent.mkdir(parents=True, exist_ok=True)
@@ -646,6 +686,9 @@ def write_tables(visits: pd.DataFrame, wells: pd.DataFrame, qa: pd.DataFrame, ou
     return {
         "wells_unique": well_path,
         "visits": visit_path,
+        "visits_clusters": cluster_visits_path,
+        "wells_clusters": cluster_wells_path,
+        "owner_split_sites": owner_splits_path,
         "qa_flags": qa_path,
         "perception_vs_measured": perc_path,
         "perception_vs_reported_change": perc2_path,
@@ -695,6 +738,14 @@ def summarize(visits: pd.DataFrame, wells: pd.DataFrame, qa: pd.DataFrame, n_emp
         .value_counts()
         .to_dict(),
         "owner_check": wells["owner_check"].value_counts().to_dict() if "owner_check" in wells.columns else {},
+        "n_cluster_ids": int(visits["cluster_id"].nunique()) if "cluster_id" in visits.columns else int(len(wells)),
+        "n_clusters_1": int((visits.groupby("cluster_id").size() == 1).sum()) if "cluster_id" in visits.columns else int((wells["n_visits"] == 1).sum()),
+        "n_clusters_2plus": int((visits.groupby("cluster_id").size() >= 2).sum()) if "cluster_id" in visits.columns else int((wells["n_visits"] >= 2).sum()),
+        "n_sites_split_by_owner": (
+            int(visits.loc[visits["split_by_owner"] == 1, "well_id"].nunique())
+            if "split_by_owner" in visits.columns
+            else 0
+        ),
     }
 
 
@@ -733,6 +784,9 @@ def write_summary_md(summary: dict, wells: pd.DataFrame, out_path: Path) -> None
         f"- Repeat visits: {summary['visits_1']} wells with 1 visit; "
         f"{summary['visits_2plus']} with 2+; {summary['visits_4plus']} with 4+; "
         f"{summary['visits_8plus_dates']} with ≥8 unique dates",
+        f"- Owner-split clusters (`cluster_id`): **{summary.get('n_cluster_ids', summary['n_wells'])}** "
+        f"({summary.get('n_clusters_2plus', summary['visits_2plus'])} with 2+ visits; "
+        f"{summary.get('n_sites_split_by_owner', 0)} GPS sites split by different caretakers)",
         "",
         "## Median recalled DTW change (m)",
         "",
@@ -1063,8 +1117,15 @@ def process(csv_path: Path) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame, i
     kept, n_empty = drop_empty_rows(named)
     flagged = flag_after_identity(flag_visits(attach_well_id(kept)))
     visits = build_visits(flagged)
+    visits = attach_owner_clusters(visits)
     wells = build_wells(visits)
+    if "cluster_id" in visits.columns:
+        wells["n_cluster_ids"] = wells["well_id"].map(visits.groupby("well_id")["cluster_id"].nunique())
+    cluster_wells = build_cluster_wells(visits)
     visits = attach_dbscan_and_hydro(visits, wells)
+    if len(cluster_wells) and "cluster_id" in cluster_wells.columns:
+        hydro = cluster_wells.set_index("cluster_id")["hydro_class"]
+        visits["cluster_hydro_class"] = visits["cluster_id"].map(hydro)
     qa = qa_flags_long(visits)
     return visits, wells, qa, n_empty
 
@@ -1091,7 +1152,11 @@ def write_cleaning_md(
         "## Identity counts",
         "",
         f"- Visits: **{len(visits)}**",
-        f"- Wells ({CLUSTER_M:.0f} m GPS clusters): **{len(wells)}**",
+        f"- GPS sites (`well_id`, {CLUSTER_M:.0f} m complete linkage): **{len(wells)}**",
+        f"- Monitoring wells (`cluster_id` = GPS + owner/caretaker split): "
+        f"**{int(visits['cluster_id'].nunique()) if 'cluster_id' in visits.columns else len(wells)}**",
+        f"- GPS sites split because owners differ inside {CLUSTER_M:.0f} m: "
+        f"**{int(visits.loc[visits['split_by_owner']==1, 'well_id'].nunique()) if 'split_by_owner' in visits.columns else 0}**",
         f"- Owner check agree / mixed / missing: "
         f"{int((wells['owner_check']=='agree').sum()) if 'owner_check' in wells.columns else '?'} / "
         f"{int((wells['owner_check']=='mixed').sum()) if 'owner_check' in wells.columns else '?'} / "
@@ -1122,7 +1187,7 @@ def write_cleaning_md(
         "| Form clone (≥5 owners, same depth+before) | Copied static fields | Do not treat as independent wells |",
         "| DTW jump > 3 m in ≤21 days | Two wells merged, or bad tape | Split well or drop those visits |",
         "| Same owner, GPS > 200 m apart | Two wells, or office vs field GPS | Keep as two wells until checked |",
-        "| Mixed owner names at one 15 m site | Shared well, or one GPS for many interviews | Keep as one site; review names |",
+        "| Mixed owner names at one 15 m site | Two wells in one courtyard, or one GPS for many interviews | Split into `cluster_id`s; `well_id` stays the GPS site |",
         "| Same owner name, several 15 m sites in one village | Two wells, or office vs field GPS | Review; do not merge by name across provinces |",
         "",
         "Owner names for follow-up (not in git): `data/kobo/review_owners.csv`.",

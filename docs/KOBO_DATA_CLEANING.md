@@ -25,20 +25,22 @@ on that cluster.
    Complete linkage keeps A and C at 22 m as two wells.
 3. Cluster inside each **province** so a common name in Kapisa never touches
    the same name in Kunduz.
-4. **Cross-check owner names** on the cluster:
+4. **Cross-check owner names** on the cluster, then **split** on caretaker:
    - `agree` — one caretaker (spelling drift allowed). Repeat visits to one well.
    - `mixed` — several distinct names at the same spot. Shared/public well, or
      the enumerator stood in one courtyard and entered many households.
-   - `missing` — no name.
+     GPS `well_id` / `site_id` stays one courtyard; `cluster_id` splits each
+     owner/caretaker into its own monitoring well.
+   - `missing` — no name (missing names cluster together by GPS only).
 5. If the **same name in the same village** appears on two 15 m sites more
    than 200 m apart, treat them as two wells (or office vs field GPS). Do not
    merge that name nationwide.
 
 | Pattern | Meaning |
 |---------|---------|
-| GPS ≤ 15 m (all pairs) | One well. Merge visits. Then check the owner name. |
-| Owner names agree | Confident repeat monitoring. |
-| Owner names mixed | Keep as one site; review. Do not split on name. |
+| GPS ≤ 15 m (all pairs) | One GPS site (`well_id`). Then split by owner into `cluster_id`. |
+| Owner names agree | Confident repeat monitoring. One `cluster_id`. |
+| Owner names mixed | Same GPS site; **split** into different `cluster_id`s. |
 | Same name, other province | Different well. Distance already kept them apart. |
 | Same name, same village, GPS > 200 m | Two wells or office GPS. |
 
@@ -109,7 +111,7 @@ you reject after a look.
 ## 3. Suggested cleaning order
 
 1. Drop empty / no-consent rows.
-2. Build 15 m complete-linkage GPS clusters → `well_id`. Cross-check owner names on each cluster.
+2. Build 15 m complete-linkage GPS clusters → `well_id` / `site_id`. Split different owner/caretaker names inside that radius into `cluster_id`.
 3. Apply rule flags (A).
 4. Mark form clones (B) and DTW jumps (C).
 5. Walk `nearby_other_wells.csv` and `same_owner_splits.csv` with the

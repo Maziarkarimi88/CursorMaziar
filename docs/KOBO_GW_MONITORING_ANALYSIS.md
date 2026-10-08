@@ -1,6 +1,6 @@
 # Using the FAO KOBO groundwater monitoring export
 
-The cleaned export is one **visit per row**. Enumerators resubmitted the whole form; the weekly repeat group is empty. Rebuild wells from a **15 m GPS cluster** (complete linkage). Owner name is a **cross-check** only — the same personal name appears in many provinces. Cleaning rules are in [`KOBO_DATA_CLEANING.md`](KOBO_DATA_CLEANING.md).
+The cleaned export is one **visit per row**. Enumerators resubmitted the whole form; the weekly repeat group is empty. Rebuild GPS sites from a **15 m GPS cluster** (complete linkage). Then split different owner/caretaker names inside that radius into `cluster_id`. Cleaning rules are in [`KOBO_DATA_CLEANING.md`](KOBO_DATA_CLEANING.md).
 ArcGIS: [`ARCGIS_NEAR_TABLE_STEPS.md`](ARCGIS_NEAR_TABLE_STEPS.md) (tool by tool),
 [`ARCGIS_SAME_WELL_CLUSTERING.md`](ARCGIS_SAME_WELL_CLUSTERING.md),
 hydrographs: [`ARCGIS_WELL_HYDROGRAPHS.md`](ARCGIS_WELL_HYDROGRAPHS.md).
@@ -19,8 +19,11 @@ python3 tools/kobo_gw.py --csv data/kobo/groundwater_monitoring.csv
 
 | Output | What it is |
 |--------|------------|
-| `examples/kobo_gw/wells_unique.csv` | One row per well: static attributes, first/last DTW, recalled and measured change, QA exclude flag |
-| `examples/kobo_gw/visits.csv` | Visit panel: `well_id`, dates, DTW, `dbscan_id`, `split_review`, `hydro_class` |
+| `examples/kobo_gw/wells_unique.csv` | One row per GPS site (`well_id`): static attributes, first/last DTW, recalled and measured change, QA exclude flag |
+| `examples/kobo_gw/visits.csv` | Visit panel: `cluster_id`, `well_id`/`site_id`, dates, DTW, `dbscan_id`, `split_review`, `split_by_owner`, `hydro_class` |
+| `examples/kobo_gw/wells_clusters.csv` | One row per monitoring well (`cluster_id` = 15 m GPS + owner split) |
+| `examples/kobo_gw/visits_clusters.csv` | Same visit panel keyed for hydrographs on `cluster_id` |
+| `examples/kobo_gw/owner_split_sites.csv` | GPS sites that held more than one caretaker inside 15 m |
 | `examples/kobo_gw/dbscan_chains_review.csv` | DBSCAN 15 m groups that mixed two or more 15 m wells (split these) |
 | `examples/kobo_gw/dbscan_chain_visits.csv` | Visits inside those groups, already tagged with the split `well_id` |
 | `examples/kobo_gw/qa_flags.csv` | One row per flag instance |

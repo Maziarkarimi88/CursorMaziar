@@ -1,4 +1,4 @@
-"""Distance-first 15 m clusters; owner name is a check, not the key."""
+"""15 m GPS sites; cluster_id splits different owners inside that radius."""
 from __future__ import annotations
 
 import sys
@@ -14,6 +14,7 @@ from kobo_identity import (  # noqa: E402
     CLUSTER_M,
     attach_identity,
     attach_identity_from_near,
+    attach_owner_clusters,
     cluster_coords,
     cluster_from_near_pairs,
     haversine_m,
@@ -163,12 +164,61 @@ def test_same_name_in_two_provinces_stays_two_wells():
 
 
 def test_different_owners_within_15m_are_one_site_mixed_check():
-    """Distance is the key. Owner disagreement is a flag, not a split."""
+    """GPS site stays one well_id. Owner disagreement is a flag on that site."""
     a = _visits()
     b = _visits(owner="Other Owner", phone="0709999999", lat=35.0 + 14 / 111_320)
     df = attach_identity(pd.concat([a, b], ignore_index=True))
     assert df["well_id"].nunique() == 1
     assert set(df["owner_check"]) == {"mixed"}
+
+
+def test_same_owner_within_15m_is_one_cluster():
+    a = _visits()
+    b = _visits(lat=35.0 + 14 / 111_320)
+    df = attach_owner_clusters(pd.concat([a, b], ignore_index=True))
+    assert df["cluster_id"].nunique() == 1
+    assert df["well_id"].nunique() == 1
+    assert int(df["split_by_owner"].max()) == 0
+
+
+def test_different_owners_within_15m_get_two_cluster_ids():
+    a = _visits()
+    b = _visits(owner="Other Owner", phone="0709999999", lat=35.0 + 14 / 111_320)
+    df = attach_owner_clusters(pd.concat([a, b], ignore_index=True))
+    assert df["well_id"].nunique() == 1
+    assert df["cluster_id"].nunique() == 2
+    assert set(df["split_by_owner"]) == {1}
+
+
+def test_same_owner_40m_is_two_clusters():
+    a = _visits()
+    b = _visits(lat=35.0 + 40 / 111_320)
+    df = attach_owner_clusters(pd.concat([a, b], ignore_index=True))
+    assert df["cluster_id"].nunique() == 2
+    assert df["well_id"].nunique() == 2
+
+
+def test_same_name_in_two_provinces_stays_two_clusters():
+    a = _visits(province="Kapisa", owner="Gul Ahmad", lat=35.0, lon=69.5)
+    b = _visits(province="Kunduz", owner="Gul Ahmad", lat=37.1, lon=68.9)
+    df = attach_owner_clusters(pd.concat([a, b], ignore_index=True))
+    assert df["cluster_id"].nunique() == 2
+
+
+def test_spelling_drift_within_15m_is_one_cluster():
+    a = _visits(owner="Abdul Ghafoor Rahmani")
+    b = _visits(owner="Abdul Ghafoor Rahamni", lat=35.0 + 8 / 111_320)
+    df = attach_owner_clusters(pd.concat([a, b], ignore_index=True))
+    assert df["cluster_id"].nunique() == 1
+    assert int(df["split_by_owner"].max()) == 0
+
+
+def test_missing_owner_does_not_merge_with_named_owner():
+    a = _visits(owner="Good Owner")
+    b = _visits(owner="", lat=35.0 + 8 / 111_320)
+    df = attach_owner_clusters(pd.concat([a, b], ignore_index=True))
+    assert df["cluster_id"].nunique() == 2
+    assert df["well_id"].nunique() == 1
 
 
 def test_village_trailing_space_does_not_collide_far_gps():
@@ -201,5 +251,17 @@ if __name__ == "__main__":
     print("ok test_same_name_in_two_provinces_stays_two_wells")
     test_different_owners_within_15m_are_one_site_mixed_check()
     print("ok test_different_owners_within_15m_are_one_site_mixed_check")
+    test_same_owner_within_15m_is_one_cluster()
+    print("ok test_same_owner_within_15m_is_one_cluster")
+    test_different_owners_within_15m_get_two_cluster_ids()
+    print("ok test_different_owners_within_15m_get_two_cluster_ids")
+    test_same_owner_40m_is_two_clusters()
+    print("ok test_same_owner_40m_is_two_clusters")
+    test_same_name_in_two_provinces_stays_two_clusters()
+    print("ok test_same_name_in_two_provinces_stays_two_clusters")
+    test_spelling_drift_within_15m_is_one_cluster()
+    print("ok test_spelling_drift_within_15m_is_one_cluster")
+    test_missing_owner_does_not_merge_with_named_owner()
+    print("ok test_missing_owner_does_not_merge_with_named_owner")
     test_village_trailing_space_does_not_collide_far_gps()
     print("ok test_village_trailing_space_does_not_collide_far_gps")
