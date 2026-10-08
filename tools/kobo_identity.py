@@ -73,7 +73,7 @@ def names_match(a: str, b: str) -> bool:
         return True
     if min(len(a), len(b)) >= 6 and (a in b or b in a):
         return True
-    if min(len(a), len(b)) >= 5 and levenshtein(a, b) <= 2:
+    if min(len(a), len(b)) >= 6 and levenshtein(a, b) <= 2:
         return True
     ta, tb = set(a.split()), set(b.split())
     if len(ta) >= 2 and len(tb) >= 2 and ta == tb:

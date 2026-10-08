@@ -125,6 +125,8 @@ def test_names_and_phone():
     assert names_match("Malik Mohammad Rasikh", "malik mohammad rasikh")
     assert names_match("Abdul Ghafoor Rahmani", "Abdul Ghafoor Rahamni")
     assert not names_match("Saadullah", "Mostafa")
+    assert not names_match("Fahim", "Zahir")
+    assert not names_match("Kabir", "Zahir")
     assert phone_key("0701111111") == phone_key(701111111.0)
 
 
