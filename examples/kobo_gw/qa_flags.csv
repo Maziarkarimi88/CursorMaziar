@@ -546,6 +546,10 @@ b53c2a86da51,21000873,Zabul,Pat khil ,2026-01-14,meas_before_interv
 e92ba2316eb0,21242016,Balkh,Paikan dara ,2026-04-20,owner_mixed
 e92ba2316eb0,21403381,Balkh,Paikan dara ,2026-05-04,owner_mixed
 e92ba2316eb0,22034848,Balkh,Paikan dara,2026-06-15,owner_mixed
+290c7ea8b39a,21484556,Bamyan,Dahan goder,2026-04-12,owner_mixed
+290c7ea8b39a,21484561,Bamyan,Daha goder,2026-04-19,owner_mixed
+290c7ea8b39a,21484564,Bamyan,Dahan goder,2026-04-26,owner_mixed
+290c7ea8b39a,21484570,Bamyan,Dah goder,2026-05-09,owner_mixed
 c98bd0bf9b6d,21085058,Daykundi,Sarqul,2026-03-25,owner_mixed
 c98bd0bf9b6d,21177093,Daykundi,Sarqul,2026-04-06,owner_mixed
 c98bd0bf9b6d,21616838,Daykundi,Sarqul,2026-05-17,owner_mixed
@@ -632,9 +636,8 @@ b3a384a255c3,21202329,Herat,Khwaja Mohammad Kamil,2026-04-13,owner_mixed
 0d6b3481029c,23411434,Jawzjan,Turkman qudogh Afghania,2026-09-02,owner_mixed
 5a0a7d3ab9a0,21331537,Jawzjan,Turkman qudogh Holqani ,2026-04-27,owner_mixed
 5a0a7d3ab9a0,23284518,Jawzjan,Turkman qudogh Holqani ,2026-08-27,owner_mixed
-f784448585fc,21331532,Jawzjan,Turkman qudogh Afghania,2026-04-27,owner_mixed
-f784448585fc,23016428,Jawzjan,Turkman qudogh Afghania,2026-08-12,owner_mixed
-f784448585fc,23411433,Jawzjan,Turkman qudogh Afghania,2026-09-02,owner_mixed
+8bb8385d8ece,21331531,Jawzjan,Turkman qudogh Afghania,2026-04-27,owner_mixed
+8bb8385d8ece,23016427,Jawzjan,Turkman qudogh Afghania,2026-01-12,owner_mixed
 0e2df6d1ec1e,20860138,Kabul,Kariz bala,2026-02-09,owner_mixed
 0e2df6d1ec1e,20979924,Kabul,Kariz bala,2026-03-03,owner_mixed
 0e2df6d1ec1e,21104110,Kabul,Kariz bala,2026-03-29,owner_mixed
@@ -643,12 +646,6 @@ f784448585fc,23411433,Jawzjan,Turkman qudogh Afghania,2026-09-02,owner_mixed
 0e2df6d1ec1e,22463000,Kabul,Kariz bala,2026-07-16,owner_mixed
 0e2df6d1ec1e,22578170,Kabul,Kariz bala,2026-07-22,owner_mixed
 0e2df6d1ec1e,22941604,Kabul,Kariz bala,2026-08-10,owner_mixed
-13be56f60ba9,21124099,Kabul,Esmila,2026-04-01,owner_mixed
-13be56f60ba9,21344090,Kabul,Esmila,2026-04-28,owner_mixed
-13be56f60ba9,22011583,Kabul,Esmila,2026-06-14,owner_mixed
-13be56f60ba9,22537638,Kabul,Esmila,2026-07-20,owner_mixed
-13be56f60ba9,22913129,Kabul,Esmila,2026-08-09,owner_mixed
-13be56f60ba9,23255426,Kabul,Esmila,2026-08-26,owner_mixed
 1dca47dc4b31,21627994,Kabul,Qol-e-nehal,2026-05-19,owner_mixed
 1dca47dc4b31,23156120,Kabul,Qol-e-nehal,2026-08-20,owner_mixed
 1dca47dc4b31,23243358,Kabul,Qol-e-nehal,2026-08-25,owner_mixed
@@ -682,8 +679,6 @@ df378941faac,21079667,Kabul,Khord kabul,2026-03-24,owner_mixed
 19b536536612,23292092,Kapisa,Landakhil ,2026-08-27,owner_mixed
 19b536536612,23440146,Kapisa,Landakhil ,2026-09-01,owner_mixed
 19b536536612,23729604,Kapisa,Landakhil ,2026-09-16,owner_mixed
-1b9c8197bb15,23619342,Kapisa,Mahtan,2026-09-08,owner_mixed
-1b9c8197bb15,23462042,Kapisa,Mahtan,2026-09-05,owner_mixed
 21f1a04efba9,21185405,Kapisa,Surghi ,2026-04-11,owner_mixed
 21f1a04efba9,21185403,Kapisa,Surghi ,2026-04-11,owner_mixed
 245785b2943b,22542014,Kapisa,Landa Khil ,2026-07-16,owner_mixed
@@ -749,14 +744,6 @@ df378941faac,21079667,Kabul,Khord kabul,2026-03-24,owner_mixed
 56bac3de19e2,22000852,Kapisa,Konj Paryat ,2026-06-13,owner_mixed
 56bac3de19e2,22000853,Kapisa,Konj Paryat ,2026-06-13,owner_mixed
 56bac3de19e2,22844652,Kapisa,Konj Paryat,2026-08-04,owner_mixed
-59290e8e98a6,22542018,Kapisa,Aram kot,2026-07-15,owner_mixed
-59290e8e98a6,22590575,Kapisa,Aramkot,2026-07-21,owner_mixed
-59290e8e98a6,22839546,Kapisa,Aramkot,2026-08-05,owner_mixed
-59290e8e98a6,23153142,Kapisa,Aram kot,2026-08-19,owner_mixed
-59290e8e98a6,23440163,Kapisa,Aram kot,2026-09-02,owner_mixed
-59290e8e98a6,23598055,Kapisa,Aram kot,2026-09-09,owner_mixed
-59290e8e98a6,23722882,Kapisa,Aram kot,2026-09-15,owner_mixed
-59290e8e98a6,23292111,Kapisa,Aram kot,2026-08-25,owner_mixed
 5df870416a35,22382458,Kapisa,Tawachian ,2026-07-12,owner_mixed
 5df870416a35,22181653,Kapisa,Tawachian ,2026-06-28,owner_mixed
 5df870416a35,22382459,Kapisa,Tawachian ,2026-07-12,owner_mixed
@@ -914,6 +901,9 @@ f76a47e9d087,20859156,Kunduz,Mola khel,2026-01-12,owner_mixed
 f76a47e9d087,20859158,Kunduz,Mola khel,2026-01-12,owner_mixed
 f76a47e9d087,20859159,Kunduz,Kabali Qushlaq,2026-01-13,owner_mixed
 f76a47e9d087,20859161,Kunduz,Kabali Qushlaq,2026-01-13,owner_mixed
+fc0feb9406b3,21006827,Laghman,Zerani,2026-03-09,owner_mixed
+fc0feb9406b3,21108305,Laghman,Zerani,2026-03-18,owner_mixed
+fc0feb9406b3,21152955,Laghman,Zerani,2026-04-06,owner_mixed
 2c2da22e00e5,23449625,Logar,Bala deh,2026-08-31,owner_mixed
 2c2da22e00e5,23449626,Logar,Bala deh,2026-08-31,owner_mixed
 2c2da22e00e5,23449628,Logar,Bala deh,2026-08-31,owner_mixed
@@ -987,11 +977,37 @@ c91b315c2c8c,22359250,Maidan Wardak,Musa Khil,2026-06-30,owner_mixed
 1357f2491061,21066336,Nangarhar,Dago,2026-03-10,owner_mixed
 1357f2491061,21371990,Nangarhar,Dago ,2026-04-15,owner_mixed
 1357f2491061,21371997,Nangarhar,Dago,2026-04-29,owner_mixed
+541bcce60151,21066325,Nangarhar,Mandar khill,2026-02-24,owner_mixed
+541bcce60151,21066326,Nangarhar,Mandar khill,2026-02-24,owner_mixed
+541bcce60151,21066330,Nangarhar,Mandar khill ,2026-02-28,owner_mixed
+541bcce60151,21016484,Nangarhar,Mandar khill,2026-02-01,owner_mixed
+541bcce60151,21371988,Nangarhar,Mandar khill,2026-04-14,owner_mixed
+541bcce60151,21788887,Nangarhar,Mandarkhil ,2026-05-07,owner_mixed
+541bcce60151,21788889,Nangarhar,Mandarkhil ,2026-05-14,owner_mixed
+8f48c869022f,21066329,Nangarhar,Mandar khill ,2026-02-28,owner_mixed
+8f48c869022f,21016485,Nangarhar,Mandar khill,2026-02-01,owner_mixed
+8f48c869022f,21371987,Nangarhar,Manadar khill ,2026-04-14,owner_mixed
+8f48c869022f,21371995,Nangarhar,Mandar khill,2026-04-29,owner_mixed
+8f48c869022f,21788888,Nangarhar,Mandarkhil,2026-05-14,owner_mixed
 feaf40526f7d,21066332,Nangarhar,Dago,2026-03-01,owner_mixed
 feaf40526f7d,21066333,Nangarhar,Dago,2026-03-01,owner_mixed
 feaf40526f7d,21066337,Nangarhar,Dago,2026-03-10,owner_mixed
 feaf40526f7d,21371991,Nangarhar,Dago ,2026-04-15,owner_mixed
 feaf40526f7d,21371998,Nangarhar,Dago ,2026-04-29,owner_mixed
+8456ab7d3ff3,20792900,Paktika,Kachi,2026-01-28,owner_mixed
+8456ab7d3ff3,20883027,Paktika,Kachi,2026-02-12,owner_mixed
+8456ab7d3ff3,20931395,Paktika,Kachi,2026-02-20,owner_mixed
+8456ab7d3ff3,20962028,Paktika,Kachi,2026-02-27,owner_mixed
+8456ab7d3ff3,21030979,Paktika,Kachi,2026-03-13,owner_mixed
+8456ab7d3ff3,21164289,Paktika,Kachi,2026-04-02,owner_mixed
+8456ab7d3ff3,21164290,Paktika,Kachi,2026-04-07,owner_mixed
+b4721bbe3d16,20989323,Paktika,Kachi,2026-03-05,owner_mixed
+b4721bbe3d16,21092698,Paktika,Kachi,2026-03-26,owner_mixed
+b4721bbe3d16,21295817,Paktika,Kachi,2026-04-16,owner_mixed
+b4721bbe3d16,22166224,Paktika,Kachi,2026-06-13,owner_mixed
+b4721bbe3d16,22166226,Paktika,Kachi,2026-06-21,owner_mixed
+b4721bbe3d16,22166227,Paktika,Kachi,2026-06-26,owner_mixed
+b4721bbe3d16,22859934,Paktika,Kachi,2026-08-04,owner_mixed
 c9aab7e74f02,20915562,Paktika,Loy kariz,2026-02-18,owner_mixed
 c9aab7e74f02,20953007,Paktika,Loy kariz,2026-02-25,owner_mixed
 c9aab7e74f02,20985030,Paktika,Loy Kariz,2026-03-04,owner_mixed
@@ -1109,16 +1125,6 @@ c7d4daa6a461,23273444,Paktya,Halim khil,2026-08-27,owner_mixed
 5dc8038f4f2e,22451828,Panjsher,Aspiyana,2026-07-15,owner_mixed
 5dc8038f4f2e,22986773,Panjsher,Aspiyana,2026-08-12,owner_mixed
 5dc8038f4f2e,23573179,Panjsher,Aspiyana,2026-09-09,owner_mixed
-696553803b03,21050344,Panjsher,Abdaba,2026-03-16,owner_mixed
-696553803b03,21125197,Panjsher,Abdaba,2026-03-31,owner_mixed
-696553803b03,21242662,Panjsher,Abdaba,2026-04-20,owner_mixed
-696553803b03,21403214,Panjsher,Abdaba,2026-05-04,owner_mixed
-696553803b03,21611144,Panjsher,Abdaba,2026-05-18,owner_mixed
-696553803b03,21880234,Panjsher,Abdaba,2026-06-03,owner_mixed
-696553803b03,22318465,Panjsher,Abdaba,2026-07-07,owner_mixed
-696553803b03,22603502,Panjsher,Abdaba,2026-07-23,owner_mixed
-696553803b03,22986772,Panjsher,Abdaba,2026-08-12,owner_mixed
-696553803b03,23573050,Panjsher,Abdaba,2026-09-09,owner_mixed
 790380451d4e,21057887,Panjsher,Orati,2026-03-18,owner_mixed
 790380451d4e,21168305,Panjsher,Orati,2026-04-02,owner_mixed
 790380451d4e,21279128,Panjsher,Orati,2026-04-22,owner_mixed
@@ -1145,25 +1151,6 @@ c7d4daa6a461,23273444,Paktya,Halim khil,2026-08-27,owner_mixed
 7c59d063f18f,23226301,Panjsher,Chashma 3,2026-08-24,owner_mixed
 7c59d063f18f,23355023,Panjsher,Chashma 3,2026-08-31,owner_mixed
 7c59d063f18f,23690092,Panjsher,Chashma 3,2026-09-14,owner_mixed
-84a29773bad3,20836135,Panjsher,Qalacha,2026-02-04,owner_mixed
-84a29773bad3,20960504,Panjsher,Qalacha,2026-02-26,owner_mixed
-84a29773bad3,21022368,Panjsher,Qalacha,2026-03-11,owner_mixed
-84a29773bad3,21095432,Panjsher,Qalacha,2026-03-26,owner_mixed
-84a29773bad3,21209535,Panjsher,Qalacha,2026-04-15,owner_mixed
-84a29773bad3,21331624,Panjsher,Qalacha,2026-04-27,owner_mixed
-84a29773bad3,21530059,Panjsher,Qalacha,2026-05-12,owner_mixed
-84a29773bad3,21727742,Panjsher,Qalacha,2026-05-24,owner_mixed
-84a29773bad3,21966964,Panjsher,Qalacha,2026-06-09,owner_mixed
-84a29773bad3,22144807,Panjsher,Qalacha,2026-06-24,owner_mixed
-84a29773bad3,22334576,Panjsher,Qalacha,2026-07-08,owner_mixed
-84a29773bad3,22471495,Panjsher,Qalacha,2026-07-16,owner_mixed
-84a29773bad3,22514212,Panjsher,Qalacha,2026-07-19,owner_mixed
-84a29773bad3,22681520,Panjsher,Qalacha,2026-07-27,owner_mixed
-84a29773bad3,22956539,Panjsher,Qalacha,2026-08-11,owner_mixed
-84a29773bad3,23090344,Panjsher,Qalacha,2026-08-17,owner_mixed
-84a29773bad3,23226306,Panjsher,Qalacha,2026-08-24,owner_mixed
-84a29773bad3,23355018,Panjsher,Qalacha,2026-08-31,owner_mixed
-84a29773bad3,23511179,Panjsher,Qalacha,2026-09-07,owner_mixed
 85703f047f2a,20836133,Panjsher,Qalacha,2026-02-04,owner_mixed
 85703f047f2a,20960503,Panjsher,Qalacha,2026-02-26,owner_mixed
 85703f047f2a,21022371,Panjsher,Qalacha,2026-03-11,owner_mixed
@@ -1202,6 +1189,15 @@ c7d4daa6a461,23273444,Paktya,Halim khil,2026-08-27,owner_mixed
 8e84736b9bbe,23355016,Panjsher,Qalacha,2026-08-31,owner_mixed
 8e84736b9bbe,23511177,Panjsher,Qalacha,2026-09-07,owner_mixed
 8e84736b9bbe,23690087,Panjsher,Qalacha,2026-09-14,owner_mixed
+9fb1c46b6926,21015582,Panjsher,Chashma 3,2026-03-10,owner_mixed
+9fb1c46b6926,21252632,Panjsher,Chashma 3,2026-04-21,owner_mixed
+9fb1c46b6926,21416830,Panjsher,Chashma 3,2026-05-05,owner_mixed
+9fb1c46b6926,22471486,Panjsher,Chshma3,2026-07-16,owner_mixed
+9fb1c46b6926,22537516,Panjsher,Chashma 3,2026-07-20,owner_mixed
+9fb1c46b6926,22703332,Panjsher,Chashma 3,2026-07-28,owner_mixed
+9fb1c46b6926,22956543,Panjsher,Qalacha,2026-08-11,owner_mixed
+9fb1c46b6926,23492252,Panjsher,Chashma 3,2026-09-06,owner_mixed
+9fb1c46b6926,23690090,Panjsher,Chashma 3,2026-09-14,owner_mixed
 a6a8152f9b54,21431710,Panjsher,Orati,2026-05-06,owner_mixed
 a6a8152f9b54,21676172,Panjsher,Orati,2026-05-21,owner_mixed
 a6a8152f9b54,21966977,Panjsher,Orati,2026-06-10,owner_mixed
@@ -1211,6 +1207,17 @@ a6a8152f9b54,22471498,Panjsher,Orati,2026-07-16,owner_mixed
 a6a8152f9b54,22514206,Panjsher,Orati,2026-07-19,owner_mixed
 a6a8152f9b54,23321591,Panjsher,Orati,2026-08-29,owner_mixed
 a6a8152f9b54,23690083,Panjsher,Orati,2026-09-14,owner_mixed
+ada3c4bf0477,20797631,Panjsher,Abdaba,2026-01-26,owner_mixed
+ada3c4bf0477,20901558,Panjsher,Abdaba,2026-02-16,owner_mixed
+ada3c4bf0477,20984462,Panjsher,Abdaba,2026-03-02,owner_mixed
+ada3c4bf0477,21125196,Panjsher,Abdaba,2026-03-31,owner_mixed
+ada3c4bf0477,21242663,Panjsher,Abdaba,2026-04-20,owner_mixed
+ada3c4bf0477,21611143,Panjsher,Abdaba,2026-05-18,owner_mixed
+ada3c4bf0477,21880233,Panjsher,Abdaba,2026-06-03,owner_mixed
+ada3c4bf0477,22318466,Panjsher,Abdaba,2026-07-07,owner_mixed
+ada3c4bf0477,22603501,Panjsher,Abdaba,2026-07-23,owner_mixed
+ada3c4bf0477,23261241,Panjsher,Abdaba,2026-08-26,owner_mixed
+ada3c4bf0477,23573051,Panjsher,Abdaba,2026-09-09,owner_mixed
 b8c5f522d261,20797654,Panjsher,Asticha,2026-01-28,owner_mixed
 b8c5f522d261,20915728,Panjsher,Asticha,2026-02-18,owner_mixed
 b8c5f522d261,21015584,Panjsher,Asticha,2026-03-10,owner_mixed
@@ -1251,11 +1258,6 @@ d7f359949d70,23383119,Panjsher,Asticha,2026-09-01,owner_mixed
 daf90b8f2c9c,22554980,Panjsher,Oroo,2026-07-21,owner_mixed
 daf90b8f2c9c,23123548,Panjsher,Oroo,2026-08-18,owner_mixed
 daf90b8f2c9c,23715014,Panjsher,Oroo,2026-09-15,owner_mixed
-dd4f6f092395,22048011,Panjsher,Bahark,2026-06-16,owner_mixed
-dd4f6f092395,22305701,Panjsher,Bahark,2026-07-06,owner_mixed
-dd4f6f092395,22727921,Panjsher,Baharak,2026-07-29,owner_mixed
-dd4f6f092395,23123538,Panjsher,Baharak,2026-08-18,owner_mixed
-dd4f6f092395,23544339,Panjsher,Baharak,2026-09-08,owner_mixed
 eb1c28502f1d,21125200,Panjsher,Chashma 3,2026-04-01,owner_mixed
 eb1c28502f1d,21416826,Panjsher,Chashma 3,2026-05-05,owner_mixed
 eb1c28502f1d,21880238,Panjsher,Chashma 3,2026-06-04,owner_mixed
@@ -1324,6 +1326,15 @@ f83e7158ae7d,23715018,Panjsher,Sangana,2026-09-15,owner_mixed
 7d3e08d8121b,21215437,Parwan,Aghil Kabuly ,2026-04-16,owner_mixed
 7d3e08d8121b,22152559,Parwan,Aghil Kabuly,2026-06-24,owner_mixed
 7d3e08d8121b,23134589,Parwan,Aghil Kabuly,2026-08-17,owner_mixed
+7d79c95c6fcb,20979998,Parwan,Shiwa,2026-03-03,owner_mixed
+7d79c95c6fcb,21114418,Parwan,Shiwa,2026-03-30,owner_mixed
+7d79c95c6fcb,21336068,Parwan,Shiwa,2026-04-27,owner_mixed
+7d79c95c6fcb,21405435,Parwan,Shiwa,2026-05-04,owner_mixed
+7d79c95c6fcb,21872074,Parwan,Shiwa,2026-06-04,owner_mixed
+7d79c95c6fcb,21941943,Parwan,Shiwa,2026-06-09,owner_mixed
+7d79c95c6fcb,22317654,Parwan,Shiwa,2026-07-05,owner_mixed
+7d79c95c6fcb,22818972,Parwan,Shiwa,2026-08-04,owner_mixed
+7d79c95c6fcb,23406290,Parwan,Shiwa,2026-09-02,owner_mixed
 8ad490b81f71,21841210,Parwan,???,2026-06-02,owner_mixed
 8ad490b81f71,21941941,Parwan,Daraz gerd,2026-06-09,owner_mixed
 8ad490b81f71,22215747,Parwan,Daraz gerd ,2026-06-30,owner_mixed
@@ -1354,23 +1365,6 @@ fbfe6895621f,23717194,Parwan,Dah Naw,2026-09-15,owner_mixed
 35aa69776ca1,23015888,Sar-e-Pul,Kariz ,2026-08-13,owner_mixed
 35aa69776ca1,23167327,Sar-e-Pul,Kariz ,2026-08-19,owner_mixed
 35aa69776ca1,23291569,Sar-e-Pul,kariz ,2026-08-26,owner_mixed
-cd4538c1a6ae,20837845,Sar-e-Pul,Kariz,2026-02-04,owner_mixed
-cd4538c1a6ae,20866334,Sar-e-Pul,Kariz,2026-02-10,owner_mixed
-cd4538c1a6ae,20900106,Sar-e-Pul,Kariz,2026-02-16,owner_mixed
-cd4538c1a6ae,20944541,Sar-e-Pul,Kariz,2026-02-23,owner_mixed
-cd4538c1a6ae,20975983,Sar-e-Pul,Kariz,2026-03-02,owner_mixed
-cd4538c1a6ae,21004711,Sar-e-Pul,Kariz,2026-03-08,owner_mixed
-cd4538c1a6ae,21206901,Sar-e-Pul,Kariz,2026-04-14,owner_mixed
-cd4538c1a6ae,21242035,Sar-e-Pul,Kariz,2026-04-20,owner_mixed
-cd4538c1a6ae,21413787,Sar-e-Pul,Kariz,2026-05-05,owner_mixed
-cd4538c1a6ae,21954750,Sar-e-Pul,Kariz,2026-06-10,owner_mixed
-cd4538c1a6ae,22119153,Sar-e-Pul,Kariz,2026-06-22,owner_mixed
-e3de13651cc8,21055692,Uruzgan,Safar kariz ,2026-03-17,owner_mixed
-e3de13651cc8,21102776,Uruzgan,Safar kariz,2026-03-29,owner_mixed
-e3de13651cc8,21150743,Uruzgan,Safar kariz,2026-04-05,owner_mixed
-e3de13651cc8,21224108,Uruzgan,Safar kariz,2026-04-15,owner_mixed
-e3de13651cc8,21844155,Uruzgan,Safar kariz,2026-06-02,owner_mixed
-e3de13651cc8,22206617,Uruzgan,Safar kariz,2026-06-29,owner_mixed
 4f0eb04dfa92,21261086,Zabul,Kakar,2026-04-22,owner_mixed
 4f0eb04dfa92,21598719,Zabul,Kakar,2026-05-17,owner_mixed
 4f0eb04dfa92,21830181,Zabul,Kakar,2026-06-01,owner_mixed

@@ -22,10 +22,10 @@ Ghazni,Mushak,78df189f8d4d,bead3acbc7a6,9.7,agree,agree,11.0,11.0,4,3
 Ghazni,Mushak,9c808bda89d5,279584c81ed9,5.8,agree,agree,11.0,11.0,19,3
 Helmand,Ghori,3fd658151749,af55936ccc35,10.0,agree,agree,140.0,140.0,9,3
 Herat,Khwaja Mohammad Kamil,b3a384a255c3,b7dff90902b5,13.0,mixed,agree,18.55,16.55,4,2
-Kabul,Esmila,62857a06f189,13be56f60ba9,14.1,agree,mixed,20.7,20.7,2,6
+Kabul,Esmila,62857a06f189,13be56f60ba9,14.1,agree,agree,20.7,20.7,2,6
 Kabul,Esmila,62857a06f189,a281c4a510e7,11.4,agree,agree,20.7,20.7,2,1
 Kabul,Esmila,9c422f5a8fb7,d0f82586a151,8.5,agree,agree,25.25,25.25,3,2
-Kabul,Esmila,13be56f60ba9,a281c4a510e7,13.9,mixed,agree,20.7,20.7,6,1
+Kabul,Esmila,13be56f60ba9,a281c4a510e7,13.9,agree,agree,20.7,20.7,6,1
 Kabul,Esmila,99c5c1e06f19,d0f82586a151,8.6,agree,agree,25.25,25.25,6,2
 Kabul,Kariz bala,0e2df6d1ec1e,844c90b6b354,8.5,mixed,agree,18.7,18.7,8,1
 Kabul,Kariz bala,0e2df6d1ec1e,00947f87adbd,8.6,mixed,agree,18.7,18.7,8,3
@@ -91,8 +91,8 @@ Maidan Wardak,Zamborak,e2ac6521c15d,284b032a3821,12.9,agree,mixed,19.6,19.6,4,3
 Nimroz,Dangar Abad,3e3ef620849a,ad79ba58e76e,6.6,agree,agree,21.0,21.0,11,1
 Nimroz,Gulistan,2a9480e170fd,e45e9d673b7a,4.8,agree,agree,95.0,95.0,10,1
 Nimroz,Kaj-e-Satar,08696dfc8b4a,8e3e8cfb5743,10.5,agree,agree,80.0,80.0,11,1
-Paktika,Kachi,8456ab7d3ff3,b90859a6f6f8,10.8,agree,agree,65.0,65.0,7,7
-Paktika,Kachi,b4721bbe3d16,b90859a6f6f8,12.4,agree,agree,65.0,65.0,7,7
+Paktika,Kachi,8456ab7d3ff3,b90859a6f6f8,10.8,mixed,agree,65.0,65.0,7,7
+Paktika,Kachi,b4721bbe3d16,b90859a6f6f8,12.4,mixed,agree,65.0,65.0,7,7
 Paktya,Bar Halim khil,7f08074f5174,c76438f89b84,8.6,agree,agree,105.0,105.0,16,1
 Paktya,Husin khil,af57d65e5505,201c7d56fbed,7.5,agree,agree,100.0,100.0,13,4
 Paktya,Husin khil,af57d65e5505,29809b697f95,9.0,agree,agree,100.0,100.0,13,3
@@ -102,14 +102,14 @@ Panjsher,Asticha,d7b22ee96d14,0e5e2112bab8,13.7,agree,agree,16.0,16.0,10,1
 Panjsher,Asticha,d7b22ee96d14,cc4bd4f35f6e,10.6,agree,agree,16.0,16.0,10,4
 Panjsher,Asticha,9805cd8c7bcc,cc4bd4f35f6e,12.8,agree,agree,16.0,16.0,2,4
 Panjsher,Chashma 3,8b57e15334d7,eb1c28502f1d,7.7,agree,mixed,23.0,23.0,5,12
-Panjsher,Chashma 3,9fb1c46b6926,cc3534727426,5.7,agree,agree,29.0,25.0,9,6
+Panjsher,Chashma 3,9fb1c46b6926,cc3534727426,5.7,mixed,agree,29.0,25.0,9,6
 Panjsher,Orati,790380451d4e,a6a8152f9b54,4.8,mixed,mixed,17.5,18.0,6,9
 Panjsher,Oroo,e2dfd4a1aed6,daf90b8f2c9c,6.0,agree,mixed,12.0,12.0,5,3
 Panjsher,Oroo,771546f53a99,35a44ea5b96c,10.9,agree,mixed,13.0,12.0,4,2
 Panjsher,Oroo,8d46fbdef6f5,f9eec428715a,10.1,mixed,agree,13.0,12.0,6,1
 Panjsher,Qala Mirsha,1540597afdc7,f4573bcbfeca,8.5,agree,agree,17.0,17.0,14,1
 Panjsher,Qalacha,85703f047f2a,fc659dcd5933,12.6,mixed,agree,11.0,11.0,15,2
-Panjsher,Qalacha,84a29773bad3,e5e994ee8564,9.7,mixed,agree,23.0,23.0,19,1
+Panjsher,Qalacha,84a29773bad3,e5e994ee8564,9.7,agree,agree,23.0,23.0,19,1
 Panjsher,Qalacha,d5bb9f327f31,c4de5e6c1f92,8.2,mixed,agree,6.0,6.0,11,4
 Panjsher,Qalacha,d5bb9f327f31,3bb9938595e6,12.8,mixed,agree,6.0,6.0,11,1
 Panjsher,Qalacha,d5bb9f327f31,53f1413a35fb,10.4,mixed,agree,6.0,6.0,11,3
@@ -141,8 +141,8 @@ Parwan,Ofyan,6a825cb4cce8,2214298cd745,8.8,agree,agree,19.0,19.0,8,2
 Parwan,Ofyan,2a04872e8747,f1a2548fec58,14.0,agree,agree,15.0,13.0,3,2
 Parwan,Ofyan,9b965cc7ed83,197b1fa0ded5,12.4,mixed,agree,13.0,13.0,2,2
 Parwan,Ofyan,7affb7325f78,197b1fa0ded5,13.4,agree,agree,13.0,13.0,2,2
-Parwan,Shiwa,7d79c95c6fcb,4127adaaf52a,10.4,agree,agree,25.0,25.0,9,1
-Parwan,Shiwa,7d79c95c6fcb,be8525076f5b,14.7,agree,agree,25.0,25.0,9,1
+Parwan,Shiwa,7d79c95c6fcb,4127adaaf52a,10.4,mixed,agree,25.0,25.0,9,1
+Parwan,Shiwa,7d79c95c6fcb,be8525076f5b,14.7,mixed,agree,25.0,25.0,9,1
 Parwan,Shiwa,7bc022729664,e97565d6933b,12.7,agree,agree,25.0,25.0,3,6
 Parwan,Shiwa,e97565d6933b,20cce0c40d80,10.0,agree,agree,25.0,25.0,6,2
 Parwan,Shiwa,20cce0c40d80,35ad52027929,11.3,agree,agree,25.0,25.0,2,1
