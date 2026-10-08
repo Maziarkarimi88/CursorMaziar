@@ -12,6 +12,7 @@ This is a simple, low-cost protocol copied from farmer-run check-dam studies in 
 | [`docs/STORAGE_DURATION_AND_FILLING.md`](docs/STORAGE_DURATION_AND_FILLING.md) | What controls 1–3 month hold; rainfall (SCS-CN) to fill the **pond** to crest (not the catchment). |
 | [`docs/ARCGIS_STORAGE_FROM_DEM.md`](docs/ARCGIS_STORAGE_FROM_DEM.md) | ArcGIS Surface Volume / Storage Capacity: \(A(h), V(h)\) from DEM at 2–6 m crest. |
 | [`docs/ARCGIS_SAME_WELL_CLUSTERING.md`](docs/ARCGIS_SAME_WELL_CLUSTERING.md) | ArcGIS tools for the same well: Near Table 15 m geodesic, not DBSCAN 15 m. |
+| [`docs/ARCGIS_NEAR_TABLE_STEPS.md`](docs/ARCGIS_NEAR_TABLE_STEPS.md) | Tool-by-tool Pro click-path: VID, Generate Near Table, export CSV, complete linkage. |
 | [`docs/ARCGIS_WELL_HYDROGRAPHS.md`](docs/ARCGIS_WELL_HYDROGRAPHS.md) | ArcGIS Pro: split DBSCAN chains, walk the well table, chart DTW vs date. |
 | [`docs/ANNEX_A_Flood_Detention_Check_Dams.md`](docs/ANNEX_A_Flood_Detention_Check_Dams.md) | Only if a dam actually empties in hours (gabion/leaky outlier). |
 | [`docs/COUNTRY_STORIES_AND_METHODS.md`](docs/COUNTRY_STORIES_AND_METHODS.md) | Methods and field stories from Pakistan, Tunisia, Ethiopia, Arizona, Oman, Spain, Cyprus, Morocco, Yemen, India, China, Kenya — similar dry climates. |

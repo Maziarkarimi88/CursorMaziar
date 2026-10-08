@@ -5,7 +5,7 @@ and chains a street. This script only groups visits when **every pair** in the
 group has a Near Table row (NEAR_DIST ≤ 15 m). Owner name is a check after
 the GPS group exists — it does not merge or split wells.
 
-Export from ArcGIS Pro (see docs/ARCGIS_SAME_WELL_CLUSTERING.md):
+Export from ArcGIS Pro (see docs/ARCGIS_NEAR_TABLE_STEPS.md):
 
   1. Add a long field VID = ObjectID (copy, so ids stay stable).
   2. Generate Near Table, 15 m, geodesic, all neighbours.

@@ -5,6 +5,8 @@ new GPS ping. You want one site = one courtyard, not one hamlet.
 
 **Most accurate and efficient method**
 
+Tool-by-tool click-path: [`ARCGIS_NEAR_TABLE_STEPS.md`](ARCGIS_NEAR_TABLE_STEPS.md).
+
 1. **Generate Near Table** — 15 m, geodesic, all neighbours (`IN_FID`, `NEAR_FID`, `NEAR_DIST`).
 2. **Complete linkage on those pairs** (`tools/near_table_wells.py` or `tools/kobo_gw.py`) — a visit joins a well only if it has a Near row to **every** member.
 3. **Owner / caretaker as a check** on the GPS well (`agree` / `mixed` / `missing`). Same name does **not** merge wells; mixed names do **not** split a 15 m site.

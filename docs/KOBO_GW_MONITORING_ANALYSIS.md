@@ -1,7 +1,8 @@
 # Using the FAO KOBO groundwater monitoring export
 
 The cleaned export is one **visit per row**. Enumerators resubmitted the whole form; the weekly repeat group is empty. Rebuild wells from a **15 m GPS cluster** (complete linkage). Owner name is a **cross-check** only — the same personal name appears in many provinces. Cleaning rules are in [`KOBO_DATA_CLEANING.md`](KOBO_DATA_CLEANING.md).
-ArcGIS: [`ARCGIS_SAME_WELL_CLUSTERING.md`](ARCGIS_SAME_WELL_CLUSTERING.md),
+ArcGIS: [`ARCGIS_NEAR_TABLE_STEPS.md`](ARCGIS_NEAR_TABLE_STEPS.md) (tool by tool),
+[`ARCGIS_SAME_WELL_CLUSTERING.md`](ARCGIS_SAME_WELL_CLUSTERING.md),
 hydrographs: [`ARCGIS_WELL_HYDROGRAPHS.md`](ARCGIS_WELL_HYDROGRAPHS.md).
 
 **DTW** (questions 14, 15, 24) is depth to water in metres. Larger = deeper = less water, unless an enumerator entered water-column height instead.
