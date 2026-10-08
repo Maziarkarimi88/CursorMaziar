@@ -86,10 +86,14 @@ def test_run_writes_tables(tmp_path: Path | None = None):
     assert "gps_group" in final.columns
     assert "1. Province" in final.columns
     assert "Y" in final.columns and "X" in final.columns
-    assert "8. Owner/caretaker name" not in final.columns
-    assert "9. Phone number" not in final.columns
+    assert "8. Owner/caretaker name" in final.columns
+    assert "9. Phone number" in final.columns
+    assert "6. Enumerator name" in final.columns
     assert final["cluster_id"].min() == "01"
     assert set(final["cluster_id"].str.len()) == {2}
+    kapisa = final.loc[final["1. Province"] == "Kapisa"]
+    assert kapisa["cluster_id"].nunique() == 1
+    assert int(kapisa["n_monitorings"].iloc[0]) == 3
     clusters = pd.read_csv(tables / "wells_clusters.csv")
     assert "cluster_id" in clusters.columns and "site_id" in clusters.columns
     assert len(clusters) == 4
@@ -102,7 +106,6 @@ def test_run_writes_tables(tmp_path: Path | None = None):
         + (tables / "wells_clusters.csv").read_text(encoding="utf-8")
         + (tables / "owner_split_sites.csv").read_text(encoding="utf-8")
         + (tables / "same_owner_splits.csv").read_text(encoding="utf-8")
-        + (tables / "kobo_monitoring_clusters.csv").read_text(encoding="utf-8")
     )
     assert "Good Owner" not in text
     assert "0701111111" not in text

@@ -19,7 +19,7 @@ python3 tools/kobo_gw.py --csv data/kobo/groundwater_monitoring.csv
 
 | Output | What it is |
 |--------|------------|
-| `examples/kobo_gw/kobo_monitoring_clusters.csv` | **One file:** every visit (3,354) with sequential `cluster_id` (01…N) and `n_monitorings` |
+| `kobo_monitoring_clusters.csv` (gitignored; download) | **One file:** all original KOBO columns + `cluster_id` (01…N), `n_monitorings`, `gps_group`. Same cluster only if ≤15 m **and** same owner. |
 | `examples/kobo_gw/cluster_monitorings.png` | Graph: monitorings per cluster, plus how many clusters have 1, 2, 3, … visits |
 | `examples/kobo_gw/wells_unique.csv` | One row per GPS site (`well_id`): static attributes, first/last DTW, recalled and measured change, QA exclude flag |
 | `examples/kobo_gw/visits.csv` | Visit panel: `cluster_id`, `well_id`/`site_id`, dates, DTW, `dbscan_id`, `split_review`, `split_by_owner`, `hydro_class` |

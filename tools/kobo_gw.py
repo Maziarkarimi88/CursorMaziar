@@ -587,26 +587,19 @@ def _safe_mkdir(path: Path) -> Path:
     return path
 
 
-FINAL_PII_COLS = {
-    "9. Phone number",
-    "8. Owner/caretaker name",
-    "6. Enumerator name",
-}
-
-
 def write_kobo_final_csv(visits: pd.DataFrame, source_csv: Path, out_path: Path) -> Path:
-    """One file: every GPS visit from the KOBO export plus sequential cluster_id.
+    """One file: every original KOBO column plus cluster_id.
 
-    Original KOBO columns are kept (no owner, phone, or enumerator). Join those
-    later on `_id`. `gps_group` is the 15 m courtyard before the owner split.
+    A visit shares `cluster_id` only when BOTH are true: GPS complete-linkage
+    ≤ 15 m, and the same owner/caretaker (spelling drift allowed). Added
+    columns: cluster_id (01…N), n_monitorings, gps_group, split_by_owner.
     """
     raw = read_kobo_csv(source_csv)
     keys = visits.loc[:, ["submission_id", "cluster_id", "n_monitorings", "site_id", "split_by_owner"]].copy()
     keys["submission_id"] = keys["submission_id"].astype(str)
     raw = raw.copy()
     raw["_id"] = raw["_id"].astype(str)
-    keep_raw = [c for c in raw.columns if c not in FINAL_PII_COLS]
-    merged = keys.merge(raw.loc[:, keep_raw], left_on="submission_id", right_on="_id", how="inner")
+    merged = keys.merge(raw, left_on="submission_id", right_on="_id", how="inner")
     merged = merged.rename(columns={"site_id": "gps_group"})
     if "submission_id" in merged.columns:
         merged = merged.drop(columns=["submission_id"])

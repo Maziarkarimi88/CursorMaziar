@@ -3,3 +3,4 @@ __pycache__/
 .venv/
 .pytest_cache/
 data/kobo/*.csv
+examples/kobo_gw/kobo_monitoring_clusters.csv
