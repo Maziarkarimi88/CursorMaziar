@@ -747,6 +747,10 @@ def write_lookups(wb: Workbook, geo: dict) -> None:
 
 def register_named_ranges(wb: Workbook, domain_meta: dict, geo: dict) -> None:
     def add(name: str, formula: str):
+        if name[0].isdigit():
+            raise ValueError(f"Excel named ranges cannot start with a digit: {name}")
+        if not formula.startswith("="):
+            formula = "=" + formula
         wb.defined_names.add(DefinedName(name=name, attr_text=formula))
 
     d = quote_sheet(SHEET_DOMAINS)
@@ -1132,15 +1136,14 @@ def write_tracker_sheet(
     dv_list("=Statuses", f"{layout.letter('reported_status')}{first}:{layout.letter('reported_status')}{last_r}")
     dv_list("=AwardGroups", f"{layout.letter('award_group')}{first}:{layout.letter('award_group')}{last_r}")
     dv_list("=Families", f"{layout.letter('intervention_family')}{first}:{layout.letter('intervention_family')}{last_r}")
-
-    # Province/district dropdowns are attached in fix_cascading_dropdowns()
-    # using a relative named range so each row reads its own helper cell.
+    dv_list("=All_Provinces", f"{layout.letter('province')}{first}:{layout.letter('province')}{last_r}")
+    dv_list("=All_Districts", f"{layout.letter('district')}{first}:{layout.letter('district')}{last_r}")
 
     date_sq = f"{colletter(layout.status_date_cols[0])}{first}:{colletter(layout.status_date_cols[-1])}{last_r}"
     dv_date = DataValidation(
         type="date",
         operator="greaterThanOrEqual",
-        formula1="DATE(2018,1,1)",
+        formula1="=DATE(2018,1,1)",
         allow_blank=True,
         showErrorMessage=True,
         errorTitle="Date required",
@@ -1159,7 +1162,7 @@ def write_tracker_sheet(
         formula1="0",
         formula2="100",
         allow_blank=True,
-        errorTitle="0–100",
+        errorTitle="0-100",
         error="Physical progress must be between 0 and 100.",
         showErrorMessage=True,
     )
@@ -1298,58 +1301,6 @@ def write_tracker_sheet(
         "Copies Date: Awarded. Enter the contract signature date in the Awarded status-date column.",
         "Tracker",
     )
-
-
-def fix_cascading_dropdowns(wb: Workbook, layout: Layout, sheet_name: str) -> None:
-    """Replace whole-range INDIRECT DVs with a relative named range.
-
-    Named ranges ThisProvList / ThisDistList use a relative row so each
-    scheme row reads its own helper cell.
-    """
-    ws = wb[sheet_name]
-    # Drop the two INDIRECT validations added earlier (last two list DVs that
-    # reference helper columns) by rebuilding list of DVs without those.
-    keep = []
-    for dv in ws.data_validations.dataValidation:
-        f = str(dv.formula1 or "")
-        if "helper" in f.lower() or "INDIRECT" in f:
-            continue
-        keep.append(dv)
-    ws.data_validations.dataValidation = keep
-
-    # Relative names: row 4 is the first data row. Column locked, row relative.
-    # When the active cell is on row N, Excel resolves AY4 → AYN.
-    prov_name = f"{sheet_name.replace(' ', '_')}_ThisProvList"
-    dist_name = f"{sheet_name.replace(' ', '_')}_ThisDistList"
-    prov_ref = f"INDIRECT({quote_sheet(sheet_name)}!${layout.letter('helper_prov_range')}{DATA_START})"
-    dist_ref = f"INDIRECT({quote_sheet(sheet_name)}!${layout.letter('helper_dist_range')}{DATA_START})"
-    wb.defined_names.add(DefinedName(name=prov_name, attr_text=prov_ref))
-    wb.defined_names.add(DefinedName(name=dist_name, attr_text=dist_ref))
-
-    last_r = DATA_START + MAX_DATA_ROWS - 1
-    dv_p = DataValidation(
-        type="list",
-        formula1=f"={prov_name}",
-        allow_blank=True,
-        showDropDown=False,
-        showErrorMessage=True,
-        errorTitle="Province",
-        error="Select a province for the chosen region (add new ones on 06_Geography).",
-    )
-    dv_p.add(f"{layout.letter('province')}{DATA_START}:{layout.letter('province')}{last_r}")
-    ws.add_data_validation(dv_p)
-
-    dv_d = DataValidation(
-        type="list",
-        formula1=f"={dist_name}",
-        allow_blank=True,
-        showDropDown=False,
-        showErrorMessage=True,
-        errorTitle="District",
-        error="Select a district for the chosen province (add new ones on 06_Geography).",
-    )
-    dv_d.add(f"{layout.letter('district')}{DATA_START}:{layout.letter('district')}{last_r}")
-    ws.add_data_validation(dv_d)
 
 
 def write_dashboard(wb: Workbook, layout: Layout) -> None:
@@ -1618,8 +1569,6 @@ def build_workbook() -> Workbook:
         tab_color=GOLD,
         banner="EXAMPLE ONLY — two worked schemes so you can see day counts. Do not use for reporting.",
     )
-    fix_cascading_dropdowns(wb, layout, SHEET_TRACKER)
-    fix_cascading_dropdowns(wb, layout, SHEET_EXAMPLE)
     write_dashboard(wb, layout)
 
     # Reorder sheets
