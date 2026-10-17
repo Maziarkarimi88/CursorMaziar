@@ -76,13 +76,14 @@ def main() -> None:
     live_ids = [tracker.cell(DATA_START + i, layout.idx["scheme_id"]).value for i in range(len(SCHEMES))]
     assert live_ids == [s["scheme_id"] for s in SCHEMES], live_ids[:5]
 
-    # Blank dates on the live tracker
+    # Awarded / completed rows carry those dates from the master file
+    awarded_dates = 0
     for i in range(len(SCHEMES)):
         row = DATA_START + i
-        for col in layout.status_date_cols:
-            assert tracker.cell(row, col).value in (None, ""), (
-                f"live tracker should not have status dates, row {row} col {col}"
-            )
+        if any(tracker.cell(row, col).value not in (None, "") for col in layout.status_date_cols):
+            awarded_dates += 1
+    assert awarded_dates > 0, "expected awarded/completed dates from the master file"
+    assert "schedule_health" in layout.idx
 
     # Example dates present
     demo = EXAMPLE_SCHEMES[0]
@@ -154,16 +155,19 @@ def main() -> None:
 
     pipeline = wb[SHEET_PIPELINE]
     assert pipeline.cell(3, 2).value == "Under Design"
-    assert pipeline.cell(8, 2).value == "Under Awarding"
-    assert pipeline.cell(11, 2).value == "Completed / Handover"
+    names = [pipeline.cell(r, 2).value for r in range(3, 16)]
+    assert "Under Awarding" in names
+    assert "Completed / Handover" in names
+    assert "PR to be Raised" in names
 
     # Dashboard formulas reference the tracker
     dash = wb[SHEET_DASH]
     assert "COUNTA" in str(dash["A5"].value)
     assert "COUNTIF" in str(dash["B9"].value)
 
-    # Spare slots exist
-    assert pipeline.cell(12, 2).value in (None, "")
+    # Spare slots exist after the named pipeline steps
+    spare_rows = [r for r in range(3, 20) if pipeline.cell(r, 2).value in (None, "")]
+    assert spare_rows, "expected spare pipeline slots"
     assert "(spare" in str(tracker.cell(HEADER_ROW, layout.status_date_cols[-1]).value) or "04_Status_Pipeline" in str(
         tracker.cell(HEADER_ROW, layout.status_date_cols[-1]).value
     )

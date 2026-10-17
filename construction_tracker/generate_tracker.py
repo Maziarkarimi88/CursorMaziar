@@ -28,13 +28,17 @@ from openpyxl.worksheet.datavalidation import DataValidation
 from openpyxl.worksheet.table import Table, TableStyleInfo
 
 from tracker_config import (
+    AWARD_GROUPS,
     CONTRACT_COLUMNS,
     DONORS,
     EXAMPLE_SCHEMES,
     GEOGRAPHY,
     IDENTITY_COLUMNS,
+    INTERVENTION_FAMILIES,
     INTERVENTION_TYPES,
     MAX_DATA_ROWS,
+    NEAR_OFFTRACK_DAYS,
+    PROGRESS_LAG_PCT,
     PROJECTS,
     SCHEMES,
     SPARE_STATUS_SLOTS,
@@ -71,14 +75,23 @@ STATUS_COLORS = {
     "Under Design": "E8EEF4",
     "Under Review of WRI": "D6E4F0",
     "Under LTO Review": "E6E0EF",
+    "PR to be Raised": "F7F1E3",
     "ITB Launched": "F3E6D0",
+    "Retendered (Re-ITB)": "F3E6D0",
     "Under Technical Evaluation": "F0E6C8",
     "Under Awarding": "D4E8E4",
     "Awarded": "D4E6D4",
     "Under Construction": "C5D5C5",
     "Completed / Handover": "1B365D",
+    "Cancelled": "D0D4D8",
     "Not started": "FFFFFF",
 }
+
+# Traffic-light fills for schedule health (behind / close / on track)
+HEALTH_GREEN = "C6E0B4"
+HEALTH_AMBER = "FFE699"
+HEALTH_RED = "F4B183"
+HEALTH_GREY = "D0D4D8"
 
 THIN = Border(
     left=Side(style="thin", color=LINE),
@@ -223,7 +236,9 @@ class Layout:
         take("days_in_current", "Days in current status", 12, "formula")
         take("total_pipeline_days", "Total days first → last step", 12, "formula")
         take("over_target", "Days over target this step", 12, "formula")
-        self.groups.append(("3. Live status (calculated)", start, col - 1, GOLD))
+        take("schedule_health", "Schedule health", 26, "formula")
+        take("days_vs_plan", "Days vs planned date", 14, "formula")
+        self.groups.append(("3. Live status and schedule health (calculated)", start, col - 1, GOLD))
 
         start = col
         for i, slot in enumerate(self.slots):
@@ -373,6 +388,16 @@ def write_howto(wb: Workbook, layout: Layout) -> None:
             "'Total days first → last step' is last filled date minus first filled date. "
             "'Days over target this step' is days in current status minus the target days set on 04_Status_Pipeline (blank if there is no target).",
             "Sections 3 and 5",
+        ),
+        (
+            "Schedule health colours",
+            "Schedule health is calculated from planned dates (not typed by hand). "
+            "GREEN — On track, or completed on/before the plan. "
+            "AMBER — At risk / close to off track: the planned award or contract end is within 30 days, or works are not yet far enough along. "
+            "RED — Behind: today is after the planned award date (remaining contracts) or after the contract end date (awarded), "
+            "or physical progress is more than 15 percentage points behind the share of the contract period that has already elapsed. "
+            "'Days vs planned date' is days remaining (positive, green/amber) or days overdue (negative, red).",
+            "Section 3 of the tracker",
         ),
         ("Add or remove domains (dropdown values)", "section", ""),
         (
@@ -556,9 +581,11 @@ def write_domains(wb: Workbook) -> dict:
         ("Donors", DONORS, 28),
         ("Projects", PROJECTS, 52),
         ("Regions", list(GEOGRAPHY.keys()), 28),
-        ("Statuses", [s["name"] for s in STATUS_PIPELINE] + ["Not started"], 28),
+        ("Statuses", [s["name"] for s in STATUS_PIPELINE] + ["Not started", "Cancelled"], 28),
         ("All_Provinces", all_provinces(), 22),
         ("All_Districts", all_districts(), 28),
+        ("AwardGroups", AWARD_GROUPS, 16),
+        ("Families", INTERVENTION_FAMILIES, 24),
     ]
     meta = {}
     for i, (name, values, width) in enumerate(columns, start=1):
@@ -577,7 +604,7 @@ def write_domains(wb: Workbook) -> dict:
             "first_row": 3,
         }
     ws.freeze_panes = "A3"
-    ws.auto_filter.ref = "A2:G2"
+    ws.auto_filter.ref = "A2:I2"
     return meta
 
 
@@ -752,7 +779,57 @@ def register_named_ranges(wb: Workbook, domain_meta: dict, geo: dict) -> None:
 def planned_end_formula(layout: Layout, row: int) -> str:
     awarded = layout.addr("awarded_date", row)
     months = layout.addr("contract_duration_months", row)
-    return f'IF(OR({awarded}="",{months}=""),"",EDATE({awarded},{months}))'
+    explicit = layout.addr("contract_end_date", row)
+    return (
+        f'IF({explicit}<>"",{explicit},'
+        f'IF(OR({awarded}="",{months}=""),"",EDATE({awarded},{months})))'
+    )
+
+
+def schedule_health_formula(layout: Layout, row: int) -> str:
+    name = layout.addr("scheme_name", row)
+    group = layout.addr("award_group", row)
+    status = layout.addr("current_status", row)
+    reported = layout.addr("reported_status", row)
+    exp_award = layout.addr("expected_award_date", row)
+    end = layout.addr("planned_end_date", row)
+    start = layout.addr("awarded_date", row)
+    progress = layout.addr("physical_progress_pct", row)
+    actual = layout.addr("actual_completion_date", row)
+    near = NEAR_OFFTRACK_DAYS
+    lag = PROGRESS_LAG_PCT
+    return (
+        f'IF({name}="","",'
+        f'IF(OR({reported}="Cancelled",{status}="Cancelled"),"Cancelled",'
+        f'IF(OR({status}="Completed / Handover",{actual}<>"",{progress}>=100),"Completed — on track",'
+        f'IF({group}="Remaining",'
+        f'IF({exp_award}="",IF({end}="","No planned date",'
+        f'IF(TODAY()>{end},"Behind — past planned date",'
+        f'IF({end}-TODAY()<={near},"At risk — close to off track","On track"))),'
+        f'IF(TODAY()>{exp_award},"Behind — award date passed",'
+        f'IF({exp_award}-TODAY()<={near},"At risk — close to off track","On track"))),'
+        f'IF({end}="","No planned date",'
+        f'IF(AND(TODAY()>{end},OR({progress}="",{progress}<100)),"Behind — past end date",'
+        f'IF(AND({start}<>"",{end}<>"",{progress}<>"",({progress}<100),'
+        f'((TODAY()-{start})/MAX({end}-{start},1)*100)-{progress}>{lag}),'
+        f'"Behind — progress lag",'
+        f'IF(AND({end}-TODAY()<={near},{end}-TODAY()>=0,OR({progress}="",{progress}<90)),'
+        f'"At risk — close to off track","On track"))))))))'
+    )
+
+
+def days_vs_plan_formula(layout: Layout, row: int) -> str:
+    name = layout.addr("scheme_name", row)
+    group = layout.addr("award_group", row)
+    exp_award = layout.addr("expected_award_date", row)
+    end = layout.addr("planned_end_date", row)
+    status = layout.addr("current_status", row)
+    return (
+        f'IF(OR({name}="",{status}="Completed / Handover",{status}="Cancelled"),"",'
+        f'IF({group}="Remaining",'
+        f'IF({exp_award}<>"",{exp_award}-TODAY(),IF({end}="","",{end}-TODAY())),'
+        f'IF({end}="","",{end}-TODAY())))'
+    )
 
 
 def current_status_formula(layout: Layout, row: int) -> str:
@@ -963,12 +1040,14 @@ def write_tracker_sheet(
             ("days_in_current", days_in_current_formula(layout, row), "0"),
             ("total_pipeline_days", total_days_formula(layout, row), "0"),
             ("over_target", over_target_formula(layout, row), "0"),
+            ("schedule_health", schedule_health_formula(layout, row), None),
+            ("days_vs_plan", days_vs_plan_formula(layout, row), "0"),
         ):
             cell = ws.cell(row, layout.idx[key], formula)
             apply_cell(cell, font=FONT_FORMULA, fill_hex=FORMULA_BG, align=ALIGN_C, fmt=fmt)
 
-        # Status dates
-        dates_map = (scheme or {}).get("status_dates") if fill_example_dates else None
+        # Status dates — live rows also get awarded/completed dates from the master file
+        dates_map = (scheme or {}).get("status_dates")
         for i, col in enumerate(layout.status_date_cols):
             slot_name = layout.slots[i]["name"]
             value = None
@@ -1051,6 +1130,8 @@ def write_tracker_sheet(
     dv_list("=Regions", f"{layout.letter('region')}{first}:{layout.letter('region')}{last_r}")
     dv_list("=Donors", f"{layout.letter('donor')}{first}:{layout.letter('donor')}{last_r}")
     dv_list("=Statuses", f"{layout.letter('reported_status')}{first}:{layout.letter('reported_status')}{last_r}")
+    dv_list("=AwardGroups", f"{layout.letter('award_group')}{first}:{layout.letter('award_group')}{last_r}")
+    dv_list("=Families", f"{layout.letter('intervention_family')}{first}:{layout.letter('intervention_family')}{last_r}")
 
     # Province/district dropdowns are attached in fix_cascading_dropdowns()
     # using a relative named range so each row reads its own helper cell.
@@ -1067,6 +1148,9 @@ def write_tracker_sheet(
     )
     dv_date.add(date_sq)
     dv_date.add(f"{layout.letter('awarded_date')}{first}:{layout.letter('awarded_date')}{last_r}")
+    dv_date.add(f"{layout.letter('expected_award_date')}{first}:{layout.letter('expected_award_date')}{last_r}")
+    dv_date.add(f"{layout.letter('contract_end_date')}{first}:{layout.letter('contract_end_date')}{last_r}")
+    dv_date.add(f"{layout.letter('actual_completion_date')}{first}:{layout.letter('actual_completion_date')}{last_r}")
     ws.add_data_validation(dv_date)
 
     dv_pct = DataValidation(
@@ -1143,6 +1227,40 @@ def write_tracker_sheet(
         ),
     )
 
+    health_range = f"{layout.letter('schedule_health')}{first}:{layout.letter('schedule_health')}{last_r}"
+    for text, color, font_color in (
+        ("On track", HEALTH_GREEN, INK),
+        ("Completed — on track", HEALTH_GREEN, INK),
+        ("At risk — close to off track", HEALTH_AMBER, INK),
+        ("Behind — past end date", HEALTH_RED, WARN_FONT),
+        ("Behind — past planned date", HEALTH_RED, WARN_FONT),
+        ("Behind — award date passed", HEALTH_RED, WARN_FONT),
+        ("Behind — progress lag", HEALTH_RED, WARN_FONT),
+        ("Cancelled", HEALTH_GREY, INK),
+    ):
+        ws.conditional_formatting.add(
+            health_range,
+            CellIsRule(
+                operator="equal",
+                formula=[f'"{text}"'],
+                fill=fill(color),
+                font=Font(name="Calibri", size=10, color=font_color, bold="Behind" in text),
+            ),
+        )
+    dvs_range = f"{layout.letter('days_vs_plan')}{first}:{layout.letter('days_vs_plan')}{last_r}"
+    ws.conditional_formatting.add(
+        dvs_range,
+        CellIsRule(operator="lessThan", formula=["0"], fill=fill(HEALTH_RED), font=Font(name="Calibri", size=10, color=WARN_FONT, bold=True)),
+    )
+    ws.conditional_formatting.add(
+        dvs_range,
+        CellIsRule(operator="between", formula=["0", str(NEAR_OFFTRACK_DAYS)], fill=fill(HEALTH_AMBER), font=Font(name="Calibri", size=10, color=INK)),
+    )
+    ws.conditional_formatting.add(
+        dvs_range,
+        CellIsRule(operator="greaterThan", formula=[str(NEAR_OFFTRACK_DAYS)], fill=fill(HEALTH_GREEN), font=Font(name="Calibri", size=10, color=INK)),
+    )
+
     # Negative duration highlight
     dur_range = f"{colletter(layout.duration_cols[0])}{first}:{colletter(layout.duration_cols[-1])}{last_r}"
     ws.conditional_formatting.add(
@@ -1165,6 +1283,15 @@ def write_tracker_sheet(
     )
     ws.cell(HEADER_ROW, layout.idx["reported_status"]).comment = Comment(
         "Use this until official step dates are entered. Current Status follows dates once they exist.",
+        "Tracker",
+    )
+    ws.cell(HEADER_ROW, layout.idx["schedule_health"]).comment = Comment(
+        "Green = on track. Amber = within 30 days of a planned date (close to off track). "
+        "Red = behind the planned award or end date, or physical progress lagging the elapsed contract time by more than 15 points.",
+        "Tracker",
+    )
+    ws.cell(HEADER_ROW, layout.idx["days_vs_plan"]).comment = Comment(
+        "Positive = days remaining until the planned award (remaining) or contract end (awarded). Negative = days behind that date.",
         "Tracker",
     )
     ws.cell(HEADER_ROW, layout.idx["awarded_date"]).comment = Comment(
@@ -1273,11 +1400,13 @@ def write_dashboard(wb: Workbook, layout: Layout) -> None:
     interv_rng = f"{t}!${interv_col}${first}:${interv_col}${last}"
 
     # KPI row
+    health_col = layout.letter("schedule_health")
+    health_rng = f"{t}!${health_col}${first}:${health_col}${last}"
     kpis = [
         ("A", "C", "Schemes registered", f'COUNTA({name_rng})'),
-        ("D", "F", "Current status = Not started", f'COUNTIF({status_rng},"Not started")'),
-        ("G", "I", f"Stuck > {STUCK_THRESHOLD_DAYS} days in current step", f'COUNTIF({days_rng},">{STUCK_THRESHOLD_DAYS}")'),
-        ("J", "L", "Average physical progress %", f'IFERROR(AVERAGEIF({prog_rng},">=0"),"")'),
+        ("D", "F", "On track / completed", f'COUNTIF({health_rng},"On track")+COUNTIF({health_rng},"Completed — on track")'),
+        ("G", "I", "At risk — close to off track", f'COUNTIF({health_rng},"At risk — close to off track")'),
+        ("J", "L", "Behind planned date", f'COUNTIF({health_rng},"Behind*")'),
     ]
     ws.row_dimensions[4].height = 16
     ws.row_dimensions[5].height = 28

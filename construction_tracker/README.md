@@ -85,7 +85,29 @@ Hide columns you do not need rather than deleting formula columns.
 
 ## Pre-loaded schemes
 
-`01_Scheme_Tracker` already lists the WBK/AF-2 WSM / Check Dam schemes from the contract list (identity, location, reported status, contract cost where known). **Status dates are blank** so the team can enter official dates. `03_Example_Filled` is demonstration data only.
+`01_Scheme_Tracker` is one combined register built from the seven sheets in
+`2- WBK-AF2_Master file contract status awarded and remaining contracts.xlsx`:
+
+- awarded and remaining on/off-farm irrigation
+- awarded and remaining WSM / check dams
+- drip irrigation
+- LLL supply
+- agroforestry saplings and seeds
+
+**Schedule health** (section 3) is coloured:
+
+- green — on track or completed
+- amber — planned award or end date is within 30 days (close to off track)
+- red — already past the planned award/end date, or physical progress is more than 15 points behind elapsed contract time
+
+`03_Example_Filled` is demonstration data only.
+
+Rebuild after the master file changes:
+
+```bash
+python3 construction_tracker/import_master.py
+python3 construction_tracker/generate_tracker.py
+```
 
 ## Rebuild
 
