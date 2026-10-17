@@ -756,28 +756,12 @@ def register_named_ranges(wb: Workbook, domain_meta: dict, geo: dict) -> None:
     d = quote_sheet(SHEET_DOMAINS)
     g = quote_sheet(SHEET_GEO)
 
+    # Static ranges only. OFFSET / INDIRECT names are rejected by some Excel builds
+    # and trigger "Removed Records: Named range" on open.
     for name, info in domain_meta.items():
         letter = info["letter"]
-        formula = (
-            f"OFFSET({d}!${letter}$3,0,0,COUNTA({d}!${letter}$3:${letter}$400),1)"
-        )
-        add(name, formula)
-
-    for region, spec in geo["prov_meta"].items():
-        letter = colletter(spec["col"])
-        start = spec["start_row"]
-        formula = (
-            f"OFFSET({g}!${letter}${start},0,0,COUNTA({g}!${letter}${start}:${letter}$80),1)"
-        )
-        add(spec["range_name"], formula)
-
-    for prov, spec in geo["dist_meta"].items():
-        letter = colletter(spec["col"])
-        start = spec["start_row"]
-        formula = (
-            f"OFFSET({g}!${letter}${start},0,0,COUNTA({g}!${letter}${start}:${letter}$80),1)"
-        )
-        add(spec["range_name"], formula)
+        last = info["first_row"] + info["n"] + 20
+        add(name, f"={d}!${letter}$3:${letter}${last}")
 
 
 def planned_end_formula(layout: Layout, row: int) -> str:
@@ -1093,8 +1077,10 @@ def write_tracker_sheet(
         ws.column_dimensions[layout.letter(key)].hidden = True
 
     # Freeze identity + header
-    # Keep identity, contract, and live status visible while scrolling status dates.
-    ws.freeze_panes = f"{colletter(layout.status_date_cols[0])}{DATA_START}"
+    # Freeze header rows only so every column can be reached by normal left/right scroll.
+    ws.freeze_panes = f"A{DATA_START}"
+    ws.sheet_view.zoomScale = 100
+    ws.sheet_view.topLeftCell = "A1"
     vis_end = colletter(layout.duration_cols[-1])
     ws.auto_filter.ref = f"A{HEADER_ROW}:{vis_end}{last_data}"
     ws.auto_filter.ref = f"A{HEADER_ROW}:{vis_end}{DATA_START + max(len(schemes), 1) - 1}"
@@ -1102,14 +1088,13 @@ def write_tracker_sheet(
     ws.auto_filter.ref = f"A{HEADER_ROW}:{vis_end}{last_data}"
 
     ws.print_title_rows = "1:3"
-    ws.print_title_cols = "A:E"
     ws.page_setup.orientation = "landscape"
     ws.page_setup.paperSize = ws.PAPERSIZE_TABLOID
     ws.page_setup.fitToPage = True
     ws.page_setup.fitToWidth = 1
     ws.page_setup.fitToHeight = 0
     ws.page_setup.horizontalCentered = True
-    ws.sheet_view.zoomScale = 90
+    ws.sheet_view.zoomScale = 100
     ws.oddFooter.left.text = banner
     ws.oddFooter.right.text = "Page &P of &N"
 

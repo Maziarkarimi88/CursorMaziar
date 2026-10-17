@@ -136,9 +136,8 @@ def main() -> None:
         "Statuses",
         "All_Provinces",
         "All_Districts",
-        "Prov_West_Herat",
-        "Dist_Badghis",
-        "Dist_Kunar",
+        "AwardGroups",
+        "Families",
     ):
         assert required in names, f"missing named range {required}"
 
@@ -180,7 +179,9 @@ def main() -> None:
 
     print(f"OK  sheets={wb.sheetnames}")
     print(f"OK  live schemes={len(SCHEMES)}  named ranges={len(names)}  tracker DVs={len(dv_formulas)}")
+    assert tracker.freeze_panes == f"A{DATA_START}", tracker.freeze_panes
     print(f"OK  file size={XLSX.stat().st_size} bytes")
+    print(f"OK  freeze={tracker.freeze_panes}")
     print(f"OK  DEMO-02 total={total2} last={last2}")
 
 
