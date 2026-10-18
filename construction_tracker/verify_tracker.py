@@ -21,6 +21,7 @@ from generate_tracker import (
     SHEET_LOOKUPS,
     SHEET_CONTRACTORS,
     SHEET_PACKAGES,
+    SHEET_PKG_STATUS,
     SHEET_PIPELINE,
     SHEET_TRACKER,
     duration_formula,
@@ -65,6 +66,7 @@ def main() -> None:
         SHEET_DASH,
         SHEET_PACKAGES,
         SHEET_CONTRACTORS,
+        SHEET_PKG_STATUS,
         SHEET_DATES,
         SHEET_EXAMPLE,
         SHEET_PIPELINE,
@@ -207,15 +209,39 @@ def main() -> None:
     pkg_ids = [packages.cell(r, 1).value for r in range(4, packages.max_row + 1) if packages.cell(r, 1).value]
     assert pkg8[0]["package_id"] in pkg_ids
     assert pkg10[0]["package_id"] in pkg_ids
-    assert packages.cell(3, 12).value == "Contractor Name"
+    assert packages.cell(3, 5).value == "Package status"
+    assert packages.cell(3, 14).value == "Contractor Name"
     zscc_pkg_rows = [
         r
         for r in range(4, packages.max_row + 1)
-        if packages.cell(r, 12).value and "ZSCC" in str(packages.cell(r, 12).value)
+        if packages.cell(r, 14).value and "ZSCC" in str(packages.cell(r, 14).value)
     ]
     assert len(zscc_pkg_rows) == 1, zscc_pkg_rows
     assert packages.cell(zscc_pkg_rows[0], 1).value == pkg10[0]["package_id"]
-    assert "057/2025" in str(packages.cell(zscc_pkg_rows[0], 13).value)
+    assert "057/2025" in str(packages.cell(zscc_pkg_rows[0], 15).value)
+    from generate_tracker import package_current_status, collect_packages
+
+    pkg10_members = [s for s in SCHEMES if s["package_id"] == pkg10[0]["package_id"]]
+    expected_pkg10, mixed10, _ = package_current_status(pkg10_members)
+    assert packages.cell(zscc_pkg_rows[0], 5).value == expected_pkg10
+    assert packages.cell(zscc_pkg_rows[0], 6).value == ("Yes" if mixed10 else "No")
+
+    pkg_status = wb[SHEET_PKG_STATUS]
+    assert "Package status" in str(pkg_status.cell(1, 1).value)
+    assert "COUNTIF" in str(pkg_status.cell(9, 2).value)
+    status_labels = [pkg_status.cell(r, 1).value for r in range(9, 22)]
+    assert "Under Awarding" in status_labels
+    assert "Under Review of WRI" in status_labels
+    awarding_row = 9 + status_labels.index("Under Awarding")
+    assert "COUNTIF" in str(pkg_status.cell(awarding_row, 2).value)
+    n_packages = len(collect_packages())
+    assert n_packages == 82
+    awarding_schemes = sum(1 for s in SCHEMES if s.get("reported_status") == "Under Awarding")
+    awarding_pkgs = sum(
+        1 for _pid, _first, members in collect_packages() if package_current_status(members)[0] == "Under Awarding"
+    )
+    assert awarding_pkgs < awarding_schemes
+    assert awarding_pkgs >= 2
 
     contractors = wb[SHEET_CONTRACTORS]
     assert "Contracts by contractor" in str(contractors.cell(1, 1).value)
