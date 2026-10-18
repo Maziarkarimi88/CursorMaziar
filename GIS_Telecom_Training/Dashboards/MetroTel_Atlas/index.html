@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MetroTel Atlas — Light briefing board</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=IBM+Plex+Mono:wght@400;500&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="assets/dashboard.css" />
+</head>
+<body>
+  <div class="drop-hint">Drop a zone KPI CSV to replace the sample data</div>
+  <div class="app">
+    <aside class="rail">
+      <div class="brand">
+        <div class="mark">AT</div>
+        <div>
+          <h1>MetroTel Atlas</h1>
+          <p>Light briefing · Capital Region</p>
+        </div>
+      </div>
+
+      <h2>Filters</h2>
+      <label>Zone <select id="filter-zone"></select></label>
+      <label>Priority <select id="filter-priority"></select></label>
+      <label>Fiber <select id="filter-fiber"></select></label>
+      <button type="button" id="btn-reset" class="ghost">Reset view</button>
+      <label class="file-btn">Load my CSV <input id="file-kpi" type="file" accept=".csv" /></label>
+      <label class="check"><input id="toggle-subs" type="checkbox" /> Show customers</label>
+
+      <h2>Legend</h2>
+      <div class="legend">
+        <span><i class="swatch" style="background:#c45c26"></i>P1 Expand</span>
+        <span><i class="swatch" style="background:#2f6f5e"></i>P2 Defend</span>
+        <span><i class="swatch" style="background:#b44a5a"></i>P3 Fix QoS</span>
+        <span><i class="swatch" style="background:#3d5a80"></i>P4 Monitor</span>
+      </div>
+
+      <h2>Decisions <span id="kpi-open" style="color:#c45c26">—</span> open</h2>
+      <div class="list" id="decision-list"></div>
+    </aside>
+
+    <main class="stage">
+      <div class="topbar">
+        <h2>Where revenue, risk, and coverage sit</h2>
+        <span id="stamp">—</span>
+      </div>
+
+      <section class="bento">
+        <article class="card hero">
+          <div class="kicker">Lead KPI · weighted ARPU</div>
+          <div class="value" id="kpi-arpu">—</div>
+          <div class="hint" id="kpi-subs-hint">Average revenue per subscriber, weighted so large districts count more than small ones.</div>
+          <div class="chip" id="data-source">Sample Day 3 / Day 5 data</div>
+        </article>
+
+        <div class="kpis">
+          <article class="kpi">
+            <div class="label">Subscribers</div>
+            <div class="value" id="kpi-subs">—</div>
+            <div class="hint">Active in view</div>
+          </article>
+          <article class="kpi">
+            <div class="label">Churn risk</div>
+            <div class="value" id="kpi-churn">—</div>
+            <div class="hint">Weighted 0–100%</div>
+          </article>
+          <article class="kpi">
+            <div class="label">4G coverage</div>
+            <div class="value" id="kpi-cov">—</div>
+            <div class="bar"><span id="cov-bar"></span></div>
+          </article>
+          <article class="kpi">
+            <div class="label">P1 expand</div>
+            <div class="value" id="kpi-p1">—</div>
+            <div class="hint">Zones to grow</div>
+          </article>
+        </div>
+
+        <article class="card">
+          <header>
+            <h3>Market geography</h3>
+            <span>Click a district</span>
+          </header>
+          <div class="map-wrap"><div id="map"></div></div>
+        </article>
+
+        <article class="card">
+          <header><h3>Priority mix</h3><span>Zone count</span></header>
+          <div class="chart-box"><canvas id="chart-priority"></canvas></div>
+        </article>
+        <article class="card">
+          <header><h3>ARPU by district</h3><span>Sorted high → low</span></header>
+          <div class="chart-box"><canvas id="chart-arpu"></canvas></div>
+        </article>
+        <article class="card">
+          <header><h3>Year trend</h3><span>Subscribers + ARPU</span></header>
+          <div class="chart-box"><canvas id="chart-trend"></canvas></div>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="assets/embedded-data.js"></script>
+  <script src="assets/dashboard.js"></script>
+</body>
+</html>

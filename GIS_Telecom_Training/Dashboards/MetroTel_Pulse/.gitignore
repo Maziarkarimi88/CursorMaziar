@@ -1,0 +1,4 @@
+__pycache__/
+*.pyc
+.DS_Store
+agol/dashboard_last_published.json

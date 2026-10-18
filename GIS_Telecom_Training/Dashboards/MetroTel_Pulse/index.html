@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MetroTel Pulse — Geo-Marketing Command Center</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="assets/dashboard.css" />
+</head>
+<body>
+  <div class="drop-hint">Drop a zone KPI CSV to replace the sample data</div>
+  <div class="app">
+    <header class="header">
+      <div class="brand">
+        <div class="mark">MT</div>
+        <div>
+          <h1>MetroTel Pulse</h1>
+          <p>Geo-Marketing &amp; Customer Analytics · Capital Region</p>
+        </div>
+      </div>
+      <div class="filters">
+        <label>Zone
+          <select id="filter-zone"></select>
+        </label>
+        <label>Priority
+          <select id="filter-priority"></select>
+        </label>
+        <label>Fiber
+          <select id="filter-fiber"></select>
+        </label>
+        <button type="button" id="btn-reset">Reset</button>
+        <label class="file-btn">Load my CSV
+          <input id="file-kpi" type="file" accept=".csv" />
+        </label>
+        <label style="flex-direction:row;align-items:center;gap:6px;text-transform:none;letter-spacing:0;font-size:12px;color:var(--muted)">
+          <input id="toggle-subs" type="checkbox" /> Show customers
+        </label>
+        <div class="live"><i></i><span id="stamp">—</span></div>
+      </div>
+    </header>
+
+    <section class="kpis">
+      <article class="kpi" style="--accent:var(--cyan)">
+        <div class="label">Subscribers</div>
+        <div class="value" id="kpi-subs">—</div>
+        <div class="hint" id="kpi-subs-hint">All marketing zones</div>
+      </article>
+      <article class="kpi" style="--accent:var(--gold)">
+        <div class="label">ARPU (weighted)</div>
+        <div class="value" id="kpi-arpu">—</div>
+        <div class="hint">USD / month</div>
+      </article>
+      <article class="kpi" style="--accent:var(--rose)">
+        <div class="label">Churn risk</div>
+        <div class="value" id="kpi-churn">—</div>
+        <div class="hint">Subscriber-weighted</div>
+      </article>
+      <article class="kpi" style="--accent:var(--gold)">
+        <div class="label">P1 expand zones</div>
+        <div class="value" id="kpi-p1">—</div>
+        <div class="hint">Sales / site priority</div>
+      </article>
+      <article class="kpi" style="--accent:var(--emerald)">
+        <div class="label">4G coverage</div>
+        <div class="value" id="kpi-cov">—</div>
+        <div class="hint">Population-weighted</div>
+      </article>
+      <article class="kpi" style="--accent:var(--blue)">
+        <div class="label">Open actions</div>
+        <div class="value" id="kpi-open">—</div>
+        <div class="hint">Not yet approved</div>
+      </article>
+    </section>
+
+    <section class="workspace">
+      <article class="card">
+        <header>
+          <h2>Market geography</h2>
+          <span id="data-source">Sample MetroTel Day 3 / Day 5 data</span>
+        </header>
+        <div class="map-wrap"><div id="map"></div></div>
+        <div class="legend">
+          <span><i class="swatch" style="background:#f5c15a"></i>P1 Expand</span>
+          <span><i class="swatch" style="background:#2ee6d6"></i>P2 Defend</span>
+          <span><i class="swatch" style="background:#ff5c7a"></i>P3 Fix QoS</span>
+          <span><i class="swatch" style="background:#5b8cff"></i>P4 Monitor</span>
+          <span><i class="swatch" style="background:#2ee6d6;border-radius:50%"></i>On-air site</span>
+          <span><i class="swatch" style="background:#f5c15a;border-radius:50%"></i>Candidate</span>
+          <span><i class="swatch" style="background:#ff5c7a;border-radius:50%"></i>Competitor</span>
+        </div>
+      </article>
+
+      <div class="side">
+        <article class="card">
+          <header>
+            <h2>Priority mix</h2>
+            <span>Count of zones</span>
+          </header>
+          <div class="chart-box"><canvas id="chart-priority"></canvas></div>
+        </article>
+        <article class="card">
+          <header>
+            <h2>ARPU by district</h2>
+            <span>Bars colored by priority</span>
+          </header>
+          <div class="chart-box"><canvas id="chart-arpu"></canvas></div>
+        </article>
+      </div>
+
+      <article class="card">
+        <header>
+          <h2>Network trend</h2>
+          <span>Monthly subscribers + ARPU</span>
+        </header>
+        <div class="chart-box"><canvas id="chart-trend"></canvas></div>
+      </article>
+
+      <article class="card">
+        <header>
+          <h2>Decisions</h2>
+          <span>Click a row to isolate the zone</span>
+        </header>
+        <div class="list" id="decision-list"></div>
+      </article>
+    </section>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="assets/embedded-data.js"></script>
+  <script src="assets/dashboard.js"></script>
+</body>
+</html>

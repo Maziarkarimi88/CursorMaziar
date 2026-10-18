@@ -1,0 +1,817 @@
+{
+  "version": "4.30.0",
+  "authoringApp": "ArcGIS Dashboards",
+  "authoringAppVersion": "2025.1",
+  "maxPaginationRecords": 50000,
+  "maxChartRecords": 10000,
+  "timeZone": "system",
+  "theme": "dark",
+  "desktopView": {
+    "type": "desktopView",
+    "settings": {
+      "allowElementResizing": true,
+      "allowElementExpansion": true,
+      "allowReset": true
+    },
+    "header": {
+      "type": "header",
+      "title": "MetroTel Pulse \u2014 Geo-Marketing Command Center",
+      "textColor": "#e8eef7",
+      "textColor2": "#8b9bb4",
+      "backgroundColor": "#0e1524",
+      "backgroundColor2": "#121b2c",
+      "titleTextColor": "#2ee6d6",
+      "logoImageURL": "",
+      "logoURL": "",
+      "logoSize": "medium",
+      "showSignOutMenu": true,
+      "subtitlePlacement": "below",
+      "showMargin": true,
+      "menuContents": [],
+      "selectors": [],
+      "backgroundImageURL": "",
+      "backgroundImageSizing": "fit-width",
+      "normalBackgroundImagePlacement": "center",
+      "horizontalBackgroundImagePlacement": "top"
+    },
+    "widgets": [
+      {
+        "id": "e190a054-7bbd-4157-86cf-585221f2546d",
+        "name": "Subscribers",
+        "showLastUpdate": false,
+        "type": "indicatorWidget",
+        "comparison": "none",
+        "valueType": "statistic",
+        "datasets": [
+          {
+            "type": "serviceDataset",
+            "name": "main",
+            "dataSource": {
+              "type": "layerDataSource",
+              "itemId": "ZONES_ITEM_ID",
+              "layerId": "ZONES_LAYER_ID"
+            },
+            "groupByFields": [],
+            "orderByFields": [],
+            "statisticDefinitions": [
+              {
+                "onStatisticField": "SUBSCRIBERS",
+                "outStatisticFieldName": "value",
+                "statisticType": "sum"
+              }
+            ],
+            "clientSideStatistics": false,
+            "outFields": [
+              "*"
+            ],
+            "returnDistinctValues": false
+          }
+        ],
+        "defaultSettings": {
+          "topSection": {
+            "fontSize": 70,
+            "textInfo": {
+              "text": "Subscribers",
+              "fillColor": "#8b9bb4"
+            }
+          },
+          "middleSection": {
+            "fontSize": 140,
+            "textInfo": {
+              "text": "{calculated/value}",
+              "fillColor": "#2ee6d6"
+            }
+          },
+          "bottomSection": {
+            "fontSize": 36,
+            "textInfo": {
+              "text": "",
+              "fillColor": "#5d6d86"
+            }
+          }
+        },
+        "valueFormat": {
+          "name": "value",
+          "prefix": false,
+          "style": "decimal",
+          "useGrouping": true,
+          "minimumFractionDigits": 0,
+          "maximumFractionDigits": 1,
+          "valuePrefix": "",
+          "valueSuffix": ""
+        },
+        "noDataState": {
+          "verticalAlignment": "middle",
+          "showCaption": true,
+          "showDescription": true
+        },
+        "noFilterState": {
+          "verticalAlignment": "middle",
+          "showCaption": true,
+          "showDescription": true
+        },
+        "noValueState": {
+          "verticalAlignment": "middle",
+          "showCaption": true,
+          "showDescription": true
+        },
+        "percentageFormat": {
+          "name": "percentage",
+          "style": "percent",
+          "useGrouping": true
+        },
+        "ratioFormat": {
+          "name": "ratio",
+          "style": "decimal",
+          "useGrouping": true
+        }
+      },
+      {
+        "id": "6789a110-e6de-48c4-95ee-e5189f1ece30",
+        "name": "ARPU",
+        "showLastUpdate": false,
+        "type": "indicatorWidget",
+        "comparison": "none",
+        "valueType": "statistic",
+        "datasets": [
+          {
+            "type": "serviceDataset",
+            "name": "main",
+            "dataSource": {
+              "type": "layerDataSource",
+              "itemId": "ZONES_ITEM_ID",
+              "layerId": "ZONES_LAYER_ID"
+            },
+            "groupByFields": [],
+            "orderByFields": [],
+            "statisticDefinitions": [
+              {
+                "onStatisticField": "AVG_ARPU",
+                "outStatisticFieldName": "value",
+                "statisticType": "avg"
+              }
+            ],
+            "clientSideStatistics": false,
+            "outFields": [
+              "*"
+            ],
+            "returnDistinctValues": false
+          }
+        ],
+        "defaultSettings": {
+          "topSection": {
+            "fontSize": 70,
+            "textInfo": {
+              "text": "Avg ARPU",
+              "fillColor": "#8b9bb4"
+            }
+          },
+          "middleSection": {
+            "fontSize": 140,
+            "textInfo": {
+              "text": "{calculated/value}",
+              "fillColor": "#f5c15a"
+            }
+          },
+          "bottomSection": {
+            "fontSize": 36,
+            "textInfo": {
+              "text": "",
+              "fillColor": "#5d6d86"
+            }
+          }
+        },
+        "valueFormat": {
+          "name": "value",
+          "prefix": false,
+          "style": "decimal",
+          "useGrouping": true,
+          "minimumFractionDigits": 0,
+          "maximumFractionDigits": 1,
+          "valuePrefix": "$",
+          "valueSuffix": ""
+        },
+        "noDataState": {
+          "verticalAlignment": "middle",
+          "showCaption": true,
+          "showDescription": true
+        },
+        "noFilterState": {
+          "verticalAlignment": "middle",
+          "showCaption": true,
+          "showDescription": true
+        },
+        "noValueState": {
+          "verticalAlignment": "middle",
+          "showCaption": true,
+          "showDescription": true
+        },
+        "percentageFormat": {
+          "name": "percentage",
+          "style": "percent",
+          "useGrouping": true
+        },
+        "ratioFormat": {
+          "name": "ratio",
+          "style": "decimal",
+          "useGrouping": true
+        }
+      },
+      {
+        "id": "3b4ff5af-a159-4a62-a2df-d2dacd40a9d0",
+        "name": "Churn",
+        "showLastUpdate": false,
+        "type": "indicatorWidget",
+        "comparison": "none",
+        "valueType": "statistic",
+        "datasets": [
+          {
+            "type": "serviceDataset",
+            "name": "main",
+            "dataSource": {
+              "type": "layerDataSource",
+              "itemId": "ZONES_ITEM_ID",
+              "layerId": "ZONES_LAYER_ID"
+            },
+            "groupByFields": [],
+            "orderByFields": [],
+            "statisticDefinitions": [
+              {
+                "onStatisticField": "AVG_CHURN",
+                "outStatisticFieldName": "value",
+                "statisticType": "avg"
+              }
+            ],
+            "clientSideStatistics": false,
+            "outFields": [
+              "*"
+            ],
+            "returnDistinctValues": false
+          }
+        ],
+        "defaultSettings": {
+          "topSection": {
+            "fontSize": 70,
+            "textInfo": {
+              "text": "Avg churn",
+              "fillColor": "#8b9bb4"
+            }
+          },
+          "middleSection": {
+            "fontSize": 140,
+            "textInfo": {
+              "text": "{calculated/value}",
+              "fillColor": "#ff5c7a"
+            }
+          },
+          "bottomSection": {
+            "fontSize": 36,
+            "textInfo": {
+              "text": "",
+              "fillColor": "#5d6d86"
+            }
+          }
+        },
+        "valueFormat": {
+          "name": "value",
+          "prefix": false,
+          "style": "decimal",
+          "useGrouping": true,
+          "minimumFractionDigits": 0,
+          "maximumFractionDigits": 1,
+          "valuePrefix": "",
+          "valueSuffix": ""
+        },
+        "noDataState": {
+          "verticalAlignment": "middle",
+          "showCaption": true,
+          "showDescription": true
+        },
+        "noFilterState": {
+          "verticalAlignment": "middle",
+          "showCaption": true,
+          "showDescription": true
+        },
+        "noValueState": {
+          "verticalAlignment": "middle",
+          "showCaption": true,
+          "showDescription": true
+        },
+        "percentageFormat": {
+          "name": "percentage",
+          "style": "percent",
+          "useGrouping": true
+        },
+        "ratioFormat": {
+          "name": "ratio",
+          "style": "decimal",
+          "useGrouping": true
+        }
+      },
+      {
+        "id": "93308be8-1ce4-47d3-8e67-e51e5a57a8df",
+        "name": "Coverage",
+        "showLastUpdate": false,
+        "type": "indicatorWidget",
+        "comparison": "none",
+        "valueType": "statistic",
+        "datasets": [
+          {
+            "type": "serviceDataset",
+            "name": "main",
+            "dataSource": {
+              "type": "layerDataSource",
+              "itemId": "ZONES_ITEM_ID",
+              "layerId": "ZONES_LAYER_ID"
+            },
+            "groupByFields": [],
+            "orderByFields": [],
+            "statisticDefinitions": [
+              {
+                "onStatisticField": "COV_4G_PCT",
+                "outStatisticFieldName": "value",
+                "statisticType": "avg"
+              }
+            ],
+            "clientSideStatistics": false,
+            "outFields": [
+              "*"
+            ],
+            "returnDistinctValues": false
+          }
+        ],
+        "defaultSettings": {
+          "topSection": {
+            "fontSize": 70,
+            "textInfo": {
+              "text": "4G coverage %",
+              "fillColor": "#8b9bb4"
+            }
+          },
+          "middleSection": {
+            "fontSize": 140,
+            "textInfo": {
+              "text": "{calculated/value}",
+              "fillColor": "#3ddc97"
+            }
+          },
+          "bottomSection": {
+            "fontSize": 36,
+            "textInfo": {
+              "text": "",
+              "fillColor": "#5d6d86"
+            }
+          }
+        },
+        "valueFormat": {
+          "name": "value",
+          "prefix": false,
+          "style": "decimal",
+          "useGrouping": true,
+          "minimumFractionDigits": 0,
+          "maximumFractionDigits": 1,
+          "valuePrefix": "",
+          "valueSuffix": "%"
+        },
+        "noDataState": {
+          "verticalAlignment": "middle",
+          "showCaption": true,
+          "showDescription": true
+        },
+        "noFilterState": {
+          "verticalAlignment": "middle",
+          "showCaption": true,
+          "showDescription": true
+        },
+        "noValueState": {
+          "verticalAlignment": "middle",
+          "showCaption": true,
+          "showDescription": true
+        },
+        "percentageFormat": {
+          "name": "percentage",
+          "style": "percent",
+          "useGrouping": true
+        },
+        "ratioFormat": {
+          "name": "ratio",
+          "style": "decimal",
+          "useGrouping": true
+        }
+      },
+      {
+        "id": "4740b1d9-306b-4820-a445-dcb292c667e4",
+        "name": "GapPop",
+        "showLastUpdate": false,
+        "type": "indicatorWidget",
+        "comparison": "none",
+        "valueType": "statistic",
+        "datasets": [
+          {
+            "type": "serviceDataset",
+            "name": "main",
+            "dataSource": {
+              "type": "layerDataSource",
+              "itemId": "ZONES_ITEM_ID",
+              "layerId": "ZONES_LAYER_ID"
+            },
+            "groupByFields": [],
+            "orderByFields": [],
+            "statisticDefinitions": [
+              {
+                "onStatisticField": "COV_GAP_POP",
+                "outStatisticFieldName": "value",
+                "statisticType": "sum"
+              }
+            ],
+            "clientSideStatistics": false,
+            "outFields": [
+              "*"
+            ],
+            "returnDistinctValues": false
+          }
+        ],
+        "defaultSettings": {
+          "topSection": {
+            "fontSize": 70,
+            "textInfo": {
+              "text": "Coverage gap pop",
+              "fillColor": "#8b9bb4"
+            }
+          },
+          "middleSection": {
+            "fontSize": 140,
+            "textInfo": {
+              "text": "{calculated/value}",
+              "fillColor": "#5b8cff"
+            }
+          },
+          "bottomSection": {
+            "fontSize": 36,
+            "textInfo": {
+              "text": "",
+              "fillColor": "#5d6d86"
+            }
+          }
+        },
+        "valueFormat": {
+          "name": "value",
+          "prefix": false,
+          "style": "decimal",
+          "useGrouping": true,
+          "minimumFractionDigits": 0,
+          "maximumFractionDigits": 1,
+          "valuePrefix": "",
+          "valueSuffix": ""
+        },
+        "noDataState": {
+          "verticalAlignment": "middle",
+          "showCaption": true,
+          "showDescription": true
+        },
+        "noFilterState": {
+          "verticalAlignment": "middle",
+          "showCaption": true,
+          "showDescription": true
+        },
+        "noValueState": {
+          "verticalAlignment": "middle",
+          "showCaption": true,
+          "showDescription": true
+        },
+        "percentageFormat": {
+          "name": "percentage",
+          "style": "percent",
+          "useGrouping": true
+        },
+        "ratioFormat": {
+          "name": "ratio",
+          "style": "decimal",
+          "useGrouping": true
+        }
+      },
+      {
+        "id": "a5eacb9c-21de-40ff-a8ef-062d032f6c63",
+        "name": "Suitability",
+        "showLastUpdate": false,
+        "type": "indicatorWidget",
+        "comparison": "none",
+        "valueType": "statistic",
+        "datasets": [
+          {
+            "type": "serviceDataset",
+            "name": "main",
+            "dataSource": {
+              "type": "layerDataSource",
+              "itemId": "ZONES_ITEM_ID",
+              "layerId": "ZONES_LAYER_ID"
+            },
+            "groupByFields": [],
+            "orderByFields": [],
+            "statisticDefinitions": [
+              {
+                "onStatisticField": "SUITABILITY",
+                "outStatisticFieldName": "value",
+                "statisticType": "avg"
+              }
+            ],
+            "clientSideStatistics": false,
+            "outFields": [
+              "*"
+            ],
+            "returnDistinctValues": false
+          }
+        ],
+        "defaultSettings": {
+          "topSection": {
+            "fontSize": 70,
+            "textInfo": {
+              "text": "Mean suitability",
+              "fillColor": "#8b9bb4"
+            }
+          },
+          "middleSection": {
+            "fontSize": 140,
+            "textInfo": {
+              "text": "{calculated/value}",
+              "fillColor": "#2ee6d6"
+            }
+          },
+          "bottomSection": {
+            "fontSize": 36,
+            "textInfo": {
+              "text": "",
+              "fillColor": "#5d6d86"
+            }
+          }
+        },
+        "valueFormat": {
+          "name": "value",
+          "prefix": false,
+          "style": "decimal",
+          "useGrouping": true,
+          "minimumFractionDigits": 0,
+          "maximumFractionDigits": 1,
+          "valuePrefix": "",
+          "valueSuffix": ""
+        },
+        "noDataState": {
+          "verticalAlignment": "middle",
+          "showCaption": true,
+          "showDescription": true
+        },
+        "noFilterState": {
+          "verticalAlignment": "middle",
+          "showCaption": true,
+          "showDescription": true
+        },
+        "noValueState": {
+          "verticalAlignment": "middle",
+          "showCaption": true,
+          "showDescription": true
+        },
+        "percentageFormat": {
+          "name": "percentage",
+          "style": "percent",
+          "useGrouping": true
+        },
+        "ratioFormat": {
+          "name": "ratio",
+          "style": "decimal",
+          "useGrouping": true
+        }
+      },
+      {
+        "id": "e62fedd6-391e-477f-8d98-35cd2050fa91",
+        "name": "MarketMap",
+        "type": "mapWidget",
+        "itemId": "WEBMAP_ITEM_ID",
+        "showLastUpdate": false,
+        "pointZoomScale": 50000,
+        "flashRepeats": 3,
+        "mapTools": [
+          "search",
+          "legend",
+          "layers",
+          "basemap",
+          "home"
+        ],
+        "showNavigation": true,
+        "showPanRotate": false,
+        "showLocate": false,
+        "showCompass": false,
+        "showPopup": true,
+        "events": [],
+        "noDataState": {},
+        "noFilterState": {}
+      },
+      {
+        "id": "0e632ec8-9617-4e9e-8f77-4474e48612f6",
+        "name": "PriorityMix",
+        "caption": "Zones by priority",
+        "type": "pieChartWidget",
+        "showLastUpdate": false,
+        "actionMode": "default",
+        "categoryType": "groupByValues",
+        "datasets": [
+          {
+            "type": "serviceDataset",
+            "name": "main",
+            "dataSource": {
+              "type": "layerDataSource",
+              "itemId": "ZONES_ITEM_ID",
+              "layerId": "ZONES_LAYER_ID"
+            },
+            "groupByFields": [
+              "PRIORITY"
+            ],
+            "orderByFields": [],
+            "statisticDefinitions": [
+              {
+                "onStatisticField": "DIST_ID",
+                "outStatisticFieldName": "value",
+                "statisticType": "count"
+              }
+            ],
+            "clientSideStatistics": false,
+            "outFields": [
+              "*"
+            ]
+          }
+        ],
+        "chartConfig": {},
+        "noDataState": {},
+        "noFilterState": {},
+        "dataLabelsFormat": {
+          "name": "label",
+          "style": "decimal"
+        },
+        "valueFormat": {
+          "name": "value",
+          "style": "decimal",
+          "useGrouping": true
+        },
+        "percentageFormat": {
+          "name": "percentage",
+          "style": "percent"
+        }
+      },
+      {
+        "id": "68410fa5-8a61-405e-b18b-2094c8378905",
+        "name": "ARPUByDistrict",
+        "caption": "ARPU by district",
+        "type": "serialChartWidget",
+        "showLastUpdate": false,
+        "actionMode": "default",
+        "categoryType": "groupByValues",
+        "parseDates": false,
+        "datasets": [
+          {
+            "type": "serviceDataset",
+            "name": "main",
+            "dataSource": {
+              "type": "layerDataSource",
+              "itemId": "ZONES_ITEM_ID",
+              "layerId": "ZONES_LAYER_ID"
+            },
+            "groupByFields": [
+              "DIST_NAME"
+            ],
+            "orderByFields": [
+              "DIST_NAME asc"
+            ],
+            "statisticDefinitions": [
+              {
+                "onStatisticField": "AVG_ARPU",
+                "outStatisticFieldName": "value",
+                "statisticType": "avg"
+              }
+            ],
+            "clientSideStatistics": false,
+            "outFields": [
+              "*"
+            ]
+          }
+        ],
+        "category": {
+          "fieldName": "DIST_NAME"
+        },
+        "valueFormat": {
+          "name": "value",
+          "style": "decimal",
+          "useGrouping": true
+        },
+        "labelFormat": {
+          "name": "label",
+          "style": "decimal"
+        },
+        "noDataState": {},
+        "noFilterState": {}
+      }
+    ],
+    "layout": {
+      "type": "dockingLayout",
+      "rootElement": {
+        "id": "c4efb047-fa58-41eb-a304-ddfd66ecee30",
+        "type": "stackLayoutElement",
+        "orientation": "row",
+        "width": 1,
+        "height": 1,
+        "elements": [
+          {
+            "id": "2fbcb46e-2256-49ad-95b5-397e7405f792",
+            "type": "stackLayoutElement",
+            "orientation": "col",
+            "width": 1,
+            "height": 0.16,
+            "elements": [
+              {
+                "width": 0.16666666666666666,
+                "height": 1,
+                "type": "itemLayoutElement",
+                "id": "e190a054-7bbd-4157-86cf-585221f2546d"
+              },
+              {
+                "width": 0.16666666666666666,
+                "height": 1,
+                "type": "itemLayoutElement",
+                "id": "6789a110-e6de-48c4-95ee-e5189f1ece30"
+              },
+              {
+                "width": 0.16666666666666666,
+                "height": 1,
+                "type": "itemLayoutElement",
+                "id": "3b4ff5af-a159-4a62-a2df-d2dacd40a9d0"
+              },
+              {
+                "width": 0.16666666666666666,
+                "height": 1,
+                "type": "itemLayoutElement",
+                "id": "93308be8-1ce4-47d3-8e67-e51e5a57a8df"
+              },
+              {
+                "width": 0.16666666666666666,
+                "height": 1,
+                "type": "itemLayoutElement",
+                "id": "4740b1d9-306b-4820-a445-dcb292c667e4"
+              },
+              {
+                "width": 0.16666666666666666,
+                "height": 1,
+                "type": "itemLayoutElement",
+                "id": "a5eacb9c-21de-40ff-a8ef-062d032f6c63"
+              }
+            ]
+          },
+          {
+            "id": "39cbc084-bc86-413f-b4bb-10c1f271eaf1",
+            "type": "stackLayoutElement",
+            "orientation": "col",
+            "width": 1,
+            "height": 0.84,
+            "elements": [
+              {
+                "id": "e99f8adf-f07e-4036-929a-783403c26722",
+                "type": "stackLayoutElement",
+                "orientation": "row",
+                "width": 0.58,
+                "height": 1,
+                "elements": [
+                  {
+                    "width": 1,
+                    "height": 1,
+                    "type": "itemLayoutElement",
+                    "id": "e62fedd6-391e-477f-8d98-35cd2050fa91"
+                  }
+                ]
+              },
+              {
+                "id": "35808227-fb7b-41ab-b323-853969f466c4",
+                "type": "stackLayoutElement",
+                "orientation": "row",
+                "width": 0.42,
+                "height": 1,
+                "elements": [
+                  {
+                    "width": 1,
+                    "height": 0.5,
+                    "type": "itemLayoutElement",
+                    "id": "0e632ec8-9617-4e9e-8f77-4474e48612f6"
+                  },
+                  {
+                    "width": 1,
+                    "height": 0.5,
+                    "type": "itemLayoutElement",
+                    "id": "68410fa5-8a61-405e-b18b-2094c8378905"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "elementMappings": {},
+  "numberPrefixOverrides": []
+}
