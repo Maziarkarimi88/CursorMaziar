@@ -143,7 +143,8 @@ Hide columns you do not need rather than deleting formula columns.
 ## Pre-loaded schemes
 
 `01_Scheme_Tracker` is one combined register built from the seven sheets in
-`2- WBK-AF2_Master file contract status awarded and remaining contracts.xlsx`:
+`Copy of WBK-AF2_Master file contract status awarded and remaining contracts-rev.xlsx`
+(falls back to `2- WBK-AF2_Master file contract status awarded and remaining contracts.xlsx` if the revised file is absent):
 
 - awarded and not-awarded on/off-farm irrigation
 - awarded and not-awarded WSM / check dams

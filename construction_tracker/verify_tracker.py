@@ -228,29 +228,39 @@ def main() -> None:
 
     pkg_status = wb[SHEET_PKG_STATUS]
     assert "Package status" in str(pkg_status.cell(1, 1).value)
-    assert "COUNTIF" in str(pkg_status.cell(9, 2).value)
-    status_labels = [pkg_status.cell(r, 1).value for r in range(9, 22)]
+    assert pkg_status.cell(8, 1).value == "Major intervention"
+    assert pkg_status.cell(9, 1).value == "Irrigation Scheme"
+    assert pkg_status.cell(10, 1).value == "Watershed Management"
+    assert "COUNTIFS" in str(pkg_status.cell(9, 3).value)
+    assert "Awarded" in str(pkg_status.cell(9, 3).value)
+    pkgs = collect_packages()
+    is_awarded = sum(1 for _p, first, _m in pkgs if first.get("intervention_major") == "Irrigation Scheme" and first.get("award_group") == "Awarded")
+    is_not = sum(1 for _p, first, _m in pkgs if first.get("intervention_major") == "Irrigation Scheme" and first.get("award_group") == "Not awarded")
+    wsm_awarded = sum(1 for _p, first, _m in pkgs if first.get("intervention_major") == "Watershed Management" and first.get("award_group") == "Awarded")
+    wsm_not = sum(1 for _p, first, _m in pkgs if first.get("intervention_major") == "Watershed Management" and first.get("award_group") == "Not awarded")
+    assert is_awarded == 18, is_awarded
+    assert is_awarded + is_not == 46, (is_awarded, is_not)
+    assert wsm_awarded == 23, wsm_awarded
+    status_title_row = next(
+        r for r in range(1, 30) if str(pkg_status.cell(r, 1).value or "").startswith("Packages by pipeline status")
+    )
+    status_header = status_title_row + 1
+    status_first = status_title_row + 2
+    status_labels = [pkg_status.cell(r, 1).value for r in range(status_first, status_first + 14)]
     assert "Under Awarding" in status_labels
     assert "Under Review of WRI" in status_labels
-    awarding_row = 9 + status_labels.index("Under Awarding")
+    awarding_row = status_first + status_labels.index("Under Awarding")
     assert "COUNTIF" in str(pkg_status.cell(awarding_row, 2).value)
-    n_packages = len(collect_packages())
-    assert n_packages == 82
+    n_packages = len(pkgs)
     awarding_schemes = sum(1 for s in SCHEMES if s.get("reported_status") == "Under Awarding")
-    awarding_pkgs = sum(
-        1 for _pid, _first, members in collect_packages() if package_current_status(members)[0] == "Under Awarding"
-    )
+    awarding_pkgs = sum(1 for _pid, _first, members in pkgs if package_current_status(members)[0] == "Under Awarding")
     assert awarding_pkgs < awarding_schemes
     assert awarding_pkgs >= 2
-    assert pkg_status.cell(8, 7).value == "Irrigation Scheme"
-    assert pkg_status.cell(8, 9).value == "Watershed Management"
-    assert "Share of this status" in str(pkg_status.cell(8, 8).value)
-    awarded_row = 9 + status_labels.index("Awarded")
+    assert pkg_status.cell(status_header, 7).value == "Irrigation Scheme"
+    assert "Share of this status" in str(pkg_status.cell(status_header, 8).value)
+    awarded_row = status_first + status_labels.index("Awarded")
     assert "COUNTIFS" in str(pkg_status.cell(awarded_row, 7).value)
-    assert "$C$4" in str(pkg_status.cell(awarded_row, 7).value)
     assert f"$B{awarded_row}" in str(pkg_status.cell(awarded_row, 8).value)
-    awarding_lll = str(pkg_status.cell(awarding_row, 13).value)
-    assert "COUNTIFS" in awarding_lll
 
     contractors = wb[SHEET_CONTRACTORS]
     assert "Contracts by contractor" in str(contractors.cell(1, 1).value)

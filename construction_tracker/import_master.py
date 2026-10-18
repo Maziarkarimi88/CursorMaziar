@@ -11,7 +11,11 @@ from pathlib import Path
 from openpyxl import load_workbook
 from openpyxl.utils import column_index_from_string
 
-MASTER = Path("/workspace/2- WBK-AF2_Master file contract status awarded and remaining contracts.xlsx")
+_MASTER_CANDIDATES = [
+    Path("/workspace/Copy of WBK-AF2_Master file contract status awarded and remaining contracts-rev.xlsx"),
+    Path("/workspace/2- WBK-AF2_Master file contract status awarded and remaining contracts.xlsx"),
+]
+MASTER = next(p for p in _MASTER_CANDIDATES if p.exists())
 OUT = Path(__file__).resolve().parent / "imported_schemes.json"
 
 PROJECT = "Emergency Food Security Project (EFSP) – WBK/AF-2"
@@ -563,6 +567,14 @@ def main():
     print("by status", Counter(r.get("reported_status") or "(blank)" for r in rows).most_common(15))
     multi = Counter(r["package_id"] for r in rows)
     print("multi-scheme packages", sum(1 for n in multi.values() if n > 1), "largest", multi.most_common(5))
+    pkg_key = {}
+    for r in rows:
+        pid = r["package_id"]
+        if pid not in pkg_key:
+            pkg_key[pid] = (r["intervention_major"], r["award_group"])
+    print("packages by major × group")
+    print(Counter(pkg_key.values()))
+    print(f"source {MASTER.name}")
 
 
 if __name__ == "__main__":

@@ -2114,13 +2114,105 @@ def write_package_status(wb: Workbook, layout: Layout) -> None:
         )
 
     apply_cell(
-        ws.cell(7, 1, "Packages by status — count, then how that status is shared across major interventions"),
+        ws.cell(7, 1, "Packages by major intervention — Awarded vs Not awarded (unique contracts)"),
+        font=FONT_SECTION,
+        fill_hex=LIGHT_GOLD,
+        border=None,
+    )
+    ws.merge_cells("A7:G7")
+    award_headers = [
+        "Major intervention",
+        "Packages",
+        "Awarded",
+        "Not awarded",
+        "Share awarded",
+        "Share not awarded",
+        "Sub-projects (rows)",
+    ]
+    for i, h in enumerate(award_headers, start=1):
+        apply_cell(ws.cell(8, i, h), font=FONT_HEAD, fill_hex=GOLD, align=ALIGN_C)
+    tr_major = f"{t}!${layout.letter('intervention_major')}${first}:${layout.letter('intervention_major')}${last}"
+    for i, major in enumerate(majors):
+        row = 9 + i
+        apply_cell(ws.cell(row, 1, major), font=FONT_BODY, fill_hex=LIGHT_GOLD)
+        apply_cell(
+            ws.cell(row, 2, f"=COUNTIF({pkg_major_rng},A{row})"),
+            font=FONT_FORMULA,
+            fill_hex=FORMULA_BG,
+            align=ALIGN_C,
+            fmt="0",
+        )
+        apply_cell(
+            ws.cell(row, 3, f'=COUNTIFS({pkg_major_rng},A{row},{pkg_group_rng},"Awarded")'),
+            font=FONT_FORMULA,
+            fill_hex=LIGHT_GREEN,
+            align=ALIGN_C,
+            fmt="0",
+        )
+        apply_cell(
+            ws.cell(row, 4, f'=COUNTIFS({pkg_major_rng},A{row},{pkg_group_rng},"Not awarded")'),
+            font=FONT_FORMULA,
+            fill_hex=LIGHT_GOLD,
+            align=ALIGN_C,
+            fmt="0",
+        )
+        apply_cell(
+            ws.cell(row, 5, f'=IF(B{row}=0,"",C{row}/B{row})'),
+            font=FONT_FORMULA,
+            fill_hex=FORMULA_BG,
+            align=ALIGN_C,
+            fmt="0%",
+        )
+        apply_cell(
+            ws.cell(row, 6, f'=IF(B{row}=0,"",D{row}/B{row})'),
+            font=FONT_FORMULA,
+            fill_hex=FORMULA_BG,
+            align=ALIGN_C,
+            fmt="0%",
+        )
+        apply_cell(
+            ws.cell(row, 7, f"=COUNTIF({tr_major},A{row})"),
+            font=FONT_FORMULA,
+            fill_hex=FORMULA_BG,
+            align=ALIGN_C,
+            fmt="0",
+        )
+    award_total = 9 + len(majors)
+    apply_cell(ws.cell(award_total, 1, "Total"), font=FONT_HEAD, fill_hex=STEEL)
+    for col, letter in ((2, "B"), (3, "C"), (4, "D"), (7, "G")):
+        apply_cell(
+            ws.cell(award_total, col, f"=SUM({letter}9:{letter}{award_total - 1})"),
+            font=FONT_FORMULA,
+            fill_hex=FORMULA_BG,
+            align=ALIGN_C,
+            fmt="0",
+        )
+    apply_cell(
+        ws.cell(award_total, 5, f'=IF(B{award_total}=0,"",C{award_total}/B{award_total})'),
+        font=FONT_FORMULA,
+        fill_hex=FORMULA_BG,
+        align=ALIGN_C,
+        fmt="0%",
+    )
+    apply_cell(
+        ws.cell(award_total, 6, f'=IF(B{award_total}=0,"",D{award_total}/B{award_total})'),
+        font=FONT_FORMULA,
+        fill_hex=FORMULA_BG,
+        align=ALIGN_C,
+        fmt="0%",
+    )
+
+    status_title = award_total + 2
+    apply_cell(
+        ws.cell(status_title, 1, "Packages by pipeline status — how each step is shared across major interventions"),
         font=FONT_SECTION,
         fill_hex=LIGHT_NAVY,
         border=None,
     )
-    ws.merge_cells(start_row=7, start_column=1, end_row=7, end_column=last_col)
+    ws.merge_cells(start_row=status_title, start_column=1, end_row=status_title, end_column=last_col)
 
+    status_header = status_title + 1
+    status_first = status_title + 2
     core_headers = [
         "Status",
         "Packages",
@@ -2130,16 +2222,16 @@ def write_package_status(wb: Workbook, layout: Layout) -> None:
         "Not awarded packages",
     ]
     for i, h in enumerate(core_headers, start=1):
-        apply_cell(ws.cell(8, i, h), font=FONT_HEAD, fill_hex=NAVY, align=ALIGN_C)
+        apply_cell(ws.cell(status_header, i, h), font=FONT_HEAD, fill_hex=NAVY, align=ALIGN_C)
     for i, major in enumerate(majors):
         count_col = 7 + i * 2
         share_col = count_col + 1
-        apply_cell(ws.cell(8, count_col, major), font=FONT_HEAD, fill_hex=FOREST, align=ALIGN_C)
-        apply_cell(ws.cell(8, share_col, f"Share of this status"), font=FONT_HEAD, fill_hex=FOREST, align=ALIGN_C)
+        apply_cell(ws.cell(status_header, count_col, major), font=FONT_HEAD, fill_hex=FOREST, align=ALIGN_C)
+        apply_cell(ws.cell(status_header, share_col, f"Share of this status"), font=FONT_HEAD, fill_hex=FOREST, align=ALIGN_C)
 
     statuses = [s["name"] for s in STATUS_PIPELINE] + ["Not started", "Cancelled"]
     for i, name in enumerate(statuses):
-        row = 9 + i
+        row = status_first + i
         apply_cell(ws.cell(row, 1, name), font=FONT_BODY, fill_hex=STATUS_COLORS.get(name, WHITE))
         apply_cell(ws.cell(row, 2, f"=COUNTIF({pkg_status_rng},A{row})"), font=FONT_FORMULA, fill_hex=FORMULA_BG, align=ALIGN_C, fmt="0")
         apply_cell(ws.cell(row, 3, f'=IF($A$5=0,"",B{row}/$A$5)'), font=FONT_FORMULA, fill_hex=FORMULA_BG, align=ALIGN_C, fmt="0%")
@@ -2161,7 +2253,7 @@ def write_package_status(wb: Workbook, layout: Layout) -> None:
         for j, major in enumerate(majors):
             count_col = 7 + j * 2
             share_col = count_col + 1
-            header = f"{colletter(count_col)}$8"
+            header = f"{colletter(count_col)}${status_header}"
             apply_cell(
                 ws.cell(
                     row,
@@ -2181,7 +2273,7 @@ def write_package_status(wb: Workbook, layout: Layout) -> None:
                 fmt="0%",
             )
 
-    last_status_row = 8 + len(statuses)
+    last_status_row = status_header + len(statuses)
     total_row = last_status_row + 1
     apply_cell(ws.cell(total_row, 1, "Total"), font=FONT_HEAD, fill_hex=STEEL)
     for col in range(2, last_col + 1):
@@ -2196,7 +2288,7 @@ def write_package_status(wb: Workbook, layout: Layout) -> None:
             )
         else:
             apply_cell(
-                ws.cell(total_row, col, f"=SUM({letter}9:{letter}{last_status_row})"),
+                ws.cell(total_row, col, f"=SUM({letter}{status_first}:{letter}{last_status_row})"),
                 font=FONT_FORMULA,
                 fill_hex=FORMULA_BG,
                 align=ALIGN_C,
@@ -2218,7 +2310,7 @@ def write_package_status(wb: Workbook, layout: Layout) -> None:
         apply_cell(ws.cell(head_row, 2 + j, major), font=FONT_HEAD, fill_hex=FOREST, align=ALIGN_C)
     for i, name in enumerate(statuses):
         row = head_row + 1 + i
-        src = 9 + i
+        src = status_first + i
         apply_cell(ws.cell(row, 1, f"=A{src}"), font=FONT_BODY, fill_hex=STATUS_COLORS.get(name, WHITE))
         for j in range(len(majors)):
             count_col = 7 + j * 2
@@ -2288,9 +2380,10 @@ def write_package_status(wb: Workbook, layout: Layout) -> None:
         widths[colletter(8 + i * 2)] = 12
     for col, w in widths.items():
         ws.column_dimensions[col].width = w
-    ws.row_dimensions[8].height = 32
-    ws.freeze_panes = "B9"
-    ws.print_title_rows = "1:8"
+    ws.row_dimensions[8].height = 28
+    ws.row_dimensions[status_header].height = 32
+    ws.freeze_panes = f"B{status_first}"
+    ws.print_title_rows = f"1:{status_header}"
     ws.oddFooter.left.text = "Package status by major intervention — unique contracts"
     ws.oddFooter.right.text = "Page &P of &N"
 
