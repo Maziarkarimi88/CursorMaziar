@@ -242,6 +242,15 @@ def main() -> None:
     )
     assert awarding_pkgs < awarding_schemes
     assert awarding_pkgs >= 2
+    assert pkg_status.cell(8, 7).value == "Irrigation Scheme"
+    assert pkg_status.cell(8, 9).value == "Watershed Management"
+    assert "Share of this status" in str(pkg_status.cell(8, 8).value)
+    awarded_row = 9 + status_labels.index("Awarded")
+    assert "COUNTIFS" in str(pkg_status.cell(awarded_row, 7).value)
+    assert "$C$4" in str(pkg_status.cell(awarded_row, 7).value)
+    assert f"$B{awarded_row}" in str(pkg_status.cell(awarded_row, 8).value)
+    awarding_lll = str(pkg_status.cell(awarding_row, 13).value)
+    assert "COUNTIFS" in awarding_lll
 
     contractors = wb[SHEET_CONTRACTORS]
     assert "Contracts by contractor" in str(contractors.cell(1, 1).value)

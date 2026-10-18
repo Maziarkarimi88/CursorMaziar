@@ -19,7 +19,7 @@ Open **`WBK_AF2_Construction_Works_Tracker.xlsx`**.
 | `02_Dashboard` | Counts by status, region, major intervention, Awarded / Not awarded, average days per step |
 | `03_Package_Summary` | One row per contract package (Package #8 and #10 sit here as single packages). Filter Contractor Name for unique contracts. |
 | `10_By_Contractor` | One row per company: unique awarded contracts, not repeated sub-project rows (ZSCC = 1 contract / 4 canals) |
-| `11_Package_Status` | How many **packages** are Under Design, WRI Review, Awarding, Construction, … (not sub-project rows) |
+| `11_Package_Status` | How many **packages** are in each step, and the share of that step across Watershed Management, Irrigation Scheme, Drip, LLL, Agroforestry |
 | `04_Date_Rules` | What each date means and the conditions behind green / amber / red |
 | `05_Example_Filled` | Two worked examples so you can see the day-count formulas |
 | `06_Status_Pipeline` | Ordered list of steps (edit spare slots to add a step) |
@@ -62,7 +62,7 @@ Count **Package IDs / Contract Numbers**, not the number of tracker rows.
 
 `02_Dashboard` still counts sub-project rows. That overstates a step when one contract has many sites (50 LLL units and 39 agroforestry rows are each **one** package still Under Awarding).
 
-Open **`11_Package_Status`** for unique-package counts: Under Design, Under Review of WRI, Under LTO Review, PR to be Raised, ITB Launched, Retendered, Technical Evaluation, Under Awarding, Awarded, Under Construction, Completed.
+Open **`11_Package_Status`** for unique-package counts. Each status row also splits across the five major interventions (count and share of that status). A second table shows how each major is spread across statuses (for example what share of Irrigation Scheme packages is still Under Construction).
 
 A package takes the **least-advanced status of its unfinished sites**. It is Completed only when every sub-project is completed. Filter **Package status** on `03_Package_Summary` to list the contracts.
 
