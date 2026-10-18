@@ -123,11 +123,15 @@ ALIGN_R = Alignment(horizontal="right", vertical="center")
 SHEET_HOWTO = "00_How_to_Use"
 SHEET_TRACKER = "01_Scheme_Tracker"
 SHEET_DASH = "02_Dashboard"
-SHEET_EXAMPLE = "03_Example_Filled"
-SHEET_PIPELINE = "04_Status_Pipeline"
-SHEET_DOMAINS = "05_Domains"
-SHEET_GEO = "06_Geography"
-SHEET_LOOKUPS = "07_Lookups"
+SHEET_PACKAGES = "03_Package_Summary"
+SHEET_DATES = "04_Date_Rules"
+SHEET_EXAMPLE = "05_Example_Filled"
+SHEET_PIPELINE = "06_Status_Pipeline"
+SHEET_DOMAINS = "07_Domains"
+SHEET_GEO = "08_Geography"
+SHEET_LOOKUPS = "09_Lookups"
+
+PKG_BANDS = ("E4EBF3", "F6F0E4", "E6EFE6", "F4EBE0")
 
 HEADER_ROW = 3
 GROUP_ROW = 2
@@ -346,22 +350,38 @@ def write_howto(wb: Workbook, layout: Layout) -> None:
         ),
         (
             "Sheets",
-            "01_Scheme_Tracker is the working register (type here). "
+            "01_Scheme_Tracker is the working register (one row per sub-project). "
             "02_Dashboard summarises counts and average durations. "
-            "03_Example_Filled shows two worked examples so you can see the day-count formulas. "
-            "04_Status_Pipeline is the ordered list of steps. "
-            "05_Domains holds dropdown lists (intervention, donor, project, region). "
-            "06_Geography holds province and district lists. "
-            "07_Lookups maps region/province names to those lists.",
+            "03_Package_Summary rolls every contract package to one row (Package #8 and #10 sit here as single packages). "
+            "04_Date_Rules explains how each date is used and how schedule health is coloured. "
+            "05_Example_Filled shows two worked examples so you can see the day-count formulas. "
+            "06_Status_Pipeline is the ordered list of steps. "
+            "07_Domains holds dropdown lists (major intervention, sub-type, donor, project, region, Awarded / Not awarded). "
+            "08_Geography holds province and district lists. "
+            "09_Lookups maps region/province names to those lists.",
             "",
         ),
         ("Daily use", "section", ""),
         (
             "Add a scheme",
             "Go to 01_Scheme_Tracker and type in the next empty row. "
-            "Dropdowns are already attached for Project, Intervention Type, Region, Province, District, Donor, and Reported Status. "
-            "Choose Region first, then Province, then District (the province list follows the region).",
+            "Choose Major intervention first (Watershed Management, Irrigation Scheme, Drip Irrigation, "
+            "Agroforestry saplings / seeds, or Laser Land Leveler), then Intervention sub-type "
+            "(protection wall, irrigation canal, check dam, and so on). "
+            "Dropdowns are also attached for Project, Region, Province, District, Donor, Awarded / Not awarded, and Reported Status.",
             "01_Scheme_Tracker",
+        ),
+        (
+            "Packages that cover several sites",
+            "One Package / Contract Name can cover several canals or check dams in different districts. "
+            "Keep one row per sub-project (location) so province, district, village, and progress stay honest. "
+            "Give every row of that contract the same Package ID and the same Package / Contract Name. "
+            "Sub-project in package shows 1 of 4, 2 of 4, … "
+            "Example: Package #8-AF2 IS (Khas Kunar Lower canal + Bahrabad canal) is two rows, one Package ID. "
+            "Package #10-AF2 IS (Baraki, Darbal, Nawikhar, Mangali) is four rows, one Package ID. "
+            "On the tracker, extra rows of the same package are grouped — use the outline +/- at the left margin to collapse them. "
+            "03_Package_Summary lists each package once.",
+            "01_Scheme_Tracker / 03_Package_Summary",
         ),
         (
             "Enter status dates",
@@ -386,56 +406,67 @@ def write_howto(wb: Workbook, layout: Layout) -> None:
             "If a step is skipped, the count still uses the last previous date that was filled. "
             "'Days in current status' is TODAY minus the latest status date (this number changes every day). "
             "'Total days first → last step' is last filled date minus first filled date. "
-            "'Days over target this step' is days in current status minus the target days set on 04_Status_Pipeline (blank if there is no target).",
+            "'Days over target this step' is days in current status minus the target days set on 06_Status_Pipeline (blank if there is no target).",
             "Sections 3 and 5",
         ),
         (
             "Schedule health colours",
-            "Schedule health is calculated from planned dates (not typed by hand). "
-            "GREEN — On track, or completed on/before the plan. "
-            "AMBER — At risk / close to off track: the planned award or contract end is within 30 days, or works are not yet far enough along. "
-            "RED — Behind: today is after the planned award date (remaining contracts) or after the contract end date (awarded), "
+            "Schedule health is calculated from planned dates and TODAY() — it changes every calendar day. "
+            "GREEN — On track, or completed. "
+            "AMBER — At risk / close to off track: the planned award or contract end is within 30 days. "
+            "RED — Behind: today is after the expected award date (Not awarded) or after the contract end date (Awarded), "
             "or physical progress is more than 15 percentage points behind the share of the contract period that has already elapsed. "
-            "'Days vs planned date' is days remaining (positive, green/amber) or days overdue (negative, red).",
-            "Section 3 of the tracker",
+            "'Days vs planned date' is days remaining (positive) or days overdue (negative). "
+            "Full rules, including which date each condition uses, are on 04_Date_Rules.",
+            "04_Date_Rules",
+        ),
+        (
+            "What a status date means",
+            "Type the calendar day the scheme reached that step (the day the step started or was achieved), not a forecast. "
+            "Leave later steps blank until they happen. Current Status is the latest dated step. "
+            "If no dates are entered yet, Current Status uses Reported Status. "
+            "Awarded Date copies Date: Awarded. Planned End Date uses the contract end if you typed one, otherwise EDATE(Awarded Date, duration months). "
+            "Not awarded rows are judged against Expected award date (and, if that is blank, the expected end). "
+            "Awarded rows are judged against the planned / contract end and against physical progress over elapsed time.",
+            "04_Date_Rules",
         ),
         ("Add or remove domains (dropdown values)", "section", ""),
         (
             "Add an intervention type, donor, project, or region",
-            "Open 05_Domains. Type the new value in the first empty cell at the bottom of that column. "
+            "Open 07_Domains. Type the new value in the first empty cell at the bottom of that column. "
             "Do not leave a blank row in the middle of the list. The dropdowns expand automatically "
             "(named ranges use COUNTA). You do not need to re-run the generator for this.",
-            "05_Domains",
+            "07_Domains",
         ),
         (
             "Remove a domain value",
-            "Delete the cell on 05_Domains (or 06_Geography). Existing scheme rows that already use that value keep showing it; "
+            "Delete the cell on 07_Domains (or 08_Geography). Existing scheme rows that already use that value keep showing it; "
             "new rows will no longer offer it in the dropdown.",
-            "05_Domains / 06_Geography",
+            "07_Domains / 08_Geography",
         ),
         (
             "Add a province",
-            "1) On 06_Geography, under the correct region code column in the province block, type the province name. "
+            "1) On 08_Geography, under the correct region code column in the province block, type the province name. "
             "2) Add a new district column for that province in the district block (copy an adjacent column). "
-            "3) On 07_Lookups, add a row: Province name | Dist_<Province> named range. "
+            "3) On 09_Lookups, add a row: Province name | Dist_<Province> named range. "
             "4) Define the named range Dist_<Province> (Formulas → Name Manager) pointing at the district cells. "
             "The reliable alternative is to add the province in tracker_config.py GEOGRAPHY and run generate_tracker.py.",
-            "06_Geography + 07_Lookups",
+            "08_Geography + 09_Lookups",
         ),
         (
             "Add a district",
-            "On 06_Geography find the province column in the district block and type the district in the next empty cell. "
+            "On 08_Geography find the province column in the district block and type the district in the next empty cell. "
             "The Dist_ named range grows automatically. No other change is required.",
-            "06_Geography",
+            "08_Geography",
         ),
         ("Add or remove status steps (the tracking pipeline)", "section", ""),
         (
             "Add a step at the end (no script)",
-            "Open 04_Status_Pipeline. Spare slots are already reserved at the bottom. "
+            "Open 06_Status_Pipeline. Spare slots are already reserved at the bottom. "
             "Type the new status name, a short name, a description, and optional target days in the first spare row. "
             "The matching Date column header on 01_Scheme_Tracker updates itself. Start entering dates in that column. "
             "Duration headers also pick up the new name.",
-            "04_Status_Pipeline spare slots",
+            "06_Status_Pipeline spare slots",
         ),
         (
             "Add a step in the middle, or remove a step",
@@ -466,10 +497,12 @@ def write_howto(wb: Workbook, layout: Layout) -> None:
             "",
         ),
         (
-            "One row = one scheme",
-            "If a package has three check dams, use three rows (as in the pre-loaded AF-2 list). "
-            "Package-level cost can sit on the first scheme of the package and stay blank on the others.",
-            "",
+            "One row = one sub-project; one Package ID = one contract",
+            "If a package has three check dams or four canals, use three or four rows. "
+            "Do not merge those rows — AutoFilter and sort would break. "
+            "Repeat the Package / Contract Name and Package ID on every row. "
+            "Cost may be per sub-project (as in the master file) or only on the first row.",
+            "03_Package_Summary",
         ),
         (
             "Grey cells are formulas",
@@ -479,8 +512,8 @@ def write_howto(wb: Workbook, layout: Layout) -> None:
         ),
         (
             "DEMO rows",
-            "03_Example_Filled is for learning. Do not copy those dates into official reports.",
-            "03_Example_Filled",
+            "05_Example_Filled is for learning. Do not copy those dates into official reports.",
+            "05_Example_Filled",
         ),
     ]
 
@@ -790,7 +823,7 @@ def schedule_health_formula(layout: Layout, row: int) -> str:
         f'IF({name}="","",'
         f'IF(OR({reported}="Cancelled",{status}="Cancelled"),"Cancelled",'
         f'IF(OR({status}="Completed / Handover",{actual}<>"",{progress}>=100),"Completed — on track",'
-        f'IF({group}="Remaining",'
+        f'IF({group}="Not awarded",'
         f'IF({exp_award}="",IF({end}="","No planned date",'
         f'IF(TODAY()>{end},"Behind — past planned date",'
         f'IF({end}-TODAY()<={near},"At risk — close to off track","On track"))),'
@@ -814,7 +847,7 @@ def days_vs_plan_formula(layout: Layout, row: int) -> str:
     status = layout.addr("current_status", row)
     return (
         f'IF(OR({name}="",{status}="Completed / Handover",{status}="Cancelled"),"",'
-        f'IF({group}="Remaining",'
+        f'IF({group}="Not awarded",'
         f'IF({exp_award}<>"",{exp_award}-TODAY(),IF({end}="","",{end}-TODAY())),'
         f'IF({end}="","",{end}-TODAY())))'
     )
@@ -911,6 +944,49 @@ def date_header_formula(slot_index: int) -> str:
     pipe = quote_sheet(SHEET_PIPELINE)
     row = 3 + slot_index  # slot 0 -> row 3
     return f'IF({pipe}!B{row}="","(spare slot {slot_index + 1})","Date: "&{pipe}!B{row})'
+
+
+def apply_package_grouping(ws, layout: Layout, schemes: list[dict]) -> None:
+    """Shade and outline rows that share a Package ID.
+
+    The first sub-project of a package stays visible (outline level 0).
+    Extra sites of the same contract collapse with the +/- control.
+    Cells are not merged, so AutoFilter still works.
+    """
+    if not schemes:
+        return
+    ws.sheet_properties.outlinePr.summaryBelow = False
+    ws.sheet_properties.outlinePr.summaryRight = False
+    i = 0
+    band_i = 0
+    while i < len(schemes):
+        pid = schemes[i].get("package_id") or ""
+        j = i + 1
+        while j < len(schemes) and (schemes[j].get("package_id") or "") == pid:
+            j += 1
+        color = PKG_BANDS[band_i % len(PKG_BANDS)]
+        band_i += 1
+        multi = (j - i) > 1
+        for k in range(i, j):
+            row = DATA_START + k
+            for key in ("package_id", "package_name", "subproject_no"):
+                cell = ws.cell(row, layout.idx[key])
+                cell.fill = fill(color)
+                if k == i:
+                    cell.font = Font(name="Calibri", size=10, bold=True, color=INK)
+            if multi and k > i:
+                ws.row_dimensions[row].outlineLevel = 1
+        first_row = DATA_START + i
+        for col in range(1, layout.last_col + 1):
+            cell = ws.cell(first_row, col)
+            prev = cell.border or THIN
+            cell.border = Border(
+                left=prev.left,
+                right=prev.right,
+                top=Side(style="medium", color=NAVY),
+                bottom=prev.bottom,
+            )
+        i = j
 
 
 def write_tracker_sheet(
@@ -1068,6 +1144,8 @@ def write_tracker_sheet(
 
         ws.row_dimensions[row].height = 18
 
+    apply_package_grouping(ws, layout, schemes)
+
     # Column widths
     for key, col in layout.idx.items():
         ws.column_dimensions[colletter(col)].width = layout.widths.get(key, 14)
@@ -1120,7 +1198,7 @@ def write_tracker_sheet(
     dv_list("=Donors", f"{layout.letter('donor')}{first}:{layout.letter('donor')}{last_r}")
     dv_list("=Statuses", f"{layout.letter('reported_status')}{first}:{layout.letter('reported_status')}{last_r}")
     dv_list("=AwardGroups", f"{layout.letter('award_group')}{first}:{layout.letter('award_group')}{last_r}")
-    dv_list("=Families", f"{layout.letter('intervention_family')}{first}:{layout.letter('intervention_family')}{last_r}")
+    dv_list("=Families", f"{layout.letter('intervention_major')}{first}:{layout.letter('intervention_major')}{last_r}")
     dv_list("=All_Provinces", f"{layout.letter('province')}{first}:{layout.letter('province')}{last_r}")
     dv_list("=All_Districts", f"{layout.letter('district')}{first}:{layout.letter('district')}{last_r}")
 
@@ -1261,6 +1339,33 @@ def write_tracker_sheet(
         ),
     )
 
+    ws.cell(HEADER_ROW, layout.idx["package_id"]).comment = Comment(
+        "Same Package ID on every sub-project of one contract. "
+        "Package #8-AF2 IS is two canals / two rows; Package #10-AF2 IS is four canals / four rows. "
+        "Use the outline +/- on the left to collapse extra sites.",
+        "Tracker",
+    )
+    ws.cell(HEADER_ROW, layout.idx["package_name"]).comment = Comment(
+        "Full Package / Contract Name from the master file. Repeated on every sub-project row of that package.",
+        "Tracker",
+    )
+    ws.cell(HEADER_ROW, layout.idx["subproject_no"]).comment = Comment(
+        "Position of this site inside the package, for example 2 of 4.",
+        "Tracker",
+    )
+    ws.cell(HEADER_ROW, layout.idx["intervention_major"]).comment = Comment(
+        "Major type: Watershed Management, Irrigation Scheme, Drip Irrigation, "
+        "Agroforestry saplings / seeds, or Laser Land Leveler (LLL).",
+        "Tracker",
+    )
+    ws.cell(HEADER_ROW, layout.idx["intervention_type"]).comment = Comment(
+        "Sub-type under the major intervention: irrigation canal, protection wall, check dam, and so on.",
+        "Tracker",
+    )
+    ws.cell(HEADER_ROW, layout.idx["award_group"]).comment = Comment(
+        "Awarded = contract signed. Not awarded = still in design / procurement.",
+        "Tracker",
+    )
     ws.cell(HEADER_ROW, layout.idx["current_status"]).comment = Comment(
         "Latest step that has a date. If no dates are entered, uses Reported Status.",
         "Tracker",
@@ -1279,7 +1384,7 @@ def write_tracker_sheet(
         "Tracker",
     )
     ws.cell(HEADER_ROW, layout.idx["days_vs_plan"]).comment = Comment(
-        "Positive = days remaining until the planned award (remaining) or contract end (awarded). Negative = days behind that date.",
+        "Positive = days remaining until the planned award (Not awarded) or contract end (Awarded). Negative = days behind that date.",
         "Tracker",
     )
     ws.cell(HEADER_ROW, layout.idx["awarded_date"]).comment = Comment(
@@ -1326,6 +1431,8 @@ def write_dashboard(wb: Workbook, layout: Layout) -> None:
     prog_col = layout.letter("physical_progress_pct")
     total_col = layout.letter("total_pipeline_days")
     interv_col = layout.letter("intervention_type")
+    major_col = layout.letter("intervention_major")
+    group_col = layout.letter("award_group")
 
     name_rng = f"{t}!${name_col}${first}:${name_col}${last}"
     status_rng = f"{t}!${status_col}${first}:${status_col}${last}"
@@ -1334,6 +1441,8 @@ def write_dashboard(wb: Workbook, layout: Layout) -> None:
     prog_rng = f"{t}!${prog_col}${first}:${prog_col}${last}"
     total_rng = f"{t}!${total_col}${first}:${total_col}${last}"
     interv_rng = f"{t}!${interv_col}${first}:${interv_col}${last}"
+    major_rng = f"{t}!${major_col}${first}:${major_col}${last}"
+    group_rng = f"{t}!${group_col}${first}:${group_col}${last}"
 
     # KPI row
     health_col = layout.letter("schedule_health")
@@ -1447,14 +1556,34 @@ def write_dashboard(wb: Workbook, layout: Layout) -> None:
             fmt="0",
         )
 
-    # Intervention type counts
+    # Major intervention + award group + sub-type counts
     start_iv = last_status_row + 2
-    apply_cell(ws.cell(start_iv, 1, "Schemes by intervention type"), font=FONT_SECTION, fill_hex=LIGHT_NAVY, border=None)
+    apply_cell(ws.cell(start_iv, 1, "Schemes by major intervention"), font=FONT_SECTION, fill_hex=LIGHT_NAVY, border=None)
     ws.merge_cells(start_row=start_iv, start_column=1, end_row=start_iv, end_column=3)
-    apply_cell(ws.cell(start_iv + 1, 1, "Intervention type"), font=FONT_HEAD, fill_hex=NAVY, align=ALIGN_C)
+    apply_cell(ws.cell(start_iv + 1, 1, "Major intervention"), font=FONT_HEAD, fill_hex=NAVY, align=ALIGN_C)
     apply_cell(ws.cell(start_iv + 1, 2, "Count"), font=FONT_HEAD, fill_hex=NAVY, align=ALIGN_C)
-    for i, name in enumerate(INTERVENTION_TYPES):
+    for i, name in enumerate(INTERVENTION_FAMILIES):
         row = start_iv + 2 + i
+        apply_cell(ws.cell(row, 1, name), font=FONT_BODY)
+        apply_cell(ws.cell(row, 2, f"=COUNTIF({major_rng},A{row})"), font=FONT_FORMULA, fill_hex=FORMULA_BG, align=ALIGN_C, fmt="0")
+
+    award_start = start_iv + 3 + len(INTERVENTION_FAMILIES)
+    apply_cell(ws.cell(award_start, 1, "Awarded / Not awarded"), font=FONT_SECTION, fill_hex=LIGHT_GOLD, border=None)
+    ws.merge_cells(start_row=award_start, start_column=1, end_row=award_start, end_column=3)
+    apply_cell(ws.cell(award_start + 1, 1, "Group"), font=FONT_HEAD, fill_hex=GOLD, align=ALIGN_C)
+    apply_cell(ws.cell(award_start + 1, 2, "Count"), font=FONT_HEAD, fill_hex=GOLD, align=ALIGN_C)
+    for i, name in enumerate(AWARD_GROUPS):
+        row = award_start + 2 + i
+        apply_cell(ws.cell(row, 1, name), font=FONT_BODY)
+        apply_cell(ws.cell(row, 2, f"=COUNTIF({group_rng},A{row})"), font=FONT_FORMULA, fill_hex=FORMULA_BG, align=ALIGN_C, fmt="0")
+
+    subtype_start = award_start + 5
+    apply_cell(ws.cell(subtype_start, 1, "Schemes by intervention sub-type"), font=FONT_SECTION, fill_hex=LIGHT_NAVY, border=None)
+    ws.merge_cells(start_row=subtype_start, start_column=1, end_row=subtype_start, end_column=3)
+    apply_cell(ws.cell(subtype_start + 1, 1, "Intervention sub-type"), font=FONT_HEAD, fill_hex=NAVY, align=ALIGN_C)
+    apply_cell(ws.cell(subtype_start + 1, 2, "Count"), font=FONT_HEAD, fill_hex=NAVY, align=ALIGN_C)
+    for i, name in enumerate(INTERVENTION_TYPES):
+        row = subtype_start + 2 + i
         apply_cell(ws.cell(row, 1, name), font=FONT_BODY)
         apply_cell(ws.cell(row, 2, f"=COUNTIF({interv_rng},A{row})"), font=FONT_FORMULA, fill_hex=FORMULA_BG, align=ALIGN_C, fmt="0")
 
@@ -1480,8 +1609,9 @@ def write_dashboard(wb: Workbook, layout: Layout) -> None:
             "Current Status follows the latest date typed on 01_Scheme_Tracker. "
             "Until dates are entered, schemes sit under whatever you chose as Reported Status "
             "(or Not started). Average days between steps populate only after both ends of a step "
-            "have dates — see 03_Example_Filled for a complete worked pipeline. "
-            "Add or rename a status on 04_Status_Pipeline; this average-days table uses the tracker headers, so it follows.",
+            "have dates — see 05_Example_Filled for a complete worked pipeline. "
+            "Add or rename a status on 06_Status_Pipeline; this average-days table uses the tracker headers, so it follows. "
+            "Awarded / Not awarded and major intervention counts are on this sheet; one row per contract is on 03_Package_Summary.",
         ),
         font=FONT_BODY,
         align=ALIGN_L,
@@ -1509,7 +1639,335 @@ def write_dashboard(wb: Workbook, layout: Layout) -> None:
     chart.dataLabels.showVal = True
     chart.width = 18
     chart.height = 8
-    ws.add_chart(chart, "A" + str(start_iv + len(INTERVENTION_TYPES) + 4))
+    ws.add_chart(chart, "A" + str(subtype_start + len(INTERVENTION_TYPES) + 4))
+
+
+def _unique_join(values) -> str:
+    seen = []
+    for v in values:
+        s = (v or "").strip()
+        if s and s not in seen:
+            seen.append(s)
+    return ", ".join(seen)
+
+
+def write_package_summary(wb: Workbook, layout: Layout) -> None:
+    """One row per contract package, with live COUNTIF / SUMIF back to the tracker."""
+    ws = wb.create_sheet(SHEET_PACKAGES)
+    ws.sheet_properties.tabColor = FOREST
+    ws.sheet_view.showGridLines = False
+    ws.page_setup.orientation = "landscape"
+    ws.page_setup.fitToPage = True
+    ws.page_setup.fitToWidth = 1
+    ws.page_setup.fitToHeight = 0
+
+    last_col = 12
+    ws.merge_cells(start_row=1, start_column=1, end_row=1, end_column=last_col)
+    apply_cell(
+        ws.cell(
+            1,
+            1,
+            "Package summary — one row per contract. Several canals or check dams that share a Package / Contract Name stay together here.",
+        ),
+        font=FONT_TITLE,
+        fill_hex=NAVY,
+        align=ALIGN_L,
+    )
+    for col in range(2, last_col + 1):
+        apply_cell(ws.cell(1, col), fill_hex=NAVY)
+    ws.row_dimensions[1].height = 26
+    ws.merge_cells(start_row=2, start_column=1, end_row=2, end_column=last_col)
+    apply_cell(
+        ws.cell(
+            2,
+            1,
+            "Example: Package #8-AF2 IS (Khas Kunar Lower canal + Bahrabad canal) is one package / two sub-projects. "
+            "Package #10-AF2 IS (Baraki, Darbal, Nawikhar, Mangali) is one package / four sub-projects. "
+            "Open 01_Scheme_Tracker and filter Package ID, or collapse the outline +/- on the left of that sheet. "
+            "Sub-project count and total cost are live formulas.",
+        ),
+        font=FONT_HINT,
+        fill_hex=LIGHT_NAVY,
+        border=None,
+    )
+    for col in range(2, last_col + 1):
+        ws.cell(2, col).fill = fill(LIGHT_NAVY)
+    ws.row_dimensions[2].height = 36
+
+    headers = [
+        ("Package ID", 16),
+        ("Package / Contract Name", 56),
+        ("Major intervention", 26),
+        ("Awarded / Not awarded", 18),
+        ("Sub-projects", 12),
+        ("Total cost (USD)", 16),
+        ("Provinces", 22),
+        ("Districts", 28),
+        ("Reported statuses", 28),
+        ("Awarded / expected award", 18),
+        ("Contract / expected end", 18),
+        ("Source sheet", 28),
+    ]
+    for i, (h, w) in enumerate(headers, start=1):
+        apply_cell(ws.cell(3, i, h), font=FONT_HEAD, fill_hex=FOREST, align=ALIGN_C)
+        ws.column_dimensions[colletter(i)].width = w
+
+    packages = []
+    seen = set()
+    for rec in SCHEMES:
+        pid = rec.get("package_id") or rec.get("package_name")
+        if pid in seen:
+            continue
+        seen.add(pid)
+        members = [r for r in SCHEMES if (r.get("package_id") or r.get("package_name")) == pid]
+        first = members[0]
+        packages.append((pid, first, members))
+
+    t = quote_sheet(SHEET_TRACKER)
+    first_r = DATA_START
+    last_r = DATA_START + MAX_DATA_ROWS - 1
+    pid_rng = f"{t}!${layout.letter('package_id')}${first_r}:${layout.letter('package_id')}${last_r}"
+    cost_rng = f"{t}!${layout.letter('contract_cost_usd')}${first_r}:${layout.letter('contract_cost_usd')}${last_r}"
+
+    for i, (pid, first, members) in enumerate(packages):
+        row = 4 + i
+        alt = ALT_ROW if i % 2 else WHITE
+        apply_cell(ws.cell(row, 1, pid), font=Font(name="Calibri", size=10, bold=True, color=INK), fill_hex=alt)
+        apply_cell(ws.cell(row, 2, first.get("package_name", "")), font=FONT_BODY, fill_hex=alt)
+        apply_cell(ws.cell(row, 3, first.get("intervention_major", "")), font=FONT_BODY, fill_hex=alt)
+        apply_cell(ws.cell(row, 4, first.get("award_group", "")), font=FONT_BODY, fill_hex=alt, align=ALIGN_C)
+        apply_cell(
+            ws.cell(row, 5, f'=COUNTIF({pid_rng},A{row})'),
+            font=FONT_FORMULA,
+            fill_hex=FORMULA_BG,
+            align=ALIGN_C,
+            fmt="0",
+        )
+        apply_cell(
+            ws.cell(row, 6, f'=SUMIF({pid_rng},A{row},{cost_rng})'),
+            font=FONT_FORMULA,
+            fill_hex=FORMULA_BG,
+            align=ALIGN_R,
+            fmt="#,##0.00",
+        )
+        apply_cell(ws.cell(row, 7, _unique_join(m.get("province") for m in members)), font=FONT_BODY, fill_hex=alt)
+        apply_cell(ws.cell(row, 8, _unique_join(m.get("district") for m in members)), font=FONT_BODY, fill_hex=alt)
+        apply_cell(ws.cell(row, 9, _unique_join(m.get("reported_status") for m in members)), font=FONT_BODY, fill_hex=alt)
+        award = first.get("awarded_date") or first.get("expected_award_date")
+        apply_cell(ws.cell(row, 10, parse_date(award)), font=FONT_BODY, fill_hex=alt, align=ALIGN_C, fmt="DD-MMM-YYYY")
+        ends = [parse_date(m.get("contract_end_date")) for m in members]
+        ends = [d for d in ends if d]
+        apply_cell(
+            ws.cell(row, 11, max(ends) if ends else None),
+            font=FONT_BODY,
+            fill_hex=alt,
+            align=ALIGN_C,
+            fmt="DD-MMM-YYYY",
+        )
+        apply_cell(ws.cell(row, 12, first.get("source_sheet", "")), font=FONT_HINT, fill_hex=alt)
+        ws.row_dimensions[row].height = 28
+
+    last_pkg = 3 + max(len(packages), 1)
+    ws.auto_filter.ref = f"A3:L{last_pkg}"
+    ws.freeze_panes = "A4"
+    ws.print_title_rows = "1:3"
+    ws.oddFooter.left.text = "Package summary — one row per AF-2 contract"
+    ws.oddFooter.right.text = "Page &P of &N"
+
+
+def write_date_rules(wb: Workbook) -> None:
+    ws = wb.create_sheet(SHEET_DATES)
+    ws.sheet_properties.tabColor = GOLD
+    ws.sheet_view.showGridLines = False
+    ws.page_setup.orientation = "landscape"
+    ws.page_setup.fitToPage = True
+    ws.page_setup.fitToWidth = 1
+    ws.page_setup.fitToHeight = 0
+    ws.column_dimensions["A"].width = 3
+    ws.column_dimensions["B"].width = 32
+    ws.column_dimensions["C"].width = 88
+    ws.column_dimensions["D"].width = 28
+    ws.merge_cells("B1:D1")
+    apply_cell(ws["B1"], font=FONT_TITLE, fill_hex=NAVY, align=ALIGN_L)
+    ws["B1"] = "Date conditions — what each date means and how schedule health is calculated"
+    apply_cell(ws["C1"], fill_hex=NAVY, border=None)
+    apply_cell(ws["D1"], fill_hex=NAVY, border=None)
+    ws.merge_cells("B2:D2")
+    apply_cell(ws["B2"], font=FONT_SUB, fill_hex=NAVY, align=ALIGN_L, border=None)
+    ws["B2"] = (
+        "All health colours use Excel TODAY(), so they move as the calendar moves. "
+        "Type the day a step was reached — not a forecast — unless the column says expected / planned."
+    )
+    apply_cell(ws["C2"], fill_hex=NAVY, border=None)
+    apply_cell(ws["D2"], fill_hex=NAVY, border=None)
+    ws.row_dimensions[1].height = 26
+    ws.row_dimensions[2].height = 22
+
+    blocks = [
+        ("What you type in a Date: column", "section", ""),
+        (
+            "Working date = day the step started",
+            "In section 4 of 01_Scheme_Tracker, each 'Date: …' cell is the calendar day that step was reached "
+            "(design started, WRI review started, ITB launched, contract signed, construction started, handover). "
+            "Do not put the expected future date of a later step in that later column. Leave later dates blank until they happen. "
+            "Current Status then becomes the latest dated step. If every Date: cell is empty, Current Status uses Reported Status.",
+            "Section 4",
+        ),
+        (
+            "Awarded Date",
+            "This is a formula. It copies Date: Awarded. Type the signature / notice-of-award day in Date: Awarded, not in Awarded Date.",
+            "Section 2 copies section 4",
+        ),
+        (
+            "Expected award date (Not awarded rows)",
+            "Forecast of when the contract should be awarded. This is the date schedule health watches for Not awarded packages. "
+            "If TODAY() is after this date, the row is Behind — award date passed. "
+            "If this date is within the next 30 days, the row is At risk — close to off track.",
+            "Section 2",
+        ),
+        (
+            "Contract / expected end date",
+            "For Awarded rows this is the contractual completion date. For Not awarded rows it is the expected completion after award. "
+            "Planned End Date uses this value when it is filled; otherwise it uses EDATE(Awarded Date, Contract Duration months).",
+            "Section 2",
+        ),
+        (
+            "Days between steps",
+            "Days: A → B = Date of B minus the last previous filled date (a skipped step still measures from the last real date). "
+            "Days in current status = TODAY() minus the latest filled Date:. This number changes every morning. "
+            "Total days first → last = last filled Date: minus first filled Date:. "
+            "Days over target = days in current status minus the target days on 06_Status_Pipeline. "
+            "A negative day-count means a later step was dated earlier than a previous one — check the dates.",
+            "Sections 3 and 5",
+        ),
+        ("Schedule health — conditions that use those dates", "section", ""),
+        (
+            "Cancelled",
+            "If Reported Status or Current Status is Cancelled, health is Cancelled (grey). No date test is applied.",
+            "Grey",
+        ),
+        (
+            "Completed — on track",
+            "If Current Status is Completed / Handover, or Actual completion date is filled, or Physical progress ≥ 100, "
+            "health is Completed — on track (green). The planned end is not used once the work is finished.",
+            "Green",
+        ),
+        (
+            "Not awarded — Behind — award date passed",
+            "Awarded / Not awarded = Not awarded, and Expected award date is filled, and TODAY() > Expected award date. "
+            "The package should already have been awarded.",
+            "Red",
+        ),
+        (
+            "Not awarded — At risk — close to off track",
+            "Awarded / Not awarded = Not awarded, Expected award date is filled, and that date is today or within the next 30 days. "
+            "Procurement needs attention now.",
+            "Amber",
+        ),
+        (
+            "Not awarded — On track",
+            "Awarded / Not awarded = Not awarded, Expected award date is filled, and more than 30 days remain until that date.",
+            "Green",
+        ),
+        (
+            "Not awarded — no expected award date",
+            "If Expected award date is blank, the same three tests (behind / at risk / on track) use Planned End Date "
+            "(or Contract / expected end). If that is also blank, health is No planned date.",
+            "Grey / date-based",
+        ),
+        (
+            "Awarded — Behind — past end date",
+            "Awarded / Not awarded = Awarded, Planned End Date is filled, TODAY() is after that date, "
+            "and physical progress is blank or below 100. The contract period has expired and the work is not finished.",
+            "Red",
+        ),
+        (
+            "Awarded — Behind — progress lag",
+            "Awarded, both Awarded Date and Planned End Date are filled, progress is below 100, and "
+            "(elapsed days ÷ contract days × 100) − physical progress > 15. "
+            "Example: half the contract time has passed (50% elapsed) but progress is 20% → lag of 30 points → Behind.",
+            "Red",
+        ),
+        (
+            "Awarded — At risk — close to off track",
+            "Awarded, Planned End Date is today or within the next 30 days, and progress is blank or below 90. "
+            "The end date is close and the work is not nearly finished.",
+            "Amber",
+        ),
+        (
+            "Awarded — On track",
+            "Awarded, Planned End Date is more than 30 days away, and there is no progress lag above 15 points "
+            "(or the work is already complete — see Completed above).",
+            "Green",
+        ),
+        (
+            "Days vs planned date",
+            "Not awarded: Expected award date − TODAY() (or Planned End Date − TODAY() if expected award is blank). "
+            "Awarded: Planned End Date − TODAY(). "
+            "Positive = days remaining (green if > 30, amber if 0–30). Negative = days overdue (red). "
+            "Blank when the row is Completed or Cancelled.",
+            "Section 3",
+        ),
+        ("How this applies to AF-2 right now", "section", ""),
+        (
+            "Awarded packages from the master file",
+            "Date: Awarded is filled from the signed-date column. Awarded Date copies it. "
+            "Contract / expected end is the master-file end date. Planned End Date therefore equals that end date. "
+            "If remarks started with 'Completed in …' or progress is 100, Reported Status is Completed / Handover. "
+            "Otherwise progress > 0 → Under Construction; progress 0 → Awarded. "
+            "Phrases such as 'will be completed by …' do not mark the scheme complete.",
+            "Master import",
+        ),
+        (
+            "Not awarded packages from the master file",
+            "Expected award date and expected end come from the remaining-contract sheets. "
+            "There is usually no Date: Awarded yet, so Current Status follows Reported Status "
+            "(Under Design, WRI Review, LTO, PR, ITB, Re-ITB, Technical Evaluation, Awarding). "
+            "Health watches the expected award date against TODAY().",
+            "Master import",
+        ),
+        (
+            "Thresholds you can change",
+            f"Close-to-off-track window = {NEAR_OFFTRACK_DAYS} days. "
+            f"Progress-lag trigger = {PROGRESS_LAG_PCT} percentage points. "
+            f"Days in current status turns red after {STUCK_THRESHOLD_DAYS} days. "
+            "Edit NEAR_OFFTRACK_DAYS, PROGRESS_LAG_PCT, and STUCK_THRESHOLD_DAYS in tracker_config.py and regenerate.",
+            "tracker_config.py",
+        ),
+    ]
+
+    r = 3
+    for title, body, where in blocks:
+        if body == "section":
+            r += 1
+            ws.merge_cells(start_row=r, start_column=2, end_row=r, end_column=4)
+            apply_cell(ws.cell(r, 2, title), font=FONT_SECTION, fill_hex=LIGHT_NAVY, align=ALIGN_L, border=None)
+            ws.cell(r, 3).fill = fill(LIGHT_NAVY)
+            ws.cell(r, 4).fill = fill(LIGHT_NAVY)
+            ws.row_dimensions[r].height = 22
+            r += 1
+            continue
+        apply_cell(
+            ws.cell(r, 2, title),
+            font=Font(name="Calibri", size=10, bold=True, color=NAVY),
+            fill_hex=LIGHT_SLATE,
+            align=ALIGN_L,
+        )
+        apply_cell(ws.cell(r, 3, body), font=FONT_BODY, align=ALIGN_L)
+        color = {
+            "Green": HEALTH_GREEN,
+            "Amber": HEALTH_AMBER,
+            "Red": HEALTH_RED,
+            "Grey": HEALTH_GREY,
+        }.get(where)
+        apply_cell(ws.cell(r, 4, where), font=FONT_HINT, fill_hex=color or WHITE, align=ALIGN_L)
+        ws.row_dimensions[r].height = 68
+        r += 1
+
+    ws.freeze_panes = "B3"
+    ws.print_title_rows = "1:2"
+    ws.oddFooter.left.text = "Date conditions — WBK/AF-2 construction tracker"
+    ws.oddFooter.right.text = "Page &P of &N"
 
 
 def add_workbook_props(wb: Workbook) -> None:
@@ -1517,8 +1975,8 @@ def add_workbook_props(wb: Workbook) -> None:
     wb.properties.subject = WORKBOOK_SUBTITLE
     wb.properties.creator = "Construction Works Tracker"
     wb.properties.description = (
-        "Scheme-level construction tracker with status dates, duration between steps, "
-        "and editable domains."
+        "Scheme-level construction tracker with package grouping, major/sub-type interventions, "
+        "status dates, duration between steps, and editable domains."
     )
 
 
@@ -1555,12 +2013,16 @@ def build_workbook() -> Workbook:
         banner="EXAMPLE ONLY — two worked schemes so you can see day counts. Do not use for reporting.",
     )
     write_dashboard(wb, layout)
+    write_package_summary(wb, layout)
+    write_date_rules(wb)
 
     # Reorder sheets
     order = [
         SHEET_HOWTO,
         SHEET_TRACKER,
         SHEET_DASH,
+        SHEET_PACKAGES,
+        SHEET_DATES,
         SHEET_EXAMPLE,
         SHEET_PIPELINE,
         SHEET_DOMAINS,

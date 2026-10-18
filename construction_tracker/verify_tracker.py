@@ -13,11 +13,13 @@ from generate_tracker import (
     HEADER_ROW,
     Layout,
     SHEET_DASH,
+    SHEET_DATES,
     SHEET_DOMAINS,
     SHEET_EXAMPLE,
     SHEET_GEO,
     SHEET_HOWTO,
     SHEET_LOOKUPS,
+    SHEET_PACKAGES,
     SHEET_PIPELINE,
     SHEET_TRACKER,
     duration_formula,
@@ -60,6 +62,8 @@ def main() -> None:
         SHEET_HOWTO,
         SHEET_TRACKER,
         SHEET_DASH,
+        SHEET_PACKAGES,
+        SHEET_DATES,
         SHEET_EXAMPLE,
         SHEET_PIPELINE,
         SHEET_DOMAINS,
@@ -122,9 +126,9 @@ def main() -> None:
 
     # Headers pull from the pipeline sheet
     date0 = tracker.cell(HEADER_ROW, layout.status_date_cols[0]).value
-    assert "04_Status_Pipeline" in str(date0)
+    assert SHEET_PIPELINE in str(date0)
     dur0 = tracker.cell(HEADER_ROW, layout.duration_cols[0]).value
-    assert "Days:" in str(dur0) or "04_Status_Pipeline" in str(dur0)
+    assert "Days:" in str(dur0) or SHEET_PIPELINE in str(dur0)
 
     # Named ranges
     names = set(wb.defined_names.keys())
@@ -150,7 +154,62 @@ def main() -> None:
     # Domain lists
     domains = wb[SHEET_DOMAINS]
     assert domains.cell(2, 1).value == "Interventions"
-    assert domains.cell(3, 1).value == "Check Dam"
+    assert domains.cell(3, 1).value == "Irrigation Canal"
+    family_col = next(c for c in range(1, 12) if domains.cell(2, c).value == "Families")
+    assert domains.cell(3, family_col).value == "Irrigation Scheme"
+    award_col = next(c for c in range(1, 12) if domains.cell(2, c).value == "AwardGroups")
+    assert [domains.cell(r, award_col).value for r in (3, 4)] == ["Awarded", "Not awarded"]
+
+    # Package grouping: Package #8-AF2 IS = 2 rows; Package #10-AF2 IS = 4 rows
+    from collections import defaultdict
+
+    pkg_rows = defaultdict(list)
+    majors = set()
+    groups = set()
+    for i, scheme in enumerate(SCHEMES):
+        row = DATA_START + i
+        pid = tracker.cell(row, layout.idx["package_id"]).value
+        assert pid == scheme["package_id"], (pid, scheme["package_id"])
+        assert tracker.cell(row, layout.idx["award_group"]).value in ("Awarded", "Not awarded")
+        assert tracker.cell(row, layout.idx["award_group"]).value != "Remaining"
+        majors.add(tracker.cell(row, layout.idx["intervention_major"]).value)
+        groups.add(tracker.cell(row, layout.idx["award_group"]).value)
+        pkg_rows[pid].append(row)
+    assert majors == set(s["intervention_major"] for s in SCHEMES)
+    assert groups == {"Awarded", "Not awarded"}
+    from collections import Counter
+
+    major_counts = Counter(s["intervention_major"] for s in SCHEMES)
+    subtype_counts = Counter(s["intervention_type"] for s in SCHEMES)
+    assert major_counts["Laser Land Leveler (LLL)"] == 50
+    assert subtype_counts["LLL unit"] == 50
+    assert major_counts["Drip Irrigation"] == 100
+    assert subtype_counts["Drip Irrigation Plot"] == 100
+    assert major_counts["Agroforestry saplings / seeds"] == 39
+    assert "Remaining" not in {s["award_group"] for s in SCHEMES}
+    pkg8 = [s for s in SCHEMES if s.get("package_name", "").startswith("Package #8-AF2 IS")]
+    pkg10 = [s for s in SCHEMES if s.get("package_name", "").startswith("Package #10-AF2 IS")]
+    assert len(pkg8) == 2, [s["scheme_name"] for s in pkg8]
+    assert len({s["package_id"] for s in pkg8}) == 1
+    assert {s["scheme_name"] for s in pkg8} == {
+        "Khas Kunar Lower Canal irrigation Scheme",
+        "Bahrabad Canal irrigation Scheme",
+    }
+    assert len(pkg10) == 4, [s["scheme_name"] for s in pkg10]
+    assert len({s["package_id"] for s in pkg10}) == 1
+    assert tracker.row_dimensions[pkg_rows[pkg8[0]["package_id"]][1]].outlineLevel == 1
+    assert tracker.row_dimensions[pkg_rows[pkg10[0]["package_id"]][1]].outlineLevel == 1
+
+    packages = wb[SHEET_PACKAGES]
+    pkg_ids = [packages.cell(r, 1).value for r in range(4, packages.max_row + 1) if packages.cell(r, 1).value]
+    assert pkg8[0]["package_id"] in pkg_ids
+    assert pkg10[0]["package_id"] in pkg_ids
+    dates = wb[SHEET_DATES]
+    assert "Date conditions" in str(dates["B1"].value)
+    health_f = str(tracker.cell(DATA_START, layout.idx["schedule_health"]).value)
+    assert '="Not awarded"' in health_f
+    assert "Remaining" not in health_f
+    assert "Families" in joined
 
     pipeline = wb[SHEET_PIPELINE]
     assert pipeline.cell(3, 2).value == "Under Design"
@@ -167,7 +226,7 @@ def main() -> None:
     # Spare slots exist after the named pipeline steps
     spare_rows = [r for r in range(3, 20) if pipeline.cell(r, 2).value in (None, "")]
     assert spare_rows, "expected spare pipeline slots"
-    assert "(spare" in str(tracker.cell(HEADER_ROW, layout.status_date_cols[-1]).value) or "04_Status_Pipeline" in str(
+    assert "(spare" in str(tracker.cell(HEADER_ROW, layout.status_date_cols[-1]).value) or SHEET_PIPELINE in str(
         tracker.cell(HEADER_ROW, layout.status_date_cols[-1]).value
     )
 

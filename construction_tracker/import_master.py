@@ -235,14 +235,16 @@ def extract_standard(ws, *, start_row, name_col, award_group, family, interventi
                 "contract_duration_months",
             ])
             status = "Awarded"
-            if rec["remarks"] and "cancel" in rec["remarks"].lower():
+            remarks_l = (rec["remarks"] or "").lower()
+            completed_note = remarks_l.startswith("completed in") or remarks_l.startswith("completed.")
+            if "cancel" in remarks_l:
                 status = "Cancelled"
-            elif (progress or 0) >= 100 or (rec["remarks"] and "completed" in rec["remarks"].lower()):
+            elif (progress or 0) >= 100 or completed_note:
                 status = "Completed / Handover"
             elif (progress or 0) > 0:
                 status = "Under Construction"
             rec["reported_status"] = status
-            rec["award_group"] = "Awarded"
+            rec["award_group"] = award_group or "Awarded"
             rec["intervention_family"] = family
             rec["intervention_type"] = intervention
             rec["source_sheet"] = ws.title
@@ -277,7 +279,7 @@ def extract_standard(ws, *, start_row, name_col, award_group, family, interventi
                 "contract_end_date", "contract_cost_usd", "remarks",
                 "contract_duration_months",
             ])
-            rec["award_group"] = "Remaining"
+            rec["award_group"] = award_group or "Not awarded"
             rec["intervention_family"] = family
             rec["intervention_type"] = intervention
             rec["source_sheet"] = ws.title
@@ -325,7 +327,7 @@ def extract_drip(ws):
             "package_name", "region", "reported_status", "expected_award_date",
             "contract_end_date", "remarks", "contract_duration_months",
         ])
-        rec["award_group"] = "Remaining"
+        rec["award_group"] = "Not awarded"
         rec["intervention_family"] = "Drip irrigation"
         rec["intervention_type"] = "Drip Irrigation"
         rec["source_sheet"] = ws.title
@@ -363,7 +365,7 @@ def extract_lll(ws):
             "physical_progress_pct": None,
         }
         pkg = carry(pkg, rec, ["expected_award_date", "contract_end_date", "remarks"])
-        rec["award_group"] = "Remaining"
+        rec["award_group"] = "Not awarded"
         rec["intervention_family"] = "LLL supply"
         rec["intervention_type"] = "Laser Land Leveler (LLL)"
         rec["source_sheet"] = ws.title
@@ -399,7 +401,7 @@ def extract_agro(ws):
             "contract_end_date": "2027-04-01",
         }
         pkg = carry(pkg, rec, ["remarks", "region"])
-        rec["award_group"] = "Remaining"
+        rec["award_group"] = "Not awarded"
         rec["intervention_family"] = "Agroforestry"
         rec["intervention_type"] = "Agroforestry saplings / seeds"
         rec["source_sheet"] = ws.title
@@ -409,20 +411,76 @@ def extract_agro(ws):
     return rows
 
 
+MAJOR_FROM_FAMILY = {
+    "On/off-farm irrigation": "Irrigation Scheme",
+    "Watershed / Check dam": "Watershed Management",
+    "Drip irrigation": "Drip Irrigation",
+    "LLL supply": "Laser Land Leveler (LLL)",
+    "Agroforestry": "Agroforestry saplings / seeds",
+}
+
+MAJOR_CODE = {
+    "Irrigation Scheme": "IS",
+    "Watershed Management": "WSM",
+    "Drip Irrigation": "DIS",
+    "Laser Land Leveler (LLL)": "LLL",
+    "Agroforestry saplings / seeds": "AGF",
+}
+
+
+def infer_subtype(name: str, major: str) -> str:
+    if major == "Laser Land Leveler (LLL)":
+        return "LLL unit"
+    if major == "Agroforestry saplings / seeds":
+        return "Saplings and seeds"
+    if major == "Drip Irrigation":
+        return "Drip Irrigation Plot"
+    n = (name or "").lower()
+    if "protection wall" in n or "retaining wall" in n:
+        return "Protection Wall"
+    if "karez" in n:
+        return "Karez Rehabilitation"
+    if "pond" in n and "check" in n:
+        return "Check Dam and Water Pond"
+    if "boulder" in n:
+        return "Boulder Check Dam"
+    if "check dam" in n or "checkdam" in n:
+        return "Check Dam"
+    if "drip" in n:
+        return "Drip Irrigation Plot"
+    if "canal" in n or "irrigation" in n:
+        return "Irrigation Canal"
+    if major == "Watershed Management":
+        return "Check Dam"
+    if major == "Irrigation Scheme":
+        return "Irrigation Canal"
+    return "Other"
+
+
+def make_package_id(package_name: str, major: str) -> str:
+    code = MAJOR_CODE.get(major, "X")
+    text = package_name or ""
+    m = re.search(r"Package\s*#\s*(\d+)\s*([A-Za-z])?", text, re.I)
+    if m:
+        num = m.group(1).zfill(2)
+        letter = (m.group(2) or "").upper()
+        return f"AF2-{code}-{num}{letter}"
+    if code == "LLL":
+        return "AF2-LLL-ALL"
+    if code == "AGF":
+        return "AF2-AGF-ALL"
+    slug = re.sub(r"[^A-Za-z0-9]+", "", text)[:12] or "MISC"
+    return f"AF2-{code}-{slug}"
+
+
 def assign_ids(rows):
-    counts = {}
     for rec in rows:
-        fam = {
-            "On/off-farm irrigation": "IS",
-            "Watershed / Check dam": "WSM",
-            "Drip irrigation": "DIS",
-            "LLL supply": "LLL",
-            "Agroforestry": "AGF",
-        }.get(rec["intervention_family"], "X")
-        grp = "A" if rec["award_group"] == "Awarded" else "R"
-        key = f"{fam}-{grp}"
-        counts[key] = counts.get(key, 0) + 1
-        rec["scheme_id"] = f"AF2-{key}-{counts[key]:03d}"
+        if rec.get("award_group") in ("Remaining", "remaining", None, ""):
+            rec["award_group"] = "Not awarded"
+        major = MAJOR_FROM_FAMILY.get(rec.get("intervention_family", ""), rec.get("intervention_type") or "")
+        rec["intervention_major"] = major
+        rec["intervention_type"] = infer_subtype(rec.get("scheme_name", ""), major)
+        rec["package_id"] = make_package_id(rec.get("package_name", ""), major)
         rec["project_name"] = PROJECT
         rec["donor"] = DONOR
         rec.setdefault("contractor_name", "")
@@ -443,6 +501,29 @@ def assign_ids(rows):
                 rec["status_dates"]["Under Construction"] = rec["awarded_date"]
         elif rec.get("reported_status") == "Under Construction" and rec.get("awarded_date"):
             rec["status_dates"]["Under Construction"] = rec["awarded_date"]
+
+    rows.sort(key=lambda r: (
+        r.get("intervention_major") or "",
+        r.get("package_id") or "",
+        r.get("scheme_name") or "",
+    ))
+
+    counts = {}
+    pkg_sizes = {}
+    for rec in rows:
+        pid = rec["package_id"]
+        pkg_sizes[pid] = pkg_sizes.get(pid, 0) + 1
+    pkg_seen = {}
+    for rec in rows:
+        code = MAJOR_CODE.get(rec["intervention_major"], "X")
+        grp = "A" if rec["award_group"] == "Awarded" else "N"
+        key = f"{code}-{grp}"
+        counts[key] = counts.get(key, 0) + 1
+        rec["scheme_id"] = f"AF2-{key}-{counts[key]:03d}"
+        pid = rec["package_id"]
+        pkg_seen[pid] = pkg_seen.get(pid, 0) + 1
+        rec["subproject_no"] = f"{pkg_seen[pid]} of {pkg_sizes[pid]}"
+        rec["subproject_count"] = pkg_sizes[pid]
     return rows
 
 
@@ -456,7 +537,7 @@ def main():
     )
     rows += extract_standard(
         wb["2.Remain contracts_On&off-farm"],
-        start_row=7, name_col=3, award_group="Remaining",
+        start_row=7, name_col=3, award_group="Not awarded",
         family="On/off-farm irrigation", intervention="Irrigation Canal", awarded=False,
     )
     rows += extract_standard(
@@ -466,7 +547,7 @@ def main():
     )
     rows += extract_standard(
         wb["4.WSM remaining contracts"],
-        start_row=8, name_col=3, award_group="Remaining",
+        start_row=8, name_col=3, award_group="Not awarded",
         family="Watershed / Check dam", intervention="Check Dam", awarded=False,
     )
     rows += extract_drip(wb["5. Drip Irrigation systems"])
@@ -476,9 +557,12 @@ def main():
     OUT.write_text(json.dumps(rows, indent=2, ensure_ascii=False))
     from collections import Counter
     print(f"Wrote {len(rows)} schemes to {OUT}")
-    print("by family", Counter(r["intervention_family"] for r in rows))
+    print("by major", Counter(r["intervention_major"] for r in rows))
+    print("by subtype", Counter(r["intervention_type"] for r in rows))
     print("by group", Counter(r["award_group"] for r in rows))
     print("by status", Counter(r.get("reported_status") or "(blank)" for r in rows).most_common(15))
+    multi = Counter(r["package_id"] for r in rows)
+    print("multi-scheme packages", sum(1 for n in multi.values() if n > 1), "largest", multi.most_common(5))
 
 
 if __name__ == "__main__":

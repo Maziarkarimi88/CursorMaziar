@@ -12,18 +12,20 @@ from __future__ import annotations
 # Status-date columns are generated from STATUS_PIPELINE, not this list.
 IDENTITY_COLUMNS = [
     ("sn", "SN", 6, "auto"),
+    ("package_id", "Package ID", 14, "text"),
+    ("package_name", "Package / Contract Name", 40, "text"),
+    ("subproject_no", "Sub-project in package", 12, "text"),
     ("scheme_id", "Scheme ID", 14, "text"),
+    ("scheme_name", "Sub-project / scheme name", 32, "text"),
+    ("intervention_major", "Major intervention", 26, "list_families"),
+    ("intervention_type", "Intervention sub-type", 22, "list_interventions"),
     ("project_name", "Project Name", 28, "list_projects"),
-    ("package_name", "Package / Contract Name", 36, "text"),
-    ("scheme_name", "Scheme Name", 32, "text"),
-    ("intervention_type", "Intervention Type", 20, "list_interventions"),
     ("region", "Region", 22, "list_regions"),
     ("province", "Province", 16, "list_provinces"),
     ("district", "District", 22, "list_districts"),
     ("village", "Village", 28, "text"),
     ("donor", "Donor", 22, "list_donors"),
-    ("award_group", "Awarded / Remaining", 14, "list_award_groups"),
-    ("intervention_family", "Intervention family", 22, "list_families"),
+    ("award_group", "Awarded / Not awarded", 16, "list_award_groups"),
     ("source_sheet", "Source sheet", 28, "text"),
 ]
 
@@ -124,30 +126,30 @@ PROJECTS = [
     "WBK/AF-2 Component 2: Water and Resilience Services",
 ]
 
-AWARD_GROUPS = ["Awarded", "Remaining"]
+AWARD_GROUPS = ["Awarded", "Not awarded"]
 INTERVENTION_FAMILIES = [
-    "On/off-farm irrigation",
-    "Watershed / Check dam",
-    "Drip irrigation",
-    "LLL supply",
-    "Agroforestry",
-]
-
-INTERVENTION_TYPES = [
-    "Check Dam",
-    "Boulder Check Dam",
-    "Check Dam and Water Pond",
+    "Irrigation Scheme",
     "Watershed Management",
-    "Irrigation Canal",
     "Drip Irrigation",
     "Laser Land Leveler (LLL)",
     "Agroforestry saplings / seeds",
+]
+
+# Sub-types only. Major types live in INTERVENTION_FAMILIES.
+INTERVENTION_TYPES = [
+    "Irrigation Canal",
     "Protection Wall",
     "Karez Rehabilitation",
     "Intake / Diversion",
-    "Water Supply Scheme",
-    "Flood Protection",
+    "Check Dam",
+    "Boulder Check Dam",
+    "Check Dam and Water Pond",
     "Gabion Structure",
+    "Flood Protection",
+    "Drip Irrigation Plot",
+    "LLL unit",
+    "Saplings and seeds",
+    "Water Supply Scheme",
     "Other",
 ]
 
@@ -645,9 +647,12 @@ SCHEMES = _json.loads(_IMPORTED.read_text()) if _IMPORTED.exists() else []
 EXAMPLE_SCHEMES = [
     {
         "scheme_id": "DEMO-01",
+        "package_id": "DEMO-A",
+        "subproject_no": "1 of 1",
         "project_name": "Emergency Food Security Project (EFSP) – WBK/AF-2",
         "package_name": "DEMO Package A — full pipeline (delete from reports)",
         "scheme_name": "Demo Scheme: completed handover",
+        "intervention_major": "Watershed Management",
         "intervention_type": "Check Dam",
         "region": "West / Herat",
         "province": "Badghis",
@@ -659,6 +664,7 @@ EXAMPLE_SCHEMES = [
         "contract_cost_usd": 120000,
         "contract_duration_months": 5,
         "physical_progress_pct": 100,
+        "award_group": "Awarded",
         "reported_status": "Completed / Handover",
         "remarks": "EXAMPLE ONLY — shows days between every step.",
         "status_dates": {
@@ -675,9 +681,12 @@ EXAMPLE_SCHEMES = [
     },
     {
         "scheme_id": "DEMO-02",
+        "package_id": "DEMO-B",
+        "subproject_no": "1 of 1",
         "project_name": "Emergency Food Security Project (EFSP) – WBK/AF-2",
         "package_name": "DEMO Package B — mid pipeline (delete from reports)",
         "scheme_name": "Demo Scheme: currently under technical evaluation",
+        "intervention_major": "Watershed Management",
         "intervention_type": "Boulder Check Dam",
         "region": "East / Jalalabad",
         "province": "Kunar",
@@ -685,6 +694,7 @@ EXAMPLE_SCHEMES = [
         "village": "Demo Village B",
         "donor": "World Bank (WBK/AF-2)",
         "contract_cost_usd": 98000,
+        "award_group": "Not awarded",
         "reported_status": "Under Technical Evaluation",
         "remarks": "EXAMPLE ONLY — later dates are blank; days in current step uses TODAY().",
         "status_dates": {
