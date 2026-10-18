@@ -130,6 +130,7 @@ SHEET_PIPELINE = "06_Status_Pipeline"
 SHEET_DOMAINS = "07_Domains"
 SHEET_GEO = "08_Geography"
 SHEET_LOOKUPS = "09_Lookups"
+SHEET_CONTRACTORS = "10_By_Contractor"
 
 PKG_BANDS = ("E4EBF3", "F6F0E4", "E6EFE6", "F4EBE0")
 
@@ -188,6 +189,15 @@ def all_provinces() -> list[str]:
     for region in GEOGRAPHY.values():
         names.extend(region["provinces"].keys())
     return names
+
+
+def all_contractors() -> list[str]:
+    seen = []
+    for rec in SCHEMES:
+        name = (rec.get("contractor_name") or "").strip()
+        if name and name not in seen:
+            seen.append(name)
+    return sorted(seen, key=str.lower)
 
 
 def all_districts() -> list[str]:
@@ -353,6 +363,8 @@ def write_howto(wb: Workbook, layout: Layout) -> None:
             "01_Scheme_Tracker is the working register (one row per sub-project). "
             "02_Dashboard summarises counts and average durations. "
             "03_Package_Summary rolls every contract package to one row (Package #8 and #10 sit here as single packages). "
+            "10_By_Contractor lists each company once, with how many unique contracts it holds "
+            "(Zahid Saeed / ZSCC is one awarded contract covering four canals). "
             "04_Date_Rules explains how each date is used and how schedule health is coloured. "
             "05_Example_Filled shows two worked examples so you can see the day-count formulas. "
             "06_Status_Pipeline is the ordered list of steps. "
@@ -382,6 +394,17 @@ def write_howto(wb: Workbook, layout: Layout) -> None:
             "On the tracker, extra rows of the same package are grouped — use the outline +/- at the left margin to collapse them. "
             "03_Package_Summary lists each package once.",
             "01_Scheme_Tracker / 03_Package_Summary",
+        ),
+        (
+            "Find contracts awarded to one company",
+            "The contractor name is repeated on every sub-project of that contract. "
+            "Filtering Contractor Name on 01_Scheme_Tracker for "
+            "'Zahid Saeed Engineering and Construction Company (ZSCC)' shows four rows — "
+            "those are four canals on the same Package #10 contract (057/2025), not four contracts. "
+            "To see unique contracts: open 10_By_Contractor and filter the company "
+            "(ZSCC = 1 awarded contract, 4 sub-projects), or open 03_Package_Summary and filter Contractor Name. "
+            "Count Package IDs / Contract Numbers, not the number of tracker rows.",
+            "10_By_Contractor / 03_Package_Summary",
         ),
         (
             "Enter status dates",
@@ -619,6 +642,7 @@ def write_domains(wb: Workbook) -> dict:
         ("All_Districts", all_districts(), 28),
         ("AwardGroups", AWARD_GROUPS, 16),
         ("Families", INTERVENTION_FAMILIES, 24),
+        ("Contractors", all_contractors(), 42),
     ]
     meta = {}
     for i, (name, values, width) in enumerate(columns, start=1):
@@ -637,7 +661,7 @@ def write_domains(wb: Workbook) -> dict:
             "first_row": 3,
         }
     ws.freeze_panes = "A3"
-    ws.auto_filter.ref = "A2:I2"
+    ws.auto_filter.ref = "A2:J2"
     return meta
 
 
@@ -1199,6 +1223,7 @@ def write_tracker_sheet(
     dv_list("=Statuses", f"{layout.letter('reported_status')}{first}:{layout.letter('reported_status')}{last_r}")
     dv_list("=AwardGroups", f"{layout.letter('award_group')}{first}:{layout.letter('award_group')}{last_r}")
     dv_list("=Families", f"{layout.letter('intervention_major')}{first}:{layout.letter('intervention_major')}{last_r}")
+    dv_list("=Contractors", f"{layout.letter('contractor_name')}{first}:{layout.letter('contractor_name')}{last_r}")
     dv_list("=All_Provinces", f"{layout.letter('province')}{first}:{layout.letter('province')}{last_r}")
     dv_list("=All_Districts", f"{layout.letter('district')}{first}:{layout.letter('district')}{last_r}")
 
@@ -1364,6 +1389,12 @@ def write_tracker_sheet(
     )
     ws.cell(HEADER_ROW, layout.idx["award_group"]).comment = Comment(
         "Awarded = contract signed. Not awarded = still in design / procurement.",
+        "Tracker",
+    )
+    ws.cell(HEADER_ROW, layout.idx["contractor_name"]).comment = Comment(
+        "Repeated on every sub-project of the same contract. "
+        "To count unique contracts for this company, filter 10_By_Contractor or 03_Package_Summary — "
+        "do not count the number of rows here. ZSCC on Package #10 is one contract / four canals.",
         "Tracker",
     )
     ws.cell(HEADER_ROW, layout.idx["current_status"]).comment = Comment(
@@ -1661,13 +1692,14 @@ def write_package_summary(wb: Workbook, layout: Layout) -> None:
     ws.page_setup.fitToWidth = 1
     ws.page_setup.fitToHeight = 0
 
-    last_col = 12
+    last_col = 14
     ws.merge_cells(start_row=1, start_column=1, end_row=1, end_column=last_col)
     apply_cell(
         ws.cell(
             1,
             1,
-            "Package summary — one row per contract. Several canals or check dams that share a Package / Contract Name stay together here.",
+            "Package summary — one row per contract. Filter Contractor Name to see unique contracts awarded to a company "
+            "(Zahid Saeed / ZSCC is one package, not four).",
         ),
         font=FONT_TITLE,
         fill_hex=NAVY,
@@ -1684,6 +1716,7 @@ def write_package_summary(wb: Workbook, layout: Layout) -> None:
             "Example: Package #8-AF2 IS (Khas Kunar Lower canal + Bahrabad canal) is one package / two sub-projects. "
             "Package #10-AF2 IS (Baraki, Darbal, Nawikhar, Mangali) is one package / four sub-projects. "
             "Open 01_Scheme_Tracker and filter Package ID, or collapse the outline +/- on the left of that sheet. "
+            "To list a company's contracts, filter this Contractor Name column or use 10_By_Contractor. "
             "Sub-project count and total cost are live formulas.",
         ),
         font=FONT_HINT,
@@ -1706,6 +1739,8 @@ def write_package_summary(wb: Workbook, layout: Layout) -> None:
         ("Reported statuses", 28),
         ("Awarded / expected award", 18),
         ("Contract / expected end", 18),
+        ("Contractor Name", 36),
+        ("Contract Number", 16),
         ("Source sheet", 28),
     ]
     for i, (h, w) in enumerate(headers, start=1):
@@ -1764,14 +1799,148 @@ def write_package_summary(wb: Workbook, layout: Layout) -> None:
             align=ALIGN_C,
             fmt="DD-MMM-YYYY",
         )
-        apply_cell(ws.cell(row, 12, first.get("source_sheet", "")), font=FONT_HINT, fill_hex=alt)
+        apply_cell(
+            ws.cell(row, 12, _unique_join(m.get("contractor_name") for m in members)),
+            font=FONT_BODY,
+            fill_hex=alt,
+        )
+        apply_cell(
+            ws.cell(row, 13, _unique_join(m.get("contract_number") for m in members)),
+            font=FONT_BODY,
+            fill_hex=alt,
+            align=ALIGN_C,
+        )
+        apply_cell(ws.cell(row, 14, first.get("source_sheet", "")), font=FONT_HINT, fill_hex=alt)
         ws.row_dimensions[row].height = 28
 
     last_pkg = 3 + max(len(packages), 1)
-    ws.auto_filter.ref = f"A3:L{last_pkg}"
+    ws.auto_filter.ref = f"A3:N{last_pkg}"
     ws.freeze_panes = "A4"
     ws.print_title_rows = "1:3"
     ws.oddFooter.left.text = "Package summary — one row per AF-2 contract"
+    ws.oddFooter.right.text = "Page &P of &N"
+
+
+def write_contractor_summary(wb: Workbook, layout: Layout) -> None:
+    """One row per contractor: unique contracts, not repeated sub-project rows."""
+    ws = wb.create_sheet(SHEET_CONTRACTORS)
+    ws.sheet_properties.tabColor = STEEL
+    ws.sheet_view.showGridLines = False
+    ws.page_setup.orientation = "landscape"
+    ws.page_setup.fitToPage = True
+    ws.page_setup.fitToWidth = 1
+    ws.page_setup.fitToHeight = 0
+
+    last_col = 10
+    ws.merge_cells(start_row=1, start_column=1, end_row=1, end_column=last_col)
+    apply_cell(
+        ws.cell(
+            1,
+            1,
+            "Contracts by contractor — one row per company. Count unique Package IDs / contract numbers, not tracker rows.",
+        ),
+        font=FONT_TITLE,
+        fill_hex=NAVY,
+        align=ALIGN_L,
+    )
+    for col in range(2, last_col + 1):
+        apply_cell(ws.cell(1, col), fill_hex=NAVY)
+    ws.row_dimensions[1].height = 26
+    ws.merge_cells(start_row=2, start_column=1, end_row=2, end_column=last_col)
+    apply_cell(
+        ws.cell(
+            2,
+            1,
+            "Example: Zahid Saeed Engineering and Construction Company (ZSCC) is awarded one contract "
+            "(Package #10-AF2 IS, contract 057/2025) covering four canals in Wardak. "
+            "On 01_Scheme_Tracker the name appears four times because each canal is a sub-project. "
+            "Filter this sheet or 03_Package_Summary by Contractor Name to list a company's contracts.",
+        ),
+        font=FONT_HINT,
+        fill_hex=LIGHT_NAVY,
+        border=None,
+    )
+    for col in range(2, last_col + 1):
+        ws.cell(2, col).fill = fill(LIGHT_NAVY)
+    ws.row_dimensions[2].height = 44
+
+    headers = [
+        ("Contractor Name", 48),
+        ("Awarded contracts", 14),
+        ("Awarded sub-projects", 14),
+        ("Total cost (USD)", 16),
+        ("Package IDs", 22),
+        ("Contract number(s)", 20),
+        ("Package / Contract Name", 56),
+        ("Major intervention", 26),
+        ("Provinces", 28),
+        ("Districts", 32),
+    ]
+    for i, (h, w) in enumerate(headers, start=1):
+        apply_cell(ws.cell(3, i, h), font=FONT_HEAD, fill_hex=STEEL, align=ALIGN_C)
+        ws.column_dimensions[colletter(i)].width = w
+
+    groups: dict[str, list[dict]] = {}
+    for rec in SCHEMES:
+        name = (rec.get("contractor_name") or "").strip()
+        if not name or rec.get("award_group") != "Awarded":
+            continue
+        groups.setdefault(name, []).append(rec)
+
+    t = quote_sheet(SHEET_TRACKER)
+    first_r = DATA_START
+    last_r = DATA_START + MAX_DATA_ROWS - 1
+    con_rng = f"{t}!${layout.letter('contractor_name')}${first_r}:${layout.letter('contractor_name')}${last_r}"
+    cost_rng = f"{t}!${layout.letter('contract_cost_usd')}${first_r}:${layout.letter('contract_cost_usd')}${last_r}"
+
+    ranked = sorted(
+        groups.items(),
+        key=lambda item: (
+            -len({m.get("package_id") for m in item[1] if m.get("award_group") == "Awarded"}),
+            -len(item[1]),
+            item[0].lower(),
+        ),
+    )
+
+    for i, (name, members) in enumerate(ranked):
+        row = 4 + i
+        alt = ALT_ROW if i % 2 else WHITE
+        awarded = [m for m in members if m.get("award_group") == "Awarded"]
+        use = awarded or members
+        pkg_ids = []
+        for m in use:
+            pid = m.get("package_id") or ""
+            if pid and pid not in pkg_ids:
+                pkg_ids.append(pid)
+        apply_cell(ws.cell(row, 1, name), font=Font(name="Calibri", size=10, bold=True, color=INK), fill_hex=alt)
+        apply_cell(ws.cell(row, 2, len(pkg_ids) if awarded else 0), font=FONT_BODY, fill_hex=alt, align=ALIGN_C, fmt="0")
+        apply_cell(
+            ws.cell(row, 3, f"=COUNTIF({con_rng},A{row})"),
+            font=FONT_FORMULA,
+            fill_hex=FORMULA_BG,
+            align=ALIGN_C,
+            fmt="0",
+        )
+        apply_cell(
+            ws.cell(row, 4, f"=SUMIF({con_rng},A{row},{cost_rng})"),
+            font=FONT_FORMULA,
+            fill_hex=FORMULA_BG,
+            align=ALIGN_R,
+            fmt="#,##0.00",
+        )
+        apply_cell(ws.cell(row, 5, ", ".join(pkg_ids)), font=FONT_BODY, fill_hex=alt)
+        apply_cell(ws.cell(row, 6, _unique_join(m.get("contract_number") for m in use)), font=FONT_BODY, fill_hex=alt)
+        apply_cell(ws.cell(row, 7, _unique_join(m.get("package_name") for m in use)), font=FONT_BODY, fill_hex=alt)
+        apply_cell(ws.cell(row, 8, _unique_join(m.get("intervention_major") for m in use)), font=FONT_BODY, fill_hex=alt)
+        apply_cell(ws.cell(row, 9, _unique_join(m.get("province") for m in use)), font=FONT_BODY, fill_hex=alt)
+        apply_cell(ws.cell(row, 10, _unique_join(m.get("district") for m in use)), font=FONT_BODY, fill_hex=alt)
+        ws.row_dimensions[row].height = 32
+
+    last = 3 + max(len(ranked), 1)
+    ws.auto_filter.ref = f"A3:J{last}"
+    ws.freeze_panes = "A4"
+    ws.print_title_rows = "1:3"
+    ws.oddFooter.left.text = "Contracts by contractor — unique packages, not repeated sites"
     ws.oddFooter.right.text = "Page &P of &N"
 
 
@@ -2014,6 +2183,7 @@ def build_workbook() -> Workbook:
     )
     write_dashboard(wb, layout)
     write_package_summary(wb, layout)
+    write_contractor_summary(wb, layout)
     write_date_rules(wb)
 
     # Reorder sheets
@@ -2022,6 +2192,7 @@ def build_workbook() -> Workbook:
         SHEET_TRACKER,
         SHEET_DASH,
         SHEET_PACKAGES,
+        SHEET_CONTRACTORS,
         SHEET_DATES,
         SHEET_EXAMPLE,
         SHEET_PIPELINE,

@@ -19,6 +19,7 @@ from generate_tracker import (
     SHEET_GEO,
     SHEET_HOWTO,
     SHEET_LOOKUPS,
+    SHEET_CONTRACTORS,
     SHEET_PACKAGES,
     SHEET_PIPELINE,
     SHEET_TRACKER,
@@ -63,6 +64,7 @@ def main() -> None:
         SHEET_TRACKER,
         SHEET_DASH,
         SHEET_PACKAGES,
+        SHEET_CONTRACTORS,
         SHEET_DATES,
         SHEET_EXAMPLE,
         SHEET_PIPELINE,
@@ -142,6 +144,7 @@ def main() -> None:
         "All_Districts",
         "AwardGroups",
         "Families",
+        "Contractors",
     ):
         assert required in names, f"missing named range {required}"
 
@@ -204,6 +207,34 @@ def main() -> None:
     pkg_ids = [packages.cell(r, 1).value for r in range(4, packages.max_row + 1) if packages.cell(r, 1).value]
     assert pkg8[0]["package_id"] in pkg_ids
     assert pkg10[0]["package_id"] in pkg_ids
+    assert packages.cell(3, 12).value == "Contractor Name"
+    zscc_pkg_rows = [
+        r
+        for r in range(4, packages.max_row + 1)
+        if packages.cell(r, 12).value and "ZSCC" in str(packages.cell(r, 12).value)
+    ]
+    assert len(zscc_pkg_rows) == 1, zscc_pkg_rows
+    assert packages.cell(zscc_pkg_rows[0], 1).value == pkg10[0]["package_id"]
+    assert "057/2025" in str(packages.cell(zscc_pkg_rows[0], 13).value)
+
+    contractors = wb[SHEET_CONTRACTORS]
+    assert "Contracts by contractor" in str(contractors.cell(1, 1).value)
+    zscc_rows = [
+        r
+        for r in range(4, contractors.max_row + 1)
+        if contractors.cell(r, 1).value and "ZSCC" in str(contractors.cell(r, 1).value)
+    ]
+    assert len(zscc_rows) == 1, zscc_rows
+    awarded_contractors = {
+        (s.get("contractor_name") or "").strip()
+        for s in SCHEMES
+        if s.get("award_group") == "Awarded" and (s.get("contractor_name") or "").strip()
+    }
+    listed = [contractors.cell(r, 1).value for r in range(4, contractors.max_row + 1) if contractors.cell(r, 1).value]
+    assert set(listed) == awarded_contractors
+    assert contractors.cell(zscc_rows[0], 2).value == 1
+    assert pkg10[0]["package_id"] in str(contractors.cell(zscc_rows[0], 5).value)
+    assert "057/2025" in str(contractors.cell(zscc_rows[0], 6).value)
     dates = wb[SHEET_DATES]
     assert "Date conditions" in str(dates["B1"].value)
     health_f = str(tracker.cell(DATA_START, layout.idx["schedule_health"]).value)

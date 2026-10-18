@@ -17,7 +17,8 @@ Open **`WBK_AF2_Construction_Works_Tracker.xlsx`**.
 | `00_How_to_Use` | How to fill the register and how to add or remove columns and domains |
 | `01_Scheme_Tracker` | Working register — one row per sub-project; collapse extra sites of a package with the outline +/- |
 | `02_Dashboard` | Counts by status, region, major intervention, Awarded / Not awarded, average days per step |
-| `03_Package_Summary` | One row per contract package (Package #8 and #10 sit here as single packages) |
+| `03_Package_Summary` | One row per contract package (Package #8 and #10 sit here as single packages). Filter Contractor Name for unique contracts. |
+| `10_By_Contractor` | One row per company: unique awarded contracts, not repeated sub-project rows (ZSCC = 1 contract / 4 canals) |
 | `04_Date_Rules` | What each date means and the conditions behind green / amber / red |
 | `05_Example_Filled` | Two worked examples so you can see the day-count formulas |
 | `06_Status_Pipeline` | Ordered list of steps (edit spare slots to add a step) |
@@ -44,6 +45,17 @@ Open **`WBK_AF2_Construction_Works_Tracker.xlsx`**.
 One Package / Contract Name can cover several sites in different districts. Keep one row per site so location and progress stay honest. Repeat the same Package ID and Package / Contract Name on every row. `Sub-project in package` shows `1 of 4`, `2 of 4`, …
 
 Cells are **not merged** (that would break AutoFilter). Extra rows of the same package are grouped — use the outline control at the left of `01_Scheme_Tracker`. `03_Package_Summary` lists each package once, with a live sub-project count and total cost.
+
+## Find contracts awarded to one company
+
+The contractor name is repeated on every sub-project of that contract. Filtering `Contractor Name` on `01_Scheme_Tracker` for **Zahid Saeed Engineering and Construction Company (ZSCC)** shows four rows — those are four canals on **one** Package #10 contract (`057/2025`), not four contracts.
+
+To list unique contracts:
+
+1. Open `10_By_Contractor` and filter the company. ZSCC = **1 awarded contract**, 4 sub-projects.
+2. Or open `03_Package_Summary` and filter **Contractor Name**.
+
+Count **Package IDs / Contract Numbers**, not the number of tracker rows.
 
 ## Status pipeline (default)
 
