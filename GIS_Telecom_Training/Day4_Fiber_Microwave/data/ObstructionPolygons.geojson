@@ -1,0 +1,355 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "BLDG_ID": "OBS-01",
+        "HEIGHT_M": 25,
+        "USE": "ObstructionProxy"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              69.1435,
+              34.5265
+            ],
+            [
+              69.14649999999999,
+              34.5265
+            ],
+            [
+              69.14649999999999,
+              34.5295
+            ],
+            [
+              69.1435,
+              34.5295
+            ],
+            [
+              69.1435,
+              34.5265
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "BLDG_ID": "OBS-02",
+        "HEIGHT_M": 40,
+        "USE": "ObstructionProxy"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              69.13350000000001,
+              34.5235
+            ],
+            [
+              69.1365,
+              34.5235
+            ],
+            [
+              69.1365,
+              34.5265
+            ],
+            [
+              69.13350000000001,
+              34.5265
+            ],
+            [
+              69.13350000000001,
+              34.5235
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "BLDG_ID": "OBS-03",
+        "HEIGHT_M": 55,
+        "USE": "ObstructionProxy"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              69.1235,
+              34.5205
+            ],
+            [
+              69.1265,
+              34.5205
+            ],
+            [
+              69.1265,
+              34.5235
+            ],
+            [
+              69.1235,
+              34.5235
+            ],
+            [
+              69.1235,
+              34.5205
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "BLDG_ID": "OBS-04",
+        "HEIGHT_M": 35,
+        "USE": "ObstructionProxy"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              69.1135,
+              34.5185
+            ],
+            [
+              69.11649999999999,
+              34.5185
+            ],
+            [
+              69.11649999999999,
+              34.5215
+            ],
+            [
+              69.1135,
+              34.5215
+            ],
+            [
+              69.1135,
+              34.5185
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "BLDG_ID": "OBS-05",
+        "HEIGHT_M": 30,
+        "USE": "ObstructionProxy"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              69.1885,
+              34.5035
+            ],
+            [
+              69.19149999999999,
+              34.5035
+            ],
+            [
+              69.19149999999999,
+              34.5065
+            ],
+            [
+              69.1885,
+              34.5065
+            ],
+            [
+              69.1885,
+              34.5035
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "BLDG_ID": "OBS-06",
+        "HEIGHT_M": 45,
+        "USE": "ObstructionProxy"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              69.19850000000001,
+              34.5085
+            ],
+            [
+              69.2015,
+              34.5085
+            ],
+            [
+              69.2015,
+              34.5115
+            ],
+            [
+              69.19850000000001,
+              34.5115
+            ],
+            [
+              69.19850000000001,
+              34.5085
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "BLDG_ID": "OBS-07",
+        "HEIGHT_M": 20,
+        "USE": "ObstructionProxy"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              69.2085,
+              34.5185
+            ],
+            [
+              69.21149999999999,
+              34.5185
+            ],
+            [
+              69.21149999999999,
+              34.5215
+            ],
+            [
+              69.2085,
+              34.5215
+            ],
+            [
+              69.2085,
+              34.5185
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "BLDG_ID": "OBS-08",
+        "HEIGHT_M": 22,
+        "USE": "ObstructionProxy"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              69.1585,
+              34.5435
+            ],
+            [
+              69.16149999999999,
+              34.5435
+            ],
+            [
+              69.16149999999999,
+              34.5465
+            ],
+            [
+              69.1585,
+              34.5465
+            ],
+            [
+              69.1585,
+              34.5435
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "BLDG_ID": "OBS-09",
+        "HEIGHT_M": 28,
+        "USE": "ObstructionProxy"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              69.1735,
+              34.5185
+            ],
+            [
+              69.17649999999999,
+              34.5185
+            ],
+            [
+              69.17649999999999,
+              34.5215
+            ],
+            [
+              69.1735,
+              34.5215
+            ],
+            [
+              69.1735,
+              34.5185
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "BLDG_ID": "OBS-10",
+        "HEIGHT_M": 18,
+        "USE": "ObstructionProxy"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              69.2035,
+              34.5485
+            ],
+            [
+              69.20649999999999,
+              34.5485
+            ],
+            [
+              69.20649999999999,
+              34.5515
+            ],
+            [
+              69.2035,
+              34.5515
+            ],
+            [
+              69.2035,
+              34.5485
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}

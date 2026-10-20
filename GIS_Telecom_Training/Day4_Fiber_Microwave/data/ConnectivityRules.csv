@@ -1,0 +1,10 @@
+FROM_TYPE,TO_TYPE,EDGE_LAYER,ALLOWED,CARDINALITY,NOTES
+OLT,Joint,FiberRoutes,Yes,1-M,Feeder out of OLT
+OLT,FDH,FiberRoutes,Yes,1-M,Direct feeder
+Joint,FDH,FiberRoutes,Yes,1-M,Feeder continuation
+Joint,OLT,FiberRoutes,Yes,M-1,Ring/backhaul
+FDH,Splitter,FiberRoutes,Yes,1-M,Distribution
+Splitter,ONT,Drop laterals (optional),Yes,1-M,Access drop
+MW_Hub,MW_Remote,MicrowaveLinks,Yes,1-M,Star MW topology
+MW_Hub,MW_Hub,MicrowaveLinks,Yes,1-1,Hub interconnect
+MW_Remote,FDH,Logical only,Yes,1-1,MW serves access node
