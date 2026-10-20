@@ -1,0 +1,10 @@
+{
+  "project": "MetroTel Capital Region - FTTH Geometric Network",
+  "software_target": "ArcGIS Desktop (ArcMap) Geometric Network",
+  "crs_shapefiles": "EPSG:32642",
+  "junction_count": 22889,
+  "edge_count": 22893,
+  "home_ont_count": 21420,
+  "internet_sources": 3,
+  "topology": "Source -> Core -> Hub -> OLT -> Joint -> FDH -> Splitter -> Home_ONT"
+}
