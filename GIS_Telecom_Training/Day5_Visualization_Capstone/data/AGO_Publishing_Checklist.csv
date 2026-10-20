@@ -1,0 +1,8 @@
+STEP,TASK,OWNER
+1,Clean & project Day2–Day4 layers / use Day5 integrated package,GIS
+2,Share as Web Layers to ArcGIS Online (feature layers),GIS
+3,Build Web Map with layer groups & pop-ups,GIS
+4,Create Dashboard with indicators/gauges/charts/list,GIS + BI
+5,Build Story Map narrative for executives,GIS + Planning
+6,"Set sharing (org/group), credits, metadata, refresh plan",Admin
+7,Capstone presentation (10–15 min),Team

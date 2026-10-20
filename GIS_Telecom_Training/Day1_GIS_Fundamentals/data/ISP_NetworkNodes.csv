@@ -1,0 +1,12 @@
+NODE_ID,NODE_NAME,NODE_LEVEL,NODE_TYPE,PARENT_ID,LON,LAT,STATUS,TECH
+ISP-CORE-01,National_Core_POP,1,Core_POP,,69.16,34.54,Active,DWDM/IP
+HUB-N-01,North_Regional_Hub,2,Regional_Hub,ISP-CORE-01,69.15,34.565,Active,IP/MPLS
+HUB-S-01,South_Regional_Hub,2,Regional_Hub,ISP-CORE-01,69.175,34.495,Active,IP/MPLS
+OLT-01,CBD_Exchange_OLT,3,OLT_Exchange,HUB-N-01,69.168,34.53,Active,GPON
+OLT-02,South_Exchange_OLT,3,OLT_Exchange,HUB-S-01,69.178,34.485,Active,GPON
+FDH-01,CBD_Cabinet,4,FDH_Cabinet,OLT-01,69.172,34.525,Active,GPON
+FDH-02,North_Cabinet,4,FDH_Cabinet,OLT-01,69.148,34.562,Active,GPON
+FDH-03,South_Cabinet,4,FDH_Cabinet,OLT-02,69.18,34.48,Active,GPON
+SPL-01,Splitter_CBD_A,5,Splitter,FDH-01,69.17,34.527,Active,1:8
+SPL-02,Splitter_North_A,5,Splitter,FDH-02,69.15,34.56,Active,1:8
+SPL-03,Splitter_South_A,5,Splitter,FDH-03,69.176,34.488,Active,1:16

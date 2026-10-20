@@ -1,0 +1,4 @@
+DATASET,NATIVE_CRS,UNITS,USE
+Districts.geojson,WGS84 (EPSG:4326),Degrees,Storage/exchange
+Towers.csv XY,WGS84 (EPSG:4326),Degrees,GPS-like points
+Analysis_UTM,WGS84 UTM Zone 42N (EPSG:32642),Meters,Distance/buffer/area

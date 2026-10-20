@@ -1,0 +1,8 @@
+DECISION_ID,THEME,ZONE,TITLE,PRIORITY,OWNER,STATUS,KPI_LINK,RECOMMENDATION
+D1,Coverage,DZ-12,Fix peri-urban 4G gap,High,RF Planning,Proposed,COV_GAP_POP,Add candidate site + verify backhaul
+D2,GeoMarketing,DZ-01,Defend high-ARPU CBD,High,Marketing,Approved,AVG_ARPU,Premium retention offers + QoS SLA monitoring
+D3,GeoMarketing,DZ-04,Expand west growth market,High,Commercial,Proposed,SUITABILITY,Sales blitz after fiber/MW ready
+D4,Transport,DZ-04,Prefer fiber over blocked MW,High,Transmission,Proposed,FIBER_STATUS,Build FX planned feeder to FDH-04; MW-05 only if LOS cleared
+D5,Transport,DZ-11,Tech Park fiber lateral,Medium,FTTH,Proposed,FIBER_STATUS,Complete FDH-06 planned branch
+D6,QoS,DZ-03,Industrial churn/QoS review,Medium,NOC + Marketing,In Progress,AVG_CHURN,Correlate drop rate with Day2 coverage holes
+D7,Executive,All,Publish AGOL executive dashboard,High,GIS,In Progress,NPS,Refresh weekly from KPI tables

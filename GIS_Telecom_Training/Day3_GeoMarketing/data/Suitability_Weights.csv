@@ -1,0 +1,7 @@
+CRITERION,FIELD_OR_LAYER,WEIGHT_PCT,RECLASS_HIGH_IS,NOTES
+Population Density,POPULATION / AREA,25,Higher population = more suitable,Market size
+Average ARPU,AVG_ARPU,20,Higher ARPU = more suitable,Revenue potential
+Churn Risk (inverse),AVG_CHURN_RISK,15,Lower churn = more suitable for retention offers; for expansion use moderate,Risk
+Service Quality (Throughput),AVG_THROUGHPUT,15,Higher throughput = healthier market,QoS
+Competitor Pressure (inverse),CompetitorSites density,10,Lower competitor density = easier expansion,Competition
+Affluence Index,AFFLUENCE_INDEX,15,Higher affluence = better upsell,Socioeconomic

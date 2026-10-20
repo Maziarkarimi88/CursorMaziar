@@ -1,0 +1,8 @@
+REAL / OPEN DATA OPTIONS FOR DAY 1
+=================================
+1) HDX administrative boundaries
+2) OSM roads/buildings (Geofabrik)
+3) OpenCelliD / regulator site lists (training only; check license)
+4) National ISP anonymized node lists (internal)
+
+Day 1 synthetic MetroTel hierarchy is enough for ER/cardinality labs offline.

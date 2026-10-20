@@ -1,0 +1,453 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "ROUTE_ID": "FX-01",
+        "ROUTE_NAME": "OLT1_to_FDH01",
+        "ROUTE_TYPE": "Feeder",
+        "STATUS": "Existing",
+        "CABLE_TYPE": "Fiber",
+        "FIBER_COUNT": 144,
+        "LENGTH_KM": 0.668,
+        "FROM_NODE": "OLT-01",
+        "TO_NODE": "FDH-01",
+        "MEDIUM": "Underground"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            69.168,
+            34.53
+          ],
+          [
+            69.17,
+            34.528
+          ],
+          [
+            69.172,
+            34.525
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ROUTE_ID": "FX-02",
+        "ROUTE_NAME": "OLT1_to_JH01",
+        "ROUTE_TYPE": "Feeder",
+        "STATUS": "Existing",
+        "CABLE_TYPE": "Fiber",
+        "FIBER_COUNT": 288,
+        "LENGTH_KM": 1.125,
+        "FROM_NODE": "OLT-01",
+        "TO_NODE": "JH-01",
+        "MEDIUM": "Underground"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            69.168,
+            34.53
+          ],
+          [
+            69.169,
+            34.535
+          ],
+          [
+            69.17,
+            34.54
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ROUTE_ID": "FX-03",
+        "ROUTE_NAME": "JH01_to_OLT2",
+        "ROUTE_TYPE": "Feeder",
+        "STATUS": "Existing",
+        "CABLE_TYPE": "Fiber",
+        "FIBER_COUNT": 288,
+        "LENGTH_KM": 2.589,
+        "FROM_NODE": "JH-01",
+        "TO_NODE": "OLT-02",
+        "MEDIUM": "Underground"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            69.17,
+            34.54
+          ],
+          [
+            69.16,
+            34.55
+          ],
+          [
+            69.152,
+            34.558
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ROUTE_ID": "FX-04",
+        "ROUTE_NAME": "OLT2_to_FDH02",
+        "ROUTE_TYPE": "Feeder",
+        "STATUS": "Existing",
+        "CABLE_TYPE": "Fiber",
+        "FIBER_COUNT": 144,
+        "LENGTH_KM": 0.575,
+        "FROM_NODE": "OLT-02",
+        "TO_NODE": "FDH-02",
+        "MEDIUM": "Underground"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            69.152,
+            34.558
+          ],
+          [
+            69.15,
+            34.56
+          ],
+          [
+            69.148,
+            34.562
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ROUTE_ID": "FX-05",
+        "ROUTE_NAME": "OLT1_to_JH02",
+        "ROUTE_TYPE": "Feeder",
+        "STATUS": "Existing",
+        "CABLE_TYPE": "Fiber",
+        "FIBER_COUNT": 144,
+        "LENGTH_KM": 2.475,
+        "FROM_NODE": "OLT-01",
+        "TO_NODE": "JH-02",
+        "MEDIUM": "Underground"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            69.168,
+            34.53
+          ],
+          [
+            69.18,
+            34.531
+          ],
+          [
+            69.195,
+            34.531
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ROUTE_ID": "FX-06",
+        "ROUTE_NAME": "JH02_to_FDH03",
+        "ROUTE_TYPE": "Feeder",
+        "STATUS": "Existing",
+        "CABLE_TYPE": "Fiber",
+        "FIBER_COUNT": 96,
+        "LENGTH_KM": 2.11,
+        "FROM_NODE": "JH-02",
+        "TO_NODE": "FDH-03",
+        "MEDIUM": "Underground"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            69.195,
+            34.531
+          ],
+          [
+            69.205,
+            34.532
+          ],
+          [
+            69.218,
+            34.532
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ROUTE_ID": "FX-07",
+        "ROUTE_NAME": "OLT1_to_JH03",
+        "ROUTE_TYPE": "Feeder",
+        "STATUS": "Existing",
+        "CABLE_TYPE": "Fiber",
+        "FIBER_COUNT": 144,
+        "LENGTH_KM": 2.844,
+        "FROM_NODE": "OLT-01",
+        "TO_NODE": "JH-03",
+        "MEDIUM": "Underground"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            69.168,
+            34.53
+          ],
+          [
+            69.17,
+            34.515
+          ],
+          [
+            69.174,
+            34.505
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ROUTE_ID": "FX-08",
+        "ROUTE_NAME": "JH03_to_FDH05",
+        "ROUTE_TYPE": "Feeder",
+        "STATUS": "Existing",
+        "CABLE_TYPE": "Fiber",
+        "FIBER_COUNT": 96,
+        "LENGTH_KM": 2.25,
+        "FROM_NODE": "JH-03",
+        "TO_NODE": "FDH-05",
+        "MEDIUM": "Underground"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            69.174,
+            34.505
+          ],
+          [
+            69.176,
+            34.495
+          ],
+          [
+            69.178,
+            34.485
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ROUTE_ID": "FX-09",
+        "ROUTE_NAME": "OLT1_to_JH04_Plan",
+        "ROUTE_TYPE": "Feeder",
+        "STATUS": "Planned",
+        "CABLE_TYPE": "Fiber",
+        "FIBER_COUNT": 144,
+        "LENGTH_KM": 4.425,
+        "FROM_NODE": "OLT-01",
+        "TO_NODE": "JH-04",
+        "MEDIUM": "Underground"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            69.168,
+            34.53
+          ],
+          [
+            69.145,
+            34.528
+          ],
+          [
+            69.12,
+            34.525
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ROUTE_ID": "FX-10",
+        "ROUTE_NAME": "JH04_to_FDH04_Plan",
+        "ROUTE_TYPE": "Feeder",
+        "STATUS": "Planned",
+        "CABLE_TYPE": "Fiber",
+        "FIBER_COUNT": 96,
+        "LENGTH_KM": 1.414,
+        "FROM_NODE": "JH-04",
+        "TO_NODE": "FDH-04",
+        "MEDIUM": "Underground"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            69.12,
+            34.525
+          ],
+          [
+            69.112,
+            34.523
+          ],
+          [
+            69.105,
+            34.522
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ROUTE_ID": "FX-11",
+        "ROUTE_NAME": "JH04_to_FDH06_Plan",
+        "ROUTE_TYPE": "Feeder",
+        "STATUS": "Planned",
+        "CABLE_TYPE": "Fiber",
+        "FIBER_COUNT": 96,
+        "LENGTH_KM": 2.657,
+        "FROM_NODE": "JH-04",
+        "TO_NODE": "FDH-06",
+        "MEDIUM": "Underground"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            69.12,
+            34.525
+          ],
+          [
+            69.124,
+            34.515
+          ],
+          [
+            69.128,
+            34.502
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ROUTE_ID": "DX-01",
+        "ROUTE_NAME": "FDH01_to_SPL01",
+        "ROUTE_TYPE": "Distribution",
+        "STATUS": "Existing",
+        "CABLE_TYPE": "Fiber",
+        "FIBER_COUNT": 48,
+        "LENGTH_KM": 0.288,
+        "FROM_NODE": "FDH-01",
+        "TO_NODE": "SPL-01",
+        "MEDIUM": "Underground"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            69.172,
+            34.525
+          ],
+          [
+            69.171,
+            34.526
+          ],
+          [
+            69.17,
+            34.527
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ROUTE_ID": "DX-02",
+        "ROUTE_NAME": "FDH02_to_SPL02",
+        "ROUTE_TYPE": "Distribution",
+        "STATUS": "Existing",
+        "CABLE_TYPE": "Fiber",
+        "FIBER_COUNT": 48,
+        "LENGTH_KM": 0.288,
+        "FROM_NODE": "FDH-02",
+        "TO_NODE": "SPL-02",
+        "MEDIUM": "Underground"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            69.148,
+            34.562
+          ],
+          [
+            69.149,
+            34.561
+          ],
+          [
+            69.15,
+            34.56
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ROUTE_ID": "DX-03",
+        "ROUTE_NAME": "FDH05_to_SPL03",
+        "ROUTE_TYPE": "Distribution",
+        "STATUS": "Existing",
+        "CABLE_TYPE": "Fiber",
+        "FIBER_COUNT": 48,
+        "LENGTH_KM": 0.384,
+        "FROM_NODE": "FDH-05",
+        "TO_NODE": "SPL-03",
+        "MEDIUM": "Underground"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            69.178,
+            34.485
+          ],
+          [
+            69.177,
+            34.486
+          ],
+          [
+            69.176,
+            34.488
+          ]
+        ]
+      }
+    }
+  ]
+}
