@@ -1,0 +1,9 @@
+WIDGET,METRIC,SOURCE,CALC,TARGET
+Indicator,Total Subscribers,ExecZone_KPI_Dashboard.csv,SUM SUBSCRIBERS,1500+
+Indicator,Average ARPU (USD),ExecZone_KPI_Dashboard.csv,MEAN AVG_ARPU,>= 20
+Gauge,Avg 4G Coverage %,ExecZone_KPI_Dashboard.csv,MEAN COV_4G_PCT,>= 85
+Gauge,Avg Churn Risk,ExecZone_KPI_Dashboard.csv,MEAN AVG_CHURN,<= 0.35
+Serial Chart,Monthly Subscribers & ARPU,Monthly_Executive_KPI_Timeseries.csv,line/bar by MONTH,Upward subs/ARPU
+Pie / Category,Zones by PRIORITY,ExecZone_KPI_Dashboard.csv,COUNT by PRIORITY,Track P1 count
+Map,Priority choropleth + sites,ExecZones_Integrated + Capstone_CellSites,web map,Interactive filter
+List,Open decisions,Capstone_Decisions.csv,STATUS <> Approved,Action tracking

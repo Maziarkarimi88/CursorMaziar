@@ -1,0 +1,4 @@
+OBS_ID,LON,LAT,OFFSETA_M,DESC
+MW-01,69.166,34.532,35,Central hub antenna
+MW-02,69.155,34.565,30,North hub antenna
+MW-04,69.18,34.478,28,South remote antenna

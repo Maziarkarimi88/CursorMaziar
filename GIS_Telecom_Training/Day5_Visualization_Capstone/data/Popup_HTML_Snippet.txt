@@ -1,0 +1,8 @@
+<b>{DIST_NAME}</b> ({DIST_ID})<br>
+Priority: <b>{PRIORITY}</b><br>
+Subscribers: {SUBSCRIBERS}<br>
+ARPU: ${AVG_ARPU}<br>
+Churn risk: {AVG_CHURN}<br>
+4G coverage: {COV_4G_PCT}%<br>
+Fiber: {FIBER_STATUS} | MW: {MW_BACKHAUL}<br>
+Suitability: {SUITABILITY}
